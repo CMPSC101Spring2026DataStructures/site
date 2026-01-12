@@ -1,0 +1,2419 @@
+---
+title: "O(2^n) - EXPONENTIAL TIME"
+subtitle: "The Recursive Explosion - When Algorithms Go Nuclear!"
+author: "CS 101 - Fall 2025"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+## Where Are We in the Scope of Complexity?
+
+![](graphics/algorithm_complexity.png)
+
+
+# What is O(2^n) - Exponential Time?
+
+::: {.callout-warning icon="true"}
+## The Recursive Monster 💥
+
+**O(2^n)** means the algorithm's time **doubles** with each additional input element - creating explosive growth!
+
+**Real-World Analogy**: 
+* Like a **chain letter** where each person sends to 2 more people
+* Day 1: 1 person, Day 2: 2 people, Day 3: 4 people...
+* **Day 30: Over 1 billion people!**
+
+:::
+
+::: {.columns}
+::: {.column}
+**Explosive Growth Pattern** 🚀
+
+* 10 items → 1,024 operations
+* 20 items → 1,048,576 operations  
+* 30 items → 1,073,741,824 operations
+* **Each +1 item doubles the work!**
+
+:::
+
+::: {.column}
+**Key Insight** 🔑
+
+The algorithm typically uses **recursion** where each call creates **two more calls**, creating an exponential explosion.
+
+**Danger Signal**: 
+*"Does my recursive function call itself multiple times?"*
+
+If yes → Might be O(2^n)!
+:::
+:::
+
+# What Creates O(2^n) Complexity?
+
+::: {.callout-note icon="true"}
+## The "Branching Recursion" Pattern 🌳
+
+O(2^n) algorithms typically involve recursive functions that branch into multiple recursive calls.
+
+:::
+
+::: {.columns}
+::: {.column}
+**Naive Fibonacci - The Classic**
+```python
+def fibonacci_slow(n):
+    if n <= 1:
+        return n
+    # This creates the exponential explosion!
+    return fibonacci_slow(n-1) + fibonacci_slow(n-2)
+
+    # Why O(2^n)?
+    # Each call creates 2 more calls
+    # fibonacci_slow(5) calls:
+    # - fibonacci_slow(4) and fibonacci_slow(3)
+    # - fibonacci_slow(4) calls fibonacci_slow(3) and fibonacci_slow(2)
+    # - fibonacci_slow(3) calls fibonacci_slow(2) and fibonacci_slow(1)
+    # And so on... massive redundant work!
+
+    # The call tree grows exponentially:
+    #           fib(5)
+    #         /        \
+    #     fib(4)      fib(3)
+    #    /     \      /     \
+    # fib(3) fib(2) fib(2) fib(1)
+    # ...and it keeps branching!
+```
+:::
+
+::: {.column}
+**Subset Generation**
+```python
+def generate_subsets(items):
+    if not items:
+        return [[]]  # Base case: empty set has one subset
+    
+    # For each subset of remaining items,
+    # create two versions: with and without first item
+    first = items[0]
+    rest_subsets = generate_subsets(items[1:])  # Recursive call
+    
+    # Double the subsets: add first item to each subset
+    with_first = [[first] + subset for subset in rest_subsets]
+    
+    return rest_subsets + with_first
+
+    # Example: [1, 2, 3] has 2³ = 8 subsets:
+    # [], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]
+
+    # Each element doubles the number of subsets!
+    # n elements → 2^n subsets → O(2^n) time
+```
+:::
+:::
+
+## Interactive O(2^n) Fibonacci Demo
+
+<!-- ::: {.callout-note icon="true"}
+## Watch the Exponential Explosion! 🎮
+
+See how naive Fibonacci creates a massive number of redundant calculations. Try different values!
+
+::: -->
+
+```{=html}
+<div id="exponential-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Naive Fibonacci - O(2^n) Recursive Explosion</h3>
+    <div style="margin: 30px 0;">
+        <select id="fib-number" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+            <option value="3">Fibonacci(3)</option>
+            <option value="5">Fibonacci(5)</option>
+            <option value="7" selected>Fibonacci(7)</option>
+            <option value="9">Fibonacci(9)</option>
+            <option value="10">Fibonacci(10) - Slow!</option>
+            <option value="12">Fibonacci(12) - Very Slow!</option>
+        </select>
+        <button id="start-fibonacci" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px; min-width: 150px;">Calculate Fibonacci</button>
+        <button id="show-optimized" style="padding: 8px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px; min-width: 140px;">Show O(n) Solution</button>
+        <button id="reset-fibonacci" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px; min-width: 80px;">Reset</button>
+    </div>
+    <div id="fibonacci-visualization" style="height: 400px; width: 100%; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="fibonacci-canvas" width="1400" height="380" style="border: none;"></canvas>
+    </div>
+    <div id="fibonacci-info" style="margin: 10px 0; font-family: monospace; font-size: 14px;">
+        <div>Calculating: <span id="current-calculation">Ready to calculate!</span></div>
+        <div>Function Calls: <span id="function-calls">0</span> | Depth: <span id="max-depth">0</span> | Result: <span id="fib-result">-</span></div>
+        <div>Status: <span id="fibonacci-status">Choose a Fibonacci number to calculate</span></div>
+    </div>
+</div>
+```
+
+## Interactive Demo: Subset Generation Explosion! 💥
+
+<!-- ::: {.callout-warning icon="true"}
+## Watch 2^n Subsets Multiply! 🎯
+See how each new element doubles the number of possible subsets!
+::: -->
+
+```{=html}
+<div id="subset-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Subset Generation - O(2^n) Combinatorial Explosion  🎯</h3>
+    <div style="margin: 20px 0;">
+        <label for="subset-input" style="display: block; margin-bottom: 10px; font-weight: bold;">Enter items (separated by commas):</label>
+        <input id="subset-input" type="text" value="A,B,C,D" style="padding: 8px; width: 300px; border: 1px solid #ccc; border-radius: 4px; margin: 5px;">
+        <br>
+        <button id="generate-subsets" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px;">Generate All Subsets</button>
+        <button id="clear-subsets" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px;">Clear</button>
+    </div>
+    <div id="subset-stats" style="margin: 15px 0; font-family: monospace; font-size: 14px; color: #333;">
+        <div>Items: <span id="item-count">4</span> | Expected Subsets: <span id="expected-subsets">16</span> | Generated: <span id="actual-subsets">0</span></div>
+        <div>Status: <span id="subset-status">Ready to generate subsets</span></div>
+    </div>
+    <div id="subset-visualization" style="max-height: 300px; overflow-y: auto; border: 2px solid #eee; border-radius: 8px; padding: 15px; text-align: left; background: #f9f9f9;">
+        <div id="subset-list" style="font-family: monospace; font-size: 12px; line-height: 1.4;"></div>
+    </div>
+</div>
+```
+
+## Interactive Demo: Password Strength Analyzer! 🔐
+
+<!-- ::: {.callout-danger icon="true"}
+## Exponential Security Growth! 🛡️
+Discover why longer passwords are exponentially stronger!
+::: -->
+
+```{=html}
+<div id="password-demo" style="text-align: center; margin: 20px 0;">
+    <!-- <h3>Password Strength - Exponential Security</h3> -->
+     <h3> Exponential Security Growth! 🛡️ </h3>
+    <div style="margin: 20px 0;">
+        <div style="margin: 10px 0;">
+            <label for="password-length" style="margin-right: 10px;">Password Length:</label>
+            <input id="password-length" type="range" min="4" max="12" value="8" style="margin: 0 10px;">
+            <span id="length-display" style="font-weight: bold;">8</span> characters
+        </div>
+        <div style="margin: 15px 0;">
+            <label><input type="checkbox" id="include-lowercase" checked> Lowercase (a-z)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-uppercase" checked> Uppercase (A-Z)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-numbers" checked> Numbers (0-9)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-symbols"> Symbols (!@#$%^&*)</label>
+        </div>
+        <button id="analyze-password" style="padding: 8px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px;">Analyze Strength</button>
+    </div>
+    <div id="password-results" style="margin: 20px 0; padding: 20px; border: 2px solid #eee; border-radius: 8px; background: #f9f9f9;">
+        <div id="password-stats" style="font-family: monospace; font-size: 14px; margin-bottom: 15px;">
+            <div>Character Set Size: <span id="charset-size">62</span></div>
+            <div>Total Combinations: <span id="total-combinations">218,340,105,584,896</span></div>
+            <div>Time to Crack (brute force): <span id="crack-time">~3,467 years</span></div>
+        </div>
+        <div id="password-visualization" style="width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 4px;">
+            <canvas id="password-chart" width="600" height="180" style="border: none;"></canvas>
+        </div>
+    </div>
+    </div>
+```
+
+## Password Strength Analysis in Python 💻
+
+
+
+
+```python
+    # How many possible passwords?
+    def count_passwords(length, alphabet_size):
+        return alphabet_size ** length
+
+    # Test different password complexities
+    lengths = [4, 6, 8, 10, 12]
+    for length in lengths:
+        # lowercase letters only (26 characters)
+        simple = count_passwords(length, 26)
+        # letters + digits + symbols (94 characters)
+        complex_pwd = count_passwords(length, 94)
+        print(f"{length} chars: {simple:,} vs {complex_pwd:,}")
+```
+
+::: {.callout-important icon="true"}
+## Investigation Questions 🤔
+
+- **🔢 4-digit PIN vs 8-character password:** How much stronger is longer?
+- **⚡ Symbol Power:** Why do security experts love special characters?
+- **📈 Exponential Growth:** Can you spot the pattern as length increases?
+- **🎯 Real-World Impact:** How do hackers exploit weak passwords?
+
+:::
+
+
+## Interactive Demo: Binary Tree Path Counter! 🌳
+
+<!-- ::: {.callout-info icon="true"}
+## Exponential Path Explosion! 🛤️
+
+See how binary decision trees create exponential numbers of paths!
+
+::: -->
+
+```{=html}
+<div id="tree-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Binary Decision Tree - O(2^n) Path Explosion</h3>
+    <div style="margin: 20px 0;">
+        <label for="tree-depth" style="margin-right: 10px;">Tree Depth:</label>
+        <input id="tree-depth" type="range" min="2" max="8" value="4" style="margin: 0 10px;">
+        <span id="depth-display" style="font-weight: bold;">4</span> levels
+        <br><br>
+        <button id="generate-tree" style="padding: 8px 20px; margin: 5px; background: #3498DB; color: white; border: none; border-radius: 4px;">Generate Tree</button>
+        <button id="count-paths" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px;">Count All Paths</button>
+        <button id="reset-tree" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px;">Reset</button>
+    </div>
+    <div id="tree-stats" style="margin: 15px 0; font-family: monospace; font-size: 14px;">
+        <div>Tree Depth: <span id="current-depth">4</span> | Expected Paths: <span id="expected-paths">16</span> | Found Paths: <span id="found-paths">0</span></div>
+        <div>Status: <span id="tree-status">Ready to generate tree</span></div>
+    </div>
+    <div id="tree-visualization" style="height: 300px; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="tree-canvas" width="800" height="280" style="border: none;"></canvas>
+    </div>
+</div>
+```
+
+# Python O(2^n) Examples - The Slow Ones!
+
+::: {.columns}
+::: {.column}
+**Recursive Algorithms** 🔄
+```python
+import time
+
+    # Naive Fibonacci - O(2^n)
+    def fib_exponential(n):
+        if n <= 1:
+            return n
+        return fib_exponential(n-1) + fib_exponential(n-2)
+
+    # Optimized Fibonacci - O(n)
+    def fib_linear(n):
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+    # Performance comparison
+    def compare_fibonacci(n):
+        # Time the exponential version
+        start = time.time()
+        result_exp = fib_exponential(n)
+        exp_time = time.time() - start
+        
+        # Time the linear version
+        start = time.time()
+        result_lin = fib_linear(n)
+        lin_time = time.time() - start
+        
+        print(f"Fibonacci({n}) = {result_exp}")
+        print(f"Exponential O(2^n): {exp_time:.6f} seconds")
+        print(f"Linear O(n):        {lin_time:.6f} seconds")
+        print(f"Speedup: {exp_time/lin_time:.0f}x faster!")
+
+    # Try compare_fibonacci(30) - dramatic difference!
+```
+:::
+
+::: {.column}
+**Combinatorial Problems** 🎲
+```python
+# Generate all possible combinations - O(2^n)
+def power_set(items):
+    """
+    Generate all possible subsets (power set) of the given items.
+    Uses recursive approach where each element can either be included or excluded.
+    Time complexity: O(2^n) where n is the number of items.
+    """
+    # Base case: empty list has only one subset - the empty subset
+    if not items:
+        return [[]]
+    
+    # Take the first item and recursively find power set of remaining items
+    first = items[0]
+    rest_subsets = power_set(items[1:])  # Recursive call on remaining items
+    
+    # For each subset of remaining items, create two versions:
+    # 1. Without the first item (already in rest_subsets)
+    # 2. With the first item added to each subset
+    with_first = [subset + [first] for subset in rest_subsets]
+    
+    # Combine both versions: subsets without first + subsets with first
+    return rest_subsets + with_first
+
+# Traveling Salesman Problem (brute force) - O(n!)
+def tsp_brute_force(cities, current_city=0, visited=None, path=None):
+    """
+    Solve Traveling Salesman Problem using brute force approach.
+    Tries all possible routes and returns the shortest one.
+    Time complexity: O(n!) - factorial time, very slow for large inputs.
+    
+    Args:
+        cities: Distance matrix or list of cities
+        current_city: Current position (default: start at city 0)
+        visited: Set of already visited cities
+        path: Current path taken so far
+    
+    Returns:
+        Tuple of (best_path, best_distance)
+    """
+    # Initialize on first call: start at city 0 with empty visited set and path
+    if visited is None:
+        visited = {current_city}  # Set to track visited cities
+        path = [current_city]     # List to track the route taken
+    
+    # Base case: if we've visited all cities, return to start (city 0)
+    if len(visited) == len(cities):
+        complete_path = path + [0]  # Add return trip to starting city
+        total_distance = calculate_distance(complete_path)
+        return complete_path, total_distance
+    
+    # Initialize variables to track the best solution found so far
+    best_path = None
+    best_distance = float('inf')  # Start with infinite distance
+    
+    # Try visiting each unvisited city next
+    for next_city in range(len(cities)):
+        if next_city not in visited:  # Only consider unvisited cities
+            # Recursively solve for the remaining cities
+            new_path, distance = tsp_brute_force(
+                cities, 
+                next_city,                    # Move to this city next
+                visited | {next_city},        # Add this city to visited set
+                path + [next_city]            # Add this city to current path
+            )
+            
+            # Keep track of the best (shortest) route found so far
+            if distance < best_distance:
+                best_distance = distance
+                best_path = new_path
+    
+    return best_path, best_distance
+
+    # Warning: TSP is O(n!) which is even worse than O(2^n)!
+    # For n cities, we have (n-1)! possible routes to check
+
+def calculate_distance(path):
+    """
+    Calculate the total distance for a given path through cities.
+    This is a simplified version using a predefined distance matrix.
+    In a real application, you would calculate distances using coordinates.
+    
+    Args:
+        path: List of city indices representing the route
+        
+    Returns:
+        Total distance of the path
+    """
+    # Predefined distance matrix for a 3-city example
+    # In practice, this would be calculated from city coordinates
+    # using formulas like Euclidean distance: sqrt((x2-x1)² + (y2-y1)²)
+    distances = {
+        (0, 1): 10, (1, 0): 10,  # Distance between city 0 and city 1
+        (0, 2): 15, (2, 0): 15,  # Distance between city 0 and city 2
+        (1, 2): 20, (2, 1): 20,  # Distance between city 1 and city 2
+        (0, 0): 0, (1, 1): 0, (2, 2): 0  # Distance from city to itself is 0
+    }
+    
+    total = 0  # Initialize total distance
+    
+    # Sum up distances between consecutive cities in the path
+    for i in range(len(path) - 1):
+        current_city = path[i]
+        next_city = path[i + 1]
+        # Get distance between current and next city, default to high cost if not found
+        total += distances.get((current_city, next_city), 100)
+    
+    return total
+
+# Example usage and testing
+if __name__ == "__main__":
+    """
+    Main execution block - runs only when script is executed directly.
+    Demonstrates both the power set generation and TSP solving algorithms.
+    """
+    
+    # Test the power set generation algorithm
+    print("Power Set Example:")
+    print("=" * 40)
+    items = [1, 2, 3]  # Test with a simple 3-element set
+    result = power_set(items)
+    print(f"Power set of {items}: {result}")
+    print(f"Number of subsets: {len(result)} (should be 2^{len(items)} = {2**len(items)})")
+    print("This demonstrates exponential growth: each new item doubles the subsets!")
+    
+    print("\nTraveling Salesman Problem Example:")
+    print("=" * 40)
+    # Simple 3-city example with predefined distances
+    # Note: cities parameter is not actually used in our simplified version
+    # The distance calculation uses the hardcoded distance matrix instead
+    cities = [[0, 10, 15], [10, 0, 20], [15, 20, 0]]  # Distance matrix (not used in current implementation)
+    
+    print("Solving TSP for 3 cities using brute force...")
+    print("This will check all possible routes and find the shortest one.")
+    
+    # Find the optimal path
+    path, distance = tsp_brute_force(cities)
+    print(f"Best path found: {path}")
+    print(f"Total distance: {distance}")
+    print(f"For {len(cities)} cities, we checked {len(cities)-1}! = {1 if len(cities)<=1 else eval('*'.join(map(str, range(1, len(cities)))))} possible routes.")
+```
+
+
+<!-- ```python
+# Generate all possible combinations - O(2^n)
+def power_set(items):
+    """
+    Generate all possible subsets (power set) of the given items.
+    Uses recursive approach where each element can either be included or excluded.
+    Time complexity: O(2^n) where n is the number of items.
+    """
+    # Base case: empty list has only one subset - the empty subset
+    if not items:
+        return [[]]
+    
+    # Take the first item and recursively find power set of remaining items
+    first = items[0]
+    rest_subsets = power_set(items[1:])  # Recursive call on remaining items
+    
+    # For each subset of remaining items, create two versions:
+    # 1. Without the first item (already in rest_subsets)
+    # 2. With the first item added to each subset
+    with_first = [subset + [first] for subset in rest_subsets]
+    
+    # Combine both versions: subsets without first + subsets with first
+    return rest_subsets + with_first
+
+# Traveling Salesman Problem (brute force) - O(n!)
+def tsp_brute_force(cities, current_city=0, visited=None, path=None):
+    """
+    Solve Traveling Salesman Problem using brute force approach.
+    Tries all possible routes and returns the shortest one.
+    Time complexity: O(n!) - factorial time, very slow for large inputs.
+    
+    Args:
+        cities: Distance matrix or list of cities
+        current_city: Current position (default: start at city 0)
+        visited: Set of already visited cities
+        path: Current path taken so far
+    
+    Returns:
+        Tuple of (best_path, best_distance)
+    """
+    # Initialize on first call: start at city 0 with empty visited set and path
+    if visited is None:
+        visited = {current_city}  # Set to track visited cities
+        path = [current_city]     # List to track the route taken
+    
+    # Base case: if we've visited all cities, return to start (city 0)
+    if len(visited) == len(cities):
+        complete_path = path + [0]  # Add return trip to starting city
+        total_distance = calculate_distance(complete_path)
+        return complete_path, total_distance
+    
+    # Initialize variables to track the best solution found so far
+    best_path = None
+    best_distance = float('inf')  # Start with infinite distance
+    
+    # Try visiting each unvisited city next
+    for next_city in range(len(cities)):
+        if next_city not in visited:  # Only consider unvisited cities
+            # Recursively solve for the remaining cities
+            new_path, distance = tsp_brute_force(
+                cities, 
+                next_city,                    # Move to this city next
+                visited | {next_city},        # Add this city to visited set
+                path + [next_city]            # Add this city to current path
+            )
+            
+            # Keep track of the best (shortest) route found so far
+            if distance < best_distance:
+                best_distance = distance
+                best_path = new_path
+    
+    return best_path, best_distance
+
+    # Warning: TSP is O(n!) which is even worse than O(2^n)!
+    # For n cities, we have (n-1)! possible routes to check
+
+def calculate_distance(path):
+    """
+    Calculate the total distance for a given path through cities.
+    This is a simplified version using a predefined distance matrix.
+    In a real application, you would calculate distances using coordinates.
+    
+    Args:
+        path: List of city indices representing the route
+        
+    Returns:
+        Total distance of the path
+    """
+    # Predefined distance matrix for a 3-city example
+    # In practice, this would be calculated from city coordinates
+    # using formulas like Euclidean distance: sqrt((x2-x1)² + (y2-y1)²)
+    distances = {
+        (0, 1): 10, (1, 0): 10,  # Distance between city 0 and city 1
+        (0, 2): 15, (2, 0): 15,  # Distance between city 0 and city 2
+        (1, 2): 20, (2, 1): 20,  # Distance between city 1 and city 2
+        (0, 0): 0, (1, 1): 0, (2, 2): 0  # Distance from city to itself is 0
+    }
+    
+    total = 0  # Initialize total distance
+    
+    # Sum up distances between consecutive cities in the path
+    for i in range(len(path) - 1):
+        current_city = path[i]
+        next_city = path[i + 1]
+        # Get distance between current and next city, default to high cost if not found
+        total += distances.get((current_city, next_city), 100)
+    
+    return total
+
+# Example usage and testing
+if __name__ == "__main__":
+    """
+    Main execution block - runs only when script is executed directly.
+    Demonstrates both the power set generation and TSP solving algorithms.
+    """
+    
+    # Test the power set generation algorithm
+    print("Power Set Example:")
+    print("=" * 40)
+    items = [1, 2, 3]  # Test with a simple 3-element set
+    result = power_set(items)
+    print(f"Power set of {items}: {result}")
+    print(f"Number of subsets: {len(result)} (should be 2^{len(items)} = {2**len(items)})")
+    print("This demonstrates exponential growth: each new item doubles the subsets!")
+    
+    print("\nTraveling Salesman Problem Example:")
+    print("=" * 40)
+    # Simple 3-city example with predefined distances
+    # Note: cities parameter is not actually used in our simplified version
+    # The distance calculation uses the hardcoded distance matrix instead
+    cities = [[0, 10, 15], [10, 0, 20], [15, 20, 0]]  # Distance matrix (not used in current implementation)
+    
+    print("Solving TSP for 3 cities using brute force...")
+    print("This will check all possible routes and find the shortest one.")
+    
+    # Find the optimal path
+    path, distance = tsp_brute_force(cities)
+    print(f"Best path found: {path}")
+    print(f"Total distance: {distance}")
+    print(f"For {len(cities)} cities, we checked {len(cities)-1}! = {1 if len(cities)<=1 else eval('*'.join(map(str, range(1, len(cities)))))} possible routes.")
+``` -->
+
+:::
+:::
+
+# The Exponential Wall of Pain 💔🤕
+
+::: {.callout-danger icon="true"}
+Performance Warning ⚠️ 
+**fibonacci_slow(40) = ~2 billion function calls!** That's why we need better algorithms for recursive problems.🎯
+:::
+
+
+::: {.callout-important icon="true"}
+## When O(2^n) Becomes Unusable 🧱
+
+Exponential algorithms hit a "wall" where they become practically impossible to run.
+
+:::
+
+::: {.columns}
+::: {.column}
+**The Exponential Timeline** ⏰
+
+| Input Size | Operations | Time* | Real-World Impact |
+|------------|------------|-------|-------------------|
+| 10 | 1,024 | 0.001s | Barely noticeable |
+| 20 | 1,048,576 | 1s | Starting to wait |
+| 25 | 33,554,432 | 30s | Getting annoying |
+| 30 | 1,073,741,824 | 15 minutes | Time for coffee |
+| 35 | 34,359,738,368 | 8 hours | Overnight job |
+| 40 | 1,099,511,627,776 | 12 days | Vacation time |
+| 50 | 1,125,899,906,842,624 | 35 years | Career change |
+| 60 | ~10^18 | 1,000 years | Wait for next millennium |
+
+*Approximate times for simple operations
+:::
+
+::: {.column}
+**Real Performance Testing** 🧪
+```python
+import time
+
+def fibonacci_naive(n):
+    if n <= 1:
+        return n
+    return fibonacci_naive(n-1) + fibonacci_naive(n-2)
+
+    # Test with increasing values
+    test_values = [10, 15, 20, 25, 30]
+
+    print("n\tTime (seconds)\tGrowth Factor")
+    print("-" * 40)
+
+    previous_time = None
+    for n in test_values:
+        start = time.time()
+        result = fibonacci_naive(n)
+        duration = time.time() - start
+        
+        growth_factor = ""
+        if previous_time:
+            factor = duration / previous_time
+            growth_factor = f"{factor:.1f}x"
+        
+        print(f"{n}\t{duration:.3f}\t\t{growth_factor}")
+        previous_time = duration
+        
+        # Stop if taking too long
+        if duration > 10:  # More than 10 seconds
+            print(f"Stopping at n={n} - taking too long!")
+            break
+```
+:::
+:::
+
+
+## By The Way, ... 🧪
+
+::: {.callout icon="false"}
+
+**Q**: Is there a shorter way to produce the Fibonacci sequence?
+
+**A**: Absolutely! Use Binet's formula.
+:::
+
+
+```python
+import math
+
+def fibonacci_binet(n):
+    """
+    Calculates the nth Fibonacci number using Binet's formula.
+    Args:
+        n: The index of the Fibonacci number to calculate (non-negative integer).
+    Returns:
+        The nth Fibonacci number as an integer.
+    """
+    if n < 0:
+        raise ValueError("Input 'n' must be a non-negative integer.")
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+
+    phi = (1 + math.sqrt(5)) / 2
+    psi = (1 - math.sqrt(5)) / 2
+
+    # Binet's formula
+    fn = (phi**n - psi**n) / math.sqrt(5)
+
+    # Round to the nearest integer as Binet's formula can produce
+    # slight floating-point inaccuracies for large n.
+    return int(round(fn))
+
+### Execute the code here
+for i in range(11):
+    print(f"Fibonacci({i}) = {fibonacci_binet(i)}")
+
+# Test with a larger number
+n_large = 20
+print(f"\n Larger:\nFibonacci({n_large}) = {fibonacci_binet(n_large)}")
+```
+
+::: {.callout-important icon="false"}
+Q: What is the complexity of this algorithm?
+:::
+
+## Partner Investigation: The Exponential Explosion!
+
+Run these samples of code with a partner. Discuss outcomes and respond to questions at the end of the source code.
+
+::: {.callout-warning icon="true"}
+
+## Partner Activity 👥
+
+<!-- Witness Exponential Chaos!  -->
+
+**⚠️ WARNING: These experiments can take a VERY long time! Partner coordination is essential.**
+
+:::
+
+::: {.columns}
+::: {.column}
+**Experiment 1: Fibonacci Explosion Investigation**
+
+```python
+"""
+EXPONENTIAL COMPLEXITY ANALYSIS - Fibonacci Performance Tracking
+================================================================
+
+Educational Purpose:
+This program provides hands-on experience with exponential time complexity O(2^n)
+through a carefully instrumented naive Fibonacci implementation. Students observe
+how function calls grow exponentially, creating an intuitive understanding of why
+certain algorithms become computationally intractable as input size increases.
+
+Key Learning Objectives:
+1. Experience exponential growth patterns firsthand through performance tracking
+2. Understand the relationship between algorithm structure and time complexity
+3. Develop intuition for computational limits and practical algorithm constraints
+4. Learn safe experimentation practices with potentially expensive algorithms
+5. Motivate the need for algorithmic optimization techniques
+
+What This Program Demonstrates:
+- Naive Recursive Fibonacci: O(2^n) time complexity with detailed call tracking
+- Performance metrics: function call counts, recursion depth, execution time
+- Safety protocols: controlled testing environment with automatic limits
+- Educational scaffolding: partner-based learning with guided analysis questions
+
+Target Audience: CS 101 students learning about algorithm complexity analysis
+Companion to: complex_2.py (optimization comparison) and interactive presentations
+Author: Course Materials for Algorithm Analysis Unit  
+Date: Fall 2025
+"""
+
+# Import required modules for timing and system recursion limits
+import time
+import sys
+
+def fib_naive_with_tracking(n, depth=0, memo=None):
+    """
+    Naive recursive Fibonacci implementation with performance tracking.
+
+    This function demonstrates O(2^n) exponential time complexity by:
+    - Making two recursive calls for each non-base case
+    - Tracking the total number of function calls made
+    - Tracking the maximum recursion depth reached
+    
+    Args:
+        n (int): The Fibonacci number to calculate
+        depth (int): Current recursion depth (for tracking purposes)
+        memo (dict): Dictionary to track performance metrics
+        
+    Returns:
+        tuple: (fibonacci_result, performance_stats)
+    """
+    # Initialize tracking dictionary on first call
+    if memo is None:
+        memo = {'calls': 0, 'max_depth': 0}
+    
+    # Count this function call and update maximum depth reached
+    memo['calls'] += 1
+    memo['max_depth'] = max(memo['max_depth'], depth)
+    
+    # Base case: F(0) = 0, F(1) = 1
+    if n <= 1:
+        return n, memo
+    
+    # Recursive case: F(n) = F(n-1) + F(n-2)
+    # This creates the exponential explosion - each call makes TWO more calls
+    left_result, memo = fib_naive_with_tracking(n-1, depth+1, memo)
+    right_result, memo = fib_naive_with_tracking(n-2, depth+1, memo)
+    
+    # Return the sum of the two recursive results plus performance data
+    return left_result + right_result, memo
+
+    # SAFETY PROTOCOL - Partner coordination essential!
+    # Partner A: Test [5, 10, 15]
+    # Partner B: Test [20, 25] ONLY (DO NOT go higher without permission!)
+
+def safe_fibonacci_test(test_values, max_time=30):
+    """
+    Safely test Fibonacci calculations with performance monitoring.
+    
+    This function provides a controlled environment for testing the exponential 
+    Fibonacci algorithm by:
+    - Setting time limits to prevent infinite waiting
+    - Adjusting recursion limits to prevent stack overflow
+    - Collecting and displaying performance metrics
+    - Stopping execution if calculations take too long
+    
+    Args:
+        test_values (list): List of Fibonacci numbers to calculate
+        max_time (int): Maximum seconds allowed per calculation
+        
+    Returns:
+        list: Results containing performance data for each test
+    """
+    results = []  # Store performance results for analysis
+    
+    # Test each Fibonacci number in the provided list
+    for n in test_values:
+        print(f"\nTesting Fibonacci({n})...")
+        
+        # Record start time to measure execution duration
+        start = time.time()
+        
+        try:
+            # Prevent stack overflow by increasing recursion limit
+            # Exponential algorithms can create very deep recursion
+            old_limit = sys.getrecursionlimit()
+            sys.setrecursionlimit(max(1000, n * 100))  # Scale with input size
+            
+            # Execute the Fibonacci calculation with tracking
+            result, stats = fib_naive_with_tracking(n)
+            duration = time.time() - start
+            
+            # Restore original recursion limit
+            sys.setrecursionlimit(old_limit)
+            
+            # Safety check: Stop if calculation takes too long
+            # This prevents students from waiting indefinitely for large inputs
+            if duration > max_time:
+                print(f"⚠️ STOPPED: Taking too long ({duration:.2f}s)")
+                break
+            
+            # Store performance data for analysis
+            results.append({
+                'n': n,                           # Input value
+                'result': result,                 # Fibonacci result
+                'calls': stats['calls'],          # Total function calls (shows 2^n growth)
+                'max_depth': stats['max_depth'],  # Maximum recursion depth
+                'time': duration                  # Execution time in seconds
+            })
+            
+            # Display results to show exponential growth pattern
+            print(f"Result: {result}")
+            print(f"Function calls: {stats['calls']:,}")  # Comma-separated for readability
+            print(f"Time: {duration:.4f} seconds")
+            
+        except RecursionError:
+            # Handle case where recursion goes too deep
+            print(f"⚠️ RECURSION LIMIT EXCEEDED for n={n}")
+            break
+    
+    return results
+
+# ===================================================================
+# MAIN EXECUTION SECTION - Educational Assignment for Partner Learning
+# ===================================================================
+
+"""
+This section provides a structured learning experience about exponential complexity.
+Students work in pairs with different test values to observe O(2^n) growth patterns.
+
+The assignment is designed to be:
+1. Safe - preventing system crashes with controlled inputs
+2. Educational - showing clear exponential growth patterns  
+3. Collaborative - partners compare results to understand scaling
+"""
+
+# YOUR ASSIGNMENT (choose based on partner role):
+# These values are carefully chosen to demonstrate exponential growth
+# while keeping execution times reasonable for classroom use
+
+my_test_values = [5, 10, 15]  # Partner A - safe values that complete quickly
+# my_test_values = [20, 25]     # Partner B - be VERY careful! These take much longer
+
+# Execute the performance test with your chosen values
+# This will show you exactly how O(2^n) algorithms behave in practice
+results = safe_fibonacci_test(my_test_values)
+
+# ===================================================================
+# ANALYSIS FRAMEWORK - Questions to Guide Student Understanding
+# ===================================================================
+
+# After running your tests, discuss these questions with your partner:
+# 1. How did function calls grow with each increase in n?
+#    (Look for the pattern: roughly doubling with each increment)
+# 2. Can you predict the pattern?
+#    (Try to predict calls for n+1 based on your observed data)
+# 3. Why does this get so slow so quickly?
+#    (Connect the exponential call growth to exponential time complexity)
+# 4. What would happen with larger inputs?
+#    (Extrapolate from your data - why do we need iterative approaches?)
+
+"""
+Expected Learning Outcomes:
+- Visceral understanding of exponential growth rates
+- Appreciation for algorithm efficiency importance
+- Motivation to learn optimized algorithms (dynamic programming, memoization)
+- Understanding of why certain problems become computationally intractable
+"""
+```
+:::
+
+
+<!-- ```python
+import time
+import sys
+
+def fib_naive_with_tracking(n, depth=0, memo=None):
+    if memo is None:
+        memo = {'calls': 0, 'max_depth': 0}
+    
+    memo['calls'] += 1
+    memo['max_depth'] = max(memo['max_depth'], depth)
+    
+    if n <= 1:
+        return n, memo
+    
+    left_result, memo = fib_naive_with_tracking(n-1, depth+1, memo)
+    right_result, memo = fib_naive_with_tracking(n-2, depth+1, memo)
+    
+    return left_result + right_result, memo
+
+    # SAFETY PROTOCOL - Partner coordination essential!
+    # Partner A: Test [5, 10, 15]
+    # Partner B: Test [20, 25] ONLY (DO NOT go higher without permission!)
+
+def safe_fibonacci_test(test_values, max_time=30):
+    """Stops if any calculation takes longer than max_time seconds"""
+    results = []
+    
+    for n in test_values:
+        print(f"\nTesting Fibonacci({n})...")
+        
+        start = time.time()
+        
+        try:
+            # Set a recursion limit to prevent stack overflow
+            old_limit = sys.getrecursionlimit()
+            sys.setrecursionlimit(max(1000, n * 100))
+            
+            result, stats = fib_naive_with_tracking(n)
+            duration = time.time() - start
+            
+            sys.setrecursionlimit(old_limit)
+            
+            if duration > max_time:
+                print(f"⚠️ STOPPED: Taking too long ({duration:.2f}s)")
+                break
+                
+            results.append({
+                'n': n,
+                'result': result,
+                'calls': stats['calls'],
+                'max_depth': stats['max_depth'],
+                'time': duration
+            })
+            
+            print(f"Result: {result}")
+            print(f"Function calls: {stats['calls']:,}")
+            print(f"Time: {duration:.4f} seconds")
+            
+        except RecursionError:
+            print(f"⚠️ RECURSION LIMIT EXCEEDED for n={n}")
+            break
+    
+    return results
+
+    # YOUR ASSIGNMENT (choose based on partner role):
+    my_test_values = [5, 10, 15]  # Partner A - safe values
+    # my_test_values = [20, 25]     # Partner B - be VERY careful!
+
+    results = safe_fibonacci_test(my_test_values)
+
+    # Analysis questions for partners:
+    # 1. How did function calls grow with each increase in n?
+    # 2. Can you predict the pattern?
+    # 3. Why does this get so slow so quickly?
+``` -->
+
+
+::: {.column}
+**Experiment 2: Optimization Race Challenge**
+
+```python
+"""
+ALGORITHM OPTIMIZATION DEMONSTRATION - Fibonacci Performance Comparison
+========================================================================
+
+Educational Purpose:
+This program demonstrates the dramatic performance differences between three
+approaches to computing Fibonacci numbers, showing students why algorithm
+optimization matters in real-world programming.
+
+Key Learning Objectives:
+1. Experience the practical impact of Big O complexity
+2. Understand how memoization transforms exponential to linear time
+3. Compare recursive vs iterative solutions
+4. Witness exponential algorithms becoming computationally intractable
+
+Three Approaches Compared:
+- Naive Recursive: O(2^n) - exponential time, exponential space
+- Memoized Recursive: O(n) - linear time, linear space  
+- Iterative: O(n) - linear time, constant space
+
+Target Audience: CS 101 students learning about algorithm complexity
+Author: Course Materials for Algorithm Analysis Unit
+Date: Fall 2025
+"""
+
+from functools import lru_cache  # Python's built-in memoization decorator
+import time                      # For precise performance timing
+
+# ===================================================================
+# THREE FIBONACCI IMPLEMENTATIONS - Different Complexity Classes
+# ===================================================================
+def fib_exponential(n):
+    """
+    NAIVE RECURSIVE FIBONACCI - O(2^n) Time Complexity
+    
+    This is the "textbook" recursive implementation that directly follows
+    the mathematical definition: F(n) = F(n-1) + F(n-2)
+    
+    Why It's Exponential:
+    - Each call spawns two more calls (binary tree of recursion)
+    - Massive redundant calculation (F(5) calculated multiple times)
+    - Total calls ≈ 2^n, making it impractical for n > 35
+    
+    Educational Value: Shows students why naive approaches can be disastrous
+    
+    Args:
+        n (int): The position in Fibonacci sequence to calculate
+        
+    Returns:
+        int: The nth Fibonacci number
+        
+    Time Complexity: O(2^n) - exponential growth
+    Space Complexity: O(n) - recursion stack depth
+    """
+    # Base cases: F(0) = 0, F(1) = 1
+    if n <= 1:
+        return n
+    
+    # Recursive case: F(n) = F(n-1) + F(n-2)
+    # WARNING: This creates exponential redundancy!
+    return fib_exponential(n-1) + fib_exponential(n-2)
+
+@lru_cache(maxsize=None)  # Python decorator for automatic memoization
+def fib_memoized(n):
+    """
+    MEMOIZED RECURSIVE FIBONACCI - O(n) Time Complexity
+    
+    Same recursive structure as naive version, but with caching!
+    The @lru_cache decorator automatically stores results, eliminating
+    redundant calculations that made the naive version exponential.
+    
+    How Memoization Works:
+    - First call to F(k): calculated and stored in cache
+    - Subsequent calls to F(k): returned instantly from cache
+    - Transforms exponential tree into linear sequence
+    
+    Educational Value: Shows power of caching/dynamic programming
+    
+    Args:
+        n (int): The position in Fibonacci sequence to calculate
+        
+    Returns:
+        int: The nth Fibonacci number
+        
+    Time Complexity: O(n) - each F(k) calculated only once
+    Space Complexity: O(n) - cache storage + recursion stack
+    """
+    # Base cases: F(0) = 0, F(1) = 1
+    if n <= 1:
+        return n
+    
+    # Recursive case with automatic memoization
+    # The @lru_cache decorator handles caching transparently
+    return fib_memoized(n-1) + fib_memoized(n-2)
+
+def fib_iterative(n):
+    """
+    ITERATIVE FIBONACCI - O(n) Time, O(1) Space
+    
+    Bottom-up approach that builds the sequence from F(0) to F(n).
+    No recursion needed - just a simple loop with two variables.
+    
+    Why It's Optimal:
+    - Linear time: exactly n-1 iterations for F(n)
+    - Constant space: only stores current and previous values
+    - No function call overhead or stack risk
+    - Most practical approach for large n
+    
+    Educational Value: Shows how iterative thinking can optimize recursive problems
+    
+    Args:
+        n (int): The position in Fibonacci sequence to calculate
+        
+    Returns:
+        int: The nth Fibonacci number
+        
+    Time Complexity: O(n) - single loop from 2 to n
+    Space Complexity: O(1) - only two variables needed
+    """
+    # Handle base cases directly
+    if n <= 1:
+        return n
+    
+    # Initialize: a = F(0), b = F(1)
+    a, b = 0, 1
+    
+    # Build sequence iteratively: F(2), F(3), ..., F(n)
+    for _ in range(2, n + 1):
+        # Calculate next Fibonacci number and shift variables
+        # This elegant swap calculates F(i) = F(i-1) + F(i-2)
+        a, b = b, a + b
+    
+    return b  # b now contains F(n)
+
+def optimization_race(n_values):
+    """
+    PERFORMANCE COMPARISON ENGINE - Algorithm Racing Framework
+    
+    This function conducts a systematic performance comparison of all three
+    Fibonacci implementations, providing students with concrete evidence of
+    how algorithm choice affects real-world performance.
+    
+    Educational Design Features:
+    - Automatic safety checks (skips exponential for large n)
+    - Precise timing measurements using time.time()
+    - Clear performance reporting with speedup calculations
+    - Fair testing (cache clearing between runs)
+    - Robust exception handling for edge cases
+    
+    Args:
+        n_values (list): Fibonacci numbers to test (e.g., [10, 20, 30])
+        
+    Returns:
+        None (prints results directly for classroom demonstration)
+        
+    Raises:
+        ValueError: If n_values contains invalid inputs
+        TypeError: If n_values is not iterable
+    """
+    # Input validation to prevent errors
+    try:
+        # Check if n_values is iterable
+        iter(n_values)
+    except TypeError:
+        raise TypeError("n_values must be an iterable (list, tuple, etc.)")
+    
+    # Validate each value in the input
+    valid_values = []
+    for n in n_values:
+        try:
+            n = int(n)  # Convert to integer if possible
+            if n < 0:
+                print(f"⚠️  WARNING: Skipping negative value {n} (Fibonacci undefined for negative numbers)")
+                continue
+            if n > 1000:
+                print(f"⚠️  WARNING: Skipping extremely large value {n} (potential memory/time issues)")
+                continue
+            valid_values.append(n)
+        except (ValueError, TypeError):
+            print(f"⚠️  WARNING: Skipping invalid value {n} (must be a non-negative integer)")
+            continue
+    
+    if not valid_values:
+        print("❌ ERROR: No valid values to test!")
+        return
+    print("🏁 Fibonacci Optimization Race!")
+    print("=" * 50)
+    print("Testing three approaches: Exponential vs Memoized vs Iterative")
+    print(f"Valid test values: {valid_values}")
+    
+    for n in valid_values:
+        print(f"\n🧮 Computing Fibonacci({n}):")
+        
+        # ===== EXPONENTIAL APPROACH - O(2^n) =====
+        # Safety check: only test exponential for manageable values
+        # Beyond n=35, exponential becomes impractically slow
+        if n <= 30:
+            try:
+                start = time.time()  # Start timing
+                result_exp = fib_exponential(n)
+                exp_time = time.time() - start  # Calculate duration
+                print(f"  📈 Exponential O(2^n): {exp_time:.6f}s")
+            except RecursionError:
+                print(f"  📈 Exponential O(2^n): FAILED (recursion limit exceeded)")
+                exp_time = float('inf')
+                result_exp = None
+            except OverflowError:
+                print(f"  📈 Exponential O(2^n): FAILED (number too large)")
+                exp_time = float('inf')
+                result_exp = None
+            except Exception as e:
+                print(f"  📈 Exponential O(2^n): ERROR ({type(e).__name__})")
+                exp_time = float('inf')
+                result_exp = None
+        else:
+            print(f"  📈 Exponential O(2^n): SKIPPED (too slow!)")
+            exp_time = float('inf')  # Mark as infinite time for comparisons
+            result_exp = None
+        
+        # ===== MEMOIZED APPROACH - O(n) =====
+        # Clear any previous cache to ensure fair timing comparison
+        try:
+            fib_memoized.cache_clear()  # Reset memoization cache
+            start = time.time()
+            result_memo = fib_memoized(n)
+            memo_time = time.time() - start
+            print(f"  🧠 Memoized O(n):      {memo_time:.6f}s")
+        except RecursionError:
+            print(f"  🧠 Memoized O(n):      FAILED (recursion limit exceeded)")
+            memo_time = float('inf')
+            result_memo = None
+        except OverflowError:
+            print(f"  🧠 Memoized O(n):      FAILED (number too large)") 
+            memo_time = float('inf')
+            result_memo = None
+        except Exception as e:
+            print(f"  🧠 Memoized O(n):      ERROR ({type(e).__name__})")
+            memo_time = float('inf')
+            result_memo = None
+        
+        # ===== ITERATIVE APPROACH - O(n) =====
+        try:
+            start = time.time()
+            result_iter = fib_iterative(n)
+            iter_time = time.time() - start
+            print(f"  🔄 Iterative O(n):     {iter_time:.6f}s")
+        except OverflowError:
+            print(f"  🔄 Iterative O(n):     FAILED (number too large)")
+            iter_time = float('inf')
+            result_iter = None
+        except Exception as e:
+            print(f"  🔄 Iterative O(n):     ERROR ({type(e).__name__})")
+            iter_time = float('inf')
+            result_iter = None
+        
+        # ===== PERFORMANCE ANALYSIS =====
+        # Calculate and display speedup ratios if exponential was testable
+        # This shows students the dramatic impact of optimization
+        if exp_time != float('inf'):
+            try:
+                # Calculate speedup ratios with division by zero protection
+                if memo_time > 0:
+                    memo_speedup = exp_time / memo_time
+                    print(f"  🚀 Memoized speedup: {memo_speedup:.0f}x faster!")
+                else:
+                    print(f"  🚀 Memoized speedup: EXTREMELY FAST (sub-microsecond)")
+                
+                if iter_time > 0:
+                    iter_speedup = exp_time / iter_time  
+                    print(f"  🚀 Iterative speedup: {iter_speedup:.0f}x faster!")
+                else:
+                    print(f"  🚀 Iterative speedup: EXTREMELY FAST (sub-microsecond)")
+                    
+            except ZeroDivisionError:
+                # Fallback protection in case of unexpected zero division
+                print(f"  🚀 Speedup calculation: EXTREMELY FAST (division by zero avoided)")
+                print(f"  📊 Optimized versions completed in negligible time!")
+            
+            # Verify all methods produce the same result (when all succeeded)
+            try:
+                # Only verify if all results are available and not None
+                if all(result is not None for result in [result_exp, result_memo, result_iter]):
+                    assert result_exp == result_memo == result_iter, "Results don't match!"
+                    print(f"  ✅ All methods produced identical results: {result_iter}")
+                else:
+                    # Some calculations failed, show what we have
+                    available_results = []
+                    if result_memo is not None:
+                        available_results.append(f"Memoized: {result_memo}")
+                    if result_iter is not None:
+                        available_results.append(f"Iterative: {result_iter}")
+                    if result_exp is not None:
+                        available_results.append(f"Exponential: {result_exp}")
+                    
+                    if available_results:
+                        print(f"  📊 Available results: {', '.join(available_results)}")
+                        # Verify the ones we have match
+                        valid_results = [r for r in [result_exp, result_memo, result_iter] if r is not None]
+                        if len(valid_results) > 1 and len(set(valid_results)) == 1:
+                            print(f"  ✅ Available results match!")
+                        elif len(valid_results) > 1:
+                            print(f"  ❌ WARNING: Available results don't match!")
+            except AssertionError as e:
+                print(f"  ❌ ERROR: {e}")
+                print(f"     Exponential: {result_exp if result_exp is not None else 'FAILED'}")
+                print(f"     Memoized: {result_memo if result_memo is not None else 'FAILED'}")
+                print(f"     Iterative: {result_iter if result_iter is not None else 'FAILED'}")
+        else:
+            # For large n, exponential is too slow to test
+            print(f"  ⚡ Exponential would take HOURS/DAYS for n={n}")
+            print(f"  ⚡ Optimization makes impossible problems solvable!")
+
+# ===================================================================
+# MAIN EXECUTION - Structured Partner Learning Experience
+# ===================================================================
+
+"""
+COLLABORATIVE ASSIGNMENT STRUCTURE:
+Students work in pairs with different test cases to observe how algorithm
+choice affects performance across different problem sizes.
+
+Partner A: Tests smaller values where all approaches are feasible
+Partner B: Tests larger values where exponential becomes impossible
+
+This design helps students experience the "complexity cliff" - the point
+where poor algorithms become computationally intractable.
+"""
+
+# CHOOSE YOUR PARTNER ROLE:
+# Uncomment the appropriate line based on your assignment
+
+my_values = [10, 20, 30]     # Partner A: All approaches testable
+# my_values = [35, 40, 50]   # Partner B: Exponential becomes impossible!
+
+print("🎯 RUNNING OPTIMIZATION COMPARISON...")
+print("Your test values:", my_values)
+print()
+
+# Execute the performance comparison
+optimization_race(my_values)
+
+# ===================================================================
+# ANALYSIS FRAMEWORK - Post-Experiment Discussion Questions
+# ===================================================================
+
+print("\n" + "="*60)
+print("📚 DISCUSSION QUESTIONS FOR PARTNERS:")
+print("="*60)
+print()
+print("After reviewing your results, discuss these questions:")
+print()
+print("1. 🤔 TIPPING POINT: At what value of n does exponential become unusable?")
+print("   (Partner A vs B will have different experiences)")
+print()
+print("2. 🚀 SPEEDUP MAGNITUDE: How dramatic is the speedup from optimization?")
+print("   (Look at the 'X times faster' numbers)")
+print()
+print("3. 🧠 MEMOIZATION MAGIC: Why does memoization work so well here?")
+print("   (Think about redundant calculations in the exponential version)")
+print()
+print("4. 💡 REAL-WORLD IMPACT: What does this teach us about algorithm choice?")
+print("   (Consider: debugging vs production, small vs large datasets)")
+print()
+print("5. 🔄 SPACE VS TIME: Compare memoized vs iterative - which is better?")
+print("   (Consider memory usage and practical constraints)")
+
+"""
+Expected Learning Outcomes:
+- Visceral understanding of exponential vs linear complexity
+- Appreciation for the power of dynamic programming/memoization
+- Recognition that algorithm choice can make impossible problems solvable
+- Understanding of trade-offs between different optimization approaches
+- Motivation to learn more advanced algorithmic techniques
+"""
+```
+
+
+<!-- ```python
+from functools import lru_cache
+import time
+
+# Three different approaches to Fibonacci
+def fib_exponential(n):
+    """Naive recursive - O(2^n)"""
+    if n <= 1:
+        return n
+    return fib_exponential(n-1) + fib_exponential(n-2)
+
+@lru_cache(maxsize=None)
+def fib_memoized(n):
+    """Memoized recursive - O(n)"""
+    if n <= 1:
+        return n
+    return fib_memoized(n-1) + fib_memoized(n-2)
+
+def fib_iterative(n):
+    """Iterative - O(n)"""
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+def optimization_race(n_values):
+    """Compare all three approaches"""
+    print("Fibonacci Optimization Race!")
+    print("=" * 50)
+    
+    for n in n_values:
+        print(f"\nFibonacci({n}):")
+        
+        # Only test exponential for small values!
+        if n <= 30:
+            start = time.time()
+            result_exp = fib_exponential(n)
+            exp_time = time.time() - start
+            print(f"  Exponential O(2^n): {exp_time:.6f}s")
+        else:
+            print(f"  Exponential O(2^n): SKIPPED (too slow!)")
+            exp_time = float('inf')
+        
+        # Test memoized version
+        fib_memoized.cache_clear()  # Clear cache for fair timing
+        start = time.time()
+        result_memo = fib_memoized(n)
+        memo_time = time.time() - start
+        print(f"  Memoized O(n):      {memo_time:.6f}s")
+        
+        # Test iterative version
+        start = time.time()
+        result_iter = fib_iterative(n)
+        iter_time = time.time() - start
+        print(f"  Iterative O(n):     {iter_time:.6f}s")
+        
+        # Show speedup if exponential was testable
+        if exp_time != float('inf'):
+            print(f"  Memoized speedup: {exp_time/memo_time:.0f}x")
+            print(f"  Iterative speedup: {exp_time/iter_time:.0f}x")
+
+# Partner A: Test [10, 20, 30]
+# Partner B: Test [35, 40, 50] (notice exponential becomes impossible!)
+my_values = [10, 20, 30]  # Adjust based on assignment
+optimization_race(my_values)
+
+# Partner Discussion:
+# 1. At what point does exponential become unusable?
+# 2. How dramatic is the speedup from optimization?
+# 3. Why does memoization work so well here?
+``` -->
+
+:::
+
+:::
+
+
+
+
+## Final Challenge: Algorithm Detective! 🕵️‍♂️
+
+::: {.callout icon="true"}
+## Can You Identify These Complexities Part 1? 🧩
+
+Mystery Algorithms: Put Your Skills to the Test! 🤔
+* Test your new Big-O analysis skills with these code snippets!
+* Look for loops, recursion, and data access patterns!
+  
+:::
+
+```python
+# Algorithm A
+def mystery_a(arr):
+    return arr[len(arr) // 2]
+```
+
+```python
+# Algorithm B  
+def mystery_b(arr):
+    total = 0
+    for item in arr:
+        total += item
+    return total / len(arr)
+```
+
+## Final Challenge: Continued! 🕵️‍♂️
+
+::: {.callout icon="true"}
+## Can You Identify These Complexities Part II? 🧩
+
+:::
+
+
+```python
+# Algorithm C
+def mystery_c(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+```python
+# Algorithm D
+def mystery_d(arr):
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
+    return arr
+```
+
+
+## The Answers: How Did You Do? ✅
+
+::: {.callout icon="true"}
+# 🎉 Algorithm Analysis Revealed!
+
+Check your detective work against these solutions:
+
+:::
+
+```python
+    # Answers:
+    # Algorithm A: O(1) - Direct array access by index
+    # Algorithm B: O(n) - Single loop through all elements
+    # Algorithm C: O(log n) - Binary search (halving each step)
+    # Algorithm D: O(n²) - Nested loops (bubble sort)
+    # How did you do?!
+```
+ ✅🎉
+ ✅🎉
+ ✅🎉
+ ✅🎉
+
+
+```{=html}
+<script>
+/**
+ * Fibonacci Recursion Tree Visualizer - O(2^n) Performance Demonstration
+ * Interactive animation showing how naive Fibonacci recursion creates exponential function calls
+ * Demonstrates O(2^n) time complexity - each level doubles the number of recursive calls
+ */
+class FibonacciVisualizer {
+    /**
+     * Constructor - Initialize the Fibonacci recursion visualization
+     * @param {string} canvasId - ID of the HTML canvas element to draw on
+     */
+    constructor(canvasId) {
+        // Get canvas element and set up drawing context
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return; // Exit if canvas not found
+        
+        this.ctx = this.canvas.getContext('2d');
+        
+        // Initialize Fibonacci calculation and visualization state
+        this.fibNumber = 7; // Fibonacci number to calculate (start with small value)
+        this.callStack = []; // Stack to track recursive function calls
+        this.totalCalls = 0; // Total function calls made (demonstrates 2^n growth)
+        this.maxDepth = 0; // Maximum recursion depth reached
+        this.currentDepth = 0; // Current recursion depth
+        this.isCalculating = false; // Flag to prevent multiple simultaneous calculations
+        this.showOptimized = false; // Flag to show optimized O(n) solution
+        this.result = -1; // Final Fibonacci result
+        this.nodeRadius = 20; // Visual size of tree nodes
+        this.levelHeight = 35; // Vertical spacing between recursion levels
+        this.nodes = []; // Array to store node positions for drawing recursion tree
+        
+        // Set up user interface and draw initial state
+        this.setupEventListeners();
+        this.draw();
+    }
+    
+    setupEventListeners() {
+        const startBtn = document.getElementById('start-fibonacci');
+        const optimizedBtn = document.getElementById('show-optimized');
+        const resetBtn = document.getElementById('reset-fibonacci');
+        const numberSelect = document.getElementById('fib-number');
+        
+        if (startBtn) startBtn.addEventListener('click', () => this.startCalculation());
+        if (optimizedBtn) optimizedBtn.addEventListener('click', () => this.showOptimizedSolution());
+        if (resetBtn) resetBtn.addEventListener('click', () => this.resetVisualization());
+        if (numberSelect) numberSelect.addEventListener('change', () => this.changeNumber());
+    }
+    
+    changeNumber() {
+        const select = document.getElementById('fib-number');
+        if (!select) return;
+        
+        this.fibNumber = parseInt(select.value);
+        this.resetVisualization();
+    }
+    
+    startCalculation() {
+        if (this.isCalculating) {
+            this.updateStatus('Calculation already in progress...');
+            return;
+        }
+        
+        this.resetVisualization();
+        this.isCalculating = true;
+        this.showOptimized = false;
+        this.updateStatus(`Calculating Fibonacci(${this.fibNumber}) with naive recursion...`);
+        
+        // Start the recursive calculation
+        this.fibonacciNaive(this.fibNumber, 0, this.canvas.width / 2, 40);
+        this.isCalculating = false;
+        this.updateStatus(`Completed! Result: ${this.result}, Total calls: ${this.totalCalls}`);
+        this.updateCounters();
+        this.draw();
+    }
+    
+    fibonacciNaive(n, depth, x, y) {
+        this.totalCalls++;
+        this.currentDepth = depth;
+        if (depth > this.maxDepth) {
+            this.maxDepth = depth;
+        }
+        
+        // Add node to visualization
+        const node = {
+            n: n,
+            x: x,
+            y: y,
+            depth: depth,
+            result: -1,
+            calculated: false
+        };
+        this.nodes.push(node);
+        
+        // Base case
+        if (n <= 1) {
+            node.result = n;
+            node.calculated = true;
+            return n;
+        }
+        
+        // Recursive calls
+        const leftX = x - Math.max(60, 400 / Math.pow(2, depth));
+        const rightX = x + Math.max(60, 400 / Math.pow(2, depth));
+        const childY = y + this.levelHeight;
+        
+        const left = this.fibonacciNaive(n - 1, depth + 1, leftX, childY);
+        const right = this.fibonacciNaive(n - 2, depth + 1, rightX, childY);
+        
+        const result = left + right;
+        node.result = result;
+        node.calculated = true;
+        
+        if (depth === 0) {
+            this.result = result;
+        }
+        
+        return result;
+    }
+    
+    showOptimizedSolution() {
+        this.showOptimized = true;
+        
+        // Calculate optimized version
+        const start = performance.now();
+        const optimizedResult = this.fibonacciOptimized(this.fibNumber);
+        const end = performance.now();
+        
+        this.updateStatus(`Optimized O(n) solution: Result ${optimizedResult} in ${(end - start).toFixed(4)}ms vs ${this.totalCalls} function calls for naive approach`);
+        this.draw();
+    }
+    
+    fibonacciOptimized(n) {
+        if (n <= 1) return n;
+        let a = 0, b = 1;
+        for (let i = 2; i <= n; i++) {
+            [a, b] = [b, a + b];
+        }
+        return b;
+    }
+    
+    resetVisualization() {
+        this.totalCalls = 0;
+        this.maxDepth = 0;
+        this.currentDepth = 0;
+        this.result = -1;
+        this.nodes = [];
+        this.callStack = [];
+        this.isCalculating = false;
+        this.showOptimized = false;
+        this.updateCounters();
+        this.updateStatus('Choose a Fibonacci number to calculate');
+        this.draw();
+    }
+    
+    updateCounters() {
+        const callsDisplay = document.getElementById('function-calls');
+        const depthDisplay = document.getElementById('max-depth');
+        const resultDisplay = document.getElementById('fib-result');
+        const calculationDisplay = document.getElementById('current-calculation');
+        
+        if (callsDisplay) callsDisplay.textContent = this.totalCalls;
+        if (depthDisplay) depthDisplay.textContent = this.maxDepth;
+        if (resultDisplay) resultDisplay.textContent = this.result >= 0 ? this.result : '-';
+        if (calculationDisplay) calculationDisplay.textContent = `Fibonacci(${this.fibNumber})`;
+    }
+    
+    updateStatus(message) {
+        const statusDisplay = document.getElementById('fibonacci-status');
+        if (statusDisplay) statusDisplay.textContent = message;
+    }
+    
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw title
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 16px Arial';
+        this.ctx.textAlign = 'center';
+        
+        if (this.showOptimized) {
+            this.ctx.fillText('FIBONACCI - O(n) OPTIMIZED vs O(2^n) NAIVE COMPARISON', this.canvas.width / 2, 20);
+        } else {
+            this.ctx.fillText('FIBONACCI - O(2^n) RECURSIVE EXPLOSION', this.canvas.width / 2, 20);
+        }
+        
+        if (this.nodes.length === 0) {
+            // Draw explanation
+            this.ctx.fillStyle = '#666';
+            this.ctx.font = '14px Arial';
+            this.ctx.fillText('Click "Calculate Fibonacci" to see the recursive tree explosion!', this.canvas.width / 2, this.canvas.height / 2);
+            return;
+        }
+        
+        // Draw connections first
+        this.drawConnections();
+        
+        // Draw nodes
+        for (const node of this.nodes) {
+            this.drawNode(node);
+        }
+        
+        // Draw optimization comparison if shown
+        if (this.showOptimized) {
+            this.drawOptimizationComparison();
+        }
+        
+        // Draw legend
+        this.drawLegend();
+    }
+    
+    drawConnections() {
+        this.ctx.strokeStyle = '#666';
+        this.ctx.lineWidth = 1;
+        
+        // Group nodes by depth and position
+        const nodesByDepth = {};
+        for (const node of this.nodes) {
+            if (!nodesByDepth[node.depth]) {
+                nodesByDepth[node.depth] = [];
+            }
+            nodesByDepth[node.depth].push(node);
+        }
+        
+        // Draw connections from parent to children
+        for (let depth = 0; depth < this.maxDepth; depth++) {
+            const parents = nodesByDepth[depth] || [];
+            const children = nodesByDepth[depth + 1] || [];
+            
+            for (const parent of parents) {
+                if (parent.n > 1) {
+                    // Find children (should be n-1 and n-2)
+                    const leftChild = children.find(child => 
+                        Math.abs(child.x - (parent.x - Math.max(60, 400 / Math.pow(2, depth)))) < 20 &&
+                        child.n === parent.n - 1
+                    );
+                    const rightChild = children.find(child => 
+                        Math.abs(child.x - (parent.x + Math.max(60, 400 / Math.pow(2, depth)))) < 20 &&
+                        child.n === parent.n - 2
+                    );
+                    
+                    if (leftChild) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(parent.x, parent.y + this.nodeRadius);
+                        this.ctx.lineTo(leftChild.x, leftChild.y - this.nodeRadius);
+                        this.ctx.stroke();
+                    }
+                    
+                    if (rightChild) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(parent.x, parent.y + this.nodeRadius);
+                        this.ctx.lineTo(rightChild.x, rightChild.y - this.nodeRadius);
+                        this.ctx.stroke();
+                    }
+                }
+            }
+        }
+    }
+    
+    drawNode(node) {
+        // Choose color based on value
+        let fillColor = '#E3F2FD';
+        if (node.n <= 1) {
+            fillColor = '#C8E6C9';  // Base cases - green
+        } else if (node.calculated) {
+            fillColor = '#FFECB3';  // Calculated - yellow
+        }
+        
+        // Draw circle
+        this.ctx.fillStyle = fillColor;
+        this.ctx.beginPath();
+        this.ctx.arc(node.x, node.y, this.nodeRadius, 0, 2 * Math.PI);
+        this.ctx.fill();
+        
+        // Draw border
+        this.ctx.strokeStyle = '#333';
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+        
+        // Draw text
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(`f(${node.n})`, node.x, node.y - 2);
+        if (node.calculated && node.result >= 0) {
+            this.ctx.font = '10px Arial';
+            this.ctx.fillText(`=${node.result}`, node.x, node.y + 10);
+        }
+    }
+    
+    drawOptimizationComparison() {
+        const y = this.canvas.height - 40;
+        
+        this.ctx.fillStyle = '#27AE60';
+        this.ctx.font = 'bold 14px Arial';
+        this.ctx.textAlign = 'left';
+        this.ctx.fillText(`O(n) Optimized: ${this.fibNumber} steps`, 20, y);
+        
+        this.ctx.fillStyle = '#E74C3C';
+        this.ctx.fillText(`O(2^n) Naive: ${this.totalCalls} function calls`, 300, y);
+        
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText(`Speedup: ${Math.round(this.totalCalls / this.fibNumber)}x faster!`, 580, y);
+    }
+    
+    drawLegend() {
+        const legendY = this.canvas.height - 15;
+        this.ctx.font = '11px Arial';
+        this.ctx.textAlign = 'left';
+        
+        // Base case
+        this.ctx.fillStyle = '#C8E6C9';
+        this.ctx.fillRect(20, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Base case (f(0), f(1))', 40, legendY);
+        
+        // Calculated
+        this.ctx.fillStyle = '#FFECB3';
+        this.ctx.fillRect(200, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Calculated result', 220, legendY);
+        
+        // Pending
+        this.ctx.fillStyle = '#E3F2FD';
+        this.ctx.fillRect(350, legendY - 10, 15, 15);
+        this.ctx.strokeStyle = '#333';
+        this.ctx.strokeRect(350, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Recursive call', 370, legendY);
+    }
+}
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        if (document.getElementById('fibonacci-canvas')) {
+            window.fibViz = new FibonacciVisualizer('fibonacci-canvas');
+        }
+        
+        // Initialize Subset Generator Demo
+        if (document.getElementById('subset-demo')) {
+            initializeSubsetDemo();
+        }
+        
+        // Initialize Password Strength Demo
+        if (document.getElementById('password-demo')) {
+            initializePasswordDemo();
+        }
+        
+        // Initialize Binary Tree Demo
+        if (document.getElementById('tree-demo')) {
+            initializeBinaryTreeDemo();
+        }
+    }, 500);
+});
+
+/**
+ * Subset Generation Demo - O(2^n) Visualization
+ * Shows how each additional element doubles the number of subsets
+ */
+function initializeSubsetDemo() {
+    const input = document.getElementById('subset-input');
+    const generateBtn = document.getElementById('generate-subsets');
+    const clearBtn = document.getElementById('clear-subsets');
+    const itemCount = document.getElementById('item-count');
+    const expectedSubsets = document.getElementById('expected-subsets');
+    const actualSubsets = document.getElementById('actual-subsets');
+    const status = document.getElementById('subset-status');
+    const subsetList = document.getElementById('subset-list');
+    
+    function updateStats() {
+        const items = input.value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        const count = items.length;
+        const expected = Math.pow(2, count);
+        
+        itemCount.textContent = count;
+        expectedSubsets.textContent = expected.toLocaleString();
+        
+        if (expected > 1024) {
+            status.textContent = `Warning: ${expected.toLocaleString()} subsets will be generated!`;
+            status.style.color = '#E74C3C';
+        } else {
+            status.textContent = 'Ready to generate subsets';
+            status.style.color = '#333';
+        }
+    }
+    
+    function generateSubsets(items) {
+        if (items.length === 0) return [[]];
+        
+        const first = items[0];
+        const rest = items.slice(1);
+        const restSubsets = generateSubsets(rest);
+        
+        const withFirst = restSubsets.map(subset => [first, ...subset]);
+        return [...restSubsets, ...withFirst];
+    }
+    
+    input.addEventListener('input', updateStats);
+    
+    generateBtn.addEventListener('click', () => {
+        const items = input.value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        
+        if (items.length > 10) {
+            status.textContent = 'Too many items! Please use 10 or fewer.';
+            status.style.color = '#E74C3C';
+            return;
+        }
+        
+        status.textContent = 'Generating subsets...';
+        status.style.color = '#3498DB';
+        
+        setTimeout(() => {
+            const subsets = generateSubsets(items);
+            actualSubsets.textContent = subsets.length.toLocaleString();
+            
+            subsetList.innerHTML = subsets.map((subset, index) => 
+                `<div style="margin: 2px 0; padding: 2px 5px; background: ${index % 2 === 0 ? '#fff' : '#f0f0f0'}">
+                    ${index + 1}: {${subset.join(', ')}}
+                </div>`
+            ).join('');
+            
+            status.textContent = `Generated ${subsets.length} subsets successfully!`;
+            status.style.color = '#27AE60';
+        }, 100);
+    });
+    
+    clearBtn.addEventListener('click', () => {
+        subsetList.innerHTML = '';
+        actualSubsets.textContent = '0';
+        status.textContent = 'Ready to generate subsets';
+        status.style.color = '#333';
+    });
+    
+    updateStats();
+}
+
+/**
+ * Password Strength Demo - Exponential Security Visualization  
+ * Shows how password complexity grows exponentially with length and character set
+ */
+function initializePasswordDemo() {
+    const lengthSlider = document.getElementById('password-length');
+    const lengthDisplay = document.getElementById('length-display');
+    const lowercaseCheck = document.getElementById('include-lowercase');
+    const uppercaseCheck = document.getElementById('include-uppercase');
+    const numbersCheck = document.getElementById('include-numbers');
+    const symbolsCheck = document.getElementById('include-symbols');
+    const analyzeBtn = document.getElementById('analyze-password');
+    const charsetSize = document.getElementById('charset-size');
+    const totalCombinations = document.getElementById('total-combinations');
+    const crackTime = document.getElementById('crack-time');
+    const canvas = document.getElementById('password-chart');
+    const ctx = canvas.getContext('2d');
+    
+    function calculateCharsetSize() {
+        let size = 0;
+        if (lowercaseCheck.checked) size += 26;
+        if (uppercaseCheck.checked) size += 26;
+        if (numbersCheck.checked) size += 10;
+        if (symbolsCheck.checked) size += 32;
+        return Math.max(size, 1);
+    }
+    
+    function formatTime(seconds) {
+        const years = seconds / (365.25 * 24 * 3600);
+        if (years > 1000000) return `${(years / 1000000).toFixed(1)} million years`;
+        if (years > 1000) return `${(years / 1000).toFixed(1)} thousand years`;
+        if (years > 1) return `${years.toFixed(0)} years`;
+        
+        const days = seconds / (24 * 3600);
+        if (days > 1) return `${days.toFixed(0)} days`;
+        
+        const hours = seconds / 3600;
+        if (hours > 1) return `${hours.toFixed(0)} hours`;
+        
+        const minutes = seconds / 60;
+        if (minutes > 1) return `${minutes.toFixed(0)} minutes`;
+        
+        return `${seconds.toFixed(0)} seconds`;
+    }
+    
+    function drawChart() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const length = parseInt(lengthSlider.value);
+        
+        // Define different password scenarios to compare
+        const scenarios = [
+            { name: '4-digit PIN', charset: 10, length: 4, color: '#E74C3C' },
+            { name: 'Lowercase only', charset: 26, length: length, color: '#F39C12' },
+            { name: 'Letters only', charset: 52, length: length, color: '#F1C40F' },
+            { name: 'Letters + Nums', charset: 62, length: length, color: '#3498DB' },
+            { name: 'Curr. Selection', charset: calculateCharsetSize(), length: length, color: '#27AE60' },
+            { name: 'Full complexity', charset: 94, length: length, color: '#8E44AD' }
+        ];
+        
+        // Calculate combinations for each scenario
+        const data = scenarios.map(scenario => ({
+            ...scenario,
+            combinations: Math.pow(scenario.charset, scenario.length),
+            crackTime: Math.pow(scenario.charset, scenario.length) / (2 * 1e9)
+        }));
+        
+        // Find max for scaling
+        const maxCombinations = Math.max(...data.map(d => d.combinations));
+        const barWidth = (canvas.width - 40) / data.length * 0.8;
+        const barSpacing = (canvas.width - 40) / data.length * 0.2;
+        
+        ctx.font = '9px Arial';
+        ctx.textAlign = 'center';
+        
+        data.forEach((item, index) => {
+            const combinations = item.combinations;
+            const barHeight = Math.min((combinations / maxCombinations) * (canvas.height - 60), canvas.height - 60);
+            const x = 20 + index * (barWidth + barSpacing);
+            const y = canvas.height - barHeight - 30;
+            
+            // Draw bar
+            ctx.fillStyle = item.color;
+            ctx.fillRect(x, y, barWidth, barHeight);
+            
+            // Draw border
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x, y, barWidth, barHeight);
+            
+            // Scenario name (horizontal, bold, larger)
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 11px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(item.name, x + barWidth / 2, canvas.height - 5);
+            
+            // Combinations value
+            if (barHeight > 25) {
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 8px Arial';
+                ctx.save();
+                ctx.translate(x + barWidth / 2, y + barHeight / 2);
+                ctx.rotate(-Math.PI / 2);
+                
+                let displayValue;
+                if (combinations > 1e15) {
+                    displayValue = `${(combinations / 1e15).toFixed(1)}Q`;
+                } else if (combinations > 1e12) {
+                    displayValue = `${(combinations / 1e12).toFixed(1)}T`;
+                } else if (combinations > 1e9) {
+                    displayValue = `${(combinations / 1e9).toFixed(1)}B`;
+                } else if (combinations > 1e6) {
+                    displayValue = `${(combinations / 1e6).toFixed(1)}M`;
+                } else if (combinations > 1000) {
+                    displayValue = `${(combinations / 1000).toFixed(1)}K`;
+                } else {
+                    displayValue = combinations.toString();
+                }
+                
+                ctx.fillText(displayValue, 0, 0);
+                ctx.restore();
+            }
+            
+            // Crack time at the top of each bar
+            ctx.fillStyle = '#333';
+            ctx.font = '8px Arial';
+            const timeStr = formatTime(item.crackTime);
+            const shortTime = timeStr.length > 12 ? timeStr.substring(0, 12) + '...' : timeStr;
+            ctx.fillText(shortTime, x + barWidth / 2, y - 5);
+        });
+        
+        // Title
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(`Password Security Comparison (${length} characters)`, canvas.width / 2, 15);
+        
+        // Legend
+        ctx.font = '10px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('📊 Combinations | ⏱️ Crack Time | 🎯 Current Selection', 10, canvas.height - 50);
+    }
+    
+    function updateDisplay() {
+        lengthDisplay.textContent = lengthSlider.value;
+        
+        const length = parseInt(lengthSlider.value);
+        const charset = calculateCharsetSize();
+        const combinations = Math.pow(charset, length);
+        
+        charsetSize.textContent = charset;
+        totalCombinations.textContent = combinations.toLocaleString();
+        
+        // Assume 1 billion attempts per second for brute force
+        const timeToRetrieve = combinations / (2 * 1e9); // Average case
+        crackTime.textContent = formatTime(timeToRetrieve);
+        
+        drawChart();
+    }
+    
+    lengthSlider.addEventListener('input', updateDisplay);
+    [lowercaseCheck, uppercaseCheck, numbersCheck, symbolsCheck].forEach(checkbox => {
+        checkbox.addEventListener('change', updateDisplay);
+    });
+    
+    analyzeBtn.addEventListener('click', () => {
+        // Show analyzing animation
+        analyzeBtn.textContent = 'Analyzing...';
+        analyzeBtn.style.background = '#F39C12';
+        
+        // Simulate analysis time and show dramatic effect
+        setTimeout(() => {
+            updateDisplay();
+            
+            // Add a visual flash effect to highlight the results
+            const resultsDiv = document.getElementById('password-results');
+            resultsDiv.style.border = '3px solid #E74C3C';
+            resultsDiv.style.background = '#FCF3CF';
+            
+            // Show completion message
+            analyzeBtn.textContent = 'Analysis Complete!';
+            analyzeBtn.style.background = '#27AE60';
+            
+            // Reset button and highlight after a moment
+            setTimeout(() => {
+                analyzeBtn.textContent = 'Analyze Strength';
+                analyzeBtn.style.background = '#27AE60';
+                resultsDiv.style.border = '2px solid #eee';
+                resultsDiv.style.background = '#f9f9f9';
+            }, 2000);
+            
+        }, 800);
+    });
+    
+    updateDisplay();
+}
+
+/**
+ * Binary Tree Path Counter Demo - O(2^n) Path Visualization
+ * Shows how binary trees create exponential numbers of complete paths
+ */
+function initializeBinaryTreeDemo() {
+    const depthSlider = document.getElementById('tree-depth');
+    const depthDisplay = document.getElementById('depth-display');
+    const generateBtn = document.getElementById('generate-tree');
+    const countBtn = document.getElementById('count-paths');
+    const resetBtn = document.getElementById('reset-tree');
+    const currentDepth = document.getElementById('current-depth');
+    const expectedPaths = document.getElementById('expected-paths');
+    const foundPaths = document.getElementById('found-paths');
+    const status = document.getElementById('tree-status');
+    const canvas = document.getElementById('tree-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let treeNodes = [];
+    let paths = [];
+    let animationId = null;
+    
+    function updateStats() {
+        const depth = parseInt(depthSlider.value);
+        depthDisplay.textContent = depth;
+        currentDepth.textContent = depth;
+        expectedPaths.textContent = Math.pow(2, depth - 1);
+    }
+    
+    function generateTree() {
+        const depth = parseInt(depthSlider.value);
+        treeNodes = [];
+        paths = [];
+        
+        const nodeRadius = 15;
+        const levelHeight = 35;
+        const startX = canvas.width / 2;
+        const startY = 30;
+        
+        function createNode(level, position, x, y, parent = null) {
+            const node = {
+                level: level,
+                position: position,
+                x: x,
+                y: y,
+                parent: parent,
+                children: [],
+                id: `${level}-${position}`
+            };
+            
+            treeNodes.push(node);
+            
+            if (parent) {
+                parent.children.push(node);
+            }
+            
+            if (level < depth) {
+                const childSpacing = Math.max(30, 200 / Math.pow(2, level - 1));
+                createNode(level + 1, position * 2, x - childSpacing, y + levelHeight, node);
+                createNode(level + 1, position * 2 + 1, x + childSpacing, y + levelHeight, node);
+            }
+        }
+        
+        createNode(1, 0, startX, startY);
+        drawTree();
+        status.textContent = `Generated tree with ${treeNodes.length} nodes`;
+        foundPaths.textContent = '0';
+    }
+    
+    function drawTree() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.strokeStyle = '#666';
+        ctx.lineWidth = 1;
+        treeNodes.forEach(node => {
+            node.children.forEach(child => {
+                ctx.beginPath();
+                ctx.moveTo(node.x, node.y + 15);
+                ctx.lineTo(child.x, child.y - 15);
+                ctx.stroke();
+            });
+        });
+        
+        // Draw nodes
+        treeNodes.forEach(node => {
+            ctx.fillStyle = node.children.length === 0 ? '#27AE60' : '#3498DB';
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 15, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.strokeStyle = '#333';
+            ctx.stroke();
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(node.level.toString(), node.x, node.y + 3);
+        });
+        
+        // Draw legend
+        ctx.fillStyle = '#333';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('Internal nodes', 20, canvas.height - 30);
+        ctx.fillStyle = '#3498DB';
+        ctx.beginPath();
+        ctx.arc(90, canvas.height - 35, 8, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        ctx.fillStyle = '#333';
+        ctx.fillText('Leaf nodes', 120, canvas.height - 30);
+        ctx.fillStyle = '#27AE60';
+        ctx.beginPath();
+        ctx.arc(170, canvas.height - 35, 8, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    function countAllPaths() {
+        if (treeNodes.length === 0) {
+            status.textContent = 'Generate a tree first!';
+            return;
+        }
+        
+        paths = [];
+        const root = treeNodes[0];
+        
+        function findPaths(node, currentPath) {
+            const newPath = [...currentPath, node.id];
+            
+            if (node.children.length === 0) {
+                // Leaf node - complete path
+                paths.push(newPath);
+            } else {
+                // Continue to children
+                node.children.forEach(child => {
+                    findPaths(child, newPath);
+                });
+            }
+        }
+        
+        findPaths(root, []);
+        foundPaths.textContent = paths.length;
+        status.textContent = `Found ${paths.length} complete paths from root to leaves`;
+        
+        // Animate path highlighting
+        animatePaths();
+    }
+    
+    function animatePaths() {
+        let currentPathIndex = 0;
+        
+        function highlightPath() {
+            if (currentPathIndex >= paths.length) {
+                currentPathIndex = 0;
+            }
+            
+            drawTree();
+            
+            // Highlight current path
+            const currentPath = paths[currentPathIndex];
+            ctx.strokeStyle = '#E74C3C';
+            ctx.lineWidth = 3;
+            
+            for (let i = 0; i < currentPath.length - 1; i++) {
+                const node1 = treeNodes.find(n => n.id === currentPath[i]);
+                const node2 = treeNodes.find(n => n.id === currentPath[i + 1]);
+                
+                if (node1 && node2) {
+                    ctx.beginPath();
+                    ctx.moveTo(node1.x, node1.y + 15);
+                    ctx.lineTo(node2.x, node2.y - 15);
+                    ctx.stroke();
+                }
+            }
+            
+            // Show path info
+            ctx.fillStyle = '#E74C3C';
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Path ${currentPathIndex + 1} of ${paths.length}`, canvas.width / 2, 20);
+            
+            currentPathIndex++;
+        }
+        
+        if (animationId) clearInterval(animationId);
+        animationId = setInterval(highlightPath, 1000);
+        setTimeout(() => {
+            if (animationId) clearInterval(animationId);
+            drawTree();
+        }, paths.length * 1000 + 2000);
+    }
+    
+    depthSlider.addEventListener('input', updateStats);
+    generateBtn.addEventListener('click', generateTree);
+    countBtn.addEventListener('click', countAllPaths);
+    resetBtn.addEventListener('click', () => {
+        treeNodes = [];
+        paths = [];
+        if (animationId) clearInterval(animationId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        foundPaths.textContent = '0';
+        status.textContent = 'Ready to generate tree';
+    });
+    
+    updateStats();
+}
+</script>
+```

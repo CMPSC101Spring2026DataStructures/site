@@ -1,0 +1,223 @@
+/* Interactive Python Lesson Styling */
+
+/* Lesson-specific Python terminal styling */
+
+.lesson-terminal {
+  background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue));
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid var(--lime-green);
+  margin: 15px 0;
+  min-height: 250px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  font-size: 16px; /* Default font size */
+  resize: vertical;
+}
+
+.lesson-terminal::before {
+  content: "🐍 Python Code Runner";
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  background: var(--forest-green);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.lesson-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ff00;
+  border: 1px solid var(--lime-green);
+  border-radius: 5px;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px; /* Default font size */
+  margin: 8px 0;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.lesson-input:focus {
+  outline: none;
+  border-color: var(--golden-yellow);
+  box-shadow: 0 0 8px rgba(255, 213, 79, 0.4);
+}
+
+.lesson-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+
+.run-btn, .clear-btn, .example-btn, .save-btn {
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.run-btn {
+  background: linear-gradient(45deg, var(--lime-green), var(--forest-green));
+  color: white;
+}
+.run-btn:hover {
+  background: linear-gradient(45deg, var(--forest-green), var(--lime-green));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.clear-btn {
+  background: linear-gradient(45deg, var(--coral-red), var(--deep-red));
+  color: white;
+}
+.clear-btn:hover {
+  background: linear-gradient(45deg, var(--deep-red), var(--coral-red));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.example-btn {
+  background: linear-gradient(45deg, var(--golden-yellow), #FFA000);
+  color: var(--deep-blue);
+}
+.example-btn:hover {
+  background: linear-gradient(45deg, #FFA000, var(--golden-yellow));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.save-btn {
+  background: linear-gradient(45deg, #2196F3, #64B5F6);
+  color: white;
+}
+.save-btn:hover {
+  background: linear-gradient(45deg, #64B5F6, #2196F3);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-concept {
+  background: linear-gradient(90deg, rgba(124, 179, 66, 0.1), rgba(255, 213, 79, 0.1));
+  border-left: 4px solid var(--lime-green);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.concept-title {
+  color: var(--forest-green);
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.try-it-box {
+  background: linear-gradient(90deg, rgba(229, 57, 53, 0.1), rgba(255, 213, 79, 0.1));
+  border-left: 4px solid var(--coral-red);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-box {
+  background: linear-gradient(90deg, rgba(46, 134, 171, 0.1), rgba(129, 199, 132, 0.1));
+  border-left: 4px solid var(--primary-blue);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.code-explanation {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--mint-green);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.python-output {
+  color: #00ff00;
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+}
+
+.python-error {
+  color: var(--coral-red);
+  font-weight: bold;
+  white-space: pre-wrap;
+  font-size: 16px;
+}
+
+.python-prompt {
+  color: var(--golden-yellow);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Font size variations */
+.lesson-large-font .lesson-terminal,
+.lesson-large-font .lesson-input,
+.lesson-large-font .python-output,
+.lesson-large-font .python-error,
+.lesson-large-font .python-prompt {
+  /* font-size: 18px; */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.lesson-small-font .lesson-terminal,
+.lesson-small-font .lesson-input,
+.lesson-small-font .python-output,
+.lesson-small-font .python-error,
+.lesson-small-font .python-prompt {
+  font-size: 16px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .lesson-buttons {
+    flex-direction: column;
+  }
+  
+  .lesson-terminal {
+    font-size: 14px;
+    min-height: 120px;
+  }
+  
+  .lesson-input {
+    font-size: 14px;
+  }
+  
+  .lesson-large-font .lesson-terminal,
+  .lesson-large-font .lesson-input {
+    font-size: 16px;
+  }
+  
+  .lesson-small-font .lesson-terminal,
+  .lesson-small-font .lesson-input {
+    font-size: 12px;
+  }
+}

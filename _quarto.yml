@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "CMPSC101 Spring 2026 :: DataStructures"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      # - about.qmd
+      - href: utils/interactivePython.qmd
+        text: Interactive
+      - href: playground/00_playground.qmd
+        text: Playground
+      - href: materials/0_materials.qmd
+        text: Materials
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

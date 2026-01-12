@@ -1,0 +1,1613 @@
+---
+title: "The Travelling Salesman Problem"
+subtitle: "The Ultimate Route Planning Challenge - When Efficiency Meets Real World!"
+author: "CS 101 - Spring 2026"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+## What is the Travelling Salesman Problem?
+
+::: {.callout-tip icon="true"}
+## The Ultimate Route Challenge 🗺️
+
+**The Problem**: A salesperson needs to visit every city exactly once and return home, using the **shortest possible route**.
+
+**Real-World Analogy**: 
+* Like a **delivery driver** planning the most efficient route
+* **GPS apps** finding the fastest path through multiple stops
+* **Amazon trucks** optimizing deliveries to save time and fuel
+* **Tour guides** planning the best sightseeing route
+
+:::
+
+::: {.columns}
+::: {.column}
+**Why It Matters** 🚚
+
+* **Delivery Services**: UPS saves millions by optimizing routes
+* **Circuit Board Manufacturing**: Drilling holes efficiently
+* **DNA Sequencing**: Finding optimal gene arrangements
+* **School Bus Routes**: Getting kids to school faster
+
+:::
+
+::: {.column}
+**The Challenge** ⚡
+
+* Seems simple with 3-4 cities
+* Gets **impossibly hard** very quickly
+* With just 10 cities: **3,628,800** possible routes!
+* With 20 cities: More routes than atoms in the universe!
+
+**Key Question**: *"How do we find the best route without checking every possibility?"*
+:::
+:::
+
+## Interactive TSP Demo: Plan Your Route!
+
+<!-- ::: {.callout-note icon="true"}
+## Try It Yourself! 🎮
+
+Click on the map to add cities, then see how many possible routes there are. Watch the complexity explode!
+
+::: -->
+
+```{=html}
+<div id="tsp-demo" style="text-align: center; margin: 20px 0;">
+    <h3>🗺️ Interactive Travelling Salesman Demo: Click on the map to add cities, then see how many possible routes there are. Watch the complexity explode!
+</h3>
+    <div style="margin: 15px 0;">
+        <button id="add-city-btn" style="padding: 10px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px;">Add Random City</button>
+        <button id="solve-tsp-btn" style="padding: 10px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px;">Find Best Route!</button>
+        <button id="reset-tsp-btn" style="padding: 10px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px;">Reset Cities</button>
+        <button id="demo-preset-btn" style="padding: 10px 20px; margin: 5px; background: #3498DB; color: white; border: none; border-radius: 4px;">Load Demo Cities</button>
+    </div>
+    <div id="tsp-canvas-container" style="border: 2px solid #3498DB; border-radius: 10px; margin: 10px auto; position: relative; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+        <canvas id="tsp-canvas" width="800" height="400" style="border: none; border-radius: 8px; cursor: crosshair;"></canvas>
+    </div>
+    <div id="tsp-info" style="margin: 15px 0; font-family: monospace; font-size: 16px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+        <div><strong>Cities:</strong> <span id="city-count">0</span></div>
+        <div><strong>Possible Routes:</strong> <span id="route-count">0</span></div>
+        <div><strong>Best Route Distance:</strong> <span id="best-distance">Click "Find Best Route!" to calculate</span></div>
+        <div><strong>Computation Time:</strong> <span id="computation-time">-</span></div>
+        <div style="margin-top: 10px; color: #E74C3C;"><strong>⚠️ Complexity:</strong> <span id="complexity-warning">Add cities to see the challenge!</span></div>
+    </div>
+    <div style="margin: 10px 0; font-size: 14px; color: #7f8c8d;">
+        💡 <strong>Tip:</strong> Click anywhere on the map to add cities at exact locations, or use "Add Random City" for quick setup!
+    </div>
+    <div style="margin: 5px 0; font-size: 12px; color: #95a5a6;">
+        🎯 <strong>Interactive Mode:</strong> Click on the canvas to place cities exactly where you want them!
+    </div>
+</div>
+```
+
+## The Mathematics Behind The Factorial Explosion! 📈
+
+::: {.callout icon="true"}
+
+**For n cities, there are (n-1)!/2 unique routes to check**
+Why? We fix the starting city and divide by 2 since routes can go clockwise or counterclockwise.
+:::
+
+**Route Count Growth** 📊
+
+```python
+def calculate_routes(n_cities):
+    """Calculate number of TSP routes"""
+    if n_cities <= 1:
+        return 0
+    
+    # (n-1)! / 2 unique routes
+    factorial = 1
+    for i in range(1, n_cities):
+        factorial *= i
+    
+    return factorial // 2
+
+# Let's see the explosion!
+for cities in range(2, 11):
+    routes = calculate_routes(cities)
+    print(f"{cities} cities: {routes:,} routes")
+```
+
+::: {.columns}
+::: {.column}
+**Real Numbers:**
+
+* 3 cities → 1 route, 4 cities → 3 routes  
+* 5 cities → 12 routes, 10 cities → 181,440 routes
+* 15 cities → 43,589,145,600 routes!
+:::
+
+::: {.column}
+**The Pattern:**
+
+* Each new city **multiplies** the complexity
+* Not addition - **factorial growth**!
+* This is why TSP is so challenging
+* Real-world problems have 100+ cities!
+:::
+:::
+
+## Time Complexity: When Mathematics Meets Reality ⏱️
+
+<!-- ::: {.callout icon="false"} -->
+⚠️ The Scary Truth About Computation Time
+
+Even with the world's fastest computers, brute force TSP becomes impossible very quickly!
+
+<!-- ::: -->
+
+**Time Complexity Analysis** ⏱️
+
+
+```python
+import time
+import math
+
+def time_estimate(n_cities):
+    """Estimate computation time for brute force TSP"""
+    routes = math.factorial(n_cities - 1) // 2
+    
+    # Assume 1 million routes per second
+    seconds = routes / 1_000_000
+    
+    if seconds < 60:
+        return f"{seconds:.2f} seconds"
+    elif seconds < 3600:
+        return f"{seconds/60:.2f} minutes"
+    elif seconds < 86400:
+        return f"{seconds/3600:.2f} hours" 
+    elif seconds < 31536000:
+        return f"{seconds/86400:.2f} days"
+    else:
+        return f"{seconds/31536000:.2f} years"
+
+# The scary truth
+print("Time to solve TSP by brute force:")
+for n in [10, 15, 20, 25]:
+    print(f"{n} cities: {time_estimate(n)}")
+```
+
+
+::: {.columns}
+::: {.column}
+**Reality Check** 🤯
+
+* **10 cities**: 0.18 seconds
+* **15 cities**: 21.8 days  
+* **20 cities**: 77 billion years
+* **25 cities**: Longer than universe exists!
+:::
+
+::: {.column}
+**Why This Matters** 💡
+
+* **UPS trucks** visit 100+ stops daily
+* **Amazon deliveries** optimize thousands of routes
+* **GPS systems** need real-time solutions
+* **Need better algorithms** than brute force!
+:::
+:::
+
+## Python Implementation: Brute Force Approach
+
+::: {.callout-warning icon="true"}
+## ⚠️ Warning: This Gets Slow Fast!
+
+Our brute force solution checks every possible route. It works great for small examples, but becomes impossible for real-world problems.
+
+:::
+
+::: {.columns}
+::: {.column}
+**The Core Algorithm** 🧠
+
+```python
+def tsp_brute_force(cities, current_city=0, 
+                   visited=None, path=None):
+    """
+    Solve TSP by checking ALL possible routes
+    Time Complexity: O(n!) - FACTORIAL!
+    """
+    # Initialize first call
+    if visited is None:
+        visited = {current_city}
+        path = [current_city]
+    
+    # Base case: visited all cities, return home
+    if len(visited) == len(cities):
+        complete_path = path + [0]  # Return to start
+        total_distance = calculate_distance(complete_path)
+        return complete_path, total_distance
+    
+    # Try every unvisited city next
+    best_path = None
+    best_distance = float('inf')
+    
+    for next_city in range(len(cities)):
+        if next_city not in visited:
+            # Recursive magic: solve for remaining cities
+            new_path, distance = tsp_brute_force(
+                cities, next_city,
+                visited | {next_city},
+                path + [next_city]
+            )
+            
+            # Keep the best route found so far
+            if distance < best_distance:
+                best_distance = distance
+                best_path = new_path
+    
+    return best_path, best_distance
+```
+:::
+
+::: {.column}
+**Distance Calculation** 📐
+
+```python
+def calculate_distance(path):
+    """Calculate total route distance"""
+    # Example distance matrix for 4 cities
+    distances = {
+        (0, 1): 10, (1, 0): 10,  # City 0 ↔ City 1
+        (0, 2): 15, (2, 0): 15,  # City 0 ↔ City 2  
+        (0, 3): 20, (3, 0): 20,  # City 0 ↔ City 3
+        (1, 2): 25, (2, 1): 25,  # City 1 ↔ City 2
+        (1, 3): 30, (3, 1): 30,  # City 1 ↔ City 3
+        (2, 3): 35, (3, 2): 35,  # City 2 ↔ City 3
+        # Distance to self is 0
+        (0, 0): 0, (1, 1): 0, (2, 2): 0, (3, 3): 0
+    }
+    
+    total = 0
+    for i in range(len(path) - 1):
+        current = path[i]
+        next_city = path[i + 1]
+        total += distances.get((current, next_city), 999)
+    
+    return total
+
+# Real-world: use Euclidean distance
+def euclidean_distance(city1, city2):
+    """Calculate straight-line distance between cities"""
+    x1, y1 = city1
+    x2, y2 = city2
+    return ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+```
+:::
+:::
+
+## Build a Project From This Code?!
+
+Left to the reader...
+
+::: {.callout-note icon="true"}
+Copy these blocks into three files (`main.py`, `examples.py` and `tsp.py`) to run this larger demo from the command line. The following slides show each file.
+:::
+
+---
+
+## Project File 1: tsp.py
+
+::: {.callout icon="false"}
+**tsp.py** - Core TSP solver functions
+
+```python
+def tsp_brute_force(cities, current_city=0, 
+                   visited=None, path=None):
+    """
+    Solve TSP by checking ALL possible routes
+    Time Complexity: O(n!) - FACTORIAL!
+    """
+    # Initialize first call
+    if visited is None:
+        visited = {current_city}
+        path = [current_city]
+    
+    # Base case: visited all cities, return home
+    if len(visited) == len(cities):
+        complete_path = path + [0]  # Return to start
+        total_distance = calculate_distance(complete_path)
+        return complete_path, total_distance
+    
+    # Try every unvisited city next
+    best_path = None
+    best_distance = float('inf')
+    
+    for next_city in range(len(cities)):
+        if next_city not in visited:
+            # Recursive magic: solve for remaining cities
+            new_path, distance = tsp_brute_force(
+                cities, next_city,
+                visited | {next_city},
+                path + [next_city]
+            )
+            
+            # Keep the best route found so far
+            if distance < best_distance:
+                best_distance = distance
+                best_path = new_path
+    
+    return best_path, best_distance
+    
+def calculate_distance(path):
+    """Calculate total route distance"""
+    # Example distance matrix for 4 cities
+    distances = {
+        (0, 1): 10, (1, 0): 10,  # City 0 ↔ City 1
+        (0, 2): 15, (2, 0): 15,  # City 0 ↔ City 2  
+        (0, 3): 20, (3, 0): 20,  # City 0 ↔ City 3
+        (1, 2): 25, (2, 1): 25,  # City 1 ↔ City 2
+        (1, 3): 30, (3, 1): 30,  # City 1 ↔ City 3
+        (2, 3): 35, (3, 2): 35,  # City 2 ↔ City 3
+        # Distance to self is 0
+        (0, 0): 0, (1, 1): 0, (2, 2): 0, (3, 3): 0
+    }
+    
+    total = 0
+    for i in range(len(path) - 1):
+        current = path[i]
+        next_city = path[i + 1]
+        total += distances.get((current, next_city), 999)
+    
+    return total
+
+# Real-world: use Euclidean distance
+def euclidean_distance(city1, city2):
+    """Calculate straight-line distance between cities"""
+    x1, y1 = city1
+    x2, y2 = city2
+    return ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+
+```
+:::
+
+---
+
+## Project File 2: examples.py
+
+::: {.callout icon="false"}
+**examples.py** - Simple usage examples
+
+```python
+#!/usr/bin/env python3
+"""
+Simple usage example for the TSP solver
+Shows how to use the TSP functions directly in your own code
+"""
+
+from tsp import tsp_brute_force, euclidean_distance
+import time
+
+
+def example_usage():
+    """Demonstrate how to use the TSP solver in your own code"""
+    
+    print("🔧 TSP Solver - Usage Example")
+    print("=" * 40)
+    
+    # Example 1: Using the built-in distance matrix (4 cities)
+    print("\n1️⃣  Using built-in distance matrix:")
+    cities = [0, 1, 2, 3]
+    
+    start = time.time()
+    path, distance = tsp_brute_force(cities)
+    end = time.time()
+    
+    print(f"   Input: {cities}")
+    print(f"   Best path: {path}")
+    print(f"   Distance: {distance}")
+    print(f"   Time: {end-start:.4f}s")
+    
+    # Example 2: Custom coordinates with euclidean distance
+    print("\n2️⃣  Using custom city coordinates:")
+    
+    # Define your cities as (x, y) coordinates
+    city_positions = [(0, 0), (1, 3), (4, 1), (2, 4)]
+    
+    # Create a custom distance function
+    def calculate_custom_distance(path):
+        total = 0
+        for i in range(len(path) - 1):
+            city1 = city_positions[path[i]]
+            city2 = city_positions[path[i + 1]]
+            total += euclidean_distance(city1, city2)
+        return total
+    
+    # Temporarily replace the global function
+    import tsp
+    original_calc = tsp.calculate_distance
+    tsp.calculate_distance = calculate_custom_distance
+    
+    try:
+        start = time.time()
+        path, distance = tsp_brute_force(list(range(len(city_positions))))
+        end = time.time()
+        
+        print(f"   Coordinates: {city_positions}")
+        print(f"   Best path: {path}")
+        print(f"   Distance: {distance:.2f}")
+        print(f"   Time: {end-start:.4f}s")
+        
+    finally:
+        # Restore original function
+        tsp.calculate_distance = original_calc
+    
+    # Example 3: Timing comparison
+    print("\n3️⃣  Performance for different city counts:")
+    for n in [3, 4, 5, 6, 7]:
+        cities = list(range(n))
+        start = time.time()
+        path, distance = tsp_brute_force(cities)
+        end = time.time()
+        
+        import math
+        routes = math.factorial(n-1) if n > 1 else 1
+        
+        print(f"   {n} cities: {routes:>6} routes, {end-start:.4f}s")
+        
+        if end - start > 0.1:  # Stop if getting slow
+            print("   (stopping - getting slow)")
+            break
+
+
+def solve_custom_problem():
+    """Example of solving a specific TSP problem"""
+    print("\n🎯 Solving a specific problem:")
+    print("   Visiting 5 offices in a city")
+    
+    # Office locations (in km from city center)
+    offices = {
+        'HQ': (0, 0),
+        'Branch A': (2, 3),
+        'Branch B': (5, 1),
+        'Branch C': (1, 4),
+        'Branch D': (4, 4)
+    }
+    
+    office_names = list(offices.keys())
+    coordinates = list(offices.values())
+    
+    print(f"   Offices: {office_names}")
+    
+    # Create distance calculation function
+    def office_distance(path):
+        total = 0
+        for i in range(len(path) - 1):
+            pos1 = coordinates[path[i]]
+            pos2 = coordinates[path[i + 1]]
+            total += euclidean_distance(pos1, pos2)
+        return total
+    
+    # Solve the problem
+    import tsp
+    original_calc = tsp.calculate_distance
+    tsp.calculate_distance = office_distance
+    
+    try:
+        start = time.time()
+        path, distance = tsp_brute_force(list(range(len(offices))))
+        end = time.time()
+        
+        # Convert indices back to office names
+        route_names = [office_names[i] for i in path]
+        
+        print(f"   Best route: {' → '.join(route_names)}")
+        print(f"   Total distance: {distance:.2f} km")
+        print(f"   Solve time: {end-start:.4f} seconds")
+        
+    finally:
+        tsp.calculate_distance = original_calc
+
+
+if __name__ == "__main__":
+    example_usage()
+    solve_custom_problem()
+    
+    print("\n✨ Want more examples? Run 'python3 main.py' for interactive mode!")
+```
+:::
+
+---
+
+## Project File 3: main.py
+
+::: {.callout icon="false"}
+**main.py** - Main interactive driver
+
+```python
+#!/usr/bin/env python3
+"""
+Main driver for the Travelling Salesman Problem (TSP) solver
+Demonstrates brute force TSP algorithm with various test cases
+"""
+
+import time
+from tsp import tsp_brute_force, calculate_distance, euclidean_distance
+
+
+def print_header(title):
+    """Print a formatted header for output sections"""
+    print("\n" + "="*60)
+    print(f"  {title}")
+    print("="*60)
+
+
+def print_result(path, distance, execution_time):
+    """Print formatted TSP solution results"""
+    print(f"\nBest Path: {' → '.join(map(str, path))}")
+    print(f"Total Distance: {distance}")
+    print(f"Execution Time: {execution_time:.4f} seconds")
+
+
+def example_1_simple():
+    """Example 1: Simple 4-city TSP with predefined distance matrix"""
+    print_header("Example 1: Simple 4-City TSP")
+    
+    print("Cities: 0, 1, 2, 3")
+    print("Using predefined distance matrix in tsp.py")
+    
+    # Create city list (just indices for this example)
+    cities = list(range(4))
+    
+    # Time the execution
+    start_time = time.time()
+    best_path, best_distance = tsp_brute_force(cities)
+    end_time = time.time()
+    
+    print_result(best_path, best_distance, end_time - start_time)
+
+
+def calculate_euclidean_distance_matrix(cities):
+    """Calculate distance matrix using Euclidean distances"""
+    n = len(cities)
+    distances = {}
+    
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                distances[(i, j)] = 0
+            else:
+                dist = euclidean_distance(cities[i], cities[j])
+                distances[(i, j)] = dist
+    
+    return distances
+
+
+def tsp_with_coordinates(cities):
+    """
+    Modified TSP solver that uses coordinate-based distances
+    """
+    def calculate_coord_distance(path):
+        """Calculate total route distance using coordinates"""
+        distances = calculate_euclidean_distance_matrix(cities)
+        
+        total = 0
+        for i in range(len(path) - 1):
+            current = path[i]
+            next_city = path[i + 1]
+            total += distances[(current, next_city)]
+        
+        return total
+    
+    # Temporarily replace the global calculate_distance function
+    global calculate_distance
+    original_calc = calculate_distance
+    calculate_distance = calculate_coord_distance
+    
+    try:
+        result = tsp_brute_force(list(range(len(cities))))
+        return result
+    finally:
+        # Restore original function
+        calculate_distance = original_calc
+
+
+def example_2_coordinates():
+    """Example 2: TSP with actual city coordinates"""
+    print_header("Example 2: TSP with City Coordinates")
+    
+    # Define cities with (x, y) coordinates
+    city_coords = {
+        0: (0, 0),    # City A
+        1: (3, 4),    # City B  
+        2: (6, 1),    # City C
+        3: (2, 6)     # City D
+    }
+    
+    cities = list(city_coords.values())
+    
+    print("Cities with coordinates:")
+    for i, (x, y) in enumerate(cities):
+        print(f"  City {i}: ({x}, {y})")
+    
+    # Display distance matrix
+    print("\nDistance Matrix:")
+    distances = calculate_euclidean_distance_matrix(cities)
+    print("     ", end="")
+    for j in range(len(cities)):
+        print(f"{j:8}", end="")
+    print()
+    
+    for i in range(len(cities)):
+        print(f"{i:3}: ", end="")
+        for j in range(len(cities)):
+            print(f"{distances[(i,j)]:8.2f}", end="")
+        print()
+    
+    # Solve TSP
+    start_time = time.time()
+    best_path, best_distance = tsp_with_coordinates(cities)
+    end_time = time.time()
+    
+    print_result(best_path, best_distance, end_time - start_time)
+
+
+def example_3_performance():
+    """Example 3: Performance comparison with different city counts"""
+    print_header("Example 3: Performance Analysis")
+    
+    print("Analyzing TSP performance for different numbers of cities...")
+    print("Note: Time complexity is O(n!) - grows VERY quickly!")
+    
+    for n_cities in [3, 4, 5, 6]:
+        print(f"\n--- {n_cities} Cities ---")
+        
+        # Create simple city list
+        cities = list(range(n_cities))
+        
+        # Time the execution
+        start_time = time.time()
+        best_path, best_distance = tsp_brute_force(cities)
+        end_time = time.time()
+        
+        execution_time = end_time - start_time
+        
+        # Calculate theoretical number of permutations
+        import math
+        permutations = math.factorial(n_cities - 1)  # (n-1)! since we fix starting city
+        
+        print(f"Possible routes: {permutations}")
+        print(f"Best path: {' → '.join(map(str, best_path))}")
+        print(f"Distance: {best_distance}")
+        print(f"Time: {execution_time:.4f} seconds")
+        
+        if n_cities >= 6:
+            print("Warning: 7+ cities will take significantly longer!")
+
+
+def interactive_mode():
+    """Interactive mode for custom TSP problems"""
+    print_header("Interactive TSP Solver")
+    
+    try:
+        n_cities = int(input("\nHow many cities? (recommended: 3-6): "))
+        
+        if n_cities > 8:
+            response = input("Warning: This may take a very long time. Continue? (y/n): ")
+            if response.lower() != 'y':
+                return
+        
+        print(f"\nEnter coordinates for {n_cities} cities:")
+        cities = []
+        for i in range(n_cities):
+            while True:
+                try:
+                    coords = input(f"City {i} (x,y): ").split(',')
+                    x, y = float(coords[0].strip()), float(coords[1].strip())
+                    cities.append((x, y))
+                    break
+                except (ValueError, IndexError):
+                    print("Please enter coordinates as: x,y (e.g., 1.5,2.0)")
+        
+        print(f"\nSolving TSP for {n_cities} cities...")
+        start_time = time.time()
+        best_path, best_distance = tsp_with_coordinates(cities)
+        end_time = time.time()
+        
+        print_result(best_path, best_distance, end_time - start_time)
+        
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    except KeyboardInterrupt:
+        print("\nOperation cancelled.")
+
+
+def main():
+    """Main driver function"""
+    print_header("Travelling Salesman Problem (TSP) Solver")
+    print("Demonstrating brute force algorithm")
+    print("Author: CS101 Course")
+    
+    # Run examples
+    example_1_simple()
+    example_2_coordinates()
+    example_3_performance()
+    
+    # Interactive mode
+    while True:
+        print("\n" + "-"*40)
+        print("Options:")
+        print("1. Run interactive TSP solver")
+        print("2. Exit")
+        
+        try:
+            choice = input("\nEnter your choice (1-2): ").strip()
+            
+            if choice == '1':
+                interactive_mode()
+            elif choice == '2':
+                print("\nThank you for using the TSP solver!")
+                break
+            else:
+                print("Please enter 1 or 2.")
+                
+        except KeyboardInterrupt:
+            print("\n\nGoodbye!")
+            break
+
+
+if __name__ == "__main__":
+    main()
+```
+:::
+
+
+---
+
+## Sample Output
+
+::: {.callout icon="false"}
+Running `python3 examples.py`
+
+::: {.callout-note}
+
+```text
+🔧 TSP Solver - Usage Example
+========================================
+
+1️⃣  Using built-in distance matrix:
+   Input: [0, 1, 2, 3]
+   Best path: [0, 1, 2, 3, 0]
+   Distance: 90
+   Time: 0.0001s
+
+2️⃣  Using custom city coordinates:
+   Coordinates: [(0, 0), (1, 3), (4, 1), (2, 4)]
+   Best path: [0, 1, 3, 2, 0]
+   Distance: 12.31
+   Time: 0.0001s
+
+3️⃣  Performance for different city counts:
+   3 cities:      2 routes, 0.0000s
+   4 cities:      6 routes, 0.0000s
+   5 cities:     24 routes, 0.0001s
+   6 cities:    120 routes, 0.0007s
+   7 cities:    720 routes, 0.0041s
+
+🎯 Solving a specific problem:
+   Visiting 5 offices in a city
+   Offices: ['HQ', 'Branch A', 'Branch B', 'Branch C', 'Branch D']
+   Best route: HQ → Branch B → Branch D → Branch A → Branch C → HQ
+   Total distance: 16.03 km
+   Solve time: 0.0001 seconds
+
+✨ Want more examples? Run 'python3 main.py' for interactive mode!
+```
+
+:::
+
+:::
+
+---
+
+## TSP is Everywhere! 🌍
+<!-- ::: {.callout-note icon="true"} -->
+<!-- ## TSP is Everywhere! 🌍 -->
+
+The Travelling Salesman Problem appears in countless real-world scenarios, often disguised as other optimization challenges.
+
+<!-- ::: -->
+
+::: {.columns}
+::: {.column}
+**Logistics & Transportation** 🚛
+```python
+# Delivery route optimization
+delivery_stops = [
+    "Warehouse",      # Start/end point
+    "123 Main St",    # Customer 1
+    "456 Oak Ave",    # Customer 2  
+    "789 Pine Rd",    # Customer 3
+    "321 Elm St"      # Customer 4
+]
+
+# TSP finds shortest route visiting all stops
+optimal_route = tsp_solver(delivery_stops)
+print(f"Optimal delivery route: {optimal_route}")
+
+# Real impact:
+# - UPS saves $50M+ annually with route optimization
+# - FedEx reduces fuel consumption by 10%
+# - Amazon uses TSP for same-day delivery
+```
+
+**School Bus Routing** 🚌
+* Visit all bus stops efficiently
+* Minimize travel time for students
+* Reduce fuel costs and emissions
+:::
+
+::: {.column}
+**Manufacturing & Technology** 🔧
+```python
+# Circuit board drilling optimization
+drill_points = [
+    (10, 20),   # Hole 1 coordinates
+    (30, 15),   # Hole 2 coordinates
+    (25, 35),   # Hole 3 coordinates
+    (40, 25)    # Hole 4 coordinates
+]
+
+# TSP minimizes drill head movement
+optimal_drilling = tsp_solver(drill_points)
+# Result: Faster manufacturing, less wear on equipment
+```
+
+**DNA Sequencing** 🧬
+* Arrange genetic fragments in correct order
+* Minimize overlapping regions
+* Critical for medical research
+
+**Video Game AI** 🎮
+* NPCs planning efficient patrol routes
+* Resource gathering optimization
+* Strategy game unit movement
+:::
+:::
+
+## TSP Environmental Impacts: The Green Side of TSP
+
+<!-- ::: {.callout-important icon="true"}
+## Think Deeper: Environmental Consequences 🌍
+
+**Work in groups of 3-4. Discuss how TSP optimization affects our planet and environment.**
+
+::: -->
+
+::: {.callout icon="false"}
+<!-- ## Discussion Points: The Green Side of TSP -->
+
+**1. Positive Environmental Effects** ✅
+- TSP optimization reduces fuel consumption and lowers emissions
+- Decreases overall traffic congestion
+- Minimizes unnecessary vehicle miles traveled
+
+**2. The Consumption Paradox** ⚠️
+- Does efficient delivery encourage more online shopping?
+- Could TSP optimization actually *increase* total environmental impact?
+- Are we solving the right problem or enabling overconsumption?
+
+**3. Future Transportation Challenges** 🔋
+- How should TSP algorithms adapt for electric delivery vehicles?
+- What about charging station stops and battery range limits?
+- How do we optimize for renewable energy usage timing?
+
+:::
+
+::: {.callout-note icon="true"}
+## Think: What is an Eco-Friendly TSP Design
+
+**If you could design a TSP system, what factors besides distance would you optimize for?**
+
+Consider these green factors:
+- Carbon footprint per route segment
+- Real-time traffic patterns to reduce idling
+- Air quality levels in different neighborhoods
+- Time-of-day energy grid efficiency
+
+**Research Task**: Find one company using TSP for environmental benefits. What measurable impact have they achieved?
+
+:::
+<!-- 
+## TSP Social & Economic Impacts
+
+
+::: {.callout-warning icon="true"}
+## Discussion Points: The Human Side of Optimization
+
+**1. Job Market Impact** 💼
+- Does TSP optimization help delivery drivers (less driving, more efficient work)?
+- Or does it hurt them (fewer drivers needed for same workload)?
+- How do we balance efficiency with employment?
+
+**2. Geographic Equity & Access** 🏘️
+- Efficient routing makes fast delivery profitable in dense suburban areas
+- What happens to rural communities or low-income neighborhoods?
+- Are some areas systematically left behind by optimization algorithms?
+
+**3. Small Business Competition** 🏪
+- How can local businesses compete with Amazon's TSP-optimized delivery?
+- Is this technological advantage creating unfair market competition?
+- What support do smaller companies need to stay competitive?
+
+:::
+
+::: {.callout-tip icon="true"}
+## Ethical Dilemma: Competing Priorities
+
+**A TSP algorithm could optimize for different goals:**
+
+- 🛣️ **Shortest distance** (saves fuel, reduces costs)
+- 🚦 **Avoiding traffic** (faster delivery, customer satisfaction)  
+- ⚖️ **Serving all neighborhoods equally** (social equity, fairness)
+
+**Group Challenge**: Which should be the priority? Can you design a system that balances all three? What trade-offs would you accept?
+
+**Future Thinking**: How might drone deliveries change TSP optimization? What new ethical questions would this technology raise?
+
+::: -->
+
+
+## Summary: TSP - The Beautiful Impossible Problem
+
+**The Travelling Salesman Problem** teaches us about the beauty and challenges of computer science! 🎯
+
+
+::: {.columns}
+::: {.column}
+**What We Now Know** 🧠📚
+
+ - 🗺️ **Real-world relevance**: TSP is everywhere 
+ - 📈 **Computational complexity**: Problems grow!  
+ - 🧠 **Creative solutions**: When brute force fails, get creative 
+ - 💰 **Economic impact**: Good algorithms save energy
+ - 🌍 **Environmental benefits**: Efficiency is good
+<!-- - ⚖️ **Ethical considerations**: Technology choices have consequences -->
+:::
+
+::: {.column}
+**What We Also Know!** 🧠🌟
+
+  - **The Big Lesson**: Sometimes "good enough" solutions (heuristics) are better than perfect solutions that take forever! 🧠
+  - **Brute_force**: "Try everything - works for small problems",
+  - **Heuristics**: "Use smart shortcuts - good for most cases", 
+  - **Approximation**: "Get close to optimal - practical for real world",
+  - **Machine_learning**: "Learn from patterns to solve problems - modern AI approach"
+:::
+:::
+
+
+## And, Also Good to Know Too!
+
+<!-- ::: {.columns} -->
+
+<!-- ::: {.column} -->
+::: {.callout-important}
+**Remember**: 🤔
+
+  - Not all problems have efficient exact solutions
+  - Creativity beats raw computational power
+  - Real-world constraints matter more than textbook perfection
+  - Technology should serve people and planet
+:::
+<!-- ::: -->
+
+<!-- ::: {.column} -->
+::: {.callout-note}
+**Questions to Explore:**🌟
+
+  - How do we know when a "good enough" solution is actually good enough?
+  - What happens when we combine multiple optimization techniques?
+  - How is AI changing the way we solve impossible problems?
+:::
+
+<!-- ::: -->
+<!-- ::: -->
+<!-- **Real-World Applications:**
+* Social media friend suggestions
+* GPS navigation systems  
+* Recommendation algorithms
+* Scientific research optimization -->
+
+
+
+
+
+```{=html}
+<script>
+/**
+ * Interactive Travelling Salesman Problem Visualizer
+ * Demonstrates the complexity and real-world applications of the TSP
+ * Shows how route optimization affects both computation time and practical results
+ */
+class TSPVisualizer {
+    constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+        
+        this.ctx = this.canvas.getContext('2d');
+        this.cities = [];
+        this.bestRoute = [];
+        this.bestDistance = Infinity;
+        this.isComputing = false;
+        this.animationFrame = null;
+        
+        // Mouse tracking for interactive placement
+        this.mouseX = -1;
+        this.mouseY = -1;
+        this.showPreview = false;
+        
+        // Visual styling
+        this.cityRadius = 8;
+        this.cityColors = {
+            normal: '#3498DB',
+            start: '#E74C3C',
+            hover: '#F39C12'
+        };
+        this.routeColor = '#2ECC71';
+        this.bestRouteColor = '#E74C3C';
+        
+        this.setupEventListeners();
+        this.loadDemoData();
+        this.draw();
+    }
+    
+    setupEventListeners() {
+        // Button event listeners
+        const addCityBtn = document.getElementById('add-city-btn');
+        const solveTSPBtn = document.getElementById('solve-tsp-btn');
+        const resetTSPBtn = document.getElementById('reset-tsp-btn');
+        const demoPresetBtn = document.getElementById('demo-preset-btn');
+        
+        if (addCityBtn) addCityBtn.addEventListener('click', () => this.addRandomCity());
+        if (solveTSPBtn) solveTSPBtn.addEventListener('click', () => this.solveTSP());
+        if (resetTSPBtn) resetTSPBtn.addEventListener('click', () => this.resetCities());
+        if (demoPresetBtn) demoPresetBtn.addEventListener('click', () => this.loadDemoData());
+        
+        // Canvas interactive events
+        if (this.canvas) {
+            this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+            this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            this.canvas.addEventListener('mouseenter', (e) => this.handleMouseEnter(e));
+            this.canvas.addEventListener('mouseleave', (e) => this.handleMouseLeave(e));
+        }
+    }
+    
+    handleCanvasClick(event) {
+        if (this.isComputing) return;
+        
+        const rect = this.canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        // Check if click is too close to existing city
+        const tooClose = this.cities.some(city => {
+            const distance = Math.sqrt((city.x - x)**2 + (city.y - y)**2);
+            return distance < this.cityRadius * 3; // Minimum spacing
+        });
+        
+        if (!tooClose) {
+            this.addCity(x, y);
+            // Visual feedback for successful placement
+            this.showPlacementFeedback(x, y);
+        } else {
+            // Visual feedback for failed placement
+            this.showErrorFeedback(x, y);
+        }
+    }
+    
+    handleMouseMove(event) {
+        if (this.isComputing) return;
+        
+        const rect = this.canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        // Show preview of where city would be placed
+        this.mouseX = x;
+        this.mouseY = y;
+        this.showPreview = true;
+        this.draw();
+    }
+    
+    handleMouseEnter(event) {
+        if (!this.isComputing) {
+            this.canvas.style.cursor = 'crosshair';
+            this.showPreview = true;
+        }
+    }
+    
+    handleMouseLeave(event) {
+        this.canvas.style.cursor = 'default';
+        this.showPreview = false;
+        this.draw();
+    }
+    
+    addCity(x, y) {
+        // Ensure city is within canvas bounds with padding
+        x = Math.max(this.cityRadius, Math.min(this.canvas.width - this.cityRadius, x));
+        y = Math.max(this.cityRadius, Math.min(this.canvas.height - this.cityRadius, y));
+        
+        this.cities.push({x, y, id: this.cities.length});
+        this.updateInfo();
+        this.draw();
+    }
+    
+    showPlacementFeedback(x, y) {
+        // Brief green flash to show successful city placement
+        const originalCtx = this.ctx;
+        setTimeout(() => {
+            originalCtx.save();
+            originalCtx.fillStyle = 'rgba(46, 204, 113, 0.5)';
+            originalCtx.beginPath();
+            originalCtx.arc(x, y, this.cityRadius * 2, 0, 2 * Math.PI);
+            originalCtx.fill();
+            originalCtx.restore();
+            
+            setTimeout(() => this.draw(), 200);
+        }, 50);
+    }
+    
+    showErrorFeedback(x, y) {
+        // Brief red flash to show failed placement (too close to existing city)
+        const originalCtx = this.ctx;
+        setTimeout(() => {
+            originalCtx.save();
+            originalCtx.fillStyle = 'rgba(231, 76, 60, 0.5)';
+            originalCtx.beginPath();
+            originalCtx.arc(x, y, this.cityRadius * 2, 0, 2 * Math.PI);
+            originalCtx.fill();
+            originalCtx.restore();
+            
+            setTimeout(() => this.draw(), 200);
+        }, 50);
+    }
+    
+    addRandomCity() {
+        const padding = this.cityRadius * 2;
+        const x = padding + Math.random() * (this.canvas.width - 2 * padding);
+        const y = padding + Math.random() * (this.canvas.height - 2 * padding);
+        this.addCity(x, y);
+    }
+    
+    loadDemoData() {
+        this.cities = [
+            {x: 100, y: 150, id: 0},
+            {x: 300, y: 100, id: 1},
+            {x: 500, y: 200, id: 2},
+            {x: 400, y: 300, id: 3},
+            {x: 200, y: 250, id: 4},
+            {x: 600, y: 150, id: 5}
+        ];
+        this.bestRoute = [];
+        this.bestDistance = Infinity;
+        this.updateInfo();
+        this.draw();
+    }
+    
+    resetCities() {
+        this.cities = [];
+        this.bestRoute = [];
+        this.bestDistance = Infinity;
+        this.showPreview = false;
+        this.mouseX = -1;
+        this.mouseY = -1;
+        this.updateInfo();
+        this.draw();
+    }
+    
+    calculateDistance(city1, city2) {
+        const dx = city1.x - city2.x;
+        const dy = city1.y - city2.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+    
+    calculateRouteDistance(route) {
+        if (route.length < 2) return 0;
+        
+        let totalDistance = 0;
+        for (let i = 0; i < route.length - 1; i++) {
+            totalDistance += this.calculateDistance(this.cities[route[i]], this.cities[route[i + 1]]);
+        }
+        // Add return to start
+        totalDistance += this.calculateDistance(this.cities[route[route.length - 1]], this.cities[route[0]]);
+        return totalDistance;
+    }
+    
+    // Factorial calculation for route counting
+    factorial(n) {
+        if (n <= 1) return 1;
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    
+    // Generate all permutations for brute force TSP
+    generatePermutations(arr) {
+        if (arr.length <= 1) return [arr];
+        
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            const current = arr[i];
+            const remaining = arr.slice(0, i).concat(arr.slice(i + 1));
+            const permutations = this.generatePermutations(remaining);
+            
+            for (const perm of permutations) {
+                result.push([current, ...perm]);
+            }
+        }
+        return result;
+    }
+    
+    async solveTSP() {
+        if (this.cities.length < 3) {
+            this.updateResult('Need at least 3 cities to solve TSP!', '0ms');
+            return;
+        }
+        
+        if (this.cities.length > 10) {
+            const shouldContinue = confirm(
+                `⚠️ Warning: ${this.cities.length} cities will generate ${this.factorial(this.cities.length - 1) / 2} routes to check.\n\n` +
+                `This might take a very long time or crash your browser!\n\n` +
+                `Continue anyway? (Recommended: Use 8 or fewer cities for demo)`
+            );
+            if (!shouldContinue) return;
+        }
+        
+        this.isComputing = true;
+        const startTime = performance.now();
+        
+        // Update UI to show computing state
+        this.updateResult('Computing optimal route...', 'Computing...');
+        
+        try {
+            // For demonstration, we'll use a simpler approach for larger sets
+            let bestRoute, bestDistance;
+            
+            if (this.cities.length <= 8) {
+                // Brute force for small sets
+                [bestRoute, bestDistance] = await this.bruteForceTSP();
+            } else {
+                // Nearest neighbor heuristic for larger sets
+                [bestRoute, bestDistance] = await this.nearestNeighborTSP();
+            }
+            
+            const endTime = performance.now();
+            const computationTime = endTime - startTime;
+            
+            this.bestRoute = bestRoute;
+            this.bestDistance = bestDistance;
+            
+            this.updateResult(
+                `${bestDistance.toFixed(1)} pixels`, 
+                `${computationTime.toFixed(1)}ms`
+            );
+            
+            this.draw();
+            
+        } catch (error) {
+            console.error('TSP computation error:', error);
+            this.updateResult('Computation failed - too complex!', 'Error');
+        }
+        
+        this.isComputing = false;
+    }
+    
+    async bruteForceTSP() {
+        const n = this.cities.length;
+        if (n === 0) return [[], 0];
+        
+        // Fix first city as starting point (reduces permutations by factor of n)
+        const otherCities = [];
+        for (let i = 1; i < n; i++) {
+            otherCities.push(i);
+        }
+        
+        const permutations = this.generatePermutations(otherCities);
+        let bestRoute = null;
+        let bestDistance = Infinity;
+        
+        // Check each permutation
+        for (const perm of permutations) {
+            const route = [0, ...perm]; // Start with city 0
+            const distance = this.calculateRouteDistance(route);
+            
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestRoute = [...route];
+            }
+            
+            // Allow browser to stay responsive
+            if (permutations.indexOf(perm) % 100 === 0) {
+                await new Promise(resolve => setTimeout(resolve, 1));
+            }
+        }
+        
+        return [bestRoute, bestDistance];
+    }
+    
+    async nearestNeighborTSP() {
+        // Greedy nearest neighbor heuristic - much faster but not optimal
+        const n = this.cities.length;
+        const visited = new Set([0]); // Start at city 0
+        const route = [0];
+        let currentCity = 0;
+        let totalDistance = 0;
+        
+        while (route.length < n) {
+            let nearestCity = -1;
+            let nearestDistance = Infinity;
+            
+            // Find nearest unvisited city
+            for (let i = 0; i < n; i++) {
+                if (!visited.has(i)) {
+                    const distance = this.calculateDistance(this.cities[currentCity], this.cities[i]);
+                    if (distance < nearestDistance) {
+                        nearestDistance = distance;
+                        nearestCity = i;
+                    }
+                }
+            }
+            
+            // Move to nearest city
+            route.push(nearestCity);
+            visited.add(nearestCity);
+            totalDistance += nearestDistance;
+            currentCity = nearestCity;
+        }
+        
+        // Add return to start
+        totalDistance += this.calculateDistance(this.cities[currentCity], this.cities[0]);
+        
+        return [route, totalDistance];
+    }
+    
+    updateInfo() {
+        const cityCountElement = document.getElementById('city-count');
+        const routeCountElement = document.getElementById('route-count');
+        const complexityWarningElement = document.getElementById('complexity-warning');
+        
+        const cityCount = this.cities.length;
+        let routeCount = 0;
+        let warningText = '';
+        
+        if (cityCount >= 2) {
+            // For TSP: (n-1)!/2 unique routes (fixing start city and accounting for direction)
+            routeCount = this.factorial(cityCount - 1);
+            if (cityCount > 2) routeCount = Math.floor(routeCount / 2);
+        }
+        
+        // Generate appropriate warnings
+        if (cityCount <= 3) {
+            warningText = 'Perfect for learning! Try adding more cities.';
+        } else if (cityCount <= 6) {
+            warningText = 'Good demonstration size - manageable computation.';
+        } else if (cityCount <= 8) {
+            warningText = 'Getting complex - notice the computation time increase!';
+        } else if (cityCount <= 10) {
+            warningText = '⚠️ High complexity - will take several seconds to solve.';
+        } else {
+            warningText = '🚨 EXTREME complexity - may crash browser or take minutes!';
+        }
+        
+        if (cityCountElement) cityCountElement.textContent = cityCount;
+        if (routeCountElement) {
+            if (routeCount > 1000000) {
+                routeCountElement.textContent = `${(routeCount / 1000000).toFixed(1)}M`;
+            } else if (routeCount > 1000) {
+                routeCountElement.textContent = `${(routeCount / 1000).toFixed(1)}K`;
+            } else {
+                routeCountElement.textContent = routeCount.toLocaleString();
+            }
+        }
+        if (complexityWarningElement) complexityWarningElement.textContent = warningText;
+    }
+    
+    updateResult(distance, time) {
+        const distanceElement = document.getElementById('best-distance');
+        const timeElement = document.getElementById('computation-time');
+        
+        if (distanceElement) distanceElement.textContent = distance;
+        if (timeElement) timeElement.textContent = time;
+    }
+    
+    draw() {
+        // Clear canvas
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw grid for reference
+        this.drawGrid();
+        
+        // Draw best route if available
+        if (this.bestRoute.length > 0) {
+            this.drawRoute(this.bestRoute, this.bestRouteColor, 3);
+        }
+        
+        // Draw cities
+        this.drawCities();
+        
+        // Draw city labels
+        this.drawCityLabels();
+        
+        // Draw placement preview
+        if (this.showPreview && !this.isComputing) {
+            this.drawPlacementPreview();
+        }
+    }
+    
+    drawGrid() {
+        this.ctx.strokeStyle = '#ECF0F1';
+        this.ctx.lineWidth = 1;
+        
+        // Vertical lines
+        for (let x = 0; x <= this.canvas.width; x += 50) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(x, 0);
+            this.ctx.lineTo(x, this.canvas.height);
+            this.ctx.stroke();
+        }
+        
+        // Horizontal lines
+        for (let y = 0; y <= this.canvas.height; y += 50) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(0, y);
+            this.ctx.lineTo(this.canvas.width, y);
+            this.ctx.stroke();
+        }
+    }
+    
+    drawRoute(route, color, lineWidth = 2) {
+        if (route.length < 2) return;
+        
+        this.ctx.strokeStyle = color;
+        this.ctx.lineWidth = lineWidth;
+        this.ctx.beginPath();
+        
+        // Draw path through cities
+        const startCity = this.cities[route[0]];
+        this.ctx.moveTo(startCity.x, startCity.y);
+        
+        for (let i = 1; i < route.length; i++) {
+            const city = this.cities[route[i]];
+            this.ctx.lineTo(city.x, city.y);
+        }
+        
+        // Return to start
+        this.ctx.lineTo(startCity.x, startCity.y);
+        this.ctx.stroke();
+        
+        // Draw direction arrows
+        this.drawRouteArrows(route, color);
+    }
+    
+    drawRouteArrows(route, color) {
+        this.ctx.fillStyle = color;
+        
+        for (let i = 0; i < route.length; i++) {
+            const currentCity = this.cities[route[i]];
+            const nextCity = this.cities[route[(i + 1) % route.length]];
+            
+            // Calculate arrow position (midpoint of segment)
+            const midX = (currentCity.x + nextCity.x) / 2;
+            const midY = (currentCity.y + nextCity.y) / 2;
+            
+            // Calculate angle
+            const angle = Math.atan2(nextCity.y - currentCity.y, nextCity.x - currentCity.x);
+            
+            // Draw small arrow
+            this.ctx.save();
+            this.ctx.translate(midX, midY);
+            this.ctx.rotate(angle);
+            
+            this.ctx.beginPath();
+            this.ctx.moveTo(0, 0);
+            this.ctx.lineTo(-8, -4);
+            this.ctx.lineTo(-8, 4);
+            this.ctx.closePath();
+            this.ctx.fill();
+            
+            this.ctx.restore();
+        }
+    }
+    
+    drawCities() {
+        this.cities.forEach((city, index) => {
+            // Different color for starting city
+            const color = index === 0 ? this.cityColors.start : this.cityColors.normal;
+            
+            this.ctx.fillStyle = color;
+            this.ctx.beginPath();
+            this.ctx.arc(city.x, city.y, this.cityRadius, 0, 2 * Math.PI);
+            this.ctx.fill();
+            
+            // White border
+            this.ctx.strokeStyle = 'white';
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
+        });
+    }
+    
+    drawCityLabels() {
+        this.ctx.fillStyle = 'white';
+        this.ctx.font = 'bold 12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+        
+        this.cities.forEach((city, index) => {
+            this.ctx.fillText(index.toString(), city.x, city.y);
+        });
+    }
+    
+    drawPlacementPreview() {
+        if (this.mouseX < 0 || this.mouseY < 0) return;
+        
+        // Check if placement would be valid (not too close to existing cities)
+        const tooClose = this.cities.some(city => {
+            const distance = Math.sqrt((city.x - this.mouseX)**2 + (city.y - this.mouseY)**2);
+            return distance < this.cityRadius * 3;
+        });
+        
+        // Draw preview circle
+        this.ctx.save();
+        
+        if (tooClose) {
+            // Red preview for invalid placement
+            this.ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
+            this.ctx.strokeStyle = 'rgba(231, 76, 60, 0.8)';
+        } else {
+            // Green preview for valid placement
+            this.ctx.fillStyle = 'rgba(46, 204, 113, 0.4)';
+            this.ctx.strokeStyle = 'rgba(46, 204, 113, 0.8)';
+        }
+        
+        this.ctx.lineWidth = 2;
+        this.ctx.setLineDash([5, 5]); // Dashed line for preview
+        
+        this.ctx.beginPath();
+        this.ctx.arc(this.mouseX, this.mouseY, this.cityRadius, 0, 2 * Math.PI);
+        this.ctx.fill();
+        this.ctx.stroke();
+        
+        // Draw preview city number
+        this.ctx.fillStyle = tooClose ? '#C0392B' : '#27AE60';
+        this.ctx.font = 'bold 12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.textBaseline = 'middle';
+        this.ctx.setLineDash([]); // Reset line dash
+        
+        if (!tooClose) {
+            this.ctx.fillText(this.cities.length.toString(), this.mouseX, this.mouseY);
+        } else {
+            this.ctx.fillText('✗', this.mouseX, this.mouseY);
+        }
+        
+        this.ctx.restore();
+    }
+}
+
+// Initialize the TSP visualizer when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        new TSPVisualizer('tsp-canvas');
+    }, 500);
+});
+</script>
+```

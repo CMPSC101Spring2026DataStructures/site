@@ -1,0 +1,19 @@
+.example-large {
+  font-size: 2.5em;
+  max-height: 350px;
+  overflow: auto;
+  display: block;
+  padding: 0.5em;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.example-medium {
+  font-size: 1.5em;
+  max-height: 350px;
+  overflow: auto;
+  display: block;
+  padding: 0.5em;
+  background: #f8f8f8;
+  border-radius: 8px;
+}

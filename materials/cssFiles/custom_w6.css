@@ -1,0 +1,381 @@
+/* Custom CSS for Python Fundamentals Slides */
+
+/* Main slide styling */
+.reveal {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Slide content spacing */
+.reveal .slides section {
+    padding: 20px;
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Title slide styling */
+.reveal .slides section.title-slide h1 {
+    color: #2E86C1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 1.8em;
+}
+
+.reveal .slides section.title-slide h2 {
+    color: #8E44AD;
+    font-size: 1.1em;
+}
+
+/* Header styling */
+.reveal h1, .reveal h2 {
+    color: #2E86C1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 0.2em;
+    font-size: 1.5em;
+}
+
+.reveal h1 {
+    font-size: 1.6em;
+}
+
+.reveal h2 {
+    font-size: 1.2em;
+}
+
+.reveal h3 {
+    font-size: 1.0em;
+    color: #8E44AD;
+}
+
+.reveal h4 {
+    font-size: 0.9em;
+    color: #8E44AD;
+}
+
+/* Code block styling */
+.reveal pre {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-left: 5px solid #31BAE9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.75em;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0.5em 0;
+}
+
+/* Callout content - remove conflicting scroll settings */
+.callout pre {
+    margin: 0;
+}
+
+.reveal code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Callout boxes styling */
+.callout {
+    border-radius: 10px;
+    padding: 0.8em;
+    margin: 0.4em 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 0.85em;
+}
+
+.callout-note {
+    background-color: #e3f2fd;
+    border-left: 5px solid #2196f3;
+}
+
+.callout-tip {
+    background-color: #e8f5e8;
+    border-left: 5px solid #4caf50;
+}
+
+.callout-important {
+    background-color: #fff3e0;
+    border-left: 5px solid #ff9800;
+}
+
+.callout-warning {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffc107;
+}
+
+/* Column layout styling */
+.columns {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Emoji and decoration styling */
+.column:last-child {
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Emoji and icon styling */
+.reveal .slides section h2::before {
+    margin-right: 0.5em;
+}
+
+/* Link styling */
+.reveal a {
+    color: #2E86C1;
+    text-decoration: none;
+}
+
+.reveal a:hover {
+    color: #1B4F72;
+    text-decoration: underline;
+}
+
+/* List styling */
+.reveal ul li, .reveal ol li {
+    margin-bottom: 0.3em;
+    font-size: 0.9em;
+}
+
+/* Highlight important text */
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #856404;
+}
+
+/* Custom color classes */
+.blue-text { color: #2E86C1; }
+.purple-text { color: #8E44AD; }
+.green-text { color: #27AE60; }
+.red-text { color: #E74C3C; }
+.orange-text { color: #E67E22; }
+
+/* Content spacing and overflow prevention */
+.reveal .slides section > * {
+    margin-bottom: 0.3em;
+}
+
+.reveal .slides section > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Prevent double scroll bars */
+.reveal .slides section {
+    overflow: visible;
+}
+
+.reveal .slides {
+    overflow: hidden;
+}
+
+/* Prevent horizontal scrolling on code blocks */
+.reveal pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent code from causing horizontal overflow */
+.reveal pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Animation for important callouts */
+.callout-tip {
+    animation: subtle-pulse 2s infinite;
+}
+
+@keyframes subtle-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+    }
+    
+    .reveal pre {
+        font-size: 0.7em;
+    }
+    
+    .callout {
+        font-size: 0.8em;
+    }
+}
+
+/* Footer styling */
+.reveal .progress {
+    color: #2E86C1;
+}
+
+/* Slide number styling */
+.reveal .slide-number {
+    background-color: #2E86C1;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* Ensure images fit properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Additional scroll bar prevention */
+.reveal .slides section,
+.reveal .slides section .callout,
+.reveal .slides section .columns {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure callout boxes don't overflow */
+.callout {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Prevent any horizontal scrolling */
+.reveal .slides {
+    overflow-x: hidden !important;
+}
+
+.reveal {
+    overflow-x: hidden !important;
+}
+
+/* Function-specific enhancements */
+.callout-warning {
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+    border-left: 5px solid #ffc107;
+    animation: challenge-glow 3s ease-in-out infinite;
+}
+
+@keyframes challenge-glow {
+    0%, 100% { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    50% { box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3); }
+}
+
+/* Enhanced code blocks for function examples */
+.reveal pre {
+    position: relative;
+}
+
+.reveal pre::before {
+    content: "💻";
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.6;
+}
+
+/* Function definition highlighting */
+.reveal code {
+    font-weight: bold;
+}
+
+/* Special styling for function names in code */
+.reveal pre code .hljs-function .hljs-title {
+    color: #8E44AD;
+    font-weight: bold;
+}
+
+/* Partner challenge boxes */
+.callout-warning h2::before {
+    content: "🤝 ";
+    font-size: 1.2em;
+}
+
+/* Clean code examples */
+.callout-important {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-left: 5px solid #ff9800;
+}
+
+/* Success indicators for good examples */
+.callout-important h2:contains("Good Example")::after {
+    content: " ✅";
+    color: #4caf50;
+}
+
+/* Error indicators for bad examples */
+.callout-important h2:contains("Bad Example")::after {
+    content: " ❌";
+    color: #f44336;
+}
+
+/* Function parameter styling */
+.parameter {
+    background-color: #e8f5e8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #2e7d32;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Lambda function highlighting */
+.lambda {
+    background-color: #f3e5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #7b1fa2;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Additional overflow prevention for function slides */
+.reveal .slides section {
+    padding: 12px;
+    height: auto;
+    max-height: 92vh;
+    overflow: hidden;
+}
+
+/* Reduce font size for colored explanatory text */
+.reveal .slides section [style*="color: #8E44AD"] {
+    font-size: 0.85em !important;
+}
+
+.reveal .slides section [style*="color: #E74C3C"] {
+    font-size: 0.85em !important;
+}
+
+.reveal .slides section [style*="color: #2E86C1"] {
+    font-size: 0.9em !important;
+}
+
+/* Ensure content fits on slides */
+.reveal .slides section > .callout {
+    margin: 0.3em 0;
+}
+
+.reveal .slides section > .columns {
+    margin: 0.3em 0;
+}

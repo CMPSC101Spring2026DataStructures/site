@@ -1,0 +1,140 @@
+---
+title: "Interactive Python Playground"
+format:
+  html:
+    toc: false
+    code-fold: false
+    css:
+      - ../shared/lesson-styles.css
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    include-after-body:
+      - text: |
+          <script>
+            let pyodideReadyPromise = loadPyodide();
+            async function runGenericPythonCode() {
+              const code = document.getElementById('python-code-input').value;
+              const outputDiv = document.getElementById('python-output');
+              outputDiv.textContent = 'Running...';
+              try {
+                const pyodide = await pyodideReadyPromise;
+                await pyodide.runPythonAsync(`import sys\nimport io\nsys.stdout = io.StringIO()`);
+                await pyodide.runPythonAsync(code);
+                const output = await pyodide.runPythonAsync('sys.stdout.getvalue()');
+                  outputDiv.innerHTML = output.replace(/\n/g, '<br>');
+              } catch (err) {
+                  outputDiv.innerHTML = String(err).replace(/\n/g, '<br>');
+              }
+            }
+            async function savePythonCode() {
+              const code = document.getElementById('python-code-input').value;
+              if ('showSaveFilePicker' in window) {
+                try {
+                  const handle = await window.showSaveFilePicker({
+                    suggestedName: 'my_code.py',
+                    types: [{
+                      description: 'Python Files',
+                      accept: {'text/x-python': ['.py']}
+                    }]
+                  });
+                  const writable = await handle.createWritable();
+                  await writable.write(code);
+                  await writable.close();
+                  alert('Code saved successfully!');
+                } catch (err) {
+                  alert('Save cancelled or failed.');
+                }
+              } else {
+                // Fallback for browsers without File System Access API
+                const blob = new Blob([code], {type: 'text/x-python'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'my_code.py';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }
+            }
+
+            async function loadPythonCode() {
+              if ('showOpenFilePicker' in window) {
+                try {
+                  const [fileHandle] = await window.showOpenFilePicker({
+                    types: [{
+                      description: 'Python Files',
+                      accept: {'text/x-python': ['.py']}
+                    }],
+                    multiple: false
+                  });
+                  const file = await fileHandle.getFile();
+                  const text = await file.text();
+                  document.getElementById('python-code-input').value = text;
+                } catch (err) {
+                  alert('Load cancelled or failed.');
+                }
+              } else {
+                // Fallback for browsers without File System Access API
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.py,text/x-python';
+                input.onchange = async (e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    const text = await file.text();
+                    document.getElementById('python-code-input').value = text;
+                  }
+                };
+                input.click();
+              }
+            }
+            function insertFibonacciCode() {
+              const fibCode = `def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# Print the first 15 Fibonacci numbers\nfor i in range(15):\n    print(fibonacci(i))`;
+              document.getElementById('python-code-input').value = fibCode;
+            }
+            function clearPythonPlayground() {
+              document.getElementById('python-code-input').value = '';
+              document.getElementById('python-output').textContent = '';
+            }
+
+          // Font size adjustment functions
+          function increaseFontSize() {
+            document.body.classList.remove('lesson-small-font');
+            document.body.classList.add('lesson-large-font');
+          }
+
+          function decreaseFontSize() {
+            document.body.classList.remove('lesson-large-font');
+            document.body.classList.add('lesson-small-font');
+          }
+          </script>
+---
+
+
+## Python Playground
+
+Welcome! Enter your Python code below, run it, and save it to your computer. 
+
+### Extra Python Resources?!
+
+If you need a notebook for your work, maybe try <a href="https://www.oliverbonhamcarter.com/live/lab/index.html" target="_blank">JupyterLite</a>!
+
+**Note**: All saved files are in the cookies and are therefore temporary. To get around this, please download the files from the Jupyter notebook to your local machine.
+
+<textarea id="python-code-input" class="lesson-input" rows="16" placeholder="# Write your Python code here..."></textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runGenericPythonCode()" class="run-btn">▶ Run Code</button>
+  <button onclick="savePythonCode()" class="save-btn">💾 Save Code</button>
+  <button onclick="loadPythonCode()" class="save-btn">📂 Load Code</button>
+  <button onclick="insertFibonacciCode()" class="example-btn">➕ Insert Fibonacci Example</button>
+  <button onclick="clearPythonPlayground()" class="clear-btn">🧹 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+<div id="python-output" class="lesson-terminal" style="margin-top:1em; min-height:2em; background:#222; color:#ffd700; padding:1em; border-radius:6px;">
+  <span style="font-style:italic;">Output will appear here.</span>
+</div>

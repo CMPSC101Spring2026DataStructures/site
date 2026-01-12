@@ -1,0 +1,787 @@
+---
+title: "Chapter 5: STRUCTURED TYPES AND MUTABILITY"
+subtitle: "Python Fundamentals: Data Structures & Operations"
+author: "CS 101 - Fall 2025"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+# On For Today
+
+::: {.callout-tip icon="true"}
+## Today's Journey: Python Data Structures & Operations
+Let's explore some essential Python concepts!
+
+**Topics covered in today's discussion:**
+
+* 🐍 **Tuples** - Immutable ordered collections
+* 🐍 **Ranges and Iterables** - Efficient number sequences  
+* 🐍 **List Mutability** - Dynamic, changeable collections
+* 🐍 **List Cloning** - Creating independent copies safely
+
+:::
+
+
+# Also On For Today
+
+::: {.callout-tip icon="true"}
+## Continued ... 
+
+* 🐍 **List Comprehensions** - Elegant one-line list creation
+* 🐍 **Nested Lists** - Lists within lists for complex data
+* 🐍 **2D Lists** - Grid-based data structures (matrices, game boards)
+* 🐍 **Higher-Order Operations** - `map()` and `filter()` functions
+* 🐍 **Sequence Types** - Strings, Tuples, Ranges, and Lists comparison
+* 🐍 **Sets** - Unique collections with mathematical operations
+
+:::
+
+::: {style="color: #2E86C1; font-size: 1.0em; text-align: center; margin-top: 1em;"}
+🐍 Ready to master Python's most powerful data structures! 🚀
+:::
+
+
+## Tuples: The Unchangeable Twins 👯‍♀️
+
+::: {.callout-note icon="false"}
+## Definition
+**Tuples** are ordered collections of items that are **immutable** (cannot be changed after creation). Think of them as containers that are sealed shut! 
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Storing coordinates, RGB color values, or any data that shouldn't change
+:::
+:::
+::: {.column width="30%"}
+🔒📦✨
+:::
+::::
+
+
+
+## Tuples: Code Example
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Creating tuples
+coordinates = (10, 20)
+rgb_color = (255, 128, 0)  # Orange color
+student_info = ("Alice", 20, "Computer Science")
+
+# Accessing elements
+print(f"X coordinate: {coordinates[0]}")  # Output: 10
+print(f"Student name: {student_info[0]}")  # Output: Alice
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Tuples use parentheses and are perfect when you need data that won't change, like a point on a map!
+:::
+
+
+
+
+
+
+
+
+## Tuples: Concatenation, indexing, and slicing
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Like strings, tuples can be concatenated, indexed, and sliced.
+t1 = (1, "two", 3)
+t2 = (t1, 3.25) # Note, we include t1 here!
+print(f" t2 --> {t2}")
+print(f" (t1 + t2) --> {(t1 + t2)}")
+print(f" (t1 + t2)[3] -->  {(t1 + t2)[3]}")
+print(f" (t1 + t2)[2:5] --> {(t1 + t2)[2:5]}")
+
+```
+
+```{python}
+# Like strings, tuples can be concatenated, indexed, and sliced.
+t1 = (1, "two", 3)
+t2 = (t1, 3.25) # Note, we include t1 here!
+print(f" t2 --> {t2}")
+print(f" (t1 + t2) --> {(t1 + t2)}")
+print(f" (t1 + t2)[3] -->  {(t1 + t2)[3]}")
+print(f" (t1 + t2)[2:5] --> {(t1 + t2)[2:5]}")
+```
+:::
+<!-- 
+::: {style="color: #E74C3C;"}
+**Slicing:** Choosing specific elements from tuple
+::: -->
+
+
+
+
+
+# Ranges and Iterables
+
+::: {.callout-note icon="false"}
+## Definition
+**Ranges** generate sequences of numbers, while **iterables** are objects you can loop through one item at a time.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Creating number sequences for loops, generating test data, or creating patterns
+:::
+:::
+::: {.column width="30%"}
+🔢🎯🔄
+:::
+::::
+
+
+
+## Ranges: Code Example
+
+::: {.callout-important icon="false"}
+## Example: Different range patterns
+
+```python
+numbers = range(5)              # 0, 1, 2, 3, 4
+evens = range(2, 11, 2)         # 2, 4, 6, 8, 10
+countdown = range(10, 0, -1)    # 10, 9, 8, ..., 1
+
+# Using range() in for-loops
+for i in range(3):
+    print(f"Round {i + 1}!")
+
+for i in countdown: print(i)
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Ranges are memory-efficient and perfect for creating predictable number sequences!
+:::
+
+
+
+<!-- # Lists and Mutability: The Shape Shifters 🔄 -->
+# Lists and Mutability
+
+::: {.callout-note icon="false"}
+## Definition
+**Lists** are ordered, **mutable** collections that can store different types of data and can be modified after creation.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Storing shopping lists, student grades, or any collection that needs to grow or change
+:::
+:::
+::: {.column width="30%"}
+📝🛒🔧
+:::
+::::
+
+
+
+## Lists: Code Example
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Creating and modifying lists
+fruits = ["apple", "banana", "orange"]
+print(f"Original: {fruits}")
+
+# Adding items
+fruits.append("grape")
+fruits.insert(1, "mango")
+print(f"After adding: {fruits}")
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Lists are flexible containers that can grow, shrink, and change - perfect for dynamic data!
+:::
+
+
+
+
+<!-- # Cloning Lists: Making Perfect Copies 👥 -->
+# Cloning Lists
+
+::: {.callout-note icon="false"}
+## Definition
+**Cloning lists** means creating independent copies so changes to one don't affect the other.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Backing up data before modifications, creating templates, or parallel processing
+:::
+:::
+::: {.column width="30%"}
+👯‍♀️📋🔄
+:::
+::::
+
+
+
+## List Cloning: The Wrong Way ❌
+
+::: {.callout-important icon="false"}
+## Dangerous Example
+```python
+original = [1, 2, 3, 4, 5]
+
+# Wrong way (creates reference, not copy)
+not_a_copy = original
+not_a_copy.append(6)
+print(f"Original changed too! {original}")  
+# Output: [1, 2, 3, 4, 5, 6] - Oops!
+```
+:::
+
+
+
+## List Cloning: The Right Way ✅
+
+::: {.callout-important icon="false"}
+## Safe Examples
+```python
+original = [1, 2, 3, 4, 5]
+
+# Right ways to clone
+copy1 = original.copy()
+copy2 = original[:]
+copy3 = list(original)
+
+copy1.append(7)
+print(f"Original safe: {original}")    # [1, 2, 3, 4, 5]
+print(f"Copy modified: {copy1}")       # [1, 2, 3, 4, 5, 7]
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Proper cloning creates independent lists, preventing unwanted side effects!
+:::
+
+
+
+
+## Lists: Another Cloning Example
+
+::: {.callout-important icon="false"}
+## Clones
+```python
+L1 = [1,2,3]
+print(f"L1 --> {L1}")
+L2 = L1
+print(f" L2 is copy of L1 --> {L2}")
+
+L1.append("100") # Modify L1
+print(f"L1 with appended value--> {L1}")
+print(f" L2 is copy of L1 --> {L2}")
+L2.append("2000") # Modify L2
+print(f"Appending to L2 modifies L1 = {L2}")
+```
+
+```{python}
+L1 = [1,2,3]
+print(f"L1 --> {L1}")
+L2 = L1
+print(f" L2 is copy of L1 --> {L2}")
+
+L1.append("100") # Modify L1
+print(f"L1 with appended value--> {L1}")
+print(f" L2 is copy of L1 --> {L2}")
+L2.append("2000") # Modify L2
+print(f"Appending to L2 modifies L1 = {L2}")
+```
+
+:::
+<!-- 
+::: {style="color: #E74C3C;"}
+**Why this works:** A making a copy is 
+::: -->
+
+
+
+
+
+<!-- # List Comprehensions: The Elegant Creators ✨ -->
+# List Comprehensions
+
+::: {.callout-note icon="false"}
+## Definition
+**List comprehensions** provide a concise way to create lists using a single line of code with optional conditions.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Transforming data, filtering lists, or creating mathematical sequences efficiently
+:::
+:::
+::: {.column width="30%"}
+✨🎭🔮
+:::
+::::
+
+
+
+## List Comprehensions: Traditional vs Modern
+
+::: {.callout-important icon="false"}
+## Comparison
+```python
+# Traditional way
+squares = []
+for x in range(10):
+    squares.append(x**2)
+
+# List comprehension way - much cleaner!
+squares = [x**2 for x in range(10)]
+print(squares)  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+:::
+
+
+
+## List Comprehensions: With Conditions
+
+::: {.callout-important icon="false"}
+## Advanced Examples
+```python
+# With conditions
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(even_squares)  # [0, 4, 16, 36, 64]
+
+# String processing
+words = ["hello", "world", "python", "rocks"]
+caps = [word.upper() for word in words if len(word) > 4]
+print(caps)  # ['HELLO', 'WORLD', 'PYTHON', 'ROCKS']
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** List comprehensions are Pythonic, readable, and often faster than traditional loops!
+:::
+
+
+
+
+## Lists to Make Tuples
+
+::: {.callout-important icon="false"}
+## Cartesian Formatting
+```python
+list1 = [1, 2, 3]
+list2 = ['a', 'b']
+
+# Create a list of tuples combining elements from list1 and list2
+combined_list = [(x, y) for x in list1 for y in list2]
+print(combined_list)
+```
+
+```{python}
+list1 = [1, 2, 3]
+list2 = ['a', 'b']
+
+# Create a list of tuples combining elements from list1 and list2
+combined_list = [(x, y) for x in list1 for y in list2]
+print(combined_list)
+```
+
+:::
+<!-- 
+::: {style="color: #E74C3C;"}
+**Why this works:** A making a copy is 
+::: -->
+
+
+
+
+
+<!-- # Nested Lists: Lists Within Lists 📦 -->
+# Nested Lists
+
+::: {.callout-note icon="false"}
+## Definition
+**Nested lists** are lists that contain other lists as elements, creating multi-dimensional data structures.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Storing hierarchical data, representing matrices, or organizing complex information
+:::
+:::
+::: {.column width="30%"}
+📦🗂️🎁
+:::
+::::
+
+
+
+## Nested Lists: Code Example
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Creating nested lists
+shopping_lists = [
+    ["apples", "bananas", "oranges"],      # Fruits
+    ["carrots", "broccoli", "spinach"],    # Vegetables
+    ["chicken", "beef", "fish"]            # Proteins
+]
+
+# Accessing nested elements
+print(f"First fruit: {shopping_lists[0][0]}")      # apples
+print(f"Second vegetable: {shopping_lists[1][1]}")  # broccoli
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Nested lists let us organize related data in logical groups, like folders in a filing cabinet!
+:::
+
+
+
+# 2D Lists
+<!-- # 2D Lists: The Grid Masters 🎯 -->
+
+::: {.callout-note icon="false"}
+## Definition
+**2D lists** are special nested lists arranged in rows and columns, like a spreadsheet or game board.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Representing game boards, matrices, pixel data, or any grid-based information
+:::
+:::
+::: {.column width="30%"}
+🎯⚡🎮
+:::
+::::
+
+
+
+## 2D Lists: Tic-Tac-Toe Example
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Creating a 3x3 tic-tac-toe board
+board = [
+    [' ', ' ', ' '],
+    [' ', ' ', ' '],
+    [' ', ' ', ' ']
+]
+# Making moves
+board[0][0] = 'X'  # Top-left
+board[1][1] = 'O'  # Center
+board[2][2] = 'X'  # Bottom-right
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** 2D lists give us row[column] access, perfect for grid-based data and games!
+:::
+
+
+
+<!-- # Higher-Order Operations: The Power Tools 🔧 -->
+# Higher-Order Functions
+
+::: {.callout-note icon="false"}
+## Definition
+**Higher-order operations** are built-in functions like `map()`, `filter()`, and `reduce()` that work on entire collections.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Processing large datasets, functional programming patterns, and others
+:::
+:::
+::: {.column width="30%"}
+🔧⚡🛠️
+:::
+::::
+
+
+
+## Higher-Order: map() and filter()
+
+::: {.callout-important icon="false"}
+## Example
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# map() - apply function to all elements
+squares = list(map(lambda x: x**2, numbers))
+print(f"Squares: {squares}")  
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+# filter() - keep elements that meet condition
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"Evens: {evens}")  # [2, 4, 6, 8, 10]
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Higher-order functions let us process entire collections efficiently with functional programming!
+:::
+
+
+
+## Higher Order Functions
+
+::: {.callout-important icon="false"}
+
+## Function As Parameters
+
+Add print statements to see what is happening in the code.
+```python
+def apply_to_each(L,f):
+    """ Assume L is a list, F is a function
+    Mutats L by replacing each element, e, of L by f(e)"""
+    for i in range(len(L)):
+        print(f" position : {i}L[i] is now : {L[i]}")
+        L[i] = f(L[i])
+
+L = [1, -2, 3.33, -5]
+print(f"1. L = {L}")
+print("Apply ABS() to each element of L")
+apply_to_each(L,abs)
+print(f"2. L = {L}")
+apply_to_each(L,int)
+print(f"3. L = {L}")
+apply_to_each(L,float)
+print(f"4. L = {L}")
+print(f"Apply squaring to each element of L : {L}")
+apply_to_each(L, lambda x: x**2)
+print(f"5. L = {L}")
+```
+:::
+
+## Output
+
+```{python}
+def apply_to_each(L,f):
+    """ Assume L is a list, F is a function
+    Mutats L by replacing each element, e, of L by f(e)"""
+    for i in range(len(L)):
+        print(f" position : {i}L[i] is now : {L[i]}")
+        L[i] = f(L[i])
+
+L = [1, -2, 3.33, -5]
+print(f"1. L = {L}")
+print("Apply ABS() to each element of L")
+apply_to_each(L,abs)
+print(f"2. L = {L}")
+apply_to_each(L,int)
+print(f"3. L = {L}")
+apply_to_each(L,float)
+print(f"4. L = {L}")
+print(f"Apply squaring to each element of L : {L}")
+apply_to_each(L, lambda x: x**2)
+print(f"5. L = {L}")
+```
+
+::: {style="color: #E74C3C;"}
+The function `apply_to_each()` is called higher-order because it
+has an argument that is itself a function.
+:::
+
+
+
+<!-- # Sequence Types: The Family Reunion 👨‍👩‍👧‍👦 -->
+# Sequence Types
+
+::: {.callout-note icon="false"}
+## Definition
+**Strings, Tuples, Ranges, and Lists** are all **sequence types** that share common operations but have different characteristics and use cases.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Understanding when to use each type for optimal performance and code clarity
+:::
+:::
+::: {.column width="30%"}
+👨‍👩‍👧‍👦🤝💫
+:::
+::::
+
+
+
+## Sequence Types: Common Operations
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Common operations across sequence types
+text = "Hello"
+numbers_tuple = (1, 2, 3, 4, 5)
+numbers_range = range(1, 6)
+numbers_list = [1, 2, 3, 4, 5]
+
+# Indexing works on all
+print(f"String[0]: {text[0]}")           # H
+print(f"Tuple[1]: {numbers_tuple[1]}")   # 2
+print(f"List[2]: {numbers_list[2]}")     # 3
+```
+:::
+
+
+
+## Sequence Types: Key Differences
+
+::: {.callout-important icon="false"}
+## Mutability Matters!
+```python
+# Slicing works on all
+print(f"String slice: {text[1:4]}")      # ell
+print(f"List slice: {numbers_list[1:4]}") # [2, 3, 4]
+
+# But mutability differs!
+# text[0] = 'h'        # Error! Strings are immutable
+# numbers_tuple[0] = 0  # Error! Tuples are immutable
+numbers_list[0] = 0    # Works! Lists are mutable
+```
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** All sequences share similar operations, but mutability determines which operations are allowed!
+:::
+
+
+
+<!-- # Sets: The Unique Collection Specialists 🌟 -->
+# Sets
+
+::: {.callout-note icon="false"}
+## Definition
+**Sets** are unordered collections of unique elements. No duplicates allowed!
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Typical Use Case:** Removing duplicates, finding common elements, or checking membership quickly
+:::
+:::
+::: {.column width="30%"}
+🌟💎✨
+:::
+::::
+
+
+
+## Sets: Creating and Basic Operations
+
+::: {.callout-important icon="false"}
+## Example
+```python
+# Creating sets
+colors1 = {"red", "green", "blue", "red"}  # Duplicate "red" ignored
+colors2 = {"blue", "yellow", "purple"}
+numbers = set([1, 2, 2, 3, 3, 3, 4])      # From list
+
+print(f"Colors1: {colors1}")  # {'red', 'green', 'blue'}
+print(f"Numbers: {numbers}")  # {1, 2, 3, 4}
+
+colors1.add("purple")
+print(f"Add purple to Colors1: {colors1}")  # {'red', 'green', 'blue', 'purple'}
+colors1.add("purple")
+print(f"Add purple to Colors1 (again): {colors1}")  # {'red', 'green', 'blue', 'purple'}
+```
+
+## Output
+
+```{python}
+# Creating sets
+colors1 = {"red", "green", "blue", "red"}  # Duplicate "red" ignored
+colors2 = {"blue", "yellow", "purple"}
+numbers = set([1, 2, 2, 3, 3, 3, 4])      # From list
+
+print(f"Colors1: {colors1}")  # {'red', 'green', 'blue'}
+print(f"Numbers: {numbers}")  # {1, 2, 3, 4}
+
+colors1.add("purple")
+print(f"Add purple to Colors1: {colors1}")  # {'red', 'green', 'blue', 'purple'}
+colors1.add("purple")
+print(f"Add purple to Colors1 (again): {colors1}")  # {'red', 'green', 'blue', 'purple'}
+```
+
+:::
+
+
+
+## Sets: Mathematical Operations
+
+::: {.callout-important icon="false"}
+## Set Operations
+```python
+# Creating sets
+colors1 = {"red", "green", "blue", "red"}  # Duplicate "red" ignored
+colors2 = {"blue", "yellow", "purple"}
+# Set operations
+common = colors1 & colors2          # Intersection
+all_colors = colors1 | colors2      # Union
+unique_to_1 = colors1 - colors2     # Difference
+
+print(f"Common colors: {common}")       # {'blue'}
+print(f"All colors: {all_colors}")     
+# {'red', 'green', 'blue', 'yellow', 'purple'}
+
+# Fast membership testing
+print("red" in colors1)  # True - very fast!
+```
+
+## Output
+
+```{python}
+# Creating sets
+colors1 = {"red", "green", "blue", "red"}  # Duplicate "red" ignored
+colors2 = {"blue", "yellow", "purple"}
+# Set operations
+common = colors1 & colors2          # Intersection
+all_colors = colors1 | colors2      # Union
+unique_to_1 = colors1 - colors2     # Difference
+
+print(f"Common colors: {common}")       # {'blue'}
+print(f"All colors: {all_colors}")     
+# {'red', 'green', 'blue', 'yellow', 'purple'}
+
+# Fast membership testing
+print("red" in colors1)  # True - very fast!
+```
+
+:::
+
+::: {style="color: #E74C3C;"}
+**Why this works:** Sets automatically handle uniqueness and provide super-fast lookups and mathematical operations!
+:::
+

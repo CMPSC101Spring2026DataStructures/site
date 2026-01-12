@@ -1,0 +1,14 @@
+---
+title: "Playground"
+listing:
+  contents:
+    - "*.qmd"
+    # - "lab-notes/*reports.qmd"
+  sort: desc
+---
+
+Here you will find a listing of interactive curiosities from the course.
+
+
+![](../graphics/levelup.png){width=10%}
+

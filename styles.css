@@ -1,0 +1,385 @@
+/* Custom Color Scheme - Blues, Greens, Yellows, and Red */
+
+:root {
+  /* Color Palette */
+  --primary-blue: #2E86AB;
+  --light-blue: #A23B72;
+  --deep-blue: #0F4C75;
+  --forest-green: #2D5016;
+  --lime-green: #7CB342;
+  --mint-green: #81C784;
+  --golden-yellow: #FFD54F;
+  --bright-yellow: #FFEB3B;
+  --coral-red: #E53935;
+  --deep-red: #B71C1C;
+  --red-grey: #e9dede;
+  --blue-grey: #cee7f2;
+}
+
+/* Body and Background */
+body {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 50%, var(--deep-blue) 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Main content area */
+.quarto-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  margin: 20px;
+  padding: 30px;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+  /* background: linear-gradient(90deg, var(--forest-green) 0%, var(--lime-green) 100%) !important; */
+  background: linear-gradient(90deg, var(--lime-green) 0%, var(--golden-yellow) 100%) !important;
+  border-bottom: 3px solid var(--golden-yellow);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand, .nav-link {
+/*  color: white !important;*/
+  color: var(--deep-blue) !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--bright-yellow) !important;
+  transform: translateY(-2px);
+}
+
+/* Headings */
+h1 {
+  color: var(--deep-blue);
+  background: linear-gradient(45deg, var(--primary-blue), var(--forest-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: var(--forest-green);
+  border-left: 5px solid var(--lime-green);
+  padding-left: 15px;
+  background: linear-gradient(90deg, rgba(124, 179, 66, 0.1), transparent);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+h3 {
+  color: var(--coral-red);
+  position: relative;
+}
+
+h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--golden-yellow);
+  border-radius: 2px;
+}
+
+/* Links */
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--coral-red);
+  text-decoration: none;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--golden-yellow);
+  transition: width 0.3s ease;
+}
+
+a:hover::before {
+  width: 100%;
+}
+
+/* Code blocks */
+pre {
+  background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue)) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  border: 2px solid var(--lime-green) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+code {
+  /* background: var(--bright-yellow) !important; */
+  background: var(--blue-grey) !important;
+  color: var(--deep-red) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-weight: bold;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 5px solid var(--coral-red);
+  background: linear-gradient(90deg, rgba(255, 213, 79, 0.2), rgba(255, 235, 59, 0.1));
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  font-style: italic;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead th {
+  background: linear-gradient(90deg, var(--forest-green), var(--lime-green));
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 213, 79, 0.1);
+}
+
+tbody tr:nth-child(odd) {
+  background: rgba(129, 199, 132, 0.1);
+}
+
+tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+tbody tr:hover {
+  background: rgba(46, 134, 171, 0.2);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+/* Buttons and Interactive Elements */
+.btn, button {
+  /* background: linear-gradient(45deg, var(--coral-red), var(--deep-red)); */
+  background: linear-gradient(45deg, var(--forest-green), var(--bright-yellow));
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover, button:hover {
+  /* background: linear-gradient(45deg, var(--deep-red), var(--coral-red)); */
+  background: linear-gradient(45deg, var(--bright-yellow), var(--forest-green));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+/* Table of Contents */
+.toc-title {
+  color: var(--forest-green) !important;
+  background: var(--bright-yellow);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#toc ul li a {
+  color: var(--primary-blue);
+  transition: all 0.2s ease;
+}
+
+#toc ul li a:hover {
+  color: var(--coral-red);
+  padding-left: 10px;
+}
+
+/* Search Box */
+.aa-Form {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid var(--lime-green) !important;
+  border-radius: 25px !important;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, var(--deep-blue), var(--primary-blue));
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 3px solid var(--golden-yellow);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bright-yellow);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-blue), var(--forest-green));
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--coral-red), var(--deep-red));
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quarto-container {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Python Interactive Terminal Enhancements */
+.python-terminal {
+  font-size: 14px;
+  line-height: 1.4;
+  max-height: 400px;
+  position: relative;
+}
+
+.python-terminal::before {
+  content: "🐍 Python Terminal";
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  background: var(--forest-green);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.python-input::placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+.example-card .run-button {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 8px 15px;
+}
+
+/* Callout enhancements for challenges */
+.callout-output .callout-icon::before,
+.callout-tip .callout-icon::before,
+.callout-warning .callout-icon::before,
+.callout-important .callout-icon::before {
+  font-size: 1.2em;
+}
+
+.callout-output {
+  border-left-color: var(--golden-yellow) !important;
+  background: linear-gradient(90deg, #b3428b1a, transparent) !important;
+}
+
+.callout-tip {
+  border-left-color: var(--lime-green) !important;
+  background: linear-gradient(90deg, rgba(124, 179, 66, 0.1), transparent) !important;
+}
+
+.callout-warning {
+  border-left-color: var(--golden-yellow) !important;
+  background: linear-gradient(90deg, rgba(255, 213, 79, 0.1), transparent) !important;
+}
+
+.callout-important {
+  border-left-color: var(--coral-red) !important;
+  background: linear-gradient(90deg, rgba(229, 57, 53, 0.1), transparent) !important;
+}
+
+/* Loading animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.loading {
+  animation: blink 1.5s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quarto-container {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2em;
+  }
+  
+  .python-examples {
+    grid-template-columns: 1fr;
+  }
+  
+  .python-input {
+    font-size: 12px;
+  }
+  
+  .python-terminal {
+    font-size: 12px;
+    min-height: 150px;
+  }
+}

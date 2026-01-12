@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="CS 101 - Fall 2025">
+  <title>CMPSC101 Spring 2026 :: DataStructures – Heap-Based Priority Queue: Sorting the Search Space</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Heap-Based Priority Queue: Sorting the Search Space</h1>
+  <p class="subtitle">O(log n) Efficiency Through Smart Organization!</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+CS 101 - Fall 2025 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="what-is-heap-based-priority-queue-sorting" class="title-slide slide level1 center">
+<h1>What is Heap-Based Priority Queue Sorting?</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Smart Organizer 🏥</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Heap-based priority queues</strong> achieve <strong>O(log n)</strong> efficiency by maintaining a <strong>partial ordering</strong> that keeps the most important element always accessible!</p>
+<p><strong>Real-World Analogy</strong>:</p>
+<ul>
+<li>Like an <strong>emergency room triage system</strong> - critical patients treated first</li>
+<li><strong>Hospital priority</strong>: Heart attack before headache!</li>
+<li><strong>1000 patients</strong> → Only <strong>10 steps</strong> to find next priority!</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> heapq</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="co"># Priority queue: lower number = higher priority</span></span>
+<span id="cb1-4"><a></a>emergency_room <span class="op">=</span> []</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>patients <span class="op">=</span> [</span>
+<span id="cb1-7"><a></a>    (<span class="dv">1</span>, <span class="st">"Heart Attack"</span>),    <span class="co"># Highest priority</span></span>
+<span id="cb1-8"><a></a>    (<span class="dv">5</span>, <span class="st">"Broken Arm"</span>),</span>
+<span id="cb1-9"><a></a>    (<span class="dv">2</span>, <span class="st">"Severe Bleeding"</span>),</span>
+<span id="cb1-10"><a></a>    (<span class="dv">8</span>, <span class="st">"Routine Checkup"</span>), <span class="co"># Lowest priority</span></span>
+<span id="cb1-11"><a></a>    (<span class="dv">3</span>, <span class="st">"Chest Pain"</span>),</span>
+<span id="cb1-12"><a></a>    (<span class="dv">7</span>, <span class="st">"Headache"</span>),</span>
+<span id="cb1-13"><a></a>    (<span class="dv">1</span>, <span class="st">"Stroke"</span>),          <span class="co"># Also highest priority</span></span>
+<span id="cb1-14"><a></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column">
+<p><strong>Incredible Scaling</strong> 📊</p>
+<ul>
+<li>100 patients → ~7 steps</li>
+<li>1,000 patients → ~10 steps<br>
+</li>
+<li>1,000,000 patients → ~20 steps</li>
+<li><strong>Life-saving efficiency!</strong></li>
+</ul>
+</div><div class="column">
+<p><strong>Key Insight</strong> 🔑 The heap <strong>maintains priority order</strong> without full sorting.</p>
+<p><strong>Magic Question</strong>: <em>“Can I always access the highest priority in O(1) while maintaining order in O(log n)?”</em></p>
+<p>If yes → Heap is perfect!</p>
+</div></div>
+</section>
+<section id="what-makes-heap-sorting-olog-n" class="slide level2">
+<h2>What Makes Heap Sorting O(log n)?</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The “Partial Ordering” Strategy 🔄</strong></p>
+</div>
+<div class="callout-content">
+<p>Heaps use smart tree structure to avoid full sorting while maintaining priority access.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Binary Min-Heap Property</strong> 🌳</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Heap maintains this invariant:</span></span>
+<span id="cb2-2"><a></a><span class="co"># Parent ≤ Children (always!)</span></span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co">#       1 (Heart Attack)</span></span>
+<span id="cb2-5"><a></a><span class="co">#      / \</span></span>
+<span id="cb2-6"><a></a><span class="co">#     3   2 (Severe Bleeding)  </span></span>
+<span id="cb2-7"><a></a><span class="co">#    / \ / \</span></span>
+<span id="cb2-8"><a></a><span class="co">#   8  5 7  ?</span></span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a><span class="co"># Root = minimum priority = highest urgency</span></span>
+<span id="cb2-11"><a></a><span class="co"># Height = log₂(n) = maximum steps needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Key Properties:</strong> - <strong>Parent ≤ Children</strong>: Every parent node ≤ its children - <strong>Complete binary tree</strong>: Fills left to right, level by level - <strong>Root = Minimum</strong>: Smallest element always at top</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Array Representation</strong> 📊</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Heap stored as compact array</span></span>
+<span id="cb3-2"><a></a>Index:  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span></span>
+<span id="cb3-3"><a></a>Value: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, ?]</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="co"># Navigation formulas (no pointers needed!)</span></span>
+<span id="cb3-6"><a></a><span class="kw">def</span> get_parent(i):     <span class="cf">return</span> (i<span class="op">-</span><span class="dv">1</span>)<span class="op">//</span><span class="dv">2</span></span>
+<span id="cb3-7"><a></a><span class="kw">def</span> get_left_child(i): <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>i <span class="op">+</span> <span class="dv">1</span>  </span>
+<span id="cb3-8"><a></a><span class="kw">def</span> get_right_child(i): <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>i <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a><span class="co"># Why this works:</span></span>
+<span id="cb3-11"><a></a><span class="co"># - Complete tree fills left-to-right</span></span>
+<span id="cb3-12"><a></a><span class="co"># - Array index maps perfectly to tree position</span></span>
+<span id="cb3-13"><a></a><span class="co"># - O(1) parent/child access</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>The Array Advantage:</strong> - <strong>Space efficient</strong>: No pointer overhead - <strong>Cache friendly</strong>: Elements stored contiguously<br>
+- <strong>O(1) navigation</strong>: Simple index arithmetic</p>
+</div></div>
+</section>
+<section id="heap-operations---the-olog-n-magic" class="slide level2">
+<h2>Heap Operations - The O(log n) Magic!</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Heap Insertion - “Bubble Up” Strategy 📈</strong></p>
+</div>
+<div class="callout-content">
+<p>Adding elements maintains heap property through smart upward movement!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Visual Tree Structure</strong> 🌳</p>
+<pre><code>       1 (Heart Attack)
+      / \
+     3   2 (Severe Bleeding)
+    / \ / \
+   8  5 7  ?</code></pre>
+<p><strong>Key Insight</strong>: Not fully sorted, but <strong>minimum always accessible</strong> in O(1)!</p>
+<p><strong>The Heap Promise:</strong> - Always know the most urgent patient - Insert new patients efficiently - Remove urgent patients efficiently</p>
+</div><div class="column">
+<p><strong>How <code>heappush()</code> Works</strong> ⬆️</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Adding "Stroke" (Priority 1):</span></span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="co"># Step 1: Insert at end of array</span></span>
+<span id="cb5-4"><a></a>[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>] → [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>]</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="co"># Step 2: "Bubble Up" - Compare with parent</span></span>
+<span id="cb5-7"><a></a><span class="co"># 1 &lt; 2 (parent) → Swap!</span></span>
+<span id="cb5-8"><a></a>[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>]</span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="co"># Step 3: Continue until heap property restored</span></span>
+<span id="cb5-11"><a></a><span class="co"># Maximum swaps: log₂(n) levels</span></span>
+<span id="cb5-12"><a></a><span class="co"># Time Complexity: O(log n)</span></span>
+<span id="cb5-13"><a></a></span>
+<span id="cb5-14"><a></a><span class="kw">def</span> heappush_explained(heap, value):</span>
+<span id="cb5-15"><a></a>    heap.append(value)        <span class="co"># O(1) - add to end</span></span>
+<span id="cb5-16"><a></a>    bubble_up(heap, <span class="bu">len</span>(heap)<span class="op">-</span><span class="dv">1</span>)  <span class="co"># O(log n) - fix order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why O(log n)?</strong> - Tree height = log₂(n) - Bubble up at most one path - Path length ≤ tree height</p>
+</div></div>
+</section>
+<section id="heap-removal---the-bubble-down-strategy" class="slide level2">
+<h2>Heap Removal - The “Bubble Down” Strategy</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Heap Removal - “Bubble Down” Strategy 📉</strong></p>
+</div>
+<div class="callout-content">
+<p>Removing the highest priority element maintains heap property through smart downward movement!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>How <code>heappop()</code> Works</strong> ⬇️</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Removing highest priority patient:</span></span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="co"># Step 1: Remove root (minimum element)</span></span>
+<span id="cb6-4"><a></a>Remove: <span class="dv">1</span> (Heart Attack)</span>
+<span id="cb6-5"><a></a>Remaining: [?, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>]</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="co"># Step 2: Move last element to root</span></span>
+<span id="cb6-8"><a></a>[<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>]</span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a><span class="co"># Step 3: "Bubble Down" - Compare with children</span></span>
+<span id="cb6-11"><a></a><span class="co"># Choose smaller child and swap if needed</span></span>
+<span id="cb6-12"><a></a><span class="co"># 2 &gt; 1 (smaller child) → Swap!</span></span>
+<span id="cb6-13"><a></a></span>
+<span id="cb6-14"><a></a><span class="kw">def</span> heappop_explained(heap):</span>
+<span id="cb6-15"><a></a>    min_val <span class="op">=</span> heap[<span class="dv">0</span>]         <span class="co"># O(1) - get minimum</span></span>
+<span id="cb6-16"><a></a>    heap[<span class="dv">0</span>] <span class="op">=</span> heap.pop()      <span class="co"># O(1) - move last to root</span></span>
+<span id="cb6-17"><a></a>    bubble_down(heap, <span class="dv">0</span>)      <span class="co"># O(log n) - fix order</span></span>
+<span id="cb6-18"><a></a>    <span class="cf">return</span> min_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>The Bubble Down Process</strong> 🔽</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Visual bubble down process:</span></span>
+<span id="cb7-2"><a></a><span class="co">#     2              1</span></span>
+<span id="cb7-3"><a></a><span class="co">#    / \    →       / \</span></span>
+<span id="cb7-4"><a></a><span class="co">#   3   1          3   2</span></span>
+<span id="cb7-5"><a></a><span class="co">#  / \ /          / \ </span></span>
+<span id="cb7-6"><a></a><span class="co"># 8  5 7         8  5 7</span></span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a><span class="co"># Step-by-step:</span></span>
+<span id="cb7-9"><a></a><span class="co"># 1. Compare 2 with children (3, 1)</span></span>
+<span id="cb7-10"><a></a><span class="co"># 2. 1 is smaller → swap 2 and 1</span></span>
+<span id="cb7-11"><a></a><span class="co"># 3. Continue until heap property restored</span></span>
+<span id="cb7-12"><a></a></span>
+<span id="cb7-13"><a></a><span class="co"># Maximum swaps: log₂(n) levels</span></span>
+<span id="cb7-14"><a></a><span class="co"># Time Complexity: O(log n)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why O(log n)?</strong> - Tree height = log₂(n) - Bubble down at most one path<br>
+- Path length ≤ tree height - Each comparison is O(1)</p>
+</div></div>
+</section>
+<section id="heap-vs-other-approaches---performance-showdown" class="slide level2">
+<h2>Heap vs Other Approaches - Performance Showdown!</h2>
+<p><strong>Performance Comparison</strong> 📊: Champion-like Qualities!</p>
+<div class="columns">
+<div class="column">
+<p><strong>Efficiency Comparison</strong> ⚡</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Insert</th>
+<th>Remove Min</th>
+<th>Total (n ops)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Heap</strong></td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+<td><strong>O(n log n)</strong></td>
+</tr>
+<tr class="even">
+<td>Unsorted List</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(n²)</td>
+</tr>
+<tr class="odd">
+<td>Sorted List</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>O(n²)</td>
+</tr>
+<tr class="even">
+<td>Re-sort each time</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td><strong>O(n² log n)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Heap Sweet Spot:</strong></p>
+<ul>
+<li>Balanced insert/remove performance</li>
+<li>Dramatically better than naive approaches</li>
+<li>Scales beautifully with priority data</li>
+<li>No need for full sorting</li>
+</ul>
+<p><strong>Heap wins!</strong> 🏆</p>
+</div><div class="column">
+<p><strong>When Heaps Shine</strong> ✨</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Emergency room priority queue</span></span>
+<span id="cb8-2"><a></a><span class="co"># Even with thousands of patients!</span></span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="co"># Real-time priority management</span></span>
+<span id="cb8-5"><a></a><span class="im">import</span> heapq</span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a><span class="co"># Simulation: 1000 patients arriving</span></span>
+<span id="cb8-8"><a></a>patients <span class="op">=</span> []</span>
+<span id="cb8-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb8-10"><a></a>    priority <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb8-11"><a></a>    patient <span class="op">=</span> <span class="ss">f"Patient_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb8-12"><a></a>    heapq.heappush(patients, (priority, patient))  <span class="co"># O(log n)</span></span>
+<span id="cb8-13"><a></a></span>
+<span id="cb8-14"><a></a><span class="co"># Always serve highest priority first</span></span>
+<span id="cb8-15"><a></a><span class="cf">while</span> patients:</span>
+<span id="cb8-16"><a></a>    priority, patient <span class="op">=</span> heapq.heappop(patients)  <span class="co"># O(log n)</span></span>
+<span id="cb8-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"Treating: </span><span class="sc">{</span>patient<span class="sc">}</span><span class="ss"> (Priority </span><span class="sc">{</span>priority<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb8-18"><a></a></span>
+<span id="cb8-19"><a></a><span class="co"># Total time: O(n log n) for n operations</span></span>
+<span id="cb8-20"><a></a><span class="co"># Compare with O(n²) for sorting each time!</span></span>
+<span id="cb8-21"><a></a></span>
+<span id="cb8-22"><a></a><span class="co"># The secret: Partial ordering pays dividends!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="python-heap-implementation---the-efficient-choice" class="slide level2">
+<h2>Python Heap Implementation - The Efficient Choice!</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Experience the O(log n) Magic! 🧑‍💻</strong></p>
+</div>
+<div class="callout-content">
+<p>See how Python’s <code>heapq</code> module demonstrates perfect priority ordering.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Emergency Room Demo</strong> 🏥</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> heapq</span>
+<span id="cb9-2"><a></a><span class="im">import</span> time</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="co"># Simulate a hospital emergency room</span></span>
+<span id="cb9-5"><a></a><span class="co"># Priority queue: lower number = higher priority</span></span>
+<span id="cb9-6"><a></a>emergency_room <span class="op">=</span> []</span>
+<span id="cb9-7"><a></a></span>
+<span id="cb9-8"><a></a><span class="co"># Add patients with priorities</span></span>
+<span id="cb9-9"><a></a>patients <span class="op">=</span> [</span>
+<span id="cb9-10"><a></a>    (<span class="dv">1</span>, <span class="st">"Heart Attack"</span>),    <span class="co"># Highest priority</span></span>
+<span id="cb9-11"><a></a>    (<span class="dv">5</span>, <span class="st">"Broken Arm"</span>),</span>
+<span id="cb9-12"><a></a>    (<span class="dv">2</span>, <span class="st">"Severe Bleeding"</span>),</span>
+<span id="cb9-13"><a></a>    (<span class="dv">8</span>, <span class="st">"Routine Checkup"</span>), <span class="co"># Lowest priority</span></span>
+<span id="cb9-14"><a></a>    (<span class="dv">3</span>, <span class="st">"Chest Pain"</span>),</span>
+<span id="cb9-15"><a></a>    (<span class="dv">7</span>, <span class="st">"Headache"</span>),</span>
+<span id="cb9-16"><a></a>    (<span class="dv">1</span>, <span class="st">"Stroke"</span>),          <span class="co"># Also highest priority</span></span>
+<span id="cb9-17"><a></a>]</span>
+<span id="cb9-18"><a></a></span>
+<span id="cb9-19"><a></a><span class="bu">print</span>(<span class="st">"Adding patients to emergency queue:"</span>)</span>
+<span id="cb9-20"><a></a><span class="cf">for</span> priority, condition <span class="kw">in</span> patients:</span>
+<span id="cb9-21"><a></a>    heapq.heappush(emergency_room, (priority, condition))  <span class="co"># O(log n)</span></span>
+<span id="cb9-22"><a></a>    <span class="bu">print</span>(<span class="ss">f"Added: </span><span class="sc">{</span>condition<span class="sc">}</span><span class="ss"> (Priority </span><span class="sc">{</span>priority<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-23"><a></a></span>
+<span id="cb9-24"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Treating patients in priority order:"</span>)</span>
+<span id="cb9-25"><a></a><span class="cf">while</span> emergency_room:</span>
+<span id="cb9-26"><a></a>    priority, condition <span class="op">=</span> heapq.heappop(emergency_room)  <span class="co"># O(log n)</span></span>
+<span id="cb9-27"><a></a>    <span class="bu">print</span>(<span class="ss">f"Treating: </span><span class="sc">{</span>condition<span class="sc">}</span><span class="ss"> (Priority </span><span class="sc">{</span>priority<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-28"><a></a></span>
+<span id="cb9-29"><a></a><span class="co"># Each operation is O(log n)</span></span>
+<span id="cb9-30"><a></a><span class="co"># Total time: O(n log n) for n operations</span></span>
+<span id="cb9-31"><a></a><span class="co"># Much better than sorting repeatedly: O(n² log n)!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>Output Example</strong> 📋</p>
+<pre><code>Adding patients to emergency queue:
+Added: Heart Attack (Priority 1)
+Added: Broken Arm (Priority 5)
+Added: Severe Bleeding (Priority 2)
+Added: Routine Checkup (Priority 8)
+Added: Chest Pain (Priority 3)
+Added: Headache (Priority 7)
+Added: Stroke (Priority 1)
+
+Treating patients in priority order:
+Treating: Heart Attack (Priority 1)
+Treating: Stroke (Priority 1)
+Treating: Severe Bleeding (Priority 2)
+Treating: Chest Pain (Priority 3)
+Treating: Broken Arm (Priority 5)
+Treating: Headache (Priority 7)
+Treating: Routine Checkup (Priority 8)</code></pre>
+<p><strong>Perfect priority ordering without full sorting!</strong> ✅</p>
+<p><strong>Python’s <code>heapq</code> Advantage:</strong> - Highly optimized C implementation - Minimal memory overhead - Simple API design - Built-in to standard library</p>
+</div></div>
+</section></section>
+<section>
+<section id="the-math-behind-heap-olog-n" class="title-slide slide level1 center">
+<h1>The Math Behind Heap O(log n)</h1>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Understanding Heap Mathematics 📐</strong></p>
+</div>
+<div class="callout-content">
+<p>The logarithmic performance comes from the tree structure!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Tree Height = log₂(n)</strong> 🔢</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Why heaps are O(log n)</span></span>
+<span id="cb11-2"><a></a><span class="kw">def</span> calculate_tree_height(n):</span>
+<span id="cb11-3"><a></a>    <span class="im">import</span> math</span>
+<span id="cb11-4"><a></a>    <span class="cf">return</span> math.ceil(math.log2(n <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="co"># Examples of heap heights:</span></span>
+<span id="cb11-7"><a></a>sizes <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">31</span>, <span class="dv">63</span>, <span class="dv">127</span>, <span class="dv">1023</span>]</span>
+<span id="cb11-8"><a></a><span class="bu">print</span>(<span class="st">"Elements</span><span class="ch">\t\t</span><span class="st">Tree Height</span><span class="ch">\t\t</span><span class="st">Max Operations"</span>)</span>
+<span id="cb11-9"><a></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb11-10"><a></a><span class="cf">for</span> n <span class="kw">in</span> sizes:</span>
+<span id="cb11-11"><a></a>    height <span class="op">=</span> calculate_tree_height(n)</span>
+<span id="cb11-12"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ch">\t\t</span><span class="sc">{</span>height<span class="sc">}</span><span class="ch">\t\t\t</span><span class="sc">{</span>height<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-13"><a></a></span>
+<span id="cb11-14"><a></a><span class="co"># Output shows logarithmic scaling!</span></span>
+<span id="cb11-15"><a></a><span class="co"># Elements    Tree Height    Max Operations</span></span>
+<span id="cb11-16"><a></a><span class="co"># 7           3              3</span></span>
+<span id="cb11-17"><a></a><span class="co"># 15          4              4  </span></span>
+<span id="cb11-18"><a></a><span class="co"># 31          5              5</span></span>
+<span id="cb11-19"><a></a><span class="co"># 63          6              6</span></span>
+<span id="cb11-20"><a></a><span class="co"># 127         7              7</span></span>
+<span id="cb11-21"><a></a><span class="co"># 1023        10             10</span></span>
+<span id="cb11-22"><a></a></span>
+<span id="cb11-23"><a></a><span class="co"># Even 1000+ elements need only ~10 operations!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>Each Operation = One Tree Path</strong> ✨</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Bubble up/down traverse exactly one path</span></span>
+<span id="cb12-2"><a></a><span class="kw">def</span> bubble_up_steps(heap_size):</span>
+<span id="cb12-3"><a></a>    <span class="im">import</span> math</span>
+<span id="cb12-4"><a></a>    <span class="cf">return</span> math.ceil(math.log2(heap_size <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="co"># Real performance examples:</span></span>
+<span id="cb12-7"><a></a>sizes <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">1000000</span>]</span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a><span class="bu">print</span>(<span class="st">"Heap Size</span><span class="ch">\t\t</span><span class="st">Max Steps"</span>)</span>
+<span id="cb12-10"><a></a><span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">30</span>)</span>
+<span id="cb12-11"><a></a><span class="cf">for</span> n <span class="kw">in</span> sizes:</span>
+<span id="cb12-12"><a></a>    steps <span class="op">=</span> bubble_up_steps(n)</span>
+<span id="cb12-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">:,}</span><span class="ch">\t\t</span><span class="sc">{</span>steps<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-14"><a></a></span>
+<span id="cb12-15"><a></a><span class="co"># Output:</span></span>
+<span id="cb12-16"><a></a><span class="co"># Heap Size    Max Steps</span></span>
+<span id="cb12-17"><a></a><span class="co"># 100          7</span></span>
+<span id="cb12-18"><a></a><span class="co"># 1,000        10</span></span>
+<span id="cb12-19"><a></a><span class="co"># 10,000       14</span></span>
+<span id="cb12-20"><a></a><span class="co"># 100,000      17</span></span>
+<span id="cb12-21"><a></a><span class="co"># 1,000,000    20</span></span>
+<span id="cb12-22"><a></a></span>
+<span id="cb12-23"><a></a><span class="co"># Notice: Steps grow very slowly!</span></span>
+<span id="cb12-24"><a></a><span class="co"># This is the power of O(log n)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="key-insights-how-heap-sorts-search-space" class="slide level2">
+<h2>Key Insights: How Heap Sorts Search Space</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Heap’s Sorting Philosophy 🧠</strong></p>
+</div>
+<div class="callout-content">
+<p>Heaps achieve O(log n) through <strong>structural invariants</strong> rather than full sorting!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Partial Ordering Strategy</strong> 📊</p>
+<ul>
+<li><strong>Not fully sorted</strong> like array</li>
+<li><strong>Maintains heap invariant</strong>: parent ≤ children</li>
+<li><strong>Lazy sorting</strong>: Only ensures minimum is accessible</li>
+<li><strong>Smart organization</strong>: Structure enables fast access</li>
+</ul>
+<p><strong>The Key Insight:</strong></p>
+<ul>
+<li>Full sorting is O(n log n) once</li>
+<li>Heap operations are O(log n) always</li>
+<li>Perfect for dynamic priority management</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Efficient Operations</strong> ⚡</p>
+<ul>
+<li><strong>O(log n) insertions</strong>: Bubble up one path</li>
+<li><strong>O(log n) deletions</strong>: Bubble down one path</li>
+<li><strong>O(1) minimum access</strong>: Always at root</li>
+<li><strong>Space efficient</strong>: Array-based, no pointers</li>
+</ul>
+<p><strong>Path-Based Efficiency:</strong></p>
+<ul>
+<li>Tree height limits operation cost</li>
+<li>Each operation follows one root-to-leaf path</li>
+<li>Path length = tree height = O(log n)</li>
+<li><strong>Structure inherently limits complexity!</strong></li>
+</ul>
+</div></div>
+</section>
+<section id="real-world-heap-applications" class="slide level2">
+<h2>Real-World Heap Applications</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Where You Use Heaps Every Day! 🌍</strong></p>
+</div>
+<div class="callout-content">
+<p>Heap-based priority queues power many systems you interact with daily.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>System-Level Applications</strong> 💻</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Operating system task scheduling</span></span>
+<span id="cb13-2"><a></a><span class="co"># CPU scheduler uses priority heaps</span></span>
+<span id="cb13-3"><a></a><span class="kw">class</span> TaskScheduler:</span>
+<span id="cb13-4"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb13-5"><a></a>        <span class="va">self</span>.tasks <span class="op">=</span> []  <span class="co"># Min-heap by priority</span></span>
+<span id="cb13-6"><a></a>    </span>
+<span id="cb13-7"><a></a>    <span class="kw">def</span> add_task(<span class="va">self</span>, priority, task):</span>
+<span id="cb13-8"><a></a>        heapq.heappush(<span class="va">self</span>.tasks, (priority, task))  <span class="co"># O(log n)</span></span>
+<span id="cb13-9"><a></a>    </span>
+<span id="cb13-10"><a></a>    <span class="kw">def</span> get_next_task(<span class="va">self</span>):</span>
+<span id="cb13-11"><a></a>        <span class="cf">return</span> heapq.heappop(<span class="va">self</span>.tasks)[<span class="dv">1</span>]  <span class="co"># O(log n)</span></span>
+<span id="cb13-12"><a></a></span>
+<span id="cb13-13"><a></a><span class="co"># Network packet routing</span></span>
+<span id="cb13-14"><a></a><span class="co"># Routers prioritize urgent packets first</span></span>
+<span id="cb13-15"><a></a></span>
+<span id="cb13-16"><a></a><span class="co"># Graphics rendering</span></span>
+<span id="cb13-17"><a></a><span class="co"># Z-buffer algorithms use priority queues</span></span>
+<span id="cb13-18"><a></a></span>
+<span id="cb13-19"><a></a><span class="co"># Database query optimization</span></span>
+<span id="cb13-20"><a></a><span class="co"># Query planners use heaps for join ordering</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>Algorithm Applications</strong> 🧮</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Dijkstra's shortest path algorithm</span></span>
+<span id="cb14-2"><a></a><span class="co"># Google Maps, GPS navigation</span></span>
+<span id="cb14-3"><a></a><span class="kw">def</span> dijkstra_shortest_path(graph, start):</span>
+<span id="cb14-4"><a></a>    distances <span class="op">=</span> {node: <span class="bu">float</span>(<span class="st">'inf'</span>) <span class="cf">for</span> node <span class="kw">in</span> graph}</span>
+<span id="cb14-5"><a></a>    distances[start] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-6"><a></a>    pq <span class="op">=</span> [(<span class="dv">0</span>, start)]  <span class="co"># Priority queue: (distance, node)</span></span>
+<span id="cb14-7"><a></a>    </span>
+<span id="cb14-8"><a></a>    <span class="cf">while</span> pq:</span>
+<span id="cb14-9"><a></a>        current_dist, current <span class="op">=</span> heapq.heappop(pq)  <span class="co"># O(log n)</span></span>
+<span id="cb14-10"><a></a>        </span>
+<span id="cb14-11"><a></a>        <span class="cf">for</span> neighbor, weight <span class="kw">in</span> graph[current]:</span>
+<span id="cb14-12"><a></a>            distance <span class="op">=</span> current_dist <span class="op">+</span> weight</span>
+<span id="cb14-13"><a></a>            <span class="cf">if</span> distance <span class="op">&lt;</span> distances[neighbor]:</span>
+<span id="cb14-14"><a></a>                distances[neighbor] <span class="op">=</span> distance</span>
+<span id="cb14-15"><a></a>                heapq.heappush(pq, (distance, neighbor))  <span class="co"># O(log n)</span></span>
+<span id="cb14-16"><a></a></span>
+<span id="cb14-17"><a></a><span class="co"># Huffman coding (file compression)</span></span>
+<span id="cb14-18"><a></a><span class="co"># Event simulation systems</span></span>
+<span id="cb14-19"><a></a><span class="co"># A* pathfinding in games</span></span>
+<span id="cb14-20"><a></a><span class="co"># Machine learning (beam search)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<p><strong>Any scenario needing efficient priority-based access leverages heaps!</strong></p>
+</section>
+<section id="summary-heap-based-priority-queues---the-smart-organizer" class="slide level2">
+<h2>Summary: Heap-Based Priority Queues - The Smart Organizer!</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key Takeaways 🎯</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Heap-based priority queues</strong> achieve O(log n) through smart <strong>partial ordering</strong>!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>What Makes Heaps Special</strong></p>
+<ul>
+<li>🏥 <strong>Perfect for priorities</strong> - always know the most urgent</li>
+<li>🌳 <strong>Smart tree structure</strong> - height limits operation cost</li>
+<li>⚖️ <strong>Balanced performance</strong> - O(log n) insert AND remove</li>
+<li>🚀 <strong>Incredible scaling</strong> - millions of items, ~20 operations max</li>
+</ul>
+<p><strong>Python Heap Champions:</strong></p>
+<ul>
+<li>Emergency room triage: <code>heapq</code> module</li>
+<li>Task scheduling: priority queues</li>
+<li>Pathfinding: Dijkstra’s algorithm</li>
+<li>System optimization: balanced performance</li>
+</ul>
+</div><div class="column">
+<p><strong>Programming Wisdom</strong> 💭</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># When to choose heaps:</span></span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="co"># For priority-based processing</span></span>
+<span id="cb15-4"><a></a><span class="im">import</span> heapq</span>
+<span id="cb15-5"><a></a>heapq.heappush(tasks, (priority, task))    <span class="co"># O(log n)</span></span>
+<span id="cb15-6"><a></a>next_task <span class="op">=</span> heapq.heappop(tasks)           <span class="co"># O(log n)</span></span>
+<span id="cb15-7"><a></a></span>
+<span id="cb15-8"><a></a><span class="co"># For "top-k" problems  </span></span>
+<span id="cb15-9"><a></a><span class="co"># Find k largest/smallest items efficiently</span></span>
+<span id="cb15-10"><a></a></span>
+<span id="cb15-11"><a></a><span class="co"># For dynamic ordering with frequent updates</span></span>
+<span id="cb15-12"><a></a><span class="co"># Better than re-sorting: O(log n) vs O(n log n)</span></span>
+<span id="cb15-13"><a></a></span>
+<span id="cb15-14"><a></a><span class="co"># Remember the trade-off:</span></span>
+<span id="cb15-15"><a></a><span class="co"># - O(1): Hash tables, direct access</span></span>
+<span id="cb15-16"><a></a><span class="co"># - O(log n): Heaps, trees - organized data  </span></span>
+<span id="cb15-17"><a></a><span class="co"># - O(n): Linear search - no organization needed</span></span>
+<span id="cb15-18"><a></a></span>
+<span id="cb15-19"><a></a><span class="co"># Choose heaps when you need efficient priority access!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="concluding-thoughts" class="slide level2 center">
+<h2>Concluding Thoughts</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Key Takeaway</strong>: Heaps sort the search space through <strong>partial ordering</strong> and <strong>structural invariants</strong>, achieving O(log n) efficiency without full sorting!</p>
+<p>The magic is in the <strong>tree height</strong> - it inherently limits the number of operations needed! 🌳</p>
+</div>
+</div>
+</div>
+<div style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;">
+<p>🚀 Ready to implement your own priority systems with O(log n) efficiency! ⚡</p>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

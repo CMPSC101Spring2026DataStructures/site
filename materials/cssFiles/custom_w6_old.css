@@ -1,0 +1,238 @@
+/* Custom CSS for Python Fundamentals Slides */
+
+/* Main slide styling */
+.reveal {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Slide content spacing */
+.reveal .slides section {
+    padding: 20px;
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Title slide styling */
+.reveal .slides section.title-slide h1 {
+    color: #2E86C1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 2.5em;
+}
+
+.reveal .slides section.title-slide h2 {
+    color: #8E44AD;
+    font-size: 1.5em;
+}
+
+/* Header styling */
+.reveal h1, .reveal h2 {
+    color: #2E86C1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 0.5em;
+}
+
+/* Code block styling */
+.reveal pre {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-left: 5px solid #31BAE9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.75em;
+    max-height: none;
+    overflow: visible;
+}
+
+/* Callout content scrolling only when needed */
+.callout pre {
+    max-height: 350px;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.reveal code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Callout boxes styling */
+.callout {
+    border-radius: 10px;
+    padding: 1em;
+    margin: 0.5em 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+}
+
+.callout-note {
+    background-color: #e3f2fd;
+    border-left: 5px solid #2196f3;
+}
+
+.callout-tip {
+    background-color: #e8f5e8;
+    border-left: 5px solid #4caf50;
+}
+
+.callout-important {
+    background-color: #fff3e0;
+    border-left: 5px solid #ff9800;
+}
+
+.callout-warning {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffc107;
+}
+
+/* Column layout styling */
+.columns {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Emoji and decoration styling */
+.column:last-child {
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Emoji and icon styling */
+.reveal .slides section h2::before {
+    margin-right: 0.5em;
+}
+
+/* Link styling */
+.reveal a {
+    color: #2E86C1;
+    text-decoration: none;
+}
+
+.reveal a:hover {
+    color: #1B4F72;
+    text-decoration: underline;
+}
+
+/* List styling */
+.reveal ul li, .reveal ol li {
+    margin-bottom: 0.5em;
+}
+
+/* Highlight important text */
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #856404;
+}
+
+/* Custom color classes */
+.blue-text { color: #2E86C1; }
+.purple-text { color: #8E44AD; }
+.green-text { color: #27AE60; }
+.red-text { color: #E74C3C; }
+.orange-text { color: #E67E22; }
+
+/* Content spacing and overflow prevention */
+.reveal .slides section > * {
+    margin-bottom: 0.5em;
+}
+
+.reveal .slides section > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Prevent double scroll bars */
+.reveal .slides section {
+    overflow: visible;
+}
+
+.reveal .slides {
+    overflow: hidden;
+}
+
+/* Prevent horizontal scrolling on code blocks */
+.reveal pre {
+    overflow-x: auto;
+    overflow-y: visible;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Animation for important callouts */
+.callout-tip {
+    animation: subtle-pulse 2s infinite;
+}
+
+@keyframes subtle-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+    }
+    
+    .reveal pre {
+        font-size: 0.7em;
+    }
+    
+    .callout {
+        font-size: 0.8em;
+    }
+}
+
+/* Footer styling */
+.reveal .progress {
+    color: #2E86C1;
+}
+
+/* Slide number styling */
+.reveal .slide-number {
+    background-color: #2E86C1;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* Ensure images fit properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Additional scroll bar prevention */
+.reveal .slides section,
+.reveal .slides section .callout,
+.reveal .slides section .columns {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* Prevent code from causing horizontal overflow */
+.reveal pre code {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+/* Ensure callout boxes don't overflow */
+.callout {
+    max-width: 100%;
+    box-sizing: border-box;
+}

@@ -1,0 +1,1482 @@
+---
+title: "O(log n) - LOGARITHMIC TIME"
+subtitle: "The Smart Divider - Divide and Conquer Excellence!"
+author: "CS 101 - Fall 2025"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+# What is O(log n) - Logarithmic Time?
+
+::: {.callout-tip icon="true"}
+## The Smart Problem Solver 🧠
+
+**O(log n)** means the algorithm **halves the problem** with each step, creating incredibly efficient performance!
+
+**Real-World Analogy**: 
+
+* Like playing **"20 Questions"** - each question eliminates half the possibilities
+* Guessing a number from 1-1000? "Is it > 500?" cuts it in half!
+* **32 billion items** → Only **32 steps** to find anything!
+
+:::
+
+::: {.columns}
+::: {.column}
+**Incredible Scaling** 📊
+
+* 1,000 items → ~10 steps
+* 1,000,000 items → ~20 steps  
+* 1,000,000,000 items → ~30 steps
+* **Mind-blowing efficiency!**
+
+:::
+
+::: {.column}
+**Key Insight** 🔑
+The algorithm **eliminates half** the remaining possibilities with each step.
+
+**Magic Question**: 
+*"Can I eliminate half the data without checking it?"*
+
+If yes → You might achieve O(log n)!
+:::
+:::
+
+## What Makes Algorithms O(log n)?
+
+::: {.callout-note icon="true"}
+## The "Divide and Conquer" Strategy 🔄
+
+O(log n) algorithms use smart strategies to avoid checking most of the data.
+
+:::
+
+::: {.columns}
+::: {.column}
+**Binary Search - The Classic**
+```python
+def binary_search(sorted_array, target):
+    left = 0
+    right = len(sorted_array) - 1
+    steps = 0
+    
+    while left <= right:
+        steps += 1
+        mid = (left + right) // 2
+        
+        if sorted_array[mid] == target:
+            return mid, steps  # Found it!
+        elif sorted_array[mid] < target:
+            left = mid + 1     # Search right half
+        else:
+            right = mid - 1    # Search left half
+    
+    return -1, steps  # Not found
+
+# Example: Find 7 in [1, 3, 5, 7, 9, 11, 13, 15]
+# Step 1: Check middle (7) - Found it!
+# Only 1 step for 8 items!
+search_space = [i for i in range(16) if i % 2 ==1]
+value_to_find = 7
+print(f"Search space = {search_space}")
+print(f"Value to find = {value_to_find}")
+pos, steps = binary_search(search_space,7)
+print(f"Position where found = {pos}, steps = {steps}")
+# Explain the following
+# binary_search([i for i in range(100)],4000)
+```
+
+**Why O(log n)?**
+
+* Each step eliminates half the remaining items
+* log₂(n) = number of times you can halve n
+* Incredibly efficient!
+:::
+
+::: {.column}
+**Tree Operations**
+```python
+# Binary Search Tree operations
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def tree_search(root, target):
+    steps = 0
+    current = root
+    
+    while current:
+        steps += 1
+        if current.value == target:
+            return True, steps  # Found!
+        elif target < current.value:
+            current = current.left   # Go left
+        else:
+            current = current.right  # Go right
+    
+    return False, steps  # Not found
+
+# Each step eliminates half the tree!
+# Perfectly balanced tree: O(log n) guaranteed
+```
+
+**The Tree Advantage:**
+
+* Data is pre-organized for smart searching
+* Never need to check more than tree height
+* Height ≈ log₂(n) for balanced trees
+:::
+:::
+
+## The Tree Search In Action
+
+::: {.callout-important}
+To use the tree search, a balanced tree first must be created from the data. This may take more time initially, but the search itself is fast. Each additional search will also be time efficient.
+
+:::
+```python
+# Binary Search Tree operations
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def tree_search(root, target):
+    steps = 0
+    current = root
+    
+    while current:
+        steps += 1
+        if current.value == target:
+            return True, steps  # Found!
+        elif target < current.value:
+            current = current.left   # Go left
+        else:
+            current = current.right  # Go right
+    
+    return False, steps  # Not found
+
+# Each step eliminates half the tree!
+# Perfectly balanced tree: O(log n) guaranteed
+
+def insert_node(root, value):
+    """Insert a value into the binary search tree"""
+    if root is None:
+        return TreeNode(value)
+    
+    if value < root.value:
+        root.left = insert_node(root.left, value)
+    else:
+        root.right = insert_node(root.right, value)
+    
+    return root
+
+def create_balanced_tree(values):
+    """Create a balanced BST from a sorted list"""
+    if not values:
+        return None
+    
+    mid = len(values) // 2
+    root = TreeNode(values[mid])
+    
+    root.left = create_balanced_tree(values[:mid])
+    root.right = create_balanced_tree(values[mid + 1:])
+    
+    return root
+
+def print_tree_inorder(root):
+    """Print tree values in order (for verification)"""
+    if root:
+        print_tree_inorder(root.left)
+        print(root.value, end=" ")
+        print_tree_inorder(root.right)
+
+# Demonstration of O(log n) search
+if __name__ == "__main__":
+    import math
+    
+    print("=== Binary Search Tree O(log n) Demonstration ===\n")
+    
+    # Create a balanced tree with values 1-15
+    values = list(range(1, 16))  # [1, 2, 3, ..., 15]
+    root = create_balanced_tree(values)
+    
+    print("Created balanced BST with values:", values)
+    print("Tree structure (in-order traversal):", end=" ")
+    print_tree_inorder(root)
+    print("\n")
+    
+    # Test searches for different values
+    test_values = [1, 5, 8, 12, 15, 20]  # Include one that doesn't exist
+    
+    print("Search Results:")
+    print("-" * 50)
+    print(f"{'Value':<6} {'Found':<7} {'Steps':<6} {'Expected Max Steps'}")
+    print("-" * 50)
+    
+    n = len(values)
+    expected_max_steps = math.ceil(math.log2(n)) + 1
+    
+    for target in test_values:
+        found, steps = tree_search(root, target)
+        print(f"{target:<6} {'Yes' if found else 'No':<7} {steps:<6} {expected_max_steps}")
+    
+    print("-" * 50)
+    print(f"\nFor a balanced BST with {n} nodes:")
+    print(f"Maximum expected steps: {expected_max_steps} (≈ log₂({n}) + 1)")
+    print(f"This demonstrates O(log n) time complexity!")
+    
+    # Demonstrate with larger tree
+    print("\n=== Larger Tree Demonstration ===")
+    large_values = list(range(1, 1001))  # 1000 values
+    large_root = create_balanced_tree(large_values)
+    
+    # Test a few searches
+    large_test_values = [1, 500, 999, 1500]  # Include one that doesn't exist
+    n_large = len(large_values)
+    expected_max_large = math.ceil(math.log2(n_large)) + 1
+    
+    print(f"\nTesting with {n_large} nodes:")
+    print(f"{'Value':<6} {'Found':<7} {'Steps':<6} {'Expected Max Steps'}")
+    print("-" * 50)
+    
+    for target in large_test_values:
+        found, steps = tree_search(large_root, target)
+        print(f"{target:<6} {'Yes' if found else 'No':<7} {steps:<6} {expected_max_large}")
+    
+    print("-" * 50)
+    print(f"Maximum expected steps for {n_large} nodes: {expected_max_large} (≈ log₂({n_large}) + 1)")
+    print("Notice how the steps remain very small even with 1000 nodes!")
+```
+
+
+## Interactive O(log n) Binary Search Demo
+
+::: {.callout-note icon="true"}
+## Watch the Halving Magic! 🎮
+
+See how binary search eliminates half the possibilities with each step. Try finding different numbers!
+
+:::
+
+```{=html}
+<div id="logarithmic-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Binary Search - O(log n) Divide and Conquer</h3>
+    <div style="margin: 15px 0;">
+        <select id="target-number" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+            <option value="">Choose number to find...</option>
+            <option value="5">5</option>
+            <option value="12">12</option>
+            <option value="25">25</option>
+            <option value="34">34</option>
+            <option value="47">47</option>
+            <option value="63">63</option>
+            <option value="78">78</option>
+            <option value="89">89</option>
+            <option value="99">99 (not in array)</option>
+        </select>
+        <button id="start-binary-search" style="padding: 8px 20px; margin: 5px; background: #2E86C1; color: white; border: none; border-radius: 4px; min-width: 150px;">Start Binary Search</button>
+        <button id="binary-speed-btn" style="padding: 8px 20px; margin: 5px; background: #F39C12; color: white; border: none; border-radius: 4px; min-width: 120px;">Speed: Normal</button>
+        <button id="reset-binary-btn" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px; min-width: 80px;">Reset</button>
+    </div>
+    <div id="binary-visualization" style="height: 220px; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="binary-canvas" width="800" height="200" style="border: none;"></canvas>
+    </div>
+    <div id="binary-info" style="margin: 10px 0; font-family: monospace; font-size: 14px;">
+        <div>Sorted Array: [2, 5, 12, 18, 25, 34, 47, 56, 63, 71, 78, 85, 89, 94]</div>
+        <div>Steps: <span id="binary-steps">0</span> | Comparisons: <span id="binary-comparisons">0</span> | Remaining Items: <span id="remaining-items">14</span></div>
+        <div>Status: <span id="binary-status">Ready to search!</span></div>
+    </div>
+</div>
+```
+
+## Python O(log n) Examples - The Efficient Ones!
+
+::: {.columns}
+::: {.column}
+**Binary Search Implementation** 🔍
+```python
+import bisect  # Python's binary search module
+
+# Manual binary search
+def binary_search_manual(arr, target):
+    left, right = 0, len(arr) - 1
+    steps = 0
+    
+    while left <= right:
+        steps += 1
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid, steps
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1, steps
+
+# Using Python's bisect module (optimized)
+def binary_search_builtin(arr, target):
+    pos = bisect.bisect_left(arr, target)
+    if pos < len(arr) and arr[pos] == target:
+        return pos
+    return -1
+
+# Performance comparison
+numbers = list(range(0, 100000, 7))  # 0, 7, 14, 21, ...
+target = 9961
+
+# Manual version
+position, steps = binary_search_manual(numbers, target)
+print(f"Manual: Found at {position} in {steps} steps")
+
+# Built-in version (also O(log n))
+position = binary_search_builtin(numbers, target)
+print(f"Built-in: Found at {position}")
+```
+:::
+
+::: {.column}
+**Heap Operations** 🏔️
+```python
+import heapq
+
+# Min-heap operations - all O(log n)
+heap = []
+
+# Insert elements - O(log n) each
+for value in [64, 34, 25, 12, 22, 11, 90]:
+    heapq.heappush(heap, value)    # O(log n)
+    print(f"Inserted {value}, heap: {heap}")
+
+# Extract minimum - O(log n)
+while heap:
+    min_value = heapq.heappop(heap)  # O(log n)
+    print(f"Removed {min_value}, remaining: {heap}")
+
+# Why O(log n)?
+# Heap is a binary tree structure
+# Height = log₂(n)
+# Insert/delete only travel up/down one path
+# Path length = tree height = O(log n)
+
+# Priority queue example
+class PriorityQueue:
+    def __init__(self):
+        self.heap = []
+    
+    def push(self, item, priority):
+        heapq.heappush(self.heap, (priority, item))  # O(log n)
+    
+    def pop(self):
+        return heapq.heappop(self.heap)[1]  # O(log n)
+```
+:::
+:::
+
+::: {.callout-tip icon="true"}
+## Pro Tip 💡
+Python's `bisect` module provides highly optimized O(log n) operations for sorted lists!
+:::
+
+## O(log n) vs Other Complexities
+
+**Performance Comparison** 📊: 
+Champion-like Qualities!
+
+
+
+
+::: {.columns}
+::: {.column}
+<!-- **Performance Comparison** 📊 -->
+
+| Data Size | O(1) | O(log n) | O(n) | O(n²) |
+|-----------|------|----------|------|-------|
+| 10 | 1 | 3 | 10 | 100 |
+| 100 | 1 | 7 | 100 | 10,000 |
+| 1,000 | 1 | 10 | 1,000 | 1,000,000 |
+| 1,000,000 | 1 | 20 | 1,000,000 | 1,000,000,000,000 |
+| 1,000,000,000 | 1 | 30 | 1,000,000,000 | ∞ (impractical) |
+
+**The O(log n) Sweet Spot:**
+
+- Almost as fast as O(1)
+- Dramatically better than O(n)
+- Scales beautifully with big data
+- Requires organized/sorted data
+:::
+
+::: {.column}
+**When O(log n) Shines**✨
+
+Database Lookups! 
+```python
+# Pseudocode
+
+# Database indexing - O(log n) lookups
+# Even with millions of records!
+
+# File system searches
+# Modern filesystems use B-trees (O(log n))
+
+# Sorted data structures
+sorted_students = ["Alice", "Bob", "Charlie", ...]  # 10,000 students
+import bisect
+
+# O(log n) - incredibly fast!
+position = bisect.bisect_left(sorted_students, "Emma")
+
+# Compare with O(n) linear search
+position = sorted_students.index("Emma")  # Much slower!
+
+# Geographic searches (quad-trees)
+# GPS navigation systems
+# Image processing (pyramid algorithms)
+# Game development (spatial partitioning)
+
+# The secret: Smart data organization
+# pays huge dividends in search speed!
+```
+:::
+:::
+
+
+
+## Real-World O(log n) Applications
+
+::: {.callout-tip icon="true"}
+## Where You Use O(log n) Every Day! 🌍
+
+O(log n) algorithms power many systems you interact with daily.
+
+:::
+
+::: {.columns}
+::: {.column}
+**Tech You Use Daily** 📱
+```python
+# Pseudocode
+
+# Database queries with indexes
+# When you search your emails, photos, contacts
+SELECT * FROM emails WHERE subject LIKE '%meeting%'
+# Database uses B-tree index: O(log n)
+
+# Autocomplete systems
+def autocomplete(prefix, word_list):
+    # Binary search to find start position
+    start = bisect.bisect_left(word_list, prefix)  # O(log n)
+    results = []
+    
+    for i in range(start, len(word_list)):
+        if word_list[i].startswith(prefix):
+            results.append(word_list[i])
+        else:
+            break
+    return results
+
+# Version control systems (Git)
+# Git uses binary search to find bugs
+git bisect start      # Start binary search
+git bisect bad        # Current version has bug
+git bisect good v1.0  # v1.0 was good
+# Git automatically finds the problematic commit!
+```
+:::
+
+::: {.column}
+**Behind-the-Scenes Magic** 🪄
+```python
+# Pseudocode
+
+# Memory management
+# Operating systems use balanced trees
+# to track free memory blocks
+
+# Network routing
+# Internet routers use prefix trees
+# to find optimal paths: O(log n)
+
+# Graphics and gaming
+# Collision detection uses spatial trees
+# Ray tracing uses BVH trees
+
+# Machine learning
+# Decision trees make predictions
+# in O(log n) time
+
+# Example: Simple decision tree
+def classify_student_performance(hours_studied):
+    if hours_studied >= 10:      # O(1) decision
+        if hours_studied >= 15:  # O(1) decision
+            return "Excellent"   # Total: O(log n) depth
+        return "Good"
+    else:
+        if hours_studied >= 5:
+            return "Average"
+        return "Needs Improvement"
+
+# Tree height determines performance
+# Balanced tree = O(log n) predictions
+```
+:::
+:::
+
+## Partner Activity: The Power of Divide and Conquer! 👥
+
+
+::: {.callout-blue icon="false"}
+**Work with a partner to discover the incredible scaling properties of logarithmic algorithms.**
+
+Increase and decrease the search space to experiment. To start, look for *BEGIN YOUR EXPERIMENTS HERE!* in the code.
+:::
+
+::: {.columns}
+::: {.column}
+**Experiment 1: Binary Search Scaling Test**
+```python
+import time
+import bisect
+import math
+
+def create_sorted_data(size):
+    # Create sorted data for testing
+    return list(range(0, size * 2, 2))  # [0, 2, 4, 6, 8, ...]
+
+def binary_search_manual(arr, target):
+    left, right = 0, len(arr) - 1
+    steps = 0
+    
+    while left <= right:
+        steps += 1
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid, steps
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1, steps
+
+# Partner A: Test sizes [1000, 2000, 4000]
+# Partner B: Test sizes [8000, 16000, 32000]
+def test_logarithmic_scaling(sizes):
+    results = []
+    
+    for size in sizes:
+        data = create_sorted_data(size)
+        target = data[-1]  # Search for last element (worst case)
+        
+        # Manual binary search with step counting
+        start = time.time()
+        pos, steps = binary_search_manual(data, target)
+        manual_time = time.time() - start
+        
+        # Built-in binary search
+        start = time.time()
+        builtin_pos = bisect.bisect_left(data, target)
+        builtin_time = time.time() - start
+        
+        theoretical_steps = math.ceil(math.log2(size))
+        
+        results.append({
+            'size': size,
+            'actual_steps': steps,
+            'theoretical_steps': theoretical_steps,
+            'manual_time': manual_time,
+            'builtin_time': builtin_time
+        })
+        
+        print(f"Size {size:5d}: {steps:2d} steps (theory: {theoretical_steps:2d}), {manual_time:.6f}s")
+    
+    return results
+
+
+# ----------------------------
+# BEGIN YOUR EXPERIMENTS HERE!
+# Your partner assignment:
+my_sizes = [1000, 2000, 4000]  # Change based on assignment
+results = test_logarithmic_scaling(my_sizes)
+
+# Partner Discussion:
+# 1. How close were actual steps to theoretical log₂(n)?
+# 2. What happened to search time as size doubled?
+# 3. Compare with your partner's larger sizes - what pattern emerges?
+```
+:::
+
+::: {.column}
+**Experiment 2: Heap vs Linear Priority Queue**
+```python
+import heapq
+import time
+import random
+
+class LinearPriorityQueue:
+    """Naive O(n) priority queue for comparison"""
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item, priority):
+        self.items.append((priority, item))
+    
+    def pop(self):
+        if not self.items:
+            return None
+        # Find minimum priority (O(n))
+        min_idx = min(range(len(self.items)), key=lambda i: self.items[i][0])
+        return self.items.pop(min_idx)[1]
+
+def compare_priority_queues(num_operations):
+    # Generate random tasks with priorities
+    tasks = [(random.randint(1, 100), f"Task_{i}") for i in range(num_operations)]
+    
+    # Test heap-based priority queue O(log n)
+    heap_pq = []
+    start = time.time()
+    
+    for priority, task in tasks:
+        heapq.heappush(heap_pq, (priority, task))
+    
+    processed_heap = []
+    while heap_pq:
+        processed_heap.append(heapq.heappop(heap_pq)[1])
+    
+    heap_time = time.time() - start
+    
+    # Test linear priority queue O(n)
+    linear_pq = LinearPriorityQueue()
+    start = time.time()
+    
+    for priority, task in tasks:
+        linear_pq.push(task, priority)
+    
+    processed_linear = []
+    while linear_pq.items:
+        processed_linear.append(linear_pq.pop())
+    
+    linear_time = time.time() - start
+    
+    return heap_time, linear_time
+
+
+# ----------------------------
+# BEGIN YOUR EXPERIMENTS HERE!
+# Partner A: Test with 500 operations
+# Partner B: Test with 2000 operations
+my_operations = 500  # Change based on assignment
+
+heap_time, linear_time = compare_priority_queues(my_operations)
+
+print(f"Operations: {my_operations}")
+print(f"Heap PQ (O(log n)): {heap_time:.4f}s")
+print(f"Linear PQ (O(n)):   {linear_time:.4f}s")
+print(f"Heap is {linear_time/heap_time:.1f}x faster!")
+
+# Partner Discussion:
+# - How did the performance gap change with more operations?
+# - What would happen with 10,000 operations?
+```
+:::
+:::
+
+
+
+## Group Activity: Logarithmic Thinking Challenge!
+Group Problem-Solving: When to Use O(log n)! 🪶📜𓇢𓆸
+
+
+
+::: {.callout-important icon="false"}
+
+**Solve these real-world scenarios using logarithmic thinking!** 🌍
+
+**Option 1: Library Book System** 📚
+You are designing a system for a library with 100,000 books.
+- Books are sorted by ISBN number
+- Students need to find books quickly
+- New books are added daily
+
+**Questions:**🤔
+1. How would you implement book lookup? (No code necessary, explain steps)
+2. What's the maximum number of steps to find any book?
+3. How would this scale to 1,000,000 books?
+
+**Option 2: Student Grade Ranking** 🎯
+Your school wants to rank 5,000 students by GPA.
+- GPAs range from 0.0 to 4.0
+- Need to quickly find a student's rank
+- Rankings update when grades change
+
+**Questions:**🤔
+1. How would you store the data for fast ranking lookup? (No code necessary, explain steps)
+2. How many steps to find where a 3.7 GPA ranks?
+3. What happens when a student's GPA changes?
+:::
+
+<!-- ## Critical Analysis Questions 🤔
+
+**All Groups Discuss, Be Parpared to Share Insights:**
+
+1. **Scale Appreciation**: If your algorithm takes 10 steps for 1,000 items, how many steps for 1,000,000 items? Why is this amazing?
+
+2. **Trade-off Recognition**: What do you need to sacrifice to achieve O(log n) performance? (Hint: think about data organization)
+
+3. **Problem Identification**: Look at your scenario. What makes O(log n) possible? What would force you to use O(n) instead?
+
+4. **Real-World Connection**: Where do you personally use O(log n) algorithms without realizing it?
+
+**Group Challenge - Algorithm Design:**
+
+1. Sketch your solution approach
+2. Identify why it's O(log n)
+3. Consider what could go wrong
+4. Compare with a naive O(n) approach
+
+
+**Class Discussion:** Which scenarios most surprised you in terms of the performance gains possible? -->
+
+## Your Turn: Experience O(log n) Power!
+
+::: {.callout-tip icon="true"}
+## Individual Exploration: Feel the Logarithmic Magic! 🧑‍💻
+
+After group problem-solving, try these hands-on exercises to experience O(log n) efficiency.
+
+:::
+
+::: {.columns}
+::: {.column}
+**Exercise 1: Search Race**
+```python
+import time
+import bisect
+import random
+
+# Create test data
+size = 100000
+sorted_data = sorted([random.randint(1, 1000000) for _ in range(size)])
+target = sorted_data[size // 2]  # Middle element
+
+# Race 1: Linear search O(n)
+start = time.time()
+linear_pos = -1
+for i, value in enumerate(sorted_data):
+    if value == target:
+        linear_pos = i
+        break
+linear_time = time.time() - start
+
+# Race 2: Binary search O(log n)
+start = time.time()
+binary_pos = bisect.bisect_left(sorted_data, target)
+binary_time = time.time() - start + 0.001 # add error
+
+print(f"Linear search (O(n)):  {linear_time:.6f}s")
+print(f"Binary search (O(log n)): {binary_time:.6f}s")
+print(f"Binary search is {linear_time/binary_time:.0f}x faster!")
+
+# Try with different sizes
+# Notice how binary search stays fast
+# while linear search gets slower
+```
+:::
+
+::: {.column}
+**Exercise 2: Heap Priority Queue**
+```python
+import heapq
+import time
+
+# Simulate a hospital emergency room
+# Priority queue: lower number = higher priority
+emergency_room = []
+
+# Add patients with priorities
+patients = [
+    (1, "Heart Attack"),    # Highest priority
+    (5, "Broken Arm"),
+    (2, "Severe Bleeding"),
+    (8, "Routine Checkup"), # Lowest priority
+    (3, "Chest Pain"),
+    (7, "Headache"),
+    (1, "Stroke"),          # Also highest priority
+]
+
+print("Adding patients to emergency queue:")
+for priority, condition in patients:
+    heapq.heappush(emergency_room, (priority, condition))  # O(log n)
+    print(f"Added: {condition} (Priority {priority})")
+
+print("\nTreating patients in priority order:")
+while emergency_room:
+    priority, condition = heapq.heappop(emergency_room)  # O(log n)
+    print(f"Treating: {condition} (Priority {priority})")
+
+# Each operation is O(log n)
+# Total time: O(n log n) for n operations
+# Much better than sorting repeatedly: O(n² log n)!
+```
+:::
+:::
+
+::: {.callout-blue icon="false"}
+If you want to know more about how the Heap Priority Queue code works, check out the Supplemental Slides [10_heap_sorting_slides](10_3_heap_sorting_slides.html)
+:::
+
+
+# The Math Behind O(log n)
+
+::: {.callout-note icon="true"}
+## Understanding Logarithms 📐
+
+Don't worry - the math is simpler than you think!
+
+:::
+
+::: {.columns}
+::: {.column}
+**What is log₂(n)?** 🔢
+```python
+# log₂(n) = "How many times can I divide n by 2?"
+
+def calculate_steps(n):
+    steps = 0
+    while n > 1:
+        n = n // 2  # Divide by 2
+        steps += 1
+    return steps
+
+# Examples:
+print(f"log₂(8) ≈ {calculate_steps(8)}")    # 3 steps
+print(f"log₂(16) ≈ {calculate_steps(16)}")  # 4 steps  
+print(f"log₂(1024) ≈ {calculate_steps(1024)}")  # 10 steps
+
+# Binary search does exactly this!
+# Each step eliminates half the data
+# Until only 1 item remains
+
+# Real logarithms:
+import math
+print(f"Actual log₂(1024) = {math.log2(1024)}")  # 10.0
+print(f"Actual log₂(1000000) = {math.log2(1000000):.1f}")  # ~20
+```
+:::
+
+::: {.column}
+**Why Logarithms are Magical** ✨
+```python
+# The incredible scaling of O(log n)
+import math
+
+sizes = [10, 100, 1000, 10000, 100000, 1000000]
+
+print("Size\t\tO(n) steps\tO(log n) steps")
+print("-" * 45)
+for n in sizes:
+    linear_steps = n
+    log_steps = math.ceil(math.log2(n))
+    speedup = linear_steps / log_steps
+    
+    print(f"{n:,}\t\t{linear_steps:,}\t\t{log_steps}")
+
+# Output shows the dramatic difference!
+# Size          O(n) steps    O(log n) steps
+# 10            10            4
+# 100           100           7  
+# 1,000         1,000         10
+# 10,000        10,000        14
+# 100,000       100,000       17
+# 1,000,000     1,000,000     20
+
+# Notice: O(log n) barely increases!
+```
+:::
+:::
+
+# Achieving O(log n) - Requirements and Trade-offs
+
+::: {.callout-important icon="true"}
+## The O(log n) Prerequisites 📋
+
+O(log n) isn't magic - it requires smart data organization!
+
+:::
+
+::: {.columns}
+::: {.column}
+**What You Need for O(log n)** ✅
+```python
+# 1. Sorted/Organized Data
+unsorted = [64, 34, 25, 12, 22, 11, 90]
+# Can't use binary search! ❌
+
+sorted_data = [11, 12, 22, 25, 34, 64, 90]  
+# Perfect for binary search! ✅
+
+# 2. Tree Structure
+# Balanced binary search tree
+# Heap (for priority operations)
+# B-trees (for databases)
+
+# 3. Divide-and-conquer opportunity
+# Can you eliminate half the possibilities?
+# If yes, O(log n) might be possible
+
+# Example: Finding square root (Newton's method)
+def sqrt_binary_search(n, precision=0.001):
+    low, high = 0, n
+    while high - low > precision:
+        mid = (low + high) / 2
+        if mid * mid > n:
+            high = mid  # Too big, search lower half
+        else:
+            low = mid   # Too small, search upper half
+    return (low + high) / 2
+```
+:::
+
+::: {.column}
+**The Trade-offs** ⚖️
+```python
+# Advantage: Incredible search speed
+# Disadvantage: Must maintain organization
+
+# Example: Maintaining a sorted list
+sorted_scores = [65, 72, 78, 85, 92]
+
+# Insert new score - O(n) to maintain order!
+def insert_sorted(sorted_list, value):
+    import bisect
+    pos = bisect.bisect_left(sorted_list, value)  # O(log n) to find
+    sorted_list.insert(pos, value)               # O(n) to shift!
+    return sorted_list
+
+# Better: Use a balanced tree or heap
+import heapq
+
+# For min/max operations, use heap
+heap = [65, 72, 78, 85, 92]
+heapq.heapify(heap)              # O(n) once
+heapq.heappush(heap, 80)         # O(log n) always!
+min_score = heapq.heappop(heap)  # O(log n) always!
+
+# Decision guide:
+# - Frequent searches, rare updates → Use sorted list
+# - Frequent updates → Use heap or balanced tree
+# - Need both → Use advanced data structures (B-trees)
+```
+:::
+:::
+
+# Advanced O(log n) Patterns
+
+::: {.columns}
+::: {.column}
+**Divide and Conquer Algorithms** 🔄
+```python
+# Merge sort - O(n log n)
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])    # Recursive divide
+    right = merge_sort(arr[mid:])   # Recursive divide
+    
+    return merge(left, right)       # O(n) merge
+
+# Why O(n log n)?
+# - log n levels of recursion (divide by 2 each time)
+# - O(n) work at each level
+# - Total: O(n) × O(log n) = O(n log n)
+
+# Binary exponentiation - O(log n)
+def power_fast(base, exp):
+    if exp == 0:
+        return 1
+    if exp % 2 == 0:
+        half = power_fast(base, exp // 2)
+        return half * half
+    else:
+        return base * power_fast(base, exp - 1)
+
+# Calculate 2^100 in only 7 steps instead of 100!
+```
+:::
+
+::: {.column}
+**Tree Traversal Patterns** 🌳
+```python
+# Binary search tree operations
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+    
+    def insert(self, value):        # O(log n) average
+        if value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BST(value)
+        else:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BST(value)
+    
+    def search(self, value):        # O(log n) average
+        if value == self.value:
+            return True
+        elif value < self.value and self.left:
+            return self.left.search(value)
+        elif value > self.value and self.right:
+            return self.right.search(value)
+        return False
+
+# Segment trees for range queries - O(log n)
+# Fenwick trees for cumulative sums - O(log n)
+# Trie trees for string operations - O(log n) depth
+```
+:::
+:::
+
+# Summary: O(log n) - The Scaling Superstar!
+
+::: {.callout-tip icon="true"}
+## Key Takeaways 🎯
+
+**O(log n) - Logarithmic Time** is the sweet spot between O(1) and O(n)!
+
+:::
+
+::: {.columns}
+::: {.column}
+**What Makes O(log n) Special**
+- 🔥 **Incredible scaling** - handles billions of items easily
+- 🧠 **Smart elimination** - halves the problem each step
+- 🌳 **Requires organization** - data must be structured
+- ⚖️ **Great trade-off** - almost as fast as O(1), much better than O(n)
+
+**Python O(log n) Champions:**
+- Binary search: `bisect` module
+- Heap operations: `heapq` module
+- Tree operations: balanced trees
+- Database queries: indexed lookups
+:::
+
+::: {.column}
+**Programming Wisdom** 💭
+```python
+# When to choose O(log n):
+
+# For searching large sorted datasets
+import bisect
+position = bisect.bisect_left(sorted_data, target)  # O(log n)
+
+# For priority queues
+import heapq
+heapq.heappush(heap, item)    # O(log n)
+priority_item = heapq.heappop(heap)  # O(log n)
+
+# For maintaining sorted order with frequent updates
+# Use balanced trees or heaps
+
+# Remember the trade-off:
+# - O(1): Instant but needs hash tables
+# - O(log n): Nearly instant, needs sorted data  
+# - O(n): Acceptable for small data, no requirements
+
+# Choose based on your data size and update patterns!
+```
+:::
+:::
+
+# Next: Exploring O(2^n) - The Exponential Challenge!
+
+::: {.callout-note icon="true"}
+## Coming Up Next 🔜
+
+**O(2^n) - Exponential Time**
+* Recursive algorithms and the combinatorial explosion
+* When algorithms become impractically slow
+* Interactive Fibonacci and subset generation demos
+* Dynamic programming to the rescue
+* Why some problems are inherently difficult
+
+**Questions to Think About:**
+* When does recursion become dangerous?
+* How can we optimize exponential algorithms?
+* What problems are fundamentally hard to solve?
+* When should we accept "good enough" solutions?
+
+:::
+
+::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
+🚀 Ready to explore the extreme end of algorithm complexity? ⚡
+:::
+
+
+```{=html}
+<script>
+/**
+ * Binary Search Visualizer - O(log n) Performance Demonstration
+ * Interactive animation showing how binary search eliminates half the elements each step
+ * Demonstrates O(log n) time complexity - logarithmic growth through divide-and-conquer
+ */
+class BinarySearchVisualizer {
+    /**
+     * Constructor - Initialize the binary search visualization
+     * @param {string} canvasId - ID of the HTML canvas element to draw on
+     */
+    constructor(canvasId) {
+        // Get canvas element and set up drawing context
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return; // Exit if canvas not found
+        
+        this.ctx = this.canvas.getContext('2d');
+        
+        // Initialize sorted array data and search state
+        this.array = [2, 5, 12, 18, 25, 34, 47, 56, 63, 71, 78, 85, 89, 94]; // Pre-sorted array (required for binary search)
+        this.target = -1; // Value we're searching for
+        this.left = -1; // Left boundary of current search range
+        this.right = -1; // Right boundary of current search range
+        this.mid = -1; // Middle index of current search range
+        this.steps = 0; // Number of steps taken (demonstrates log n growth)
+        this.comparisons = 0; // Number of comparisons made
+        this.isSearching = false; // Flag to prevent multiple simultaneous searches
+        this.isComplete = false; // Flag indicating search completion
+        this.found = false; // Flag indicating if target was found
+        this.searchSpeed = 1200; // Animation delay in milliseconds
+        this.eliminatedLeft = []; // Indices eliminated on the left side
+        this.eliminatedRight = []; // Indices eliminated on the right side
+        
+        // Set up user interface and draw initial state
+        this.setupEventListeners();
+        this.draw();
+    }
+    
+    setupEventListeners() {
+        const startBtn = document.getElementById('start-binary-search');
+        const speedBtn = document.getElementById('binary-speed-btn');
+        const resetBtn = document.getElementById('reset-binary-btn');
+        const targetSelect = document.getElementById('target-number');
+        
+        if (startBtn) startBtn.addEventListener('click', () => this.startSearch());
+        if (speedBtn) speedBtn.addEventListener('click', () => this.toggleSpeed());
+        if (resetBtn) resetBtn.addEventListener('click', () => this.resetSearch());
+    }
+    
+    startSearch() {
+        const select = document.getElementById('target-number');
+        if (!select || !select.value) {
+            this.updateStatus('Please select a number to search for!');
+            return;
+        }
+        
+        if (this.isSearching) {
+            this.updateStatus('Search already in progress...');
+            return;
+        }
+        
+        this.target = parseInt(select.value);
+        this.resetSearch();
+        this.left = 0;
+        this.right = this.array.length - 1;
+        this.isSearching = true;
+        this.updateStatus(`Binary searching for ${this.target}...`);
+        
+        this.performBinarySearch();
+    }
+    
+    performBinarySearch() {
+        if (!this.isSearching || this.left > this.right) {
+            if (!this.found) {
+                this.updateStatus(`${this.target} not found after ${this.steps} steps.`);
+            }
+            this.isSearching = false;
+            this.isComplete = true;
+            return;
+        }
+        
+        this.mid = Math.floor((this.left + this.right) / 2);
+        this.steps++;
+        this.comparisons++;
+        this.updateCounters();
+        this.draw();
+        
+        if (this.array[this.mid] === this.target) {
+            this.found = true;
+            this.updateStatus(`Found ${this.target} at index ${this.mid} in ${this.steps} steps!`);
+            this.isSearching = false;
+            this.isComplete = true;
+            this.draw();
+            return;
+        }
+        
+        setTimeout(() => {
+            if (this.array[this.mid] < this.target) {
+                // Target is in right half - eliminate left half
+                for (let i = this.left; i <= this.mid; i++) {
+                    if (!this.eliminatedLeft.includes(i)) {
+                        this.eliminatedLeft.push(i);
+                    }
+                }
+                this.left = this.mid + 1;
+            } else {
+                // Target is in left half - eliminate right half
+                for (let i = this.mid; i <= this.right; i++) {
+                    if (!this.eliminatedRight.includes(i)) {
+                        this.eliminatedRight.push(i);
+                    }
+                }
+                this.right = this.mid - 1;
+            }
+            
+            this.performBinarySearch();
+        }, this.searchSpeed);
+    }
+    
+    toggleSpeed() {
+        const speedBtn = document.getElementById('binary-speed-btn');
+        if (!speedBtn) return;
+        
+        if (this.searchSpeed === 1200) {
+            this.searchSpeed = 600;
+            speedBtn.textContent = 'Speed: Fast';
+            speedBtn.style.background = '#E67E22';
+        } else if (this.searchSpeed === 600) {
+            this.searchSpeed = 200;
+            speedBtn.textContent = 'Speed: Very Fast';
+            speedBtn.style.background = '#E74C3C';
+        } else {
+            this.searchSpeed = 1200;
+            speedBtn.textContent = 'Speed: Normal';
+            speedBtn.style.background = '#F39C12';
+        }
+    }
+    
+    resetSearch() {
+        this.left = -1;
+        this.right = -1;
+        this.mid = -1;
+        this.steps = 0;
+        this.comparisons = 0;
+        this.isSearching = false;
+        this.isComplete = false;
+        this.found = false;
+        this.eliminatedLeft = [];
+        this.eliminatedRight = [];
+        this.updateCounters();
+        this.updateStatus('Ready to search!');
+        this.draw();
+    }
+    
+    updateCounters() {
+        const stepsDisplay = document.getElementById('binary-steps');
+        const comparisonsDisplay = document.getElementById('binary-comparisons');
+        const remainingDisplay = document.getElementById('remaining-items');
+        
+        if (stepsDisplay) stepsDisplay.textContent = this.steps;
+        if (comparisonsDisplay) comparisonsDisplay.textContent = this.comparisons;
+        
+        if (remainingDisplay) {
+            if (this.left >= 0 && this.right >= 0) {
+                const remaining = Math.max(0, this.right - this.left + 1);
+                remainingDisplay.textContent = remaining;
+            } else {
+                remainingDisplay.textContent = this.array.length;
+            }
+        }
+    }
+    
+    updateStatus(message) {
+        const statusDisplay = document.getElementById('binary-status');
+        if (statusDisplay) statusDisplay.textContent = message;
+    }
+    
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw title
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 16px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('BINARY SEARCH - O(log n) DIVIDE AND CONQUER', this.canvas.width / 2, 20);
+        
+        // Calculate element dimensions
+        const elementWidth = 50;
+        const elementHeight = 40;
+        const startX = 25;
+        const startY = 80;
+        const spacing = 3;
+        
+        // Draw array elements
+        for (let i = 0; i < this.array.length; i++) {
+            const x = startX + i * (elementWidth + spacing);
+            const y = startY;
+            
+            // Determine color based on state
+            let fillColor = '#E3F2FD';  // Default: light blue
+            let textColor = '#333';
+            let borderColor = '#333';
+            let borderWidth = 1;
+            
+            if (this.found && i === this.mid) {
+                fillColor = '#27AE60';  // Found - green
+                textColor = 'white';
+                borderWidth = 3;
+            } else if (this.isSearching && i === this.mid) {
+                fillColor = '#2E86C1';  // Current middle - blue
+                textColor = 'white';
+                borderWidth = 3;
+            } else if (this.eliminatedLeft.includes(i)) {
+                fillColor = '#BDC3C7';  // Eliminated left - gray
+                textColor = '#555';
+            } else if (this.eliminatedRight.includes(i)) {
+                fillColor = '#BDC3C7';  // Eliminated right - gray
+                textColor = '#555';
+            } else if (this.left >= 0 && this.right >= 0 && i >= this.left && i <= this.right) {
+                fillColor = '#F8F9FA';  // Still in search range - white
+                borderColor = '#2E86C1';
+                borderWidth = 2;
+            }
+            
+            // Draw element
+            this.ctx.fillStyle = fillColor;
+            this.ctx.fillRect(x, y, elementWidth, elementHeight);
+            
+            // Draw border
+            this.ctx.strokeStyle = borderColor;
+            this.ctx.lineWidth = borderWidth;
+            this.ctx.strokeRect(x, y, elementWidth, elementHeight);
+            
+            // Draw value
+            this.ctx.fillStyle = textColor;
+            this.ctx.font = 'bold 14px Arial';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText(this.array[i].toString(), x + elementWidth/2, y + elementHeight/2 + 5);
+            
+            // Draw index
+            this.ctx.fillStyle = '#666';
+            this.ctx.font = '10px Arial';
+            this.ctx.fillText(i.toString(), x + elementWidth/2, y + elementHeight + 15);
+        }
+        
+        // Draw search range indicators
+        if (this.isSearching && this.left >= 0 && this.right >= 0) {
+            const leftX = startX + this.left * (elementWidth + spacing);
+            const rightX = startX + this.right * (elementWidth + spacing) + elementWidth;
+            const y = startY - 15;
+            
+            // Draw range bracket
+            this.ctx.strokeStyle = '#2E86C1';
+            this.ctx.lineWidth = 2;
+            this.ctx.beginPath();
+            this.ctx.moveTo(leftX, y);
+            this.ctx.lineTo(leftX, y - 5);
+            this.ctx.lineTo(rightX, y - 5);
+            this.ctx.lineTo(rightX, y);
+            this.ctx.stroke();
+            
+            // Draw range label
+            this.ctx.fillStyle = '#2E86C1';
+            this.ctx.font = 'bold 12px Arial';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText(`Search Range [${this.left}...${this.right}]`, (leftX + rightX) / 2, y - 10);
+        }
+        
+        // Draw comparison info
+        if (this.isSearching && this.mid >= 0) {
+            const midX = startX + this.mid * (elementWidth + spacing) + elementWidth/2;
+            const y = startY + elementHeight + 35;
+            
+            this.ctx.fillStyle = '#E74C3C';
+            this.ctx.font = 'bold 14px Arial';
+            this.ctx.textAlign = 'center';
+            
+            if (this.array[this.mid] === this.target) {
+                this.ctx.fillText(`${this.array[this.mid]} == ${this.target} ✓ FOUND!`, midX, y);
+            } else if (this.array[this.mid] < this.target) {
+                this.ctx.fillText(`${this.array[this.mid]} < ${this.target} → Search RIGHT half`, midX, y);
+            } else {
+                this.ctx.fillText(`${this.array[this.mid]} > ${this.target} → Search LEFT half`, midX, y);
+            }
+        }
+        
+        // Draw legend
+        const legendY = startY + elementHeight + 60;
+        this.ctx.font = '11px Arial';
+        this.ctx.textAlign = 'left';
+        
+        // Current middle
+        this.ctx.fillStyle = '#2E86C1';
+        this.ctx.fillRect(20, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Current middle', 40, legendY + 12);
+        
+        // Search range
+        this.ctx.fillStyle = '#F8F9FA';
+        this.ctx.fillRect(150, legendY, 15, 15);
+        this.ctx.strokeStyle = '#2E86C1';
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeRect(150, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Search range', 170, legendY + 12);
+        
+        // Eliminated
+        this.ctx.fillStyle = '#BDC3C7';
+        this.ctx.fillRect(270, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Eliminated', 290, legendY + 12);
+        
+        // Found
+        if (this.found) {
+            this.ctx.fillStyle = '#27AE60';
+            this.ctx.fillRect(370, legendY, 15, 15);
+            this.ctx.fillStyle = '#333';
+            this.ctx.fillText('Found!', 390, legendY + 12);
+        }
+        
+        // Draw algorithm explanation
+        if (!this.isSearching && this.steps === 0) {
+            this.ctx.fillStyle = '#2E86C1';
+            this.ctx.font = 'bold 12px Arial';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText('Binary Search: Each step eliminates half the remaining possibilities!', this.canvas.width / 2, legendY + 35);
+        }
+    }
+}
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        if (document.getElementById('binary-canvas')) {
+            window.binaryViz = new BinarySearchVisualizer('binary-canvas');
+        }
+    }, 500);
+});
+</script>
+```

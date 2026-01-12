@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Oliver Bonham-Carter">
+
+<title>CMPSC101 Spring 2026 :: DataStructures</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">CMPSC101 Spring 2026 :: DataStructures</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../utils/interactivePython.html"> 
+<span class="menu-text">Interactive</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../playground/00_playground.html"> 
+<span class="menu-text">Playground</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../materials/0_materials.html"> 
+<span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#quick-links" id="toc-quick-links" class="nav-link active" data-scroll-target="#quick-links">Quick Links</a></li>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
+  <li><a href="#course-learning-objectives-and-outcomes" id="toc-course-learning-objectives-and-outcomes" class="nav-link" data-scroll-target="#course-learning-objectives-and-outcomes">Course Learning Objectives and Outcomes</a></li>
+  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials">Course Materials</a>
+  <ul class="collapse">
+  <li><a href="#textbook" id="toc-textbook" class="nav-link" data-scroll-target="#textbook">Textbook</a></li>
+  <li><a href="#online-resources-and-course-materials" id="toc-online-resources-and-course-materials" class="nav-link" data-scroll-target="#online-resources-and-course-materials">Online Resources and Course Materials</a></li>
+  <li><a href="#selected-software-and-technologies" id="toc-selected-software-and-technologies" class="nav-link" data-scroll-target="#selected-software-and-technologies">Selected Software and Technologies</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#final-deliverable" id="toc-final-deliverable" class="nav-link" data-scroll-target="#final-deliverable">Final Deliverable</a></li>
+  </ul></li>
+  <li><a href="#assignment-policies" id="toc-assignment-policies" class="nav-link" data-scroll-target="#assignment-policies">Assignment Policies</a>
+  <ul class="collapse">
+  <li><a href="#assignment-submission" id="toc-assignment-submission" class="nav-link" data-scroll-target="#assignment-submission"><em>Assignment Submission</em></a></li>
+  </ul></li>
+  <li><a href="#discord" id="toc-discord" class="nav-link" data-scroll-target="#discord">Discord</a></li>
+  <li><a href="#additional-policies" id="toc-additional-policies" class="nav-link" data-scroll-target="#additional-policies">Additional Policies</a>
+  <ul class="collapse">
+  <li><a href="#artificial-intelligence-in-class" id="toc-artificial-intelligence-in-class" class="nav-link" data-scroll-target="#artificial-intelligence-in-class">Artificial Intelligence in Class</a></li>
+  <li><a href="#attendance" id="toc-attendance" class="nav-link" data-scroll-target="#attendance"><em>Attendance</em></a></li>
+  <li><a href="#late-work-policy" id="toc-late-work-policy" class="nav-link" data-scroll-target="#late-work-policy"><em>Late Work Policy</em></a></li>
+  <li><a href="#extenuating-circumstances" id="toc-extenuating-circumstances" class="nav-link" data-scroll-target="#extenuating-circumstances"><em>Extenuating Circumstances</em></a></li>
+  </ul></li>
+  <li><a href="#communications" id="toc-communications" class="nav-link" data-scroll-target="#communications">Communications</a>
+  <ul class="collapse">
+  <li><a href="#using-github-and-discord" id="toc-using-github-and-discord" class="nav-link" data-scroll-target="#using-github-and-discord"><em>Using GitHub and Discord</em></a></li>
+  <li><a href="#using-email" id="toc-using-email" class="nav-link" data-scroll-target="#using-email"><em>Using Email</em></a></li>
+  </ul></li>
+  <li><a href="#honor-code" id="toc-honor-code" class="nav-link" data-scroll-target="#honor-code">Honor Code</a>
+  <ul class="collapse">
+  <li><a href="#effective-collaboration" id="toc-effective-collaboration" class="nav-link" data-scroll-target="#effective-collaboration"><em>Effective Collaboration</em></a></li>
+  <li><a href="#plagiarism-and-artificial-intelligence" id="toc-plagiarism-and-artificial-intelligence" class="nav-link" data-scroll-target="#plagiarism-and-artificial-intelligence"><em>Plagiarism and Artificial Intelligence</em></a></li>
+  </ul></li>
+  <li><a href="#educational-accommodations" id="toc-educational-accommodations" class="nav-link" data-scroll-target="#educational-accommodations">Educational Accommodations</a></li>
+  <li><a href="#syllabus-changes" id="toc-syllabus-changes" class="nav-link" data-scroll-target="#syllabus-changes">Syllabus Changes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CMPSC101 Spring 2026 :: DataStructures</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Oliver Bonham-Carter </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>👋 Welcome! 👋</p>
+<p><strong>Class Sessions</strong>: MWF 9:00 AM to 9:50 AM, Alden 109<br>
+<strong>Laboratory Session</strong>: Friday, 2:30 PM to 4 PM, Alden 109<br>
+<strong>Instructor</strong>: Dr.&nbsp;Bonham-Carter, <a href="obonhamcarter@allegheny.edu">obonhamcarter@allegheny.edu</a><br>
+<strong>Office Location</strong>: Alden Hall 203</p>
+<p><strong>Instructor Office Hours</strong>: Visit the below URL to find availability and schedule and appointment. <a href="https://www.oliverbonhamcarter.com/contactandabout/">https://www.oliverbonhamcarter.com/contactandabout/</a></p>
+<p><strong>Book An Appointment!</strong>: <a href="https://calendar.app.google/dEK6MftNGNLV1Ft96">https://calendar.app.google/dEK6MftNGNLV1Ft96</a></p>
+<p><em>Note</em>: If the office hours times are not convenient, then please reach out to me and we can find an alternative time to meet.</p>
+<!-- ![A vibrant digital tree with glowing branches and roots, surrounded by colorful flowers and butterflies in a nighttime setting. The tree canopy is filled with binary numbers such as 101011, 10104, 51, 10104, 101011, 12131, 0501, and 01, which are integrated into the leaves and branches. The environment features cascading streams of blue and teal data, creating a magical and energetic atmosphere that evokes curiosity and wonder.] -->
+<section id="quick-links" class="level2">
+<h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
+<ul>
+<li><a href="https://forms.gle/hjrJLnpHrauFmJqH8">Token Form for Automatic Extension</a></li>
+</ul>
+</section>
+<section id="course-description" class="level2">
+<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
+<p>A continuation of CMPSC 100 with an emphasis on implementing, using, and evaluating the computational structures needed to efficiently store and retrieve digital data. Participating in hands-on activities that often require teamwork, students create data structures and algorithms whose correctness and performance they study through proofs and experimentation. Students continue to refine their ability to organize and document a program’s source code so that it effectively communicates with the intended users and maintainers. During a weekly laboratory session, students use state-of-the-art technology to complete projects, reporting on their results through both written documents and oral presentations.</p>
+<p><strong>Quantitative Reasoning (QR)</strong>: Quantitative Reasoning is the ability to understand, investigate, communicate, and contextualize numerical, symbolic, and graphical information towards the exploration of natural, physical, behavioral, or social phenomena.</p>
+<p><strong>Scientific Process and Knowledge (SP)</strong>: Courses involving Scientific Process and Knowledge aim to convey an understanding of what is known or can be known about the natural world; apply scientific reasoning towards the analysis and synthesis of scientific information; and create scientifically literate citizens who can engage productively in problem solving.</p>
+<ul>
+<li>Prerequisite: CMPSC 100 or permission of the instructor.</li>
+<li>Distribution Requirements: QR, SP.</li>
+</ul>
+<hr>
+</section>
+<section id="course-learning-objectives-and-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="course-learning-objectives-and-outcomes">Course Learning Objectives and Outcomes</h2>
+<ol type="1">
+<li>When solving a problem with a Python program, accurately describe data structures and algorithms and their inherent trade-offs.</li>
+<li>Use data structures and algorithms to correctly and efficiently solve a problem through the use of a Python program.</li>
+<li>Use empirical methods to characterize the performance of a Python program that uses data structures and algorithms.</li>
+<li>Use industry-standard practices, such as testing and debugging, and professional-grade integrated development environments (IDEs), command-line tools, and version control systems to implement Python programs.</li>
+<li>Implement Python programs and documentation that conforms to industry-standard formats and styles.</li>
+</ol>
+<p><em>Learning Outcome QR</em>: Students who successfully complete this requirement will demonstrate an understanding of how to interpret numeric data and/or their graphical or symbolic representations.</p>
+<p><em>Learning Outcome SP</em>: Students who successfully complete this requirement will demonstrate an understanding of the nature, approaches, and domain of scientific inquiry.</p>
+<hr>
+</section>
+<section id="course-materials" class="level2">
+<h2 class="anchored" data-anchor-id="course-materials">Course Materials</h2>
+<section id="textbook" class="level3">
+<h3 class="anchored" data-anchor-id="textbook">Textbook</h3>
+<p><a href="https://mitpress.mit.edu/books/introduction-computation-and-programming-using-python-third-edition">Introduction to Computation and Programming Using Python</a> by <a href="https://people.csail.mit.edu/guttag/">John V. Guttag</a></p>
+<center>
+<img src="graphics/book_logo.png" class="img-fluid" width="200">
+</center>
+</section>
+<section id="online-resources-and-course-materials" class="level3">
+<h3 class="anchored" data-anchor-id="online-resources-and-course-materials">Online Resources and Course Materials</h3>
+<ul>
+<li><a href="https://www.w3schools.com/python/numpy/" target="_blank">W3schools</a> <!-- - <a href="[url](https://github.com/CMPSC101Fall2025DataStructures)" target="_blank">Course GitHub Organization</a>
+- <a href="[url](https://github.com/allegheny-college-cmpsc-101-spring-2025/site/tree/main/code)" target="_blank">Jupyter Notebooks Directory</a> --></li>
+<li><a href="[url](https://mitpress.ublish.com/ebook/itcapup3-preview/12609/1)" target="_blank">Guttag Textbook Publisher Preview</a></li>
+<li><a href="[url](https://books.google.com/books?id=f57uDwAAQBAJ&amp;source=gbs_book_other_versions)" target="_blank">Guttag Textbook Google Previews</a></li>
+<li><a href="[url](https://www.google.com/search?q=Introduction+to+Computation+and+Programming+Using+Python+.pdf)" target="_blank">Additional Guttag Textbook Availability</a></li>
+<li><a href="[url](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/video_galleries/lecture-videos/)" target="_blank">Guttag Lectures</a></li>
+<li><a href="[url](https://docs.python.org/3/)" target="_blank">Python Docs</a> <a href="[url](https://proactiveprogrammers.com/data-abstraction/schedule-data-abstraction/)" target="_blank">Proactive Programmers</a></li>
+</ul>
+</section>
+<section id="selected-software-and-technologies" class="level3">
+<h3 class="anchored" data-anchor-id="selected-software-and-technologies">Selected Software and Technologies</h3>
+<p>We will be using the following technologies in class.</p>
+<ul>
+<li><a href="https://code.visualstudio.com/download">VSCode</a></li>
+<li><a href="https://www.python.org/downloads/">Python</a> 3.12 or later</li>
+<li><a href="https://github.com/pypa/pipx">pipx</a></li>
+<li><a href="https://docs.astral.sh/uv/getting-started/installation/">UV</a></li>
+<li><a href="https://pypi.org/project/gatorgrade/">Gatorgrade</a></li>
+<li><a href="https://github.com/git-guides/install-git">Git</a></li>
+<li>Free GitHub Account</li>
+<li>Free Discord Account</li>
+<li>Allegheny College Email</li>
+</ul>
+</section>
+<section id="grading" class="level3">
+<h3 class="anchored" data-anchor-id="grading">Grading</h3>
+<section id="grading-scale" class="level4">
+<h4 class="anchored" data-anchor-id="grading-scale">Grading Scale</h4>
+<p>Grades will be communicated by <a href="https://allegheny.instructure.com/">Canvas</a></p>
+<!-- =IF(DE6>94,"A",IF(DE6>90,"A-",IF(DE6>87,"B+",IF(DE6>83,"B",IF(DE6>80,"B-",IF(DE6>77,"C+",IF(DE6>73,"C",IF(DE6>70,"C-",IF(DE6>67,"D+",IF(DE6>60,"D","F")))))))))) -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Letter</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">Letter</th>
+<th style="text-align: left;">Range</th>
+<th style="text-align: left;">Letter</th>
+<th style="text-align: left;">Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">96 - 100</td>
+<td style="text-align: left;">A-</td>
+<td style="text-align: left;">90 - 95.9</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B+</td>
+<td style="text-align: left;">87 - 89.9</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">83 - 86.9</td>
+<td style="text-align: left;">B-</td>
+<td style="text-align: left;">80 - 82.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C+</td>
+<td style="text-align: left;">77 - 79.9</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">73 - 76.9</td>
+<td style="text-align: left;">C-</td>
+<td style="text-align: left;">70 - 72.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D+</td>
+<td style="text-align: left;">67 - 69.9</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">63 - 66.9</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">59.9 and below</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="benchmarks" class="level4">
+<h4 class="anchored" data-anchor-id="benchmarks">Benchmarks</h4>
+<p>The grade that a student receives in this class will be based on the following categories. All percentages are approximate and, if the need to do so presents itself, it is possible for the assigned percentages to change during the academic semester.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Percentage</th>
+<th style="text-align: left;">Assessment metric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">In-Class Activities</td>
+<td style="text-align: left;">15%</td>
+<td style="text-align: left;">check mark grade</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Labs</td>
+<td style="text-align: left;">40%</td>
+<td style="text-align: left;">letter grade</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Code Reviews</td>
+<td style="text-align: left;">10%</td>
+<td style="text-align: left;">letter grade</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Midterm Exam</td>
+<td style="text-align: left;">15%</td>
+<td style="text-align: left;">letter grade</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Final Project</td>
+<td style="text-align: left;">20%</td>
+<td style="text-align: left;">letter grade</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="definitions-of-grading-categories" class="level4">
+<h4 class="anchored" data-anchor-id="definitions-of-grading-categories">Definitions of Grading Categories</h4>
+<ul>
+<li><p><strong>In Class Activities</strong>: These assignments invite students to explore different techniques for rigorously designing, implementing, programming, evaluating, and documenting real-world Python programs. These assignments will invite students to use tools like a text editor, a terminal window, and a modern Python development environment to implement functions that strike the right balance between understandability, generalizability, and specialization. Students will also use the data collected from running experiments to evaluate the implementation of a Python function as they consider, for instance, its efficiency and correctness. Knowledge gained from the class and the textbook will be integral to the completion of these projects. Unless other information is given about a due date, activities are to be completed by the end of class.</p></li>
+<li><p><strong>Labs</strong>: Students meet once a week for two hours to complete practical work which will help them to gain some experience in programming, problem solving and group work. During some labs, students will gain experience in communication by presenting work, ideas and similar which is gained from work in class. Homework is generally due at the beginning of lab time.</p></li>
+<li><p><strong>Code Reviews</strong>: During lab sessions, you will verbally explain your own code or a peer’s code. In addition to describing what the code does and how it works, you will answer conceptual questions related to your code to demonstrate understanding of underlying programming concepts. This helps develop both communication skills and conceptual mastery.</p></li>
+<li><p><strong>Midterm Exam</strong>: The exams will cover all of the material in their associated module(s). The finalized date for each of the exams will be announced at least one week in advance of the scheduled date. Unless prior arrangements are made with the course instructor, all students will be expected to take these exams on the scheduled date and complete the exams in the stated period of time.</p></li>
+<li><p><strong>Final Project</strong>: This project will present you with an opportunity to design and implement a correct and carefully evaluated programming solution for a specific problem. Completion of the final project will require you to apply the knowledge, programming and technical skills that you have acquired during the course. The details for the final project will be given approximately a month before the project due date (during finals week).</p></li>
+</ul>
+<hr>
+<center>
+<img src="graphics/levelup.png" class="img-fluid">
+</center>
+</section>
+</section>
+<section id="final-deliverable" class="level3">
+<h3 class="anchored" data-anchor-id="final-deliverable">Final Deliverable</h3>
+<ul>
+<li>Thursday, 30 April, 2025 at 9:00 AM (<a href="https://sites.allegheny.edu/registrar/spring-2026-final-exam-schedule/">Complete Final Exam Schedule</a>)</li>
+<li><em>Exam Code: A</em></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="assignment-policies" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-policies">Assignment Policies</h2>
+<section id="assignment-submission" class="level3">
+<h3 class="anchored" data-anchor-id="assignment-submission"><em>Assignment Submission</em></h3>
+<p>All graded components of the course are expected to be turned in on time. Due dates are provided on each assignment. Electronic versions of the Engineering and Specification Labs must be submitted to through a student’s GitHub repository created by GitHub Classroom. No credit will be awarded for any course work that you submit to the incorrect GitHub repository.</p>
+<p><strong>Labs</strong> are graded based on Gatorgrade scores and other criteria.</p>
+<p>In each lab, there is a “Summary of Deliverables” to explains the distribution of points.</p>
+<p><strong>Activities</strong> Nearly weekly, we will have an activity for which points in the course may be earned. Please be sure to turn in activities by the due date as they cannot be made up at a later time.</p>
+<hr>
+</section>
+</section>
+<section id="discord" class="level2">
+<h2 class="anchored" data-anchor-id="discord">Discord</h2>
+<p>The instructor will be using Discord to pass important information along to the class, such as code, news and other details. Please actively check your Discord each day to ensure that you are up-to-date with course events.</p>
+</section>
+<section id="additional-policies" class="level2">
+<h2 class="anchored" data-anchor-id="additional-policies">Additional Policies</h2>
+<section id="artificial-intelligence-in-class" class="level3">
+<h3 class="anchored" data-anchor-id="artificial-intelligence-in-class">Artificial Intelligence in Class</h3>
+<p>It is important for the students of the course to learn how to program. Generative AI may help to write code, but the programmer will not benefit in learning programming. Therefore, the use of artificial intelligence to generate code is not permitted unless otherwise stated in a particular assignment. Students will be asked to supply verbal explanations of assignments to supplement their code (by <strong>Code Reviews</strong>).</p>
+</section>
+<section id="attendance" class="level3">
+<h3 class="anchored" data-anchor-id="attendance"><em>Attendance</em></h3>
+<p>Students are expected to come to class <strong>prepared, on time, and to stay engaged</strong> for the duration of the class period. This includes both class and lab sessions. This behavior is core to our <a href="https://www.cis.allegheny.edu/teaching/policies/">shared departmental values</a> and is in addition to the college’s attendance policy.</p>
+<p>Each day of class, please complete the attendance <a href="https://forms.gle/PQRJH3PoZwbNgC3y8">form</a>.</p>
+<section id="preparedness" class="level4">
+<h4 class="anchored" data-anchor-id="preparedness"><em>Preparedness</em></h4>
+<p>Coming to class prepared means coming with everything you need to engage in a class session. To satisfy basic expectations of CIS courses, this means, at minimum, that students must;</p>
+<ul>
+<li>Come to class with a department-approved laptop such as a Mac, Linux or Windows machine. There will be no time to diagnose and fix computer-related trouble during class-time. It will be assumed that the student is able to maintain their own machine on their own time.</li>
+<li>Arrive at class with a fully charged laptop, or with a laptop charger /batter pack to ensure that the laptop works throughout the entire class session.</li>
+<li>Complete any pre-session work such as readings and preparatory assignments.</li>
+<li>Complete homework on-time</li>
+</ul>
+</section>
+<section id="attendance-and-lateness" class="level4">
+<h4 class="anchored" data-anchor-id="attendance-and-lateness"><em>Attendance and Lateness</em></h4>
+<p>One missed class or lab session counts as one absence. Coming to class/lab late, leaving early, or missing a large portion of a class/lab session will result in your being marked as “late” to class. Coming to class/lab unprepared may also result in being marked “late”. Being marked “late” to class three times during the course of a semester is equal to one absence.</p>
+<p>Excluding the first week of the semester, students can have <strong>eight</strong> absences without any impact to their grade. These accommodations are meant to cover illness and emergency, so you should always come to class if you are able to do so.</p>
+<p>As a general guideline, students cannot miss more than two weeks of class in total throughout the academic semester without receiving a letter grade reduction.</p>
+<p>For this course, excluding the first week and eight excused absences, overall course grade will go down by 1/3 of a letter grade for each additional absence or absence equivalence regardless of base grade.</p>
+</section>
+<section id="engagement" class="level4">
+<h4 class="anchored" data-anchor-id="engagement"><em>Engagement</em></h4>
+<p>The term “engagement” or our expectation that students remain “engaged” can mean many things, often varying by course. Baseline behaviors that indicate engagement include:</p>
+<ul>
+<li>participation in class activities and discussions</li>
+<li>defined contribution to class sessions in full-class or group discussions</li>
+<li>note-taking (physical or digital)</li>
+<li>participating in course session attendance requirements</li>
+<li>not participating in non-course related activities</li>
+<li>not completing non-course related projects</li>
+</ul>
+</section>
+</section>
+<section id="late-work-policy" class="level3">
+<h3 class="anchored" data-anchor-id="late-work-policy"><em>Late Work Policy</em></h3>
+<p>The deadlines for assignments are hard deadlines. This policy is intended to ensure that students keep up with course topics, are able to actively participate in class, and are accountable for managing time effectively.</p>
+<p>All students in the CIS department are expected to turn in assignments on time. “On time” means on or before the assignment’s due date. This means that an assignment cannot be turned in for credit after a due date, unless the student applies a token.</p>
+<section id="tokens" class="level4">
+<h4 class="anchored" data-anchor-id="tokens"><em>Tokens</em></h4>
+<p>Students in 101 are allotted four tokens to receive extensions on any assignment except the final with no questions asked by the course instructor except either in the rare cases of documented severe and/or extenuating circumstances or in cases that violate the CIS policy document or any College-approved policy.</p>
+<ul>
+<li><p>A token may be applied via a Google Form up to the assignment deadline, with exceptions granted only for severe and/or extenuating circumstances.</p></li>
+<li><p>Tokens grant an automatic extension of <strong>one week</strong> to anything except the project or final exam.</p></li>
+<li><p>Tokens will not be accepted after the due date of the last lab. This means that token usage will end after the labs are complete and will no longer be accepted. This roughly implies that they will stop three or four weeks from the end of class.</p></li>
+</ul>
+<p><a href="https://forms.gle/hjrJLnpHrauFmJqH8">Token Form for Automatic Extension</a></p>
+</section>
+</section>
+<section id="extenuating-circumstances" class="level3">
+<h3 class="anchored" data-anchor-id="extenuating-circumstances"><em>Extenuating Circumstances</em></h3>
+<p>Extenuating circumstances are exceptional, unforeseen, outside of your control, and short-term, like illness and emergency. Regular circumstances associated with taking courses at Allegheny College are not considered extenuating.</p>
+<p>The accommodations provided by tokens and permitted absences are meant to cover extenuating circumstances like illness, emergency, and work. However, if you have a contagious illness like COVID-19, the flu, or a cold, you should <strong>not</strong> come to class. If you have expended all your absences and tokens and are still sick with a contagious illness, you may contact your professor about options. If your symptoms are mild or you are recovering from a respiratory illness, we recommend that you wear a mask to class.</p>
+<p>Professor must be informed of all athletic obligations at the beginning of the semester, or with as much notice as possible. If you are feeling healthy and well, you should make every effort to come to class on time and to complete assignments, rather than using absences and tokens you may need later.</p>
+<p>These no-questions-asked accommodations are meant to protect student privacy, and to remove the additional effort of acquiring documentation under duress of illness or emergency. In addition, they allow the professor to remain focused on teaching rather than adjudicating excuses.</p>
+<p>If extenuating circumstances are severe enough to require more absences and tokens, you may contact your professor to discuss options. In most cases, however, a situation of this gravity warrants a request for a “Late Drop” or “Incomplete” in the course, as the student will not have had adequate opportunity to learn the material.</p>
+<hr>
+</section>
+</section>
+<section id="communications" class="level2">
+<h2 class="anchored" data-anchor-id="communications">Communications</h2>
+<section id="using-github-and-discord" class="level3">
+<h3 class="anchored" data-anchor-id="using-github-and-discord"><em>Using GitHub and Discord</em></h3>
+<p>This course will primarily use GitHub and Discord for collaborative course communication. Communications that are not private matters must take place in the Data Structures Channel in Discord.</p>
+<p>The Allegheny College Computer and Information Science Discord Server will also have useful announcements about departmental activities including TL office hours.</p>
+</section>
+<section id="using-email" class="level3">
+<h3 class="anchored" data-anchor-id="using-email"><em>Using Email</em></h3>
+<p>Although we will primarily use Discord for class communication, the course instructor will sometimes use email to send announcements about important matters such as changes in the schedule. It is your responsibility to check your email at least once a day and to ensure that you can reliably send and receive emails.</p>
+<hr>
+</section>
+</section>
+<section id="honor-code" class="level2">
+<h2 class="anchored" data-anchor-id="honor-code">Honor Code</h2>
+<p>The Academic Honor Program that governs the entire academic program at Allegheny College is described in the Allegheny Academic Bulletin. The Honor Program applies to all work that is submitted for academic credit or to meet non-credit requirements for graduation at Allegheny College. This includes all work assigned for this class (e.g., examinations and course assignments). All students who have enrolled in the College will work under the Honor Program. Each student who has matriculated at the College has acknowledged the following Honor Code pledge:</p>
+<blockquote class="blockquote">
+<p>I hereby recognize and pledge to fulfill my responsibilities, as defined in the Honor Code, and to maintain the integrity of both myself and the College community as a whole.</p>
+</blockquote>
+<section id="effective-collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="effective-collaboration"><em>Effective Collaboration</em></h3>
+<p>Computer science is an inherently collaborative discipline. The Department of Computer and Information Science at Allegheny College encourages students to engage in collaboration. However, in the context of individual coursework, through which each student must demonstrate their own knowledge, there are certain forms of collaboration that are and are not acceptable.</p>
+<ul>
+<li>Acceptable forms of collaboration include:
+<ul>
+<li>Discussing high-level concepts.</li>
+<li>Referring someone to a course text book, course slides, example programs, or other resources that contain helpful information or instructions.</li>
+<li>Outlining the high-level steps to solving a problem, without mentioning specific</li>
+<li>lines of code that need to be written.</li>
+</ul></li>
+<li>Unacceptable forms of collaboration include:
+<ul>
+<li>Sharing details about specific lines of code, including showing your source code to someone or looking at someone else’s code.</li>
+<li>Copying someone else’s source code, technical writing, program commands, or program output, even with some slight modifications.</li>
+<li>Typing source code, technical writing, or commands on someone else’s computer.</li>
+</ul></li>
+</ul>
+</section>
+<section id="plagiarism-and-artificial-intelligence" class="level3">
+<h3 class="anchored" data-anchor-id="plagiarism-and-artificial-intelligence"><em>Plagiarism and Artificial Intelligence</em></h3>
+<p>Students may not pass off or represent the work of another student, or their own prior work, as their own current work in any case. Plagiarism and AI-generated code, text, or images are not permitted in any assignment type unless the instructions supplied for the assignment explicitly state otherwise.For exams and all other coursework, students are expected to adhere to the given instructions for the particular exam or item of coursework. It is the responsibility of the student to review the authorization specifications on every item and act appropriately, upholding the honor code. Suspected plagiarized or unauthorized use of AI to generate the work that is turned in will be reported to the Honor Code Committee. This policy does not preclude the use of AI to learn.</p>
+<hr>
+</section>
+</section>
+<section id="educational-accommodations" class="level2">
+<h2 class="anchored" data-anchor-id="educational-accommodations">Educational Accommodations</h2>
+<p>The Americans with Disabilities Act (ADA) is a federal anti-discrimination statute that provides comprehensive civil rights protection for persons with disabilities. Among other things, this legislation requires all students with disabilities be guaranteed a learning environment that provides for reasonable accommodation of their disabilities. Students with disabilities who believe they may need accommodations in this class are encouraged to contact Student Accessibility and Support Services (SASS) at 814-332-2898. Student Accessibility and Support Services is part of the Learning Commons and is located in Pelletier Library. Please do this as soon as possible to ensure that approved accommodations are implemented in a timely fashion.</p>
+<hr>
+</section>
+<section id="syllabus-changes" class="level2">
+<h2 class="anchored" data-anchor-id="syllabus-changes">Syllabus Changes</h2>
+<p>The instructor may make updates or changes to this document at any time as needed until term grades are due. Changes will be announced to the class.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

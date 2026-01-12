@@ -1,0 +1,221 @@
+---
+title: "Just For Fun 05: Function Calls in Code"
+subtitle: "Understanding Functions, Flow, and Mathematical Reasoning"
+date: "August 30, 2025"
+author: "OBC"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    css: 
+      - ../shared/lesson-styles.css
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    include-after-body:
+      - text: |
+          <script src="../shared/lesson-python.js"></script>
+---
+
+::: {.callout-note icon="🎯"}
+
+## Lesson Objectives
+
+By the end of this lesson, you will be able to:
+
+- [ ] Identify and describe the anatomy of a Python function
+- [ ] Explain the flow of execution in a Python script
+- [ ] Discuss the mathematical reasoning behind calculating the area of a square
+- [ ] Experiment with function calls and inputs interactively
+:::
+
+## Introduction
+
+In this lesson, you'll explore the structure of Python code, focusing on how functions are defined and called. We'll use a simple example that calculates the area of a square to illustrate key concepts.
+
+## Key Concepts
+
+::: {.lesson-concept}
+::: {.concept-title}
+💡 **Concept 1: Function Definition & Calls**
+:::
+A function in Python is a reusable block of code that performs a specific task. Functions are defined using the `def` keyword, followed by the function name and parameters. To use a function, you "call" it by its name and provide the required arguments.
+
+**Example:**
+```python
+def squareArea(s: float) -> float:
+    """ determine area of square"""
+    return s * s
+```
+:::
+
+::: {.lesson-concept}
+::: {.concept-title}
+💡 **Concept 2: Flow of Execution**
+:::
+Python executes code from top to bottom. The `main()` function is often used as a "driver" to organize the flow. When `main()` is called, it runs the code inside it, including any function calls.
+
+**Example:**
+```python
+def main() -> None:
+    sideLength = 5
+    print(f"Length {sideLength}")
+    print(f" Area: {squareArea(sideLength)}")
+```
+:::
+
+
+### Example 1a: Calculating the Area of a Rectangle
+
+::: {.code-explanation}
+**What this code does:** Defines a function to calculate the area of a rectangle and calls it with sample values.
+:::
+
+**Example Code:**
+```python
+def rectangleArea(length: float, width: float) -> float:
+    """ determine area of rectangle"""
+    return length * width
+
+print(rectangleArea(6, 3))
+```
+
+<div id="lesson-terminal-1" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-1" class="lesson-input" rows="5" placeholder="# Copy the code above or write your own...">def rectangleArea(length: float, width: float) -> float:
+    """ determine area of rectangle"""
+    return length * width
+
+print(rectangleArea(6, 3))
+</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Example 1b: Calculating the Area of a Circle
+
+::: {.code-explanation}
+**What this code does:** Defines a function to calculate the area of a circle and calls it with a sample value.
+:::
+
+**Example Code:**
+```python
+import math
+def circleArea(radius: float) -> float:
+    """ determine area of circle"""
+    return math.pi * radius * radius
+
+print(circleArea(2))
+```
+
+<div id="lesson-terminal-2" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-2" class="lesson-input" rows="6" placeholder="# Copy the code above or write your own...">import math
+def circleArea(radius: float) -> float:
+    """ determine area of circle"""
+    return math.pi * radius * radius
+
+print(circleArea(2))
+</textarea>
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Example 1c: Calculating the Volume of a Cube
+
+::: {.code-explanation}
+**What this code does:** Defines a function to calculate the volume of a cube and calls it with a sample value.
+:::
+
+**Example Code:**
+```python
+def cubeVolume(s: float) -> float:
+    """ determine volume of cube"""
+    return s ** 3
+
+print(cubeVolume(3))
+```
+
+<div id="lesson-terminal-3" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-3" class="lesson-input" rows="5" placeholder="# Copy the code above or write your own...">
+def cubeVolume(s: float) -> float:
+    """ determine volume of cube"""
+    return s ** 3
+
+print(cubeVolume(3))
+</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Challenge Questions
+
+1. Choose a function to check whether a side can have a negative distance value. What should the function do if it receives a negative value?
+2. Change the one of the `circleArea` or `cubeVolume` functions to handle a radius of zero or negative values. Should the area be zero or should it raise an error?
+3. *Challenge*: Write a function to calculate the volume of a cylinder (`π * r^2 * h`). Try different values for radius and height.
+4. *Challenge*: Write a function to calculate the area of a triangle given its base and height. Test your function with different values.
+
+Use the interactive code fields above to modify and run your solutions. Have fun experimenting and solving these challenges!
+
+### Your Turn!
+
+::: {.challenge-box}
+**Challenge Tasks:**
+
+1. Try using different types of inputs (integers, floats, strings, booleans, complex numbers) and observe the results.
+2. Modify the function to handle invalid inputs gracefully (e.g., using type checking or error handling).
+3. Add comments to explain each part of the code.
+4. Write your own function to calculate the area of a rectangle.
+
+Use any of the terminals above to experiment with these challenges!
+:::
+
+## Summary
+
+::: {.callout-tip icon="✅"}
+## What You Learned
+
+In this lesson, you explored:
+- The structure and anatomy of Python functions
+- How function calls work and how data flows through a program
+- Mathematical reasoning for calculating area
+- How different input types affect function behavior
+:::
+
+## Key Takeaways
+
+- Functions are reusable blocks of code
+- Flow of execution is organized using functions like `main()`
+- Mathematical formulas can be implemented directly in code
+- Input types matter for function behavior
+
+---
+
+::: {.callout-note icon="📖"}
+## Additional Resources
+- [Python Functions Documentation](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
+- [Python Data Types](https://docs.python.org/3/library/stdtypes.html)
+- [Quarto Interactive Python](https://quarto.org/docs/tools/python.html)
+:::

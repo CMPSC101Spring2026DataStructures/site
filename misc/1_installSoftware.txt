@@ -1,0 +1,144 @@
+---
+title: "Installing Essential Software for CS101"
+format: revealjs
+revealjs-theme: solarized
+---
+
+# Welcome to CS101: Software Installation Guide
+
+::: {.callout-note}
+**Goal:** Get your computer ready for coding! Follow these steps to install the essential tools for this course.
+:::
+
+---
+
+## 1. Install Python
+
+### MacOS & Unix
+
+```bash
+# Check if Python is installed
+python3 --version
+# If not installed, use Homebrew (MacOS)
+brew install python
+```
+
+### Windows
+
+- Visit [python.org/downloads](https://www.python.org/downloads/)
+- Download the latest Python installer.
+- Run the installer and **check the box** to "Add Python to PATH".
+
+### ChromeOS
+
+- Open the Terminal app.
+- Run:
+```bash
+sudo apt-get update
+sudo apt-get install python3
+```
+
+---
+
+## 2. Install Visual Studio Code (VS Code)
+
+### MacOS & Unix
+
+- Go to [code.visualstudio.com](https://code.visualstudio.com/)
+- Download the installer for Mac or Linux.
+- Follow the installation instructions.
+
+### Windows
+
+- Go to [code.visualstudio.com](https://code.visualstudio.com/)
+- Download the Windows installer.
+- Run and follow the prompts.
+
+### ChromeOS
+
+- Open the Terminal app.
+- Run:
+```bash
+sudo apt-get update
+sudo apt-get install code
+```
+- Or use [VS Code Web](https://vscode.dev/) for a browser-based experience.
+
+---
+
+## 3. Install Pipx (Python Package Installer)
+
+### MacOS & Unix
+
+```bash
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+```
+
+### Windows
+
+```powershell
+py -m pip install --user pipx
+py -m pipx ensurepath
+```
+
+### ChromeOS
+
+```bash
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+```
+
+::: {.callout-tip}
+**Restart your terminal after installing pipx!**
+:::
+
+---
+
+## 4. Install Git
+
+### MacOS
+
+```bash
+brew install git
+```
+
+### Unix/Linux
+
+```bash
+sudo apt-get update
+sudo apt-get install git
+```
+
+### Windows
+
+- Download from [git-scm.com](https://git-scm.com/download/win)
+- Run the installer and follow the prompts.
+
+### ChromeOS
+
+```bash
+sudo apt-get update
+sudo apt-get install git
+```
+
+---
+
+# 🎉 You're Ready!
+
+::: {.callout-success}
+**Congratulations!** You now have all the essential tools installed. If you run into issues, ask for help or check the official documentation for each tool.
+:::
+
+---
+
+# Resources & Help
+
+- [Python Docs](https://docs.python.org/3/)
+- [VS Code Docs](https://code.visualstudio.com/docs)
+- [Pipx Docs](https://pipxproject.github.io/pipx/)
+- [Git Docs](https://git-scm.com/doc)
+
+::: {.callout-important}
+**Tip:** Always keep your software up to date for the best experience!
+:::

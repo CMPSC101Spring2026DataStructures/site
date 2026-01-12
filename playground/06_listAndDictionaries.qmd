@@ -1,0 +1,369 @@
+---
+title: "Just For Fun 06: Lists and Dictionaries"
+subtitle: "Organizing and Managing Data with Python Collections"
+date: "September 22, 2025"
+author: "OBC"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    css: 
+      - ../shared/lesson-styles.css
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    include-after-body:
+      - text: |
+          <script src="../shared/lesson-python.js"></script>
+---
+
+::: {.callout-note icon="🎯"}
+## Lesson Objectives
+By the end of this lesson, you will be able to:
+
+- [ ] Create and manipulate lists to store sequences of data
+- [ ] Create and work with dictionaries to store key-value pairs
+- [ ] Access, modify, and iterate through lists and dictionaries
+- [ ] Choose the appropriate data structure (list vs dictionary) for different tasks
+:::
+
+## Introduction
+
+Lists and dictionaries are two of the most important data structures in Python. They allow you to organize and manage collections of data efficiently:
+
+- **Lists** are ordered collections that can store multiple items in sequence
+- **Dictionaries** are collections of key-value pairs that allow you to quickly look up values using unique keys
+
+Think of a list like a shopping list where the order matters, and a dictionary like a phone book where you look up a person's name (key) to find their phone number (value).
+
+## Key Concepts
+
+::: {.lesson-concept}
+::: {.concept-title}
+💡 **Concept 1: Lists - Ordered Collections**
+:::
+Lists are ordered, mutable collections that can store multiple items. Items in a list are accessed by their position (index), starting from 0.
+
+**Example:**
+```python
+# Creating a list with three string elements
+fruits = ["apple", "banana", "orange"]
+# Access the first element (index 0) and print it
+print(fruits[0])  # Outputs: apple
+```
+:::
+
+::: {.lesson-concept}
+::: {.concept-title}
+💡 **Concept 2: Dictionaries - Key-Value Pairs**
+:::
+Dictionaries store data as key-value pairs. Instead of using numeric indices, you use meaningful keys to access values quickly.
+
+**Example:**
+```python
+# Creating a dictionary with string keys and mixed value types
+student = {"name": "Alice", "age": 20, "grade": "A"}
+# Access the value associated with the "name" key
+print(student["name"])  # Outputs: Alice
+```
+:::
+
+## Interactive Examples
+
+### Example 1: Working with Lists
+
+::: {.code-explanation}
+**What this code does:** This example demonstrates how to create a list, add items to it, and access elements by their index position.
+:::
+
+**Example Code:**
+```python
+# Create an empty list to store color names
+colors = []
+
+# Add individual items to the end of the list using append()
+colors.append("red")
+colors.append("blue")
+colors.append("green")
+
+# Display the entire list and access specific elements
+print("List of colors:", colors)
+print("First color:", colors[0])  # Index 0 is the first element
+print("Number of colors:", len(colors))  # len() returns list length
+
+# Add multiple items at once using extend()
+colors.extend(["yellow", "purple"])
+print("Updated list:", colors)
+```
+
+<div id="lesson-terminal-1" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-1" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own..."># Create an empty list to store color names
+colors = []
+
+# Add individual items to the end of the list using append()
+colors.append("red")
+colors.append("blue")
+colors.append("green")
+
+# Display the entire list and access specific elements
+print("List of colors:", colors)
+print("First color:", colors[0])  # Index 0 is the first element
+print("Number of colors:", len(colors))  # len() returns list length
+
+# Add multiple items at once using extend()
+colors.extend(["yellow", "purple"])
+print("Updated list:", colors)</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Example 2: Dictionary Basics and Key-Value Storage
+
+::: {.code-explanation}
+**What this code does:** This example demonstrates creating a dictionary, populating it with key-value pairs using a loop, and then retrieving values using their keys.
+:::
+
+**Example Code:**
+```python
+# Declare an empty dictionary to store number mappings
+num_dict = {} # define the dictionary here
+
+# Populating the dictionary with key-value pairs
+print("\t Populating the dictionary.")
+for i in range(10):  # Loop from 0 to 9
+     key = i           # The key will be the number itself
+     value = i**2      # The value will be the square of the number
+     print(f"\t {key} --> {value}")  # Show what we're storing
+     num_dict[key] = value # Store the key-value pair in the dictionary
+
+# Retrieve values from the dictionary using their keys
+print("\t Pulling values from the dictionary using their keys.")
+for i in range(10):  # Loop through the same range
+     # Access the stored value using the key (i)
+     print(f"\t num_dict: {i} --> {num_dict[i]}") # pull values by their keys
+```
+
+<div id="lesson-terminal-2" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-2" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own..."># Declare an empty dictionary to store number mappings
+num_dict = {} # define the dictionary here
+
+# Populating the dictionary with key-value pairs
+print("\t Populating the dictionary.")
+for i in range(10):  # Loop from 0 to 9
+     key = i           # The key will be the number itself
+     value = i**2      # The value will be the square of the number
+     print(f"\t {key} --> {value}")  # Show what we're storing
+     num_dict[key] = value # Store the key-value pair in the dictionary
+
+# Retrieve values from the dictionary using their keys
+print("\t Pulling values from the dictionary using their keys.")
+for i in range(10):  # Loop through the same range
+     # Access the stored value using the key (i)
+     print(f"\t num_dict: {i} --> {num_dict[i]}") # pull values by their keys</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Example 3: Student Grade Management System
+
+::: {.code-explanation}
+**What this code does:** This example creates a practical grade management system using both lists and dictionaries to store student information and calculate statistics.
+:::
+
+**Example Code:**
+```python
+# Create a dictionary where keys are student names and values are lists of grades
+students = {
+    "Alice": [85, 92, 78, 95],    # Alice's test scores
+    "Bob": [79, 85, 91, 88],      # Bob's test scores
+    "Charlie": [92, 89, 94, 97]   # Charlie's test scores
+}
+
+# Display all students and their grades with calculated averages
+print("Student Grade Report:")
+print("-" * 30)  # Print a line separator
+
+# Loop through each student and their grades
+for student_name, grades in students.items():
+    # Calculate the average by summing all grades and dividing by count
+    average = sum(grades) / len(grades)
+    print(f"{student_name}: {grades}")
+    print(f"  Average: {average:.1f}")  # .1f rounds to 1 decimal place
+    print()  # Empty line for better formatting
+
+# Find the highest average across all students
+all_averages = []  # Create empty list to store all averages
+for grades in students.values():  # Loop through just the grade lists
+    average = sum(grades) / len(grades)  # Calculate average for each student
+    all_averages.append(average)  # Add to our list of averages
+
+# Find the maximum value in the list of averages
+highest_avg = max(all_averages)
+print(f"Highest class average: {highest_avg:.1f}")
+```
+
+<div id="lesson-terminal-3" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-3" class="lesson-input" rows="18" placeholder="# Copy the code above or write your own..."># Create a dictionary where keys are student names and values are lists of grades
+students = {
+    "Alice": [85, 92, 78, 95],    # Alice's test scores
+    "Bob": [79, 85, 91, 88],      # Bob's test scores
+    "Charlie": [92, 89, 94, 97]   # Charlie's test scores
+}
+
+# Display all students and their grades with calculated averages
+print("Student Grade Report:")
+print("-" * 30)  # Print a line separator
+
+# Loop through each student and their grades
+for student_name, grades in students.items():
+    # Calculate the average by summing all grades and dividing by count
+    average = sum(grades) / len(grades)
+    print(f"{student_name}: {grades}")
+    print(f"  Average: {average:.1f}")  # .1f rounds to 1 decimal place
+    print()  # Empty line for better formatting
+
+# Find the highest average across all students
+all_averages = []  # Create empty list to store all averages
+for grades in students.values():  # Loop through just the grade lists
+    average = sum(grades) / len(grades)  # Calculate average for each student
+    all_averages.append(average)  # Add to our list of averages
+
+# Find the maximum value in the list of averages
+highest_avg = max(all_averages)
+print(f"Highest class average: {highest_avg:.1f}")</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+## Challenge Yourself
+
+### Word Frequency Counter
+
+Create a program that counts how many times each word appears in a sentence using a dictionary.
+
+**Challenge Code:**
+```python
+# Start with this sentence to analyze
+sentence = "the quick brown fox jumps over the lazy dog the fox is quick"
+
+# Split the sentence into individual words using spaces as separators
+words = sentence.split()
+print("Words in sentence:", words)
+
+# Create an empty dictionary to store word counts
+word_count = {}
+
+# Your challenge: Complete this code to count word frequencies
+# Hint: Loop through the words and update the dictionary
+for word in words:
+    # Add your code here to count each word
+    # If the word is already in the dictionary, increment its count
+    # If the word is new, add it with a count of 1
+    pass
+
+# Display the results - show each word and how many times it appears
+print("Word frequencies:")
+for word, count in word_count.items():
+    print(f"'{word}': {count}")
+```
+
+<div id="lesson-terminal-4" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-4" class="lesson-input" rows="15" placeholder="# Copy the code above or write your own..."># Start with this sentence to analyze
+sentence = "the quick brown fox jumps over the lazy dog the fox is quick"
+
+# Split the sentence into individual words using spaces as separators
+words = sentence.split()
+print("Words in sentence:", words)
+
+# Create an empty dictionary to store word counts
+word_count = {}
+
+# Your challenge: Complete this code to count word frequencies
+# Hint: Loop through the words and update the dictionary
+for word in words:
+    # Add your code here to count each word
+    # If the word is already in the dictionary, increment its count
+    # If the word is new, add it with a count of 1
+    pass
+
+# Display the results - show each word and how many times it appears
+print("Word frequencies:")
+for word, count in word_count.items():
+    print(f"'{word}': {count}")</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Your Turn!
+
+::: {.challenge-box}
+**Challenge Tasks:**
+
+1. **List Manipulation:** Create a list of your favorite movies, add 2 more movies, remove one, and print the final list.
+2. **Dictionary Creation:** Build a dictionary that maps country names to their capital cities (at least 5 countries).
+3. **Combined Challenge:** Create a shopping list (as a list) and a price dictionary. Calculate the total cost of your shopping list.
+4. **Advanced Challenge:** Modify the word frequency counter to ignore case (treat "The" and "the" as the same word).
+
+Use any of the terminals above to experiment with these challenges!
+:::
+
+## Summary
+
+::: {.callout-tip icon="✅"}
+## What You Learned
+
+In this lesson, you explored:
+
+- **Lists:** Ordered collections perfect for storing sequences of related items
+- **Dictionaries:** Key-value pairs ideal for quick lookups and data organization
+- **Practical Applications:** How to use these data structures to solve real-world problems
+- **When to Use Each:** Lists for ordered data, dictionaries for labeled data and fast lookups
+:::
+
+## Key Takeaways
+
+Lists and dictionaries are fundamental building blocks in Python programming. Lists excel when you need to maintain order and access items by position, while dictionaries shine when you need to associate meaningful labels (keys) with values for quick retrieval. Both are mutable, meaning you can modify them after creation, making them powerful tools for dynamic data management. As you continue programming, you'll find these data structures essential for organizing information efficiently.
+
+---
+
+::: {.callout-note icon="📖"}
+## Additional Resources
+
+- [Python Lists Documentation](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+- [Python Dictionaries Documentation](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
+- [Real Python: Python Lists and Tuples](https://realpython.com/python-lists-tuples/)
+- [Real Python: Python Dictionaries](https://realpython.com/python-dicts/)
+:::

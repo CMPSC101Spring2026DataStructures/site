@@ -1,0 +1,152 @@
+---
+title: "Just For Fun 02: String Cheese Demo"
+subtitle: "Testing the simplified lesson template"
+date: "22 Aug 2025"
+author: "OBC"
+format: 
+  html:
+    toc: true
+    toc-depth: 1
+    code-fold: false
+    css: 
+      - ../shared/lesson-styles.css
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    include-after-body:
+      - text: |
+          <script src="../shared/lesson-python.js"></script>
+---
+
+::: {.callout-note icon="🎯"}
+
+## Lesson Objectives
+By the end of this lesson, you will be able to:
+
+- [ ] Print strings in Python
+- [ ] Use for loops with range()
+- [ ] Format strings with f-strings
+- [ ] Understand string repetition
+:::
+
+## Introduction
+
+In this lesson, we'll learn how to print "String Cheese" using Python! This fun example will teach you about loops, strings, and formatting.
+
+## Key Concepts
+
+::: {.lesson-concept}
+::: {.concept-title}
+💡 **Concept 1: String Printing and Loops**
+:::
+We can use Python's `print()` function combined with `for` loops to create repeated output. The `range()` function helps us control how many times something repeats.
+
+**Example:**
+```python
+# Print String Cheese multiple times
+for i in range(5):
+    print(f"String Cheese : {i}")
+```
+:::
+
+## Interactive Examples
+
+### Example 1: Basic String Cheese Loop
+
+::: {.code-explanation}
+**What this code does:** This creates a simple loop that prints "String Cheese" 10 times, each with a number.
+:::
+
+<div id="lesson-terminal-1" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-1" class="lesson-input" rows="4" placeholder="# Basic String Cheese Loop
+# Type your Python code here..."></textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="loadExample(1, `for i in range(10):\n    print(f'String Cheese : {i}')`)" class="example-btn">📝 Load Example</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+### Example 2: String Cheese with Custom Messages
+
+::: {.code-explanation}
+**What this code does:** This example shows how to create more creative String Cheese messages with different formatting.
+:::
+
+<div id="lesson-terminal-2" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>
+
+<textarea id="lesson-input-2" class="lesson-input" rows="4" placeholder="# Custom String Cheese Messages
+# Type your Python code here...">
+</textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+  <button onclick="loadExample(2, `for i in range(5):\n    print(f'🧀 String Cheese #{i+1} is delicious! 🧀')`)" class="example-btn">📝 Load Example</button>
+</div>
+
+## Try It Yourself
+
+::: {.try-it-box}
+**🚀 Challenge:** Create your own String Cheese variations!
+
+**Your task:** Write a loop that prints "String Cheese" with different numbers and messages.
+
+**Hint:** Try using different ranges and string formatting options.
+:::
+
+<div id="lesson-terminal-3" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Ready for your solution!</div>
+</div>
+
+<textarea id="lesson-input-3" class="lesson-input" rows="6" placeholder="# Your String Cheese creation here
+# Try different ranges and messages!"></textarea>
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+  <button onclick="loadExample(3, `# Solution: Creative String Cheese\nfor i in range(1, 6):\n    cheese ='🧀' \n    print(f'String Cheese Level {i}: {cheese * i}')`)" class="example-btn">💡 Show Solution</button>
+</div>
+
+## Summary
+
+::: {.callout-tip icon="✅"}
+## What You Learned
+
+In this lesson, you explored:
+
+- **String printing with print() function**
+- **For loops with range() function**
+- **F-string formatting for dynamic messages**
+- **Creative text output and formatting**
+:::
+
+## Next Steps
+
+::: {.callout-important icon="➡️"}
+## Coming Up Next
+
+In the next lesson, we'll cover:
+- Variables and data types
+- More complex string operations
+:::
+
+---
+
+::: {.callout-note icon="📖"}
+## Additional Resources
+
+- [Python String Formatting](https://docs.python.org/3/tutorial/inputoutput.html)
+- [Python For Loops](https://docs.python.org/3/tutorial/controlflow.html#for-statements)
+- [Practice Problems](https://github.com/your-repo/practice-problems)
+:::

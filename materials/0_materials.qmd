@@ -1,0 +1,29 @@
+---
+title: "Materials"
+# listing:
+  # contents:
+    # - "*.qmd"
+    # - "lab-notes/*reports.qmd"
+---
+
+<center>
+**CS101::Spring 2026**
+</center>
+
+Here you will find a listing of lesson materials for the course such as slides, assignments, and similar.
+
+<!-- ![](../graphics/levelup.png){width=10%} -->
+
+## 1. Welcome Weeks
+- **Getting to Know You**: [Welcome Week Survey](https://forms.gle/EobK4xncr4f63Z8WA)
+- **Getting to know your neighbor** Pair-up with **two** people in the class to ask the following questions. Write down their answers -- you will be introducing them during next class! 
+  -  What is your name?
+  -  Where is home?
+  -  What is your favorite part about life at Allegheny College so far?
+  -  Do you have any Computer Science experience(s) already (jobs, academic, industrial, similar)?
+  -  Have you done any projects with programming?
+  -  What can you share about the projects?
+  -  What is your favorite phone app?
+  -  What is your favorite breakfast cereal?
+
+---

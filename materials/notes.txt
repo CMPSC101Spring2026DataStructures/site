@@ -1,0 +1,21 @@
+# Compiling files
+
+Date: 1 Sept 2025
+
+The following commands compile the files to pdf and html formatting. The files are automatically stored in the website directory (`docs/`).
+
+``` bash
+ quarto render 2_introToPython_solutions.qmd --to html
+ quarto render 2_introToPython_solutions.qmd --to pdf
+ quarto render 2_introToPython.qmd --to pdf
+ quarto render 2_introToPython.qmd --to html
+```
+
+To make slides, then we remove the `--to` parameter.
+
+
+``` bash
+ quarto render 2_introToPython_solutions.qmd 
+ quarto render 2_introToPython.qmd 
+```
+

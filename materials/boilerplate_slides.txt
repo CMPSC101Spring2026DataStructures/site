@@ -1,0 +1,132 @@
+---
+title: "Python Programming: Colourful Concepts"
+subtitle: "Guttag Chapter 2"
+author: "OBC"
+format: revealjs
+theme: moon
+css: custom.css
+# theme: solarized
+transition: fade
+backgroundTransition: convex
+slide-number: true
+center: true
+touch: true
+controls: true
+progress: true
+width: 1200
+height: 700
+toc: true
+toc-depth: 2
+chalkboard: true
+menu: true
+# title-slide-style: "background-color: #f9f6f2; color: #2d3e50;"
+---
+
+<!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
+
+
+# Welcome to Python Programming!
+
+::: {.callout-tip}
+**Let's make learning Python fun, colourful, and practical!**
+:::
+
+---
+
+[...existing code...]
+## What are literals?
+
+Literals are fixed values in your code. They can be numbers, strings, booleans, etc.
+
+::: {.callout-note}
+**Examples:**
+- `42` (integer)
+- `3.14` (float)
+- `'hello'` (string)
+- `True`, `False` (boolean)
+:::
+
+## Python Code Sample
+
+```python
+age = 18
+pi = 3.14159
+greeting = "Hello, world!"
+is_active = True
+```
+
+## Interesting Application
+
+Use literals to set default values in games, apps, or data analysis scripts!
+
+---
+
+# Review Python Variables and Operators
+
+## What are variables?
+
+Variables store data you want to use or change.
+
+## Operators
+
+Operators let you do math, compare values, and more!
+
+::: {.callout-important}
+**Examples:**
+- Arithmetic: `+`, `-`, `*`, `/`, `**` (power)
+- Comparison: `==`, `!=`, `<`, `>`
+- Assignment: `=`, `+=`, `-=`
+:::
+
+## Python Code Sample
+
+```python
+x = 5
+y = 2
+sum = x + y
+product = x * y
+is_equal = (x == y)
+x += 1
+```
+
+## Interesting Application
+
+Variables and operators are the backbone of calculators, games, and simulations!
+
+---
+
+# Review Python Loops and Conditionals
+
+## Loops
+
+Loops repeat actions. Use `for` and `while` loops.
+
+## Conditionals
+
+Conditionals let your code make decisions using `if`, `elif`, and `else`.
+
+::: {.callout-tip}
+**Examples:**
+```python
+for i in range(5):
+	print(i)
+
+count = 0
+while count < 3:
+	print("Counting:", count)
+	count += 1
+
+if x > y:
+	print("x is greater!")
+elif x == y:
+	print("x equals y!")
+else:
+	print("x is less!")
+```
+:::
+
+## Interesting Application
+
+Loops and conditionals power everything from sorting algorithms to interactive stories!
+
+---

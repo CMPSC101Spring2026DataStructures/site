@@ -1,0 +1,3006 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="CS 101 - Fall 2025">
+  <title>CMPSC101 Spring 2026 :: DataStructures – O(2^n) - EXPONENTIAL TIME</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">O(2^n) - EXPONENTIAL TIME</h1>
+  <p class="subtitle">The Recursive Explosion - When Algorithms Go Nuclear!</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+CS 101 - Fall 2025 
+</div>
+</div>
+</div>
+
+</section>
+<section id="where-are-we-in-the-scope-of-complexity" class="slide level2">
+<h2>Where Are We in the Scope of Complexity?</h2>
+
+<img data-src="graphics/algorithm_complexity.png" class="r-stretch"></section>
+<section id="what-is-o2n---exponential-time" class="title-slide slide level1 center">
+<h1>What is O(2^n) - Exponential Time?</h1>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Recursive Monster 💥</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>O(2^n)</strong> means the algorithm’s time <strong>doubles</strong> with each additional input element - creating explosive growth!</p>
+<p><strong>Real-World Analogy</strong>: * Like a <strong>chain letter</strong> where each person sends to 2 more people * Day 1: 1 person, Day 2: 2 people, Day 3: 4 people… * <strong>Day 30: Over 1 billion people!</strong></p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Explosive Growth Pattern</strong> 🚀</p>
+<ul>
+<li>10 items → 1,024 operations</li>
+<li>20 items → 1,048,576 operations<br>
+</li>
+<li>30 items → 1,073,741,824 operations</li>
+<li><strong>Each +1 item doubles the work!</strong></li>
+</ul>
+</div><div class="column">
+<p><strong>Key Insight</strong> 🔑</p>
+<p>The algorithm typically uses <strong>recursion</strong> where each call creates <strong>two more calls</strong>, creating an exponential explosion.</p>
+<p><strong>Danger Signal</strong>: <em>“Does my recursive function call itself multiple times?”</em></p>
+<p>If yes → Might be O(2^n)!</p>
+</div></div>
+</section>
+
+<section>
+<section id="what-creates-o2n-complexity" class="title-slide slide level1 center">
+<h1>What Creates O(2^n) Complexity?</h1>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The “Branching Recursion” Pattern 🌳</strong></p>
+</div>
+<div class="callout-content">
+<p>O(2^n) algorithms typically involve recursive functions that branch into multiple recursive calls.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Naive Fibonacci - The Classic</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> fibonacci_slow(n):</span>
+<span id="cb1-2"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb1-3"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb1-4"><a></a>    <span class="co"># This creates the exponential explosion!</span></span>
+<span id="cb1-5"><a></a>    <span class="cf">return</span> fibonacci_slow(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci_slow(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>    <span class="co"># Why O(2^n)?</span></span>
+<span id="cb1-8"><a></a>    <span class="co"># Each call creates 2 more calls</span></span>
+<span id="cb1-9"><a></a>    <span class="co"># fibonacci_slow(5) calls:</span></span>
+<span id="cb1-10"><a></a>    <span class="co"># - fibonacci_slow(4) and fibonacci_slow(3)</span></span>
+<span id="cb1-11"><a></a>    <span class="co"># - fibonacci_slow(4) calls fibonacci_slow(3) and fibonacci_slow(2)</span></span>
+<span id="cb1-12"><a></a>    <span class="co"># - fibonacci_slow(3) calls fibonacci_slow(2) and fibonacci_slow(1)</span></span>
+<span id="cb1-13"><a></a>    <span class="co"># And so on... massive redundant work!</span></span>
+<span id="cb1-14"><a></a></span>
+<span id="cb1-15"><a></a>    <span class="co"># The call tree grows exponentially:</span></span>
+<span id="cb1-16"><a></a>    <span class="co">#           fib(5)</span></span>
+<span id="cb1-17"><a></a>    <span class="co">#         /        \</span></span>
+<span id="cb1-18"><a></a>    <span class="co">#     fib(4)      fib(3)</span></span>
+<span id="cb1-19"><a></a>    <span class="co">#    /     \      /     \</span></span>
+<span id="cb1-20"><a></a>    <span class="co"># fib(3) fib(2) fib(2) fib(1)</span></span>
+<span id="cb1-21"><a></a>    <span class="co"># ...and it keeps branching!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>Subset Generation</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> generate_subsets(items):</span>
+<span id="cb2-2"><a></a>    <span class="cf">if</span> <span class="kw">not</span> items:</span>
+<span id="cb2-3"><a></a>        <span class="cf">return</span> [[]]  <span class="co"># Base case: empty set has one subset</span></span>
+<span id="cb2-4"><a></a>    </span>
+<span id="cb2-5"><a></a>    <span class="co"># For each subset of remaining items,</span></span>
+<span id="cb2-6"><a></a>    <span class="co"># create two versions: with and without first item</span></span>
+<span id="cb2-7"><a></a>    first <span class="op">=</span> items[<span class="dv">0</span>]</span>
+<span id="cb2-8"><a></a>    rest_subsets <span class="op">=</span> generate_subsets(items[<span class="dv">1</span>:])  <span class="co"># Recursive call</span></span>
+<span id="cb2-9"><a></a>    </span>
+<span id="cb2-10"><a></a>    <span class="co"># Double the subsets: add first item to each subset</span></span>
+<span id="cb2-11"><a></a>    with_first <span class="op">=</span> [[first] <span class="op">+</span> subset <span class="cf">for</span> subset <span class="kw">in</span> rest_subsets]</span>
+<span id="cb2-12"><a></a>    </span>
+<span id="cb2-13"><a></a>    <span class="cf">return</span> rest_subsets <span class="op">+</span> with_first</span>
+<span id="cb2-14"><a></a></span>
+<span id="cb2-15"><a></a>    <span class="co"># Example: [1, 2, 3] has 2³ = 8 subsets:</span></span>
+<span id="cb2-16"><a></a>    <span class="co"># [], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]</span></span>
+<span id="cb2-17"><a></a></span>
+<span id="cb2-18"><a></a>    <span class="co"># Each element doubles the number of subsets!</span></span>
+<span id="cb2-19"><a></a>    <span class="co"># n elements → 2^n subsets → O(2^n) time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="interactive-o2n-fibonacci-demo" class="slide level2">
+<h2>Interactive O(2^n) Fibonacci Demo</h2>
+<!-- ::: {.callout-note icon="true"}
+## Watch the Exponential Explosion! 🎮
+
+See how naive Fibonacci creates a massive number of redundant calculations. Try different values!
+
+::: -->
+<div id="exponential-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Naive Fibonacci - O(2^n) Recursive Explosion</h3>
+    <div style="margin: 30px 0;">
+        <select id="fib-number" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+            <option value="3">Fibonacci(3)</option>
+            <option value="5">Fibonacci(5)</option>
+            <option value="7" selected="">Fibonacci(7)</option>
+            <option value="9">Fibonacci(9)</option>
+            <option value="10">Fibonacci(10) - Slow!</option>
+            <option value="12">Fibonacci(12) - Very Slow!</option>
+        </select>
+        <button id="start-fibonacci" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px; min-width: 150px;">Calculate Fibonacci</button>
+        <button id="show-optimized" style="padding: 8px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px; min-width: 140px;">Show O(n) Solution</button>
+        <button id="reset-fibonacci" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px; min-width: 80px;">Reset</button>
+    </div>
+    <div id="fibonacci-visualization" style="height: 400px; width: 100%; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="fibonacci-canvas" width="1400" height="380" style="border: none;"></canvas>
+    </div>
+    <div id="fibonacci-info" style="margin: 10px 0; font-family: monospace; font-size: 14px;">
+        <div>Calculating: <span id="current-calculation">Ready to calculate!</span></div>
+        <div>Function Calls: <span id="function-calls">0</span> | Depth: <span id="max-depth">0</span> | Result: <span id="fib-result">-</span></div>
+        <div>Status: <span id="fibonacci-status">Choose a Fibonacci number to calculate</span></div>
+    </div>
+</div>
+</section>
+<section id="interactive-demo-subset-generation-explosion" class="slide level2">
+<h2>Interactive Demo: Subset Generation Explosion! 💥</h2>
+<!-- ::: {.callout-warning icon="true"}
+## Watch 2^n Subsets Multiply! 🎯
+See how each new element doubles the number of possible subsets!
+::: -->
+<div id="subset-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Subset Generation - O(2^n) Combinatorial Explosion  🎯</h3>
+    <div style="margin: 20px 0;">
+        <label for="subset-input" style="display: block; margin-bottom: 10px; font-weight: bold;">Enter items (separated by commas):</label>
+        <input id="subset-input" type="text" value="A,B,C,D" style="padding: 8px; width: 300px; border: 1px solid #ccc; border-radius: 4px; margin: 5px;">
+        <br>
+        <button id="generate-subsets" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px;">Generate All Subsets</button>
+        <button id="clear-subsets" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px;">Clear</button>
+    </div>
+    <div id="subset-stats" style="margin: 15px 0; font-family: monospace; font-size: 14px; color: #333;">
+        <div>Items: <span id="item-count">4</span> | Expected Subsets: <span id="expected-subsets">16</span> | Generated: <span id="actual-subsets">0</span></div>
+        <div>Status: <span id="subset-status">Ready to generate subsets</span></div>
+    </div>
+    <div id="subset-visualization" style="max-height: 300px; overflow-y: auto; border: 2px solid #eee; border-radius: 8px; padding: 15px; text-align: left; background: #f9f9f9;">
+        <div id="subset-list" style="font-family: monospace; font-size: 12px; line-height: 1.4;"></div>
+    </div>
+</div>
+</section>
+<section id="interactive-demo-password-strength-analyzer" class="slide level2">
+<h2>Interactive Demo: Password Strength Analyzer! 🔐</h2>
+<!-- ::: {.callout-danger icon="true"}
+## Exponential Security Growth! 🛡️
+Discover why longer passwords are exponentially stronger!
+::: -->
+<div id="password-demo" style="text-align: center; margin: 20px 0;">
+    <!-- <h3>Password Strength - Exponential Security</h3> -->
+     <h3> Exponential Security Growth! 🛡️ </h3>
+    <div style="margin: 20px 0;">
+        <div style="margin: 10px 0;">
+            <label for="password-length" style="margin-right: 10px;">Password Length:</label>
+            <input id="password-length" type="range" min="4" max="12" value="8" style="margin: 0 10px;">
+            <span id="length-display" style="font-weight: bold;">8</span> characters
+        </div>
+        <div style="margin: 15px 0;">
+            <label><input type="checkbox" id="include-lowercase" checked=""> Lowercase (a-z)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-uppercase" checked=""> Uppercase (A-Z)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-numbers" checked=""> Numbers (0-9)</label>
+            <label style="margin-left: 15px;"><input type="checkbox" id="include-symbols"> Symbols (!@#$%^&amp;*)</label>
+        </div>
+        <button id="analyze-password" style="padding: 8px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px;">Analyze Strength</button>
+    </div>
+    <div id="password-results" style="margin: 20px 0; padding: 20px; border: 2px solid #eee; border-radius: 8px; background: #f9f9f9;">
+        <div id="password-stats" style="font-family: monospace; font-size: 14px; margin-bottom: 15px;">
+            <div>Character Set Size: <span id="charset-size">62</span></div>
+            <div>Total Combinations: <span id="total-combinations">218,340,105,584,896</span></div>
+            <div>Time to Crack (brute force): <span id="crack-time">~3,467 years</span></div>
+        </div>
+        <div id="password-visualization" style="width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 4px;">
+            <canvas id="password-chart" width="600" height="180" style="border: none;"></canvas>
+        </div>
+    </div>
+    </div>
+</section>
+<section id="password-strength-analysis-in-python" class="slide level2">
+<h2>Password Strength Analysis in Python 💻</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>    <span class="co"># How many possible passwords?</span></span>
+<span id="cb3-2"><a></a>    <span class="kw">def</span> count_passwords(length, alphabet_size):</span>
+<span id="cb3-3"><a></a>        <span class="cf">return</span> alphabet_size <span class="op">**</span> length</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>    <span class="co"># Test different password complexities</span></span>
+<span id="cb3-6"><a></a>    lengths <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>]</span>
+<span id="cb3-7"><a></a>    <span class="cf">for</span> length <span class="kw">in</span> lengths:</span>
+<span id="cb3-8"><a></a>        <span class="co"># lowercase letters only (26 characters)</span></span>
+<span id="cb3-9"><a></a>        simple <span class="op">=</span> count_passwords(length, <span class="dv">26</span>)</span>
+<span id="cb3-10"><a></a>        <span class="co"># letters + digits + symbols (94 characters)</span></span>
+<span id="cb3-11"><a></a>        complex_pwd <span class="op">=</span> count_passwords(length, <span class="dv">94</span>)</span>
+<span id="cb3-12"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>length<span class="sc">}</span><span class="ss"> chars: </span><span class="sc">{</span>simple<span class="sc">:,}</span><span class="ss"> vs </span><span class="sc">{</span>complex_pwd<span class="sc">:,}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Investigation Questions 🤔</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>🔢 4-digit PIN vs 8-character password:</strong> How much stronger is longer?</li>
+<li><strong>⚡ Symbol Power:</strong> Why do security experts love special characters?</li>
+<li><strong>📈 Exponential Growth:</strong> Can you spot the pattern as length increases?</li>
+<li><strong>🎯 Real-World Impact:</strong> How do hackers exploit weak passwords?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-demo-binary-tree-path-counter" class="slide level2">
+<h2>Interactive Demo: Binary Tree Path Counter! 🌳</h2>
+<!-- ::: {.callout-info icon="true"}
+## Exponential Path Explosion! 🛤️
+
+See how binary decision trees create exponential numbers of paths!
+
+::: -->
+<div id="tree-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Binary Decision Tree - O(2^n) Path Explosion</h3>
+    <div style="margin: 20px 0;">
+        <label for="tree-depth" style="margin-right: 10px;">Tree Depth:</label>
+        <input id="tree-depth" type="range" min="2" max="8" value="4" style="margin: 0 10px;">
+        <span id="depth-display" style="font-weight: bold;">4</span> levels
+        <br><br>
+        <button id="generate-tree" style="padding: 8px 20px; margin: 5px; background: #3498DB; color: white; border: none; border-radius: 4px;">Generate Tree</button>
+        <button id="count-paths" style="padding: 8px 20px; margin: 5px; background: #E74C3C; color: white; border: none; border-radius: 4px;">Count All Paths</button>
+        <button id="reset-tree" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px;">Reset</button>
+    </div>
+    <div id="tree-stats" style="margin: 15px 0; font-family: monospace; font-size: 14px;">
+        <div>Tree Depth: <span id="current-depth">4</span> | Expected Paths: <span id="expected-paths">16</span> | Found Paths: <span id="found-paths">0</span></div>
+        <div>Status: <span id="tree-status">Ready to generate tree</span></div>
+    </div>
+    <div id="tree-visualization" style="height: 300px; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="tree-canvas" width="800" height="280" style="border: none;"></canvas>
+    </div>
+</div>
+</section></section>
+<section id="python-o2n-examples---the-slow-ones" class="title-slide slide level1 center">
+<h1>Python O(2^n) Examples - The Slow Ones!</h1>
+<div class="columns">
+<div class="column">
+<p><strong>Recursive Algorithms</strong> 🔄</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> time</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>    <span class="co"># Naive Fibonacci - O(2^n)</span></span>
+<span id="cb4-4"><a></a>    <span class="kw">def</span> fib_exponential(n):</span>
+<span id="cb4-5"><a></a>        <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb4-6"><a></a>            <span class="cf">return</span> n</span>
+<span id="cb4-7"><a></a>        <span class="cf">return</span> fib_exponential(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fib_exponential(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>    <span class="co"># Optimized Fibonacci - O(n)</span></span>
+<span id="cb4-10"><a></a>    <span class="kw">def</span> fib_linear(n):</span>
+<span id="cb4-11"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb4-12"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb4-13"><a></a>    a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
+<span id="cb4-14"><a></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb4-15"><a></a>        a, b <span class="op">=</span> b, a <span class="op">+</span> b</span>
+<span id="cb4-16"><a></a>    <span class="cf">return</span> b</span>
+<span id="cb4-17"><a></a></span>
+<span id="cb4-18"><a></a>    <span class="co"># Performance comparison</span></span>
+<span id="cb4-19"><a></a>    <span class="kw">def</span> compare_fibonacci(n):</span>
+<span id="cb4-20"><a></a>        <span class="co"># Time the exponential version</span></span>
+<span id="cb4-21"><a></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb4-22"><a></a>        result_exp <span class="op">=</span> fib_exponential(n)</span>
+<span id="cb4-23"><a></a>        exp_time <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb4-24"><a></a>        </span>
+<span id="cb4-25"><a></a>        <span class="co"># Time the linear version</span></span>
+<span id="cb4-26"><a></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb4-27"><a></a>        result_lin <span class="op">=</span> fib_linear(n)</span>
+<span id="cb4-28"><a></a>        lin_time <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb4-29"><a></a>        </span>
+<span id="cb4-30"><a></a>        <span class="bu">print</span>(<span class="ss">f"Fibonacci(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>result_exp<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-31"><a></a>        <span class="bu">print</span>(<span class="ss">f"Exponential O(2^n): </span><span class="sc">{</span>exp_time<span class="sc">:.6f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb4-32"><a></a>        <span class="bu">print</span>(<span class="ss">f"Linear O(n):        </span><span class="sc">{</span>lin_time<span class="sc">:.6f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb4-33"><a></a>        <span class="bu">print</span>(<span class="ss">f"Speedup: </span><span class="sc">{</span>exp_time<span class="op">/</span>lin_time<span class="sc">:.0f}</span><span class="ss">x faster!"</span>)</span>
+<span id="cb4-34"><a></a></span>
+<span id="cb4-35"><a></a>    <span class="co"># Try compare_fibonacci(30) - dramatic difference!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<p><strong>Combinatorial Problems</strong> 🎲</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Generate all possible combinations - O(2^n)</span></span>
+<span id="cb5-2"><a></a><span class="kw">def</span> power_set(items):</span>
+<span id="cb5-3"><a></a>    <span class="co">"""</span></span>
+<span id="cb5-4"><a></a><span class="co">    Generate all possible subsets (power set) of the given items.</span></span>
+<span id="cb5-5"><a></a><span class="co">    Uses recursive approach where each element can either be included or excluded.</span></span>
+<span id="cb5-6"><a></a><span class="co">    Time complexity: O(2^n) where n is the number of items.</span></span>
+<span id="cb5-7"><a></a><span class="co">    """</span></span>
+<span id="cb5-8"><a></a>    <span class="co"># Base case: empty list has only one subset - the empty subset</span></span>
+<span id="cb5-9"><a></a>    <span class="cf">if</span> <span class="kw">not</span> items:</span>
+<span id="cb5-10"><a></a>        <span class="cf">return</span> [[]]</span>
+<span id="cb5-11"><a></a>    </span>
+<span id="cb5-12"><a></a>    <span class="co"># Take the first item and recursively find power set of remaining items</span></span>
+<span id="cb5-13"><a></a>    first <span class="op">=</span> items[<span class="dv">0</span>]</span>
+<span id="cb5-14"><a></a>    rest_subsets <span class="op">=</span> power_set(items[<span class="dv">1</span>:])  <span class="co"># Recursive call on remaining items</span></span>
+<span id="cb5-15"><a></a>    </span>
+<span id="cb5-16"><a></a>    <span class="co"># For each subset of remaining items, create two versions:</span></span>
+<span id="cb5-17"><a></a>    <span class="co"># 1. Without the first item (already in rest_subsets)</span></span>
+<span id="cb5-18"><a></a>    <span class="co"># 2. With the first item added to each subset</span></span>
+<span id="cb5-19"><a></a>    with_first <span class="op">=</span> [subset <span class="op">+</span> [first] <span class="cf">for</span> subset <span class="kw">in</span> rest_subsets]</span>
+<span id="cb5-20"><a></a>    </span>
+<span id="cb5-21"><a></a>    <span class="co"># Combine both versions: subsets without first + subsets with first</span></span>
+<span id="cb5-22"><a></a>    <span class="cf">return</span> rest_subsets <span class="op">+</span> with_first</span>
+<span id="cb5-23"><a></a></span>
+<span id="cb5-24"><a></a><span class="co"># Traveling Salesman Problem (brute force) - O(n!)</span></span>
+<span id="cb5-25"><a></a><span class="kw">def</span> tsp_brute_force(cities, current_city<span class="op">=</span><span class="dv">0</span>, visited<span class="op">=</span><span class="va">None</span>, path<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb5-26"><a></a>    <span class="co">"""</span></span>
+<span id="cb5-27"><a></a><span class="co">    Solve Traveling Salesman Problem using brute force approach.</span></span>
+<span id="cb5-28"><a></a><span class="co">    Tries all possible routes and returns the shortest one.</span></span>
+<span id="cb5-29"><a></a><span class="co">    Time complexity: O(n!) - factorial time, very slow for large inputs.</span></span>
+<span id="cb5-30"><a></a><span class="co">    </span></span>
+<span id="cb5-31"><a></a><span class="co">    Args:</span></span>
+<span id="cb5-32"><a></a><span class="co">        cities: Distance matrix or list of cities</span></span>
+<span id="cb5-33"><a></a><span class="co">        current_city: Current position (default: start at city 0)</span></span>
+<span id="cb5-34"><a></a><span class="co">        visited: Set of already visited cities</span></span>
+<span id="cb5-35"><a></a><span class="co">        path: Current path taken so far</span></span>
+<span id="cb5-36"><a></a><span class="co">    </span></span>
+<span id="cb5-37"><a></a><span class="co">    Returns:</span></span>
+<span id="cb5-38"><a></a><span class="co">        Tuple of (best_path, best_distance)</span></span>
+<span id="cb5-39"><a></a><span class="co">    """</span></span>
+<span id="cb5-40"><a></a>    <span class="co"># Initialize on first call: start at city 0 with empty visited set and path</span></span>
+<span id="cb5-41"><a></a>    <span class="cf">if</span> visited <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb5-42"><a></a>        visited <span class="op">=</span> {current_city}  <span class="co"># Set to track visited cities</span></span>
+<span id="cb5-43"><a></a>        path <span class="op">=</span> [current_city]     <span class="co"># List to track the route taken</span></span>
+<span id="cb5-44"><a></a>    </span>
+<span id="cb5-45"><a></a>    <span class="co"># Base case: if we've visited all cities, return to start (city 0)</span></span>
+<span id="cb5-46"><a></a>    <span class="cf">if</span> <span class="bu">len</span>(visited) <span class="op">==</span> <span class="bu">len</span>(cities):</span>
+<span id="cb5-47"><a></a>        complete_path <span class="op">=</span> path <span class="op">+</span> [<span class="dv">0</span>]  <span class="co"># Add return trip to starting city</span></span>
+<span id="cb5-48"><a></a>        total_distance <span class="op">=</span> calculate_distance(complete_path)</span>
+<span id="cb5-49"><a></a>        <span class="cf">return</span> complete_path, total_distance</span>
+<span id="cb5-50"><a></a>    </span>
+<span id="cb5-51"><a></a>    <span class="co"># Initialize variables to track the best solution found so far</span></span>
+<span id="cb5-52"><a></a>    best_path <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-53"><a></a>    best_distance <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)  <span class="co"># Start with infinite distance</span></span>
+<span id="cb5-54"><a></a>    </span>
+<span id="cb5-55"><a></a>    <span class="co"># Try visiting each unvisited city next</span></span>
+<span id="cb5-56"><a></a>    <span class="cf">for</span> next_city <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cities)):</span>
+<span id="cb5-57"><a></a>        <span class="cf">if</span> next_city <span class="kw">not</span> <span class="kw">in</span> visited:  <span class="co"># Only consider unvisited cities</span></span>
+<span id="cb5-58"><a></a>            <span class="co"># Recursively solve for the remaining cities</span></span>
+<span id="cb5-59"><a></a>            new_path, distance <span class="op">=</span> tsp_brute_force(</span>
+<span id="cb5-60"><a></a>                cities, </span>
+<span id="cb5-61"><a></a>                next_city,                    <span class="co"># Move to this city next</span></span>
+<span id="cb5-62"><a></a>                visited <span class="op">|</span> {next_city},        <span class="co"># Add this city to visited set</span></span>
+<span id="cb5-63"><a></a>                path <span class="op">+</span> [next_city]            <span class="co"># Add this city to current path</span></span>
+<span id="cb5-64"><a></a>            )</span>
+<span id="cb5-65"><a></a>            </span>
+<span id="cb5-66"><a></a>            <span class="co"># Keep track of the best (shortest) route found so far</span></span>
+<span id="cb5-67"><a></a>            <span class="cf">if</span> distance <span class="op">&lt;</span> best_distance:</span>
+<span id="cb5-68"><a></a>                best_distance <span class="op">=</span> distance</span>
+<span id="cb5-69"><a></a>                best_path <span class="op">=</span> new_path</span>
+<span id="cb5-70"><a></a>    </span>
+<span id="cb5-71"><a></a>    <span class="cf">return</span> best_path, best_distance</span>
+<span id="cb5-72"><a></a></span>
+<span id="cb5-73"><a></a>    <span class="co"># Warning: TSP is O(n!) which is even worse than O(2^n)!</span></span>
+<span id="cb5-74"><a></a>    <span class="co"># For n cities, we have (n-1)! possible routes to check</span></span>
+<span id="cb5-75"><a></a></span>
+<span id="cb5-76"><a></a><span class="kw">def</span> calculate_distance(path):</span>
+<span id="cb5-77"><a></a>    <span class="co">"""</span></span>
+<span id="cb5-78"><a></a><span class="co">    Calculate the total distance for a given path through cities.</span></span>
+<span id="cb5-79"><a></a><span class="co">    This is a simplified version using a predefined distance matrix.</span></span>
+<span id="cb5-80"><a></a><span class="co">    In a real application, you would calculate distances using coordinates.</span></span>
+<span id="cb5-81"><a></a><span class="co">    </span></span>
+<span id="cb5-82"><a></a><span class="co">    Args:</span></span>
+<span id="cb5-83"><a></a><span class="co">        path: List of city indices representing the route</span></span>
+<span id="cb5-84"><a></a><span class="co">        </span></span>
+<span id="cb5-85"><a></a><span class="co">    Returns:</span></span>
+<span id="cb5-86"><a></a><span class="co">        Total distance of the path</span></span>
+<span id="cb5-87"><a></a><span class="co">    """</span></span>
+<span id="cb5-88"><a></a>    <span class="co"># Predefined distance matrix for a 3-city example</span></span>
+<span id="cb5-89"><a></a>    <span class="co"># In practice, this would be calculated from city coordinates</span></span>
+<span id="cb5-90"><a></a>    <span class="co"># using formulas like Euclidean distance: sqrt((x2-x1)² + (y2-y1)²)</span></span>
+<span id="cb5-91"><a></a>    distances <span class="op">=</span> {</span>
+<span id="cb5-92"><a></a>        (<span class="dv">0</span>, <span class="dv">1</span>): <span class="dv">10</span>, (<span class="dv">1</span>, <span class="dv">0</span>): <span class="dv">10</span>,  <span class="co"># Distance between city 0 and city 1</span></span>
+<span id="cb5-93"><a></a>        (<span class="dv">0</span>, <span class="dv">2</span>): <span class="dv">15</span>, (<span class="dv">2</span>, <span class="dv">0</span>): <span class="dv">15</span>,  <span class="co"># Distance between city 0 and city 2</span></span>
+<span id="cb5-94"><a></a>        (<span class="dv">1</span>, <span class="dv">2</span>): <span class="dv">20</span>, (<span class="dv">2</span>, <span class="dv">1</span>): <span class="dv">20</span>,  <span class="co"># Distance between city 1 and city 2</span></span>
+<span id="cb5-95"><a></a>        (<span class="dv">0</span>, <span class="dv">0</span>): <span class="dv">0</span>, (<span class="dv">1</span>, <span class="dv">1</span>): <span class="dv">0</span>, (<span class="dv">2</span>, <span class="dv">2</span>): <span class="dv">0</span>  <span class="co"># Distance from city to itself is 0</span></span>
+<span id="cb5-96"><a></a>    }</span>
+<span id="cb5-97"><a></a>    </span>
+<span id="cb5-98"><a></a>    total <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Initialize total distance</span></span>
+<span id="cb5-99"><a></a>    </span>
+<span id="cb5-100"><a></a>    <span class="co"># Sum up distances between consecutive cities in the path</span></span>
+<span id="cb5-101"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(path) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb5-102"><a></a>        current_city <span class="op">=</span> path[i]</span>
+<span id="cb5-103"><a></a>        next_city <span class="op">=</span> path[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb5-104"><a></a>        <span class="co"># Get distance between current and next city, default to high cost if not found</span></span>
+<span id="cb5-105"><a></a>        total <span class="op">+=</span> distances.get((current_city, next_city), <span class="dv">100</span>)</span>
+<span id="cb5-106"><a></a>    </span>
+<span id="cb5-107"><a></a>    <span class="cf">return</span> total</span>
+<span id="cb5-108"><a></a></span>
+<span id="cb5-109"><a></a><span class="co"># Example usage and testing</span></span>
+<span id="cb5-110"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb5-111"><a></a>    <span class="co">"""</span></span>
+<span id="cb5-112"><a></a><span class="co">    Main execution block - runs only when script is executed directly.</span></span>
+<span id="cb5-113"><a></a><span class="co">    Demonstrates both the power set generation and TSP solving algorithms.</span></span>
+<span id="cb5-114"><a></a><span class="co">    """</span></span>
+<span id="cb5-115"><a></a>    </span>
+<span id="cb5-116"><a></a>    <span class="co"># Test the power set generation algorithm</span></span>
+<span id="cb5-117"><a></a>    <span class="bu">print</span>(<span class="st">"Power Set Example:"</span>)</span>
+<span id="cb5-118"><a></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb5-119"><a></a>    items <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Test with a simple 3-element set</span></span>
+<span id="cb5-120"><a></a>    result <span class="op">=</span> power_set(items)</span>
+<span id="cb5-121"><a></a>    <span class="bu">print</span>(<span class="ss">f"Power set of </span><span class="sc">{</span>items<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-122"><a></a>    <span class="bu">print</span>(<span class="ss">f"Number of subsets: </span><span class="sc">{</span><span class="bu">len</span>(result)<span class="sc">}</span><span class="ss"> (should be 2^</span><span class="sc">{</span><span class="bu">len</span>(items)<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span><span class="dv">2</span><span class="op">**</span><span class="bu">len</span>(items)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb5-123"><a></a>    <span class="bu">print</span>(<span class="st">"This demonstrates exponential growth: each new item doubles the subsets!"</span>)</span>
+<span id="cb5-124"><a></a>    </span>
+<span id="cb5-125"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Traveling Salesman Problem Example:"</span>)</span>
+<span id="cb5-126"><a></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb5-127"><a></a>    <span class="co"># Simple 3-city example with predefined distances</span></span>
+<span id="cb5-128"><a></a>    <span class="co"># Note: cities parameter is not actually used in our simplified version</span></span>
+<span id="cb5-129"><a></a>    <span class="co"># The distance calculation uses the hardcoded distance matrix instead</span></span>
+<span id="cb5-130"><a></a>    cities <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">15</span>], [<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">20</span>], [<span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">0</span>]]  <span class="co"># Distance matrix (not used in current implementation)</span></span>
+<span id="cb5-131"><a></a>    </span>
+<span id="cb5-132"><a></a>    <span class="bu">print</span>(<span class="st">"Solving TSP for 3 cities using brute force..."</span>)</span>
+<span id="cb5-133"><a></a>    <span class="bu">print</span>(<span class="st">"This will check all possible routes and find the shortest one."</span>)</span>
+<span id="cb5-134"><a></a>    </span>
+<span id="cb5-135"><a></a>    <span class="co"># Find the optimal path</span></span>
+<span id="cb5-136"><a></a>    path, distance <span class="op">=</span> tsp_brute_force(cities)</span>
+<span id="cb5-137"><a></a>    <span class="bu">print</span>(<span class="ss">f"Best path found: </span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-138"><a></a>    <span class="bu">print</span>(<span class="ss">f"Total distance: </span><span class="sc">{</span>distance<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-139"><a></a>    <span class="bu">print</span>(<span class="ss">f"For </span><span class="sc">{</span><span class="bu">len</span>(cities)<span class="sc">}</span><span class="ss"> cities, we checked </span><span class="sc">{</span><span class="bu">len</span>(cities)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">! = </span><span class="sc">{</span><span class="dv">1</span> <span class="cf">if</span> <span class="bu">len</span>(cities)<span class="op">&lt;=</span><span class="dv">1</span> <span class="cf">else</span> <span class="bu">eval</span>(<span class="st">'*'</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(cities)))))<span class="sc">}</span><span class="ss"> possible routes."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ```python
+# Generate all possible combinations - O(2^n)
+def power_set(items):
+    """
+    Generate all possible subsets (power set) of the given items.
+    Uses recursive approach where each element can either be included or excluded.
+    Time complexity: O(2^n) where n is the number of items.
+    """
+    # Base case: empty list has only one subset - the empty subset
+    if not items:
+        return [[]]
+    
+    # Take the first item and recursively find power set of remaining items
+    first = items[0]
+    rest_subsets = power_set(items[1:])  # Recursive call on remaining items
+    
+    # For each subset of remaining items, create two versions:
+    # 1. Without the first item (already in rest_subsets)
+    # 2. With the first item added to each subset
+    with_first = [subset + [first] for subset in rest_subsets]
+    
+    # Combine both versions: subsets without first + subsets with first
+    return rest_subsets + with_first
+
+# Traveling Salesman Problem (brute force) - O(n!)
+def tsp_brute_force(cities, current_city=0, visited=None, path=None):
+    """
+    Solve Traveling Salesman Problem using brute force approach.
+    Tries all possible routes and returns the shortest one.
+    Time complexity: O(n!) - factorial time, very slow for large inputs.
+    
+    Args:
+        cities: Distance matrix or list of cities
+        current_city: Current position (default: start at city 0)
+        visited: Set of already visited cities
+        path: Current path taken so far
+    
+    Returns:
+        Tuple of (best_path, best_distance)
+    """
+    # Initialize on first call: start at city 0 with empty visited set and path
+    if visited is None:
+        visited = {current_city}  # Set to track visited cities
+        path = [current_city]     # List to track the route taken
+    
+    # Base case: if we've visited all cities, return to start (city 0)
+    if len(visited) == len(cities):
+        complete_path = path + [0]  # Add return trip to starting city
+        total_distance = calculate_distance(complete_path)
+        return complete_path, total_distance
+    
+    # Initialize variables to track the best solution found so far
+    best_path = None
+    best_distance = float('inf')  # Start with infinite distance
+    
+    # Try visiting each unvisited city next
+    for next_city in range(len(cities)):
+        if next_city not in visited:  # Only consider unvisited cities
+            # Recursively solve for the remaining cities
+            new_path, distance = tsp_brute_force(
+                cities, 
+                next_city,                    # Move to this city next
+                visited | {next_city},        # Add this city to visited set
+                path + [next_city]            # Add this city to current path
+            )
+            
+            # Keep track of the best (shortest) route found so far
+            if distance < best_distance:
+                best_distance = distance
+                best_path = new_path
+    
+    return best_path, best_distance
+
+    # Warning: TSP is O(n!) which is even worse than O(2^n)!
+    # For n cities, we have (n-1)! possible routes to check
+
+def calculate_distance(path):
+    """
+    Calculate the total distance for a given path through cities.
+    This is a simplified version using a predefined distance matrix.
+    In a real application, you would calculate distances using coordinates.
+    
+    Args:
+        path: List of city indices representing the route
+        
+    Returns:
+        Total distance of the path
+    """
+    # Predefined distance matrix for a 3-city example
+    # In practice, this would be calculated from city coordinates
+    # using formulas like Euclidean distance: sqrt((x2-x1)² + (y2-y1)²)
+    distances = {
+        (0, 1): 10, (1, 0): 10,  # Distance between city 0 and city 1
+        (0, 2): 15, (2, 0): 15,  # Distance between city 0 and city 2
+        (1, 2): 20, (2, 1): 20,  # Distance between city 1 and city 2
+        (0, 0): 0, (1, 1): 0, (2, 2): 0  # Distance from city to itself is 0
+    }
+    
+    total = 0  # Initialize total distance
+    
+    # Sum up distances between consecutive cities in the path
+    for i in range(len(path) - 1):
+        current_city = path[i]
+        next_city = path[i + 1]
+        # Get distance between current and next city, default to high cost if not found
+        total += distances.get((current_city, next_city), 100)
+    
+    return total
+
+# Example usage and testing
+if __name__ == "__main__":
+    """
+    Main execution block - runs only when script is executed directly.
+    Demonstrates both the power set generation and TSP solving algorithms.
+    """
+    
+    # Test the power set generation algorithm
+    print("Power Set Example:")
+    print("=" * 40)
+    items = [1, 2, 3]  # Test with a simple 3-element set
+    result = power_set(items)
+    print(f"Power set of {items}: {result}")
+    print(f"Number of subsets: {len(result)} (should be 2^{len(items)} = {2**len(items)})")
+    print("This demonstrates exponential growth: each new item doubles the subsets!")
+    
+    print("\nTraveling Salesman Problem Example:")
+    print("=" * 40)
+    # Simple 3-city example with predefined distances
+    # Note: cities parameter is not actually used in our simplified version
+    # The distance calculation uses the hardcoded distance matrix instead
+    cities = [[0, 10, 15], [10, 0, 20], [15, 20, 0]]  # Distance matrix (not used in current implementation)
+    
+    print("Solving TSP for 3 cities using brute force...")
+    print("This will check all possible routes and find the shortest one.")
+    
+    # Find the optimal path
+    path, distance = tsp_brute_force(cities)
+    print(f"Best path found: {path}")
+    print(f"Total distance: {distance}")
+    print(f"For {len(cities)} cities, we checked {len(cities)-1}! = {1 if len(cities)<=1 else eval('*'.join(map(str, range(1, len(cities)))))} possible routes.")
+``` -->
+</div></div>
+</section>
+
+<section>
+<section id="the-exponential-wall-of-pain" class="title-slide slide level1 center">
+<h1>The Exponential Wall of Pain 💔🤕</h1>
+<div class="callout-danger" data-icon="true">
+<p>Performance Warning ⚠️ <strong>fibonacci_slow(40) = ~2 billion function calls!</strong> That’s why we need better algorithms for recursive problems.🎯</p>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>When O(2^n) Becomes Unusable 🧱</strong></p>
+</div>
+<div class="callout-content">
+<p>Exponential algorithms hit a “wall” where they become practically impossible to run.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>The Exponential Timeline</strong> ⏰</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Input Size</th>
+<th>Operations</th>
+<th>Time*</th>
+<th>Real-World Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>1,024</td>
+<td>0.001s</td>
+<td>Barely noticeable</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>1,048,576</td>
+<td>1s</td>
+<td>Starting to wait</td>
+</tr>
+<tr class="odd">
+<td>25</td>
+<td>33,554,432</td>
+<td>30s</td>
+<td>Getting annoying</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>1,073,741,824</td>
+<td>15 minutes</td>
+<td>Time for coffee</td>
+</tr>
+<tr class="odd">
+<td>35</td>
+<td>34,359,738,368</td>
+<td>8 hours</td>
+<td>Overnight job</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>1,099,511,627,776</td>
+<td>12 days</td>
+<td>Vacation time</td>
+</tr>
+<tr class="odd">
+<td>50</td>
+<td>1,125,899,906,842,624</td>
+<td>35 years</td>
+<td>Career change</td>
+</tr>
+<tr class="even">
+<td>60</td>
+<td>~10^18</td>
+<td>1,000 years</td>
+<td>Wait for next millennium</td>
+</tr>
+</tbody>
+</table>
+<p>*Approximate times for simple operations</p>
+</div><div class="column">
+<p><strong>Real Performance Testing</strong> 🧪</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> time</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="kw">def</span> fibonacci_naive(n):</span>
+<span id="cb6-4"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb6-5"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb6-6"><a></a>    <span class="cf">return</span> fibonacci_naive(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci_naive(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>    <span class="co"># Test with increasing values</span></span>
+<span id="cb6-9"><a></a>    test_values <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>]</span>
+<span id="cb6-10"><a></a></span>
+<span id="cb6-11"><a></a>    <span class="bu">print</span>(<span class="st">"n</span><span class="ch">\t</span><span class="st">Time (seconds)</span><span class="ch">\t</span><span class="st">Growth Factor"</span>)</span>
+<span id="cb6-12"><a></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">40</span>)</span>
+<span id="cb6-13"><a></a></span>
+<span id="cb6-14"><a></a>    previous_time <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb6-15"><a></a>    <span class="cf">for</span> n <span class="kw">in</span> test_values:</span>
+<span id="cb6-16"><a></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb6-17"><a></a>        result <span class="op">=</span> fibonacci_naive(n)</span>
+<span id="cb6-18"><a></a>        duration <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb6-19"><a></a>        </span>
+<span id="cb6-20"><a></a>        growth_factor <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb6-21"><a></a>        <span class="cf">if</span> previous_time:</span>
+<span id="cb6-22"><a></a>            factor <span class="op">=</span> duration <span class="op">/</span> previous_time</span>
+<span id="cb6-23"><a></a>            growth_factor <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>factor<span class="sc">:.1f}</span><span class="ss">x"</span></span>
+<span id="cb6-24"><a></a>        </span>
+<span id="cb6-25"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ch">\t</span><span class="sc">{</span>duration<span class="sc">:.3f}</span><span class="ch">\t\t</span><span class="sc">{</span>growth_factor<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-26"><a></a>        previous_time <span class="op">=</span> duration</span>
+<span id="cb6-27"><a></a>        </span>
+<span id="cb6-28"><a></a>        <span class="co"># Stop if taking too long</span></span>
+<span id="cb6-29"><a></a>        <span class="cf">if</span> duration <span class="op">&gt;</span> <span class="dv">10</span>:  <span class="co"># More than 10 seconds</span></span>
+<span id="cb6-30"><a></a>            <span class="bu">print</span>(<span class="ss">f"Stopping at n=</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> - taking too long!"</span>)</span>
+<span id="cb6-31"><a></a>            <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="by-the-way" class="slide level2">
+<h2>By The Way, … 🧪</h2>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Q</strong>: Is there a shorter way to produce the Fibonacci sequence?</p>
+<p><strong>A</strong>: Absolutely! Use Binet’s formula.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="kw">def</span> fibonacci_binet(n):</span>
+<span id="cb7-4"><a></a>    <span class="co">"""</span></span>
+<span id="cb7-5"><a></a><span class="co">    Calculates the nth Fibonacci number using Binet's formula.</span></span>
+<span id="cb7-6"><a></a><span class="co">    Args:</span></span>
+<span id="cb7-7"><a></a><span class="co">        n: The index of the Fibonacci number to calculate (non-negative integer).</span></span>
+<span id="cb7-8"><a></a><span class="co">    Returns:</span></span>
+<span id="cb7-9"><a></a><span class="co">        The nth Fibonacci number as an integer.</span></span>
+<span id="cb7-10"><a></a><span class="co">    """</span></span>
+<span id="cb7-11"><a></a>    <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb7-12"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Input 'n' must be a non-negative integer."</span>)</span>
+<span id="cb7-13"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-14"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb7-15"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb7-16"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb7-17"><a></a></span>
+<span id="cb7-18"><a></a>    phi <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> math.sqrt(<span class="dv">5</span>)) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb7-19"><a></a>    psi <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> math.sqrt(<span class="dv">5</span>)) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb7-20"><a></a></span>
+<span id="cb7-21"><a></a>    <span class="co"># Binet's formula</span></span>
+<span id="cb7-22"><a></a>    fn <span class="op">=</span> (phi<span class="op">**</span>n <span class="op">-</span> psi<span class="op">**</span>n) <span class="op">/</span> math.sqrt(<span class="dv">5</span>)</span>
+<span id="cb7-23"><a></a></span>
+<span id="cb7-24"><a></a>    <span class="co"># Round to the nearest integer as Binet's formula can produce</span></span>
+<span id="cb7-25"><a></a>    <span class="co"># slight floating-point inaccuracies for large n.</span></span>
+<span id="cb7-26"><a></a>    <span class="cf">return</span> <span class="bu">int</span>(<span class="bu">round</span>(fn))</span>
+<span id="cb7-27"><a></a></span>
+<span id="cb7-28"><a></a><span class="co">### Execute the code here</span></span>
+<span id="cb7-29"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
+<span id="cb7-30"><a></a>    <span class="bu">print</span>(<span class="ss">f"Fibonacci(</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>fibonacci_binet(i)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-31"><a></a></span>
+<span id="cb7-32"><a></a><span class="co"># Test with a larger number</span></span>
+<span id="cb7-33"><a></a>n_large <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb7-34"><a></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss"> Larger:</span><span class="ch">\n</span><span class="ss">Fibonacci(</span><span class="sc">{</span>n_large<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>fibonacci_binet(n_large)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Q: What is the complexity of this algorithm?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="partner-investigation-the-exponential-explosion" class="slide level2">
+<h2>Partner Investigation: The Exponential Explosion!</h2>
+<p>Run these samples of code with a partner. Discuss outcomes and respond to questions at the end of the source code.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Partner Activity 👥</strong></p>
+</div>
+<div class="callout-content">
+<!-- Witness Exponential Chaos!  -->
+<p><strong>⚠️ WARNING: These experiments can take a VERY long time! Partner coordination is essential.</strong></p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<p><strong>Experiment 1: Fibonacci Explosion Investigation</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co">"""</span></span>
+<span id="cb8-2"><a></a><span class="co">EXPONENTIAL COMPLEXITY ANALYSIS - Fibonacci Performance Tracking</span></span>
+<span id="cb8-3"><a></a><span class="co">================================================================</span></span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="co">Educational Purpose:</span></span>
+<span id="cb8-6"><a></a><span class="co">This program provides hands-on experience with exponential time complexity O(2^n)</span></span>
+<span id="cb8-7"><a></a><span class="co">through a carefully instrumented naive Fibonacci implementation. Students observe</span></span>
+<span id="cb8-8"><a></a><span class="co">how function calls grow exponentially, creating an intuitive understanding of why</span></span>
+<span id="cb8-9"><a></a><span class="co">certain algorithms become computationally intractable as input size increases.</span></span>
+<span id="cb8-10"><a></a></span>
+<span id="cb8-11"><a></a><span class="co">Key Learning Objectives:</span></span>
+<span id="cb8-12"><a></a><span class="co">1. Experience exponential growth patterns firsthand through performance tracking</span></span>
+<span id="cb8-13"><a></a><span class="co">2. Understand the relationship between algorithm structure and time complexity</span></span>
+<span id="cb8-14"><a></a><span class="co">3. Develop intuition for computational limits and practical algorithm constraints</span></span>
+<span id="cb8-15"><a></a><span class="co">4. Learn safe experimentation practices with potentially expensive algorithms</span></span>
+<span id="cb8-16"><a></a><span class="co">5. Motivate the need for algorithmic optimization techniques</span></span>
+<span id="cb8-17"><a></a></span>
+<span id="cb8-18"><a></a><span class="co">What This Program Demonstrates:</span></span>
+<span id="cb8-19"><a></a><span class="co">- Naive Recursive Fibonacci: O(2^n) time complexity with detailed call tracking</span></span>
+<span id="cb8-20"><a></a><span class="co">- Performance metrics: function call counts, recursion depth, execution time</span></span>
+<span id="cb8-21"><a></a><span class="co">- Safety protocols: controlled testing environment with automatic limits</span></span>
+<span id="cb8-22"><a></a><span class="co">- Educational scaffolding: partner-based learning with guided analysis questions</span></span>
+<span id="cb8-23"><a></a></span>
+<span id="cb8-24"><a></a><span class="co">Target Audience: CS 101 students learning about algorithm complexity analysis</span></span>
+<span id="cb8-25"><a></a><span class="co">Companion to: complex_2.py (optimization comparison) and interactive presentations</span></span>
+<span id="cb8-26"><a></a><span class="co">Author: Course Materials for Algorithm Analysis Unit  </span></span>
+<span id="cb8-27"><a></a><span class="co">Date: Fall 2025</span></span>
+<span id="cb8-28"><a></a><span class="co">"""</span></span>
+<span id="cb8-29"><a></a></span>
+<span id="cb8-30"><a></a><span class="co"># Import required modules for timing and system recursion limits</span></span>
+<span id="cb8-31"><a></a><span class="im">import</span> time</span>
+<span id="cb8-32"><a></a><span class="im">import</span> sys</span>
+<span id="cb8-33"><a></a></span>
+<span id="cb8-34"><a></a><span class="kw">def</span> fib_naive_with_tracking(n, depth<span class="op">=</span><span class="dv">0</span>, memo<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-35"><a></a>    <span class="co">"""</span></span>
+<span id="cb8-36"><a></a><span class="co">    Naive recursive Fibonacci implementation with performance tracking.</span></span>
+<span id="cb8-37"><a></a></span>
+<span id="cb8-38"><a></a><span class="co">    This function demonstrates O(2^n) exponential time complexity by:</span></span>
+<span id="cb8-39"><a></a><span class="co">    - Making two recursive calls for each non-base case</span></span>
+<span id="cb8-40"><a></a><span class="co">    - Tracking the total number of function calls made</span></span>
+<span id="cb8-41"><a></a><span class="co">    - Tracking the maximum recursion depth reached</span></span>
+<span id="cb8-42"><a></a><span class="co">    </span></span>
+<span id="cb8-43"><a></a><span class="co">    Args:</span></span>
+<span id="cb8-44"><a></a><span class="co">        n (int): The Fibonacci number to calculate</span></span>
+<span id="cb8-45"><a></a><span class="co">        depth (int): Current recursion depth (for tracking purposes)</span></span>
+<span id="cb8-46"><a></a><span class="co">        memo (dict): Dictionary to track performance metrics</span></span>
+<span id="cb8-47"><a></a><span class="co">        </span></span>
+<span id="cb8-48"><a></a><span class="co">    Returns:</span></span>
+<span id="cb8-49"><a></a><span class="co">        tuple: (fibonacci_result, performance_stats)</span></span>
+<span id="cb8-50"><a></a><span class="co">    """</span></span>
+<span id="cb8-51"><a></a>    <span class="co"># Initialize tracking dictionary on first call</span></span>
+<span id="cb8-52"><a></a>    <span class="cf">if</span> memo <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-53"><a></a>        memo <span class="op">=</span> {<span class="st">'calls'</span>: <span class="dv">0</span>, <span class="st">'max_depth'</span>: <span class="dv">0</span>}</span>
+<span id="cb8-54"><a></a>    </span>
+<span id="cb8-55"><a></a>    <span class="co"># Count this function call and update maximum depth reached</span></span>
+<span id="cb8-56"><a></a>    memo[<span class="st">'calls'</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-57"><a></a>    memo[<span class="st">'max_depth'</span>] <span class="op">=</span> <span class="bu">max</span>(memo[<span class="st">'max_depth'</span>], depth)</span>
+<span id="cb8-58"><a></a>    </span>
+<span id="cb8-59"><a></a>    <span class="co"># Base case: F(0) = 0, F(1) = 1</span></span>
+<span id="cb8-60"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb8-61"><a></a>        <span class="cf">return</span> n, memo</span>
+<span id="cb8-62"><a></a>    </span>
+<span id="cb8-63"><a></a>    <span class="co"># Recursive case: F(n) = F(n-1) + F(n-2)</span></span>
+<span id="cb8-64"><a></a>    <span class="co"># This creates the exponential explosion - each call makes TWO more calls</span></span>
+<span id="cb8-65"><a></a>    left_result, memo <span class="op">=</span> fib_naive_with_tracking(n<span class="op">-</span><span class="dv">1</span>, depth<span class="op">+</span><span class="dv">1</span>, memo)</span>
+<span id="cb8-66"><a></a>    right_result, memo <span class="op">=</span> fib_naive_with_tracking(n<span class="op">-</span><span class="dv">2</span>, depth<span class="op">+</span><span class="dv">1</span>, memo)</span>
+<span id="cb8-67"><a></a>    </span>
+<span id="cb8-68"><a></a>    <span class="co"># Return the sum of the two recursive results plus performance data</span></span>
+<span id="cb8-69"><a></a>    <span class="cf">return</span> left_result <span class="op">+</span> right_result, memo</span>
+<span id="cb8-70"><a></a></span>
+<span id="cb8-71"><a></a>    <span class="co"># SAFETY PROTOCOL - Partner coordination essential!</span></span>
+<span id="cb8-72"><a></a>    <span class="co"># Partner A: Test [5, 10, 15]</span></span>
+<span id="cb8-73"><a></a>    <span class="co"># Partner B: Test [20, 25] ONLY (DO NOT go higher without permission!)</span></span>
+<span id="cb8-74"><a></a></span>
+<span id="cb8-75"><a></a><span class="kw">def</span> safe_fibonacci_test(test_values, max_time<span class="op">=</span><span class="dv">30</span>):</span>
+<span id="cb8-76"><a></a>    <span class="co">"""</span></span>
+<span id="cb8-77"><a></a><span class="co">    Safely test Fibonacci calculations with performance monitoring.</span></span>
+<span id="cb8-78"><a></a><span class="co">    </span></span>
+<span id="cb8-79"><a></a><span class="co">    This function provides a controlled environment for testing the exponential </span></span>
+<span id="cb8-80"><a></a><span class="co">    Fibonacci algorithm by:</span></span>
+<span id="cb8-81"><a></a><span class="co">    - Setting time limits to prevent infinite waiting</span></span>
+<span id="cb8-82"><a></a><span class="co">    - Adjusting recursion limits to prevent stack overflow</span></span>
+<span id="cb8-83"><a></a><span class="co">    - Collecting and displaying performance metrics</span></span>
+<span id="cb8-84"><a></a><span class="co">    - Stopping execution if calculations take too long</span></span>
+<span id="cb8-85"><a></a><span class="co">    </span></span>
+<span id="cb8-86"><a></a><span class="co">    Args:</span></span>
+<span id="cb8-87"><a></a><span class="co">        test_values (list): List of Fibonacci numbers to calculate</span></span>
+<span id="cb8-88"><a></a><span class="co">        max_time (int): Maximum seconds allowed per calculation</span></span>
+<span id="cb8-89"><a></a><span class="co">        </span></span>
+<span id="cb8-90"><a></a><span class="co">    Returns:</span></span>
+<span id="cb8-91"><a></a><span class="co">        list: Results containing performance data for each test</span></span>
+<span id="cb8-92"><a></a><span class="co">    """</span></span>
+<span id="cb8-93"><a></a>    results <span class="op">=</span> []  <span class="co"># Store performance results for analysis</span></span>
+<span id="cb8-94"><a></a>    </span>
+<span id="cb8-95"><a></a>    <span class="co"># Test each Fibonacci number in the provided list</span></span>
+<span id="cb8-96"><a></a>    <span class="cf">for</span> n <span class="kw">in</span> test_values:</span>
+<span id="cb8-97"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Testing Fibonacci(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">)..."</span>)</span>
+<span id="cb8-98"><a></a>        </span>
+<span id="cb8-99"><a></a>        <span class="co"># Record start time to measure execution duration</span></span>
+<span id="cb8-100"><a></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb8-101"><a></a>        </span>
+<span id="cb8-102"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb8-103"><a></a>            <span class="co"># Prevent stack overflow by increasing recursion limit</span></span>
+<span id="cb8-104"><a></a>            <span class="co"># Exponential algorithms can create very deep recursion</span></span>
+<span id="cb8-105"><a></a>            old_limit <span class="op">=</span> sys.getrecursionlimit()</span>
+<span id="cb8-106"><a></a>            sys.setrecursionlimit(<span class="bu">max</span>(<span class="dv">1000</span>, n <span class="op">*</span> <span class="dv">100</span>))  <span class="co"># Scale with input size</span></span>
+<span id="cb8-107"><a></a>            </span>
+<span id="cb8-108"><a></a>            <span class="co"># Execute the Fibonacci calculation with tracking</span></span>
+<span id="cb8-109"><a></a>            result, stats <span class="op">=</span> fib_naive_with_tracking(n)</span>
+<span id="cb8-110"><a></a>            duration <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb8-111"><a></a>            </span>
+<span id="cb8-112"><a></a>            <span class="co"># Restore original recursion limit</span></span>
+<span id="cb8-113"><a></a>            sys.setrecursionlimit(old_limit)</span>
+<span id="cb8-114"><a></a>            </span>
+<span id="cb8-115"><a></a>            <span class="co"># Safety check: Stop if calculation takes too long</span></span>
+<span id="cb8-116"><a></a>            <span class="co"># This prevents students from waiting indefinitely for large inputs</span></span>
+<span id="cb8-117"><a></a>            <span class="cf">if</span> duration <span class="op">&gt;</span> max_time:</span>
+<span id="cb8-118"><a></a>                <span class="bu">print</span>(<span class="ss">f"⚠️ STOPPED: Taking too long (</span><span class="sc">{</span>duration<span class="sc">:.2f}</span><span class="ss">s)"</span>)</span>
+<span id="cb8-119"><a></a>                <span class="cf">break</span></span>
+<span id="cb8-120"><a></a>            </span>
+<span id="cb8-121"><a></a>            <span class="co"># Store performance data for analysis</span></span>
+<span id="cb8-122"><a></a>            results.append({</span>
+<span id="cb8-123"><a></a>                <span class="st">'n'</span>: n,                           <span class="co"># Input value</span></span>
+<span id="cb8-124"><a></a>                <span class="st">'result'</span>: result,                 <span class="co"># Fibonacci result</span></span>
+<span id="cb8-125"><a></a>                <span class="st">'calls'</span>: stats[<span class="st">'calls'</span>],          <span class="co"># Total function calls (shows 2^n growth)</span></span>
+<span id="cb8-126"><a></a>                <span class="st">'max_depth'</span>: stats[<span class="st">'max_depth'</span>],  <span class="co"># Maximum recursion depth</span></span>
+<span id="cb8-127"><a></a>                <span class="st">'time'</span>: duration                  <span class="co"># Execution time in seconds</span></span>
+<span id="cb8-128"><a></a>            })</span>
+<span id="cb8-129"><a></a>            </span>
+<span id="cb8-130"><a></a>            <span class="co"># Display results to show exponential growth pattern</span></span>
+<span id="cb8-131"><a></a>            <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-132"><a></a>            <span class="bu">print</span>(<span class="ss">f"Function calls: </span><span class="sc">{</span>stats[<span class="st">'calls'</span>]<span class="sc">:,}</span><span class="ss">"</span>)  <span class="co"># Comma-separated for readability</span></span>
+<span id="cb8-133"><a></a>            <span class="bu">print</span>(<span class="ss">f"Time: </span><span class="sc">{</span>duration<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb8-134"><a></a>            </span>
+<span id="cb8-135"><a></a>        <span class="cf">except</span> <span class="pp">RecursionError</span>:</span>
+<span id="cb8-136"><a></a>            <span class="co"># Handle case where recursion goes too deep</span></span>
+<span id="cb8-137"><a></a>            <span class="bu">print</span>(<span class="ss">f"⚠️ RECURSION LIMIT EXCEEDED for n=</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-138"><a></a>            <span class="cf">break</span></span>
+<span id="cb8-139"><a></a>    </span>
+<span id="cb8-140"><a></a>    <span class="cf">return</span> results</span>
+<span id="cb8-141"><a></a></span>
+<span id="cb8-142"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb8-143"><a></a><span class="co"># MAIN EXECUTION SECTION - Educational Assignment for Partner Learning</span></span>
+<span id="cb8-144"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb8-145"><a></a></span>
+<span id="cb8-146"><a></a><span class="co">"""</span></span>
+<span id="cb8-147"><a></a><span class="co">This section provides a structured learning experience about exponential complexity.</span></span>
+<span id="cb8-148"><a></a><span class="co">Students work in pairs with different test values to observe O(2^n) growth patterns.</span></span>
+<span id="cb8-149"><a></a></span>
+<span id="cb8-150"><a></a><span class="co">The assignment is designed to be:</span></span>
+<span id="cb8-151"><a></a><span class="co">1. Safe - preventing system crashes with controlled inputs</span></span>
+<span id="cb8-152"><a></a><span class="co">2. Educational - showing clear exponential growth patterns  </span></span>
+<span id="cb8-153"><a></a><span class="co">3. Collaborative - partners compare results to understand scaling</span></span>
+<span id="cb8-154"><a></a><span class="co">"""</span></span>
+<span id="cb8-155"><a></a></span>
+<span id="cb8-156"><a></a><span class="co"># YOUR ASSIGNMENT (choose based on partner role):</span></span>
+<span id="cb8-157"><a></a><span class="co"># These values are carefully chosen to demonstrate exponential growth</span></span>
+<span id="cb8-158"><a></a><span class="co"># while keeping execution times reasonable for classroom use</span></span>
+<span id="cb8-159"><a></a></span>
+<span id="cb8-160"><a></a>my_test_values <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>]  <span class="co"># Partner A - safe values that complete quickly</span></span>
+<span id="cb8-161"><a></a><span class="co"># my_test_values = [20, 25]     # Partner B - be VERY careful! These take much longer</span></span>
+<span id="cb8-162"><a></a></span>
+<span id="cb8-163"><a></a><span class="co"># Execute the performance test with your chosen values</span></span>
+<span id="cb8-164"><a></a><span class="co"># This will show you exactly how O(2^n) algorithms behave in practice</span></span>
+<span id="cb8-165"><a></a>results <span class="op">=</span> safe_fibonacci_test(my_test_values)</span>
+<span id="cb8-166"><a></a></span>
+<span id="cb8-167"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb8-168"><a></a><span class="co"># ANALYSIS FRAMEWORK - Questions to Guide Student Understanding</span></span>
+<span id="cb8-169"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb8-170"><a></a></span>
+<span id="cb8-171"><a></a><span class="co"># After running your tests, discuss these questions with your partner:</span></span>
+<span id="cb8-172"><a></a><span class="co"># 1. How did function calls grow with each increase in n?</span></span>
+<span id="cb8-173"><a></a><span class="co">#    (Look for the pattern: roughly doubling with each increment)</span></span>
+<span id="cb8-174"><a></a><span class="co"># 2. Can you predict the pattern?</span></span>
+<span id="cb8-175"><a></a><span class="co">#    (Try to predict calls for n+1 based on your observed data)</span></span>
+<span id="cb8-176"><a></a><span class="co"># 3. Why does this get so slow so quickly?</span></span>
+<span id="cb8-177"><a></a><span class="co">#    (Connect the exponential call growth to exponential time complexity)</span></span>
+<span id="cb8-178"><a></a><span class="co"># 4. What would happen with larger inputs?</span></span>
+<span id="cb8-179"><a></a><span class="co">#    (Extrapolate from your data - why do we need iterative approaches?)</span></span>
+<span id="cb8-180"><a></a></span>
+<span id="cb8-181"><a></a><span class="co">"""</span></span>
+<span id="cb8-182"><a></a><span class="co">Expected Learning Outcomes:</span></span>
+<span id="cb8-183"><a></a><span class="co">- Visceral understanding of exponential growth rates</span></span>
+<span id="cb8-184"><a></a><span class="co">- Appreciation for algorithm efficiency importance</span></span>
+<span id="cb8-185"><a></a><span class="co">- Motivation to learn optimized algorithms (dynamic programming, memoization)</span></span>
+<span id="cb8-186"><a></a><span class="co">- Understanding of why certain problems become computationally intractable</span></span>
+<span id="cb8-187"><a></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><!-- ```python
+import time
+import sys
+
+def fib_naive_with_tracking(n, depth=0, memo=None):
+    if memo is None:
+        memo = {'calls': 0, 'max_depth': 0}
+    
+    memo['calls'] += 1
+    memo['max_depth'] = max(memo['max_depth'], depth)
+    
+    if n <= 1:
+        return n, memo
+    
+    left_result, memo = fib_naive_with_tracking(n-1, depth+1, memo)
+    right_result, memo = fib_naive_with_tracking(n-2, depth+1, memo)
+    
+    return left_result + right_result, memo
+
+    # SAFETY PROTOCOL - Partner coordination essential!
+    # Partner A: Test [5, 10, 15]
+    # Partner B: Test [20, 25] ONLY (DO NOT go higher without permission!)
+
+def safe_fibonacci_test(test_values, max_time=30):
+    """Stops if any calculation takes longer than max_time seconds"""
+    results = []
+    
+    for n in test_values:
+        print(f"\nTesting Fibonacci({n})...")
+        
+        start = time.time()
+        
+        try:
+            # Set a recursion limit to prevent stack overflow
+            old_limit = sys.getrecursionlimit()
+            sys.setrecursionlimit(max(1000, n * 100))
+            
+            result, stats = fib_naive_with_tracking(n)
+            duration = time.time() - start
+            
+            sys.setrecursionlimit(old_limit)
+            
+            if duration > max_time:
+                print(f"⚠️ STOPPED: Taking too long ({duration:.2f}s)")
+                break
+                
+            results.append({
+                'n': n,
+                'result': result,
+                'calls': stats['calls'],
+                'max_depth': stats['max_depth'],
+                'time': duration
+            })
+            
+            print(f"Result: {result}")
+            print(f"Function calls: {stats['calls']:,}")
+            print(f"Time: {duration:.4f} seconds")
+            
+        except RecursionError:
+            print(f"⚠️ RECURSION LIMIT EXCEEDED for n={n}")
+            break
+    
+    return results
+
+    # YOUR ASSIGNMENT (choose based on partner role):
+    my_test_values = [5, 10, 15]  # Partner A - safe values
+    # my_test_values = [20, 25]     # Partner B - be VERY careful!
+
+    results = safe_fibonacci_test(my_test_values)
+
+    # Analysis questions for partners:
+    # 1. How did function calls grow with each increase in n?
+    # 2. Can you predict the pattern?
+    # 3. Why does this get so slow so quickly?
+``` --><div class="column">
+<p><strong>Experiment 2: Optimization Race Challenge</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">"""</span></span>
+<span id="cb9-2"><a></a><span class="co">ALGORITHM OPTIMIZATION DEMONSTRATION - Fibonacci Performance Comparison</span></span>
+<span id="cb9-3"><a></a><span class="co">========================================================================</span></span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a><span class="co">Educational Purpose:</span></span>
+<span id="cb9-6"><a></a><span class="co">This program demonstrates the dramatic performance differences between three</span></span>
+<span id="cb9-7"><a></a><span class="co">approaches to computing Fibonacci numbers, showing students why algorithm</span></span>
+<span id="cb9-8"><a></a><span class="co">optimization matters in real-world programming.</span></span>
+<span id="cb9-9"><a></a></span>
+<span id="cb9-10"><a></a><span class="co">Key Learning Objectives:</span></span>
+<span id="cb9-11"><a></a><span class="co">1. Experience the practical impact of Big O complexity</span></span>
+<span id="cb9-12"><a></a><span class="co">2. Understand how memoization transforms exponential to linear time</span></span>
+<span id="cb9-13"><a></a><span class="co">3. Compare recursive vs iterative solutions</span></span>
+<span id="cb9-14"><a></a><span class="co">4. Witness exponential algorithms becoming computationally intractable</span></span>
+<span id="cb9-15"><a></a></span>
+<span id="cb9-16"><a></a><span class="co">Three Approaches Compared:</span></span>
+<span id="cb9-17"><a></a><span class="co">- Naive Recursive: O(2^n) - exponential time, exponential space</span></span>
+<span id="cb9-18"><a></a><span class="co">- Memoized Recursive: O(n) - linear time, linear space  </span></span>
+<span id="cb9-19"><a></a><span class="co">- Iterative: O(n) - linear time, constant space</span></span>
+<span id="cb9-20"><a></a></span>
+<span id="cb9-21"><a></a><span class="co">Target Audience: CS 101 students learning about algorithm complexity</span></span>
+<span id="cb9-22"><a></a><span class="co">Author: Course Materials for Algorithm Analysis Unit</span></span>
+<span id="cb9-23"><a></a><span class="co">Date: Fall 2025</span></span>
+<span id="cb9-24"><a></a><span class="co">"""</span></span>
+<span id="cb9-25"><a></a></span>
+<span id="cb9-26"><a></a><span class="im">from</span> functools <span class="im">import</span> lru_cache  <span class="co"># Python's built-in memoization decorator</span></span>
+<span id="cb9-27"><a></a><span class="im">import</span> time                      <span class="co"># For precise performance timing</span></span>
+<span id="cb9-28"><a></a></span>
+<span id="cb9-29"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-30"><a></a><span class="co"># THREE FIBONACCI IMPLEMENTATIONS - Different Complexity Classes</span></span>
+<span id="cb9-31"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-32"><a></a><span class="kw">def</span> fib_exponential(n):</span>
+<span id="cb9-33"><a></a>    <span class="co">"""</span></span>
+<span id="cb9-34"><a></a><span class="co">    NAIVE RECURSIVE FIBONACCI - O(2^n) Time Complexity</span></span>
+<span id="cb9-35"><a></a><span class="co">    </span></span>
+<span id="cb9-36"><a></a><span class="co">    This is the "textbook" recursive implementation that directly follows</span></span>
+<span id="cb9-37"><a></a><span class="co">    the mathematical definition: F(n) = F(n-1) + F(n-2)</span></span>
+<span id="cb9-38"><a></a><span class="co">    </span></span>
+<span id="cb9-39"><a></a><span class="co">    Why It's Exponential:</span></span>
+<span id="cb9-40"><a></a><span class="co">    - Each call spawns two more calls (binary tree of recursion)</span></span>
+<span id="cb9-41"><a></a><span class="co">    - Massive redundant calculation (F(5) calculated multiple times)</span></span>
+<span id="cb9-42"><a></a><span class="co">    - Total calls ≈ 2^n, making it impractical for n &gt; 35</span></span>
+<span id="cb9-43"><a></a><span class="co">    </span></span>
+<span id="cb9-44"><a></a><span class="co">    Educational Value: Shows students why naive approaches can be disastrous</span></span>
+<span id="cb9-45"><a></a><span class="co">    </span></span>
+<span id="cb9-46"><a></a><span class="co">    Args:</span></span>
+<span id="cb9-47"><a></a><span class="co">        n (int): The position in Fibonacci sequence to calculate</span></span>
+<span id="cb9-48"><a></a><span class="co">        </span></span>
+<span id="cb9-49"><a></a><span class="co">    Returns:</span></span>
+<span id="cb9-50"><a></a><span class="co">        int: The nth Fibonacci number</span></span>
+<span id="cb9-51"><a></a><span class="co">        </span></span>
+<span id="cb9-52"><a></a><span class="co">    Time Complexity: O(2^n) - exponential growth</span></span>
+<span id="cb9-53"><a></a><span class="co">    Space Complexity: O(n) - recursion stack depth</span></span>
+<span id="cb9-54"><a></a><span class="co">    """</span></span>
+<span id="cb9-55"><a></a>    <span class="co"># Base cases: F(0) = 0, F(1) = 1</span></span>
+<span id="cb9-56"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb9-57"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb9-58"><a></a>    </span>
+<span id="cb9-59"><a></a>    <span class="co"># Recursive case: F(n) = F(n-1) + F(n-2)</span></span>
+<span id="cb9-60"><a></a>    <span class="co"># </span><span class="al">WARNING</span><span class="co">: This creates exponential redundancy!</span></span>
+<span id="cb9-61"><a></a>    <span class="cf">return</span> fib_exponential(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fib_exponential(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb9-62"><a></a></span>
+<span id="cb9-63"><a></a><span class="at">@lru_cache</span>(maxsize<span class="op">=</span><span class="va">None</span>)  <span class="co"># Python decorator for automatic memoization</span></span>
+<span id="cb9-64"><a></a><span class="kw">def</span> fib_memoized(n):</span>
+<span id="cb9-65"><a></a>    <span class="co">"""</span></span>
+<span id="cb9-66"><a></a><span class="co">    MEMOIZED RECURSIVE FIBONACCI - O(n) Time Complexity</span></span>
+<span id="cb9-67"><a></a><span class="co">    </span></span>
+<span id="cb9-68"><a></a><span class="co">    Same recursive structure as naive version, but with caching!</span></span>
+<span id="cb9-69"><a></a><span class="co">    The @lru_cache decorator automatically stores results, eliminating</span></span>
+<span id="cb9-70"><a></a><span class="co">    redundant calculations that made the naive version exponential.</span></span>
+<span id="cb9-71"><a></a><span class="co">    </span></span>
+<span id="cb9-72"><a></a><span class="co">    How Memoization Works:</span></span>
+<span id="cb9-73"><a></a><span class="co">    - First call to F(k): calculated and stored in cache</span></span>
+<span id="cb9-74"><a></a><span class="co">    - Subsequent calls to F(k): returned instantly from cache</span></span>
+<span id="cb9-75"><a></a><span class="co">    - Transforms exponential tree into linear sequence</span></span>
+<span id="cb9-76"><a></a><span class="co">    </span></span>
+<span id="cb9-77"><a></a><span class="co">    Educational Value: Shows power of caching/dynamic programming</span></span>
+<span id="cb9-78"><a></a><span class="co">    </span></span>
+<span id="cb9-79"><a></a><span class="co">    Args:</span></span>
+<span id="cb9-80"><a></a><span class="co">        n (int): The position in Fibonacci sequence to calculate</span></span>
+<span id="cb9-81"><a></a><span class="co">        </span></span>
+<span id="cb9-82"><a></a><span class="co">    Returns:</span></span>
+<span id="cb9-83"><a></a><span class="co">        int: The nth Fibonacci number</span></span>
+<span id="cb9-84"><a></a><span class="co">        </span></span>
+<span id="cb9-85"><a></a><span class="co">    Time Complexity: O(n) - each F(k) calculated only once</span></span>
+<span id="cb9-86"><a></a><span class="co">    Space Complexity: O(n) - cache storage + recursion stack</span></span>
+<span id="cb9-87"><a></a><span class="co">    """</span></span>
+<span id="cb9-88"><a></a>    <span class="co"># Base cases: F(0) = 0, F(1) = 1</span></span>
+<span id="cb9-89"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb9-90"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb9-91"><a></a>    </span>
+<span id="cb9-92"><a></a>    <span class="co"># Recursive case with automatic memoization</span></span>
+<span id="cb9-93"><a></a>    <span class="co"># The @lru_cache decorator handles caching transparently</span></span>
+<span id="cb9-94"><a></a>    <span class="cf">return</span> fib_memoized(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fib_memoized(n<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb9-95"><a></a></span>
+<span id="cb9-96"><a></a><span class="kw">def</span> fib_iterative(n):</span>
+<span id="cb9-97"><a></a>    <span class="co">"""</span></span>
+<span id="cb9-98"><a></a><span class="co">    ITERATIVE FIBONACCI - O(n) Time, O(1) Space</span></span>
+<span id="cb9-99"><a></a><span class="co">    </span></span>
+<span id="cb9-100"><a></a><span class="co">    Bottom-up approach that builds the sequence from F(0) to F(n).</span></span>
+<span id="cb9-101"><a></a><span class="co">    No recursion needed - just a simple loop with two variables.</span></span>
+<span id="cb9-102"><a></a><span class="co">    </span></span>
+<span id="cb9-103"><a></a><span class="co">    Why It's Optimal:</span></span>
+<span id="cb9-104"><a></a><span class="co">    - Linear time: exactly n-1 iterations for F(n)</span></span>
+<span id="cb9-105"><a></a><span class="co">    - Constant space: only stores current and previous values</span></span>
+<span id="cb9-106"><a></a><span class="co">    - No function call overhead or stack risk</span></span>
+<span id="cb9-107"><a></a><span class="co">    - Most practical approach for large n</span></span>
+<span id="cb9-108"><a></a><span class="co">    </span></span>
+<span id="cb9-109"><a></a><span class="co">    Educational Value: Shows how iterative thinking can optimize recursive problems</span></span>
+<span id="cb9-110"><a></a><span class="co">    </span></span>
+<span id="cb9-111"><a></a><span class="co">    Args:</span></span>
+<span id="cb9-112"><a></a><span class="co">        n (int): The position in Fibonacci sequence to calculate</span></span>
+<span id="cb9-113"><a></a><span class="co">        </span></span>
+<span id="cb9-114"><a></a><span class="co">    Returns:</span></span>
+<span id="cb9-115"><a></a><span class="co">        int: The nth Fibonacci number</span></span>
+<span id="cb9-116"><a></a><span class="co">        </span></span>
+<span id="cb9-117"><a></a><span class="co">    Time Complexity: O(n) - single loop from 2 to n</span></span>
+<span id="cb9-118"><a></a><span class="co">    Space Complexity: O(1) - only two variables needed</span></span>
+<span id="cb9-119"><a></a><span class="co">    """</span></span>
+<span id="cb9-120"><a></a>    <span class="co"># Handle base cases directly</span></span>
+<span id="cb9-121"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb9-122"><a></a>        <span class="cf">return</span> n</span>
+<span id="cb9-123"><a></a>    </span>
+<span id="cb9-124"><a></a>    <span class="co"># Initialize: a = F(0), b = F(1)</span></span>
+<span id="cb9-125"><a></a>    a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
+<span id="cb9-126"><a></a>    </span>
+<span id="cb9-127"><a></a>    <span class="co"># Build sequence iteratively: F(2), F(3), ..., F(n)</span></span>
+<span id="cb9-128"><a></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb9-129"><a></a>        <span class="co"># Calculate next Fibonacci number and shift variables</span></span>
+<span id="cb9-130"><a></a>        <span class="co"># This elegant swap calculates F(i) = F(i-1) + F(i-2)</span></span>
+<span id="cb9-131"><a></a>        a, b <span class="op">=</span> b, a <span class="op">+</span> b</span>
+<span id="cb9-132"><a></a>    </span>
+<span id="cb9-133"><a></a>    <span class="cf">return</span> b  <span class="co"># b now contains F(n)</span></span>
+<span id="cb9-134"><a></a></span>
+<span id="cb9-135"><a></a><span class="kw">def</span> optimization_race(n_values):</span>
+<span id="cb9-136"><a></a>    <span class="co">"""</span></span>
+<span id="cb9-137"><a></a><span class="co">    PERFORMANCE COMPARISON ENGINE - Algorithm Racing Framework</span></span>
+<span id="cb9-138"><a></a><span class="co">    </span></span>
+<span id="cb9-139"><a></a><span class="co">    This function conducts a systematic performance comparison of all three</span></span>
+<span id="cb9-140"><a></a><span class="co">    Fibonacci implementations, providing students with concrete evidence of</span></span>
+<span id="cb9-141"><a></a><span class="co">    how algorithm choice affects real-world performance.</span></span>
+<span id="cb9-142"><a></a><span class="co">    </span></span>
+<span id="cb9-143"><a></a><span class="co">    Educational Design Features:</span></span>
+<span id="cb9-144"><a></a><span class="co">    - Automatic safety checks (skips exponential for large n)</span></span>
+<span id="cb9-145"><a></a><span class="co">    - Precise timing measurements using time.time()</span></span>
+<span id="cb9-146"><a></a><span class="co">    - Clear performance reporting with speedup calculations</span></span>
+<span id="cb9-147"><a></a><span class="co">    - Fair testing (cache clearing between runs)</span></span>
+<span id="cb9-148"><a></a><span class="co">    - Robust exception handling for edge cases</span></span>
+<span id="cb9-149"><a></a><span class="co">    </span></span>
+<span id="cb9-150"><a></a><span class="co">    Args:</span></span>
+<span id="cb9-151"><a></a><span class="co">        n_values (list): Fibonacci numbers to test (e.g., [10, 20, 30])</span></span>
+<span id="cb9-152"><a></a><span class="co">        </span></span>
+<span id="cb9-153"><a></a><span class="co">    Returns:</span></span>
+<span id="cb9-154"><a></a><span class="co">        None (prints results directly for classroom demonstration)</span></span>
+<span id="cb9-155"><a></a><span class="co">        </span></span>
+<span id="cb9-156"><a></a><span class="co">    Raises:</span></span>
+<span id="cb9-157"><a></a><span class="co">        ValueError: If n_values contains invalid inputs</span></span>
+<span id="cb9-158"><a></a><span class="co">        TypeError: If n_values is not iterable</span></span>
+<span id="cb9-159"><a></a><span class="co">    """</span></span>
+<span id="cb9-160"><a></a>    <span class="co"># Input validation to prevent errors</span></span>
+<span id="cb9-161"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb9-162"><a></a>        <span class="co"># Check if n_values is iterable</span></span>
+<span id="cb9-163"><a></a>        <span class="bu">iter</span>(n_values)</span>
+<span id="cb9-164"><a></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb9-165"><a></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"n_values must be an iterable (list, tuple, etc.)"</span>)</span>
+<span id="cb9-166"><a></a>    </span>
+<span id="cb9-167"><a></a>    <span class="co"># Validate each value in the input</span></span>
+<span id="cb9-168"><a></a>    valid_values <span class="op">=</span> []</span>
+<span id="cb9-169"><a></a>    <span class="cf">for</span> n <span class="kw">in</span> n_values:</span>
+<span id="cb9-170"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb9-171"><a></a>            n <span class="op">=</span> <span class="bu">int</span>(n)  <span class="co"># Convert to integer if possible</span></span>
+<span id="cb9-172"><a></a>            <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb9-173"><a></a>                <span class="bu">print</span>(<span class="ss">f"⚠️  WARNING: Skipping negative value </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> (Fibonacci undefined for negative numbers)"</span>)</span>
+<span id="cb9-174"><a></a>                <span class="cf">continue</span></span>
+<span id="cb9-175"><a></a>            <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
+<span id="cb9-176"><a></a>                <span class="bu">print</span>(<span class="ss">f"⚠️  WARNING: Skipping extremely large value </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> (potential memory/time issues)"</span>)</span>
+<span id="cb9-177"><a></a>                <span class="cf">continue</span></span>
+<span id="cb9-178"><a></a>            valid_values.append(n)</span>
+<span id="cb9-179"><a></a>        <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>):</span>
+<span id="cb9-180"><a></a>            <span class="bu">print</span>(<span class="ss">f"⚠️  WARNING: Skipping invalid value </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> (must be a non-negative integer)"</span>)</span>
+<span id="cb9-181"><a></a>            <span class="cf">continue</span></span>
+<span id="cb9-182"><a></a>    </span>
+<span id="cb9-183"><a></a>    <span class="cf">if</span> <span class="kw">not</span> valid_values:</span>
+<span id="cb9-184"><a></a>        <span class="bu">print</span>(<span class="st">"❌ ERROR: No valid values to test!"</span>)</span>
+<span id="cb9-185"><a></a>        <span class="cf">return</span></span>
+<span id="cb9-186"><a></a>    <span class="bu">print</span>(<span class="st">"🏁 Fibonacci Optimization Race!"</span>)</span>
+<span id="cb9-187"><a></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb9-188"><a></a>    <span class="bu">print</span>(<span class="st">"Testing three approaches: Exponential vs Memoized vs Iterative"</span>)</span>
+<span id="cb9-189"><a></a>    <span class="bu">print</span>(<span class="ss">f"Valid test values: </span><span class="sc">{</span>valid_values<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-190"><a></a>    </span>
+<span id="cb9-191"><a></a>    <span class="cf">for</span> n <span class="kw">in</span> valid_values:</span>
+<span id="cb9-192"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">🧮 Computing Fibonacci(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">):"</span>)</span>
+<span id="cb9-193"><a></a>        </span>
+<span id="cb9-194"><a></a>        <span class="co"># ===== EXPONENTIAL APPROACH - O(2^n) =====</span></span>
+<span id="cb9-195"><a></a>        <span class="co"># Safety check: only test exponential for manageable values</span></span>
+<span id="cb9-196"><a></a>        <span class="co"># Beyond n=35, exponential becomes impractically slow</span></span>
+<span id="cb9-197"><a></a>        <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">30</span>:</span>
+<span id="cb9-198"><a></a>            <span class="cf">try</span>:</span>
+<span id="cb9-199"><a></a>                start <span class="op">=</span> time.time()  <span class="co"># Start timing</span></span>
+<span id="cb9-200"><a></a>                result_exp <span class="op">=</span> fib_exponential(n)</span>
+<span id="cb9-201"><a></a>                exp_time <span class="op">=</span> time.time() <span class="op">-</span> start  <span class="co"># Calculate duration</span></span>
+<span id="cb9-202"><a></a>                <span class="bu">print</span>(<span class="ss">f"  📈 Exponential O(2^n): </span><span class="sc">{</span>exp_time<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb9-203"><a></a>            <span class="cf">except</span> <span class="pp">RecursionError</span>:</span>
+<span id="cb9-204"><a></a>                <span class="bu">print</span>(<span class="ss">f"  📈 Exponential O(2^n): FAILED (recursion limit exceeded)"</span>)</span>
+<span id="cb9-205"><a></a>                exp_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-206"><a></a>                result_exp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-207"><a></a>            <span class="cf">except</span> <span class="pp">OverflowError</span>:</span>
+<span id="cb9-208"><a></a>                <span class="bu">print</span>(<span class="ss">f"  📈 Exponential O(2^n): FAILED (number too large)"</span>)</span>
+<span id="cb9-209"><a></a>                exp_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-210"><a></a>                result_exp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-211"><a></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb9-212"><a></a>                <span class="bu">print</span>(<span class="ss">f"  📈 Exponential O(2^n): ERROR (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-213"><a></a>                exp_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-214"><a></a>                result_exp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-215"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb9-216"><a></a>            <span class="bu">print</span>(<span class="ss">f"  📈 Exponential O(2^n): SKIPPED (too slow!)"</span>)</span>
+<span id="cb9-217"><a></a>            exp_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)  <span class="co"># Mark as infinite time for comparisons</span></span>
+<span id="cb9-218"><a></a>            result_exp <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-219"><a></a>        </span>
+<span id="cb9-220"><a></a>        <span class="co"># ===== MEMOIZED APPROACH - O(n) =====</span></span>
+<span id="cb9-221"><a></a>        <span class="co"># Clear any previous cache to ensure fair timing comparison</span></span>
+<span id="cb9-222"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb9-223"><a></a>            fib_memoized.cache_clear()  <span class="co"># Reset memoization cache</span></span>
+<span id="cb9-224"><a></a>            start <span class="op">=</span> time.time()</span>
+<span id="cb9-225"><a></a>            result_memo <span class="op">=</span> fib_memoized(n)</span>
+<span id="cb9-226"><a></a>            memo_time <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb9-227"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🧠 Memoized O(n):      </span><span class="sc">{</span>memo_time<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb9-228"><a></a>        <span class="cf">except</span> <span class="pp">RecursionError</span>:</span>
+<span id="cb9-229"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🧠 Memoized O(n):      FAILED (recursion limit exceeded)"</span>)</span>
+<span id="cb9-230"><a></a>            memo_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-231"><a></a>            result_memo <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-232"><a></a>        <span class="cf">except</span> <span class="pp">OverflowError</span>:</span>
+<span id="cb9-233"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🧠 Memoized O(n):      FAILED (number too large)"</span>) </span>
+<span id="cb9-234"><a></a>            memo_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-235"><a></a>            result_memo <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-236"><a></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb9-237"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🧠 Memoized O(n):      ERROR (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-238"><a></a>            memo_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-239"><a></a>            result_memo <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-240"><a></a>        </span>
+<span id="cb9-241"><a></a>        <span class="co"># ===== ITERATIVE APPROACH - O(n) =====</span></span>
+<span id="cb9-242"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb9-243"><a></a>            start <span class="op">=</span> time.time()</span>
+<span id="cb9-244"><a></a>            result_iter <span class="op">=</span> fib_iterative(n)</span>
+<span id="cb9-245"><a></a>            iter_time <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb9-246"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🔄 Iterative O(n):     </span><span class="sc">{</span>iter_time<span class="sc">:.6f}</span><span class="ss">s"</span>)</span>
+<span id="cb9-247"><a></a>        <span class="cf">except</span> <span class="pp">OverflowError</span>:</span>
+<span id="cb9-248"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🔄 Iterative O(n):     FAILED (number too large)"</span>)</span>
+<span id="cb9-249"><a></a>            iter_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-250"><a></a>            result_iter <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-251"><a></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb9-252"><a></a>            <span class="bu">print</span>(<span class="ss">f"  🔄 Iterative O(n):     ERROR (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-253"><a></a>            iter_time <span class="op">=</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
+<span id="cb9-254"><a></a>            result_iter <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-255"><a></a>        </span>
+<span id="cb9-256"><a></a>        <span class="co"># ===== PERFORMANCE ANALYSIS =====</span></span>
+<span id="cb9-257"><a></a>        <span class="co"># Calculate and display speedup ratios if exponential was testable</span></span>
+<span id="cb9-258"><a></a>        <span class="co"># This shows students the dramatic impact of optimization</span></span>
+<span id="cb9-259"><a></a>        <span class="cf">if</span> exp_time <span class="op">!=</span> <span class="bu">float</span>(<span class="st">'inf'</span>):</span>
+<span id="cb9-260"><a></a>            <span class="cf">try</span>:</span>
+<span id="cb9-261"><a></a>                <span class="co"># Calculate speedup ratios with division by zero protection</span></span>
+<span id="cb9-262"><a></a>                <span class="cf">if</span> memo_time <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb9-263"><a></a>                    memo_speedup <span class="op">=</span> exp_time <span class="op">/</span> memo_time</span>
+<span id="cb9-264"><a></a>                    <span class="bu">print</span>(<span class="ss">f"  🚀 Memoized speedup: </span><span class="sc">{</span>memo_speedup<span class="sc">:.0f}</span><span class="ss">x faster!"</span>)</span>
+<span id="cb9-265"><a></a>                <span class="cf">else</span>:</span>
+<span id="cb9-266"><a></a>                    <span class="bu">print</span>(<span class="ss">f"  🚀 Memoized speedup: EXTREMELY FAST (sub-microsecond)"</span>)</span>
+<span id="cb9-267"><a></a>                </span>
+<span id="cb9-268"><a></a>                <span class="cf">if</span> iter_time <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb9-269"><a></a>                    iter_speedup <span class="op">=</span> exp_time <span class="op">/</span> iter_time  </span>
+<span id="cb9-270"><a></a>                    <span class="bu">print</span>(<span class="ss">f"  🚀 Iterative speedup: </span><span class="sc">{</span>iter_speedup<span class="sc">:.0f}</span><span class="ss">x faster!"</span>)</span>
+<span id="cb9-271"><a></a>                <span class="cf">else</span>:</span>
+<span id="cb9-272"><a></a>                    <span class="bu">print</span>(<span class="ss">f"  🚀 Iterative speedup: EXTREMELY FAST (sub-microsecond)"</span>)</span>
+<span id="cb9-273"><a></a>                    </span>
+<span id="cb9-274"><a></a>            <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb9-275"><a></a>                <span class="co"># Fallback protection in case of unexpected zero division</span></span>
+<span id="cb9-276"><a></a>                <span class="bu">print</span>(<span class="ss">f"  🚀 Speedup calculation: EXTREMELY FAST (division by zero avoided)"</span>)</span>
+<span id="cb9-277"><a></a>                <span class="bu">print</span>(<span class="ss">f"  📊 Optimized versions completed in negligible time!"</span>)</span>
+<span id="cb9-278"><a></a>            </span>
+<span id="cb9-279"><a></a>            <span class="co"># Verify all methods produce the same result (when all succeeded)</span></span>
+<span id="cb9-280"><a></a>            <span class="cf">try</span>:</span>
+<span id="cb9-281"><a></a>                <span class="co"># Only verify if all results are available and not None</span></span>
+<span id="cb9-282"><a></a>                <span class="cf">if</span> <span class="bu">all</span>(result <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">for</span> result <span class="kw">in</span> [result_exp, result_memo, result_iter]):</span>
+<span id="cb9-283"><a></a>                    <span class="cf">assert</span> result_exp <span class="op">==</span> result_memo <span class="op">==</span> result_iter, <span class="st">"Results don't match!"</span></span>
+<span id="cb9-284"><a></a>                    <span class="bu">print</span>(<span class="ss">f"  ✅ All methods produced identical results: </span><span class="sc">{</span>result_iter<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-285"><a></a>                <span class="cf">else</span>:</span>
+<span id="cb9-286"><a></a>                    <span class="co"># Some calculations failed, show what we have</span></span>
+<span id="cb9-287"><a></a>                    available_results <span class="op">=</span> []</span>
+<span id="cb9-288"><a></a>                    <span class="cf">if</span> result_memo <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb9-289"><a></a>                        available_results.append(<span class="ss">f"Memoized: </span><span class="sc">{</span>result_memo<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-290"><a></a>                    <span class="cf">if</span> result_iter <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb9-291"><a></a>                        available_results.append(<span class="ss">f"Iterative: </span><span class="sc">{</span>result_iter<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-292"><a></a>                    <span class="cf">if</span> result_exp <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb9-293"><a></a>                        available_results.append(<span class="ss">f"Exponential: </span><span class="sc">{</span>result_exp<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-294"><a></a>                    </span>
+<span id="cb9-295"><a></a>                    <span class="cf">if</span> available_results:</span>
+<span id="cb9-296"><a></a>                        <span class="bu">print</span>(<span class="ss">f"  📊 Available results: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(available_results)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-297"><a></a>                        <span class="co"># Verify the ones we have match</span></span>
+<span id="cb9-298"><a></a>                        valid_results <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> [result_exp, result_memo, result_iter] <span class="cf">if</span> r <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>]</span>
+<span id="cb9-299"><a></a>                        <span class="cf">if</span> <span class="bu">len</span>(valid_results) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">len</span>(<span class="bu">set</span>(valid_results)) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb9-300"><a></a>                            <span class="bu">print</span>(<span class="ss">f"  ✅ Available results match!"</span>)</span>
+<span id="cb9-301"><a></a>                        <span class="cf">elif</span> <span class="bu">len</span>(valid_results) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb9-302"><a></a>                            <span class="bu">print</span>(<span class="ss">f"  ❌ WARNING: Available results don't match!"</span>)</span>
+<span id="cb9-303"><a></a>            <span class="cf">except</span> <span class="pp">AssertionError</span> <span class="im">as</span> e:</span>
+<span id="cb9-304"><a></a>                <span class="bu">print</span>(<span class="ss">f"  ❌ ERROR: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-305"><a></a>                <span class="bu">print</span>(<span class="ss">f"     Exponential: </span><span class="sc">{</span>result_exp <span class="cf">if</span> result_exp <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">'FAILED'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-306"><a></a>                <span class="bu">print</span>(<span class="ss">f"     Memoized: </span><span class="sc">{</span>result_memo <span class="cf">if</span> result_memo <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">'FAILED'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-307"><a></a>                <span class="bu">print</span>(<span class="ss">f"     Iterative: </span><span class="sc">{</span>result_iter <span class="cf">if</span> result_iter <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">'FAILED'</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-308"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb9-309"><a></a>            <span class="co"># For large n, exponential is too slow to test</span></span>
+<span id="cb9-310"><a></a>            <span class="bu">print</span>(<span class="ss">f"  ⚡ Exponential would take HOURS/DAYS for n=</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-311"><a></a>            <span class="bu">print</span>(<span class="ss">f"  ⚡ Optimization makes impossible problems solvable!"</span>)</span>
+<span id="cb9-312"><a></a></span>
+<span id="cb9-313"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-314"><a></a><span class="co"># MAIN EXECUTION - Structured Partner Learning Experience</span></span>
+<span id="cb9-315"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-316"><a></a></span>
+<span id="cb9-317"><a></a><span class="co">"""</span></span>
+<span id="cb9-318"><a></a><span class="co">COLLABORATIVE ASSIGNMENT STRUCTURE:</span></span>
+<span id="cb9-319"><a></a><span class="co">Students work in pairs with different test cases to observe how algorithm</span></span>
+<span id="cb9-320"><a></a><span class="co">choice affects performance across different problem sizes.</span></span>
+<span id="cb9-321"><a></a></span>
+<span id="cb9-322"><a></a><span class="co">Partner A: Tests smaller values where all approaches are feasible</span></span>
+<span id="cb9-323"><a></a><span class="co">Partner B: Tests larger values where exponential becomes impossible</span></span>
+<span id="cb9-324"><a></a></span>
+<span id="cb9-325"><a></a><span class="co">This design helps students experience the "complexity cliff" - the point</span></span>
+<span id="cb9-326"><a></a><span class="co">where poor algorithms become computationally intractable.</span></span>
+<span id="cb9-327"><a></a><span class="co">"""</span></span>
+<span id="cb9-328"><a></a></span>
+<span id="cb9-329"><a></a><span class="co"># CHOOSE YOUR PARTNER ROLE:</span></span>
+<span id="cb9-330"><a></a><span class="co"># Uncomment the appropriate line based on your assignment</span></span>
+<span id="cb9-331"><a></a></span>
+<span id="cb9-332"><a></a>my_values <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]     <span class="co"># Partner A: All approaches testable</span></span>
+<span id="cb9-333"><a></a><span class="co"># my_values = [35, 40, 50]   # Partner B: Exponential becomes impossible!</span></span>
+<span id="cb9-334"><a></a></span>
+<span id="cb9-335"><a></a><span class="bu">print</span>(<span class="st">"🎯 RUNNING OPTIMIZATION COMPARISON..."</span>)</span>
+<span id="cb9-336"><a></a><span class="bu">print</span>(<span class="st">"Your test values:"</span>, my_values)</span>
+<span id="cb9-337"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-338"><a></a></span>
+<span id="cb9-339"><a></a><span class="co"># Execute the performance comparison</span></span>
+<span id="cb9-340"><a></a>optimization_race(my_values)</span>
+<span id="cb9-341"><a></a></span>
+<span id="cb9-342"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-343"><a></a><span class="co"># ANALYSIS FRAMEWORK - Post-Experiment Discussion Questions</span></span>
+<span id="cb9-344"><a></a><span class="co"># ===================================================================</span></span>
+<span id="cb9-345"><a></a></span>
+<span id="cb9-346"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb9-347"><a></a><span class="bu">print</span>(<span class="st">"📚 DISCUSSION QUESTIONS FOR PARTNERS:"</span>)</span>
+<span id="cb9-348"><a></a><span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb9-349"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-350"><a></a><span class="bu">print</span>(<span class="st">"After reviewing your results, discuss these questions:"</span>)</span>
+<span id="cb9-351"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-352"><a></a><span class="bu">print</span>(<span class="st">"1. 🤔 TIPPING POINT: At what value of n does exponential become unusable?"</span>)</span>
+<span id="cb9-353"><a></a><span class="bu">print</span>(<span class="st">"   (Partner A vs B will have different experiences)"</span>)</span>
+<span id="cb9-354"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-355"><a></a><span class="bu">print</span>(<span class="st">"2. 🚀 SPEEDUP MAGNITUDE: How dramatic is the speedup from optimization?"</span>)</span>
+<span id="cb9-356"><a></a><span class="bu">print</span>(<span class="st">"   (Look at the 'X times faster' numbers)"</span>)</span>
+<span id="cb9-357"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-358"><a></a><span class="bu">print</span>(<span class="st">"3. 🧠 MEMOIZATION MAGIC: Why does memoization work so well here?"</span>)</span>
+<span id="cb9-359"><a></a><span class="bu">print</span>(<span class="st">"   (Think about redundant calculations in the exponential version)"</span>)</span>
+<span id="cb9-360"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-361"><a></a><span class="bu">print</span>(<span class="st">"4. 💡 REAL-WORLD IMPACT: What does this teach us about algorithm choice?"</span>)</span>
+<span id="cb9-362"><a></a><span class="bu">print</span>(<span class="st">"   (Consider: debugging vs production, small vs large datasets)"</span>)</span>
+<span id="cb9-363"><a></a><span class="bu">print</span>()</span>
+<span id="cb9-364"><a></a><span class="bu">print</span>(<span class="st">"5. 🔄 SPACE VS TIME: Compare memoized vs iterative - which is better?"</span>)</span>
+<span id="cb9-365"><a></a><span class="bu">print</span>(<span class="st">"   (Consider memory usage and practical constraints)"</span>)</span>
+<span id="cb9-366"><a></a></span>
+<span id="cb9-367"><a></a><span class="co">"""</span></span>
+<span id="cb9-368"><a></a><span class="co">Expected Learning Outcomes:</span></span>
+<span id="cb9-369"><a></a><span class="co">- Visceral understanding of exponential vs linear complexity</span></span>
+<span id="cb9-370"><a></a><span class="co">- Appreciation for the power of dynamic programming/memoization</span></span>
+<span id="cb9-371"><a></a><span class="co">- Recognition that algorithm choice can make impossible problems solvable</span></span>
+<span id="cb9-372"><a></a><span class="co">- Understanding of trade-offs between different optimization approaches</span></span>
+<span id="cb9-373"><a></a><span class="co">- Motivation to learn more advanced algorithmic techniques</span></span>
+<span id="cb9-374"><a></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ```python
+from functools import lru_cache
+import time
+
+# Three different approaches to Fibonacci
+def fib_exponential(n):
+    """Naive recursive - O(2^n)"""
+    if n <= 1:
+        return n
+    return fib_exponential(n-1) + fib_exponential(n-2)
+
+@lru_cache(maxsize=None)
+def fib_memoized(n):
+    """Memoized recursive - O(n)"""
+    if n <= 1:
+        return n
+    return fib_memoized(n-1) + fib_memoized(n-2)
+
+def fib_iterative(n):
+    """Iterative - O(n)"""
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+
+def optimization_race(n_values):
+    """Compare all three approaches"""
+    print("Fibonacci Optimization Race!")
+    print("=" * 50)
+    
+    for n in n_values:
+        print(f"\nFibonacci({n}):")
+        
+        # Only test exponential for small values!
+        if n <= 30:
+            start = time.time()
+            result_exp = fib_exponential(n)
+            exp_time = time.time() - start
+            print(f"  Exponential O(2^n): {exp_time:.6f}s")
+        else:
+            print(f"  Exponential O(2^n): SKIPPED (too slow!)")
+            exp_time = float('inf')
+        
+        # Test memoized version
+        fib_memoized.cache_clear()  # Clear cache for fair timing
+        start = time.time()
+        result_memo = fib_memoized(n)
+        memo_time = time.time() - start
+        print(f"  Memoized O(n):      {memo_time:.6f}s")
+        
+        # Test iterative version
+        start = time.time()
+        result_iter = fib_iterative(n)
+        iter_time = time.time() - start
+        print(f"  Iterative O(n):     {iter_time:.6f}s")
+        
+        # Show speedup if exponential was testable
+        if exp_time != float('inf'):
+            print(f"  Memoized speedup: {exp_time/memo_time:.0f}x")
+            print(f"  Iterative speedup: {exp_time/iter_time:.0f}x")
+
+# Partner A: Test [10, 20, 30]
+# Partner B: Test [35, 40, 50] (notice exponential becomes impossible!)
+my_values = [10, 20, 30]  # Adjust based on assignment
+optimization_race(my_values)
+
+# Partner Discussion:
+# 1. At what point does exponential become unusable?
+# 2. How dramatic is the speedup from optimization?
+# 3. Why does memoization work so well here?
+``` -->
+</div></div>
+</section>
+<section id="final-challenge-algorithm-detective" class="slide level2">
+<h2>Final Challenge: Algorithm Detective! 🕵️‍♂️</h2>
+<div class="callout callout-none callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Can You Identify These Complexities Part 1? 🧩</strong></p>
+</div>
+<div class="callout-content">
+<p>Mystery Algorithms: Put Your Skills to the Test! 🤔 * Test your new Big-O analysis skills with these code snippets! * Look for loops, recursion, and data access patterns!</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Algorithm A</span></span>
+<span id="cb10-2"><a></a><span class="kw">def</span> mystery_a(arr):</span>
+<span id="cb10-3"><a></a>    <span class="cf">return</span> arr[<span class="bu">len</span>(arr) <span class="op">//</span> <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Algorithm B  </span></span>
+<span id="cb11-2"><a></a><span class="kw">def</span> mystery_b(arr):</span>
+<span id="cb11-3"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-4"><a></a>    <span class="cf">for</span> item <span class="kw">in</span> arr:</span>
+<span id="cb11-5"><a></a>        total <span class="op">+=</span> item</span>
+<span id="cb11-6"><a></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="bu">len</span>(arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="final-challenge-continued" class="slide level2">
+<h2>Final Challenge: Continued! 🕵️‍♂️</h2>
+<div class="callout callout-none callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Can You Identify These Complexities Part II? 🧩</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Algorithm C</span></span>
+<span id="cb12-2"><a></a><span class="kw">def</span> mystery_c(arr, target):</span>
+<span id="cb12-3"><a></a>    left, right <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb12-4"><a></a>    <span class="cf">while</span> left <span class="op">&lt;=</span> right:</span>
+<span id="cb12-5"><a></a>        mid <span class="op">=</span> (left <span class="op">+</span> right) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb12-6"><a></a>        <span class="cf">if</span> arr[mid] <span class="op">==</span> target:</span>
+<span id="cb12-7"><a></a>            <span class="cf">return</span> mid</span>
+<span id="cb12-8"><a></a>        <span class="cf">elif</span> arr[mid] <span class="op">&lt;</span> target:</span>
+<span id="cb12-9"><a></a>            left <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-10"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb12-11"><a></a>            right <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb12-12"><a></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Algorithm D</span></span>
+<span id="cb13-2"><a></a><span class="kw">def</span> mystery_d(arr):</span>
+<span id="cb13-3"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr)):</span>
+<span id="cb13-4"><a></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(arr)):</span>
+<span id="cb13-5"><a></a>            <span class="cf">if</span> arr[i] <span class="op">&gt;</span> arr[j]:</span>
+<span id="cb13-6"><a></a>                arr[i], arr[j] <span class="op">=</span> arr[j], arr[i]</span>
+<span id="cb13-7"><a></a>    <span class="cf">return</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-answers-how-did-you-do" class="slide level2">
+<h2>The Answers: How Did You Do? ✅</h2>
+<div class="callout callout-none callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>🎉 Algorithm Analysis Revealed!</strong></p>
+</div>
+<div class="callout-content">
+<p>Check your detective work against these solutions:</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>    <span class="co"># Answers:</span></span>
+<span id="cb14-2"><a></a>    <span class="co"># Algorithm A: O(1) - Direct array access by index</span></span>
+<span id="cb14-3"><a></a>    <span class="co"># Algorithm B: O(n) - Single loop through all elements</span></span>
+<span id="cb14-4"><a></a>    <span class="co"># Algorithm C: O(log n) - Binary search (halving each step)</span></span>
+<span id="cb14-5"><a></a>    <span class="co"># Algorithm D: O(n²) - Nested loops (bubble sort)</span></span>
+<span id="cb14-6"><a></a>    <span class="co"># How did you do?!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>✅🎉 ✅🎉 ✅🎉 ✅🎉</p>
+<script>
+/**
+ * Fibonacci Recursion Tree Visualizer - O(2^n) Performance Demonstration
+ * Interactive animation showing how naive Fibonacci recursion creates exponential function calls
+ * Demonstrates O(2^n) time complexity - each level doubles the number of recursive calls
+ */
+class FibonacciVisualizer {
+    /**
+     * Constructor - Initialize the Fibonacci recursion visualization
+     * @param {string} canvasId - ID of the HTML canvas element to draw on
+     */
+    constructor(canvasId) {
+        // Get canvas element and set up drawing context
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return; // Exit if canvas not found
+        
+        this.ctx = this.canvas.getContext('2d');
+        
+        // Initialize Fibonacci calculation and visualization state
+        this.fibNumber = 7; // Fibonacci number to calculate (start with small value)
+        this.callStack = []; // Stack to track recursive function calls
+        this.totalCalls = 0; // Total function calls made (demonstrates 2^n growth)
+        this.maxDepth = 0; // Maximum recursion depth reached
+        this.currentDepth = 0; // Current recursion depth
+        this.isCalculating = false; // Flag to prevent multiple simultaneous calculations
+        this.showOptimized = false; // Flag to show optimized O(n) solution
+        this.result = -1; // Final Fibonacci result
+        this.nodeRadius = 20; // Visual size of tree nodes
+        this.levelHeight = 35; // Vertical spacing between recursion levels
+        this.nodes = []; // Array to store node positions for drawing recursion tree
+        
+        // Set up user interface and draw initial state
+        this.setupEventListeners();
+        this.draw();
+    }
+    
+    setupEventListeners() {
+        const startBtn = document.getElementById('start-fibonacci');
+        const optimizedBtn = document.getElementById('show-optimized');
+        const resetBtn = document.getElementById('reset-fibonacci');
+        const numberSelect = document.getElementById('fib-number');
+        
+        if (startBtn) startBtn.addEventListener('click', () => this.startCalculation());
+        if (optimizedBtn) optimizedBtn.addEventListener('click', () => this.showOptimizedSolution());
+        if (resetBtn) resetBtn.addEventListener('click', () => this.resetVisualization());
+        if (numberSelect) numberSelect.addEventListener('change', () => this.changeNumber());
+    }
+    
+    changeNumber() {
+        const select = document.getElementById('fib-number');
+        if (!select) return;
+        
+        this.fibNumber = parseInt(select.value);
+        this.resetVisualization();
+    }
+    
+    startCalculation() {
+        if (this.isCalculating) {
+            this.updateStatus('Calculation already in progress...');
+            return;
+        }
+        
+        this.resetVisualization();
+        this.isCalculating = true;
+        this.showOptimized = false;
+        this.updateStatus(`Calculating Fibonacci(${this.fibNumber}) with naive recursion...`);
+        
+        // Start the recursive calculation
+        this.fibonacciNaive(this.fibNumber, 0, this.canvas.width / 2, 40);
+        this.isCalculating = false;
+        this.updateStatus(`Completed! Result: ${this.result}, Total calls: ${this.totalCalls}`);
+        this.updateCounters();
+        this.draw();
+    }
+    
+    fibonacciNaive(n, depth, x, y) {
+        this.totalCalls++;
+        this.currentDepth = depth;
+        if (depth > this.maxDepth) {
+            this.maxDepth = depth;
+        }
+        
+        // Add node to visualization
+        const node = {
+            n: n,
+            x: x,
+            y: y,
+            depth: depth,
+            result: -1,
+            calculated: false
+        };
+        this.nodes.push(node);
+        
+        // Base case
+        if (n <= 1) {
+            node.result = n;
+            node.calculated = true;
+            return n;
+        }
+        
+        // Recursive calls
+        const leftX = x - Math.max(60, 400 / Math.pow(2, depth));
+        const rightX = x + Math.max(60, 400 / Math.pow(2, depth));
+        const childY = y + this.levelHeight;
+        
+        const left = this.fibonacciNaive(n - 1, depth + 1, leftX, childY);
+        const right = this.fibonacciNaive(n - 2, depth + 1, rightX, childY);
+        
+        const result = left + right;
+        node.result = result;
+        node.calculated = true;
+        
+        if (depth === 0) {
+            this.result = result;
+        }
+        
+        return result;
+    }
+    
+    showOptimizedSolution() {
+        this.showOptimized = true;
+        
+        // Calculate optimized version
+        const start = performance.now();
+        const optimizedResult = this.fibonacciOptimized(this.fibNumber);
+        const end = performance.now();
+        
+        this.updateStatus(`Optimized O(n) solution: Result ${optimizedResult} in ${(end - start).toFixed(4)}ms vs ${this.totalCalls} function calls for naive approach`);
+        this.draw();
+    }
+    
+    fibonacciOptimized(n) {
+        if (n <= 1) return n;
+        let a = 0, b = 1;
+        for (let i = 2; i <= n; i++) {
+            [a, b] = [b, a + b];
+        }
+        return b;
+    }
+    
+    resetVisualization() {
+        this.totalCalls = 0;
+        this.maxDepth = 0;
+        this.currentDepth = 0;
+        this.result = -1;
+        this.nodes = [];
+        this.callStack = [];
+        this.isCalculating = false;
+        this.showOptimized = false;
+        this.updateCounters();
+        this.updateStatus('Choose a Fibonacci number to calculate');
+        this.draw();
+    }
+    
+    updateCounters() {
+        const callsDisplay = document.getElementById('function-calls');
+        const depthDisplay = document.getElementById('max-depth');
+        const resultDisplay = document.getElementById('fib-result');
+        const calculationDisplay = document.getElementById('current-calculation');
+        
+        if (callsDisplay) callsDisplay.textContent = this.totalCalls;
+        if (depthDisplay) depthDisplay.textContent = this.maxDepth;
+        if (resultDisplay) resultDisplay.textContent = this.result >= 0 ? this.result : '-';
+        if (calculationDisplay) calculationDisplay.textContent = `Fibonacci(${this.fibNumber})`;
+    }
+    
+    updateStatus(message) {
+        const statusDisplay = document.getElementById('fibonacci-status');
+        if (statusDisplay) statusDisplay.textContent = message;
+    }
+    
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw title
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 16px Arial';
+        this.ctx.textAlign = 'center';
+        
+        if (this.showOptimized) {
+            this.ctx.fillText('FIBONACCI - O(n) OPTIMIZED vs O(2^n) NAIVE COMPARISON', this.canvas.width / 2, 20);
+        } else {
+            this.ctx.fillText('FIBONACCI - O(2^n) RECURSIVE EXPLOSION', this.canvas.width / 2, 20);
+        }
+        
+        if (this.nodes.length === 0) {
+            // Draw explanation
+            this.ctx.fillStyle = '#666';
+            this.ctx.font = '14px Arial';
+            this.ctx.fillText('Click "Calculate Fibonacci" to see the recursive tree explosion!', this.canvas.width / 2, this.canvas.height / 2);
+            return;
+        }
+        
+        // Draw connections first
+        this.drawConnections();
+        
+        // Draw nodes
+        for (const node of this.nodes) {
+            this.drawNode(node);
+        }
+        
+        // Draw optimization comparison if shown
+        if (this.showOptimized) {
+            this.drawOptimizationComparison();
+        }
+        
+        // Draw legend
+        this.drawLegend();
+    }
+    
+    drawConnections() {
+        this.ctx.strokeStyle = '#666';
+        this.ctx.lineWidth = 1;
+        
+        // Group nodes by depth and position
+        const nodesByDepth = {};
+        for (const node of this.nodes) {
+            if (!nodesByDepth[node.depth]) {
+                nodesByDepth[node.depth] = [];
+            }
+            nodesByDepth[node.depth].push(node);
+        }
+        
+        // Draw connections from parent to children
+        for (let depth = 0; depth < this.maxDepth; depth++) {
+            const parents = nodesByDepth[depth] || [];
+            const children = nodesByDepth[depth + 1] || [];
+            
+            for (const parent of parents) {
+                if (parent.n > 1) {
+                    // Find children (should be n-1 and n-2)
+                    const leftChild = children.find(child => 
+                        Math.abs(child.x - (parent.x - Math.max(60, 400 / Math.pow(2, depth)))) < 20 &&
+                        child.n === parent.n - 1
+                    );
+                    const rightChild = children.find(child => 
+                        Math.abs(child.x - (parent.x + Math.max(60, 400 / Math.pow(2, depth)))) < 20 &&
+                        child.n === parent.n - 2
+                    );
+                    
+                    if (leftChild) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(parent.x, parent.y + this.nodeRadius);
+                        this.ctx.lineTo(leftChild.x, leftChild.y - this.nodeRadius);
+                        this.ctx.stroke();
+                    }
+                    
+                    if (rightChild) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(parent.x, parent.y + this.nodeRadius);
+                        this.ctx.lineTo(rightChild.x, rightChild.y - this.nodeRadius);
+                        this.ctx.stroke();
+                    }
+                }
+            }
+        }
+    }
+    
+    drawNode(node) {
+        // Choose color based on value
+        let fillColor = '#E3F2FD';
+        if (node.n <= 1) {
+            fillColor = '#C8E6C9';  // Base cases - green
+        } else if (node.calculated) {
+            fillColor = '#FFECB3';  // Calculated - yellow
+        }
+        
+        // Draw circle
+        this.ctx.fillStyle = fillColor;
+        this.ctx.beginPath();
+        this.ctx.arc(node.x, node.y, this.nodeRadius, 0, 2 * Math.PI);
+        this.ctx.fill();
+        
+        // Draw border
+        this.ctx.strokeStyle = '#333';
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+        
+        // Draw text
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(`f(${node.n})`, node.x, node.y - 2);
+        if (node.calculated && node.result >= 0) {
+            this.ctx.font = '10px Arial';
+            this.ctx.fillText(`=${node.result}`, node.x, node.y + 10);
+        }
+    }
+    
+    drawOptimizationComparison() {
+        const y = this.canvas.height - 40;
+        
+        this.ctx.fillStyle = '#27AE60';
+        this.ctx.font = 'bold 14px Arial';
+        this.ctx.textAlign = 'left';
+        this.ctx.fillText(`O(n) Optimized: ${this.fibNumber} steps`, 20, y);
+        
+        this.ctx.fillStyle = '#E74C3C';
+        this.ctx.fillText(`O(2^n) Naive: ${this.totalCalls} function calls`, 300, y);
+        
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText(`Speedup: ${Math.round(this.totalCalls / this.fibNumber)}x faster!`, 580, y);
+    }
+    
+    drawLegend() {
+        const legendY = this.canvas.height - 15;
+        this.ctx.font = '11px Arial';
+        this.ctx.textAlign = 'left';
+        
+        // Base case
+        this.ctx.fillStyle = '#C8E6C9';
+        this.ctx.fillRect(20, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Base case (f(0), f(1))', 40, legendY);
+        
+        // Calculated
+        this.ctx.fillStyle = '#FFECB3';
+        this.ctx.fillRect(200, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Calculated result', 220, legendY);
+        
+        // Pending
+        this.ctx.fillStyle = '#E3F2FD';
+        this.ctx.fillRect(350, legendY - 10, 15, 15);
+        this.ctx.strokeStyle = '#333';
+        this.ctx.strokeRect(350, legendY - 10, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Recursive call', 370, legendY);
+    }
+}
+
+// Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        if (document.getElementById('fibonacci-canvas')) {
+            window.fibViz = new FibonacciVisualizer('fibonacci-canvas');
+        }
+        
+        // Initialize Subset Generator Demo
+        if (document.getElementById('subset-demo')) {
+            initializeSubsetDemo();
+        }
+        
+        // Initialize Password Strength Demo
+        if (document.getElementById('password-demo')) {
+            initializePasswordDemo();
+        }
+        
+        // Initialize Binary Tree Demo
+        if (document.getElementById('tree-demo')) {
+            initializeBinaryTreeDemo();
+        }
+    }, 500);
+});
+
+/**
+ * Subset Generation Demo - O(2^n) Visualization
+ * Shows how each additional element doubles the number of subsets
+ */
+function initializeSubsetDemo() {
+    const input = document.getElementById('subset-input');
+    const generateBtn = document.getElementById('generate-subsets');
+    const clearBtn = document.getElementById('clear-subsets');
+    const itemCount = document.getElementById('item-count');
+    const expectedSubsets = document.getElementById('expected-subsets');
+    const actualSubsets = document.getElementById('actual-subsets');
+    const status = document.getElementById('subset-status');
+    const subsetList = document.getElementById('subset-list');
+    
+    function updateStats() {
+        const items = input.value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        const count = items.length;
+        const expected = Math.pow(2, count);
+        
+        itemCount.textContent = count;
+        expectedSubsets.textContent = expected.toLocaleString();
+        
+        if (expected > 1024) {
+            status.textContent = `Warning: ${expected.toLocaleString()} subsets will be generated!`;
+            status.style.color = '#E74C3C';
+        } else {
+            status.textContent = 'Ready to generate subsets';
+            status.style.color = '#333';
+        }
+    }
+    
+    function generateSubsets(items) {
+        if (items.length === 0) return [[]];
+        
+        const first = items[0];
+        const rest = items.slice(1);
+        const restSubsets = generateSubsets(rest);
+        
+        const withFirst = restSubsets.map(subset => [first, ...subset]);
+        return [...restSubsets, ...withFirst];
+    }
+    
+    input.addEventListener('input', updateStats);
+    
+    generateBtn.addEventListener('click', () => {
+        const items = input.value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        
+        if (items.length > 10) {
+            status.textContent = 'Too many items! Please use 10 or fewer.';
+            status.style.color = '#E74C3C';
+            return;
+        }
+        
+        status.textContent = 'Generating subsets...';
+        status.style.color = '#3498DB';
+        
+        setTimeout(() => {
+            const subsets = generateSubsets(items);
+            actualSubsets.textContent = subsets.length.toLocaleString();
+            
+            subsetList.innerHTML = subsets.map((subset, index) => 
+                `<div style="margin: 2px 0; padding: 2px 5px; background: ${index % 2 === 0 ? '#fff' : '#f0f0f0'}">
+                    ${index + 1}: {${subset.join(', ')}}
+                </div>`
+            ).join('');
+            
+            status.textContent = `Generated ${subsets.length} subsets successfully!`;
+            status.style.color = '#27AE60';
+        }, 100);
+    });
+    
+    clearBtn.addEventListener('click', () => {
+        subsetList.innerHTML = '';
+        actualSubsets.textContent = '0';
+        status.textContent = 'Ready to generate subsets';
+        status.style.color = '#333';
+    });
+    
+    updateStats();
+}
+
+/**
+ * Password Strength Demo - Exponential Security Visualization  
+ * Shows how password complexity grows exponentially with length and character set
+ */
+function initializePasswordDemo() {
+    const lengthSlider = document.getElementById('password-length');
+    const lengthDisplay = document.getElementById('length-display');
+    const lowercaseCheck = document.getElementById('include-lowercase');
+    const uppercaseCheck = document.getElementById('include-uppercase');
+    const numbersCheck = document.getElementById('include-numbers');
+    const symbolsCheck = document.getElementById('include-symbols');
+    const analyzeBtn = document.getElementById('analyze-password');
+    const charsetSize = document.getElementById('charset-size');
+    const totalCombinations = document.getElementById('total-combinations');
+    const crackTime = document.getElementById('crack-time');
+    const canvas = document.getElementById('password-chart');
+    const ctx = canvas.getContext('2d');
+    
+    function calculateCharsetSize() {
+        let size = 0;
+        if (lowercaseCheck.checked) size += 26;
+        if (uppercaseCheck.checked) size += 26;
+        if (numbersCheck.checked) size += 10;
+        if (symbolsCheck.checked) size += 32;
+        return Math.max(size, 1);
+    }
+    
+    function formatTime(seconds) {
+        const years = seconds / (365.25 * 24 * 3600);
+        if (years > 1000000) return `${(years / 1000000).toFixed(1)} million years`;
+        if (years > 1000) return `${(years / 1000).toFixed(1)} thousand years`;
+        if (years > 1) return `${years.toFixed(0)} years`;
+        
+        const days = seconds / (24 * 3600);
+        if (days > 1) return `${days.toFixed(0)} days`;
+        
+        const hours = seconds / 3600;
+        if (hours > 1) return `${hours.toFixed(0)} hours`;
+        
+        const minutes = seconds / 60;
+        if (minutes > 1) return `${minutes.toFixed(0)} minutes`;
+        
+        return `${seconds.toFixed(0)} seconds`;
+    }
+    
+    function drawChart() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const length = parseInt(lengthSlider.value);
+        
+        // Define different password scenarios to compare
+        const scenarios = [
+            { name: '4-digit PIN', charset: 10, length: 4, color: '#E74C3C' },
+            { name: 'Lowercase only', charset: 26, length: length, color: '#F39C12' },
+            { name: 'Letters only', charset: 52, length: length, color: '#F1C40F' },
+            { name: 'Letters + Nums', charset: 62, length: length, color: '#3498DB' },
+            { name: 'Curr. Selection', charset: calculateCharsetSize(), length: length, color: '#27AE60' },
+            { name: 'Full complexity', charset: 94, length: length, color: '#8E44AD' }
+        ];
+        
+        // Calculate combinations for each scenario
+        const data = scenarios.map(scenario => ({
+            ...scenario,
+            combinations: Math.pow(scenario.charset, scenario.length),
+            crackTime: Math.pow(scenario.charset, scenario.length) / (2 * 1e9)
+        }));
+        
+        // Find max for scaling
+        const maxCombinations = Math.max(...data.map(d => d.combinations));
+        const barWidth = (canvas.width - 40) / data.length * 0.8;
+        const barSpacing = (canvas.width - 40) / data.length * 0.2;
+        
+        ctx.font = '9px Arial';
+        ctx.textAlign = 'center';
+        
+        data.forEach((item, index) => {
+            const combinations = item.combinations;
+            const barHeight = Math.min((combinations / maxCombinations) * (canvas.height - 60), canvas.height - 60);
+            const x = 20 + index * (barWidth + barSpacing);
+            const y = canvas.height - barHeight - 30;
+            
+            // Draw bar
+            ctx.fillStyle = item.color;
+            ctx.fillRect(x, y, barWidth, barHeight);
+            
+            // Draw border
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x, y, barWidth, barHeight);
+            
+            // Scenario name (horizontal, bold, larger)
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 11px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(item.name, x + barWidth / 2, canvas.height - 5);
+            
+            // Combinations value
+            if (barHeight > 25) {
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 8px Arial';
+                ctx.save();
+                ctx.translate(x + barWidth / 2, y + barHeight / 2);
+                ctx.rotate(-Math.PI / 2);
+                
+                let displayValue;
+                if (combinations > 1e15) {
+                    displayValue = `${(combinations / 1e15).toFixed(1)}Q`;
+                } else if (combinations > 1e12) {
+                    displayValue = `${(combinations / 1e12).toFixed(1)}T`;
+                } else if (combinations > 1e9) {
+                    displayValue = `${(combinations / 1e9).toFixed(1)}B`;
+                } else if (combinations > 1e6) {
+                    displayValue = `${(combinations / 1e6).toFixed(1)}M`;
+                } else if (combinations > 1000) {
+                    displayValue = `${(combinations / 1000).toFixed(1)}K`;
+                } else {
+                    displayValue = combinations.toString();
+                }
+                
+                ctx.fillText(displayValue, 0, 0);
+                ctx.restore();
+            }
+            
+            // Crack time at the top of each bar
+            ctx.fillStyle = '#333';
+            ctx.font = '8px Arial';
+            const timeStr = formatTime(item.crackTime);
+            const shortTime = timeStr.length > 12 ? timeStr.substring(0, 12) + '...' : timeStr;
+            ctx.fillText(shortTime, x + barWidth / 2, y - 5);
+        });
+        
+        // Title
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 12px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(`Password Security Comparison (${length} characters)`, canvas.width / 2, 15);
+        
+        // Legend
+        ctx.font = '10px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('📊 Combinations | ⏱️ Crack Time | 🎯 Current Selection', 10, canvas.height - 50);
+    }
+    
+    function updateDisplay() {
+        lengthDisplay.textContent = lengthSlider.value;
+        
+        const length = parseInt(lengthSlider.value);
+        const charset = calculateCharsetSize();
+        const combinations = Math.pow(charset, length);
+        
+        charsetSize.textContent = charset;
+        totalCombinations.textContent = combinations.toLocaleString();
+        
+        // Assume 1 billion attempts per second for brute force
+        const timeToRetrieve = combinations / (2 * 1e9); // Average case
+        crackTime.textContent = formatTime(timeToRetrieve);
+        
+        drawChart();
+    }
+    
+    lengthSlider.addEventListener('input', updateDisplay);
+    [lowercaseCheck, uppercaseCheck, numbersCheck, symbolsCheck].forEach(checkbox => {
+        checkbox.addEventListener('change', updateDisplay);
+    });
+    
+    analyzeBtn.addEventListener('click', () => {
+        // Show analyzing animation
+        analyzeBtn.textContent = 'Analyzing...';
+        analyzeBtn.style.background = '#F39C12';
+        
+        // Simulate analysis time and show dramatic effect
+        setTimeout(() => {
+            updateDisplay();
+            
+            // Add a visual flash effect to highlight the results
+            const resultsDiv = document.getElementById('password-results');
+            resultsDiv.style.border = '3px solid #E74C3C';
+            resultsDiv.style.background = '#FCF3CF';
+            
+            // Show completion message
+            analyzeBtn.textContent = 'Analysis Complete!';
+            analyzeBtn.style.background = '#27AE60';
+            
+            // Reset button and highlight after a moment
+            setTimeout(() => {
+                analyzeBtn.textContent = 'Analyze Strength';
+                analyzeBtn.style.background = '#27AE60';
+                resultsDiv.style.border = '2px solid #eee';
+                resultsDiv.style.background = '#f9f9f9';
+            }, 2000);
+            
+        }, 800);
+    });
+    
+    updateDisplay();
+}
+
+/**
+ * Binary Tree Path Counter Demo - O(2^n) Path Visualization
+ * Shows how binary trees create exponential numbers of complete paths
+ */
+function initializeBinaryTreeDemo() {
+    const depthSlider = document.getElementById('tree-depth');
+    const depthDisplay = document.getElementById('depth-display');
+    const generateBtn = document.getElementById('generate-tree');
+    const countBtn = document.getElementById('count-paths');
+    const resetBtn = document.getElementById('reset-tree');
+    const currentDepth = document.getElementById('current-depth');
+    const expectedPaths = document.getElementById('expected-paths');
+    const foundPaths = document.getElementById('found-paths');
+    const status = document.getElementById('tree-status');
+    const canvas = document.getElementById('tree-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let treeNodes = [];
+    let paths = [];
+    let animationId = null;
+    
+    function updateStats() {
+        const depth = parseInt(depthSlider.value);
+        depthDisplay.textContent = depth;
+        currentDepth.textContent = depth;
+        expectedPaths.textContent = Math.pow(2, depth - 1);
+    }
+    
+    function generateTree() {
+        const depth = parseInt(depthSlider.value);
+        treeNodes = [];
+        paths = [];
+        
+        const nodeRadius = 15;
+        const levelHeight = 35;
+        const startX = canvas.width / 2;
+        const startY = 30;
+        
+        function createNode(level, position, x, y, parent = null) {
+            const node = {
+                level: level,
+                position: position,
+                x: x,
+                y: y,
+                parent: parent,
+                children: [],
+                id: `${level}-${position}`
+            };
+            
+            treeNodes.push(node);
+            
+            if (parent) {
+                parent.children.push(node);
+            }
+            
+            if (level < depth) {
+                const childSpacing = Math.max(30, 200 / Math.pow(2, level - 1));
+                createNode(level + 1, position * 2, x - childSpacing, y + levelHeight, node);
+                createNode(level + 1, position * 2 + 1, x + childSpacing, y + levelHeight, node);
+            }
+        }
+        
+        createNode(1, 0, startX, startY);
+        drawTree();
+        status.textContent = `Generated tree with ${treeNodes.length} nodes`;
+        foundPaths.textContent = '0';
+    }
+    
+    function drawTree() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.strokeStyle = '#666';
+        ctx.lineWidth = 1;
+        treeNodes.forEach(node => {
+            node.children.forEach(child => {
+                ctx.beginPath();
+                ctx.moveTo(node.x, node.y + 15);
+                ctx.lineTo(child.x, child.y - 15);
+                ctx.stroke();
+            });
+        });
+        
+        // Draw nodes
+        treeNodes.forEach(node => {
+            ctx.fillStyle = node.children.length === 0 ? '#27AE60' : '#3498DB';
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, 15, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.strokeStyle = '#333';
+            ctx.stroke();
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(node.level.toString(), node.x, node.y + 3);
+        });
+        
+        // Draw legend
+        ctx.fillStyle = '#333';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('Internal nodes', 20, canvas.height - 30);
+        ctx.fillStyle = '#3498DB';
+        ctx.beginPath();
+        ctx.arc(90, canvas.height - 35, 8, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        ctx.fillStyle = '#333';
+        ctx.fillText('Leaf nodes', 120, canvas.height - 30);
+        ctx.fillStyle = '#27AE60';
+        ctx.beginPath();
+        ctx.arc(170, canvas.height - 35, 8, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    function countAllPaths() {
+        if (treeNodes.length === 0) {
+            status.textContent = 'Generate a tree first!';
+            return;
+        }
+        
+        paths = [];
+        const root = treeNodes[0];
+        
+        function findPaths(node, currentPath) {
+            const newPath = [...currentPath, node.id];
+            
+            if (node.children.length === 0) {
+                // Leaf node - complete path
+                paths.push(newPath);
+            } else {
+                // Continue to children
+                node.children.forEach(child => {
+                    findPaths(child, newPath);
+                });
+            }
+        }
+        
+        findPaths(root, []);
+        foundPaths.textContent = paths.length;
+        status.textContent = `Found ${paths.length} complete paths from root to leaves`;
+        
+        // Animate path highlighting
+        animatePaths();
+    }
+    
+    function animatePaths() {
+        let currentPathIndex = 0;
+        
+        function highlightPath() {
+            if (currentPathIndex >= paths.length) {
+                currentPathIndex = 0;
+            }
+            
+            drawTree();
+            
+            // Highlight current path
+            const currentPath = paths[currentPathIndex];
+            ctx.strokeStyle = '#E74C3C';
+            ctx.lineWidth = 3;
+            
+            for (let i = 0; i < currentPath.length - 1; i++) {
+                const node1 = treeNodes.find(n => n.id === currentPath[i]);
+                const node2 = treeNodes.find(n => n.id === currentPath[i + 1]);
+                
+                if (node1 && node2) {
+                    ctx.beginPath();
+                    ctx.moveTo(node1.x, node1.y + 15);
+                    ctx.lineTo(node2.x, node2.y - 15);
+                    ctx.stroke();
+                }
+            }
+            
+            // Show path info
+            ctx.fillStyle = '#E74C3C';
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Path ${currentPathIndex + 1} of ${paths.length}`, canvas.width / 2, 20);
+            
+            currentPathIndex++;
+        }
+        
+        if (animationId) clearInterval(animationId);
+        animationId = setInterval(highlightPath, 1000);
+        setTimeout(() => {
+            if (animationId) clearInterval(animationId);
+            drawTree();
+        }, paths.length * 1000 + 2000);
+    }
+    
+    depthSlider.addEventListener('input', updateStats);
+    generateBtn.addEventListener('click', generateTree);
+    countBtn.addEventListener('click', countAllPaths);
+    resetBtn.addEventListener('click', () => {
+        treeNodes = [];
+        paths = [];
+        if (animationId) clearInterval(animationId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        foundPaths.textContent = '0';
+        status.textContent = 'Ready to generate tree';
+    });
+    
+    updateStats();
+}
+</script>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

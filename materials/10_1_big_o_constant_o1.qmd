@@ -1,0 +1,1006 @@
+---
+title: "O(1) - CONSTANT TIME"
+subtitle: "The Lightning Fast Algorithm - Always the Same Speed!"
+author: "CS 101 - Fall 2025"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+## What is O(1) - Constant Time?
+
+::: {.callout-tip icon="true"}
+## The Superpower of Algorithms ⚡
+
+**O(1)** means the algorithm takes the **same amount of time** no matter how much data you give it!
+
+**Real-World Analogy**: 
+* Like a **valet parking service** - you hand over your ticket and get your car back instantly
+* Whether there are 10 cars or 10,000 cars in the lot, it takes the same time!
+* The valet has a **direct system** to find your exact car
+
+:::
+
+::: {.columns}
+::: {.column}
+**Performance Guarantee** 📊
+
+* 10 items → 1 step
+* 100 items → 1 step  
+* 1,000,000 items → 1 step
+* Same speed **forever**!
+
+:::
+
+::: {.column}
+**Key Insight** 🔑
+
+The algorithm has a **"shortcut"** that goes directly to the answer without checking other data!
+
+**Magic Question**:
+
+*"Can I get the answer without looking at most of the data?"*
+:::
+:::
+
+## What Makes O(1) So Fast?
+
+::: {.callout-blue icon="false"}
+The Secret Ingredients 🎯
+
+O(1) algorithms use **smart data organization** and **direct access patterns**
+
+:::
+
+::: {.columns}
+::: {.column}
+**Hash Tables (Dictionaries/Sets)**
+
+```python
+# Python dictionary uses hash function
+student_grades = {
+    "Alice": 95,
+    "Bob": 87,
+    "Charlie": 92
+}
+
+# Hash function calculates EXACTLY where 
+# "Alice" is stored in memory
+grade = student_grades["Alice"]  # O(1)!
+```
+
+**How it works:**
+
+1. Hash function: `"Alice"` → memory location 147
+2. Go directly to location 147
+3. Get the value (95)
+4. Done! No searching needed!
+:::
+
+::: {.column}
+**Array Indexing**
+
+```python
+# Arrays store data in consecutive memory
+scores = [95, 87, 92, 78, 85]
+#         0   1   2   3   4
+
+# Computer calculates: 
+# Address = start_address + (index × item_size)
+first_score = scores[0]    # O(1)
+third_score = scores[2]    # O(1)
+```
+
+**Mathematical Magic:**
+
+* Memory address = Base + (2 × 4 bytes) = Direct jump!
+* No need to check scores[0] or scores[1]
+* Jump straight to the answer!
+:::
+:::
+
+## Interactive O(1) Dictionary Demo
+
+::: {.callout-note icon="true"}
+## See O(1) in Action! 🎮
+
+Try looking up different students' grades. Notice how it's always instant, no matter which student you choose!
+
+:::
+
+```{=html}
+<div id="o1-demo" style="text-align: center; margin: 20px 0;">
+    <h3>Student Grade Lookup - O(1) Dictionary Access</h3>
+    <div style="margin: 15px 0;">
+                <select id="student-select" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; min-width: 180px;">
+            <option value="">Choose a student...</option>
+            <option value="Alice">Alice</option>
+            <option value="Bob">Bob</option>
+            <option value="Charlie">Charlie</option>
+            <option value="Diana">Diana</option>
+            <option value="Eve">Eve</option>
+            <option value="Frank">Frank</option>
+            <option value="Grace">Grace</option>
+            <option value="Henry">Henry</option>
+        </select>
+        <button id="lookup-btn" style="padding: 8px 20px; margin: 5px; background: #27AE60; color: white; border: none; border-radius: 4px; min-width: 120px;">Look Up Grade</button>
+        <button id="add-student-btn" style="padding: 8px 20px; margin: 5px; background: #3498DB; color: white; border: none; border-radius: 4px; min-width: 130px;">Add New Student</button>
+        <button id="reset-demo-btn" style="padding: 8px 20px; margin: 5px; background: #95A5A6; color: white; border: none; border-radius: 4px; min-width: 80px;">Reset</button>
+    </div>
+    <div id="hash-visualization" style="height: 200px; border: 2px solid #eee; border-radius: 8px; position: relative; overflow: hidden;">
+        <canvas id="hash-canvas" width="800" height="180" style="border: none;"></canvas>
+    </div>
+    <div id="lookup-info" style="margin: 10px 0; font-family: monospace; font-size: 14px;">
+        <div>Hash Table Size: <span id="table-size">8</span> slots</div>
+        <div>Operations: <span id="operation-count">0</span></div>
+        <div>Result: <span id="lookup-result">Ready to lookup grades!</span></div>
+    </div>
+    <div style="margin: 10px 0;">
+        <input type="text" id="new-student-name" placeholder="Student name" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; min-width: 150px;">
+        <input type="number" id="new-student-grade" placeholder="Grade (0-100)" min="0" max="100" style="padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; min-width: 120px;">
+    </div>
+</div>
+```
+
+## Python O(1) Examples - The Fast Ones!
+
+::: {.columns}
+::: {.column}
+**Dictionary Operations** 🗂️
+
+```python
+# Creating a gradebook
+gradebook = {
+    "Alice": 95,
+    "Bob": 87,
+    "Charlie": 92,
+    "Diana": 88
+}
+
+# All of these are O(1) - instant!
+alice_grade = gradebook["Alice"]      # Lookup: O(1)
+gradebook["Eve"] = 90                 # Insert: O(1)
+gradebook["Bob"] = 89                 # Update: O(1)
+del gradebook["Charlie"]              # Delete: O(1)
+
+# Check if student exists
+if "Diana" in gradebook:              # Membership: O(1)
+    print("Diana is in the class!")
+
+print(f"Class size: {len(gradebook)}")  # Length: O(1)
+```
+:::
+
+::: {.column}
+**List Operations (by index)** 📋
+
+```python
+# Student scores list
+scores = [95, 87, 92, 78, 85, 91, 88]
+
+# These are O(1) - direct access
+first_score = scores[0]               # Get first: O(1)
+last_score = scores[-1]               # Get last: O(1)
+middle_score = scores[3]              # Get by index: O(1)
+
+print(f" Scores BEFORE update = {scores}")
+
+scores[2] = 94                        # Update by index: O(1)
+                                      # overwrite previous value
+print(f" Scores AFTER update = {scores}")
+                                      
+# Stack operations (end of list)
+scores.append(96)                     # Add to end: O(1)
+final_score = scores.pop()            # Remove from end: O(1)
+
+print(f"Total scores: {len(scores)}") # Length: O(1)
+```
+:::
+:::
+
+::: {.callout-warning icon="true"}
+## Important Note ⚠️
+**Not all list operations are O(1)!** 
+
+* `scores.insert(0, 100)` is O(n) - inserting at beginning
+* `scores.remove(87)` is O(n) - searching for value
+* `87 in scores` is O(n) - searching through list
+:::
+
+# Set Operations - Another O(1) Champion!
+
+::: {.callout-note icon="true"}
+Are there differences in search times?
+:::
+
+::: {.columns}
+::: {.column}
+**Set Basics** 🎯
+
+```python
+# Create a set of student IDs
+enrolled_students = {101, 102, 103, 104, 105}
+
+# All O(1) operations
+enrolled_students.add(106)            # Add: O(1)
+enrolled_students.remove(103)         # Remove: O(1)
+
+# The magic of O(1) membership testing!
+if 104 in enrolled_students:          # Check: O(1)
+    print("Student 104 is enrolled!")
+
+# Compare with list - this would be O(n)
+student_list = [101, 102, 103, 104, 105]
+if 104 in student_list:               # O(n) - slow!
+    print("Found in list (but slowly)")
+```
+:::
+
+::: {.column}
+**Real Performance Difference** 🏃‍♂️
+```python
+import time
+
+# Large dataset
+large_list = list(range(100000))        # 100k numbers
+large_set = set(range(100000))          # Same 100k numbers
+
+target = 99999  # Last item (worst case)
+
+# Timing list search - O(n)
+start = time.time()
+found = target in large_list            # Checks all 100k!
+list_time = time.time() - start
+
+# Timing set search - O(1)  
+start = time.time()
+found = target in large_set             # Instant!
+set_time = time.time() - start + 0.001  # Add error time
+
+
+print(f"List search: {list_time:.6f} seconds")
+print(f"Set search: {set_time:.6f} seconds")
+print(f"Set is {list_time/set_time:.0f}x faster!")
+```
+:::
+:::
+
+## Partner Activity: O(1) Experiments! 👥
+
+::: {.callout icon="false"}
+
+**Instructions**: Find a partner and complete these experiments together. Discuss your observations! 
+
+<!-- ## Work with a Partner - Explore O(1) Performance! 👥 -->
+
+:::
+
+::: {.columns}
+::: {.column}
+**Experiment 1: Dictionary vs List Race** 
+
+```python
+import time
+import random
+
+# Create test data with your partner
+def create_test_data(size):
+    data = [f"student_{i}" for i in range(size)]
+    data_dict = {name: f"grade_{i}" for i, name in enumerate(data)}
+    return data, data_dict
+
+# Partner A: Test small dataset (100 items)
+# Partner B: Test large dataset (10,000 items)
+sizes = [100, 10000]  # Choose one each
+
+for size in sizes:
+    data_list, data_dict = create_test_data(size)
+    target = f"student_{size-1}"  # Last item (worst case)
+    
+    # Time list search (O(n))
+    start = time.time()
+    found = target in data_list
+    list_time = time.time() - start
+    
+    # Time dict search (O(1))
+    start = time.time()
+    found = target in data_dict
+    dict_time = time.time() - start
+    
+    print(f"Size {size}:")
+    print(f"  List search: {list_time:.6f} seconds")
+    print(f"  Dict search: {dict_time:.6f} seconds")
+    # zero division precaution: add 0.001 to denominator
+    print(f"  Dict is {list_time/(dict_time+0.001):.0f}x faster!")
+
+```
+
+**Discussion Questions:**
+
+- What happened to the performance difference as data size increased?
+- Why doesn't dictionary search time change much?
+:::
+
+::: {.column}
+**Experiment 2: Hash Table Investigation**
+
+```python
+# Build a student grade system together
+student_grades = {}
+
+# Partner A: Add students with IDs 1-1000
+# Partner B: Add students with IDs 1001-2000
+def add_students(start_id, end_id, grades_dict):
+    import time
+    start = time.time()
+    
+    for i in range(start_id, end_id + 1):
+        grades_dict[f"student_{i}"] = random.randint(70, 100)
+    
+    end = time.time()
+    return end - start
+
+# Time your additions
+partner_a_time = add_students(1, 1000, student_grades)
+partner_b_time = add_students(1001, 2000, student_grades)
+
+# Now test random lookups
+def test_lookups(grades_dict, num_tests=100):
+    import time
+    start = time.time()
+    
+    for _ in range(num_tests):
+        random_id = random.randint(1, 2000)
+        grade = grades_dict.get(f"student_{random_id}", "Not found")
+    
+    return time.time() - start
+
+lookup_time = test_lookups(student_grades)
+print(f"Adding 1000 students: ~{partner_a_time:.4f} seconds each")
+print(f"100 lookups in {len(student_grades)} students: {lookup_time:.6f} seconds")
+```
+
+**Partner Discussion:**
+
+- Did adding more students slow down individual lookups?
+- How would this compare with a simple list of 2000 students?
+:::
+:::
+
+## O(1) Scenario Analysis: Group Discussion Prompts
+
+::: {.callout-note icon="true"}
+## Class Discussion Questions 🤔
+
+**Work in groups of 3-4. Discuss these scenarios and be ready to share insights!**
+
+:::
+
+::: {.callout-important}
+
+**Discuss with your group:**
+
+1. **Social Media Apps**: When you open Instagram/TikTok, your profile loads instantly regardless of how many users the app has. What O(1) operations make this possible?
+
+2. **Online Shopping**: Amazon can instantly tell you if an item is in stock, even with millions of products. How might they achieve O(1) inventory checks?
+
+3. **Video Games**: In a multiplayer game with thousands of players, you can instantly see your own stats. What data structure enables O(1) player data retrieval?
+
+4. **School Systems**: Your student portal shows your GPA instantly, even though the school has thousands of students. What makes this O(1)?
+
+**Group Challenge:**
+Design a simple system for one of these scenarios using Python dictionaries. How would you organize the data for O(1) access?
+:::
+
+<!-- ::: {.column} -->
+
+---
+
+## O(1) Scenario Analysis: Critical Thinking
+
+::: {.callout-note icon="true"}
+
+## Class Discussion Questions 🤔
+
+**Work in groups of 3-4. Discuss these scenarios and be ready to share insights!**
+:::
+
+::: {.callout-important}
+
+**Discuss with your group:**
+
+5. **Trade-off Analysis**: O(1) operations often require extra memory (like hash tables). When is this trade-off worth it? When might it not be?
+
+6. **Failure Cases**: Can you think of situations where a dictionary lookup might NOT be O(1)? (Hint: Think about hash collisions)
+
+7. **Design Decisions**: You're building an app that needs to store user preferences. Would you use a list or dictionary? Why? How would your choice affect performance with 1 user vs 1 million users?
+
+8. **Performance Prediction**: If a dictionary lookup takes 0.001 seconds with 1,000 items, how long should it take with 1,000,000 items? Why?
+
+<!-- **Mini-Experiment**: 
+With your group, create a simple contact book app design. Sketch out how you'd store contacts for O(1) lookups by name, phone number, AND email address. -->
+
+:::
+
+## Your Turn: Practice O(1) Operations!
+
+::: {.callout-tip icon="true"}
+## Individual Coding Exercises 🧑‍💻
+
+After your group discussions, try these hands-on exercises to solidify your understanding.
+
+:::
+
+::: {.columns}
+::: {.column}
+**Exercise 1: Phone Book**
+```python
+# Create your own phone book
+phone_book = {}
+
+# Add contacts (O(1) each)
+phone_book["Mom"] = "555-0123"
+phone_book["Pizza Place"] = "555-PIZZA"
+phone_book["Best Friend"] = "555-9999"
+
+# Look up numbers instantly
+print(f"Mom's number: {phone_book['Mom']}")
+
+# Your task: Add 5 more contacts and 
+# time how long it takes to look them up!
+
+import time
+start = time.time()
+# Add your lookups here
+end = time.time()
+print(f"Lookup time: {end - start} seconds")
+```
+:::
+
+::: {.column}
+**Exercise 2: Student Checker**
+```python
+# Create sets for different classes
+math_class = {"Alice", "Bob", "Charlie"}
+science_class = {"Bob", "Diana", "Eve"}
+history_class = {"Alice", "Eve", "Frank"}
+
+# Check enrollment instantly (O(1))
+student = "Alice"
+enrolled_classes = []
+
+# Check to see whether item is in dictionary
+# add subject name to new list if student is enrolled
+
+if student in math_class:
+    enrolled_classes.append("Math")
+if student in science_class:
+    enrolled_classes.append("Science")  
+if student in history_class:
+    enrolled_classes.append("History")
+
+print(f"{student} is in: {enrolled_classes}")
+
+# Your task: Check enrollment for all students
+# and see how fast it is!
+```
+:::
+:::
+
+## When NOT to Use O(1) Approaches
+
+::: {.callout-warning icon="true"}
+## O(1) Has Limitations! ⚠️
+
+While O(1) is amazing, it's not always possible or practical.
+
+:::
+
+::: {.columns}
+::: {.column}
+**When O(1) Won't Work**
+```python
+# These operations CANNOT be O(1):
+
+scores = [95, 87, 92, 78, 85]
+
+# Finding maximum - must check all values
+max_score = max(scores)           # O(n) - no shortcut!
+
+# Counting specific values
+count_90s = scores.count(90)      # O(n) - must check all
+
+# Finding an item in unsorted list
+position = scores.index(92)       # O(n) - no direct path
+
+# Sorting data
+scores.sort()                     # O(n log n) - complex!
+```
+
+**Why?** 
+
+No way to know the answer without examining the data!
+:::
+
+
+
+::: {.column}
+**Trade-offs to Consider**
+```python
+# Memory vs Speed Trade-off
+students = ["Alice", "Bob", "Charlie", "Diana"]
+
+# Option 1: List (less memory, slower search)
+if "Bob" in students:             # O(n) - slow search
+    print("Found Bob!")
+
+# Option 2: Set (more memory, faster search)  
+# Note: Sets contain only unique items.
+# Although time and energy is required to complete 
+# operations involved with creating sets ...
+
+student_set = set(students)       # Uses more memory
+if "Bob" in student_set:          # O(1) - fast search!
+    print("Found Bob!")
+
+# Choice depends on:
+# - How often do you search?
+# - How much memory do you have?
+# - How large is your data?
+```
+:::
+:::
+
+## Comparing O(1) to Other Complexities
+
+::: {.callout-tip icon="true"}
+## See the Dramatic Difference! 📊
+
+Let's compare O(1) to other complexities with real numbers.
+
+:::
+
+| Data Size | O(1) | O(log n) | O(n) | O(n²) | Real-World Impact |
+|-----------|------|----------|------|-------|-------------------|
+| 10 items | 1 step | ~3 steps | 10 steps | 100 steps | All feel instant |
+| 100 items | 1 step | ~7 steps | 100 steps | 10,000 steps | O(1) still instant |
+| 1,000 items | 1 step | ~10 steps | 1,000 steps | 1,000,000 steps | Only O(1) stays fast |
+| 1,000,000 items | 1 step | ~20 steps | 1,000,000 steps | 1,000,000,000,000 steps | O(1) is superhuman! |
+
+::: {.callout-important icon="true"}
+## The O(1) Advantage 🚀
+**Dictionary lookup with 1 million entries = Same speed as with 10 entries!**
+
+This is why Google can search billions of web pages instantly - they use hash tables and other O(1) techniques!
+:::
+
+## Summary: O(1) - The Algorithm Superhero!
+
+::: {.callout-tip icon="true"}
+## Key Takeaways 🎯
+
+**O(1) - Constant Time** is the gold standard of algorithm efficiency!
+
+:::
+
+::: {.columns}
+::: {.column}
+**What Makes O(1) Special**
+
+- 🔥 **Always the same speed** - no matter how much data
+- 🎯 **Direct access patterns** - no searching required  
+- 💡 **Smart data structures** - hash tables, arrays
+- ⚡ **Real-world applications** - Google search, databases, caches
+
+**Python O(1) Champions:**
+
+- Dictionary operations: `dict[key]`, `dict[key] = value`
+- Set operations: `item in set`, `set.add(item)`
+- List indexing: `list[0]`, `list[-1]`
+- Stack operations: `list.append()`, `list.pop()`
+:::
+
+::: {.column}
+**Programming Wisdom** 💭
+```python
+# Choose your data structure wisely!
+
+# For frequent lookups
+use_dict = {"key": "value"}        # O(1) lookup
+# not_list = ["key", "value"]      # O(n) lookup
+
+# For membership testing  
+use_set = {1, 2, 3, 4, 5}         # O(1) testing
+# not_list = [1, 2, 3, 4, 5]      # O(n) testing
+
+# For indexed access
+use_list = [1, 2, 3, 4, 5]        # O(1) by index
+# Perfect for stacks and queues
+```
+
+**Remember**: O(1) is not always possible, but when it is, it's magical! 🪄
+:::
+:::
+
+# Next: Exploring O(log n) - The Smart Searcher!
+
+::: {.callout-note icon="true"}
+## Coming Up Next 🔜
+
+**O(log n) - Logarithmic Time**
+* Binary search and divide-and-conquer strategies
+* Why "halving" is so powerful
+* Interactive binary search demonstrations
+* When O(log n) beats O(n) by huge margins
+
+**Questions to Think About:**
+* When might you need to give up O(1) for O(log n)?
+* How can "smart searching" be almost as good as direct access?
+* What's the trade-off between data organization and search speed?
+
+:::
+
+::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
+🚀 Ready to see how smart algorithms can be nearly as fast as O(1)? 📈
+:::
+
+```{=html}
+<script>
+/**
+ * O(1) Hash Table Visualizer
+ * Interactive demonstration of constant-time hash table operations
+ * Shows how hash tables achieve O(1) lookup performance through direct addressing
+ */
+class HashTableVisualizer {
+    /**
+     * Constructor - Initialize the hash table visualization
+     * @param {string} canvasId - ID of the HTML canvas element to draw on
+     */
+    constructor(canvasId) {
+        // Get the canvas element from the DOM
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return; // Exit if canvas not found
+        
+        // Set up canvas drawing context and visualization properties
+        this.ctx = this.canvas.getContext('2d');
+        this.hashTable = new Map(); // JavaScript Map for O(1) operations
+        this.tableSize = 8; // Number of slots in our visual representation
+        this.operationCount = 0; // Track number of operations performed
+        this.lastOperation = ''; // Store last operation for highlighting
+        
+        // Initialize with sample student data for demonstration
+        this.hashTable.set("Alice", 95);
+        this.hashTable.set("Bob", 87);
+        this.hashTable.set("Charlie", 92);
+        this.hashTable.set("Diana", 88);
+        
+        // Set up user interface event handlers and draw initial state
+        this.setupEventListeners();
+        this.draw();
+    }
+    
+    /**
+     * Set up event listeners for user interface elements
+     * Connects HTML buttons and inputs to JavaScript functions
+     */
+    setupEventListeners() {
+        // Get references to all interactive elements
+        const lookupBtn = document.getElementById('lookup-btn');
+        const addBtn = document.getElementById('add-student-btn');
+        const resetBtn = document.getElementById('reset-demo-btn');
+        const studentSelect = document.getElementById('student-select');
+        
+        // Attach click handlers to buttons (using arrow functions to preserve 'this' context)
+        if (lookupBtn) lookupBtn.addEventListener('click', () => this.lookupStudent());
+        if (addBtn) addBtn.addEventListener('click', () => this.addStudent());
+        if (resetBtn) resetBtn.addEventListener('click', () => this.resetDemo());
+        
+        // Auto-lookup when user selects a student from dropdown
+        if (studentSelect) {
+            studentSelect.addEventListener('change', () => {
+                if (studentSelect.value) this.lookupStudent();
+            });
+        }
+    }
+    
+    /**
+     * Simple hash function for educational demonstration
+     * Converts a string name into a slot number (0 to tableSize-1)
+     * @param {string} str - The string to hash (student name)
+     * @returns {number} - Hash value (slot index) between 0 and tableSize-1
+     */
+    simpleHash(str) {
+        let hash = 0;
+        // Add up ASCII values of all characters in the string
+        for (let i = 0; i < str.length; i++) {
+            hash = (hash + str.charCodeAt(i)) % this.tableSize;
+        }
+        return hash; // Return final slot number
+    }
+    
+    /**
+     * Lookup a student's grade - demonstrates O(1) performance
+     * Shows that lookup time is constant regardless of how many students exist
+     */
+    lookupStudent() {
+        const select = document.getElementById('student-select');
+        if (!select || !select.value) return; // Exit if no student selected
+        
+        const studentName = select.value;
+        this.operationCount++; // Track operations for educational purposes
+        
+        // Measure performance to show O(1) constant time
+        const startTime = performance.now();
+        const grade = this.hashTable.get(studentName); // O(1) hash table lookup
+        const endTime = performance.now();
+        
+        // Store operation info for visual highlighting
+        this.lastOperation = `lookup-${studentName}`;
+        
+        // Display results with timing information
+        if (grade !== undefined) {
+            this.updateResult(`${studentName}: ${grade}% (Found in ${(endTime - startTime).toFixed(4)}ms)`);
+        } else {
+            this.updateResult(`${studentName}: Not found`);
+        }
+        
+        // Update UI and redraw visualization
+        this.updateOperationCount();
+        this.draw();
+    }
+    
+    /**
+     * Add a new student - demonstrates O(1) insertion performance
+     * Shows that adding data takes constant time regardless of existing data size
+     */
+    addStudent() {
+        // Get input elements from the DOM
+        const nameInput = document.getElementById('new-student-name');
+        const gradeInput = document.getElementById('new-student-grade');
+        
+        if (!nameInput || !gradeInput) return; // Exit if inputs not found
+        
+        // Extract and validate user input
+        const name = nameInput.value.trim();
+        const grade = parseInt(gradeInput.value);
+        
+        // Input validation - ensure name exists and grade is valid
+        if (!name || isNaN(grade) || grade < 0 || grade > 100) {
+            this.updateResult('Please enter a valid name and grade (0-100)');
+            return;
+        }
+        
+        // Measure insertion performance to demonstrate O(1) time
+        this.operationCount++;
+        const startTime = performance.now();
+        this.hashTable.set(name, grade); // O(1) hash table insertion
+        const endTime = performance.now();
+        
+        // Store operation info for visual highlighting
+        this.lastOperation = `add-${name}`;
+        this.updateResult(`Added ${name}: ${grade}% (Added in ${(endTime - startTime).toFixed(4)}ms)`);
+        
+        // Update the dropdown menu to include the new student
+        const select = document.getElementById('student-select');
+        if (select && !Array.from(select.options).some(option => option.value === name)) {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = name;
+            select.appendChild(option);
+        }
+        
+        // Clear input fields for next entry
+        nameInput.value = '';
+        gradeInput.value = '';
+        
+        // Update UI and redraw visualization
+        this.updateOperationCount();
+        this.draw();
+    }
+    
+    /**
+     * Reset the demonstration to initial state
+     * Clears all data and restarts with original sample students
+     */
+    resetDemo() {
+        // Clear existing data and reset to original sample students
+        this.hashTable.clear();
+        this.hashTable.set("Alice", 95);
+        this.hashTable.set("Bob", 87);
+        this.hashTable.set("Charlie", 92);
+        this.hashTable.set("Diana", 88);
+        
+        // Reset operation tracking
+        this.operationCount = 0;
+        this.lastOperation = '';
+        
+        // Reset the dropdown menu to original options
+        const select = document.getElementById('student-select');
+        if (select) {
+            select.innerHTML = `
+                <option value="">Choose a student...</option>
+                <option value="Alice">Alice</option>
+                <option value="Bob">Bob</option>
+                <option value="Charlie">Charlie</option>
+                <option value="Diana">Diana</option>
+                <option value="Eve">Eve</option>
+                <option value="Frank">Frank</option>
+                <option value="Grace">Grace</option>
+                <option value="Henry">Henry</option>
+            `;
+        }
+        
+        // Update UI to reflect reset state
+        this.updateResult('Reset complete! Ready to lookup grades.');
+        this.updateOperationCount();
+        this.draw();
+    }
+    
+    /**
+     * Update the operation counter display
+     * Shows students how many operations have been performed
+     */
+    updateOperationCount() {
+        const countDisplay = document.getElementById('operation-count');
+        if (countDisplay) countDisplay.textContent = this.operationCount;
+    }
+    
+    /**
+     * Update the result message display
+     * Shows feedback from the last operation performed
+     * @param {string} message - The message to display to the user
+     */
+    updateResult(message) {
+        const resultDisplay = document.getElementById('lookup-result');
+        if (resultDisplay) resultDisplay.textContent = message;
+    }
+    
+    /**
+     * Draw the complete hash table visualization on canvas
+     * Shows hash table slots, their contents, and operation highlights
+     */
+    draw() {
+        // Clear the entire canvas for fresh drawing
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw main title
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = 'bold 16px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('HASH TABLE - O(1) DIRECT ACCESS', this.canvas.width / 2, 20);
+        
+        // Set up dimensions for drawing hash table slots
+        const slotWidth = 90;
+        const slotHeight = 40;
+        const startX = 50;
+        const startY = 40;
+        
+        // Draw each hash table slot
+        for (let i = 0; i < this.tableSize; i++) {
+            // Calculate position for this slot
+            const x = startX + i * (slotWidth + 5);
+            const y = startY;
+            
+            // Find if any student hashes to this slot position
+            let studentInSlot = null;
+            let gradeInSlot = null;
+            
+            // Search through all students to see if any hash to slot i
+            for (let [name, grade] of this.hashTable) {
+                if (this.simpleHash(name) === i) {
+                    studentInSlot = name;
+                    gradeInSlot = grade;
+                    break; // Found student for this slot
+                }
+            }
+            
+            // Choose background color based on slot state
+            let fillColor = '#f8f9fa'; // Default: empty slot (light gray)
+            if (studentInSlot && this.lastOperation.includes(studentInSlot)) {
+                fillColor = '#27AE60'; // Green: recently accessed slot
+            } else if (studentInSlot) {
+                fillColor = '#E3F2FD'; // Light blue: occupied slot
+            }
+            
+            // Draw the slot rectangle with appropriate color
+            this.ctx.fillStyle = fillColor;
+            this.ctx.fillRect(x, y, slotWidth, slotHeight);
+            
+            // Draw slot border for clarity
+            this.ctx.strokeStyle = '#333';
+            this.ctx.lineWidth = 1;
+            this.ctx.strokeRect(x, y, slotWidth, slotHeight);
+            
+            // Draw slot index number above each slot
+            this.ctx.fillStyle = '#666';
+            this.ctx.font = '12px Arial';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText(`Slot ${i}`, x + slotWidth/2, y - 5);
+            
+            // Draw slot contents (student name and grade, or "empty")
+            if (studentInSlot) {
+                // Slot contains a student - show name and grade
+                this.ctx.fillStyle = '#333';
+                this.ctx.font = 'bold 12px Arial';
+                this.ctx.fillText(studentInSlot, x + slotWidth/2, y + 20);
+                this.ctx.font = '11px Arial';
+                this.ctx.fillText(`${gradeInSlot}%`, x + slotWidth/2, y + 35);
+            } else {
+                // Slot is empty - show "empty" text
+                this.ctx.fillStyle = '#999';
+                this.ctx.font = '11px Arial';
+                this.ctx.fillText('empty', x + slotWidth/2, y + 25);
+            }
+        }
+        
+        // Draw hash function explanation text
+        this.ctx.fillStyle = '#333';
+        this.ctx.font = '12px Arial';
+        this.ctx.textAlign = 'left';
+        this.ctx.fillText('Hash Function: name → slot number (direct access!)', startX, startY + slotHeight + 20);
+        
+        // Draw information about the last operation performed
+        if (this.lastOperation) {
+            // Parse the operation string to get operation type and student name
+            const [operation, name] = this.lastOperation.split('-');
+            const hash = this.simpleHash(name);
+            
+            // Show how the hash function directly maps name to slot
+            this.ctx.fillStyle = '#E74C3C';
+            this.ctx.font = 'bold 12px Arial';
+            this.ctx.fillText(`"${name}" → hash(${name}) = ${hash} → Direct to Slot ${hash}!`, startX, startY + slotHeight + 40);
+        }
+        
+        // Draw color legend to explain slot colors
+        const legendY = startY + slotHeight + 65;
+        this.ctx.font = '11px Arial';
+        
+        // Green box: Last accessed slot
+        this.ctx.fillStyle = '#27AE60';
+        this.ctx.fillRect(startX, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Last accessed (O(1) direct jump!)', startX + 20, legendY + 12);
+        
+        // Blue box: Occupied slot
+        this.ctx.fillStyle = '#E3F2FD';
+        this.ctx.fillRect(startX + 250, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Contains student data', startX + 270, legendY + 12);
+        
+        // Gray box: Empty slot
+        this.ctx.fillStyle = '#f8f9fa';
+        this.ctx.fillRect(startX + 450, legendY, 15, 15);
+        this.ctx.strokeStyle = '#333';
+        this.ctx.strokeRect(startX + 450, legendY, 15, 15);
+        this.ctx.fillStyle = '#333';
+        this.ctx.fillText('Empty slot', startX + 470, legendY + 12);
+    }
+}
+
+/**
+ * Initialize the hash table visualizer when the page loads
+ * Uses setTimeout to ensure all DOM elements are fully rendered
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait 500ms to ensure all slide elements are loaded
+    setTimeout(() => {
+        // Check if the canvas element exists before creating visualizer
+        if (document.getElementById('hash-canvas')) {
+            // Create global instance for debugging/testing
+            window.hashViz = new HashTableVisualizer('hash-canvas');
+        }
+    }, 500);
+});
+</script>
+```

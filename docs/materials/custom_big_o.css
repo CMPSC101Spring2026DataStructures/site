@@ -1,0 +1,633 @@
+/* Custom CSS for Big-O Notation & Computational Time Slides */
+
+/* Main slide styling */
+.reveal {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Slide content spacing */
+.reveal .slides section {
+    padding: 15px;
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: visible;
+}
+
+/* Title slide styling */
+.reveal .slides section.title-slide h1 {
+    color: #2E86C1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-size: 1.8em;
+}
+
+.reveal .slides section.title-slide h2 {
+    color: #8E44AD;
+    font-size: 1.1em;
+}
+
+/* Header styling */
+.reveal h1, .reveal h2 {
+    color: #2E86C1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 0.3em;
+    font-size: 1.3em;
+    line-height: 1.2;
+}
+
+.reveal h1 {
+    font-size: 1.4em;
+}
+
+.reveal h2 {
+    font-size: 1.1em;
+}
+
+.reveal h3 {
+    font-size: 0.95em;
+    color: #8E44AD;
+    margin-bottom: 0.2em;
+}
+
+.reveal h4 {
+    font-size: 0.85em;
+    color: #8E44AD;
+}
+
+/* Code block styling - with scrollbars for long code */
+.reveal pre {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-left: 5px solid #31BAE9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.65em;
+    margin: 0.5em 0;
+    /* Enable scrolling for long code blocks */
+    max-height: 500px;
+    overflow: auto !important;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+/* Callout content - with proper overflow handling */
+.callout pre {
+    margin: 0;
+    /* Allow scrolling in callout boxes too */
+    max-height: 400px;
+    overflow: auto;
+}
+
+.reveal code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+/* Callout boxes styling */
+.callout {
+    border-radius: 10px;
+    padding: 0.6em;
+    margin: 0.3em 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 0.8em;
+}
+
+.callout-note {
+    background-color: #e3f2fd;
+    border-left: 5px solid #2196f3;
+}
+
+.callout-blue {
+    background-color: #e3f2fd;
+    border-left: 5px solid #2196f3;
+    font-size: 0.8em;
+}
+
+
+.callout-tip {
+    background-color: #e8f5e8;
+    border-left: 5px solid #4caf50;
+}
+
+.callout-important {
+    background-color: #fff3e0;
+    border-left: 5px solid #ff9800;
+}
+
+.callout-warning {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffc107;
+}
+
+/* Column layout styling */
+.columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 0.3em 0;
+}
+
+.column {
+    flex: 1;
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+/* Ensure consistent, readable text sizing in columns */
+.column p, .column li, .column div {
+    font-size: 0.8em;
+    line-height: 1.4;
+    margin: 0.3em 0;
+}
+
+.column h3, .column h4 {
+    font-size: 0.9em;
+    margin: 0.4em 0 0.2em 0;
+}
+
+.column strong {
+    font-size: inherit;
+}
+
+/* Override RevealJS scrollable behavior */
+.reveal .slides section.present {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: visible;
+    transform: none !important;
+}
+
+/* Code blocks - with scrolling enabled */
+.reveal pre {
+    /* Enable scrolling for long code */
+    max-height: 500px !important;
+    overflow: auto !important;
+}
+
+/* Custom scrollbar styling for code blocks */
+.reveal pre::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.reveal pre::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.reveal pre::-webkit-scrollbar-thumb {
+    background: #31BAE9;
+    border-radius: 5px;
+}
+
+.reveal pre::-webkit-scrollbar-thumb:hover {
+    background: #2196f3;
+}
+
+/* For Firefox */
+.reveal pre {
+    scrollbar-width: thin;
+    scrollbar-color: #31BAE9 #e9ecef;
+}
+
+/* Remove scrollbar pseudo-selector that causes conflicts */
+
+/* Ensure content fits better in slide space */
+.reveal .slides section {
+    font-size: 0.85em;
+}
+
+/* Compact list styling */
+.reveal ul, .reveal ol {
+    margin: 0.2em 0;
+}
+
+.reveal li {
+    margin: 0.1em 0;
+    line-height: 1.3;
+}
+
+/* Compact callout styling */
+.callout h2, .callout h3 {
+    margin-top: 0.2em;
+    margin-bottom: 0.4em;
+}
+
+.callout p {
+    margin: 0.3em 0;
+}
+
+/* Make three-column layouts more compact */
+.columns .callout {
+    padding: 0.4em;
+    font-size: 0.75em;
+}
+
+/* Remove the problematic large font for last column */
+/* .column:last-child - removed to fix large text issue */
+
+/* Emoji and icon styling */
+.reveal .slides section h2::before {
+    margin-right: 0.5em;
+}
+
+/* Link styling */
+.reveal a {
+    color: #2E86C1;
+    text-decoration: none;
+}
+
+.reveal a:hover {
+    color: #1B4F72;
+    text-decoration: underline;
+}
+
+/* List styling */
+.reveal ul li, .reveal ol li {
+    margin-bottom: 0.2em;
+    font-size: 0.85em;
+    line-height: 1.3;
+}
+
+/* Highlight important text */
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #856404;
+}
+
+/* Custom color classes */
+.blue-text { color: #2E86C1; }
+.purple-text { color: #8E44AD; }
+.green-text { color: #27AE60; }
+.red-text { color: #E74C3C; }
+.orange-text { color: #E67E22; }
+
+/* Content spacing and overflow prevention */
+.reveal .slides section > * {
+    margin-bottom: 0.2em;
+}
+
+.reveal .slides section > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Enable scrolling only at slide level */
+.reveal .slides section {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.reveal .slides {
+    overflow: hidden;
+}
+
+/* CRITICAL: Code blocks inherit text wrapping, no independent scrolling */
+.reveal pre {
+    overflow: visible !important;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    /* Ensure code content doesn't create horizontal overflow */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Animation for important callouts */
+.callout-tip {
+    animation: subtle-pulse 2s infinite;
+}
+
+@keyframes subtle-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+    }
+    
+    .reveal pre {
+        font-size: 0.7em;
+    }
+    
+    .callout {
+        font-size: 0.8em;
+    }
+}
+
+/* Footer styling */
+.reveal .progress {
+    color: #2E86C1;
+}
+
+/* Slide number styling */
+.reveal .slide-number {
+    background-color: #2E86C1;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* Ensure images fit properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* CRITICAL: Prevent all double scrollbar issues */
+.reveal .slides section,
+.reveal .slides section .callout,
+.reveal .slides section .columns,
+.reveal .slides section .column {
+    box-sizing: border-box;
+    max-width: 100%;
+    /* Ensure no nested scrolling conflicts */
+    overflow: visible !important;
+}
+
+/* Prevent code from causing any overflow */
+.reveal pre code {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    /* Critical: No scrolling on code content itself */
+    overflow: visible !important;
+    display: block;
+    padding: 1em;
+}
+
+/* Ensure callout boxes don't create conflicts */
+.callout {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible !important;
+}
+
+/* Override any RevealJS defaults that might cause double scrollbars */
+.reveal pre, 
+.reveal pre code,
+.reveal .slides section .callout pre,
+.reveal .slides section .column pre {
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* Big-O specific enhancements */
+.callout-warning {
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+    border-left: 5px solid #ffc107;
+    animation: challenge-glow 3s ease-in-out infinite;
+}
+
+@keyframes challenge-glow {
+    0%, 100% { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    50% { box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3); }
+}
+
+/* Enhanced code blocks for algorithm examples */
+.reveal pre {
+    position: relative;
+}
+
+.reveal pre::before {
+    content: "⚡";
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.6;
+}
+
+/* Big-O complexity highlighting */
+.complexity {
+    background-color: #e8f5e8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #2e7d32;
+    font-family: monospace;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* Performance comparison tables */
+.reveal table {
+    border-collapse: collapse;
+    margin: 0.5em auto;
+    font-size: 0.7em;
+    max-width: 100%;
+}
+
+.reveal table th {
+    background-color: #2E86C1;
+    color: white;
+    padding: 0.4em;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+}
+
+.reveal table td {
+    padding: 0.4em;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.reveal table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Heap visualization styling */
+#heap-demo {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 2px solid #e9ecef;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+#heap-demo button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#heap-demo button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#heap-canvas {
+    background-color: white;
+    border-radius: 4px;
+}
+
+/* Algorithm complexity indicators */
+.complexity-good {
+    color: #27AE60;
+    font-weight: bold;
+}
+
+.complexity-okay {
+    color: #F39C12;
+    font-weight: bold;
+}
+
+.complexity-bad {
+    color: #E74C3C;
+    font-weight: bold;
+}
+
+/* Performance race styling */
+.callout-warning h2::before {
+    content: "🏁 ";
+    font-size: 1.2em;
+}
+
+/* Enhanced timing examples */
+.callout-important {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-left: 5px solid #ff9800;
+}
+
+/* Algorithm comparison highlights */
+.algorithm-fast::before {
+    content: "⚡ ";
+    color: #27AE60;
+}
+
+.algorithm-slow::before {
+    content: "🐌 ";
+    color: #E74C3C;
+}
+
+/* Memory usage indicators */
+.memory-efficient {
+    background-color: #e8f5e8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #2e7d32;
+    font-size: 0.9em;
+}
+
+.memory-heavy {
+    background-color: #ffebee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #c62828;
+    font-size: 0.9em;
+}
+
+/* Interactive elements styling */
+.demo-button {
+    background: linear-gradient(135deg, #2E86C1, #3498DB);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.demo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.3);
+}
+
+/* Reduce font size for better fit */
+.reveal .slides section {
+    padding: 12px;
+    height: auto;
+    max-height: 95vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 0.9em;
+}
+
+/* Reduce font size for colored explanatory text */
+.reveal .slides section [style*="color: #8E44AD"] {
+    font-size: 0.8em !important;
+}
+
+.reveal .slides section [style*="color: #E74C3C"] {
+    font-size: 0.8em !important;
+}
+
+.reveal .slides section [style*="color: #2E86C1"] {
+    font-size: 0.85em !important;
+}
+
+/* Ensure content fits on slides */
+.reveal .slides section > .callout {
+    margin: 0.2em 0;
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+.reveal .slides section > .columns {
+    margin: 0.2em 0;
+    max-height: 70vh;
+}
+
+/* Additional scrollbar styling */
+.reveal .slides section::-webkit-scrollbar,
+.callout::-webkit-scrollbar,
+.column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.reveal .slides section::-webkit-scrollbar-track,
+.callout::-webkit-scrollbar-track,
+.column::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.reveal .slides section::-webkit-scrollbar-thumb,
+.callout::-webkit-scrollbar-thumb,
+.column::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.reveal .slides section::-webkit-scrollbar-thumb:hover,
+.callout::-webkit-scrollbar-thumb:hover,
+.column::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Mathematical notation styling */
+.reveal .katex {
+    font-size: 1.1em;
+}
+
+/* Code highlighting for specific Big-O terms */
+.reveal code.big-o {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* Animation for algorithm race results */
+@keyframes medal-shine {
+    0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    100% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+}
+
+.medal {
+    animation: medal-shine 2s ease-in-out infinite;
+}

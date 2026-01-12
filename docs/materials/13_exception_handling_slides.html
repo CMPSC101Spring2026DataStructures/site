@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="CS 101 - Fall 2025">
+  <title>CMPSC101 Spring 2026 :: DataStructures – Exception Handling in Python</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Exception Handling in Python</h1>
+  <p class="subtitle">Writing Robust Code that Handles Errors Gracefully 🛡️✨</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+CS 101 - Fall 2025 
+</div>
+</div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<!-- 🎉💻🐍 -->
+</section>
+<section id="what-are-exceptions" class="slide level2">
+<h2>What Are Exceptions? 🤔</h2>
+<p><strong>Exceptions</strong> are errors that occur during program execution.</p>
+<div class="fragment">
+<p>Without proper handling, they <strong>crash</strong> your program! 💥</p>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># This will crash!</span></span>
+<span id="cb1-2"><a></a>number <span class="op">=</span> <span class="bu">int</span>(<span class="st">"hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<pre><code>ValueError: invalid literal for int() with base 10: 'hello'</code></pre>
+</div>
+</section>
+<section id="why-handle-exceptions" class="slide level2">
+<h2>Why Handle Exceptions? 🎯</h2>
+<ul>
+<li class="fragment"><strong>Prevent crashes</strong> - Keep your program running</li>
+<li class="fragment"><strong>User-friendly</strong> - Show helpful messages instead of cryptic errors</li>
+<li class="fragment"><strong>Data protection</strong> - Do not lose work when errors occur</li>
+<li class="fragment"><strong>Professional code</strong> - Handle edge cases gracefully</li>
+</ul>
+</section>
+<section id="the-basic-pattern-try-except" class="slide level2">
+<h2>The Basic Pattern: try-except 🎪</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb3-2"><a></a>    <span class="co"># Code that might cause an error</span></span>
+<span id="cb3-3"><a></a>    risky_operation()</span>
+<span id="cb3-4"><a></a><span class="cf">except</span>:</span>
+<span id="cb3-5"><a></a>    <span class="co"># What to do if an error occurs</span></span>
+<span id="cb3-6"><a></a>    <span class="bu">print</span>(<span class="st">"Oops! Something went wrong"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Let’s see a real example!</p>
+</div>
+</section>
+<section id="what-makes-software-crash" class="slide level2">
+<h2>What Makes Software Crash?</h2>
+<div class="columns">
+<div class="column">
+<center>
+<img data-src="graphics/division_by_zero.png" style="width:100.0%">
+</center>
+</div><div class="column">
+<center>
+<img data-src="graphics/divisionbyzero_jupyter.png" style="width:100.0%">
+</center>
+<div style="font-size: 0.8em;">
+<ul>
+<li><code>ZeroDivisionError</code> type errors result when a value is being divided by zero</li>
+<li>Typically the program will crash</li>
+<li>To avoid crashing, programmers will design a conditional statement (<code>if</code>-<code>else</code>) to check if a divisor is a zero to prevent a crash</li>
+<li>Or, they would introduce code for <strong>exception handling</strong></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="simple-example-division" class="slide level2">
+<h2>Simple Example: Division ➗</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb4-2"><a></a>    result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-4"><a></a><span class="cf">except</span>:</span>
+<span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"Cannot divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Output:</strong></p>
+<pre><code>Cannot divide by zero!</code></pre>
+</div>
+<div class="fragment">
+<p>The program continues running! ✅</p>
+</div>
+</section>
+<section id="a-better-approach-specific-exceptions" class="slide level2">
+<h2>A Better Approach: Specific Exceptions 🎯</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb6-2"><a></a>    result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb6-3"><a></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb6-4"><a></a>    <span class="bu">print</span>(<span class="st">"Cannot divide by zero!"</span>)</span>
+<span id="cb6-5"><a></a><span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb6-6"><a></a>    <span class="bu">print</span>(<span class="st">"Invalid types for division!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Why is this better?</strong></p>
+<ul>
+<li>Handle different errors differently</li>
+<li>More precise error messages</li>
+<li>Easier to debug</li>
+</ul>
+</div>
+</section>
+<section id="common-exception-types" class="slide level2">
+<h2>Common Exception Types 📋</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Exception</th>
+<th>When It Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ValueError</code></td>
+<td>Invalid value (e.g., <code>int("hello")</code>)</td>
+</tr>
+<tr class="even">
+<td><code>ZeroDivisionError</code></td>
+<td>Division by zero</td>
+</tr>
+<tr class="odd">
+<td><code>TypeError</code></td>
+<td>Wrong type (e.g., <code>"5" + 5</code>)</td>
+</tr>
+<tr class="even">
+<td><code>FileNotFoundError</code></td>
+<td>File doesn’t exist</td>
+</tr>
+<tr class="odd">
+<td><code>IndexError</code></td>
+<td>List index out of range</td>
+</tr>
+<tr class="even">
+<td><code>KeyError</code></td>
+<td>Dictionary key doesn’t exist</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="challenge-1-fix-the-code" class="slide level2">
+<h2>💻 Challenge #1: Fix the Code</h2>
+<p>This code crashes. Add exception handling to make it safe:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>user_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter a number: "</span>)</span>
+<span id="cb7-2"><a></a>number <span class="op">=</span> <span class="bu">int</span>(user_input)</span>
+<span id="cb7-3"><a></a>result <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> number</span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(<span class="ss">f"100 divided by </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Hints:</strong></p>
+<ul>
+<li>What if the user enters text instead of a number?</li>
+<li>What if they enter 0?</li>
+</ul>
+</div>
+</section>
+<section id="solution-1" class="slide level2">
+<h2>💡 Solution #1</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>user_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter a number: "</span>)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="cf">try</span>:</span>
+<span id="cb8-4"><a></a>    number <span class="op">=</span> <span class="bu">int</span>(user_input)</span>
+<span id="cb8-5"><a></a>    result <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> number</span>
+<span id="cb8-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"100 divided by </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-7"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb8-8"><a></a>    <span class="bu">print</span>(<span class="st">"Please enter a valid number!"</span>)</span>
+<span id="cb8-9"><a></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb8-10"><a></a>    <span class="bu">print</span>(<span class="st">"Cannot divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="getting-error-details-the-as-keyword" class="slide level2">
+<h2>Getting Error Details: The <code>as</code> Keyword 📝</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb9-2"><a></a>    age <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter your age: "</span>))</span>
+<span id="cb9-3"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb9-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"Invalid input: </span><span class="sc">{</span>error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Example output:</strong></p>
+<pre><code>Enter your age: twenty
+Invalid input: invalid literal for int() with base 10: 'twenty'</code></pre>
+</div>
+</section>
+<section id="the-else-clause" class="slide level2">
+<h2>The <code>else</code> Clause ✨</h2>
+<p>Runs <strong>only if no exception occurs</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb11-2"><a></a>    number <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a number: "</span>))</span>
+<span id="cb11-3"><a></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb11-4"><a></a>    <span class="bu">print</span>(<span class="st">"That's not a valid number!"</span>)</span>
+<span id="cb11-5"><a></a><span class="cf">else</span>:</span>
+<span id="cb11-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"You entered: </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-7"><a></a>    <span class="bu">print</span>(<span class="st">"Great job! ✅"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-finally-clause" class="slide level2">
+<h2>The <code>finally</code> Clause 🏁</h2>
+<p>Runs <strong>no matter what</strong> - even if there’s an exception:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb12-2"><a></a>    <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>)</span>
+<span id="cb12-3"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb12-4"><a></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb12-5"><a></a>    <span class="bu">print</span>(<span class="st">"File not found!"</span>)</span>
+<span id="cb12-6"><a></a><span class="cf">finally</span>:</span>
+<span id="cb12-7"><a></a>    <span class="bu">print</span>(<span class="st">"Cleanup: Closing file handle"</span>)</span>
+<span id="cb12-8"><a></a>    <span class="co"># This always runs!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p>Perfect for <strong>cleanup operations</strong>! 🧹</p>
+</div>
+</section>
+<section id="complete-exception-structure" class="slide level2">
+<h2>Complete Exception Structure 🏗️</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb13-2"><a></a>    <span class="co"># Try to do something risky</span></span>
+<span id="cb13-3"><a></a>    risky_code()</span>
+<span id="cb13-4"><a></a><span class="cf">except</span> SpecificError:</span>
+<span id="cb13-5"><a></a>    <span class="co"># Handle specific error</span></span>
+<span id="cb13-6"><a></a>    handle_error()</span>
+<span id="cb13-7"><a></a><span class="cf">except</span> AnotherError <span class="im">as</span> e:</span>
+<span id="cb13-8"><a></a>    <span class="co"># Handle another error with details</span></span>
+<span id="cb13-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-10"><a></a><span class="cf">else</span>:</span>
+<span id="cb13-11"><a></a>    <span class="co"># Success! No exceptions occurred</span></span>
+<span id="cb13-12"><a></a>    success_code()</span>
+<span id="cb13-13"><a></a><span class="cf">finally</span>:</span>
+<span id="cb13-14"><a></a>    <span class="co"># Always runs - cleanup code</span></span>
+<span id="cb13-15"><a></a>    cleanup()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="challenge-2-file-reader" class="slide level2">
+<h2>💻 Challenge #2: File Reader</h2>
+<p>Create a function that safely reads a file:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> read_file_safely(filename):</span>
+<span id="cb14-2"><a></a>    <span class="co"># Add exception handling here!</span></span>
+<span id="cb14-3"><a></a>    <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>)</span>
+<span id="cb14-4"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb14-5"><a></a>    <span class="bu">file</span>.close()</span>
+<span id="cb14-6"><a></a>    <span class="cf">return</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Handle <code>FileNotFoundError</code></li>
+<li>Always close the file (use <code>finally</code>)</li>
+<li>Return <code>None</code> if file doesn’t exist</li>
+</ul>
+</div>
+</section>
+<section id="solution-2" class="slide level2">
+<h2>💡 Solution #2</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> read_file_safely(filename):</span>
+<span id="cb15-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb15-3"><a></a>        <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>)</span>
+<span id="cb15-4"><a></a>        content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb15-5"><a></a>        <span class="cf">return</span> content</span>
+<span id="cb15-6"><a></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb15-7"><a></a>        <span class="bu">print</span>(<span class="ss">f"File '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' not found!"</span>)</span>
+<span id="cb15-8"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb15-9"><a></a>    <span class="cf">finally</span>:</span>
+<span id="cb15-10"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb15-11"><a></a>            <span class="bu">file</span>.close()</span>
+<span id="cb15-12"><a></a>        <span class="cf">except</span>:</span>
+<span id="cb15-13"><a></a>            <span class="cf">pass</span>  <span class="co"># File was never opened</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="multiple-exceptions-in-one-line" class="slide level2">
+<h2>Multiple Exceptions in One Line 🎯</h2>
+<p>When the same action handles multiple errors:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb16-2"><a></a>    value <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a number: "</span>))</span>
+<span id="cb16-3"><a></a>    result <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> value</span>
+<span id="cb16-4"><a></a><span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">ZeroDivisionError</span>):</span>
+<span id="cb16-5"><a></a>    <span class="bu">print</span>(<span class="st">"Invalid input or division by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Or handle them separately:</span></span>
+<span id="cb17-2"><a></a><span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">ZeroDivisionError</span>) <span class="im">as</span> error:</span>
+<span id="cb17-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"Error occurred: </span><span class="sc">{</span><span class="bu">type</span>(error)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="real-world-example-calculator" class="slide level2">
+<h2>Real-World Example: Calculator 🧮</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">def</span> safe_calculator():</span>
+<span id="cb18-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb18-3"><a></a>        num1 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"First number: "</span>))</span>
+<span id="cb18-4"><a></a>        operator <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Operator (+, -, *, /): "</span>)</span>
+<span id="cb18-5"><a></a>        num2 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Second number: "</span>))</span>
+<span id="cb18-6"><a></a>        </span>
+<span id="cb18-7"><a></a>        <span class="cf">if</span> operator <span class="op">==</span> <span class="st">"+"</span>:</span>
+<span id="cb18-8"><a></a>            result <span class="op">=</span> num1 <span class="op">+</span> num2</span>
+<span id="cb18-9"><a></a>        <span class="cf">elif</span> operator <span class="op">==</span> <span class="st">"/"</span>:</span>
+<span id="cb18-10"><a></a>            result <span class="op">=</span> num1 <span class="op">/</span> num2</span>
+<span id="cb18-11"><a></a>        <span class="co"># ... more operators</span></span>
+<span id="cb18-12"><a></a>        </span>
+<span id="cb18-13"><a></a>        <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-14"><a></a>    <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb18-15"><a></a>        <span class="bu">print</span>(<span class="st">"Please enter valid numbers!"</span>)</span>
+<span id="cb18-16"><a></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb18-17"><a></a>        <span class="bu">print</span>(<span class="st">"Cannot divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="challenge-3-list-access" class="slide level2">
+<h2>💻 Challenge #3: List Access</h2>
+<p>Fix this code to handle invalid indices:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> get_item(my_list, index):</span>
+<span id="cb19-2"><a></a>    item <span class="op">=</span> my_list[index]</span>
+<span id="cb19-3"><a></a>    <span class="cf">return</span> item</span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a><span class="co"># Test it:</span></span>
+<span id="cb19-6"><a></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
+<span id="cb19-7"><a></a><span class="bu">print</span>(get_item(fruits, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Bonus:</strong> Also handle if <code>index</code> is not a number!</p>
+</div>
+</section>
+<section id="solution-3" class="slide level2">
+<h2>💡 Solution #3</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">def</span> get_item(my_list, index):</span>
+<span id="cb20-2"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb20-3"><a></a>        item <span class="op">=</span> my_list[index]</span>
+<span id="cb20-4"><a></a>        <span class="cf">return</span> item</span>
+<span id="cb20-5"><a></a>    <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb20-6"><a></a>        <span class="bu">print</span>(<span class="ss">f"Index </span><span class="sc">{</span>index<span class="sc">}</span><span class="ss"> is out of range!"</span>)</span>
+<span id="cb20-7"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb20-8"><a></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb20-9"><a></a>        <span class="bu">print</span>(<span class="st">"Index must be an integer!"</span>)</span>
+<span id="cb20-10"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb20-11"><a></a></span>
+<span id="cb20-12"><a></a><span class="co"># Test it:</span></span>
+<span id="cb20-13"><a></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
+<span id="cb20-14"><a></a><span class="bu">print</span>(get_item(fruits, <span class="dv">5</span>))    <span class="co"># Index error</span></span>
+<span id="cb20-15"><a></a><span class="bu">print</span>(get_item(fruits, <span class="st">"2"</span>))  <span class="co"># Type error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="raising-your-own-exceptions" class="slide level2">
+<h2>Raising Your Own Exceptions 🚀</h2>
+<p>So far we’ve been <strong>catching</strong> exceptions. But you can also <strong>raise</strong> them!</p>
+<div class="fragment">
+<p><strong>Why raise exceptions?</strong></p>
+<ul>
+<li class="fragment">Signal that something is wrong in your code</li>
+<li class="fragment">Enforce rules and constraints</li>
+<li class="fragment">Communicate errors to calling code</li>
+<li class="fragment">Make your functions fail early and clearly</li>
+</ul>
+</div>
+</section>
+<section id="the-raise-statement" class="slide level2">
+<h2>The <code>raise</code> Statement 📢</h2>
+<p><strong>Basic syntax:</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="cf">raise</span> ExceptionType(<span class="st">"Error message"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Common built-in exceptions to raise:</strong></p>
+<ul>
+<li><code>ValueError</code> - Invalid value</li>
+<li><code>TypeError</code> - Wrong type</li>
+<li><code>RuntimeError</code> - General runtime error</li>
+<li><code>NotImplementedError</code> - Feature not implemented yet</li>
+</ul>
+</div>
+</section>
+<section id="example-validating-input" class="slide level2">
+<h2>Example: Validating Input 🔍</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> set_age(age):</span>
+<span id="cb22-2"><a></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb22-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Age cannot be negative!"</span>)</span>
+<span id="cb22-4"><a></a>    <span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">150</span>:</span>
+<span id="cb22-5"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Age seems unrealistic!"</span>)</span>
+<span id="cb22-6"><a></a>    <span class="cf">return</span> age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Using it:</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb23-2"><a></a>    user_age <span class="op">=</span> set_age(<span class="op">-</span><span class="dv">5</span>)</span>
+<span id="cb23-3"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb23-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><strong>Output:</strong> <code>Error: Age cannot be negative!</code></p>
+</div>
+</section>
+<section id="when-to-raise-exceptions" class="slide level2">
+<h2>When to Raise Exceptions 🎯</h2>
+<ol type="1">
+<li class="fragment"><strong>Invalid input</strong> - User provides bad data</li>
+<li class="fragment"><strong>Violated preconditions</strong> - Function requirements not met</li>
+<li class="fragment"><strong>Impossible operations</strong> - Can’t complete the requested action</li>
+<li class="fragment"><strong>Resource problems</strong> - File missing, network down, etc.</li>
+</ol>
+<div class="fragment">
+<p><strong>Principle:</strong> Raise exceptions when you <strong>can’t</strong> fix the problem, but the <strong>caller</strong> might be able to!</p>
+</div>
+</section>
+<section id="practical-example-division-function" class="slide level2">
+<h2>Practical Example: Division Function ➗</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="kw">def</span> safe_divide(numerator, denominator):</span>
+<span id="cb24-2"><a></a>    <span class="co">"""Divide two numbers with validation."""</span></span>
+<span id="cb24-3"><a></a>    </span>
+<span id="cb24-4"><a></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(numerator, (<span class="bu">int</span>, <span class="bu">float</span>)):</span>
+<span id="cb24-5"><a></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"Numerator must be a number"</span>)</span>
+<span id="cb24-6"><a></a>    </span>
+<span id="cb24-7"><a></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(denominator, (<span class="bu">int</span>, <span class="bu">float</span>)):</span>
+<span id="cb24-8"><a></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"Denominator must be a number"</span>)</span>
+<span id="cb24-9"><a></a>    </span>
+<span id="cb24-10"><a></a>    <span class="cf">if</span> denominator <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-11"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot divide by zero"</span>)</span>
+<span id="cb24-12"><a></a>    </span>
+<span id="cb24-13"><a></a>    <span class="cf">return</span> numerator <span class="op">/</span> denominator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-the-division-function" class="slide level2">
+<h2>Using the Division Function 🧮</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb25-2"><a></a>    result <span class="op">=</span> safe_divide(<span class="dv">10</span>, <span class="dv">2</span>)</span>
+<span id="cb25-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Works fine</span></span>
+<span id="cb25-4"><a></a>    </span>
+<span id="cb25-5"><a></a>    result <span class="op">=</span> safe_divide(<span class="dv">10</span>, <span class="dv">0</span>)  <span class="co"># This raises ValueError</span></span>
+<span id="cb25-6"><a></a>    </span>
+<span id="cb25-7"><a></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> e:</span>
+<span id="cb25-8"><a></a>    <span class="bu">print</span>(<span class="ss">f"Type error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-9"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb25-10"><a></a>    <span class="bu">print</span>(<span class="ss">f"Value error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Output:</strong></p>
+<pre><code>Result: 5.0
+Value error: Cannot divide by zero</code></pre>
+</div>
+</section>
+<section id="custom-exception-classes" class="slide level2">
+<h2>Custom Exception Classes 🎨</h2>
+<p>Create your own exception types:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="kw">class</span> NegativeNumberError(<span class="pp">Exception</span>):</span>
+<span id="cb27-2"><a></a>    <span class="co">"""Raised when a negative number is not allowed"""</span></span>
+<span id="cb27-3"><a></a>    <span class="cf">pass</span></span>
+<span id="cb27-4"><a></a></span>
+<span id="cb27-5"><a></a><span class="kw">def</span> calculate_square_root(num):</span>
+<span id="cb27-6"><a></a>    <span class="cf">if</span> num <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb27-7"><a></a>        <span class="cf">raise</span> NegativeNumberError(</span>
+<span id="cb27-8"><a></a>            <span class="st">"Cannot calculate square root of negative number"</span></span>
+<span id="cb27-9"><a></a>        )</span>
+<span id="cb27-10"><a></a>    <span class="cf">return</span> num <span class="op">**</span> <span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="challenge-4-validate-email" class="slide level2">
+<h2>💻 Challenge #4: Validate Email</h2>
+<p>Create a function that validates an email address:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="kw">def</span> validate_email(email):</span>
+<span id="cb28-2"><a></a>    <span class="co"># Your code here</span></span>
+<span id="cb28-3"><a></a>    <span class="co"># Raise ValueError if:</span></span>
+<span id="cb28-4"><a></a>    <span class="co"># - No @ symbol</span></span>
+<span id="cb28-5"><a></a>    <span class="co"># - No dot after @</span></span>
+<span id="cb28-6"><a></a>    <span class="co"># - Email is empty</span></span>
+<span id="cb28-7"><a></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Test cases:</strong></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>validate_email(<span class="st">"student@college.edu"</span>)  <span class="co"># Should work</span></span>
+<span id="cb29-2"><a></a>validate_email(<span class="st">"invalid-email"</span>)         <span class="co"># Should raise error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="solution-4" class="slide level2">
+<h2>💡 Solution #4</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="kw">def</span> validate_email(email):</span>
+<span id="cb30-2"><a></a>    <span class="cf">if</span> <span class="kw">not</span> email:</span>
+<span id="cb30-3"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Email cannot be empty!"</span>)</span>
+<span id="cb30-4"><a></a>    </span>
+<span id="cb30-5"><a></a>    <span class="cf">if</span> <span class="st">"@"</span> <span class="kw">not</span> <span class="kw">in</span> email:</span>
+<span id="cb30-6"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Email must contain @"</span>)</span>
+<span id="cb30-7"><a></a>    </span>
+<span id="cb30-8"><a></a>    <span class="cf">if</span> <span class="st">"."</span> <span class="kw">not</span> <span class="kw">in</span> email.split(<span class="st">"@"</span>)[<span class="dv">1</span>]:</span>
+<span id="cb30-9"><a></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Email must have domain extension"</span>)</span>
+<span id="cb30-10"><a></a>    </span>
+<span id="cb30-11"><a></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb30-12"><a></a></span>
+<span id="cb30-13"><a></a><span class="cf">try</span>:</span>
+<span id="cb30-14"><a></a>    validate_email(<span class="st">"test@example.com"</span>)</span>
+<span id="cb30-15"><a></a>    <span class="bu">print</span>(<span class="st">"✅ Valid email!"</span>)</span>
+<span id="cb30-16"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb30-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"❌ </span><span class="sc">{</span>error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="real-world-api-request-handler" class="slide level2">
+<h2>Real-World: API Request Handler 🌐</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb31-2"><a></a></span>
+<span id="cb31-3"><a></a><span class="kw">def</span> fetch_data(url):</span>
+<span id="cb31-4"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb31-5"><a></a>        response <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb31-6"><a></a>        response.raise_for_status()</span>
+<span id="cb31-7"><a></a>        <span class="cf">return</span> response.json()</span>
+<span id="cb31-8"><a></a>    <span class="cf">except</span> requests.Timeout:</span>
+<span id="cb31-9"><a></a>        <span class="bu">print</span>(<span class="st">"Request timed out!"</span>)</span>
+<span id="cb31-10"><a></a>    <span class="cf">except</span> requests.<span class="pp">ConnectionError</span>:</span>
+<span id="cb31-11"><a></a>        <span class="bu">print</span>(<span class="st">"Network connection failed!"</span>)</span>
+<span id="cb31-12"><a></a>    <span class="cf">except</span> requests.HTTPError <span class="im">as</span> e:</span>
+<span id="cb31-13"><a></a>        <span class="bu">print</span>(<span class="ss">f"HTTP error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-14"><a></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb31-15"><a></a>        <span class="bu">print</span>(<span class="ss">f"Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-16"><a></a>    <span class="cf">finally</span>:</span>
+<span id="cb31-17"><a></a>        <span class="bu">print</span>(<span class="st">"Request completed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="best-practices" class="slide level2">
+<h2>Best Practices ⭐</h2>
+<ol type="1">
+<li class="fragment"><strong>Be specific</strong> - Catch specific exceptions, not all errors</li>
+<li class="fragment"><strong>Do not hide errors</strong> - Log or display useful information</li>
+<li class="fragment"><strong>Clean up resources</strong> - Use <code>finally</code> for files, connections</li>
+<li class="fragment"><strong>Fail gracefully</strong> - Provide helpful error messages</li>
+<li class="fragment"><strong>Do not overuse</strong> - Not everything needs try-except</li>
+<li class="fragment"><strong>Document exceptions</strong> - Tell users what errors to expect</li>
+</ol>
+</section>
+<section id="common-mistakes-to-avoid" class="slide level2">
+<h2>Common Mistakes to Avoid ⚠️</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># ❌ DO NOT: Catch everything blindly</span></span>
+<span id="cb32-2"><a></a><span class="cf">try</span>:</span>
+<span id="cb32-3"><a></a>    do_something()</span>
+<span id="cb32-4"><a></a><span class="cf">except</span>:</span>
+<span id="cb32-5"><a></a>    <span class="cf">pass</span>  <span class="co"># Silent failure is bad!</span></span>
+<span id="cb32-6"><a></a></span>
+<span id="cb32-7"><a></a><span class="co"># ✅ DO: Be specific and informative</span></span>
+<span id="cb32-8"><a></a><span class="cf">try</span>:</span>
+<span id="cb32-9"><a></a>    do_something()</span>
+<span id="cb32-10"><a></a><span class="cf">except</span> SpecificError <span class="im">as</span> error:</span>
+<span id="cb32-11"><a></a>    log_error(error)</span>
+<span id="cb32-12"><a></a>    notify_user(<span class="st">"Operation failed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="big-challenge-bank-account" class="slide level2">
+<h2>💻 Big Challenge: Bank Account 🏦</h2>
+<p>Create a <code>BankAccount</code> class with exception handling:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="kw">class</span> InsufficientFundsError(<span class="pp">Exception</span>):</span>
+<span id="cb33-2"><a></a>    <span class="cf">pass</span></span>
+<span id="cb33-3"><a></a></span>
+<span id="cb33-4"><a></a><span class="kw">class</span> BankAccount:</span>
+<span id="cb33-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, balance<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb33-6"><a></a>        <span class="co"># Initialize account</span></span>
+<span id="cb33-7"><a></a>        <span class="cf">pass</span></span>
+<span id="cb33-8"><a></a>    </span>
+<span id="cb33-9"><a></a>    <span class="kw">def</span> deposit(<span class="va">self</span>, amount):</span>
+<span id="cb33-10"><a></a>        <span class="co"># Add exception handling for negative amounts</span></span>
+<span id="cb33-11"><a></a>        <span class="cf">pass</span></span>
+<span id="cb33-12"><a></a>    </span>
+<span id="cb33-13"><a></a>    <span class="kw">def</span> withdraw(<span class="va">self</span>, amount):</span>
+<span id="cb33-14"><a></a>        <span class="co"># Raise InsufficientFundsError if balance too low</span></span>
+<span id="cb33-15"><a></a>        <span class="co"># Raise ValueError if amount is negative</span></span>
+<span id="cb33-16"><a></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="big-solution" class="slide level2">
+<h2>💡 Big Solution</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">class</span> InsufficientFundsError(<span class="pp">Exception</span>):</span>
+<span id="cb34-2"><a></a>    <span class="cf">pass</span></span>
+<span id="cb34-3"><a></a></span>
+<span id="cb34-4"><a></a><span class="kw">class</span> BankAccount:</span>
+<span id="cb34-5"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, balance<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb34-6"><a></a>        <span class="cf">if</span> balance <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb34-7"><a></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Initial balance cannot be negative"</span>)</span>
+<span id="cb34-8"><a></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb34-9"><a></a>    </span>
+<span id="cb34-10"><a></a>    <span class="kw">def</span> deposit(<span class="va">self</span>, amount):</span>
+<span id="cb34-11"><a></a>        <span class="cf">if</span> amount <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb34-12"><a></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Deposit amount must be positive"</span>)</span>
+<span id="cb34-13"><a></a>        <span class="va">self</span>.balance <span class="op">+=</span> amount</span>
+<span id="cb34-14"><a></a>        <span class="cf">return</span> <span class="va">self</span>.balance</span>
+<span id="cb34-15"><a></a>    </span>
+<span id="cb34-16"><a></a>    <span class="kw">def</span> withdraw(<span class="va">self</span>, amount):</span>
+<span id="cb34-17"><a></a>        <span class="cf">if</span> amount <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb34-18"><a></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Withdrawal amount must be positive"</span>)</span>
+<span id="cb34-19"><a></a>        <span class="cf">if</span> amount <span class="op">&gt;</span> <span class="va">self</span>.balance:</span>
+<span id="cb34-20"><a></a>            <span class="cf">raise</span> InsufficientFundsError(</span>
+<span id="cb34-21"><a></a>                <span class="ss">f"Insufficient funds. Balance: $</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>balance<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb34-22"><a></a>            )</span>
+<span id="cb34-23"><a></a>        <span class="va">self</span>.balance <span class="op">-=</span> amount</span>
+<span id="cb34-24"><a></a>        <span class="cf">return</span> <span class="va">self</span>.balance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="testing-the-bank-account" class="slide level2">
+<h2>Testing the Bank Account 💰</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="cf">try</span>:</span>
+<span id="cb35-2"><a></a>    account <span class="op">=</span> BankAccount(<span class="dv">100</span>)</span>
+<span id="cb35-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"Balance: $</span><span class="sc">{</span>account<span class="sc">.</span>balance<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-4"><a></a>    </span>
+<span id="cb35-5"><a></a>    account.deposit(<span class="dv">50</span>)</span>
+<span id="cb35-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"After deposit: $</span><span class="sc">{</span>account<span class="sc">.</span>balance<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-7"><a></a>    </span>
+<span id="cb35-8"><a></a>    account.withdraw(<span class="dv">200</span>)  <span class="co"># This will fail!</span></span>
+<span id="cb35-9"><a></a>    </span>
+<span id="cb35-10"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb35-11"><a></a>    <span class="bu">print</span>(<span class="ss">f"Invalid operation: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-12"><a></a><span class="cf">except</span> InsufficientFundsError <span class="im">as</span> e:</span>
+<span id="cb35-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"Transaction failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="quick-reference-card" class="slide level2">
+<h2>Quick Reference Card 📋</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Clause</th>
+<th>Purpose</th>
+<th>When It Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>try:</code></td>
+<td>Code that might fail</td>
+<td>Always attempted</td>
+</tr>
+<tr class="even">
+<td><code>except:</code></td>
+<td>Error handling</td>
+<td>Only if exception occurs</td>
+</tr>
+<tr class="odd">
+<td><code>else:</code></td>
+<td>Success code</td>
+<td>Only if NO exception</td>
+</tr>
+<tr class="even">
+<td><code>finally:</code></td>
+<td>Cleanup code</td>
+<td>ALWAYS runs</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key Takeaways 🎓</h2>
+<ul>
+<li class="fragment">Exceptions help create <strong>robust, user-friendly</strong> programs</li>
+<li class="fragment">Use <code>try-except</code> to handle errors <strong>gracefully</strong></li>
+<li class="fragment">Be <strong>specific</strong> with exception types</li>
+<li class="fragment"><strong>Always clean up</strong> resources with <code>finally</code></li>
+<li class="fragment"><strong>Raise exceptions</strong> to signal problems in your code</li>
+<li class="fragment">Good error handling = <strong>professional code</strong>! 💼</li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

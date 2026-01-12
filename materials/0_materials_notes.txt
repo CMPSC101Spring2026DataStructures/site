@@ -1,0 +1,160 @@
+---
+title: "Materials"
+# listing:
+  # contents:
+    # - "*.qmd"
+    # - "lab-notes/*reports.qmd"
+---
+
+<center>
+**CS101::Spring 2026**
+</center>
+
+Here you will find a listing of lesson materials for the course such as slides, assignments, and similar.
+
+<!-- ![](../graphics/levelup.png){width=10%} -->
+
+## 1. Welcome Weeks
+- **Getting to Know You**: [Welcome Week Survey](https://forms.gle/EobK4xncr4f63Z8WA)
+
+---
+
+- **Activity 01**: [README.md](https://github.com/CMPSC101Fall2025DataStructures/01_activity_maze/blob/main/README.md)
+  Due Date: Wednesday 3 Sept 2025 (by the end of class)
+- [GitHub Classroom Link](https://classroom.github.com/a/Xr8c08jx) (Used to setup your workspace and repository for your assignment submission.)
+
+## 2. Getting Started
+
+- Installing necessary software for the course. [Python](https://www.python.org/), [Visual Studio Code](https://code.visualstudio.com/download) and [GitHub](https://github.com/git-guides/install-git).
+- [Required Reading: Guttag Chapter 1](https://mitpress.ublish.com/ebook/itcapup3-preview/12609/1)
+- **Lab 01**: Working with the UV package manager to run Python code.
+  - [GitHub Classroom Link](https://classroom.github.com/a/zVISbjta) 
+  - **README** [Lab 01 documentation](https://github.com/CMPSC101Fall2025DataStructures/01_lab/blob/main/README.md)
+
+## 3. Crash Course I: Python
+
+- [Required Reading: Guttag Chapter 2](https://mitpress.ublish.com/ebook/itcapup3-preview/12609/11)
+- **Literals, Variables, Conditionals, Strings, etc. ** 
+  - [HTML](3_i_introToPython_solutions.html) Slides
+  -  [PDF](3_i_introToPython_solutions.pdf) The slide's material as a pdf.
+- **Lab 02**: Refactoring (Restructuring) a *Rock, Paper, Scissors* Python game.
+  - [GitHub Classroom Link](https://classroom.github.com/a/whuXaH09) 
+  - **README** [Lab 02 documentation](https://github.com/CMPSC101Fall2025DataStructures/lab02/blob/main/README.md)
+- **Activity 02**: Building a morse code translator in Python and UV
+  - [GitHub Classroom Link](https://classroom.github.com/a/J49gcN2d)
+
+## 4. Crash Course II: Python
+
+- **Literals, Variables, Conditionals, Strings, etc. ** 
+  - [HTML](3_ii_introToPython.html) Slides
+  -  [PDF](3_ii_introToPython_solutions.pdf) The slide's material as a pdf.
+- **Activity 03**: Coding using literals, lists and conditionals
+  - [GitHub Classroom Link](https://classroom.github.com/a/NVL_RB-3)
+- **Lab 03**: Completing smaller Python programs.
+  - [GitHub Classroom Link](https://classroom.github.com/a/9c1qDmys)
+- **Guest Speaker**: [Form](https://forms.gle/23A5b3JvvwNA8NDe8)
+  
+## 5. Chapter 2: Lists and Dictionaries
+- **Return to Programming Challenges of Activity 03**
+    -  [README](https://github.com/CMPSC101Fall2025DataStructures/03-activity/blob/main/README.md)
+    -  Note: *This time only: Changed Due Date.  Now set to 22nd Sept 2025, 11:30pm*
+- **Lists and Dictionaries at Work**  
+  - **PlayGround demonstrations**: [Demonstration](../playground/06_listAndDictionaries.qmd)
+  - **Finish slides from last week** (Check the challenges)
+    - [HTML](3_ii_introToPython.html) Slides
+- **Lab04**: For loops and While Loops
+  - [GitHub Classroom link](https://classroom.github.com/a/zRXBQrSJ)
+- **Activity 04**: Fixing code for finding approximations
+  - [GitHub Classroom Link](https://classroom.github.com/a/MgMNCCpF)
+
+
+## 6. Chapter 3: Exhaustive Enumeration and Approximation
+- **Some Approximation Techniques in Python**
+  - [HTML](6_exhaustive_approximation.html) Slides
+  -  [PDF](6_exhaustive_approximation.pdf) The slide's material as a pdf.
+- **A Study of the General nth Root Algorithm**
+  - [HTML](6_energy_analysis_slides.html) Slides
+  - [PDF](6_energy_analysis_slides.pdf) The slide's material as a pdf.
+- **Lab05**: Approximations By the Taylor Series
+  - [GitHub Classroom link](https://classroom.github.com/a/HXIF82p0)
+
+
+
+## 7. Chapter 5: STRUCTURED TYPES AND MUTABILITY
+- **Some Fundamental Programming in Python**
+  - [HTML](7_python_fundamentals_slides.html) Slides
+  -  [PDF](7_python_fundamentals_slides.pdf) The slide's material as a pdf.
+- **Midterm Preparation Guide**
+  -  Midterm exam: During lab on Thursday, 23rd October 2025
+  -  [HTML](7_midterm_study_sheet.html) Slides
+  -  [PDF](7_midterm_study_sheet.pdf) The slide's material as a pdf.
+<!-- - **Lab 01**: Working with the UV package manager to run Python code. -->
+  <!-- - [GitHub Classroom Link](https://classroom.github.com/a/zVISbjta)  -->
+  <!-- - **README** [Lab 01 documentation](https://github.com/CMPSC101Fall2025DataStructures/01_lab/blob/main/README.md) -->
+  
+
+## 8. Chapter 4: A Return to Functional Programming
+- **Lambda and Higher Order Functions**
+  - [HTML](8_lambdaFunctions_i.html) Slides
+  - [PDF](8_lambdaFunctions_i.pdf) The slide's material as a pdf.
+- **Classes and Decorators Functions**
+  - [HTML](8_classesAndDecorators.html) Slides
+  - [PDF](8_classesAndDecorators.pdf) The slide's material as a pdf.
+- **Lab06**: Midterm Practice Test
+  - [GitHub Classroom link](https://classroom.github.com/a/ZYy4GlCI)
+  
+## 9. Chapter 11: Algorithm Complexity and Big-O
+- **Activity 05**: Algorithm Performance Analysis through Doubling Experiments
+  - [GitHub Classroom Link](https://classroom.github.com/a/4MAv9YIr)
+- **An informal Introduction to Complexity**: About Big Big-O
+  - [HTML](9_complexity_intro_slides.html) Slides
+  - [PDF](9_complexity_intro_slides.pdf) The slide's material as a pdf.
+- **Activity 06**: Algorithm Performance Analysis Through Doubling Experiments
+  - [GitHub Classroom Link](https://classroom.github.com/a/HIHMMxU3)
+
+## 10. Chapter 11 (continued): O(1), O(logN), O(2^N)
+- **O(1) (Constant Time)**
+  - [HTML](10_1_big_o_constant_o1.html) Slides
+  - [PDF](10_1_big_o_constant_o1.pdf) The slide's material as a pdf.
+- **O(logN) (Logarithmic Time)**
+  - [HTML](10_2_big_o_logarithmic_ologn.html) Slides
+  - [PDF](10_2_big_o_logarithmic_ologn.pdf) The slide's material as a pdf.
+- **O(2^n) (Exponential Time)**
+  - [HTML](10_4_big_o_exponential_o2n.html) Slides
+  - [PDF](10_4_big_o_exponential_o2n.pdf) The slide's material as a pdf.
+- **Supplement Slides: Heap Sorting (Logarithmic Time)**
+  - [HTML](10_3_heap_sorting_slides.html) Slides
+  - [PDF](10_3_heap_sorting_slides.pdf) The slide's material as a pdf.
+- **The Travelling Salesman**
+  - [HTML](10_5_travellingSalesman.html) Slides
+  - [PDF](10_5_travellingSalesman.pdf) The slide's material as a pdf.
+- **Activity 07**: Traveling Salesman Problem and Coding
+  - [GitHub Classroom Link](https://classroom.github.com/a/C_SGq80m)
+
+## 11. Chapter 6. Modules
+- **Modules and Imports**
+  - [HTML](11_python_modules_and_files.html) Slides
+  - [PDF](11_python_modules_and_files.pdf) The slide's material as a pdf.
+- **Lab07**: Using Modules to Do Analysis
+  - [GitHub Classroom link](https://classroom.github.com/a/-fsqe2DS)
+- **Activity 08**: Exploring Python Modules Through Mathematical Animation! 🎬✨
+  - [GitHub Classroom Link](https://classroom.github.com/a/Ac_a3D9e)
+
+## 11. Chapter 6. Files
+- **Working With Files**
+  - [HTML](11_python_modules_and_files.html#/file-operations-working-with-data-files) Slides
+  <!-- - [PDF](11_python_modules_and_files.pdf) The slide's  -->
+- **Lab08**: Researching Ideas for Final Project
+  - [GitHub Classroom link](https://classroom.github.com/a/ws98xus5)
+
+## 12 Final Project
+- **Final Project** Writing your own code
+  - [GitHub Classroom GROUP link](https://classroom.github.com/a/HDTdhiNS)
+- **Activity 09**:  Pygame Ideas for Final Project 🎯
+  - [GitHub Classroom Link](https://classroom.github.com/a/ebGLnCU5)
+
+## 13. Exception Handling
+- **Working With Files**
+  - [HTML](13_exception_handling_slides.html) Slides
+  - [PDF](13_exception_handling_slides.pdf) The slide's material as a pdf. 
+  

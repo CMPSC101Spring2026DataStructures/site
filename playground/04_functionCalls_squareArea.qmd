@@ -1,0 +1,89 @@
+---
+title: "Just For Fun 04: Area of a Square and Function Calls"
+subtitle: "Exploring Python Functions and Iteration"
+date: "30 Aug 2025"
+author: "OBC"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: false
+    css: 
+      - ../shared/lesson-styles.css
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    include-after-body:
+      - text: |
+          <script src="../shared/lesson-python.js"></script>
+---
+
+::: {.code-explanation}
+**What this code does:**
+This code defines a function `squareArea(s)` that calculates the area of a square given its side length `s`. The `main()` function acts as a driver: it prints the area for a single value, then iterates over a list of test values (including integers, zero, negative numbers, and a complex number) and prints the area for each.
+**Function calls:**
+- `squareArea(s)` is called inside `main()` for each value in `testValues_list` and for the initial `sideLength`.
+- `main()` is called at the end to start the program.
+:::
+
+**Example Code:**
+```python
+def squareArea(s: float ) -> float:
+    """ determine area of square"""
+    return s*s # area of square is s*s
+# end of squareArea()
+
+def main() -> None:
+    """ driver function """
+    sideLength = 5
+    # Testing value
+    print(f"Length {sideLength}")
+    print(f" Area: {squareArea(sideLength)}")
+    # These inputs work
+    testValues_list =[2,0,-3,2 + 5j]
+    # why will these inputs not work?
+    # testValues_list =[True, "radius"]
+    print("\n Iterating over the list.")
+    for val in testValues_list: #iteration
+        print(f" Length {val}, Area: {squareArea(val)}")
+    # end main()
+
+main() # call the driver function
+```
+
+
+<textarea id="lesson-input-1" class="lesson-input" rows="20" placeholder="# Copy the code above or write your own...">def squareArea(s: float ) -> float:
+    """ determine area of square"""
+    return s*s # area of square is s*s
+# end of squareArea()
+
+def main() -> None:
+    """ driver function """
+    sideLength = 5
+    # Testing value
+    print(f"Length {sideLength}")
+    print(f" Area: {squareArea(sideLength)}")
+    # These inputs work
+    testValues_list =[2,0,-3,2 + 5j]
+    # why will these inputs not work?
+    # testValues_list =[True, "radius"]
+    print("\n Iterating over the list.")
+    for val in testValues_list: #iteration
+        print(f" Length {val}, Area: {squareArea(val)}")
+    # end main()
+
+main() # call the driver function
+</textarea>
+
+
+<div class="lesson-buttons">
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+</div>
+
+<div id="lesson-terminal-1" class="lesson-terminal">
+  <div class="python-prompt">>>> </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+</div>

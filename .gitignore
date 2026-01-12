@@ -1,0 +1,10 @@
+
+# Quarto Project
+/.quarto/
+/_site
+/code/.ipynb_checkpoints/
+
+# MacOS
+.DS_Store
+
+**/*.quarto_ipynb
