@@ -25,5 +25,9 @@ Here you will find a listing of lesson materials for the course such as slides, 
   -  What can you share about the projects?
   -  What is your favorite phone app?
   -  What is your favorite breakfast cereal?
+- Be sure to join the class' GitHub Organization (check your email!)
+- Also, be sure that you are in the Discord channel for the course. If you are not in the Discord channel, please let me know!
+- **Activity 01**: Installing Essential Tools and Solving the Maze
+  - [GitHub Classroom Link](https://classroom.github.com/a/WIB5VCnJ)
 
 ---
