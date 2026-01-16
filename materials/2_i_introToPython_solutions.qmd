@@ -19,7 +19,7 @@ format:
 ---
 
 <!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
-
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} -->
 
 # Welcome to Python Programming!
 
@@ -27,7 +27,7 @@ format:
 **Let's make learning Python fun and practical!**
 :::
 
----
+
 
 ## What are literals?
 
@@ -50,11 +50,28 @@ greeting = "Hello, world!"
 is_active = True
 ```
 
+::: {.callout-important}
+You can use all these _literals_ (or ones like these) in your code like _global variables_!
+:::
+
 ## Interesting Application
 
 Use literals to set default values in games, apps, or data analysis scripts!
 
----
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+
+<center>
+![](graphics/tellMeMore_i.png){width=40%}
+</center>
+
+::: {.callout-note}
+Literals are (unchanging) axioms in source code that declare initial and lasting data (numbers, characters, strings and similar), that do not change during run-time. In short, literals hold the fixed data for __computational things__!
+:::
 
 # Python Literals
 
@@ -77,7 +94,7 @@ print(integer_literal, float_literal, string_literal, boolean_literal)
 :::
 This code demonstrates how to use different types of literals in Python.
 
----
+
 
 # Variables and Operators
 
@@ -101,7 +118,7 @@ print(sum_xy, diff_xy, prod_xy, is_equal)
 :::
 This code uses variables and operators to do math and compare values.
 
----
+
 
 # Loops and Conditionals
 
@@ -127,7 +144,7 @@ for i in range(1, 6):  # Loop from 1 to 5
 :::
 This code loops through numbers and uses a conditional to check if each is even or odd.
 
----
+
 
 # Squaring Algorithms
 
@@ -153,7 +170,7 @@ print(f"squ1: {squ1}, squ2: {squ2}, square(num): {square(num)}")
 :::
 This code demonstrates three ways to square a number in Python.
 
----
+
 
 # Strings and Slicing
 
@@ -179,13 +196,16 @@ print(every_other)   # Output: Pto saeo!
 :::
 This code shows how to slice strings to get different parts or patterns.
 
----
+
 
 # Python Challenge Exercises
 
 Try these programming challenges to practice your Python skills!
 
----
+<center>
+![](graphics/challenge_i_540x247.png){width=100%}
+</center>
+
 
 ## Challenge 1: Literal Mix-Up
 
@@ -197,7 +217,9 @@ Write code that uses at least three different types of literals (integer, float,
 ```
 :::
 
----
+<center>
+![](graphics/join.png){width=100%}
+</center>
 
 ## Challenge 2: Variable Math
 
@@ -209,7 +231,10 @@ Create two variables, perform addition, subtraction, multiplication, and divisio
 ```
 :::
 
----
+<center>
+![](graphics/with_op.png){width=90%}
+</center>
+
 
 ## Challenge 3: Loop & Conditional Fun
 
@@ -221,9 +246,11 @@ Write a loop that prints numbers from 1 to 10. For each number, print whether it
 ```
 :::
 
----
+<center>
+![](graphics/loop.png){width=50%}
+</center>
 
-## Challenge 4: Squaring Game
+## Challenge 4: Squaring Game using Functions
 
 Write a function that takes a number and returns both its square and its cube. Print the results for the number 5.
 
@@ -233,7 +260,11 @@ Write a function that takes a number and returns both its square and its cube. P
 ```
 :::
 
----
+
+<center>
+![](graphics/function.png){width=40%}
+</center>
+
 
 ## Challenge 5: String Slicing Mystery
 
@@ -249,11 +280,15 @@ Given the string `mystery = "QuartoPythonRocks!"`, print:
 ```
 :::
 
----
+<center>
+![](graphics/slices.png){width=100%}
+</center>
+
+
 
 # Solutions to Challenge Exercises
 
----
+
 
 ## Solution 1: Literal Mix-Up
 
@@ -268,7 +303,10 @@ print(f"I bought {integer} {text}, each cost {float_num} dollars. Fresh? {is_fre
 :::
 This code uses integer, float, string, and boolean literals in a sentence.
 
----
+<center>
+![](graphics/join.png){width=90%}
+</center>
+
 
 ## Solution 2: Variable Math
 
@@ -284,7 +322,9 @@ print(f"Division: {x / y}")
 :::
 This code performs math operations and prints results with labels.
 
----
+<center>
+![](graphics/with_op.png){width=70%}
+</center>
 
 ## Solution 3: Loop & Conditional Fun
 
@@ -299,7 +339,9 @@ for n in range(1, 11):
 :::
 This code loops through numbers and checks for multiples of 3.
 
----
+<center>
+![](graphics/loop.png){width=40%}
+</center>
 
 ## Solution 4: Squaring Game
 
@@ -315,7 +357,9 @@ print(f"Square: {sq}, Cube: {cu}")
 :::
 This function returns both the square and cube of a number.
 
----
+<center>
+![](graphics/function.png){width=30%}
+</center>
 
 ## Solution 5: String Slicing Mystery
 
@@ -328,3 +372,7 @@ print(mystery[::3])     # Every third character
 ```
 :::
 This code slices the string in three different ways.
+
+<center>
+![](graphics/slices.png){width=60%}
+</center>
