@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,14 +33,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-87cdcc3232e5a56c423f061c78a20e69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,6 +81,8 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMPSC101 Spring 2026 :: DataStructures</span>
     </a>
@@ -194,13 +197,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Instructor</strong>: Dr.&nbsp;Bonham-Carter, <a href="obonhamcarter@allegheny.edu">obonhamcarter@allegheny.edu</a><br>
 <strong>Office Location</strong>: Alden Hall 203</p>
 <p><strong>Instructor Office Hours</strong>: Visit the below URL to find availability and schedule and appointment. <a href="https://www.oliverbonhamcarter.com/contactandabout/">https://www.oliverbonhamcarter.com/contactandabout/</a></p>
-<p><strong>Book An Appointment!</strong>: <a href="https://calendar.app.google/dEK6MftNGNLV1Ft96">https://calendar.app.google/dEK6MftNGNLV1Ft96</a></p>
+<p><strong>Book An Appointment!</strong>: <a href="https://www.oliverbonhamcarter.com/contactandabout/">https://www.oliverbonhamcarter.com/contactandabout/</a></p>
 <p><em>Note</em>: If the office hours times are not convenient, then please reach out to me and we can find an alternative time to meet.</p>
 <!-- ![A vibrant digital tree with glowing branches and roots, surrounded by colorful flowers and butterflies in a nighttime setting. The tree canopy is filled with binary numbers such as 101011, 10104, 51, 10104, 101011, 12131, 0501, and 01, which are integrated into the leaves and branches. The environment features cascading streams of blue and teal data, creating a magical and energetic atmosphere that evokes curiosity and wonder.] -->
 <section id="quick-links" class="level2">
 <h2 class="anchored" data-anchor-id="quick-links">Quick Links</h2>
 <ul>
-<li><a href="https://forms.gle/hjrJLnpHrauFmJqH8">Token Form for Automatic Extension</a></li>
+<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdPLsKNw7rXTECajC6TqLhdLtUppAXRdiWFVKmyYRAjtHcOgg/viewform?usp=dialog">Token Form for Automatic Extension</a></li>
 </ul>
 </section>
 <section id="course-description" class="level2">
@@ -581,13 +584,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

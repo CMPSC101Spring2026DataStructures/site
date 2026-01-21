@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 2: Python Programming: Concepts II</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -261,10 +261,10 @@ Oliver Bonham-Carter
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>firstName <span class="op">=</span> <span class="st">"Robert"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>firstName <span class="op">=</span> <span class="st">"Robert"</span></span>
 <span id="cb1-2"><a></a>lastName <span class="op">=</span> <span class="st">"Paulson"</span></span>
 <span id="cb1-3"><a></a><span class="bu">print</span>(<span class="ss">f"His name is: </span><span class="sc">{</span>firstName<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>lastName<span class="sc">}</span><span class="ss">!"</span>) <span class="co"># f for auto formatting</span></span>
-<span id="cb1-4"><a></a><span class="bu">print</span>(<span class="st">"His name is:"</span>,firstName, lastName,<span class="st">"!"</span>) <span class="co"># original structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="bu">print</span>(<span class="st">"His name is:"</span>,firstName, lastName,<span class="st">"!"</span>) <span class="co"># original structure</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout-output">
 <p>Output:</p>
 <p>His name is: Robert Paulson!</p>
@@ -295,12 +295,12 @@ Oliver Bonham-Carter
 </section>
 <section id="python-code-sample" class="slide level2">
 <h2>Python Code Sample</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb2-2"><a></a>y <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb2-3"><a></a><span class="bu">sum</span> <span class="op">=</span> x <span class="op">+</span> y</span>
 <span id="cb2-4"><a></a>product <span class="op">=</span> x <span class="op">*</span> y</span>
 <span id="cb2-5"><a></a>is_equal <span class="op">=</span> (x <span class="op">==</span> y)</span>
-<span id="cb2-6"><a></a>x <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a></a>x <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="interesting-application" class="slide level2">
 <h2>Interesting Application</h2>
@@ -320,7 +320,7 @@ Oliver Bonham-Carter
 <p>Conditionals let your code make decisions using <code>if</code>, <code>elif</code>, and <code>else</code>.</p>
 <div class="callout-medium">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb3-2"><a></a>    <span class="bu">print</span>(i)</span>
 <span id="cb3-3"><a></a></span>
 <span id="cb3-4"><a></a>count <span class="op">=</span> <span class="dv">0</span></span>
@@ -335,7 +335,7 @@ Oliver Bonham-Carter
 <span id="cb3-13"><a></a>    <span class="cf">elif</span> x <span class="op">==</span> y:</span>
 <span id="cb3-14"><a></a>        <span class="bu">print</span>(<span class="st">"x equals y!"</span>)</span>
 <span id="cb3-15"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb3-16"><a></a>        <span class="bu">print</span>(<span class="st">"x is less!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-16"><a></a>        <span class="bu">print</span>(<span class="st">"x is less!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="sort-of-interesting-application" class="slide level2">
@@ -343,13 +343,13 @@ Oliver Bonham-Carter
 <p>Loops and conditionals can be used to determine positive, negative numbers, or zeros. Neat-O!</p>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>num <span class="op">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>num <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb4-2"><a></a><span class="cf">if</span> num <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb4-3"><a></a>    <span class="bu">print</span>(<span class="st">"Positive number"</span>)</span>
 <span id="cb4-4"><a></a><span class="cf">elif</span> num <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"Zero"</span>)</span>
 <span id="cb4-6"><a></a><span class="cf">else</span>:</span>
-<span id="cb4-7"><a></a>    <span class="bu">print</span>(<span class="st">"Negative number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a></a>    <span class="bu">print</span>(<span class="st">"Negative number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout-output">
 <p>Output:</p>
@@ -361,14 +361,14 @@ Oliver Bonham-Carter
 <p>You can nest loops, one inside the other.</p>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>num <span class="op">=</span> <span class="dv">15</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>num <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb5-2"><a></a><span class="cf">if</span> num <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
 <span id="cb5-3"><a></a>    <span class="cf">if</span> num <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb5-4"><a></a>        <span class="bu">print</span>(<span class="st">"Zero"</span>)</span>
 <span id="cb5-5"><a></a>    <span class="cf">else</span>:</span>
 <span id="cb5-6"><a></a>        <span class="bu">print</span>(<span class="st">"Positive number"</span>)</span>
 <span id="cb5-7"><a></a><span class="cf">else</span>:</span>
-<span id="cb5-8"><a></a>    <span class="bu">print</span>(<span class="st">"Negative number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a></a>    <span class="bu">print</span>(<span class="st">"Negative number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout-output">
 <p>Output:</p>
@@ -380,14 +380,14 @@ Oliver Bonham-Carter
 <p>Logical operators use <code>True</code> and <code>False</code> to determine outcomes.</p>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>a <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb6-2"><a></a>b <span class="op">=</span> <span class="dv">20</span></span>
 <span id="cb6-3"><a></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> b <span class="op">&gt;</span> <span class="dv">15</span>:</span>
 <span id="cb6-4"><a></a>    <span class="bu">print</span>(<span class="st">"Both conditions are true"</span>)</span>
 <span id="cb6-5"><a></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">or</span> b <span class="op">&lt;</span> <span class="dv">15</span>:</span>
 <span id="cb6-6"><a></a>    <span class="bu">print</span>(<span class="st">"At least one condition is true"</span>)</span>
 <span id="cb6-7"><a></a><span class="cf">if</span> <span class="kw">not</span> a <span class="op">&lt;</span> <span class="dv">5</span>:</span>
-<span id="cb6-8"><a></a>    <span class="bu">print</span>(<span class="st">"a is not less than 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a></a>    <span class="bu">print</span>(<span class="st">"a is not less than 5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout-output">
 <p>Output:</p>
@@ -399,12 +399,12 @@ Oliver Bonham-Carter
 <p>We now look at how we can manipulate strings</p>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>text <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>text <span class="op">=</span> <span class="st">"Hello, World!"</span></span>
 <span id="cb7-2"><a></a><span class="bu">print</span>(text.lower())  <span class="co"># hello, world!</span></span>
 <span id="cb7-3"><a></a><span class="bu">print</span>(text.upper())  <span class="co"># HELLO, WORLD!</span></span>
 <span id="cb7-4"><a></a><span class="bu">print</span>(text.replace(<span class="st">"World"</span>, <span class="st">"Python"</span>))  <span class="co"># Hello, Python!</span></span>
 <span id="cb7-5"><a></a><span class="bu">print</span>(text.split(<span class="st">", "</span>))  <span class="co"># ['Hello', 'World!']</span></span>
-<span id="cb7-6"><a></a><span class="bu">print</span>(text.strip(<span class="st">"!"</span>))  <span class="co"># Hello, World</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a></a><span class="bu">print</span>(text.strip(<span class="st">"!"</span>))  <span class="co"># Hello, World</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- ::: {.callout-output}
 Output:
@@ -424,13 +424,13 @@ Output:
 <h2>Demo of Lists</h2>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>] <span class="co"># definition</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>] <span class="co"># definition</span></span>
 <span id="cb8-2"><a></a><span class="bu">print</span>(my_list[<span class="dv">0</span>])  <span class="co"># Access first element</span></span>
 <span id="cb8-3"><a></a>my_list.append(<span class="dv">6</span>)  <span class="co"># Add an element to the end</span></span>
 <span id="cb8-4"><a></a><span class="bu">print</span>(my_list)  <span class="co"># [1, 2, 3, 4, 5, 6]</span></span>
 <span id="cb8-5"><a></a>my_list.remove(<span class="dv">3</span>)  <span class="co"># Remove element with value 3</span></span>
 <span id="cb8-6"><a></a><span class="bu">print</span>(my_list)  <span class="co"># [1, 2, 4, 5, 6]</span></span>
-<span id="cb8-7"><a></a><span class="bu">print</span>(<span class="bu">len</span>(my_list))  <span class="co"># Length of the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a></a><span class="bu">print</span>(<span class="bu">len</span>(my_list))  <span class="co"># Length of the list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout-output">
 <p>Output:</p>
 <p>1</p>
@@ -452,14 +452,14 @@ Output:
 <h2>Demo of Dictionaries</h2>
 <div class="callout-large">
 <p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>my_dict <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"is_student"</span>: <span class="va">True</span>}  <span class="co"># definition</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>my_dict <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"is_student"</span>: <span class="va">True</span>}  <span class="co"># definition</span></span>
 <span id="cb9-2"><a></a><span class="bu">print</span>(my_dict[<span class="st">"name"</span>])  <span class="co"># Access value by key</span></span>
 <span id="cb9-3"><a></a>my_dict[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">26</span>  <span class="co"># Modify value</span></span>
 <span id="cb9-4"><a></a>my_dict[<span class="st">"city"</span>] <span class="op">=</span> <span class="st">"New York"</span>  <span class="co"># Add new key-value pair</span></span>
 <span id="cb9-5"><a></a><span class="bu">print</span>(my_dict)  <span class="co"># {'name': 'Alice', 'age': 26, 'is_student': True, 'city': 'New York'}</span></span>
 <span id="cb9-6"><a></a><span class="kw">del</span> my_dict[<span class="st">"is_student"</span>]  <span class="co"># Remove a key-value pair</span></span>
 <span id="cb9-7"><a></a><span class="bu">print</span>(my_dict)  <span class="co"># {'name': 'Alice', 'age': 26, 'city': 'New York'}</span></span>
-<span id="cb9-8"><a></a><span class="bu">print</span>(<span class="bu">len</span>(my_dict))  <span class="co"># Number of key-value pairs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a></a><span class="bu">print</span>(<span class="bu">len</span>(my_dict))  <span class="co"># Number of key-value pairs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout-output">
 <p>Output:</p>
 <p>Alice</p>
@@ -476,12 +476,12 @@ Output:
 Create two variables, <code>a</code> and <code>b</code>, assign them integer values, and print their sum, difference, product, and quotient.</p>
 <div class="callout-large">
 <p><strong>Solution:</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>a <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb10-2"><a></a>b <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb10-3"><a></a><span class="bu">print</span>(<span class="st">"Sum:"</span>, a <span class="op">+</span> b)</span>
 <span id="cb10-4"><a></a><span class="bu">print</span>(<span class="st">"Difference:"</span>, a <span class="op">-</span> b)</span>
 <span id="cb10-5"><a></a><span class="bu">print</span>(<span class="st">"Product:"</span>, a <span class="op">*</span> b)</span>
-<span id="cb10-6"><a></a><span class="bu">print</span>(<span class="st">"Quotient:"</span>, a <span class="op">/</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a></a><span class="bu">print</span>(<span class="st">"Quotient:"</span>, a <span class="op">/</span> b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -491,8 +491,8 @@ Create two variables, <code>a</code> and <code>b</code>, assign them integer val
 Create a list of five numbers. Print the largest number in the list.</p>
 <div class="callout-large">
 <p><strong>Solution:</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>numbers <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">5</span>]</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(<span class="st">"Largest number:"</span>, <span class="bu">max</span>(numbers))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>numbers <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">5</span>]</span>
+<span id="cb11-2"><a></a><span class="bu">print</span>(<span class="st">"Largest number:"</span>, <span class="bu">max</span>(numbers))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -502,9 +502,9 @@ Create a list of five numbers. Print the largest number in the list.</p>
 Create a dictionary with three key-value pairs representing a person’s name, age, and city. Print each key and its value.</p>
 <div class="callout-large">
 <p><strong>Solution:</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"city"</span>: <span class="st">"New York"</span>}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"city"</span>: <span class="st">"New York"</span>}</span>
 <span id="cb12-2"><a></a><span class="cf">for</span> key, value <span class="kw">in</span> person.items():</span>
-<span id="cb12-3"><a></a>    <span class="bu">print</span>(key, <span class="st">":"</span>, value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a></a>    <span class="bu">print</span>(key, <span class="st">":"</span>, value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -514,9 +514,9 @@ Create a dictionary with three key-value pairs representing a person’s name, a
 Use a for loop to print all even numbers from 1 to 10.</p>
 <div class="callout-large">
 <p><strong>Solution:</strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb13-2"><a></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb13-3"><a></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a></a>        <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -526,10 +526,10 @@ Use a for loop to print all even numbers from 1 to 10.</p>
 Use a while loop to keep asking the user to enter a number until they enter a negative number.</p>
 <div class="callout-large">
 <p><strong>Solution:</strong></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="cf">while</span> <span class="va">True</span>:</span>
 <span id="cb14-2"><a></a>    num <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter a number: "</span>))</span>
 <span id="cb14-3"><a></a>    <span class="cf">if</span> num <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb14-4"><a></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a></a>        <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -728,7 +728,7 @@ Use a while loop to keep asking the user to enter a number until they enter a ne
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -802,13 +802,14 @@ Use a while loop to keep asking the user to enter a number until they enter a ne
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

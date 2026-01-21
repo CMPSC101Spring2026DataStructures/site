@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="CS 101 - Fall 2025">
   <title>CMPSC101 Spring 2026 :: DataStructures – Python Modules &amp; File Operations</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -272,7 +272,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Basic Import Syntax</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Method 1: Import entire module</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Method 1: Import entire module</span></span>
 <span id="cb1-2"><a></a><span class="im">import</span> math</span>
 <span id="cb1-3"><a></a>result <span class="op">=</span> math.sqrt(<span class="dv">16</span>)  <span class="co"># Use math.function_name</span></span>
 <span id="cb1-4"><a></a></span>
@@ -287,10 +287,10 @@ CS 101 - Fall 2025
 <span id="cb1-13"><a></a></span>
 <span id="cb1-14"><a></a><span class="co"># Method 4: Import everything (be careful!)</span></span>
 <span id="cb1-15"><a></a><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-16"><a></a>result <span class="op">=</span> sqrt(<span class="dv">16</span>)       <span class="co"># All functions available</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a></a>result <span class="op">=</span> sqrt(<span class="dv">16</span>)       <span class="co"># All functions available</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Best Practices</strong> 🏆</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># ✅ GOOD: Clear what you're using</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># ✅ GOOD: Clear what you're using</span></span>
 <span id="cb2-2"><a></a><span class="im">import</span> math</span>
 <span id="cb2-3"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
 <span id="cb2-4"><a></a><span class="im">from</span> random <span class="im">import</span> randint</span>
@@ -303,7 +303,7 @@ CS 101 - Fall 2025
 <span id="cb2-11"><a></a></span>
 <span id="cb2-12"><a></a><span class="co"># 💡 TIP: Check what's available</span></span>
 <span id="cb2-13"><a></a><span class="im">import</span> math</span>
-<span id="cb2-14"><a></a><span class="bu">print</span>(<span class="bu">dir</span>(math))  <span class="co"># Shows all available functions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a></a><span class="bu">print</span>(<span class="bu">dir</span>(math))  <span class="co"># Shows all available functions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Pro Tip</strong>: Import statements go at the top of your file!</p>
 </div></div>
 </section>
@@ -322,7 +322,7 @@ CS 101 - Fall 2025
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a><span class="co"># Display a full month calendar</span></span>
 <span id="cb3-4"><a></a><span class="bu">print</span>(cal.month(<span class="dv">2025</span>, <span class="dv">11</span>))  <span class="co"># November 2025</span></span>
@@ -338,7 +338,7 @@ CS 101 - Fall 2025
 <span id="cb3-14"><a></a>month_calendar <span class="op">=</span> cal.monthcalendar(<span class="dv">2025</span>, <span class="dv">11</span>)</span>
 <span id="cb3-15"><a></a><span class="bu">print</span>(<span class="st">"November 2025 as lists:"</span>)</span>
 <span id="cb3-16"><a></a><span class="cf">for</span> week <span class="kw">in</span> month_calendar:</span>
-<span id="cb3-17"><a></a>    <span class="bu">print</span>(week)  <span class="co"># Each week is a list [Mon, Tue, Wed, Thu, Fri, Sat, Sun]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a></a>    <span class="bu">print</span>(week)  <span class="co"># Each week is a list [Mon, Tue, Wed, Thu, Fri, Sat, Sun]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -358,7 +358,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Finding Thanksgiving</strong> 🦃</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
 <span id="cb4-2"><a></a></span>
 <span id="cb4-3"><a></a><span class="kw">def</span> find_thanksgiving(year):</span>
 <span id="cb4-4"><a></a>    <span class="co">"""Find Thanksgiving (4th Thursday of November)"""</span></span>
@@ -379,10 +379,10 @@ CS 101 - Fall 2025
 <span id="cb4-19"><a></a><span class="co"># Test it out!</span></span>
 <span id="cb4-20"><a></a><span class="cf">for</span> year <span class="kw">in</span> [<span class="dv">2024</span>, <span class="dv">2025</span>, <span class="dv">2026</span>]:</span>
 <span id="cb4-21"><a></a>    day <span class="op">=</span> find_thanksgiving(year)</span>
-<span id="cb4-22"><a></a>    <span class="bu">print</span>(<span class="ss">f"Thanksgiving </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">: November </span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-22"><a></a>    <span class="bu">print</span>(<span class="ss">f"Thanksgiving </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">: November </span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Weekend Counter</strong> 📊</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> count_weekends_in_month(year, month):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> count_weekends_in_month(year, month):</span>
 <span id="cb5-2"><a></a>    <span class="co">"""Count how many Saturdays and Sundays in a month"""</span></span>
 <span id="cb5-3"><a></a>    month_cal <span class="op">=</span> cal.monthcalendar(year, month)</span>
 <span id="cb5-4"><a></a>    saturdays <span class="op">=</span> sundays <span class="op">=</span> <span class="dv">0</span></span>
@@ -398,7 +398,7 @@ CS 101 - Fall 2025
 <span id="cb5-14"><a></a><span class="co"># How many weekend days in December 2025?</span></span>
 <span id="cb5-15"><a></a>sat, sun <span class="op">=</span> count_weekends_in_month(<span class="dv">2025</span>, <span class="dv">12</span>)</span>
 <span id="cb5-16"><a></a><span class="bu">print</span>(<span class="ss">f"December 2025: </span><span class="sc">{</span>sat<span class="sc">}</span><span class="ss"> Saturdays, </span><span class="sc">{</span>sun<span class="sc">}</span><span class="ss"> Sundays"</span>)</span>
-<span id="cb5-17"><a></a><span class="bu">print</span>(<span class="ss">f"Total weekend days: </span><span class="sc">{</span>sat <span class="op">+</span> sun<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-17"><a></a><span class="bu">print</span>(<span class="ss">f"Total weekend days: </span><span class="sc">{</span>sat <span class="op">+</span> sun<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Your Turn</strong>: Modify this to count school days during the month (Mon-Fri, no weekends days)! <a href="python_modules_and_files.html#/week-and-weekend-days">🌟📚🌟</a></p>
 </div></div>
 <center>
@@ -430,7 +430,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Essential Math Functions</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> math</span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a><span class="co"># Basic operations</span></span>
 <span id="cb6-4"><a></a><span class="bu">print</span>(<span class="ss">f"Square root of 64: </span><span class="sc">{</span>math<span class="sc">.</span>sqrt(<span class="dv">64</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -448,10 +448,10 @@ CS 101 - Fall 2025
 <span id="cb6-16"><a></a></span>
 <span id="cb6-17"><a></a><span class="co"># Constants</span></span>
 <span id="cb6-18"><a></a><span class="bu">print</span>(<span class="ss">f"Pi: </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-19"><a></a><span class="bu">print</span>(<span class="ss">f"e (Euler's number): </span><span class="sc">{</span>math<span class="sc">.</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-19"><a></a><span class="bu">print</span>(<span class="ss">f"e (Euler's number): </span><span class="sc">{</span>math<span class="sc">.</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Trigonometry &amp; Geometry</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a><span class="co"># Trigonometric functions (angles in radians)</span></span>
 <span id="cb7-4"><a></a>angle_degrees <span class="op">=</span> <span class="dv">45</span></span>
@@ -470,7 +470,7 @@ CS 101 - Fall 2025
 <span id="cb7-17"><a></a>    <span class="cf">return</span> math.sqrt((x2<span class="op">-</span>x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2<span class="op">-</span>y1)<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb7-18"><a></a></span>
 <span id="cb7-19"><a></a><span class="co"># Distance from (0,0) to (3,4)</span></span>
-<span id="cb7-20"><a></a><span class="bu">print</span>(<span class="ss">f"Distance: </span><span class="sc">{</span>distance(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># 5.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-20"><a></a><span class="bu">print</span>(<span class="ss">f"Distance: </span><span class="sc">{</span>distance(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># 5.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -503,7 +503,7 @@ CS 101 - Fall 2025
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> math</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a><span class="kw">def</span> circle_calculator(radius):</span>
 <span id="cb8-4"><a></a>    <span class="co">"""Calculate everything about a circle given its radius"""</span></span>
@@ -532,7 +532,7 @@ CS 101 - Fall 2025
 <span id="cb8-27"><a></a></span>
 <span id="cb8-28"><a></a><span class="cf">for</span> r <span class="kw">in</span> radii:</span>
 <span id="cb8-29"><a></a>    info <span class="op">=</span> circle_calculator(r)</span>
-<span id="cb8-30"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>info[<span class="st">'radius'</span>]<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'diameter'</span>]<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'area'</span>]<span class="sc">:&lt;12}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-30"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>info[<span class="st">'radius'</span>]<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'diameter'</span>]<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'area'</span>]<span class="sc">:&lt;12}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Your Turn</strong>: Can you add a function to calculate the area of a sphere? (Hint: 4πr²)!? <a href="python_modules_and_files.html#/solution-finding-areas">🌟📚🌟</a></p>
 </section>
 <section id="the-random-module---adding-unpredictability" class="slide level2">
@@ -540,7 +540,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Random Numbers &amp; Choices</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> random</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a><span class="co"># Random integers</span></span>
 <span id="cb9-4"><a></a>dice_roll <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">6</span>)</span>
@@ -561,10 +561,10 @@ CS 101 - Fall 2025
 <span id="cb9-19"><a></a></span>
 <span id="cb9-20"><a></a><span class="co"># Multiple random choices (with replacement)</span></span>
 <span id="cb9-21"><a></a>team <span class="op">=</span> random.choices(colors, k<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb9-22"><a></a><span class="bu">print</span>(<span class="ss">f"Random team colors: </span><span class="sc">{</span>team<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-22"><a></a><span class="bu">print</span>(<span class="ss">f"Random team colors: </span><span class="sc">{</span>team<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Shuffling &amp; Sampling</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">import</span> random</span>
 <span id="cb10-2"><a></a></span>
 <span id="cb10-3"><a></a><span class="co"># Shuffle a list (modifies original)</span></span>
 <span id="cb10-4"><a></a>deck <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'2'</span>, <span class="st">'3'</span>, <span class="st">'4'</span>, <span class="st">'5'</span>, <span class="st">'6'</span>, <span class="st">'7'</span>, <span class="st">'8'</span>, <span class="st">'9'</span>, <span class="st">'10'</span>, <span class="st">'J'</span>, <span class="st">'Q'</span>, <span class="st">'K'</span>]</span>
@@ -580,7 +580,7 @@ CS 101 - Fall 2025
 <span id="cb10-14"><a></a><span class="co"># Set seed for reproducible results</span></span>
 <span id="cb10-15"><a></a>random.seed(<span class="dv">42</span>)  <span class="co"># Always gives same "random" sequence</span></span>
 <span id="cb10-16"><a></a><span class="bu">print</span>(<span class="ss">f"Seeded random: </span><span class="sc">{</span>random<span class="sc">.</span>randint(<span class="dv">1</span>, <span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-17"><a></a><span class="bu">print</span>(<span class="ss">f"Next seeded random: </span><span class="sc">{</span>random<span class="sc">.</span>randint(<span class="dv">1</span>, <span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-17"><a></a><span class="bu">print</span>(<span class="ss">f"Next seeded random: </span><span class="sc">{</span>random<span class="sc">.</span>randint(<span class="dv">1</span>, <span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -613,7 +613,7 @@ CS 101 - Fall 2025
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> random</span>
 <span id="cb11-2"><a></a><span class="im">import</span> string</span>
 <span id="cb11-3"><a></a></span>
 <span id="cb11-4"><a></a><span class="kw">def</span> generate_password(length<span class="op">=</span><span class="dv">12</span>, include_symbols<span class="op">=</span><span class="va">True</span>):</span>
@@ -678,7 +678,7 @@ CS 101 - Fall 2025
 <span id="cb11-63"><a></a>    <span class="bu">print</span>(<span class="ss">f"Strength: </span><span class="sc">{</span>strength<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb11-64"><a></a>    <span class="cf">if</span> tips:</span>
 <span id="cb11-65"><a></a>        <span class="bu">print</span>(<span class="ss">f"Tips: </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(tips)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-66"><a></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-66"><a></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -712,7 +712,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Challenge 1: <code>datetime</code> Module</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> datetime</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> datetime</span>
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a><span class="co"># Find your age in days</span></span>
 <span id="cb12-4"><a></a>birth_date <span class="op">=</span> datetime.date(<span class="dv">2008</span>, <span class="dv">5</span>, <span class="dv">15</span>)  <span class="co"># Your birthday</span></span>
@@ -726,10 +726,10 @@ CS 101 - Fall 2025
 <span id="cb12-12"><a></a><span class="bu">print</span>(<span class="ss">f"In 100 days it will be: </span><span class="sc">{</span>future<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-13"><a></a></span>
 <span id="cb12-14"><a></a><span class="co"># Your challenge: </span></span>
-<span id="cb12-15"><a></a><span class="co"># Find what day of the week you were born!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-15"><a></a><span class="co"># Find what day of the week you were born!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Challenge 2: <code>statistics</code> Module</strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> statistics</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="im">import</span> statistics</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a><span class="co"># Analyze test scores</span></span>
 <span id="cb13-4"><a></a>scores <span class="op">=</span> [<span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">76</span>, <span class="dv">95</span>, <span class="dv">82</span>, <span class="dv">90</span>, <span class="dv">87</span>, <span class="dv">93</span>, <span class="dv">79</span>, <span class="dv">91</span>]</span>
@@ -741,7 +741,7 @@ CS 101 - Fall 2025
 <span id="cb13-10"><a></a></span>
 <span id="cb13-11"><a></a><span class="co"># Your challenge:</span></span>
 <span id="cb13-12"><a></a><span class="co"># Add functions to find the grade distribution!</span></span>
-<span id="cb13-13"><a></a><span class="co"># (How many A's, B's, C's, etc.)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-13"><a></a><span class="co"># (How many A's, B's, C's, etc.)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
 <section class="slide level2">
@@ -898,7 +898,7 @@ Charlie,16,92,Math</code></pre>
 </div><div class="column">
 <p>Textfile Contents</p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a></a>What did 20 do when it was hungry? Twenty-eight.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a></a>What did 20 do when it was hungry? Twenty-eight.</span>
 <span id="cb18-2"><a></a>Why is grass so dangerous? Because it's full of blades!</span>
 <span id="cb18-3"><a></a>Why are mountains so funny? They’re hill areas.</span>
 <span id="cb18-4"><a></a>Why wasn’t the cactus invited to hang out with the mushrooms? He wasn’t a fungi.</span>
@@ -939,7 +939,7 @@ Charlie,16,92,Math</code></pre>
 <span id="cb18-39"><a></a>I can always tell when someone is lying. I can tell when they're standing too.</span>
 <span id="cb18-40"><a></a>Some people pick their nose, but I was born with mine.</span>
 <span id="cb18-41"><a></a>If your house is cold, just stand in the corner. It’s always 90 degrees there.</span>
-<span id="cb18-42"><a></a>Why did the scarecrow win an award? Because he was outstanding in his field!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-42"><a></a>Why did the scarecrow win an award? Because he was outstanding in his field!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -978,13 +978,13 @@ Charlie,16,92,Math</code></pre>
 </div><div class="column">
 <p>Python Code</p>
 <div style="font-size: 0.9em;">
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>myFile <span class="op">=</span> <span class="st">"jokes.txt"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>myFile <span class="op">=</span> <span class="st">"jokes.txt"</span></span>
 <span id="cb19-2"><a></a></span>
 <span id="cb19-3"><a></a><span class="co"># Open the text file, display contents</span></span>
 <span id="cb19-4"><a></a></span>
 <span id="cb19-5"><a></a><span class="cf">with</span> <span class="bu">open</span>(myFile, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb19-6"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read() <span class="co"># pull the contents from the file</span></span>
-<span id="cb19-7"><a></a>    <span class="bu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-7"><a></a>    <span class="bu">print</span>(content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -1027,7 +1027,7 @@ Charlie,16,92,Math</code></pre>
 </div><div class="column">
 <p>Python Code</p>
 <div style="font-size: 0.9em;">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> random</span>
 <span id="cb20-2"><a></a></span>
 <span id="cb20-3"><a></a>myFile <span class="op">=</span> <span class="st">"jokes.txt"</span></span>
 <span id="cb20-4"><a></a></span>
@@ -1036,7 +1036,7 @@ Charlie,16,92,Math</code></pre>
 <span id="cb20-7"><a></a><span class="cf">with</span> <span class="bu">open</span>(myFile, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb20-8"><a></a>    jokes <span class="op">=</span> <span class="bu">file</span>.readlines() <span class="co"># pull all lines from the file</span></span>
 <span id="cb20-9"><a></a>    random_joke <span class="op">=</span> random.choice(jokes).strip() <span class="co"># select a random joke</span></span>
-<span id="cb20-10"><a></a>    <span class="bu">print</span>(random_joke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-10"><a></a>    <span class="bu">print</span>(random_joke)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section></section>
@@ -1061,13 +1061,13 @@ Charlie,16,92,Math</code></pre>
 </div>
 </div>
 <div style="font-size: 0.9em;">
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a></span>
 <span id="cb21-2"><a></a><span class="co"># Method 4: Read all lines into a list</span></span>
 <span id="cb21-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'student_essay.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb21-4"><a></a>    lines <span class="op">=</span> <span class="bu">file</span>.readlines()  <span class="co"># Returns list of lines</span></span>
 <span id="cb21-5"><a></a>    <span class="bu">print</span>(<span class="ss">f"File has </span><span class="sc">{</span><span class="bu">len</span>(lines)<span class="sc">}</span><span class="ss"> lines"</span>)</span>
 <span id="cb21-6"><a></a>    <span class="cf">for</span> i, line <span class="kw">in</span> <span class="bu">enumerate</span>(lines):</span>
-<span id="cb21-7"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>line<span class="sc">.</span>strip()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-7"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>line<span class="sc">.</span>strip()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="reading-text-files-1" class="slide level2">
@@ -1090,25 +1090,25 @@ Charlie,16,92,Math</code></pre>
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Method 1: Basic file reading (manual close)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Method 1: Basic file reading (manual close)</span></span>
 <span id="cb22-2"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'student_essay.txt'</span>, <span class="st">'r'</span>)  <span class="co"># 'r' = read mode</span></span>
 <span id="cb22-3"><a></a>content <span class="op">=</span> <span class="bu">file</span>.read()  <span class="co"># Read entire file</span></span>
 <span id="cb22-4"><a></a><span class="bu">print</span>(content)</span>
-<span id="cb22-5"><a></a><span class="bu">file</span>.close()  <span class="co"># Always close the file!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co">##############################</span></span>
+<span id="cb22-5"><a></a><span class="bu">file</span>.close()  <span class="co"># Always close the file!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co">##############################</span></span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a><span class="co"># Method 2: Read line by line</span></span>
 <span id="cb23-4"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'student_essay.txt'</span>, <span class="st">'r'</span>)</span>
 <span id="cb23-5"><a></a><span class="cf">for</span> line_number, line <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">file</span>, <span class="dv">1</span>):</span>
 <span id="cb23-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"Line </span><span class="sc">{</span>line_number<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>line<span class="sc">.</span>strip()<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># strip() removes \n</span></span>
-<span id="cb23-7"><a></a><span class="bu">file</span>.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">##############################</span></span>
+<span id="cb23-7"><a></a><span class="bu">file</span>.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">##############################</span></span>
 <span id="cb24-2"><a></a></span>
 <span id="cb24-3"><a></a><span class="co"># Method 3: Best practice - using 'with' (auto-closes!)</span></span>
 <span id="cb24-4"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'student_essay.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb24-5"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
 <span id="cb24-6"><a></a>    <span class="bu">print</span>(content)</span>
-<span id="cb24-7"><a></a><span class="co"># File automatically closes when indented block ends!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-7"><a></a><span class="co"># File automatically closes when indented block ends!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="wait-whats-the-code-doing" class="slide level2">
@@ -1129,7 +1129,7 @@ Charlie,16,92,Math</code></pre>
 <div class="columns">
 <div class="column">
 <div style="font-size: 0.9em;">
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> random</span>
 <span id="cb25-2"><a></a></span>
 <span id="cb25-3"><a></a>myFile <span class="op">=</span> <span class="st">"jokes.txt"</span></span>
 <span id="cb25-4"><a></a></span>
@@ -1138,12 +1138,12 @@ Charlie,16,92,Math</code></pre>
 <span id="cb25-7"><a></a><span class="cf">with</span> <span class="bu">open</span>(myFile, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb25-8"><a></a>    jokes <span class="op">=</span> <span class="bu">file</span>.readlines() <span class="co"># pull all lines from the file</span></span>
 <span id="cb25-9"><a></a>    random_joke <span class="op">=</span> random.choice(jokes).strip() <span class="co"># select a random joke</span></span>
-<span id="cb25-10"><a></a>    <span class="bu">print</span>(random_joke)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-10"><a></a>    <span class="bu">print</span>(random_joke)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div style="font-size: 0.9em;">
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(myFile,<span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb26-2"><a></a>    jokes <span class="op">=</span> <span class="bu">file</span>.readlines()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(myFile,<span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb26-2"><a></a>    jokes <span class="op">=</span> <span class="bu">file</span>.readlines()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>myfile</code> is a string variable</li>
 <li>Opens the <code>myfile</code> in <strong>read</strong> mode (not <strong>write</strong> mode)</li>
@@ -1175,25 +1175,25 @@ Charlie,16,92,Math</code></pre>
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># Method 1: Basic file writing (manual close)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># Method 1: Basic file writing (manual close)</span></span>
 <span id="cb27-2"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'my_notes.txt'</span>, <span class="st">'w'</span>)  <span class="co"># 'w' = write mode (overwrites!)</span></span>
 <span id="cb27-3"><a></a><span class="bu">file</span>.write(<span class="st">'This is my first note.</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb27-4"><a></a><span class="bu">file</span>.write(<span class="st">'This is my second note.</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb27-5"><a></a><span class="bu">file</span>.close()  <span class="co"># Always close to save!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co">##############################</span></span>
+<span id="cb27-5"><a></a><span class="bu">file</span>.close()  <span class="co"># Always close to save!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co">##############################</span></span>
 <span id="cb28-2"><a></a></span>
 <span id="cb28-3"><a></a><span class="co"># Method 2: Writing multiple lines at once</span></span>
 <span id="cb28-4"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'shopping_list.txt'</span>, <span class="st">'w'</span>)</span>
 <span id="cb28-5"><a></a>items <span class="op">=</span> [<span class="st">'Apples</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'Bananas</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'Milk</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">'Bread</span><span class="ch">\n</span><span class="st">'</span>]</span>
 <span id="cb28-6"><a></a><span class="bu">file</span>.writelines(items)  <span class="co"># Write all lines at once</span></span>
-<span id="cb28-7"><a></a><span class="bu">file</span>.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co">##############################</span></span>
+<span id="cb28-7"><a></a><span class="bu">file</span>.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co">##############################</span></span>
 <span id="cb29-2"><a></a></span>
 <span id="cb29-3"><a></a><span class="co"># Method 3: Best practice - using 'with' (auto-closes!)</span></span>
 <span id="cb29-4"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'diary.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb29-5"><a></a>    <span class="bu">file</span>.write(<span class="st">'Today was a great day!</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb29-6"><a></a>    <span class="bu">file</span>.write(<span class="st">'I learned about file writing in Python.</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb29-7"><a></a><span class="co"># File automatically saves and closes when indented block ends!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-7"><a></a><span class="co"># File automatically saves and closes when indented block ends!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="important-write-modes-explained" class="slide level2">
@@ -1257,13 +1257,13 @@ Charlie,16,92,Math</code></pre>
 </table>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># </span><span class="al">DANGER</span><span class="co">: This erases all old content!</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># </span><span class="al">DANGER</span><span class="co">: This erases all old content!</span></span>
 <span id="cb30-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'notes.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb30-3"><a></a>    <span class="bu">file</span>.write(<span class="st">'New content replaces everything!</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb30-4"><a></a></span>
 <span id="cb30-5"><a></a><span class="co"># SAFE: This adds to the end</span></span>
 <span id="cb30-6"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'notes.txt'</span>, <span class="st">'a'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb30-7"><a></a>    <span class="bu">file</span>.write(<span class="st">'This line gets added to the end.</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-7"><a></a>    <span class="bu">file</span>.write(<span class="st">'This line gets added to the end.</span><span class="ch">\n</span><span class="st">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="real-example-creating-a-to-do-list" class="slide level2">
@@ -1284,7 +1284,7 @@ Charlie,16,92,Math</code></pre>
 <div class="columns">
 <div class="column">
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># Create a to-do list file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># Create a to-do list file</span></span>
 <span id="cb31-2"><a></a>todo_file <span class="op">=</span> <span class="st">"my_tasks.txt"</span></span>
 <span id="cb31-3"><a></a></span>
 <span id="cb31-4"><a></a><span class="co"># Write initial tasks</span></span>
@@ -1302,13 +1302,13 @@ Charlie,16,92,Math</code></pre>
 <span id="cb31-16"><a></a>    <span class="bu">file</span>.write(<span class="st">"4. Call mom</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb31-17"><a></a>    <span class="bu">file</span>.write(<span class="st">"5. Read chapter 3</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb31-18"><a></a></span>
-<span id="cb31-19"><a></a><span class="bu">print</span>(<span class="st">"Tasks added!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-19"><a></a><span class="bu">print</span>(<span class="st">"Tasks added!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div style="font-size: 0.6em;">
 <p><strong>What’s Happening?</strong></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(todo_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb32-2"><a></a>    <span class="bu">file</span>.write(<span class="st">"To-Do List for Today</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(todo_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb32-2"><a></a>    <span class="bu">file</span>.write(<span class="st">"To-Do List for Today</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>todo_file</code> is a string variable with filename</li>
 <li>Opens file in <strong>write</strong> mode (creates or overwrites)</li>
@@ -1366,7 +1366,7 @@ To-Do List for Today
 <div class="column">
 <p><strong>Creating New Files</strong></p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># Write a new file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># Write a new file</span></span>
 <span id="cb34-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'my_story.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:  <span class="co"># 'w' = write mode</span></span>
 <span id="cb34-3"><a></a>    <span class="bu">file</span>.write(<span class="st">"Once upon a time...</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb34-4"><a></a>    <span class="bu">file</span>.write(<span class="st">"There was a student learning Python.</span><span class="ch">\n</span><span class="st">"</span>) </span>
@@ -1382,12 +1382,12 @@ To-Do List for Today
 <span id="cb34-14"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'novel.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb34-15"><a></a>    <span class="bu">file</span>.writelines(lines)  <span class="co"># Write list of lines</span></span>
 <span id="cb34-16"><a></a></span>
-<span id="cb34-17"><a></a><span class="bu">print</span>(<span class="st">"Files created successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-17"><a></a><span class="bu">print</span>(<span class="st">"Files created successfully!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <p><strong>Appending to Files</strong></p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># Add to existing file (don't overwrite!)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># Add to existing file (don't overwrite!)</span></span>
 <span id="cb35-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'my_story.txt'</span>, <span class="st">'a'</span>) <span class="im">as</span> <span class="bu">file</span>:  <span class="co"># 'a' = append mode</span></span>
 <span id="cb35-3"><a></a>    <span class="bu">file</span>.write(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Chapter 2: The Adventure Continues</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb35-4"><a></a>    <span class="bu">file</span>.write(<span class="st">"Our hero learned about file modes:</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -1403,7 +1403,7 @@ To-Do List for Today
 <span id="cb35-14"><a></a>        <span class="bu">file</span>.write(<span class="st">"Everything working great!</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb35-15"><a></a>    <span class="bu">print</span>(<span class="st">"Log entry added!"</span>)</span>
 <span id="cb35-16"><a></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
-<span id="cb35-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"Could not find </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"Could not find </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 <!-- <center>
@@ -1426,7 +1426,7 @@ To-Do List for Today
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="im">import</span> csv</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="im">import</span> csv</span>
 <span id="cb36-2"><a></a></span>
 <span id="cb36-3"><a></a><span class="co"># Reading CSV files - Method 1: Basic reading</span></span>
 <span id="cb36-4"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'students.csv'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -1461,7 +1461,7 @@ To-Do List for Today
 <span id="cb36-33"><a></a>    csv_writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
 <span id="cb36-34"><a></a>    csv_writer.writerows(student_data)  <span class="co"># Write all rows at once</span></span>
 <span id="cb36-35"><a></a></span>
-<span id="cb36-36"><a></a><span class="bu">print</span>(<span class="st">"CSV file created!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-36"><a></a><span class="bu">print</span>(<span class="st">"CSV file created!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="demo-grade-book-manager" class="slide level2">
@@ -1480,7 +1480,7 @@ To-Do List for Today
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="co"># Import the csv module to work with CSV files</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="co"># Import the csv module to work with CSV files</span></span>
 <span id="cb37-2"><a></a><span class="im">import</span> csv</span>
 <span id="cb37-3"><a></a><span class="co"># Import datetime to add timestamps to grade entries</span></span>
 <span id="cb37-4"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
@@ -1602,7 +1602,7 @@ To-Do List for Today
 <span id="cb37-120"><a></a>alice_avg <span class="op">=</span> gb.get_student_average(<span class="st">"Alice"</span>)</span>
 <span id="cb37-121"><a></a><span class="cf">if</span> alice_avg:</span>
 <span id="cb37-122"><a></a>    <span class="co"># Display average with one decimal place using :.1f formatting</span></span>
-<span id="cb37-123"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Alice's average: </span><span class="sc">{</span>alice_avg<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-123"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Alice's average: </span><span class="sc">{</span>alice_avg<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- ```python
 import csv
@@ -1716,7 +1716,7 @@ if alice_avg:
 <div class="column">
 <div style="font-size: 0.6em;">
 <p><strong>Create <code>math_helpers.py</code></strong></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="co">"""</span></span>
 <span id="cb38-2"><a></a><span class="co">Math Helper Functions</span></span>
 <span id="cb38-3"><a></a><span class="co">A collection of useful mathematical utilities</span></span>
 <span id="cb38-4"><a></a><span class="co">"""</span></span>
@@ -1760,12 +1760,12 @@ if alice_avg:
 <span id="cb38-42"><a></a>    <span class="bu">print</span>(<span class="ss">f"Triangle area (b=8, h=5): </span><span class="sc">{</span>area_triangle(<span class="dv">8</span>, <span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb38-43"><a></a>    <span class="bu">print</span>(<span class="ss">f"Distance (0,0) to (3,4): </span><span class="sc">{</span>distance_2d(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb38-44"><a></a>    <span class="bu">print</span>(<span class="ss">f"Is 16 perfect square? </span><span class="sc">{</span>is_perfect_square(<span class="dv">16</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb38-45"><a></a>    <span class="bu">print</span>(<span class="ss">f"Golden ratio: </span><span class="sc">{</span>GOLDEN_RATIO<span class="sc">:.6f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-45"><a></a>    <span class="bu">print</span>(<span class="ss">f"Golden ratio: </span><span class="sc">{</span>GOLDEN_RATIO<span class="sc">:.6f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <p><strong>Using Your Module</strong></p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co"># Import your custom module</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co"># Import your custom module</span></span>
 <span id="cb39-2"><a></a><span class="im">import</span> math_helpers</span>
 <span id="cb39-3"><a></a></span>
 <span id="cb39-4"><a></a><span class="co"># Use the functions</span></span>
@@ -1792,7 +1792,7 @@ if alice_avg:
 <span id="cb39-25"><a></a><span class="bu">print</span>(<span class="ss">f"Pi (rounded): </span><span class="sc">{</span>PI_ROUNDED<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb39-26"><a></a></span>
 <span id="cb39-27"><a></a><span class="co"># Run the demo</span></span>
-<span id="cb39-28"><a></a>math_helpers.demo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-28"><a></a>math_helpers.demo()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -1814,7 +1814,7 @@ if alice_avg:
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co">"""</span></span>
 <span id="cb40-2"><a></a><span class="co">student_toolkit.py</span></span>
 <span id="cb40-3"><a></a><span class="co">A comprehensive toolkit for student-related operations</span></span>
 <span id="cb40-4"><a></a><span class="co">"""</span></span>
@@ -1974,7 +1974,7 @@ if alice_avg:
 <span id="cb40-158"><a></a>    <span class="co"># Save data</span></span>
 <span id="cb40-159"><a></a>    save_to_csv(sm.students, <span class="st">'student_report.csv'</span>)</span>
 <span id="cb40-160"><a></a>    save_to_json(sm.students, <span class="st">'student_data.json'</span>)</span>
-<span id="cb40-161"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📁 Data saved to CSV and JSON files!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-161"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📁 Data saved to CSV and JSON files!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="using-your-custom-module" class="slide level2">
@@ -1982,7 +1982,7 @@ if alice_avg:
 <p>Example 1 of Real-World Applications! 🌍</p>
 <p><strong>Import and Use</strong></p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co"># Using your student toolkit</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co"># Using your student toolkit</span></span>
 <span id="cb41-2"><a></a><span class="im">from</span> student_toolkit <span class="im">import</span> (</span>
 <span id="cb41-3"><a></a>    StudentManager, </span>
 <span id="cb41-4"><a></a>    calculate_gpa, </span>
@@ -2027,7 +2027,7 @@ if alice_avg:
 <span id="cb41-43"><a></a>    grades_list <span class="op">=</span> [g[<span class="st">'grade'</span>] <span class="cf">for</span> g <span class="kw">in</span> student[<span class="st">'grades'</span>]]</span>
 <span id="cb41-44"><a></a>    gpa <span class="op">=</span> calculate_gpa(grades_list)</span>
 <span id="cb41-45"><a></a>    </span>
-<span id="cb41-46"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>student[<span class="st">'name'</span>]<span class="sc">:&lt;15}</span><span class="ss"> | Avg: </span><span class="sc">{</span>avg<span class="sc">:5.1f}</span><span class="ss">% | Grade: </span><span class="sc">{</span>letter<span class="sc">}</span><span class="ss"> | GPA: </span><span class="sc">{</span>gpa<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-46"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>student[<span class="st">'name'</span>]<span class="sc">:&lt;15}</span><span class="ss"> | Avg: </span><span class="sc">{</span>avg<span class="sc">:5.1f}</span><span class="ss">% | Grade: </span><span class="sc">{</span>letter<span class="sc">}</span><span class="ss"> | GPA: </span><span class="sc">{</span>gpa<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- ::: {.callout-important}
 There are many different ways to write *Real-World* applications, but this is a good way to begin a project.
@@ -2038,7 +2038,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <p>Example 2 of Real-World Applications! 🌍</p>
 <p><strong>Module Organization</strong></p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co"># Create a package structure</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co"># Create a package structure</span></span>
 <span id="cb42-2"><a></a><span class="co">"""</span></span>
 <span id="cb42-3"><a></a><span class="co">my_school_package/</span></span>
 <span id="cb42-4"><a></a><span class="co">├── __init__.py          # Makes it a package</span></span>
@@ -2073,7 +2073,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb42-33"><a></a>    <span class="bu">print</span>(<span class="st">"- StudentManager: Manage student data"</span>)</span>
 <span id="cb42-34"><a></a>    <span class="bu">print</span>(<span class="st">"- Grade calculators: GPA and letter grades"</span>) </span>
 <span id="cb42-35"><a></a>    <span class="bu">print</span>(<span class="st">"- Report generators: Create summaries"</span>)</span>
-<span id="cb42-36"><a></a>    <span class="bu">print</span>(<span class="st">"- Data utilities: Save/load functionality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-36"><a></a>    <span class="bu">print</span>(<span class="st">"- Data utilities: Save/load functionality"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="module-best-practices-documentation" class="slide level2">
@@ -2094,7 +2094,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 </div>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co">"""</span></span>
 <span id="cb43-2"><a></a><span class="co">geometry_tools.py</span></span>
 <span id="cb43-3"><a></a><span class="co">Advanced Geometric Calculations and Shape Analysis</span></span>
 <span id="cb43-4"><a></a></span>
@@ -2251,7 +2251,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb43-155"><a></a>    <span class="co"># Test conversions</span></span>
 <span id="cb43-156"><a></a>    angle_deg <span class="op">=</span> <span class="dv">90</span></span>
 <span id="cb43-157"><a></a>    angle_rad <span class="op">=</span> convert_to_radians(angle_deg)</span>
-<span id="cb43-158"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>angle_deg<span class="sc">}</span><span class="ss">° = </span><span class="sc">{</span>angle_rad<span class="sc">:.4f}</span><span class="ss"> radians"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-158"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>angle_deg<span class="sc">}</span><span class="ss">° = </span><span class="sc">{</span>angle_rad<span class="sc">:.4f}</span><span class="ss"> radians"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="hands-on-challenge" class="slide level2">
@@ -2276,7 +2276,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <p><strong>Option 1: Game Utilities</strong></p>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co">"""</span></span>
 <span id="cb44-2"><a></a><span class="co">game_utils.py - Gaming Helper Functions</span></span>
 <span id="cb44-3"><a></a><span class="co">"""</span></span>
 <span id="cb44-4"><a></a></span>
@@ -2307,14 +2307,14 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb44-29"><a></a><span class="co"># Your additions:</span></span>
 <span id="cb44-30"><a></a><span class="co"># - Magic spells system</span></span>
 <span id="cb44-31"><a></a><span class="co"># - Inventory management</span></span>
-<span id="cb44-32"><a></a><span class="co"># - Experience points calculation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-32"><a></a><span class="co"># - Experience points calculation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div style="font-size: 0.6em;">
 <p><strong>Option 2: Text Analysis</strong></p>
 </div>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="co">"""</span></span>
 <span id="cb45-2"><a></a><span class="co">text_analyzer.py - Analyze written text</span></span>
 <span id="cb45-3"><a></a><span class="co">"""</span></span>
 <span id="cb45-4"><a></a></span>
@@ -2345,7 +2345,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb45-29"><a></a><span class="co"># Your additions:</span></span>
 <span id="cb45-30"><a></a><span class="co"># - Sentiment analysis (positive/negative)</span></span>
 <span id="cb45-31"><a></a><span class="co"># - Common word finder</span></span>
-<span id="cb45-32"><a></a><span class="co"># - Text summarizer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-32"><a></a><span class="co"># - Text summarizer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -2353,7 +2353,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <h2>Solution :: Week and Weekend Days</h2>
 <p>Solution: How many days are there without weekend days in a month?</p>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="co"># Finding the number of days of the week, less weekend days, each month.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="co"># Finding the number of days of the week, less weekend days, each month.</span></span>
 <span id="cb46-2"><a></a></span>
 <span id="cb46-3"><a></a><span class="im">import</span> calendar <span class="im">as</span> cal</span>
 <span id="cb46-4"><a></a></span>
@@ -2395,10 +2395,10 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb46-40"><a></a>sat, sun <span class="op">=</span> count_weekends_in_month(year, month)</span>
 <span id="cb46-41"><a></a><span class="bu">print</span>(<span class="ss">f" Number of weekend days : </span><span class="sc">{</span>sat <span class="op">+</span> sun<span class="sc">}</span><span class="ss"> "</span>)</span>
 <span id="cb46-42"><a></a><span class="bu">print</span>(<span class="ss">f" Number of days in month : </span><span class="sc">{</span>getMonthLen(year, month)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb46-43"><a></a><span class="bu">print</span>(<span class="ss">f" Number of weekdays : </span><span class="sc">{</span>getMonthLen(year, month) <span class="op">-</span> (sat <span class="op">+</span> sun)<span class="sc">}</span><span class="ss"> "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-43"><a></a><span class="bu">print</span>(<span class="ss">f" Number of weekdays : </span><span class="sc">{</span>getMonthLen(year, month) <span class="op">-</span> (sat <span class="op">+</span> sun)<span class="sc">}</span><span class="ss"> "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="font-size: 0.6em;">
-<div id="8e5b6e1e" class="cell" data-execution_count="1">
+<div id="e6098968" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code> Month = 12
  Year = 2025
@@ -2413,7 +2413,7 @@ There are many different ways to write *Real-World* applications, but this is a 
 <section id="solution-finding-areas" class="slide level2">
 <h2>Solution :: Finding Areas</h2>
 <div style="font-size: 0.6em;">
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="im">import</span> math</span>
 <span id="cb48-2"><a></a></span>
 <span id="cb48-3"><a></a><span class="kw">def</span> circle_calculator(radius):</span>
 <span id="cb48-4"><a></a>    <span class="co">"""Calculate everything about a circle given its radius"""</span></span>
@@ -2448,10 +2448,10 @@ There are many different ways to write *Real-World* applications, but this is a 
 <span id="cb48-33"><a></a><span class="cf">for</span> r <span class="kw">in</span> radii:</span>
 <span id="cb48-34"><a></a>    info <span class="op">=</span> circle_calculator(r)</span>
 <span id="cb48-35"><a></a>    <span class="co"># pull values from dictionary structure</span></span>
-<span id="cb48-36"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>info[<span class="st">'radius'</span>]<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'diameter'</span>]<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'area'</span>]<span class="sc">:&lt;12}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">:&lt;16}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-36"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>info[<span class="st">'radius'</span>]<span class="sc">:&lt;8}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'diameter'</span>]<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'area'</span>]<span class="sc">:&lt;12}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">:&lt;16}</span><span class="ss"> </span><span class="sc">{</span>info[<span class="st">'circumference'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="font-size: 0.6em;">
-<div id="f8423e55" class="cell" data-execution_count="2">
+<div id="b06d765b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>🔵 Circle Calculator Results:
 --------------------------------------------------------------------------------
@@ -2713,7 +2713,7 @@ You've mastered the essential skills of working with Python modules and files!
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2787,13 +2787,14 @@ You've mastered the essential skills of working with Python modules and files!
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

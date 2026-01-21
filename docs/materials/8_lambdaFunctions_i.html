@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="CS 101 - Fall 2025">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 5: Lambda Functions</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -295,7 +295,7 @@ CS 101 - Fall 2025
 <p><strong>Basic Syntax</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Lambda syntax: lambda arguments: expression</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Lambda syntax: lambda arguments: expression</span></span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a><span class="co"># Regular function</span></span>
 <span id="cb1-4"><a></a><span class="kw">def</span> square(x):</span>
@@ -306,7 +306,7 @@ CS 101 - Fall 2025
 <span id="cb1-9"><a></a></span>
 <span id="cb1-10"><a></a><span class="co"># Using both</span></span>
 <span id="cb1-11"><a></a><span class="bu">print</span>(square(<span class="dv">5</span>))        <span class="co"># Output: 25</span></span>
-<span id="cb1-12"><a></a><span class="bu">print</span>(square_lambda(<span class="dv">5</span>)) <span class="co"># Output: 25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a></a><span class="bu">print</span>(square_lambda(<span class="dv">5</span>)) <span class="co"># Output: 25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -322,7 +322,7 @@ CS 101 - Fall 2025
 <p><strong>More Examples</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Multiple arguments</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Multiple arguments</span></span>
 <span id="cb2-2"><a></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
 <span id="cb2-3"><a></a>multiply <span class="op">=</span> <span class="kw">lambda</span> x, y, z: x <span class="op">*</span> y <span class="op">*</span> z</span>
 <span id="cb2-4"><a></a></span>
@@ -332,7 +332,7 @@ CS 101 - Fall 2025
 <span id="cb2-8"><a></a><span class="bu">print</span>(add(<span class="dv">3</span>, <span class="dv">5</span>))           <span class="co"># Output: 8</span></span>
 <span id="cb2-9"><a></a><span class="bu">print</span>(multiply(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))   <span class="co"># Output: 24</span></span>
 <span id="cb2-10"><a></a><span class="bu">print</span>(greet())             <span class="co"># Output: Hello, World!</span></span>
-<span id="cb2-11"><a></a><span class="bu">print</span>(greet(<span class="st">"Alice"</span>))      <span class="co"># Output: Hello, Alice!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a></a><span class="bu">print</span>(greet(<span class="st">"Alice"</span>))      <span class="co"># Output: Hello, Alice!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -356,7 +356,7 @@ CS 101 - Fall 2025
 <li>A lambda that finds the minimum <code>min()</code> of three numbers</li>
 </ol>
 <p><strong>Starter Code:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> math</span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a><span class="co"># Your lambda functions here</span></span>
 <span id="cb3-4"><a></a>circle_area <span class="op">=</span> <span class="kw">lambda</span> r: <span class="co"># Complete this</span></span>
@@ -368,7 +368,7 @@ CS 101 - Fall 2025
 <span id="cb3-10"><a></a><span class="bu">print</span>(circle_area(<span class="dv">5</span>))</span>
 <span id="cb3-11"><a></a><span class="bu">print</span>(fahrenheit_to_celsius(<span class="dv">68</span>))</span>
 <span id="cb3-12"><a></a><span class="bu">print</span>(max_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>))</span>
-<span id="cb3-13"><a></a><span class="bu">print</span>(min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a></a><span class="bu">print</span>(min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -381,7 +381,7 @@ CS 101 - Fall 2025
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> math</span>
 <span id="cb4-2"><a></a></span>
 <span id="cb4-3"><a></a><span class="co"># Solution 1: Circle area</span></span>
 <span id="cb4-4"><a></a>circle_area <span class="op">=</span> <span class="kw">lambda</span> r: math.pi <span class="op">*</span> r <span class="op">*</span> r</span>
@@ -403,7 +403,7 @@ CS 101 - Fall 2025
 <span id="cb4-20"><a></a><span class="bu">print</span>(<span class="ss">f"Circle area (r=5): </span><span class="sc">{</span>circle_area(<span class="dv">5</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)      <span class="co"># 78.54</span></span>
 <span id="cb4-21"><a></a><span class="bu">print</span>(<span class="ss">f"68°F in Celsius: </span><span class="sc">{</span>fahrenheit_to_celsius(<span class="dv">68</span>)<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># 20.0</span></span>
 <span id="cb4-22"><a></a><span class="bu">print</span>(<span class="ss">f"Max of 10,20,15: </span><span class="sc">{</span>max_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>)<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 20</span></span>
-<span id="cb4-23"><a></a><span class="bu">print</span>(<span class="ss">f"Min of 10,20,15: </span><span class="sc">{</span>min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>)<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-23"><a></a><span class="bu">print</span>(<span class="ss">f"Min of 10,20,15: </span><span class="sc">{</span>min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>)<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -515,7 +515,7 @@ print("Both methods give the same result!")
 <p><strong>Side-by-Side Comparison</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># ✅ Good use of lambda - simple, clear</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># ✅ Good use of lambda - simple, clear</span></span>
 <span id="cb5-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb5-3"><a></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
 <span id="cb5-4"><a></a></span>
@@ -529,7 +529,7 @@ print("Both methods give the same result!")
 <span id="cb5-12"><a></a>    <span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
 <span id="cb5-13"><a></a>        <span class="cf">return</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb5-14"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb5-15"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -567,7 +567,7 @@ print("Both methods give the same result!")
 <p><strong>Transform All Elements</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Transform all elements in a list</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Transform all elements in a list</span></span>
 <span id="cb6-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb6-3"><a></a>names <span class="op">=</span> [<span class="st">"alice"</span>, <span class="st">"bob"</span>, <span class="st">"charlie"</span>]</span>
 <span id="cb6-4"><a></a></span>
@@ -583,7 +583,7 @@ print("Both methods give the same result!")
 <span id="cb6-14"><a></a>nums1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb6-15"><a></a>nums2 <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
 <span id="cb6-16"><a></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, nums1, nums2))</span>
-<span id="cb6-17"><a></a><span class="bu">print</span>(<span class="ss">f"Sums: </span><span class="sc">{</span>sums<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [5, 7, 9]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-17"><a></a><span class="bu">print</span>(<span class="ss">f"Sums: </span><span class="sc">{</span>sums<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [5, 7, 9]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -596,7 +596,7 @@ print("Both methods give the same result!")
 <p><strong>Keep Only What You Want</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Filter elements based on condition</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Filter elements based on condition</span></span>
 <span id="cb7-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
 <span id="cb7-3"><a></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>, <span class="st">"date"</span>, <span class="st">"elderberry"</span>]</span>
 <span id="cb7-4"><a></a></span>
@@ -611,7 +611,7 @@ print("Both methods give the same result!")
 <span id="cb7-13"><a></a><span class="co"># Keep positive numbers</span></span>
 <span id="cb7-14"><a></a>mixed <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">9</span>]</span>
 <span id="cb7-15"><a></a>positives <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">0</span>, mixed))</span>
-<span id="cb7-16"><a></a><span class="bu">print</span>(<span class="ss">f"Positives: </span><span class="sc">{</span>positives<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 5, 9]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a></a><span class="bu">print</span>(<span class="ss">f"Positives: </span><span class="sc">{</span>positives<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 5, 9]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -624,7 +624,7 @@ print("Both methods give the same result!")
 <p><strong>Custom Sorting Logic</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Sort with custom criteria</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Sort with custom criteria</span></span>
 <span id="cb8-2"><a></a>students <span class="op">=</span> [</span>
 <span id="cb8-3"><a></a>    {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"grade"</span>: <span class="dv">85</span>},</span>
 <span id="cb8-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"Bob"</span>, <span class="st">"grade"</span>: <span class="dv">92</span>},</span>
@@ -644,7 +644,7 @@ print("Both methods give the same result!")
 <span id="cb8-18"><a></a></span>
 <span id="cb8-19"><a></a><span class="co"># Sort words by last letter</span></span>
 <span id="cb8-20"><a></a>by_last_letter <span class="op">=</span> <span class="bu">sorted</span>(words, key<span class="op">=</span><span class="kw">lambda</span> word: word[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb8-21"><a></a><span class="bu">print</span>(<span class="ss">f"By last letter: </span><span class="sc">{</span>by_last_letter<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['banana', 'pie', 'book', 'Washington']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-21"><a></a><span class="bu">print</span>(<span class="ss">f"By last letter: </span><span class="sc">{</span>by_last_letter<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['banana', 'pie', 'book', 'Washington']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -658,7 +658,7 @@ print("Both methods give the same result!")
 </div>
 <div class="callout-content">
 <p><strong>Challenge:</strong> Use lambda functions with <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Given data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Given data</span></span>
 <span id="cb9-2"><a></a>temperatures_f <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">68</span>, <span class="dv">86</span>, <span class="dv">104</span>, <span class="dv">212</span>]  <span class="co"># Fahrenheit</span></span>
 <span id="cb9-3"><a></a>prices <span class="op">=</span> [<span class="fl">10.99</span>, <span class="fl">23.45</span>, <span class="fl">5.67</span>, <span class="fl">45.00</span>, <span class="fl">12.34</span>]</span>
 <span id="cb9-4"><a></a>products <span class="op">=</span> [</span>
@@ -671,7 +671,7 @@ print("Both methods give the same result!")
 <span id="cb9-11"><a></a><span class="co"># Your tasks:</span></span>
 <span id="cb9-12"><a></a><span class="co"># 1. Convert temperatures to Celsius using map()</span></span>
 <span id="cb9-13"><a></a><span class="co"># 2. Find prices under $20 using filter()</span></span>
-<span id="cb9-14"><a></a><span class="co"># 3. Sort products by rating (highest first) using sorted()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-14"><a></a><span class="co"># 3. Sort products by rating (highest first) using sorted()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -684,7 +684,7 @@ print("Both methods give the same result!")
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># 1. Convert temperatures to Celsius</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># 1. Convert temperatures to Celsius</span></span>
 <span id="cb10-2"><a></a>celsius <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> f: (f <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span>, temperatures_f))</span>
 <span id="cb10-3"><a></a><span class="bu">print</span>(<span class="ss">f"Celsius: </span><span class="sc">{</span>[<span class="bu">round</span>(temp, <span class="dv">1</span>) <span class="cf">for</span> temp <span class="kw">in</span> celsius]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb10-4"><a></a><span class="co"># [0.0, 20.0, 30.0, 40.0, 100.0]</span></span>
@@ -697,7 +697,7 @@ print("Both methods give the same result!")
 <span id="cb10-11"><a></a>by_rating <span class="op">=</span> <span class="bu">sorted</span>(products, key<span class="op">=</span><span class="kw">lambda</span> p: p[<span class="st">"rating"</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-12"><a></a><span class="bu">print</span>(<span class="st">"Best rated:"</span>, by_rating[<span class="dv">0</span>][<span class="st">"name"</span>])  <span class="co"># keyboard</span></span>
 <span id="cb10-13"><a></a><span class="cf">for</span> product <span class="kw">in</span> by_rating:</span>
-<span id="cb10-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>product[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>product[<span class="st">'rating'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>product[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>product[<span class="st">'rating'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -768,7 +768,7 @@ Creates a collection with only unique items<br>
 </div>
 <div class="callout-content">
 <p>Sales Data Processing</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Sales data from a CSV or database</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Sales data from a CSV or database</span></span>
 <span id="cb11-2"><a></a>sales_data <span class="op">=</span> [</span>
 <span id="cb11-3"><a></a>    {<span class="st">"product"</span>: <span class="st">"Laptop"</span>, <span class="st">"price"</span>: <span class="fl">999.99</span>, <span class="st">"quantity"</span>: <span class="dv">2</span>, <span class="st">"discount"</span>: <span class="fl">0.1</span>},</span>
 <span id="cb11-4"><a></a>    {<span class="st">"product"</span>: <span class="st">"Mouse"</span>, <span class="st">"price"</span>: <span class="fl">25.50</span>, <span class="st">"quantity"</span>: <span class="dv">5</span>, <span class="st">"discount"</span>: <span class="fl">0.0</span>},</span>
@@ -788,9 +788,9 @@ Creates a collection with only unique items<br>
 <span id="cb11-18"><a></a>    <span class="kw">lambda</span> sale: sale[<span class="st">"price"</span>] <span class="op">*</span> sale[<span class="st">"quantity"</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sale[<span class="st">"discount"</span>]) <span class="op">&gt;</span> <span class="dv">200</span>,</span>
 <span id="cb11-19"><a></a>    sales_data</span>
 <span id="cb11-20"><a></a>))</span>
-<span id="cb11-21"><a></a><span class="bu">print</span>(<span class="ss">f"High-value sales: </span><span class="sc">{</span><span class="bu">len</span>(high_value)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-21"><a></a><span class="bu">print</span>(<span class="ss">f"High-value sales: </span><span class="sc">{</span><span class="bu">len</span>(high_value)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="c00d3742" class="cell" data-execution_count="1">
+<div id="c6c79602" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Total Revenue: $2396.22
 High-value sales: 3</code></pre>
@@ -812,7 +812,7 @@ High-value sales: 3</code></pre>
 </div>
 <div class="callout-content">
 <p>Web Development</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># User registration data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># User registration data</span></span>
 <span id="cb13-2"><a></a>users <span class="op">=</span> [</span>
 <span id="cb13-3"><a></a>    {<span class="st">"email"</span>: <span class="st">"alice@email.com"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"active"</span>: <span class="va">True</span>},</span>
 <span id="cb13-4"><a></a>    {<span class="st">"email"</span>: <span class="st">"bob@email.com"</span>, <span class="st">"age"</span>: <span class="dv">17</span>, <span class="st">"active"</span>: <span class="va">False</span>},</span>
@@ -832,9 +832,9 @@ High-value sales: 3</code></pre>
 <span id="cb13-18"><a></a></span>
 <span id="cb13-19"><a></a><span class="co"># Sort users by age</span></span>
 <span id="cb13-20"><a></a>by_age <span class="op">=</span> <span class="bu">sorted</span>(users, key<span class="op">=</span><span class="kw">lambda</span> user: user[<span class="st">"age"</span>])</span>
-<span id="cb13-21"><a></a><span class="bu">print</span>(<span class="st">"Youngest user:"</span>, by_age[<span class="dv">0</span>][<span class="st">"email"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-21"><a></a><span class="bu">print</span>(<span class="st">"Youngest user:"</span>, by_age[<span class="dv">0</span>][<span class="st">"email"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="a8ba3c6c" class="cell" data-execution_count="2">
+<div id="2d871699" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Adult user emails: ['alice@email.com', 'charlie@email.com']
 Youngest user: diana@email.com</code></pre>
@@ -856,7 +856,7 @@ Youngest user: diana@email.com</code></pre>
 </div>
 <div class="callout-content">
 <p>Analytic Computing</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> math</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> math</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="co"># Experimental data points</span></span>
 <span id="cb15-4"><a></a>data_points <span class="op">=</span> [</span>
@@ -884,9 +884,9 @@ Youngest user: diana@email.com</code></pre>
 <span id="cb15-26"><a></a>    key<span class="op">=</span><span class="kw">lambda</span> point: point[<span class="st">"y"</span>] <span class="op">/</span> point[<span class="st">"error"</span>],</span>
 <span id="cb15-27"><a></a>    reverse<span class="op">=</span><span class="va">True</span></span>
 <span id="cb15-28"><a></a>)</span>
-<span id="cb15-29"><a></a><span class="bu">print</span>(<span class="st">"Most significant point:"</span>, by_significance[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-29"><a></a><span class="bu">print</span>(<span class="st">"Most significant point:"</span>, by_significance[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="31599680" class="cell" data-execution_count="3">
+<div id="840cd66e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>Most significant point: {'x': 3, 'y': 5.8, 'error': 0.15}</code></pre>
 </div>
@@ -907,7 +907,7 @@ Youngest user: diana@email.com</code></pre>
 </div>
 <div class="callout-content">
 <p>GUI (Button Click) Event Handling</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Simulating GUI framework (like tkinter)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Simulating GUI framework (like tkinter)</span></span>
 <span id="cb17-2"><a></a><span class="kw">class</span> Button:</span>
 <span id="cb17-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, text, command<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb17-4"><a></a>        <span class="va">self</span>.text <span class="op">=</span> text</span>
@@ -931,9 +931,9 @@ Youngest user: diana@email.com</code></pre>
 <span id="cb17-22"><a></a></span>
 <span id="cb17-23"><a></a><span class="co"># Simulate button clicks</span></span>
 <span id="cb17-24"><a></a><span class="cf">for</span> button <span class="kw">in</span> buttons:</span>
-<span id="cb17-25"><a></a>    button.click()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-25"><a></a>    button.click()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="b5792442" class="cell" data-execution_count="4">
+<div id="771edc1a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>File saved!
 File loaded!
@@ -959,7 +959,7 @@ Clicked button 3</code></pre>
 </div>
 <div class="callout-content">
 <p>You’re working for an online store. Process this customer data:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>customers <span class="op">=</span> [</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>customers <span class="op">=</span> [</span>
 <span id="cb19-2"><a></a>    {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">28</span>, <span class="st">"purchases"</span>: [<span class="fl">45.99</span>, <span class="fl">23.50</span>, <span class="fl">67.25</span>], <span class="st">"member"</span>: <span class="va">True</span>},</span>
 <span id="cb19-3"><a></a>    {<span class="st">"name"</span>: <span class="st">"Bob"</span>, <span class="st">"age"</span>: <span class="dv">35</span>, <span class="st">"purchases"</span>: [<span class="fl">12.99</span>, <span class="fl">89.00</span>], <span class="st">"member"</span>: <span class="va">False</span>},</span>
 <span id="cb19-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"Charlie"</span>, <span class="st">"age"</span>: <span class="dv">22</span>, <span class="st">"purchases"</span>: [<span class="fl">156.00</span>, <span class="fl">45.50</span>, <span class="fl">23.25</span>, <span class="fl">78.90</span>], <span class="st">"member"</span>: <span class="va">True</span>},</span>
@@ -970,7 +970,7 @@ Clicked button 3</code></pre>
 <span id="cb19-9"><a></a><span class="co"># 1. Calculate total spent by each customer</span></span>
 <span id="cb19-10"><a></a><span class="co"># 2. Find VIP customers (members who spent &gt; $100)</span></span>
 <span id="cb19-11"><a></a><span class="co"># 3. Sort customers by average purchase amount</span></span>
-<span id="cb19-12"><a></a><span class="co"># 4. Get names of customers under 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-12"><a></a><span class="co"># 4. Get names of customers under 30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -983,7 +983,7 @@ Clicked button 3</code></pre>
 <p><strong>E-commerce Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># 1. Calculate total spent by each customer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># 1. Calculate total spent by each customer</span></span>
 <span id="cb20-2"><a></a>customers_with_totals <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(</span>
 <span id="cb20-3"><a></a>    <span class="kw">lambda</span> c: {<span class="op">**</span>c, <span class="st">"total_spent"</span>: <span class="bu">sum</span>(c[<span class="st">"purchases"</span>])},</span>
 <span id="cb20-4"><a></a>    customers</span>
@@ -1009,7 +1009,7 @@ Clicked button 3</code></pre>
 <span id="cb20-24"><a></a>    <span class="kw">lambda</span> c: c[<span class="st">"name"</span>],</span>
 <span id="cb20-25"><a></a>    <span class="bu">filter</span>(<span class="kw">lambda</span> c: c[<span class="st">"age"</span>] <span class="op">&lt;</span> <span class="dv">30</span>, customers)</span>
 <span id="cb20-26"><a></a>))</span>
-<span id="cb20-27"><a></a><span class="bu">print</span>(<span class="st">"Young customers:"</span>, young_customers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-27"><a></a><span class="bu">print</span>(<span class="st">"Young customers:"</span>, young_customers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1045,21 +1045,21 @@ Clicked button 3</code></pre>
 </div>
 <div class="callout-content">
 <p><strong>✅ DO:</strong></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Simple, clear operations</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Simple, clear operations</span></span>
 <span id="cb21-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb21-3"><a></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
 <span id="cb21-4"><a></a>evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>, numbers))</span>
 <span id="cb21-5"><a></a></span>
 <span id="cb21-6"><a></a><span class="co"># Short data transformations</span></span>
 <span id="cb21-7"><a></a>users <span class="op">=</span> [{<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>}]</span>
-<span id="cb21-8"><a></a>names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> u: u[<span class="st">"name"</span>], users))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-8"><a></a>names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> u: u[<span class="st">"name"</span>], users))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>❌ DO NOT:</strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Too complex for lambda</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Too complex for lambda</span></span>
 <span id="cb22-2"><a></a>complex_func <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">abs</span>(x) <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"zero"</span></span>
 <span id="cb22-3"><a></a></span>
 <span id="cb22-4"><a></a><span class="co"># Multiple statements (impossible in lambda anyway)</span></span>
 <span id="cb22-5"><a></a><span class="co"># This won't work:</span></span>
-<span id="cb22-6"><a></a><span class="co"># bad_lambda = lambda x: print(x); return x**2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-6"><a></a><span class="co"># bad_lambda = lambda x: print(x); return x**2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1072,7 +1072,7 @@ Clicked button 3</code></pre>
 <p><strong>When Lambda Is not Enough</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># ❌ Lambda cannot do multiple statements</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># ❌ Lambda cannot do multiple statements</span></span>
 <span id="cb23-2"><a></a><span class="co"># Need regular function for this:</span></span>
 <span id="cb23-3"><a></a><span class="kw">def</span> process_grade(score):</span>
 <span id="cb23-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"Processing score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Side effect</span></span>
@@ -1091,7 +1091,7 @@ Clicked button 3</code></pre>
 <span id="cb23-17"><a></a><span class="kw">def</span> calculate_with_logging(x):</span>
 <span id="cb23-18"><a></a>    result <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">1</span>  <span class="co"># Assignment</span></span>
 <span id="cb23-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"Calculated: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-20"><a></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-20"><a></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1404,7 +1404,7 @@ Keep coding, keep learning! 🐍✨
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1478,13 +1478,14 @@ Keep coding, keep learning! 🐍✨
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

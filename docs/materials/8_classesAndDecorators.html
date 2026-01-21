@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="CS 101 - Fall 2025">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 8: Classes and Decorators</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -294,7 +294,7 @@ CS 101 - Fall 2025
 <p><strong>Basic Class Syntax</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Basic class definition</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Basic class definition</span></span>
 <span id="cb1-2"><a></a><span class="kw">class</span> Dog:</span>
 <span id="cb1-3"><a></a>    <span class="co"># Class attribute (shared by all instances)</span></span>
 <span id="cb1-4"><a></a>    species <span class="op">=</span> <span class="st">"Canis lupus"</span></span>
@@ -319,7 +319,7 @@ CS 101 - Fall 2025
 <span id="cb1-23"><a></a>your_dog <span class="op">=</span> Dog(<span class="st">"Luna"</span>, <span class="dv">5</span>)</span>
 <span id="cb1-24"><a></a></span>
 <span id="cb1-25"><a></a><span class="bu">print</span>(my_dog.bark())              <span class="co"># Buddy says Woof!</span></span>
-<span id="cb1-26"><a></a><span class="bu">print</span>(your_dog.celebrate_birthday())  <span class="co"># Happy birthday Luna! Now 6 years old!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-26"><a></a><span class="bu">print</span>(your_dog.celebrate_birthday())  <span class="co"># Happy birthday Luna! Now 6 years old!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -350,7 +350,7 @@ CS 101 - Fall 2025
 <p><strong>Creating Class Objects</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Car:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Car:</span>
 <span id="cb2-2"><a></a>    <span class="co"># Class attribute</span></span>
 <span id="cb2-3"><a></a>    wheels <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb2-4"><a></a>    </span>
@@ -364,7 +364,7 @@ CS 101 - Fall 2025
 <span id="cb2-12"><a></a>    <span class="co"># Method</span></span>
 <span id="cb2-13"><a></a>    <span class="kw">def</span> drive(<span class="va">self</span>, miles):</span>
 <span id="cb2-14"><a></a>        <span class="va">self</span>.odometer <span class="op">+=</span> miles</span>
-<span id="cb2-15"><a></a>        <span class="cf">return</span> <span class="ss">f"Drove </span><span class="sc">{</span>miles<span class="sc">}</span><span class="ss"> miles. Total: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>odometer<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-15"><a></a>        <span class="cf">return</span> <span class="ss">f"Drove </span><span class="sc">{</span>miles<span class="sc">}</span><span class="ss"> miles. Total: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>odometer<span class="sc">}</span><span class="ss">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -380,7 +380,7 @@ CS 101 - Fall 2025
 <p><strong>Creating and Using Objects</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Create instances</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Create instances</span></span>
 <span id="cb3-2"><a></a>car1 <span class="op">=</span> Car(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>, <span class="dv">2022</span>)</span>
 <span id="cb3-3"><a></a>car2 <span class="op">=</span> Car(<span class="st">"Honda"</span>, <span class="st">"Civic"</span>, <span class="dv">2021</span>)</span>
 <span id="cb3-4"><a></a></span>
@@ -398,7 +398,7 @@ CS 101 - Fall 2025
 <span id="cb3-16"><a></a></span>
 <span id="cb3-17"><a></a><span class="co"># Access class attributes</span></span>
 <span id="cb3-18"><a></a><span class="bu">print</span>(Car.wheels)    <span class="co"># 4 (from class)</span></span>
-<span id="cb3-19"><a></a><span class="bu">print</span>(car1.wheels)   <span class="co"># 4 (inherited from class)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a></a><span class="bu">print</span>(car1.wheels)   <span class="co"># 4 (inherited from class)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -425,7 +425,7 @@ CS 101 - Fall 2025
 </ul></li>
 </ol>
 <p><strong>Starter Code:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> Student:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> Student:</span>
 <span id="cb4-2"><a></a>    <span class="co"># Your code here</span></span>
 <span id="cb4-3"><a></a>    <span class="cf">pass</span></span>
 <span id="cb4-4"><a></a></span>
@@ -433,7 +433,7 @@ CS 101 - Fall 2025
 <span id="cb4-6"><a></a>student1 <span class="op">=</span> Student(<span class="st">"Alice"</span>, <span class="st">"S001"</span>, <span class="dv">10</span>)</span>
 <span id="cb4-7"><a></a><span class="bu">print</span>(student1.introduce())</span>
 <span id="cb4-8"><a></a>student1.update_gpa(<span class="fl">3.8</span>)</span>
-<span id="cb4-9"><a></a><span class="bu">print</span>(<span class="ss">f"Honor student: </span><span class="sc">{</span>student1<span class="sc">.</span>is_honor_student()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a></a><span class="bu">print</span>(<span class="ss">f"Honor student: </span><span class="sc">{</span>student1<span class="sc">.</span>is_honor_student()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -446,7 +446,7 @@ CS 101 - Fall 2025
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">class</span> Student:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">class</span> Student:</span>
 <span id="cb5-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, student_id, grade_level, gpa<span class="op">=</span><span class="fl">0.0</span>):</span>
 <span id="cb5-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb5-4"><a></a>        <span class="va">self</span>.student_id <span class="op">=</span> student_id</span>
@@ -470,7 +470,7 @@ CS 101 - Fall 2025
 <span id="cb5-22"><a></a><span class="bu">print</span>(<span class="ss">f"Honor student: </span><span class="sc">{</span>student1<span class="sc">.</span>is_honor_student()<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># True</span></span>
 <span id="cb5-23"><a></a></span>
 <span id="cb5-24"><a></a>student2 <span class="op">=</span> Student(<span class="st">"Bob"</span>, <span class="st">"S002"</span>, <span class="dv">11</span>, <span class="fl">3.2</span>)</span>
-<span id="cb5-25"><a></a><span class="bu">print</span>(<span class="ss">f"Bob honor status: </span><span class="sc">{</span>student2<span class="sc">.</span>is_honor_student()<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-25"><a></a><span class="bu">print</span>(<span class="ss">f"Bob honor status: </span><span class="sc">{</span>student2<span class="sc">.</span>is_honor_student()<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -505,7 +505,7 @@ CS 101 - Fall 2025
 <p><strong>Parent and Child Classes</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Parent class (Base class)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Parent class (Base class)</span></span>
 <span id="cb6-2"><a></a><span class="kw">class</span> Animal:</span>
 <span id="cb6-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, species):</span>
 <span id="cb6-4"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
@@ -537,7 +537,7 @@ CS 101 - Fall 2025
 <span id="cb6-30"><a></a>my_dog <span class="op">=</span> Dog(<span class="st">"Max"</span>, <span class="st">"Golden Retriever"</span>)</span>
 <span id="cb6-31"><a></a><span class="bu">print</span>(my_dog.eat())        <span class="co"># Inherited from Animal</span></span>
 <span id="cb6-32"><a></a><span class="bu">print</span>(my_dog.bark())       <span class="co"># Dog-specific method</span></span>
-<span id="cb6-33"><a></a><span class="bu">print</span>(my_dog.play_fetch()) <span class="co"># Dog-specific method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-33"><a></a><span class="bu">print</span>(my_dog.play_fetch()) <span class="co"># Dog-specific method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -550,7 +550,7 @@ CS 101 - Fall 2025
 <p><strong>Customizing Inherited Methods</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">class</span> Bird(Animal):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">class</span> Bird(Animal):</span>
 <span id="cb7-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, can_fly<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb7-3"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name, <span class="st">"Avian"</span>)</span>
 <span id="cb7-4"><a></a>        <span class="va">self</span>.can_fly <span class="op">=</span> can_fly</span>
@@ -574,7 +574,7 @@ CS 101 - Fall 2025
 <span id="cb7-22"><a></a></span>
 <span id="cb7-23"><a></a><span class="bu">print</span>(dog.sleep())   <span class="co"># Uses Animal's sleep method (energy +20)</span></span>
 <span id="cb7-24"><a></a><span class="bu">print</span>(bird.sleep())  <span class="co"># Uses Bird's overridden sleep method (energy +30)</span></span>
-<span id="cb7-25"><a></a><span class="bu">print</span>(bird.fly())    <span class="co"># Bird-specific method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-25"><a></a><span class="bu">print</span>(bird.fly())    <span class="co"># Bird-specific method</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -594,7 +594,7 @@ CS 101 - Fall 2025
 <p><strong>Vehicle class:</strong> - Attributes: <code>make</code>, <code>model</code>, <code>year</code>, <code>fuel_level</code> (default 100) - Methods: <code>start_engine()</code>, <code>refuel()</code></p>
 <p><strong>Motorcycle class:</strong> - Inherits from Vehicle - Additional attribute: <code>engine_size</code> - New method: <code>wheelie()</code> (reduces fuel by 5) - Override <code>start_engine()</code> to include motorcycle-specific message</p>
 <p><strong>Starter Code:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">class</span> Vehicle:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">class</span> Vehicle:</span>
 <span id="cb8-2"><a></a>    <span class="co"># Your Vehicle class here</span></span>
 <span id="cb8-3"><a></a>    <span class="cf">pass</span></span>
 <span id="cb8-4"><a></a></span>
@@ -605,7 +605,7 @@ CS 101 - Fall 2025
 <span id="cb8-9"><a></a><span class="co"># Test your classes</span></span>
 <span id="cb8-10"><a></a>bike <span class="op">=</span> Motorcycle(<span class="st">"Harley"</span>, <span class="st">"Sportster"</span>, <span class="dv">2023</span>, <span class="dv">883</span>)</span>
 <span id="cb8-11"><a></a><span class="bu">print</span>(bike.start_engine())</span>
-<span id="cb8-12"><a></a><span class="bu">print</span>(bike.wheelie())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a></a><span class="bu">print</span>(bike.wheelie())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -618,7 +618,7 @@ CS 101 - Fall 2025
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">class</span> Vehicle:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">class</span> Vehicle:</span>
 <span id="cb9-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, make, model, year, fuel_level<span class="op">=</span><span class="dv">100</span>):</span>
 <span id="cb9-3"><a></a>        <span class="va">self</span>.make <span class="op">=</span> make</span>
 <span id="cb9-4"><a></a>        <span class="va">self</span>.model <span class="op">=</span> model</span>
@@ -648,7 +648,7 @@ CS 101 - Fall 2025
 <span id="cb9-28"><a></a>bike <span class="op">=</span> Motorcycle(<span class="st">"Harley"</span>, <span class="st">"Sportster"</span>, <span class="dv">2023</span>, <span class="dv">883</span>)</span>
 <span id="cb9-29"><a></a><span class="bu">print</span>(bike.start_engine())  <span class="co"># Motorcycle roars to life! 🏍️</span></span>
 <span id="cb9-30"><a></a><span class="bu">print</span>(bike.wheelie())       <span class="co"># Awesome wheelie! Fuel: 95%</span></span>
-<span id="cb9-31"><a></a><span class="bu">print</span>(bike.refuel())        <span class="co"># Tank refueled to 100%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-31"><a></a><span class="bu">print</span>(bike.refuel())        <span class="co"># Tank refueled to 100%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -705,7 +705,7 @@ CS 101 - Fall 2025
 <p><strong>Basic Decorator Syntax</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Simple decorator function</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Simple decorator function</span></span>
 <span id="cb10-2"><a></a><span class="kw">def</span> my_decorator(func):</span>
 <span id="cb10-3"><a></a>    <span class="kw">def</span> wrapper():</span>
 <span id="cb10-4"><a></a>        <span class="bu">print</span>(<span class="st">"Something before the function"</span>)</span>
@@ -725,7 +725,7 @@ CS 101 - Fall 2025
 <span id="cb10-18"><a></a><span class="co"># Output:</span></span>
 <span id="cb10-19"><a></a><span class="co"># Something before the function</span></span>
 <span id="cb10-20"><a></a><span class="co"># Hello, World!</span></span>
-<span id="cb10-21"><a></a><span class="co"># Something after the function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-21"><a></a><span class="co"># Something after the function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -761,7 +761,7 @@ CS 101 - Fall 2025
 <p><strong>Handling Function Parameters</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># This decorator adds timing to functions</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># This decorator adds timing to functions</span></span>
 <span id="cb11-2"><a></a><span class="kw">def</span> timer_decorator(func):</span>
 <span id="cb11-3"><a></a>    <span class="kw">def</span> wrapper():</span>
 <span id="cb11-4"><a></a>        <span class="im">import</span> time</span>
@@ -778,7 +778,7 @@ CS 101 - Fall 2025
 <span id="cb11-15"><a></a>    time.sleep(<span class="dv">1</span>)</span>
 <span id="cb11-16"><a></a>    <span class="cf">return</span> <span class="st">"Done!"</span></span>
 <span id="cb11-17"><a></a></span>
-<span id="cb11-18"><a></a>slow_function()  <span class="co"># Function took 1.0041 seconds</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-18"><a></a>slow_function()  <span class="co"># Function took 1.0041 seconds</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -791,7 +791,7 @@ CS 101 - Fall 2025
 <p><strong>Handling Function Parameters</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Decorator that works with functions that have arguments</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Decorator that works with functions that have arguments</span></span>
 <span id="cb12-2"><a></a><span class="kw">def</span> logging_decorator(func):</span>
 <span id="cb12-3"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):  <span class="co"># Accept any arguments</span></span>
 <span id="cb12-4"><a></a>        <span class="bu">print</span>(<span class="ss">f"Calling function: </span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">"</span>)</span>
@@ -814,7 +814,7 @@ CS 101 - Fall 2025
 <span id="cb12-21"><a></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result1<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-22"><a></a></span>
 <span id="cb12-23"><a></a>result2 <span class="op">=</span> greet(<span class="st">"Alice"</span>, greeting<span class="op">=</span><span class="st">"Hi"</span>)</span>
-<span id="cb12-24"><a></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result2<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-24"><a></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result2<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -848,7 +848,7 @@ CS 101 - Fall 2025
 </div>
 <div class="callout-content">
 <p><strong><code>@property</code></strong> turns a method into a readable attribute. It’s used for computed properties and data validation!</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">class</span> Circle:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">class</span> Circle:</span>
 <span id="cb13-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, radius):</span>
 <span id="cb13-3"><a></a>        <span class="va">self</span>._radius <span class="op">=</span> radius  <span class="co"># Private attribute</span></span>
 <span id="cb13-4"><a></a>    </span>
@@ -882,7 +882,7 @@ CS 101 - Fall 2025
 <span id="cb13-32"><a></a><span class="bu">print</span>(<span class="ss">f"Diameter: </span><span class="sc">{</span>circle<span class="sc">.</span>diameter<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Another computed property</span></span>
 <span id="cb13-33"><a></a></span>
 <span id="cb13-34"><a></a>circle.radius <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Uses @radius.setter</span></span>
-<span id="cb13-35"><a></a><span class="bu">print</span>(<span class="ss">f"New area: </span><span class="sc">{</span>circle<span class="sc">.</span>area<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-35"><a></a><span class="bu">print</span>(<span class="ss">f"New area: </span><span class="sc">{</span>circle<span class="sc">.</span>area<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -895,7 +895,7 @@ CS 101 - Fall 2025
 <p><strong>Class-related Decorators</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">class</span> MathUtils:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">class</span> MathUtils:</span>
 <span id="cb14-2"><a></a>    pi <span class="op">=</span> <span class="fl">3.14159</span></span>
 <span id="cb14-3"><a></a>    </span>
 <span id="cb14-4"><a></a>    <span class="at">@staticmethod</span></span>
@@ -927,7 +927,7 @@ CS 101 - Fall 2025
 <span id="cb14-30"><a></a></span>
 <span id="cb14-31"><a></a><span class="co"># You can also call static and class methods on instances</span></span>
 <span id="cb14-32"><a></a><span class="bu">print</span>(<span class="ss">f"Instance calling static: </span><span class="sc">{</span>utils<span class="sc">.</span>add(<span class="dv">2</span>, <span class="dv">7</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-33"><a></a><span class="bu">print</span>(<span class="ss">f"Instance calling class method: </span><span class="sc">{</span>utils<span class="sc">.</span>circle_area(<span class="dv">3</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-33"><a></a><span class="bu">print</span>(<span class="ss">f"Instance calling class method: </span><span class="sc">{</span>utils<span class="sc">.</span>circle_area(<span class="dv">3</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -948,7 +948,7 @@ CS 101 - Fall 2025
 </ol>
 <p><strong>Bonus:</strong> Create a <code>BankAccount</code> class with <code>@property</code> for balance validation</p>
 <p><strong>Starter Code:</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Create your decorator here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Create your decorator here</span></span>
 <span id="cb15-2"><a></a><span class="kw">def</span> repeat_decorator(times):</span>
 <span id="cb15-3"><a></a>    <span class="co"># Your decorator code here</span></span>
 <span id="cb15-4"><a></a>    <span class="cf">pass</span></span>
@@ -964,7 +964,7 @@ CS 101 - Fall 2025
 <span id="cb15-14"><a></a><span class="co"># Bonus: BankAccount class</span></span>
 <span id="cb15-15"><a></a><span class="kw">class</span> BankAccount:</span>
 <span id="cb15-16"><a></a>    <span class="co"># Your class with @property here</span></span>
-<span id="cb15-17"><a></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-17"><a></a>    <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -977,7 +977,7 @@ CS 101 - Fall 2025
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Solution 1: Custom repeat decorator</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Solution 1: Custom repeat decorator</span></span>
 <span id="cb16-2"><a></a><span class="kw">def</span> repeat_decorator(times):</span>
 <span id="cb16-3"><a></a>    <span class="kw">def</span> decorator(func):</span>
 <span id="cb16-4"><a></a>        <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
@@ -996,7 +996,7 @@ CS 101 - Fall 2025
 <span id="cb16-17"><a></a></span>
 <span id="cb16-18"><a></a><span class="bu">print</span>(<span class="st">"Rolling dice 3 times:"</span>)</span>
 <span id="cb16-19"><a></a>final_result <span class="op">=</span> roll_dice()</span>
-<span id="cb16-20"><a></a><span class="bu">print</span>(<span class="ss">f"Final result: </span><span class="sc">{</span>final_result<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-20"><a></a><span class="bu">print</span>(<span class="ss">f"Final result: </span><span class="sc">{</span>final_result<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1009,7 +1009,7 @@ CS 101 - Fall 2025
 <p><strong>Solutions</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Solution 2: BankAccount with @property</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Solution 2: BankAccount with @property</span></span>
 <span id="cb17-2"><a></a><span class="kw">class</span> BankAccount:</span>
 <span id="cb17-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, initial_balance<span class="op">=</span><span class="dv">0</span>):</span>
 <span id="cb17-4"><a></a>        <span class="va">self</span>._balance <span class="op">=</span> initial_balance</span>
@@ -1055,7 +1055,7 @@ CS 101 - Fall 2025
 <span id="cb17-44"><a></a><span class="cf">try</span>:</span>
 <span id="cb17-45"><a></a>    account.balance <span class="op">=</span> <span class="op">-</span><span class="dv">50</span>  <span class="co"># This would raise ValueError</span></span>
 <span id="cb17-46"><a></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
-<span id="cb17-47"><a></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-47"><a></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1094,7 +1094,7 @@ CS 101 - Fall 2025
 </div>
 <div class="callout-content">
 <p>Classes for Shopping Cart</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">class</span> Product:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">class</span> Product:</span>
 <span id="cb18-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, price, category):</span>
 <span id="cb18-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb18-4"><a></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
@@ -1140,9 +1140,9 @@ CS 101 - Fall 2025
 <span id="cb18-44"><a></a><span class="bu">print</span>(<span class="ss">f"Total: $</span><span class="sc">{</span>cart<span class="sc">.</span>total<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb18-45"><a></a></span>
 <span id="cb18-46"><a></a><span class="bu">print</span>(cart.apply_discount(<span class="fl">0.1</span>))  <span class="co"># 10% discount</span></span>
-<span id="cb18-47"><a></a><span class="bu">print</span>(<span class="ss">f"Total after discount: $</span><span class="sc">{</span>cart<span class="sc">.</span>total<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-47"><a></a><span class="bu">print</span>(<span class="ss">f"Total after discount: $</span><span class="sc">{</span>cart<span class="sc">.</span>total<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="09ff7a48" class="cell" data-execution_count="1">
+<div id="0a50803b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Added 1x Gaming Laptop to cart
 Added 2x Wireless Mouse to cart
@@ -1168,7 +1168,7 @@ Total after discount: $1223.97</code></pre>
 </div>
 <div class="callout-content">
 <p>Classes with Inheritance for Game Characters</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">class</span> GameCharacter:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">class</span> GameCharacter:</span>
 <span id="cb20-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, health<span class="op">=</span><span class="dv">100</span>, attack_power<span class="op">=</span><span class="dv">10</span>):</span>
 <span id="cb20-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb20-4"><a></a>        <span class="va">self</span>.max_health <span class="op">=</span> health</span>
@@ -1236,9 +1236,9 @@ Total after discount: $1223.97</code></pre>
 <span id="cb20-66"><a></a></span>
 <span id="cb20-67"><a></a><span class="bu">print</span>(warrior.shield_bash(mage))</span>
 <span id="cb20-68"><a></a><span class="bu">print</span>(<span class="ss">f"Mage health: </span><span class="sc">{</span>mage<span class="sc">.</span>health<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-69"><a></a><span class="bu">print</span>(<span class="ss">f"Mage alive: </span><span class="sc">{</span>mage<span class="sc">.</span>is_alive<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-69"><a></a><span class="bu">print</span>(<span class="ss">f"Mage alive: </span><span class="sc">{</span>mage<span class="sc">.</span>is_alive<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="68e50932" class="cell" data-execution_count="2">
+<div id="90a5fffa" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Warrior: Sir Lancelot (Health: 150)
 Mage: Gandalf (Health: 80)
@@ -1269,7 +1269,7 @@ Mage alive: True</code></pre>
 </div>
 <div class="callout-content">
 <p>Decorators for Web Development</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="im">import</span> time</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="im">import</span> time</span>
 <span id="cb22-2"><a></a><span class="im">from</span> functools <span class="im">import</span> wraps</span>
 <span id="cb22-3"><a></a></span>
 <span id="cb22-4"><a></a><span class="co"># Authentication decorator</span></span>
@@ -1346,18 +1346,18 @@ Mage alive: True</code></pre>
 <span id="cb22-75"><a></a></span>
 <span id="cb22-76"><a></a><span class="co"># Test rate limiting (uncomment to see rate limit in action)</span></span>
 <span id="cb22-77"><a></a><span class="co"># for i in range(5):</span></span>
-<span id="cb22-78"><a></a><span class="co">#     print(f"Call {i+1}:", api.get_user(1))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-78"><a></a><span class="co">#     print(f"Call {i+1}:", api.get_user(1))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Output:</p>
-<div id="4a0108d3" class="cell" data-execution_count="3">
+<div id="6972a6a2" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== API Testing ===
-API call: get_user at 2026-01-15 21:19:27
+API call: get_user at 2026-01-21 08:56:09
 API response: {'user': {'name': 'Alice', 'email': 'alice@email.com'}, 'status': 200}
 {'user': {'name': 'Alice', 'email': 'alice@email.com'}, 'status': 200}
-API call: get_user at 2026-01-15 21:19:27
+API call: get_user at 2026-01-21 08:56:09
 API response: {'user': {'name': 'Bob', 'email': 'bob@email.com'}, 'status': 200}
 {'user': {'name': 'Bob', 'email': 'bob@email.com'}, 'status': 200}
-API call: create_user at 2026-01-15 21:19:27
+API call: create_user at 2026-01-21 08:56:09
 API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 3, 'status': 201}
 {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 3, 'status': 201}</code></pre>
 </div>
@@ -1378,7 +1378,7 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
 <p><strong>Requirements:</strong> 1. <code>Book</code> class with title, author, ISBN, and available status 2. <code>Library</code> class that manages books with methods to add/checkout/return books 3. <code>Member</code> class that inherits from a <code>Person</code> base class 4. Use <code>@property</code> for computed attributes 5. Create a decorator that logs all library operations</p>
 <p><strong>Bonus:</strong> Add different types of books (TextBook, Novel) with specific behaviors</p>
 <p><strong>Starter Code:</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># Create your classes and decorators here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># Create your classes and decorators here</span></span>
 <span id="cb24-2"><a></a></span>
 <span id="cb24-3"><a></a><span class="co"># Test your system</span></span>
 <span id="cb24-4"><a></a>library <span class="op">=</span> Library(<span class="st">"City Library"</span>)</span>
@@ -1387,7 +1387,7 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
 <span id="cb24-7"><a></a></span>
 <span id="cb24-8"><a></a><span class="co"># Test the system</span></span>
 <span id="cb24-9"><a></a>library.add_book(book1)</span>
-<span id="cb24-10"><a></a>library.checkout_book(<span class="st">"123456789"</span>, member1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-10"><a></a>library.checkout_book(<span class="st">"123456789"</span>, member1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1400,7 +1400,7 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
 <p><strong>Library Management System Solution</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb25-2"><a></a><span class="im">from</span> functools <span class="im">import</span> wraps</span>
 <span id="cb25-3"><a></a></span>
 <span id="cb25-4"><a></a><span class="co"># Logging decorator for library operations</span></span>
@@ -1531,7 +1531,7 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
 <span id="cb25-129"><a></a><span class="bu">print</span>(<span class="ss">f"Member books count: </span><span class="sc">{</span>member1<span class="sc">.</span>books_count<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb25-130"><a></a></span>
 <span id="cb25-131"><a></a><span class="bu">print</span>(library.return_book(<span class="st">"123456789"</span>, member1))</span>
-<span id="cb25-132"><a></a><span class="bu">print</span>(<span class="ss">f"Member books count: </span><span class="sc">{</span>member1<span class="sc">.</span>books_count<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-132"><a></a><span class="bu">print</span>(<span class="ss">f"Member books count: </span><span class="sc">{</span>member1<span class="sc">.</span>books_count<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1828,7 +1828,7 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1902,13 +1902,14 @@ API response: {'user': {'name': 'Charlie', 'email': 'charlie@email.com'}, 'id': 
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

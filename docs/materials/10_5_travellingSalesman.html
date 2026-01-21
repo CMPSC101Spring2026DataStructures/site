@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="CS 101 - Spring 2026">
   <title>CMPSC101 Spring 2026 :: DataStructures – The Travelling Salesman Problem</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -292,7 +292,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 </div>
 </div>
 <p><strong>Route Count Growth</strong> 📊</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> calculate_routes(n_cities):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> calculate_routes(n_cities):</span>
 <span id="cb1-2"><a></a>    <span class="co">"""Calculate number of TSP routes"""</span></span>
 <span id="cb1-3"><a></a>    <span class="cf">if</span> n_cities <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
 <span id="cb1-4"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
@@ -307,7 +307,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb1-13"><a></a><span class="co"># Let's see the explosion!</span></span>
 <span id="cb1-14"><a></a><span class="cf">for</span> cities <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>):</span>
 <span id="cb1-15"><a></a>    routes <span class="op">=</span> calculate_routes(cities)</span>
-<span id="cb1-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>cities<span class="sc">}</span><span class="ss"> cities: </span><span class="sc">{</span>routes<span class="sc">:,}</span><span class="ss"> routes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>cities<span class="sc">}</span><span class="ss"> cities: </span><span class="sc">{</span>routes<span class="sc">:,}</span><span class="ss"> routes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="columns">
 <div class="column">
 <p><strong>Real Numbers:</strong></p>
@@ -334,7 +334,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <p>Even with the world’s fastest computers, brute force TSP becomes impossible very quickly!</p>
 <!-- ::: -->
 <p><strong>Time Complexity Analysis</strong> ⏱️</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> time</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> time</span>
 <span id="cb2-2"><a></a><span class="im">import</span> math</span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="kw">def</span> time_estimate(n_cities):</span>
@@ -358,7 +358,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb2-22"><a></a><span class="co"># The scary truth</span></span>
 <span id="cb2-23"><a></a><span class="bu">print</span>(<span class="st">"Time to solve TSP by brute force:"</span>)</span>
 <span id="cb2-24"><a></a><span class="cf">for</span> n <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>]:</span>
-<span id="cb2-25"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> cities: </span><span class="sc">{</span>time_estimate(n)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-25"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> cities: </span><span class="sc">{</span>time_estimate(n)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="columns">
 <div class="column">
 <p><strong>Reality Check</strong> 🤯</p>
@@ -397,7 +397,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <div class="columns">
 <div class="column">
 <p><strong>The Core Algorithm</strong> 🧠</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> tsp_brute_force(cities, current_city<span class="op">=</span><span class="dv">0</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> tsp_brute_force(cities, current_city<span class="op">=</span><span class="dv">0</span>, </span>
 <span id="cb3-2"><a></a>                   visited<span class="op">=</span><span class="va">None</span>, path<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb3-3"><a></a>    <span class="co">"""</span></span>
 <span id="cb3-4"><a></a><span class="co">    Solve TSP by checking ALL possible routes</span></span>
@@ -432,10 +432,10 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb3-33"><a></a>                best_distance <span class="op">=</span> distance</span>
 <span id="cb3-34"><a></a>                best_path <span class="op">=</span> new_path</span>
 <span id="cb3-35"><a></a>    </span>
-<span id="cb3-36"><a></a>    <span class="cf">return</span> best_path, best_distance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-36"><a></a>    <span class="cf">return</span> best_path, best_distance</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <p><strong>Distance Calculation</strong> 📐</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">def</span> calculate_distance(path):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">def</span> calculate_distance(path):</span>
 <span id="cb4-2"><a></a>    <span class="co">"""Calculate total route distance"""</span></span>
 <span id="cb4-3"><a></a>    <span class="co"># Example distance matrix for 4 cities</span></span>
 <span id="cb4-4"><a></a>    distances <span class="op">=</span> {</span>
@@ -462,7 +462,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb4-25"><a></a>    <span class="co">"""Calculate straight-line distance between cities"""</span></span>
 <span id="cb4-26"><a></a>    x1, y1 <span class="op">=</span> city1</span>
 <span id="cb4-27"><a></a>    x2, y2 <span class="op">=</span> city2</span>
-<span id="cb4-28"><a></a>    <span class="cf">return</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-28"><a></a>    <span class="cf">return</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
 <section id="build-a-project-from-this-code" class="slide level2">
@@ -488,7 +488,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <div class="callout-body">
 <div class="callout-content">
 <p><strong>tsp.py</strong> - Core TSP solver functions</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> tsp_brute_force(cities, current_city<span class="op">=</span><span class="dv">0</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> tsp_brute_force(cities, current_city<span class="op">=</span><span class="dv">0</span>, </span>
 <span id="cb5-2"><a></a>                   visited<span class="op">=</span><span class="va">None</span>, path<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb5-3"><a></a>    <span class="co">"""</span></span>
 <span id="cb5-4"><a></a><span class="co">    Solve TSP by checking ALL possible routes</span></span>
@@ -552,7 +552,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb5-62"><a></a>    <span class="co">"""Calculate straight-line distance between cities"""</span></span>
 <span id="cb5-63"><a></a>    x1, y1 <span class="op">=</span> city1</span>
 <span id="cb5-64"><a></a>    x2, y2 <span class="op">=</span> city2</span>
-<span id="cb5-65"><a></a>    <span class="cf">return</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-65"><a></a>    <span class="cf">return</span> ((x2 <span class="op">-</span> x1)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2 <span class="op">-</span> y1)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -563,7 +563,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <div class="callout-body">
 <div class="callout-content">
 <p><strong>examples.py</strong> - Simple usage examples</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb6-2"><a></a><span class="co">"""</span></span>
 <span id="cb6-3"><a></a><span class="co">Simple usage example for the TSP solver</span></span>
 <span id="cb6-4"><a></a><span class="co">Shows how to use the TSP functions directly in your own code</span></span>
@@ -697,7 +697,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb6-132"><a></a>    example_usage()</span>
 <span id="cb6-133"><a></a>    solve_custom_problem()</span>
 <span id="cb6-134"><a></a>    </span>
-<span id="cb6-135"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✨ Want more examples? Run 'python3 main.py' for interactive mode!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-135"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✨ Want more examples? Run 'python3 main.py' for interactive mode!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -708,7 +708,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <div class="callout-body">
 <div class="callout-content">
 <p><strong>main.py</strong> - Main interactive driver</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">#!/usr/bin/env python3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb7-2"><a></a><span class="co">"""</span></span>
 <span id="cb7-3"><a></a><span class="co">Main driver for the Travelling Salesman Problem (TSP) solver</span></span>
 <span id="cb7-4"><a></a><span class="co">Demonstrates brute force TSP algorithm with various test cases</span></span>
@@ -940,7 +940,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb7-230"><a></a></span>
 <span id="cb7-231"><a></a></span>
 <span id="cb7-232"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb7-233"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-233"><a></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -960,7 +960,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>🔧 TSP Solver - Usage Example</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>🔧 TSP Solver - Usage Example</span>
 <span id="cb8-2"><a></a>========================================</span>
 <span id="cb8-3"><a></a></span>
 <span id="cb8-4"><a></a>1️⃣  Using built-in distance matrix:</span>
@@ -989,7 +989,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb8-27"><a></a>   Total distance: 16.03 km</span>
 <span id="cb8-28"><a></a>   Solve time: 0.0001 seconds</span>
 <span id="cb8-29"><a></a></span>
-<span id="cb8-30"><a></a>✨ Want more examples? Run 'python3 main.py' for interactive mode!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-30"><a></a>✨ Want more examples? Run 'python3 main.py' for interactive mode!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1006,7 +1006,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <div class="columns">
 <div class="column">
 <p><strong>Logistics &amp; Transportation</strong> 🚛</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Delivery route optimization</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Delivery route optimization</span></span>
 <span id="cb9-2"><a></a>delivery_stops <span class="op">=</span> [</span>
 <span id="cb9-3"><a></a>    <span class="st">"Warehouse"</span>,      <span class="co"># Start/end point</span></span>
 <span id="cb9-4"><a></a>    <span class="st">"123 Main St"</span>,    <span class="co"># Customer 1</span></span>
@@ -1022,11 +1022,11 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb9-14"><a></a><span class="co"># Real impact:</span></span>
 <span id="cb9-15"><a></a><span class="co"># - UPS saves $50M+ annually with route optimization</span></span>
 <span id="cb9-16"><a></a><span class="co"># - FedEx reduces fuel consumption by 10%</span></span>
-<span id="cb9-17"><a></a><span class="co"># - Amazon uses TSP for same-day delivery</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-17"><a></a><span class="co"># - Amazon uses TSP for same-day delivery</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>School Bus Routing</strong> 🚌 * Visit all bus stops efficiently * Minimize travel time for students * Reduce fuel costs and emissions</p>
 </div><div class="column">
 <p><strong>Manufacturing &amp; Technology</strong> 🔧</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Circuit board drilling optimization</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Circuit board drilling optimization</span></span>
 <span id="cb10-2"><a></a>drill_points <span class="op">=</span> [</span>
 <span id="cb10-3"><a></a>    (<span class="dv">10</span>, <span class="dv">20</span>),   <span class="co"># Hole 1 coordinates</span></span>
 <span id="cb10-4"><a></a>    (<span class="dv">30</span>, <span class="dv">15</span>),   <span class="co"># Hole 2 coordinates</span></span>
@@ -1036,7 +1036,7 @@ Click on the map to add cities, then see how many possible routes there are. Wat
 <span id="cb10-8"><a></a></span>
 <span id="cb10-9"><a></a><span class="co"># TSP minimizes drill head movement</span></span>
 <span id="cb10-10"><a></a>optimal_drilling <span class="op">=</span> tsp_solver(drill_points)</span>
-<span id="cb10-11"><a></a><span class="co"># Result: Faster manufacturing, less wear on equipment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-11"><a></a><span class="co"># Result: Faster manufacturing, less wear on equipment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>DNA Sequencing</strong> 🧬 * Arrange genetic fragments in correct order * Minimize overlapping regions * Critical for medical research</p>
 <p><strong>Video Game AI</strong> 🎮 * NPCs planning efficient patrol routes * Resource gathering optimization * Strategy game unit movement</p>
 </div></div>
@@ -1962,7 +1962,7 @@ document.addEventListener('DOMContentLoaded', function() {
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2036,13 +2036,14 @@ document.addEventListener('DOMContentLoaded', function() {
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
