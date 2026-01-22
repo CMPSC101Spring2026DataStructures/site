@@ -19,13 +19,23 @@ format:
 ---
 
 <!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
-
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} -->
 
 # Welcome to MORE Python Programming!
 
 ::: {.callout-tip}
 **Learning smaller parts of code will help you to implement specific types of functionalities in larger projects!**
 :::
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+
+<center>
+![](graphics/more.png){width=50%}
+</center>
 
 ---
 
@@ -36,6 +46,12 @@ Let's Return to Literals (e.g., numbers, strings, booleans, etc.) and work with 
 ::: {.callout-note}
 In Python, print statements with an `f` prefix before the opening quotation mark denote f-strings, also known as formatted string literals. F-strings provide a concise and readable way to embed expressions inside string literals for formatting output.
 :::
+
+<center>
+![](graphics/literals.png){width=40%}
+</center>
+
+
 
 ## Python Code Sample with F-strings
 
@@ -77,8 +93,6 @@ Operators let you do math, compare values, and more!
 
 ## Python Code Sample
 
-
-
 ```python
 x = 5
 y = 2
@@ -87,11 +101,13 @@ product = x * y
 is_equal = (x == y)
 x += 1
 ```
+<center>
+![](graphics/cheesy_smile.png){width=40%}
+</center>
 
-
-## Interesting Application
-
+::: {.callout-note}
 Variables and operators are the backbone of calculators, games, and simulations!
+:::
 
 
 # Review Python Loops and Conditionals
@@ -99,6 +115,10 @@ Variables and operators are the backbone of calculators, games, and simulations!
 ## Loops
 
 Loops repeat actions. Use `for` and `while` loops.
+
+<center>
+![](graphics/loop.png){width=50%}
+</center>
 
 ## Conditionals
 
@@ -117,7 +137,7 @@ while count < 3:
 	# Do not forget to increment 
 	# the counter, or you will create an infinite loop!
 
-	if x > y:
+	if x > y:    # What changes to print statements if x < y ? 
 		print("x is greater!")
 	elif x == y:
 		print("x equals y!")
@@ -125,6 +145,8 @@ while count < 3:
 		print("x is less!")
 ```
 :::
+
+**Try out this code! Now, make a change and see what happens!**
 
 ## Sort of Interesting Application
 
@@ -303,28 +325,30 @@ Alice
 
 :::
 
-
 ---
 
-
 ## Coding Challenges
+
+<center>
+![](graphics/challenge.png){width=90%}
+</center>
 
 ### 1. Variables and Operators
 **Challenge:**  
 Create two variables, `a` and `b`, assign them integer values, and print their sum, difference, product, and quotient.
 
+<!-- <center>
+![](graphics/cheesy_smile.png){width=30%}
+</center> -->
 
-::: {.callout-large}
-**Solution:**
-``` python
-a = 10
-b = 5
-print("Sum:", a + b)
-print("Difference:", a - b)
-print("Product:", a * b)
-print("Quotient:", a / b)
-```
+::: {.callout-tip}
+**Method Suggestions:**
 
+- Declare two variables and assign integer values to them
+- Use arithmetic operators: `+`, `-`, `*`, `/`
+- Use `print()` function with labels for clarity
+- Consider using f-strings for formatted output
+- Remember: division `/` gives a float result
 :::
 
 ---
@@ -333,16 +357,19 @@ print("Quotient:", a / b)
 **Challenge:**  
 Create a list of five numbers. Print the largest number in the list.
 
-::: {.callout-large}
-**Solution:**
-```python
-numbers = [3, 7, 2, 9, 5]
-print("Largest number:", max(numbers))
-```
+<!-- <center>
+![](graphics/literals.png){width=30%}
+</center> -->
 
+::: {.callout-tip}
+**Method Suggestions:**
+
+- Create a list using square brackets `[]`
+- Use the built-in `max()` function
+- Alternative: Sort the list and access the last element
+- Another option: Loop through and compare each element
+- Consider using `print()` with a descriptive message
 :::
-
-
 
 ---
 
@@ -350,17 +377,19 @@ print("Largest number:", max(numbers))
 **Challenge:**  
 Create a dictionary with three key-value pairs representing a person's name, age, and city. Print each key and its value.
 
-::: {.callout-large}
-**Solution:**
-```python
-person = {"name": "Alice", "age": 25, "city": "New York"}
-for key, value in person.items():
-    print(key, ":", value)
-```
+<!-- <center>
+![](graphics/more.png){width=30%}
+</center> -->
 
+::: {.callout-tip}
+**Method Suggestions:**
+
+- Use curly braces `{}` to create a dictionary
+- Use the `.items()` method to access key-value pairs
+- Loop through the dictionary with `for key, value in dict.items()`
+- Alternative: Access keys with `.keys()` and values with `.values()`
+- You can also print individual items by accessing keys directly
 :::
-
-
 
 ---
 
@@ -368,17 +397,19 @@ for key, value in person.items():
 **Challenge:**  
 Use a for loop to print all even numbers from 1 to 10.
 
-::: {.callout-large}
-**Solution:**
-```python
-for i in range(1, 11):
-    if i % 2 == 0:
-        print(i)
-```
+<!-- <center>
+![](graphics/loop.png){width=35%}
+</center> -->
 
+::: {.callout-tip}
+**Method Suggestions:**
+
+- Use `range(1, 11)` to iterate from 1 to 10
+- Check if a number is even using the modulo operator `%`
+- Alternative: Use `range()` with a step parameter
+- Another option: Use list comprehension
+- Remember: `i % 2 == 0` tests for even numbers
 :::
-
-
 
 ---
 
@@ -386,15 +417,316 @@ for i in range(1, 11):
 **Challenge:**  
 Use a while loop to keep asking the user to enter a number until they enter a negative number.
 
-::: {.callout-large}
-**Solution:**
+<!-- <center>
+![](graphics/challenge.png){width=35%}
+</center> -->
+
+::: {.callout-tip}
+**Method Suggestions:**
+
+- Use `while True:` for a continuous loop
+- Get user input with `input()` function
+- Convert input to integer using `int()`
+- Use `break` statement to exit the loop
+- Alternative: Use a condition in the while loop itself
+- Check if number is negative with `< 0` comparison
+:::
+
+---
+
+# Solutions
+
+<center>
+![](graphics/bob_i.png){width=50%}
+</center>
+
+---
+
+## Solution 1: Variables and Operators (Part 1)
+
+**Challenge:** Create two variables, assign them integer values, and print their sum, difference, product, and quotient.
+
+::: {.callout-note}
+**Approach 1: Basic Print Statements**
+
+```python
+a = 10
+b = 5
+print("Sum:", a + b)
+print("Difference:", a - b)
+print("Product:", a * b)
+print("Quotient:", a / b)
+```
+:::
+
+::: {.callout-note}
+**Approach 2: Using F-strings**
+
+```python
+a = 10
+b = 5
+print(f"Sum: {a + b}")
+print(f"Difference: {a - b}")
+print(f"Product: {a * b}")
+print(f"Quotient: {a / b}")
+```
+:::
+
+
+## Solution 1: Variables and Operators (Part 2)
+
+**Challenge:** Create two variables, assign them integer values, and print their sum, difference, product, and quotient.
+
+::: {.callout-note}
+**Approach 3: Storing Results in Variables**
+
+```python
+a = 10
+b = 5
+sum_result = a + b
+diff_result = a - b
+prod_result = a * b
+quot_result = a / b
+print(f"Sum: {sum_result}, Difference: {diff_result}, Product: {prod_result}, Quotient: {quot_result}")
+```
+:::
+
+---
+
+## Solution 2: Working with Lists (Part 1)
+
+**Challenge:** Create a list of five numbers and print the largest number.
+
+::: {.callout-note}
+**Approach 1: Using max() Function**
+```python
+numbers = [3, 7, 2, 9, 5]
+print("Largest number:", max(numbers))
+```
+:::
+
+::: {.callout-note}
+**Approach 2: Sorting the List**
+```python
+numbers = [3, 7, 2, 9, 5]
+numbers.sort()
+print("Largest number:", numbers[-1])  # Last element after sorting
+```
+:::
+
+---
+
+## Solution 2: Working with Lists (Part 2)
+
+**Challenge:** Create a list of five numbers and print the largest number.
+
+::: {.callout-note}
+**Approach 3: Manual Comparison Loop**
+```python
+numbers = [3, 7, 2, 9, 5]
+largest = numbers[0]
+for num in numbers:
+    if num > largest:
+        largest = num
+print("Largest number:", largest)
+```
+:::
+
+::: {.callout-note}
+**Approach 4: Using sorted() Function**
+```python
+numbers = [3, 7, 2, 9, 5]
+largest = sorted(numbers)[-1]
+print("Largest number:", largest)
+```
+:::
+
+---
+
+## Solution 3: Dictionaries (Part 1)
+
+**Challenge:** Create a dictionary with three key-value pairs and print each key and value.
+
+<!-- <center>
+![](graphics/literals.png){width=25%}
+</center> -->
+
+::: {.callout-note}
+**Approach 1: Using .items() Method**
+
+```python
+person = {"name": "Alice", "age": 25, "city": "New York"}
+for key, value in person.items():
+    print(key, ":", value)
+```
+:::
+
+::: {.callout-note}
+**Approach 2: Using F-strings**
+
+```python
+person = {"name": "Alice", "age": 25, "city": "New York"}
+for key, value in person.items():
+    print(f"{key}: {value}")
+```
+:::
+
+---
+
+## Solution 3: Dictionaries (Part 2)
+
+**Challenge:** Create a dictionary with three key-value pairs and print each key and value.
+
+::: {.callout-note}
+**Approach 3: Accessing Keys Directly**
+
+```python
+person = {"name": "Alice", "age": 25, "city": "New York"}
+for key in person.keys():
+    print(f"{key}: {person[key]}")
+```
+:::
+
+::: {.callout-note}
+**Approach 4: Individual Print Statements**
+
+```python
+person = {"name": "Alice", "age": 25, "city": "New York"}
+print("name:", person["name"])
+print("age:", person["age"])
+print("city:", person["city"])
+```
+:::
+
+---
+
+## Solution 4: For Loops (Part 1)
+
+**Challenge:** Use a for loop to print all even numbers from 1 to 10.
+
+::: {.callout-note}
+**Approach 1: Using Modulo Operator**
+
+```python
+for i in range(1, 11):
+    if i % 2 == 0:
+        print(i)
+```
+:::
+
+::: {.callout-note}
+**Approach 2: Using Range with Step**
+
+```python
+for i in range(2, 11, 2):  # Start at 2, step by 2
+    print(i)
+```
+:::
+
+---
+
+## Solution 4: For Loops (Part 2)
+
+**Challenge:** Use a for loop to print all even numbers from 1 to 10.
+
+<!-- <center>
+![](graphics/loop.png){width=30%}
+</center> -->
+
+::: {.callout-note}
+**Approach 3: Using List Comprehension**
+
+```python
+even_numbers = [i for i in range(1, 11) if i % 2 == 0]
+for num in even_numbers:
+    print(num)
+```
+:::
+
+::: {.callout-note}
+**Approach 4: One-liner with List Comprehension**
+
+```python
+print(*[i for i in range(1, 11) if i % 2 == 0], sep='\n')
+```
+:::
+
+---
+
+## Solution 5: While Loops and Conditionals (Part 1)
+
+**Challenge:** Use a while loop to keep asking for input until a negative number is entered.
+
+<!-- <center>
+![](graphics/more.png){width=25%}
+</center> -->
+
+::: {.callout-note}
+**Approach 1: Using break Statement**
 ```python
 while True:
     num = int(input("Enter a number: "))
     if num < 0:
         break
 ```
+:::
 
+::: {.callout-note}
+**Approach 2: Using Condition in While Loop**
+
+```python
+num = 0  # Initialize with a non-negative number
+while num >= 0:
+    num = int(input("Enter a number: "))
+```
+:::
+
+---
+
+## Solution 5: While Loops and Conditionals (Part 2)
+
+**Challenge:** Use a while loop to keep asking for input until a negative number is entered.
+
+::: {.callout-note}
+**Approach 3: With Feedback Messages**
+
+```python
+while True:
+    num = int(input("Enter a number (negative to quit): "))
+    if num < 0:
+        print("Negative number entered. Exiting...")
+        break
+    else:
+        print(f"You entered: {num}")
+```
+:::
+
+::: {.callout-note}
+**Approach 4: Using Flag Variable**
+
+```python
+continue_input = True
+while continue_input:
+    num = int(input("Enter a number: "))
+    if num < 0:
+        continue_input = False
+```
+:::
+
+## You've Got This!!
+
+<center>
+![](graphics/thumbs_i.png){width="45%"}
+</center>
+
+::: {.callout-tip icon="true"}
+You now able to use ...
+
+* Literals
+* Print statements
+* Loops driven by `for` and `while`
+* Lists and Dictionaries
+* Much more!
 :::
 
 ---

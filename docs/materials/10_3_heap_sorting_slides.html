@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="CS 101 - Fall 2025">
   <title>CMPSC101 Spring 2026 :: DataStructures – Heap-Based Priority Queue: Sorting the Search Space</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -230,7 +230,7 @@ CS 101 - Fall 2025
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> heapq</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> heapq</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a><span class="co"># Priority queue: lower number = higher priority</span></span>
 <span id="cb1-4"><a></a>emergency_room <span class="op">=</span> []</span>
@@ -243,7 +243,7 @@ CS 101 - Fall 2025
 <span id="cb1-11"><a></a>    (<span class="dv">3</span>, <span class="st">"Chest Pain"</span>),</span>
 <span id="cb1-12"><a></a>    (<span class="dv">7</span>, <span class="st">"Headache"</span>),</span>
 <span id="cb1-13"><a></a>    (<span class="dv">1</span>, <span class="st">"Stroke"</span>),          <span class="co"># Also highest priority</span></span>
-<span id="cb1-14"><a></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-14"><a></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column">
 <p><strong>Incredible Scaling</strong> 📊</p>
@@ -278,7 +278,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Binary Min-Heap Property</strong> 🌳</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Heap maintains this invariant:</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Heap maintains this invariant:</span></span>
 <span id="cb2-2"><a></a><span class="co"># Parent ≤ Children (always!)</span></span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co">#       1 (Heart Attack)</span></span>
@@ -288,11 +288,11 @@ CS 101 - Fall 2025
 <span id="cb2-8"><a></a><span class="co">#   8  5 7  ?</span></span>
 <span id="cb2-9"><a></a></span>
 <span id="cb2-10"><a></a><span class="co"># Root = minimum priority = highest urgency</span></span>
-<span id="cb2-11"><a></a><span class="co"># Height = log₂(n) = maximum steps needed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-11"><a></a><span class="co"># Height = log₂(n) = maximum steps needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Key Properties:</strong> - <strong>Parent ≤ Children</strong>: Every parent node ≤ its children - <strong>Complete binary tree</strong>: Fills left to right, level by level - <strong>Root = Minimum</strong>: Smallest element always at top</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Array Representation</strong> 📊</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Heap stored as compact array</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Heap stored as compact array</span></span>
 <span id="cb3-2"><a></a>Index:  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">6</span></span>
 <span id="cb3-3"><a></a>Value: [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, ?]</span>
 <span id="cb3-4"><a></a></span>
@@ -304,7 +304,7 @@ CS 101 - Fall 2025
 <span id="cb3-10"><a></a><span class="co"># Why this works:</span></span>
 <span id="cb3-11"><a></a><span class="co"># - Complete tree fills left-to-right</span></span>
 <span id="cb3-12"><a></a><span class="co"># - Array index maps perfectly to tree position</span></span>
-<span id="cb3-13"><a></a><span class="co"># - O(1) parent/child access</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-13"><a></a><span class="co"># - O(1) parent/child access</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>The Array Advantage:</strong> - <strong>Space efficient</strong>: No pointer overhead - <strong>Cache friendly</strong>: Elements stored contiguously<br>
 - <strong>O(1) navigation</strong>: Simple index arithmetic</p>
 </div></div>
@@ -336,7 +336,7 @@ CS 101 - Fall 2025
 <p><strong>The Heap Promise:</strong> - Always know the most urgent patient - Insert new patients efficiently - Remove urgent patients efficiently</p>
 </div><div class="column">
 <p><strong>How <code>heappush()</code> Works</strong> ⬆️</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Adding "Stroke" (Priority 1):</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Adding "Stroke" (Priority 1):</span></span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a><span class="co"># Step 1: Insert at end of array</span></span>
 <span id="cb5-4"><a></a>[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>] → [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">1</span>]</span>
@@ -351,7 +351,7 @@ CS 101 - Fall 2025
 <span id="cb5-13"><a></a></span>
 <span id="cb5-14"><a></a><span class="kw">def</span> heappush_explained(heap, value):</span>
 <span id="cb5-15"><a></a>    heap.append(value)        <span class="co"># O(1) - add to end</span></span>
-<span id="cb5-16"><a></a>    bubble_up(heap, <span class="bu">len</span>(heap)<span class="op">-</span><span class="dv">1</span>)  <span class="co"># O(log n) - fix order</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-16"><a></a>    bubble_up(heap, <span class="bu">len</span>(heap)<span class="op">-</span><span class="dv">1</span>)  <span class="co"># O(log n) - fix order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Why O(log n)?</strong> - Tree height = log₂(n) - Bubble up at most one path - Path length ≤ tree height</p>
 </div></div>
 </section>
@@ -373,7 +373,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>How <code>heappop()</code> Works</strong> ⬇️</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Removing highest priority patient:</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Removing highest priority patient:</span></span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a><span class="co"># Step 1: Remove root (minimum element)</span></span>
 <span id="cb6-4"><a></a>Remove: <span class="dv">1</span> (Heart Attack)</span>
@@ -390,10 +390,10 @@ CS 101 - Fall 2025
 <span id="cb6-15"><a></a>    min_val <span class="op">=</span> heap[<span class="dv">0</span>]         <span class="co"># O(1) - get minimum</span></span>
 <span id="cb6-16"><a></a>    heap[<span class="dv">0</span>] <span class="op">=</span> heap.pop()      <span class="co"># O(1) - move last to root</span></span>
 <span id="cb6-17"><a></a>    bubble_down(heap, <span class="dv">0</span>)      <span class="co"># O(log n) - fix order</span></span>
-<span id="cb6-18"><a></a>    <span class="cf">return</span> min_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-18"><a></a>    <span class="cf">return</span> min_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <p><strong>The Bubble Down Process</strong> 🔽</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Visual bubble down process:</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Visual bubble down process:</span></span>
 <span id="cb7-2"><a></a><span class="co">#     2              1</span></span>
 <span id="cb7-3"><a></a><span class="co">#    / \    →       / \</span></span>
 <span id="cb7-4"><a></a><span class="co">#   3   1          3   2</span></span>
@@ -406,7 +406,7 @@ CS 101 - Fall 2025
 <span id="cb7-11"><a></a><span class="co"># 3. Continue until heap property restored</span></span>
 <span id="cb7-12"><a></a></span>
 <span id="cb7-13"><a></a><span class="co"># Maximum swaps: log₂(n) levels</span></span>
-<span id="cb7-14"><a></a><span class="co"># Time Complexity: O(log n)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-14"><a></a><span class="co"># Time Complexity: O(log n)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Why O(log n)?</strong> - Tree height = log₂(n) - Bubble down at most one path<br>
 - Path length ≤ tree height - Each comparison is O(1)</p>
 </div></div>
@@ -463,7 +463,7 @@ CS 101 - Fall 2025
 <p><strong>Heap wins!</strong> 🏆</p>
 </div><div class="column">
 <p><strong>When Heaps Shine</strong> ✨</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Emergency room priority queue</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Emergency room priority queue</span></span>
 <span id="cb8-2"><a></a><span class="co"># Even with thousands of patients!</span></span>
 <span id="cb8-3"><a></a></span>
 <span id="cb8-4"><a></a><span class="co"># Real-time priority management</span></span>
@@ -484,7 +484,7 @@ CS 101 - Fall 2025
 <span id="cb8-19"><a></a><span class="co"># Total time: O(n log n) for n operations</span></span>
 <span id="cb8-20"><a></a><span class="co"># Compare with O(n²) for sorting each time!</span></span>
 <span id="cb8-21"><a></a></span>
-<span id="cb8-22"><a></a><span class="co"># The secret: Partial ordering pays dividends!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-22"><a></a><span class="co"># The secret: Partial ordering pays dividends!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="python-heap-implementation---the-efficient-choice" class="slide level2">
@@ -505,7 +505,7 @@ CS 101 - Fall 2025
 <div class="columns">
 <div class="column">
 <p><strong>Emergency Room Demo</strong> 🏥</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> heapq</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> heapq</span>
 <span id="cb9-2"><a></a><span class="im">import</span> time</span>
 <span id="cb9-3"><a></a></span>
 <span id="cb9-4"><a></a><span class="co"># Simulate a hospital emergency room</span></span>
@@ -535,7 +535,7 @@ CS 101 - Fall 2025
 <span id="cb9-28"><a></a></span>
 <span id="cb9-29"><a></a><span class="co"># Each operation is O(log n)</span></span>
 <span id="cb9-30"><a></a><span class="co"># Total time: O(n log n) for n operations</span></span>
-<span id="cb9-31"><a></a><span class="co"># Much better than sorting repeatedly: O(n² log n)!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-31"><a></a><span class="co"># Much better than sorting repeatedly: O(n² log n)!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <p><strong>Output Example</strong> 📋</p>
 <pre><code>Adding patients to emergency queue:
@@ -578,7 +578,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Tree Height = log₂(n)</strong> 🔢</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Why heaps are O(log n)</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Why heaps are O(log n)</span></span>
 <span id="cb11-2"><a></a><span class="kw">def</span> calculate_tree_height(n):</span>
 <span id="cb11-3"><a></a>    <span class="im">import</span> math</span>
 <span id="cb11-4"><a></a>    <span class="cf">return</span> math.ceil(math.log2(n <span class="op">+</span> <span class="dv">1</span>))</span>
@@ -600,10 +600,10 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <span id="cb11-20"><a></a><span class="co"># 127         7              7</span></span>
 <span id="cb11-21"><a></a><span class="co"># 1023        10             10</span></span>
 <span id="cb11-22"><a></a></span>
-<span id="cb11-23"><a></a><span class="co"># Even 1000+ elements need only ~10 operations!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-23"><a></a><span class="co"># Even 1000+ elements need only ~10 operations!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <p><strong>Each Operation = One Tree Path</strong> ✨</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Bubble up/down traverse exactly one path</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Bubble up/down traverse exactly one path</span></span>
 <span id="cb12-2"><a></a><span class="kw">def</span> bubble_up_steps(heap_size):</span>
 <span id="cb12-3"><a></a>    <span class="im">import</span> math</span>
 <span id="cb12-4"><a></a>    <span class="cf">return</span> math.ceil(math.log2(heap_size <span class="op">+</span> <span class="dv">1</span>))</span>
@@ -626,7 +626,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <span id="cb12-21"><a></a><span class="co"># 1,000,000    20</span></span>
 <span id="cb12-22"><a></a></span>
 <span id="cb12-23"><a></a><span class="co"># Notice: Steps grow very slowly!</span></span>
-<span id="cb12-24"><a></a><span class="co"># This is the power of O(log n)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-24"><a></a><span class="co"># This is the power of O(log n)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="key-insights-how-heap-sorts-search-space" class="slide level2">
@@ -694,7 +694,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>System-Level Applications</strong> 💻</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Operating system task scheduling</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Operating system task scheduling</span></span>
 <span id="cb13-2"><a></a><span class="co"># CPU scheduler uses priority heaps</span></span>
 <span id="cb13-3"><a></a><span class="kw">class</span> TaskScheduler:</span>
 <span id="cb13-4"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
@@ -713,10 +713,10 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <span id="cb13-17"><a></a><span class="co"># Z-buffer algorithms use priority queues</span></span>
 <span id="cb13-18"><a></a></span>
 <span id="cb13-19"><a></a><span class="co"># Database query optimization</span></span>
-<span id="cb13-20"><a></a><span class="co"># Query planners use heaps for join ordering</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-20"><a></a><span class="co"># Query planners use heaps for join ordering</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <p><strong>Algorithm Applications</strong> 🧮</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Dijkstra's shortest path algorithm</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Dijkstra's shortest path algorithm</span></span>
 <span id="cb14-2"><a></a><span class="co"># Google Maps, GPS navigation</span></span>
 <span id="cb14-3"><a></a><span class="kw">def</span> dijkstra_shortest_path(graph, start):</span>
 <span id="cb14-4"><a></a>    distances <span class="op">=</span> {node: <span class="bu">float</span>(<span class="st">'inf'</span>) <span class="cf">for</span> node <span class="kw">in</span> graph}</span>
@@ -735,7 +735,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <span id="cb14-17"><a></a><span class="co"># Huffman coding (file compression)</span></span>
 <span id="cb14-18"><a></a><span class="co"># Event simulation systems</span></span>
 <span id="cb14-19"><a></a><span class="co"># A* pathfinding in games</span></span>
-<span id="cb14-20"><a></a><span class="co"># Machine learning (beam search)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-20"><a></a><span class="co"># Machine learning (beam search)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p><strong>Any scenario needing efficient priority-based access leverages heaps!</strong></p>
 </section>
@@ -772,7 +772,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 </ul>
 </div><div class="column">
 <p><strong>Programming Wisdom</strong> 💭</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># When to choose heaps:</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># When to choose heaps:</span></span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="co"># For priority-based processing</span></span>
 <span id="cb15-4"><a></a><span class="im">import</span> heapq</span>
@@ -790,7 +790,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
 <span id="cb15-16"><a></a><span class="co"># - O(log n): Heaps, trees - organized data  </span></span>
 <span id="cb15-17"><a></a><span class="co"># - O(n): Linear search - no organization needed</span></span>
 <span id="cb15-18"><a></a></span>
-<span id="cb15-19"><a></a><span class="co"># Choose heaps when you need efficient priority access!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-19"><a></a><span class="co"># Choose heaps when you need efficient priority access!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
 <section id="concluding-thoughts" class="slide level2 center">
@@ -1006,7 +1006,7 @@ Treating: Routine Checkup (Priority 8)</code></pre>
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1080,14 +1080,13 @@ Treating: Routine Checkup (Priority 8)</code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

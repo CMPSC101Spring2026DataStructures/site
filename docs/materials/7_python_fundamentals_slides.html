@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="CS 101 - Fall 2025">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 5: STRUCTURED TYPES AND MUTABILITY</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -289,14 +289,14 @@ CS 101 - Fall 2025
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Creating tuples</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Creating tuples</span></span>
 <span id="cb1-2"><a></a>coordinates <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">20</span>)</span>
 <span id="cb1-3"><a></a>rgb_color <span class="op">=</span> (<span class="dv">255</span>, <span class="dv">128</span>, <span class="dv">0</span>)  <span class="co"># Orange color</span></span>
 <span id="cb1-4"><a></a>student_info <span class="op">=</span> (<span class="st">"Alice"</span>, <span class="dv">20</span>, <span class="st">"Computer Science"</span>)</span>
 <span id="cb1-5"><a></a></span>
 <span id="cb1-6"><a></a><span class="co"># Accessing elements</span></span>
 <span id="cb1-7"><a></a><span class="bu">print</span>(<span class="ss">f"X coordinate: </span><span class="sc">{</span>coordinates[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Output: 10</span></span>
-<span id="cb1-8"><a></a><span class="bu">print</span>(<span class="ss">f"Student name: </span><span class="sc">{</span>student_info[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Output: Alice</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a></a><span class="bu">print</span>(<span class="ss">f"Student name: </span><span class="sc">{</span>student_info[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Output: Alice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -312,14 +312,14 @@ CS 101 - Fall 2025
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Like strings, tuples can be concatenated, indexed, and sliced.</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Like strings, tuples can be concatenated, indexed, and sliced.</span></span>
 <span id="cb2-2"><a></a>t1 <span class="op">=</span> (<span class="dv">1</span>, <span class="st">"two"</span>, <span class="dv">3</span>)</span>
 <span id="cb2-3"><a></a>t2 <span class="op">=</span> (t1, <span class="fl">3.25</span>) <span class="co"># Note, we include t1 here!</span></span>
 <span id="cb2-4"><a></a><span class="bu">print</span>(<span class="ss">f" t2 --&gt; </span><span class="sc">{</span>t2<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-5"><a></a><span class="bu">print</span>(<span class="ss">f" (t1 + t2) --&gt; </span><span class="sc">{</span>(t1 <span class="op">+</span> t2)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-6"><a></a><span class="bu">print</span>(<span class="ss">f" (t1 + t2)[3] --&gt;  </span><span class="sc">{</span>(t1 <span class="op">+</span> t2)[<span class="dv">3</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-7"><a></a><span class="bu">print</span>(<span class="ss">f" (t1 + t2)[2:5] --&gt; </span><span class="sc">{</span>(t1 <span class="op">+</span> t2)[<span class="dv">2</span>:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b7328075" class="cell" data-execution_count="1">
+<span id="cb2-7"><a></a><span class="bu">print</span>(<span class="ss">f" (t1 + t2)[2:5] --&gt; </span><span class="sc">{</span>(t1 <span class="op">+</span> t2)[<span class="dv">2</span>:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9f5a4ca7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code> t2 --&gt; ((1, 'two', 3), 3.25)
  (t1 + t2) --&gt; (1, 'two', 3, (1, 'two', 3), 3.25)
@@ -365,7 +365,7 @@ CS 101 - Fall 2025
 <p><strong>Example: Different range patterns</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>numbers <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)              <span class="co"># 0, 1, 2, 3, 4</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>numbers <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)              <span class="co"># 0, 1, 2, 3, 4</span></span>
 <span id="cb4-2"><a></a>evens <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">2</span>)         <span class="co"># 2, 4, 6, 8, 10</span></span>
 <span id="cb4-3"><a></a>countdown <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>)    <span class="co"># 10, 9, 8, ..., 1</span></span>
 <span id="cb4-4"><a></a></span>
@@ -373,7 +373,7 @@ CS 101 - Fall 2025
 <span id="cb4-6"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb4-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"Round </span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">!"</span>)</span>
 <span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> countdown: <span class="bu">print</span>(i)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-9"><a></a><span class="cf">for</span> i <span class="kw">in</span> countdown: <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -412,14 +412,14 @@ CS 101 - Fall 2025
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Creating and modifying lists</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Creating and modifying lists</span></span>
 <span id="cb5-2"><a></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>]</span>
 <span id="cb5-3"><a></a><span class="bu">print</span>(<span class="ss">f"Original: </span><span class="sc">{</span>fruits<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb5-4"><a></a></span>
 <span id="cb5-5"><a></a><span class="co"># Adding items</span></span>
 <span id="cb5-6"><a></a>fruits.append(<span class="st">"grape"</span>)</span>
 <span id="cb5-7"><a></a>fruits.insert(<span class="dv">1</span>, <span class="st">"mango"</span>)</span>
-<span id="cb5-8"><a></a><span class="bu">print</span>(<span class="ss">f"After adding: </span><span class="sc">{</span>fruits<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-8"><a></a><span class="bu">print</span>(<span class="ss">f"After adding: </span><span class="sc">{</span>fruits<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -458,13 +458,13 @@ CS 101 - Fall 2025
 <p><strong>Dangerous Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>original <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>original <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a><span class="co"># Wrong way (creates reference, not copy)</span></span>
 <span id="cb6-4"><a></a>not_a_copy <span class="op">=</span> original</span>
 <span id="cb6-5"><a></a>not_a_copy.append(<span class="dv">6</span>)</span>
 <span id="cb6-6"><a></a><span class="bu">print</span>(<span class="ss">f"Original changed too! </span><span class="sc">{</span>original<span class="sc">}</span><span class="ss">"</span>)  </span>
-<span id="cb6-7"><a></a><span class="co"># Output: [1, 2, 3, 4, 5, 6] - Oops!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-7"><a></a><span class="co"># Output: [1, 2, 3, 4, 5, 6] - Oops!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -477,7 +477,7 @@ CS 101 - Fall 2025
 <p><strong>Safe Examples</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>original <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>original <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a><span class="co"># Right ways to clone</span></span>
 <span id="cb7-4"><a></a>copy1 <span class="op">=</span> original.copy()</span>
@@ -486,7 +486,7 @@ CS 101 - Fall 2025
 <span id="cb7-7"><a></a></span>
 <span id="cb7-8"><a></a>copy1.append(<span class="dv">7</span>)</span>
 <span id="cb7-9"><a></a><span class="bu">print</span>(<span class="ss">f"Original safe: </span><span class="sc">{</span>original<span class="sc">}</span><span class="ss">"</span>)    <span class="co"># [1, 2, 3, 4, 5]</span></span>
-<span id="cb7-10"><a></a><span class="bu">print</span>(<span class="ss">f"Copy modified: </span><span class="sc">{</span>copy1<span class="sc">}</span><span class="ss">"</span>)       <span class="co"># [1, 2, 3, 4, 5, 7]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-10"><a></a><span class="bu">print</span>(<span class="ss">f"Copy modified: </span><span class="sc">{</span>copy1<span class="sc">}</span><span class="ss">"</span>)       <span class="co"># [1, 2, 3, 4, 5, 7]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -502,7 +502,7 @@ CS 101 - Fall 2025
 <p><strong>Clones</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>L1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>L1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb8-2"><a></a><span class="bu">print</span>(<span class="ss">f"L1 --&gt; </span><span class="sc">{</span>L1<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-3"><a></a>L2 <span class="op">=</span> L1</span>
 <span id="cb8-4"><a></a><span class="bu">print</span>(<span class="ss">f" L2 is copy of L1 --&gt; </span><span class="sc">{</span>L2<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -511,8 +511,8 @@ CS 101 - Fall 2025
 <span id="cb8-7"><a></a><span class="bu">print</span>(<span class="ss">f"L1 with appended value--&gt; </span><span class="sc">{</span>L1<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-8"><a></a><span class="bu">print</span>(<span class="ss">f" L2 is copy of L1 --&gt; </span><span class="sc">{</span>L2<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb8-9"><a></a>L2.append(<span class="st">"2000"</span>) <span class="co"># Modify L2</span></span>
-<span id="cb8-10"><a></a><span class="bu">print</span>(<span class="ss">f"Appending to L2 modifies L1 = </span><span class="sc">{</span>L2<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="b30bd7ea" class="cell" data-execution_count="2">
+<span id="cb8-10"><a></a><span class="bu">print</span>(<span class="ss">f"Appending to L2 modifies L1 = </span><span class="sc">{</span>L2<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6fb4fe9e" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>L1 --&gt; [1, 2, 3]
  L2 is copy of L1 --&gt; [1, 2, 3]
@@ -560,14 +560,14 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Comparison</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Traditional way</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Traditional way</span></span>
 <span id="cb10-2"><a></a>squares <span class="op">=</span> []</span>
 <span id="cb10-3"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb10-4"><a></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb10-5"><a></a></span>
 <span id="cb10-6"><a></a><span class="co"># List comprehension way - much cleaner!</span></span>
 <span id="cb10-7"><a></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
-<span id="cb10-8"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-8"><a></a><span class="bu">print</span>(squares)  <span class="co"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -580,14 +580,14 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Advanced Examples</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># With conditions</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># With conditions</span></span>
 <span id="cb11-2"><a></a>even_squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
 <span id="cb11-3"><a></a><span class="bu">print</span>(even_squares)  <span class="co"># [0, 4, 16, 36, 64]</span></span>
 <span id="cb11-4"><a></a></span>
 <span id="cb11-5"><a></a><span class="co"># String processing</span></span>
 <span id="cb11-6"><a></a>words <span class="op">=</span> [<span class="st">"hello"</span>, <span class="st">"world"</span>, <span class="st">"python"</span>, <span class="st">"rocks"</span>]</span>
 <span id="cb11-7"><a></a>caps <span class="op">=</span> [word.upper() <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&gt;</span> <span class="dv">4</span>]</span>
-<span id="cb11-8"><a></a><span class="bu">print</span>(caps)  <span class="co"># ['HELLO', 'WORLD', 'PYTHON', 'ROCKS']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-8"><a></a><span class="bu">print</span>(caps)  <span class="co"># ['HELLO', 'WORLD', 'PYTHON', 'ROCKS']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -603,13 +603,13 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Cartesian Formatting</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>list1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>list1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb12-2"><a></a>list2 <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>]</span>
 <span id="cb12-3"><a></a></span>
 <span id="cb12-4"><a></a><span class="co"># Create a list of tuples combining elements from list1 and list2</span></span>
 <span id="cb12-5"><a></a>combined_list <span class="op">=</span> [(x, y) <span class="cf">for</span> x <span class="kw">in</span> list1 <span class="cf">for</span> y <span class="kw">in</span> list2]</span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(combined_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3cc1a809" class="cell" data-execution_count="3">
+<span id="cb12-6"><a></a><span class="bu">print</span>(combined_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="36774303" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>[(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b'), (3, 'a'), (3, 'b')]</code></pre>
 </div>
@@ -653,7 +653,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Creating nested lists</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Creating nested lists</span></span>
 <span id="cb14-2"><a></a>shopping_lists <span class="op">=</span> [</span>
 <span id="cb14-3"><a></a>    [<span class="st">"apples"</span>, <span class="st">"bananas"</span>, <span class="st">"oranges"</span>],      <span class="co"># Fruits</span></span>
 <span id="cb14-4"><a></a>    [<span class="st">"carrots"</span>, <span class="st">"broccoli"</span>, <span class="st">"spinach"</span>],    <span class="co"># Vegetables</span></span>
@@ -662,7 +662,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <span id="cb14-7"><a></a></span>
 <span id="cb14-8"><a></a><span class="co"># Accessing nested elements</span></span>
 <span id="cb14-9"><a></a><span class="bu">print</span>(<span class="ss">f"First fruit: </span><span class="sc">{</span>shopping_lists[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)      <span class="co"># apples</span></span>
-<span id="cb14-10"><a></a><span class="bu">print</span>(<span class="ss">f"Second vegetable: </span><span class="sc">{</span>shopping_lists[<span class="dv">1</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># broccoli</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-10"><a></a><span class="bu">print</span>(<span class="ss">f"Second vegetable: </span><span class="sc">{</span>shopping_lists[<span class="dv">1</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># broccoli</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -701,7 +701,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Creating a 3x3 tic-tac-toe board</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Creating a 3x3 tic-tac-toe board</span></span>
 <span id="cb15-2"><a></a>board <span class="op">=</span> [</span>
 <span id="cb15-3"><a></a>    [<span class="st">' '</span>, <span class="st">' '</span>, <span class="st">' '</span>],</span>
 <span id="cb15-4"><a></a>    [<span class="st">' '</span>, <span class="st">' '</span>, <span class="st">' '</span>],</span>
@@ -710,7 +710,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <span id="cb15-7"><a></a><span class="co"># Making moves</span></span>
 <span id="cb15-8"><a></a>board[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="st">'X'</span>  <span class="co"># Top-left</span></span>
 <span id="cb15-9"><a></a>board[<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="st">'O'</span>  <span class="co"># Center</span></span>
-<span id="cb15-10"><a></a>board[<span class="dv">2</span>][<span class="dv">2</span>] <span class="op">=</span> <span class="st">'X'</span>  <span class="co"># Bottom-right</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-10"><a></a>board[<span class="dv">2</span>][<span class="dv">2</span>] <span class="op">=</span> <span class="st">'X'</span>  <span class="co"># Bottom-right</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -749,7 +749,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
 <span id="cb16-2"><a></a></span>
 <span id="cb16-3"><a></a><span class="co"># map() - apply function to all elements</span></span>
 <span id="cb16-4"><a></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
@@ -758,7 +758,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <span id="cb16-7"><a></a></span>
 <span id="cb16-8"><a></a><span class="co"># filter() - keep elements that meet condition</span></span>
 <span id="cb16-9"><a></a>evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>, numbers))</span>
-<span id="cb16-10"><a></a><span class="bu">print</span>(<span class="ss">f"Evens: </span><span class="sc">{</span>evens<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 4, 6, 8, 10]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-10"><a></a><span class="bu">print</span>(<span class="ss">f"Evens: </span><span class="sc">{</span>evens<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 4, 6, 8, 10]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -775,7 +775,7 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 </div>
 <div class="callout-content">
 <p>Add print statements to see what is happening in the code.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">def</span> apply_to_each(L,f):</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">def</span> apply_to_each(L,f):</span>
 <span id="cb17-2"><a></a>    <span class="co">""" Assume L is a list, F is a function</span></span>
 <span id="cb17-3"><a></a><span class="co">    Mutats L by replacing each element, e, of L by f(e)"""</span></span>
 <span id="cb17-4"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(L)):</span>
@@ -793,14 +793,14 @@ Appending to L2 modifies L1 = [1, 2, 3, '100', '2000']</code></pre>
 <span id="cb17-16"><a></a><span class="bu">print</span>(<span class="ss">f"4. L = </span><span class="sc">{</span>L<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-17"><a></a><span class="bu">print</span>(<span class="ss">f"Apply squaring to each element of L : </span><span class="sc">{</span>L<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-18"><a></a>apply_to_each(L, <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb17-19"><a></a><span class="bu">print</span>(<span class="ss">f"5. L = </span><span class="sc">{</span>L<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-19"><a></a><span class="bu">print</span>(<span class="ss">f"5. L = </span><span class="sc">{</span>L<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="output" class="slide level2">
 <h2>Output</h2>
-<div id="d249adf4" class="cell" data-execution_count="4">
+<div id="1d478a1a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>1. L = [1, -2, 3.33, -5]
 Apply ABS() to each element of L
@@ -862,7 +862,7 @@ Apply squaring to each element of L : [1.0, 2.0, 3.0, 5.0]
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Common operations across sequence types</span></span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Common operations across sequence types</span></span>
 <span id="cb19-2"><a></a>text <span class="op">=</span> <span class="st">"Hello"</span></span>
 <span id="cb19-3"><a></a>numbers_tuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb19-4"><a></a>numbers_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)</span>
@@ -871,7 +871,7 @@ Apply squaring to each element of L : [1.0, 2.0, 3.0, 5.0]
 <span id="cb19-7"><a></a><span class="co"># Indexing works on all</span></span>
 <span id="cb19-8"><a></a><span class="bu">print</span>(<span class="ss">f"String[0]: </span><span class="sc">{</span>text[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)           <span class="co"># H</span></span>
 <span id="cb19-9"><a></a><span class="bu">print</span>(<span class="ss">f"Tuple[1]: </span><span class="sc">{</span>numbers_tuple[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)   <span class="co"># 2</span></span>
-<span id="cb19-10"><a></a><span class="bu">print</span>(<span class="ss">f"List[2]: </span><span class="sc">{</span>numbers_list[<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-10"><a></a><span class="bu">print</span>(<span class="ss">f"List[2]: </span><span class="sc">{</span>numbers_list[<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -884,14 +884,14 @@ Apply squaring to each element of L : [1.0, 2.0, 3.0, 5.0]
 <p><strong>Mutability Matters!</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Slicing works on all</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Slicing works on all</span></span>
 <span id="cb20-2"><a></a><span class="bu">print</span>(<span class="ss">f"String slice: </span><span class="sc">{</span>text[<span class="dv">1</span>:<span class="dv">4</span>]<span class="sc">}</span><span class="ss">"</span>)      <span class="co"># ell</span></span>
 <span id="cb20-3"><a></a><span class="bu">print</span>(<span class="ss">f"List slice: </span><span class="sc">{</span>numbers_list[<span class="dv">1</span>:<span class="dv">4</span>]<span class="sc">}</span><span class="ss">"</span>) <span class="co"># [2, 3, 4]</span></span>
 <span id="cb20-4"><a></a></span>
 <span id="cb20-5"><a></a><span class="co"># But mutability differs!</span></span>
 <span id="cb20-6"><a></a><span class="co"># text[0] = 'h'        # Error! Strings are immutable</span></span>
 <span id="cb20-7"><a></a><span class="co"># numbers_tuple[0] = 0  # Error! Tuples are immutable</span></span>
-<span id="cb20-8"><a></a>numbers_list[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>    <span class="co"># Works! Lists are mutable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-8"><a></a>numbers_list[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>    <span class="co"># Works! Lists are mutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -930,7 +930,7 @@ Apply squaring to each element of L : [1.0, 2.0, 3.0, 5.0]
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Creating sets</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Creating sets</span></span>
 <span id="cb21-2"><a></a>colors1 <span class="op">=</span> {<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>}  <span class="co"># Duplicate "red" ignored</span></span>
 <span id="cb21-3"><a></a>colors2 <span class="op">=</span> {<span class="st">"blue"</span>, <span class="st">"yellow"</span>, <span class="st">"purple"</span>}</span>
 <span id="cb21-4"><a></a>numbers <span class="op">=</span> <span class="bu">set</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>])      <span class="co"># From list</span></span>
@@ -941,15 +941,15 @@ Apply squaring to each element of L : [1.0, 2.0, 3.0, 5.0]
 <span id="cb21-9"><a></a>colors1.add(<span class="st">"purple"</span>)</span>
 <span id="cb21-10"><a></a><span class="bu">print</span>(<span class="ss">f"Add purple to Colors1: </span><span class="sc">{</span>colors1<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># {'red', 'green', 'blue', 'purple'}</span></span>
 <span id="cb21-11"><a></a>colors1.add(<span class="st">"purple"</span>)</span>
-<span id="cb21-12"><a></a><span class="bu">print</span>(<span class="ss">f"Add purple to Colors1 (again): </span><span class="sc">{</span>colors1<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># {'red', 'green', 'blue', 'purple'}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-12"><a></a><span class="bu">print</span>(<span class="ss">f"Add purple to Colors1 (again): </span><span class="sc">{</span>colors1<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># {'red', 'green', 'blue', 'purple'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="output-1" class="slide level2">
 <h2>Output</h2>
-<div id="55d81c09" class="cell" data-execution_count="5">
+<div id="0f4d32a5" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>Colors1: {'green', 'red', 'blue'}
+<pre><code>Colors1: {'blue', 'green', 'red'}
 Numbers: {1, 2, 3, 4}
-Add purple to Colors1: {'green', 'red', 'blue', 'purple'}
-Add purple to Colors1 (again): {'green', 'red', 'blue', 'purple'}</code></pre>
+Add purple to Colors1: {'blue', 'green', 'purple', 'red'}
+Add purple to Colors1 (again): {'blue', 'green', 'purple', 'red'}</code></pre>
 </div>
 </div>
 </section>
@@ -965,7 +965,7 @@ Add purple to Colors1 (again): {'green', 'red', 'blue', 'purple'}</code></pre>
 <p><strong>Set Operations</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># Creating sets</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># Creating sets</span></span>
 <span id="cb23-2"><a></a>colors1 <span class="op">=</span> {<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>}  <span class="co"># Duplicate "red" ignored</span></span>
 <span id="cb23-3"><a></a>colors2 <span class="op">=</span> {<span class="st">"blue"</span>, <span class="st">"yellow"</span>, <span class="st">"purple"</span>}</span>
 <span id="cb23-4"><a></a><span class="co"># Set operations</span></span>
@@ -978,13 +978,13 @@ Add purple to Colors1 (again): {'green', 'red', 'blue', 'purple'}</code></pre>
 <span id="cb23-11"><a></a><span class="co"># {'red', 'green', 'blue', 'yellow', 'purple'}</span></span>
 <span id="cb23-12"><a></a></span>
 <span id="cb23-13"><a></a><span class="co"># Fast membership testing</span></span>
-<span id="cb23-14"><a></a><span class="bu">print</span>(<span class="st">"red"</span> <span class="kw">in</span> colors1)  <span class="co"># True - very fast!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-14"><a></a><span class="bu">print</span>(<span class="st">"red"</span> <span class="kw">in</span> colors1)  <span class="co"># True - very fast!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="output-2" class="slide level2">
 <h2>Output</h2>
-<div id="3338f92b" class="cell" data-execution_count="6">
+<div id="3ae88203" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Common colors: {'blue'}
-All colors: {'green', 'purple', 'yellow', 'red', 'blue'}
+All colors: {'green', 'blue', 'red', 'yellow', 'purple'}
 True</code></pre>
 </div>
 </div>
@@ -1189,7 +1189,7 @@ True</code></pre>
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1263,14 +1263,13 @@ True</code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
