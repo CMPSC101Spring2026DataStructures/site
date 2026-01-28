@@ -14,7 +14,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
 
 <!-- ![](../graphics/levelup.png){width=10%} -->
 
-## 1. Welcome Weeks
+## W1. Welcome Weeks
 
 - **Getting to Know You**: [Welcome Week Survey](https://forms.gle/EobK4xncr4f63Z8WA)
 - **Getting to know your neighbor** Pair-up with **two** people in the class to ask the following questions. Write down their answers -- you will be introducing them during next class! 
@@ -37,7 +37,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [GitHub](https://github.com/git-guides/install-git)
   - [Pipx](https://pipx.pypa.io/stable/installation/)
 
-- ## 2. Reviewing Python
+## W2. Reviewing Python
 
 - **Literals, Variables, Conditionals, Strings, etc. ** 
   - [HTML](2_i_introToPython_solutions.html) Slides
@@ -47,7 +47,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [GitHub Classroom Link](https://classroom.github.com/a/AnsmidnZ)
 
 
-## 3. List, Dictionaries and Sets (Oh My!)
+## W3. List, Dictionaries and Sets (Oh My!)
 - **Lists, Dictionary and Sets**
   - [HTML](4_data_structures_solutions.html) Slides
   

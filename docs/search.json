@@ -672,18 +672,25 @@
     "text": "CS101::Spring 2026\nHere you will find a listing of lesson materials for the course such as slides, assignments, and similar."
   },
   {
-    "objectID": "materials/0_materials.html#welcome-weeks",
-    "href": "materials/0_materials.html#welcome-weeks",
+    "objectID": "materials/0_materials.html#w1.-welcome-weeks",
+    "href": "materials/0_materials.html#w1.-welcome-weeks",
     "title": "Materials",
-    "section": "1. Welcome Weeks",
-    "text": "1. Welcome Weeks\n\nGetting to Know You: Welcome Week Survey\nGetting to know your neighbor Pair-up with two people in the class to ask the following questions. Write down their answers – you will be introducing them during next class!\n\nWhat is your name?\nWhere is home?\nWhat is your favorite part about life at Allegheny College so far?\nDo you have any Computer Science experience(s) already (jobs, academic, industrial, similar)?\nHave you done any projects with programming?\nWhat can you share about the projects?\nWhat is your favorite phone app?\nWhat is your favorite breakfast cereal?\n\nBe sure to join the class’ GitHub Organization (check your email!)\nAlso, be sure that you are in the Discord channel for the course. If you are not in the Discord channel, please let me know!\nActivity 01: Installing Essential Tools and Solving the Maze\n\nGitHub Classroom Link\n\nInstalling necessary software for the course (if anyone needs help!)\n\nPython\nVisual Studio Code\nGitHub\nPipx\n\n2. Reviewing Python\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides\n\nLoops, Dictionaries and Lists \n\nHTML Slides\n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link"
+    "section": "W1. Welcome Weeks",
+    "text": "W1. Welcome Weeks\n\nGetting to Know You: Welcome Week Survey\nGetting to know your neighbor Pair-up with two people in the class to ask the following questions. Write down their answers – you will be introducing them during next class!\n\nWhat is your name?\nWhere is home?\nWhat is your favorite part about life at Allegheny College so far?\nDo you have any Computer Science experience(s) already (jobs, academic, industrial, similar)?\nHave you done any projects with programming?\nWhat can you share about the projects?\nWhat is your favorite phone app?\nWhat is your favorite breakfast cereal?\n\nBe sure to join the class’ GitHub Organization (check your email!)\nAlso, be sure that you are in the Discord channel for the course. If you are not in the Discord channel, please let me know!\nActivity 01: Installing Essential Tools and Solving the Maze\n\nGitHub Classroom Link\n\nInstalling necessary software for the course (if anyone needs help!)\n\nPython\nVisual Studio Code\nGitHub\nPipx"
   },
   {
-    "objectID": "materials/0_materials.html#list-dictionaries-and-sets-oh-my",
-    "href": "materials/0_materials.html#list-dictionaries-and-sets-oh-my",
+    "objectID": "materials/0_materials.html#w2.-reviewing-python",
+    "href": "materials/0_materials.html#w2.-reviewing-python",
     "title": "Materials",
-    "section": "3. List, Dictionaries and Sets (Oh My!)",
-    "text": "3. List, Dictionaries and Sets (Oh My!)\n\nLists, Dictionary and Sets\n\nHTML Slides"
+    "section": "W2. Reviewing Python",
+    "text": "W2. Reviewing Python\n\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides\n\nLoops, Dictionaries and Lists \n\nHTML Slides\n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link"
+  },
+  {
+    "objectID": "materials/0_materials.html#w3.-list-dictionaries-and-sets-oh-my",
+    "href": "materials/0_materials.html#w3.-list-dictionaries-and-sets-oh-my",
+    "title": "Materials",
+    "section": "W3. List, Dictionaries and Sets (Oh My!)",
+    "text": "W3. List, Dictionaries and Sets (Oh My!)\n\nLists, Dictionary and Sets\n\nHTML Slides"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html",
