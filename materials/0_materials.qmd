@@ -46,7 +46,6 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab01**: Mastering Python Loops
   - [GitHub Classroom Link](https://classroom.github.com/a/AnsmidnZ)
 
-
 ## W3. List, Dictionaries and Sets (Oh My!)
 - **Lists, Dictionary and Sets**
   - [HTML](4_data_structures_solutions.html) Slides
