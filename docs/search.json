@@ -683,14 +683,7 @@
     "href": "materials/0_materials.html#w2.-reviewing-python",
     "title": "Materials",
     "section": "W2. Reviewing Python",
-    "text": "W2. Reviewing Python\n\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides\n\nLoops, Dictionaries and Lists \n\nHTML Slides\n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link"
-  },
-  {
-    "objectID": "materials/0_materials.html#w3.-list-dictionaries-and-sets-oh-my",
-    "href": "materials/0_materials.html#w3.-list-dictionaries-and-sets-oh-my",
-    "title": "Materials",
-    "section": "W3. List, Dictionaries and Sets (Oh My!)",
-    "text": "W3. List, Dictionaries and Sets (Oh My!)\n\nLists, Dictionary and Sets\n\nHTML Slides"
+    "text": "W2. Reviewing Python\n\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides \n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link\n\nList, Dictionaries and Sets (Oh My!)\n\nHTML Slides"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html",
