@@ -683,7 +683,14 @@
     "href": "materials/0_materials.html#w2.-reviewing-python",
     "title": "Materials",
     "section": "W2. Reviewing Python",
-    "text": "W2. Reviewing Python\n\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides \n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link\n\nList, Dictionaries and Sets (Oh My!)\n\nHTML Slides"
+    "text": "W2. Reviewing Python\n\nLiterals, Variables, Conditionals, Strings, etc. \n\nHTML Slides \n\nLab01: Mastering Python Loops\n\nGitHub Classroom Link"
+  },
+  {
+    "objectID": "materials/0_materials.html#w3.-more-on-python",
+    "href": "materials/0_materials.html#w3.-more-on-python",
+    "title": "Materials",
+    "section": "W3. More on Python",
+    "text": "W3. More on Python\n\nLists, Dictionaries and Sets (Oh My!)\n\nHTML Slides\n\nActivity 02: Getting Started with UV Package Manager\n\nGitHub Classroom Link"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html",

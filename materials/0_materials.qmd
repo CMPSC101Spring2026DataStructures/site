@@ -45,7 +45,12 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](3_ii_introToPython_solutions.html) Slides -->
 - **Lab01**: Mastering Python Loops
   - [GitHub Classroom Link](https://classroom.github.com/a/AnsmidnZ)
-- **List, Dictionaries and Sets (Oh My!)**
+
+## W3. More on Python
+
+- **Lists, Dictionaries and Sets (Oh My!)**
   - [HTML](4_data_structures_solutions.html) Slides
-  
+- **Activity 02**: Getting Started with UV Package Manager
+  - [GitHub Classroom Link](https://classroom.github.com/a/8rO34Wu8)
+
 ---
