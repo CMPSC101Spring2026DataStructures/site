@@ -3,7 +3,7 @@
 :root {
   /* Color Palette */
   --primary-blue: #2E86AB;
-  --light-blue: #A23B72;
+  --deep-pink: #A23B72;
   --deep-blue: #0F4C75;
   --forest-green: #2D5016;
   --lime-green: #7CB342;
@@ -18,7 +18,7 @@
 
 /* Body and Background */
 body {
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 50%, var(--deep-blue) 100%);
+  background: linear-gradient(135deg, var(--deep-pink) 0%, var(--primary-blue) 50%, var(--deep-blue) 100%);
   min-height: 100vh;
   color: #333;
 }
@@ -162,8 +162,11 @@ table {
   overflow: hidden;
 }
 
+/* Table Header */
 thead th {
-  background: linear-gradient(90deg, var(--forest-green), var(--lime-green));
+  /* background: linear-gradient(90deg, var(--forest-green), var(--lime-green)); */
+  /* background: linear-gradient(90deg, var(--deep-blue), var(--primary-blue)); */
+  background: linear-gradient(90deg, var(--blue-grey), var(--primary-blue));
   color: white;
   padding: 15px;
   font-weight: bold;

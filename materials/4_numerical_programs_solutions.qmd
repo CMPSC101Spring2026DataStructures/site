@@ -1,0 +1,3095 @@
+---
+title: "Chapter 3: Numerical Programs"
+subtitle: "Fibonacci, Lucas, and Mathematical Sequences in Python"
+author: "Oliver Bonham-Carter"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+<!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-to
+p: 0.5em;"} -->
+
+# Welcome to Numerical Programs!
+
+<!-- ::: {.callout-tip}
+**Get ready to explore the magical world of mathematical sequences!**
+::: -->
+
+**Get ready to explore the magical world of mathematical sequences!**
+
+::: {.callout-note}
+
+**Definition of Numerical Programs**: Computer programs which are designed to solve complex mathematical problems. Here, we use methods such as numerical approximation for situations where the computation impossible or impractical to complete.
+
+:::
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+
+<center>
+![](graphics/tellMeMore_i.png){width=40%}
+</center>
+
+---
+
+## What You Will Learn Today
+
+::: {.callout-note icon=false}
+### 📚 Learning Objectives
+
+By the end of this session, you will be able to:
+
+1. **Understand Mathematical Sequences** - Recognize and describe patterns in Fibonacci, Lucas, Tribonacci, Collatz, Factorial, and Prime Number sequences
+
+2. **Implement Multiple Approaches** - Write recursive, iterative, memoized, and formula-based solutions for sequence generation
+
+3. **Analyze Algorithm Efficiency** - Compare time and space complexity of different implementation strategies and understand trade-offs
+
+4. **Visualize Sequence Growth** - Use interactive tools to explore how sequences behave and grow over time
+
+5. **Apply Problem-Solving Skills** - Tackle real-world challenges using numerical programming techniques and algorithmic thinking
+:::
+
+::: {style="color: #2E86C1; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*From elegant mathematics to efficient code - let's explore the beauty of sequences!* ✨
+:::
+
+---
+
+## Why Numerical Programs?
+
+Numerical programs teach us fundamental programming concepts while solving real mathematical problems!
+
+::: {.callout-note}
+
+**What you'll learn:**
+
+- **Multiple approaches**: Recursion, iteration, formulas, and more
+- **Efficiency matters**: Some methods are faster than others
+- **Beautiful patterns**: Mathematics meets programming
+- **Problem-solving**: Different tools for different situations
+:::
+
+::: {style="color: #2E86C1; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*"The Fibonacci sequence appears everywhere in nature - from sunflower seeds to galaxy spirals!"* 🌻
+:::
+
+---
+
+# The Fibonacci Sequence
+
+## What is Fibonacci?
+
+The Fibonacci sequence is a series where each number is the sum of the two preceding ones.
+
+::: {.callout-note}
+**The Pattern:**
+
+- Start with: 0, 1
+- Each next number = sum of previous two
+- Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+- Formula: F(n) = F(n-1) + F(n-2)
+:::
+
+::: {style="color: #8E44AD; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*Named after Leonardo Fibonacci (c. 1170-1250), who introduced it to Western mathematics through rabbit breeding problems!* 🐰
+:::
+
+---
+
+## Fibonacci: The Recursive Way
+
+The most intuitive approach - directly follows the mathematical definition!
+
+::: {.example}
+```python
+"""
+Recursive Fibonacci - elegant but slow for large numbers!
+"""
+
+def fibonacci_recursive(n):
+    """
+    Calculate the nth Fibonacci number using recursion.
+    
+    Args:
+        n: Position in sequence (0-indexed)
+    Returns:
+        The nth Fibonacci number
+    """
+    # Base cases
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+```
+:::
+
+---
+
+## Fibonacci: Recursive Implementation
+
+Complete the recursive approach:
+
+::: {.example}
+```python
+    # Recursive case
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+# Testing
+for i in range(10):
+    print(f"F({i}) = {fibonacci_recursive(i)}")
+# Output: F(0)=0, F(1)=1, F(2)=1, F(3)=2, F(4)=3, F(5)=5...
+```
+:::
+
+---
+
+## Recursive Fibonacci: The Problem
+
+::: {.callout-warning}
+**Warning: Exponential Time Complexity!**
+
+The recursive approach recalculates the same values over and over:
+
+- F(5) calls F(4) and F(3)
+- F(4) calls F(3) and F(2)
+- F(3) is calculated TWICE already!
+:::
+
+::: {style="color: #E74C3C; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Computing F(40) recursively makes ~331 million function calls! ⏰*
+:::
+
+::: {.callout-note}
+**Time Complexity:** O(2^n) - doubles with each increase in n!
+
+**Space Complexity:** O(n) - call stack depth
+:::
+
+---
+
+## Fibonacci: The Iterative Way
+
+Much faster! Build from the bottom up instead of top down.
+
+::: {.example}
+```python
+"""
+Iterative Fibonacci - fast and efficient!
+"""
+
+def fibonacci_iterative(n):
+    """
+    Calculate the nth Fibonacci number using iteration.
+    
+    Args:
+        n: Position in sequence (0-indexed)
+    Returns:
+        The nth Fibonacci number
+    """
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+```
+:::
+
+---
+
+## Fibonacci: Iterative Implementation
+
+Complete the iterative approach:
+
+::: {.example}
+```python
+    # Start with first two numbers
+    prev, current = 0, 1
+    
+    # Build up to nth number
+    for _ in range(2, n + 1):
+        prev, current = current, prev + current
+    
+    return current
+
+# Testing
+print([fibonacci_iterative(i) for i in range(15)])
+# Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]
+```
+:::
+
+---
+
+## Iterative Fibonacci: The Advantage
+
+::: {.callout-tip}
+**Much Better Performance!**
+
+The iterative approach calculates each Fibonacci number exactly once:
+
+- Linear time instead of exponential
+- Minimal memory usage (just two variables!)
+- Can easily compute F(100) or even F(1000)
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Computing F(1000) takes milliseconds iteratively vs. forever recursively! 🚀*
+:::
+
+::: {.callout-note}
+**Time Complexity:** O(n) - linear with n
+
+**Space Complexity:** O(1) - constant space
+:::
+
+---
+
+## Fibonacci: Memoization (Part 1)
+
+Cache previous results to avoid having to rerun the calculations!
+
+::: {.example}
+```python
+"""
+Memoized Fibonacci - combines elegance with efficiency!
+"""
+
+def fibonacci_memo(n, memo={}):
+    """
+    Calculate the nth Fibonacci number using memoization.
+    
+    Args:
+        n: Position in sequence
+        memo: Dictionary to cache results
+    Returns:
+        The nth Fibonacci number
+    """
+    # Check if already calculated
+    if n in memo:
+        return memo[n]
+```
+:::
+
+---
+
+## Fibonacci: Memoization (Part 2)
+
+Complete the implementation and testing.
+
+::: {.example}
+```python
+    # Base cases (continued from previous slide)
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    # Calculate and store result
+    memo[n] = fibonacci_memo(n - 1, memo) + fibonacci_memo(n - 2, memo)
+    return memo[n]
+
+# Testing
+print(f"F(100) = {fibonacci_memo(100)}")
+# Output: F(100) = 354224848179261915075
+```
+:::
+
+---
+
+## Memoization: Best of Both Worlds
+
+::: {.callout-tip}
+**Smart Caching = Speed!**
+
+Memoization stores calculated values:
+
+- Each Fibonacci number calculated exactly once
+- Recursive elegance with iterative speed
+- Great for problems with overlapping subproblems
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+**Pros:**
+- Clear, readable code
+- Fast performance
+- Automatic caching
+:::
+
+::: {.column width="50%"}
+**Cons:**
+- Uses extra memory for cache
+- Still has recursion overhead
+- Need to manage memo dictionary
+:::
+:::
+
+::: {.callout-note}
+**Time Complexity:** O(n) - each value computed once
+
+**Space Complexity:** O(n) - stores n values in memo
+:::
+
+---
+
+## Fibonacci: Binet's Formula (Part 1)
+
+A direct mathematical formula - no loops or recursion needed!
+
+::: {.example}
+```python
+"""
+Binet's Formula - closed-form solution using the golden ratio!
+"""
+
+import math
+
+def fibonacci_binet(n):
+    """
+    Calculate the nth Fibonacci number using Binet's formula.
+    
+    Args:
+        n: Position in sequence
+    Returns:
+        The nth Fibonacci number (approximate for large n)
+    """
+```
+:::
+
+---
+
+## Fibonacci: Binet's Formula (Part 2)
+
+Complete the implementation:
+
+::: {.example}
+```python
+    # The golden ratio
+    phi = (1 + math.sqrt(5)) / 2
+    psi = (1 - math.sqrt(5)) / 2
+    
+    # Binet's formula
+    result = (phi**n - psi**n) / math.sqrt(5)
+    
+    return round(result)
+
+# Testing
+print([fibonacci_binet(i) for i in range(20)])
+# Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...]
+```
+:::
+
+---
+
+## Binet's Formula: The Golden Ratio Connection
+
+::: {.callout-tip}
+**φ (phi) - The Golden Ratio ≈ 1.618**
+
+The Fibonacci sequence is intimately connected to the golden ratio!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+$$F(n) = \frac{\phi^n - \psi^n}{\sqrt{5}}$$
+
+where $\phi = \frac{1 + \sqrt{5}}{2}$ and $\psi = \frac{1 - \sqrt{5}}{2}$
+:::
+
+::: {.callout-note}
+**Time Complexity:** O(1) - constant time!
+
+**Space Complexity:** O(1) - constant space
+
+**Caveat:** Floating-point errors for very large n (but works great for reasonable values!)
+:::
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*This formula can compute F(n) instantly, no matter how large n is!* ⚡
+:::
+
+---
+
+## Fibonacci: Matrix Method (Part 1)
+
+Another mathematical approach using matrix exponentiation! (Learn more at [https://ianthehenry.com/posts/fibonacci/](https://ianthehenry.com/posts/fibonacci/)
+
+::: {.example}
+```python
+"""
+Matrix method - fast for very large n using exponentiation!
+"""
+
+def multiply_matrices(a, b):
+    """Multiply two 2x2 matrices."""
+    return [
+        [a[0][0]*b[0][0] + a[0][1]*b[1][0], a[0][0]*b[0][1] + a[0][1]*b[1][1]],
+        [a[1][0]*b[0][0] + a[1][1]*b[1][0], a[1][0]*b[0][1] + a[1][1]*b[1][1]]
+    ]
+
+def matrix_power(matrix, n):
+    """Raise matrix to power n using fast exponentiation."""
+    if n == 1:
+        return matrix
+    if n % 2 == 0:
+        half = matrix_power(matrix, n // 2)
+        return multiply_matrices(half, half)
+```
+:::
+
+---
+
+## Fibonacci: Matrix Method (Part 2)
+
+Complete the implementation with the main Fibonacci function.
+
+::: {.example}
+```python
+def matrix_power(matrix, n):
+    # Continued from previous slide
+    else:
+        return multiply_matrices(matrix, matrix_power(matrix, n - 1))
+
+def fibonacci_matrix(n):
+    """Calculate nth Fibonacci using matrix method."""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    base_matrix = [[1, 1], [1, 0]]
+    result = matrix_power(base_matrix, n)
+    return result[0][1]
+
+print(f"F(50) = {fibonacci_matrix(50)}")
+# Output: F(50) = 12586269025
+```
+:::
+
+---
+
+## Comparing Fibonacci Methods
+
+::: {.callout-important}
+**Which Method Should You Choose?**
+:::
+
+| Method | Time | Space | Best For |
+|--------|------|-------|----------|
+| Recursive | O(2^n) | O(n) | 🐌 Learning only! |
+| Iterative | O(n) | O(1) | 🚀 General use |
+| Memoization | O(n) | O(n) | 💡 Many lookups |
+| Binet's Formula | O(1) | O(1) | ⚡ Small-medium n |
+| Matrix Power | O(log n) | O(log n) | 🏆 Very large n |
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*For most practical purposes, iterative is your best friend!* 🎯
+:::
+
+---
+
+## Fibonacci: Interactive Visualization
+
+```{=html}
+<div id="fibonacciContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+  <div style="margin-bottom: 15px;">
+    <label for="fibonacciInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">How many terms?</label>
+    <input type="number" id="fibonacciInput" value="15" min="1" max="30" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #2E86C1; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generateFibonacci();">
+    <button id="fibGenBtn" onclick="window.generateFibonacci(); return false;" style="padding: 8px 20px; margin-left: 10px; background-color: #2E86C1; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: 16px; font-weight: bold;">Generate</button>
+    <span id="fibLoadingIndicator" style="margin-left: 10px; color: #27AE60; font-weight: bold; display: none; font-size: 16px;">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳ Calculating...</span>
+    </span>
+  </div>
+  
+  <div id="fibonacciOutput" style="margin-top: 15px; font-family: monospace; min-height: 50px; background-color: white; padding: 15px; border-radius: 5px; font-size: 14px;">
+    <div style="color: #888; font-style: italic;">Click "Generate" to see the Fibonacci sequence...</div>
+  </div>
+  
+  <canvas id="fibonacciCanvas" width="800" height="400" style="margin-top: 20px; background-color: white; border: 2px solid #ccc; display: none; border-radius: 5px;"></canvas>
+</div>
+
+<script>
+window.generateFibonacci = function() {
+  const input = document.getElementById('fibonacciInput');
+  const output = document.getElementById('fibonacciOutput');
+  const canvas = document.getElementById('fibonacciCanvas');
+  const button = document.getElementById('fibGenBtn');
+  const loading = document.getElementById('fibLoadingIndicator');
+  
+  if (!input || !output || !canvas || !button || !loading) {
+    console.error('Fibonacci elements not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  
+  button.disabled = true;
+  button.style.backgroundColor = '#95A5A6';
+  loading.style.display = 'inline';
+  output.innerHTML = '<div style="color: #8E44AD; font-style: italic;">🔄 Processing...</div>';
+  canvas.style.display = 'none';
+  
+  setTimeout(function() {
+    let n = parseInt(input.value);
+    
+    if (n < 1 || n > 30 || isNaN(n)) {
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 1 and 30!</span>';
+      canvas.style.display = 'none';
+      resetButton();
+      return;
+    }
+    
+    // Generate Fibonacci sequence
+    let sequence = [];
+    let a = 0, b = 1;
+    for (let i = 0; i < n; i++) {
+      sequence.push(a);
+      let temp = a + b;
+      a = b;
+      b = temp;
+    }
+    
+    // Display sequence info
+    output.innerHTML = `
+      <div class="result-appear" style="color: #2E86C1; font-weight: bold; margin-bottom: 10px;">✅ Fibonacci Sequence:</div>
+      <div class="result-appear" style="animation-delay: 0.1s;"><strong>Terms:</strong> ${sequence.join(', ')}</div>
+      <div class="result-appear" style="margin-top: 5px; animation-delay: 0.2s;"><strong>Last term F(${n-1}):</strong> <span style="color: #E74C3C; font-weight: bold;">${sequence[n-1].toLocaleString()}</span></div>
+      <div class="result-appear" style="animation-delay: 0.3s;"><strong>Maximum value:</strong> <span style="color: #8E44AD; font-weight: bold;">${Math.max(...sequence).toLocaleString()}</span></div>
+    `;
+    
+    // Draw visualization
+    setTimeout(function() {
+      canvas.style.display = 'block';
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.5s ease-in';
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(750, 350);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+      
+      // Labels
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Arial';
+      ctx.fillText('Position', 360, 380);
+      ctx.save();
+      ctx.translate(20, 200);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText('Value', 0, 0);
+      ctx.restore();
+      
+      // Plot the sequence
+      const maxY = Math.max(...sequence);
+      const scaleX = 700 / Math.max(sequence.length - 1, 1);
+      const scaleY = maxY > 0 ? 300 / maxY : 1;
+      
+      // Draw line
+      ctx.strokeStyle = '#E74C3C';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      
+      // Draw points
+      ctx.fillStyle = '#2E86C1';
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Label last point
+      const lastX = 50 + (sequence.length - 1) * scaleX;
+      const lastY = 350 - sequence[sequence.length - 1] * scaleY;
+      ctx.fillStyle = '#8E44AD';
+      ctx.font = 'bold 11px Arial';
+      ctx.fillText(`F(${n-1})=${sequence[sequence.length-1]}`, lastX + 5, lastY - 5);
+      
+      setTimeout(function() {
+        canvas.style.opacity = '1';
+      }, 50);
+      
+      resetButton();
+    }, 300);
+  }, 50);
+  
+  function resetButton() {
+    button.disabled = false;
+    button.style.backgroundColor = '#2E86C1';
+    button.style.cursor = 'pointer';
+    loading.style.display = 'none';
+  }
+};
+
+// Attach event listener to button - runs immediately and on Reveal slide events
+function attachFibonacciButton() {
+  const button = document.getElementById('fibGenBtn');
+  const container = document.getElementById('fibonacciContainer');
+  
+  if (container) {
+    console.log('Fibonacci container found!');
+  }
+  
+  if (button && !button.hasAttribute('data-listener-attached')) {
+    button.addEventListener('click', window.generateFibonacci);
+    button.setAttribute('data-listener-attached', 'true');
+    console.log('✅ Fibonacci button listener attached successfully');
+  }
+}
+
+// Try to attach immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachFibonacciButton);
+} else {
+  attachFibonacciButton();
+}
+
+// Also attach when navigating to the slide in Reveal
+if (typeof Reveal !== 'undefined') {
+  Reveal.on('slidechanged', function(event) {
+    attachFibonacciButton();
+    console.log('Slide changed, reattaching fibonacci listener');
+  });
+  Reveal.on('ready', function() {
+    attachFibonacciButton();
+    console.log('Reveal ready, attaching fibonacci listener');
+  });
+} else {
+  console.log('⚠️ Reveal.js not detected - running in standalone mode');
+}
+
+// Don't auto-generate - let user click the button
+console.log('🎯 Fibonacci visualization ready! Click the Generate button to start.');
+</script>
+```
+
+::: {style="color: #27AE60; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+*Watch the exponential growth - each term builds on the previous two!* 📈
+:::
+
+---
+
+# The Lucas Sequence
+
+## What is the Lucas Sequence?
+
+Similar to Fibonacci, but starts with 2 and 1 instead of 0 and 1!
+
+::: {.callout-note}
+**The Pattern:**
+
+- Start with: 2, 1
+- Each next number = sum of previous two (same rule as Fibonacci!)
+- Sequence: 2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, ...
+- Formula: L(n) = L(n-1) + L(n-2)
+:::
+
+::: {style="color: #8E44AD; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*Named after François Édouard Anatole Lucas (1842-1891), who studied number sequences!*
+:::
+
+::: {.callout-tip}
+**Fun Fact:** Lucas numbers are related to Fibonacci numbers by the formula:
+
+$L(n) = F(n-1) + F(n+1)$
+:::
+
+---
+
+## Lucas Sequence: Implementation (Part 1)
+
+We can use the same techniques as Fibonacci!
+
+::: {.example}
+```python
+"""
+Lucas sequence using iterative approach.
+"""
+
+def lucas_iterative(n):
+    """
+    Calculate the nth Lucas number using iteration.
+    
+    Args:
+        n: Position in sequence (0-indexed)
+    Returns:
+        The nth Lucas number
+    """
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+```
+:::
+
+---
+
+## Lucas Sequence: Implementation (Part 2)
+
+Complete the implementation:
+
+::: {.example}
+```python
+    # Start with first two Lucas numbers
+    prev, current = 2, 1
+    
+    # Build up to nth number
+    for _ in range(2, n + 1):
+        prev, current = current, prev + current
+    
+    return current
+
+# Generate first 15 Lucas numbers
+lucas_seq = [lucas_iterative(i) for i in range(15)]
+print(lucas_seq)
+# Output: [2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843]
+```
+:::
+
+---
+
+## Lucas: Recursive with Memoization (Part 1)
+
+::: {.example}
+```python
+"""
+Lucas sequence using memoization for efficiency.
+"""
+
+def lucas_memo(n, memo={}):
+    """
+    Calculate the nth Lucas number using memoization.
+    
+    Args:
+        n: Position in sequence
+        memo: Cache for previously calculated values
+    Returns:
+        The nth Lucas number
+    """
+    # Check cache first
+    if n in memo:
+        return memo[n]
+```
+:::
+
+---
+
+## Lucas: Recursive with Memoization (Part 2)
+
+Complete the implementation:
+
+::: {.example}
+```python
+    # Base cases
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    
+    # Calculate and store
+    memo[n] = lucas_memo(n - 1, memo) + lucas_memo(n - 2, memo)
+    return memo[n]
+
+# Calculate some Lucas numbers
+for i in [10, 20, 30, 40]:
+    print(f"L({i}) = {lucas_memo(i)}")
+# Output: L(10)=123, L(20)=15127, L(30)=1860498, L(40)=228826127
+```
+:::
+
+---
+
+## Relationship Between Fibonacci and Lucas
+
+::: {.callout-tip}
+**They're Mathematical Cousins!**
+
+Several beautiful relationships exist:
+:::
+
+::: {.example}
+```python
+"""
+Exploring Fibonacci and Lucas relationships.
+"""
+
+def show_relationship(n):
+    """Show relationship between Fibonacci and Lucas numbers."""
+    fib_prev = fibonacci_iterative(n - 1) if n > 0 else 0
+    fib_n = fibonacci_iterative(n)
+    fib_next = fibonacci_iterative(n + 1)
+    lucas_n = lucas_iterative(n)
+    
+    print(f"n = {n}")
+    print(f"F({n-1}) + F({n+1}) = {fib_prev} + {fib_next} = {fib_prev + fib_next}")
+    print(f"L({n}) = {lucas_n}")
+    print(f"Match: {fib_prev + fib_next == lucas_n}\n")
+```
+:::
+
+---
+
+## Testing the Relationship
+
+::: {.example}
+```python
+# Test the relationship for multiple values
+for i in range(5, 10):
+    show_relationship(i)
+# Shows L(n) = F(n-1) + F(n+1) is always true!
+```
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Mathematics is full of beautiful patterns like this!* ✨
+:::
+
+---
+
+# Other Interesting Sequences
+
+## The Tribonacci Sequence
+
+Like Fibonacci, but each number is the sum of the THREE preceding ones!
+
+::: {.callout-note}
+**The Pattern:**
+
+- Start with: 0, 0, 1
+- Each next number = sum of previous THREE
+- Sequence: 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, ...
+- Formula: T(n) = T(n-1) + T(n-2) + T(n-3)
+:::
+
+---
+
+## Tribonacci: Implementation
+
+::: {.example}
+```python
+"""
+Tribonacci sequence - sum of three previous numbers!
+"""
+
+def tribonacci(n):
+    """Calculate nth Tribonacci number."""
+    if n <= 1:
+        return 0
+    elif n == 2:
+        return 1
+    
+    a, b, c = 0, 0, 1
+    
+    for _ in range(3, n + 1):
+        a, b, c = b, c, a + b + c
+    
+    return c
+
+# Generate sequence
+trib_seq = [tribonacci(i) for i in range(15)]
+print(trib_seq)
+# Output: [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927]
+```
+:::
+
+---
+
+## Tribonacci: Interactive Visualization
+
+```{=html}
+<div id="tribonacciContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+  <div style="margin-bottom: 15px;">
+    <label for="tribonacciInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">How many terms?</label>
+    <input type="number" id="tribonacciInput" value="15" min="1" max="25" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #E67E22; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generateTribonacci();">
+    <button id="tribGenBtn" onclick="window.generateTribonacci(); return false;" style="padding: 8px 20px; margin-left: 10px; background-color: #E67E22; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: 16px; font-weight: bold;">Generate</button>
+    <span id="tribLoadingIndicator" style="margin-left: 10px; color: #27AE60; font-weight: bold; display: none; font-size: 16px;">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳ Calculating...</span>
+    </span>
+  </div>
+  
+  <div id="tribonacciOutput" style="margin-top: 15px; font-family: monospace; min-height: 50px; background-color: white; padding: 15px; border-radius: 5px; font-size: 14px;">
+    <div style="color: #888; font-style: italic;">Click "Generate" to see the Tribonacci sequence...</div>
+  </div>
+  
+  <canvas id="tribonacciCanvas" width="800" height="400" style="margin-top: 20px; background-color: white; border: 2px solid #ccc; display: none; border-radius: 5px;"></canvas>
+</div>
+
+<script>
+window.generateTribonacci = function() {
+  const input = document.getElementById('tribonacciInput');
+  const output = document.getElementById('tribonacciOutput');
+  const canvas = document.getElementById('tribonacciCanvas');
+  const button = document.getElementById('tribGenBtn');
+  const loading = document.getElementById('tribLoadingIndicator');
+  
+  if (!input || !output || !canvas || !button || !loading) {
+    console.error('Tribonacci elements not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  
+  button.disabled = true;
+  button.style.backgroundColor = '#95A5A6';
+  loading.style.display = 'inline';
+  output.innerHTML = '<div style="color: #E67E22; font-style: italic;">🔄 Processing...</div>';
+  canvas.style.display = 'none';
+  
+  setTimeout(function() {
+    let n = parseInt(input.value);
+    
+    if (n < 1 || n > 25 || isNaN(n)) {
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 1 and 25!</span>';
+      canvas.style.display = 'none';
+      resetButton();
+      return;
+    }
+    
+    // Generate Tribonacci sequence
+    let sequence = [];
+    for (let i = 0; i < n; i++) {
+      if (i <= 1) {
+        sequence.push(0);
+      } else if (i === 2) {
+        sequence.push(1);
+      } else {
+        sequence.push(sequence[i-1] + sequence[i-2] + sequence[i-3]);
+      }
+    }
+    
+    // Also generate Fibonacci for comparison
+    let fibonacci = [];
+    let a = 0, b = 1;
+    for (let i = 0; i < n; i++) {
+      fibonacci.push(a);
+      let temp = a + b;
+      a = b;
+      b = temp;
+    }
+    
+    // Display sequence info
+    output.innerHTML = `
+      <div class="result-appear" style="color: #E67E22; font-weight: bold; margin-bottom: 10px;">✅ Tribonacci vs Fibonacci:</div>
+      <div class="result-appear" style="animation-delay: 0.1s;"><strong>Tribonacci:</strong> ${sequence.join(', ')}</div>
+      <div class="result-appear" style="animation-delay: 0.15s;"><strong>Fibonacci:</strong> ${fibonacci.join(', ')}</div>
+      <div class="result-appear" style="margin-top: 5px; animation-delay: 0.2s;"><strong>T(${n-1}):</strong> <span style="color: #E74C3C; font-weight: bold;">${sequence[n-1].toLocaleString()}</span> vs F(${n-1}): <span style="color: #2E86C1; font-weight: bold;">${fibonacci[n-1].toLocaleString()}</span></div>
+      <div class="result-appear" style="animation-delay: 0.3s;"><strong>Growth rate:</strong> <span style="color: #8E44AD; font-weight: bold;">Tribonacci grows faster than Fibonacci!</span></div>
+    `;
+    
+    // Draw visualization
+    setTimeout(function() {
+      canvas.style.display = 'block';
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.5s ease-in';
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(750, 350);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+      
+      // Labels
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Arial';
+      ctx.fillText('Position', 360, 380);
+      ctx.save();
+      ctx.translate(20, 200);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText('Value', 0, 0);
+      ctx.restore();
+      
+      // Plot both sequences
+      const maxY = Math.max(...sequence);
+      const scaleX = 700 / Math.max(sequence.length - 1, 1);
+      const scaleY = maxY > 0 ? 300 / maxY : 1;
+      
+      // Draw Tribonacci line
+      ctx.strokeStyle = '#E67E22';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      
+      // Draw Fibonacci line (for comparison)
+      ctx.strokeStyle = '#2E86C1';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      for (let i = 0; i < fibonacci.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - fibonacci[i] * scaleY;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      
+      // Draw Tribonacci points
+      ctx.fillStyle = '#E67E22';
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Draw Fibonacci points
+      ctx.fillStyle = '#2E86C1';
+      for (let i = 0; i < fibonacci.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - fibonacci[i] * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Legend
+      ctx.font = 'bold 12px Arial';
+      ctx.fillStyle = '#E67E22';
+      ctx.fillText('Tribonacci (solid)', 600, 30);
+      ctx.fillStyle = '#2E86C1';
+      ctx.fillText('Fibonacci (dashed)', 600, 50);
+      
+      setTimeout(function() {
+        canvas.style.opacity = '1';
+      }, 50);
+      
+      resetButton();
+    }, 300);
+  }, 50);
+  
+  function resetButton() {
+    button.disabled = false;
+    button.style.backgroundColor = '#E67E22';
+    button.style.cursor = 'pointer';
+    loading.style.display = 'none';
+  }
+};
+
+// Attach event listener to button - runs immediately and on Reveal slide events
+function attachTribonacciButton() {
+  const button = document.getElementById('tribGenBtn');
+  const container = document.getElementById('tribonacciContainer');
+  
+  if (container) {
+    console.log('Tribonacci container found!');
+  }
+  
+  if (button && !button.hasAttribute('data-listener-attached')) {
+    button.addEventListener('click', window.generateTribonacci);
+    button.setAttribute('data-listener-attached', 'true');
+    console.log('✅ Tribonacci button listener attached successfully');
+  }
+}
+
+// Try to attach immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachTribonacciButton);
+} else {
+  attachTribonacciButton();
+}
+
+// Also attach when navigating to the slide in Reveal
+if (typeof Reveal !== 'undefined') {
+  Reveal.on('slidechanged', function(event) {
+    attachTribonacciButton();
+    console.log('Slide changed, reattaching tribonacci listener');
+  });
+  Reveal.on('ready', function() {
+    attachTribonacciButton();
+    console.log('Reveal ready, attaching tribonacci listener');
+  });
+} else {
+  console.log('⚠️ Reveal.js not detected - running in standalone mode');
+}
+
+// Don't auto-generate - let user click the button
+console.log('🎯 Tribonacci visualization ready! Click the Generate button to start.');
+</script>
+```
+
+::: {style="color: #E67E22; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+*Summing three terms instead of two makes the sequence grow even faster!* 🚀
+:::
+
+---
+
+## The Padovan Sequence
+
+A unique sequence with a spiral geometric interpretation!
+
+::: {.callout-note}
+**The Pattern:**
+
+- Start with: 1, 1, 1
+- Formula: P(n) = P(n-2) + P(n-3)
+- Sequence: 1, 1, 1, 2, 2, 3, 4, 5, 7, 9, 12, 16, 21, ...
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Named after Richard Padovan who discovered it in 1994!*
+:::
+
+---
+
+## Padovan: Implementation
+
+::: {.example}
+```python
+"""
+Padovan sequence - appears in spiral triangles!
+"""
+
+def padovan(n):
+    """Calculate nth Padovan number."""
+    if n <= 2:
+        return 1
+    
+    a, b, c = 1, 1, 1
+    
+    for _ in range(3, n + 1):
+        a, b, c = b, c, a + b
+    
+    return c
+
+# Generate sequence
+pad_seq = [padovan(i) for i in range(15)]
+print(pad_seq)
+# Output: [1, 1, 1, 2, 2, 3, 4, 5, 7, 9, 12, 16, 21, 28, 37]
+```
+:::
+
+---
+
+## The Pell Sequence
+
+Closely related to the Pythagorean approximation of √2!
+
+::: {.callout-note}
+**The Pattern:**
+
+- Start with: 0, 1
+- Formula: P(n) = 2·P(n-1) + P(n-2)
+- Sequence: 0, 1, 2, 5, 12, 29, 70, 169, 408, 985, ...
+:::
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Pell numbers approximate √2 when you divide consecutive terms!*
+:::
+
+---
+
+## Pell: Implementation
+
+::: {.example}
+```python
+"""
+Pell sequence - doubles the previous term then adds one before!
+"""
+
+def pell(n):
+    """Calculate nth Pell number."""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    prev, current = 0, 1
+    
+    for _ in range(2, n + 1):
+        prev, current = current, 2 * current + prev
+    
+    return current
+
+# Generate sequence
+pell_seq = [pell(i) for i in range(12)]
+print(pell_seq)
+# Output: [0, 1, 2, 5, 12, 29, 70, 169, 408, 985, 2378, 5741]
+```
+:::
+
+---
+
+## The Collatz Sequence (3n+1 Problem)
+
+::: {.callout-tip}
+**One of Mathematics' Greatest Unsolved Mysteries!**
+:::
+
+The Collatz conjecture is a deceptively simple problem that has stumped mathematicians for decades!
+
+::: {.callout-note}
+**The Rules:**
+
+- Start with any positive integer n
+- If n is **even**: divide by 2 → n = n / 2
+- If n is **odd**: multiply by 3 and add 1 → n = 3n + 1
+- Repeat until you reach 1
+:::
+
+::: {style="color: #8E44AD; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*Named after Lothar Collatz (1910-1990), who proposed it in 1937!*
+:::
+
+---
+
+## The Collatz Conjecture
+
+::: {.callout-warning}
+**The Unsolved Mystery:**
+
+The conjecture states that **no matter what positive integer you start with, you will always eventually reach 1**.
+
+- Tested for numbers up to 2^68 ≈ 295 quintillion!
+- No counterexample has ever been found
+- Yet **no one has proven it works for ALL numbers**
+- Mathematicians have tried for over 85 years!
+:::
+
+::: {style="color: #E74C3C; font-size: 0.85em; text-align: center; margin-top: 0.5em;"}
+*Paul Erdős said: "Mathematics may not be ready for such problems." 🤔*
+:::
+
+::: {.callout-tip}
+**Why is it so hard?**
+
+- The sequence seems chaotic and unpredictable
+- Some numbers take very long paths to reach 1
+- No clear pattern emerges from studying examples
+:::
+
+---
+
+## Collatz: Basic Implementation
+
+::: {.example}
+```python
+"""
+Collatz sequence - does every number reach 1?
+"""
+
+def collatz(n):
+    """
+    Generate Collatz sequence starting from n.
+    Returns list of numbers until reaching 1.
+    """
+    sequence = [n]
+    while n != 1:
+        n = n // 2 if n % 2 == 0 else 3 * n + 1
+        sequence.append(n)
+    return sequence
+
+# Example: Starting from 6
+print(collatz(6))
+# Output: [6, 3, 10, 5, 16, 8, 4, 2, 1]
+```
+:::
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Notice how the sequence goes up and down unpredictably!*
+:::
+
+---
+
+## Collatz: Interactive Version
+
+Let's create a more user-friendly version!
+
+::: {.example}
+```python
+"""
+Interactive Collatz sequence generator.
+"""
+
+def collatz(n):
+    sequence = [n]
+    while n != 1:
+        n = n // 2 if n % 2 == 0 else 3 * n + 1
+        sequence.append(n)
+    return sequence
+
+def main():
+    num = int(input("Enter a seed to generate the Collatz sequence: "))
+    print("Collatz sequence:", collatz(num))
+    print(f"Length of sequence: {len(collatz(num))}")
+
+# Define a section of code that runs only when the Python
+# file is executed as a standalone script (at command line)
+if __name__ == "__main__": 
+    main()
+```
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Try different numbers and see how long it takes to reach 1!* 🎯
+:::
+
+---
+
+## Collatz: Examples and Patterns
+
+::: {.example}
+```python
+# Try different starting numbers
+for start in [5, 12, 27]:
+    seq = collatz(start)
+    print(f"Starting from {start}:")
+    print(f"  Sequence: {seq}")
+    print(f"  Length: {len(seq)}")
+    print(f"  Max value reached: {max(seq)}\n")
+```
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+**Output:**
+
+```
+Starting from 5:
+  Sequence: [5, 16, 8, 4, 2, 1]
+  Length: 6
+  Max value reached: 16
+
+Starting from 12:
+  Sequence: [12, 6, 3, 10, 5, 16, 8, 4, 2, 1]
+  Length: 10
+  Max value reached: 16
+
+Starting from 27:
+  Sequence: [27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, ...]
+  Length: 112
+  Max value reached: 9232
+```
+:::
+
+::: {style="color: #E74C3C; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Notice how 27 reaches a maximum of 9232 - much higher than where it started!* 📈
+:::
+
+---
+
+## Collatz: Analyzing Stopping Times
+
+The **stopping time** is how many steps it takes to reach 1.
+
+::: {.example}
+```python
+"""
+Find which number has the longest Collatz sequence.
+"""
+
+def collatz_analysis(max_start):
+    """
+    Analyze Collatz sequences for numbers 1 to max_start.
+    """
+    longest_sequence = 0
+    longest_start = 0
+    
+    for i in range(1, max_start + 1):
+        seq = collatz(i)
+        if len(seq) > longest_sequence:
+            longest_sequence = len(seq)
+            longest_start = i
+```
+:::
+
+---
+
+## Collatz: Analysis Results
+
+::: {.example}
+```python
+    print(f"Longest sequence up to {max_start}:")
+    print(f"Starting number: {longest_start}")
+    print(f"Sequence length: {longest_sequence}")
+    
+    # Show the sequence
+    seq = collatz(longest_start)
+    print(f"First 20 steps: {seq[:20]}...")
+
+collatz_analysis(100)
+```
+:::
+
+---
+
+## Collatz: Interesting Facts
+
+::: {.callout-note}
+**Fascinating Observations:**
+
+1. **Unpredictable lengths**: Small numbers can have long sequences
+   - 27 takes 111 steps to reach 1
+   - But 26 only takes 10 steps!
+
+2. **Maximum heights**: Sequences often climb before falling
+   - Starting at 27 reaches 9232 (342× larger!)
+   - Starting at 703 reaches 250,504
+
+3. **Even/odd pattern**: Sequences alternate between even and odd
+   - After an odd number: always even (3n+1 makes it even)
+   - After an even number: could be either
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*The sequence seems to have a mind of its own!* 🎢
+:::
+
+---
+
+## Collatz: Interactive Visualization
+
+<!-- ::: {.callout-tip}
+**Try it yourself!** Enter a starting number and see the Collatz sequence in action.
+::: -->
+
+```{=html}
+<div id="collatzContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+  <div style="margin-bottom: 15px;">
+    <label for="collatzInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">Enter a starting number:</label>
+    <input type="number" id="collatzInput" value="27" min="1" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #2E86C1; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generateCollatzSequence();">
+    <button id="generateBtn" onclick="window.generateCollatzSequence(); return false;" style="padding: 8px 20px; margin-left: 10px; background-color: #2E86C1; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: 16px; font-weight: bold;">Generate</button>
+    <span id="loadingIndicator" style="margin-left: 10px; color: #27AE60; font-weight: bold; display: none; font-size: 16px;">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳ Calculating...</span>
+    </span>
+  </div>
+  
+  <div id="collatzOutput" style="margin-top: 15px; font-family: monospace; min-height: 50px; background-color: white; padding: 15px; border-radius: 5px; font-size: 14px;">
+    <div style="color: #888; font-style: italic;">Click "Generate" to see the Collatz sequence...</div>
+  </div>
+  
+  <canvas id="collatzCanvas" width="800" height="400" style="margin-top: 20px; background-color: white; border: 2px solid #ccc; display: none; border-radius: 5px;"></canvas>
+</div>
+
+<style>
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-appear {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes drawProgress {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+</style>
+
+<script>
+// Define the function in global scope
+window.generateCollatzSequence = function() {
+  console.log('🔥 Generate button clicked! Function is running...');
+  
+  const input = document.getElementById('collatzInput');
+  const output = document.getElementById('collatzOutput');
+  const canvas = document.getElementById('collatzCanvas');
+  const button = document.getElementById('generateBtn');
+  const loading = document.getElementById('loadingIndicator');
+  
+  // Check if elements exist
+  if (!input || !output || !canvas || !button || !loading) {
+    console.error('❌ One or more required elements not found:', {input, output, canvas, button, loading});
+    alert('Error: Could not find all required elements!');
+    return;
+  }
+  
+  console.log('✅ All elements found, proceeding with generation...');
+  
+  const ctx = canvas.getContext('2d');
+  
+  // Show visual feedback immediately
+  button.disabled = true;
+  button.style.backgroundColor = '#95A5A6';
+  button.style.cursor = 'not-allowed';
+  loading.style.display = 'inline';
+  output.innerHTML = '<div style="color: #8E44AD; font-style: italic;">🔄 Processing your request...</div>';
+  canvas.style.display = 'none';
+  
+  console.log('💫 Visual feedback applied, starting calculation...');
+  
+  // Use setTimeout to allow UI to update before heavy computation
+  setTimeout(function() {
+    let n = parseInt(input.value);
+    
+    console.log('🔢 Input value:', n);
+    
+    if (n < 1 || isNaN(n)) {
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a positive integer!</span>';
+      canvas.style.display = 'none';
+      resetButton();
+      return;
+    }
+    
+    // Generate sequence
+    let sequence = [n];
+    let temp = n;
+    
+    while (temp !== 1 && sequence.length < 10000) { // Safety limit
+      if (temp % 2 === 0) {
+        temp = temp / 2;
+      } else {
+        temp = 3 * temp + 1;
+      }
+      sequence.push(temp);
+    }
+    
+    console.log('✅ Sequence generated: ', sequence.length, 'steps');
+    
+    // Display sequence info with animation
+    const maxVal = Math.max(...sequence);
+    output.innerHTML = `
+      <div class="result-appear" style="color: #2E86C1; font-weight: bold; margin-bottom: 10px;">✅ Results:</div>
+      <div class="result-appear" style="animation-delay: 0.1s;"><strong>Sequence:</strong> ${sequence.length <= 20 ? sequence.join(' → ') : sequence.slice(0, 20).join(' → ') + ' → ...'}</div>
+      <div class="result-appear" style="margin-top: 5px; animation-delay: 0.2s;"><strong>Steps to reach 1:</strong> <span style="color: #E74C3C; font-weight: bold;">${sequence.length - 1}</span></div>
+      <div class="result-appear" style="animation-delay: 0.3s;"><strong>Maximum value reached:</strong> <span style="color: #8E44AD; font-weight: bold;">${maxVal.toLocaleString()}</span></div>
+    `;
+    
+    // Show and draw on canvas with delay for visual effect
+    setTimeout(function() {
+      canvas.style.display = 'block';
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.5s ease-in';
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(750, 350);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+      
+      // Draw labels
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Arial';
+      ctx.fillText('Steps', 360, 380);
+      ctx.save();
+      ctx.translate(20, 200);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText('Value', 0, 0);
+      ctx.restore();
+      
+      // Plot the sequence
+      const maxY = maxVal;
+      const scaleX = 700 / Math.max(sequence.length - 1, 1);
+      const scaleY = 300 / maxY;
+      
+      ctx.strokeStyle = '#E74C3C';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      
+      ctx.stroke();
+      
+      // Draw points
+      ctx.fillStyle = '#2E86C1';
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - sequence[i] * scaleY;
+        
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Add max value label
+      const maxIndex = sequence.indexOf(maxVal);
+      const maxX = 50 + maxIndex * scaleX;
+      const maxLabelY = 350 - maxVal * scaleY;
+      ctx.fillStyle = '#8E44AD';
+      ctx.font = 'bold 11px Arial';
+      ctx.fillText(`Max: ${maxVal.toLocaleString()}`, maxX + 5, maxLabelY - 5);
+      
+      // Fade in canvas
+      setTimeout(function() {
+        canvas.style.opacity = '1';
+      }, 50);
+      
+      resetButton();
+    }, 300);
+  }, 50);
+  
+  function resetButton() {
+    button.disabled = false;
+    button.style.backgroundColor = '#2E86C1';
+    button.style.cursor = 'pointer';
+    loading.style.display = 'none';
+  }
+};
+
+// Attach event listener to button - runs immediately and on Reveal slide events
+function attachCollatzButton() {
+  const button = document.getElementById('generateBtn');
+  const container = document.getElementById('collatzContainer');
+  
+  if (container) {
+    console.log('Collatz container found!');
+  }
+  
+  if (button && !button.hasAttribute('data-listener-attached')) {
+    button.addEventListener('click', window.generateCollatzSequence);
+    button.setAttribute('data-listener-attached', 'true');
+    console.log('✅ Collatz button listener attached successfully');
+  }
+}
+
+// Try to attach immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachCollatzButton);
+} else {
+  attachCollatzButton();
+}
+
+// Also attach when navigating to the slide in Reveal
+if (typeof Reveal !== 'undefined') {
+  Reveal.on('slidechanged', function(event) {
+    attachCollatzButton();
+    console.log('Slide changed, reattaching listener');
+  });
+  Reveal.on('ready', function() {
+    attachCollatzButton();
+    console.log('Reveal ready, attaching listener');
+  });
+} else {
+  console.log('⚠️ Reveal.js not detected - running in standalone mode');
+}
+
+// Don't auto-generate - let user click the button
+console.log('🎯 Collatz visualization ready! Click the Generate button to start.');
+</script>
+```
+
+::: {style="color: #27AE60; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+*Watch how the sequence climbs and falls - each number tells a different story!* 📊
+:::
+
+---
+
+## Collatz: Why It Matters
+
+::: {.callout-important}
+**Beyond the Problem:**
+
+The Collatz conjecture teaches us important lessons:
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+**For Mathematics:**
+
+- Sometimes simple questions have complex answers
+- Computational testing ≠ proof
+- Pattern recognition has limits
+- Beauty in unsolved problems
+:::
+
+::: {.column width="50%"}
+**For Programming:**
+
+- Testing algorithms thoroughly
+- Handling edge cases
+- Data visualization
+- Understanding complexity
+:::
+:::
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*"Computational experiments can suggest patterns, but only mathematics can prove them true for all numbers!"*
+:::
+
+::: {style="color: #E74C3C; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*No one knows if there's a number that never reaches 1!* 🔍
+:::
+
+---
+
+## The Factorial Sequence
+
+Not recursive sums, but products! Essential for combinatorics.
+
+::: {.callout-note}
+**The Pattern:**
+
+- n! = n × (n-1) × (n-2) × ... × 2 × 1
+- 0! = 1 (by definition)
+- Sequence: 1, 1, 2, 6, 24, 120, 720, 5040, 40320, ...
+- Grows VERY fast!
+:::
+
+---
+
+## Factorial: Implementation
+
+::: {.example}
+```python
+"""
+Factorial - both recursive and iterative versions.
+"""
+
+def factorial_iterative(n):
+    """Calculate n! using iteration."""
+    if n <= 1:
+        return 1
+    
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+def factorial_recursive(n):
+    """Calculate n! using recursion."""
+    if n <= 1:
+        return 1
+    return n * factorial_recursive(n - 1)
+
+# Compare both methods
+for i in range(8):
+    print(f"{i}! = {factorial_iterative(i)}")
+# Output: 0!=1, 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040
+```
+:::
+
+---
+
+## Factorial: Interactive Visualization
+
+```{=html}
+<div id="factorialContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+  <div style="margin-bottom: 15px;">
+    <label for="factorialInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">Calculate factorial up to:</label>
+    <input type="number" id="factorialInput" value="10" min="1" max="15" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #8E44AD; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generateFactorial();">
+    <button id="factGenBtn" onclick="window.generateFactorial(); return false;" style="padding: 8px 20px; margin-left: 10px; background-color: #8E44AD; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: 16px; font-weight: bold;">Generate</button>
+    <span id="factLoadingIndicator" style="margin-left: 10px; color: #27AE60; font-weight: bold; display: none; font-size: 16px;">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳ Calculating...</span>
+    </span>
+  </div>
+  
+  <div id="factorialOutput" style="margin-top: 15px; font-family: monospace; min-height: 50px; background-color: white; padding: 15px; border-radius: 5px; font-size: 14px;">
+    <div style="color: #888; font-style: italic;">Click "Generate" to see factorial growth...</div>
+  </div>
+  
+  <canvas id="factorialCanvas" width="800" height="400" style="margin-top: 20px; background-color: white; border: 2px solid #ccc; display: none; border-radius: 5px;"></canvas>
+</div>
+
+<script>
+window.generateFactorial = function() {
+  const input = document.getElementById('factorialInput');
+  const output = document.getElementById('factorialOutput');
+  const canvas = document.getElementById('factorialCanvas');
+  const button = document.getElementById('factGenBtn');
+  const loading = document.getElementById('factLoadingIndicator');
+  
+  if (!input || !output || !canvas || !button || !loading) {
+    console.error('Factorial elements not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  
+  button.disabled = true;
+  button.style.backgroundColor = '#95A5A6';
+  loading.style.display = 'inline';
+  output.innerHTML = '<div style="color: #8E44AD; font-style: italic;">🔄 Processing...</div>';
+  canvas.style.display = 'none';
+  
+  setTimeout(function() {
+    let n = parseInt(input.value);
+    
+    if (n < 1 || n > 15 || isNaN(n)) {
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 1 and 15!</span>';
+      canvas.style.display = 'none';
+      resetButton();
+      return;
+    }
+    
+    // Generate factorial sequence
+    let sequence = [1];
+    let current = 1;
+    for (let i = 1; i <= n; i++) {
+      current *= i;
+      sequence.push(current);
+    }
+    
+    // Display sequence info
+    const maxVal = sequence[sequence.length - 1];
+    const displaySequence = sequence.slice(0, Math.min(sequence.length, 8)).map((v, i) => i + '!=' + v.toLocaleString()).join(', ');
+    const hasMore = sequence.length > 8 ? '...' : '';
+    output.innerHTML = `
+      <div class="result-appear" style="color: #8E44AD; font-weight: bold; margin-bottom: 10px;">✅ Factorial Sequence:</div>
+      <div class="result-appear" style="animation-delay: 0.1s;"><strong>Values:</strong> ${displaySequence}${hasMore}</div>
+      <div class="result-appear" style="margin-top: 5px; animation-delay: 0.2s;"><strong>${n}! =</strong> <span style="color: #E74C3C; font-weight: bold;">${maxVal.toLocaleString()}</span></div>
+      <div class="result-appear" style="animation-delay: 0.3s;"><strong>Growth rate:</strong> <span style="color: #2E86C1; font-weight: bold;">Exponential - faster than Fibonacci!</span></div>
+    `;
+    
+    // Draw visualization
+    setTimeout(function() {
+      canvas.style.display = 'block';
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.5s ease-in';
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(750, 350);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+      
+      // Labels
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Arial';
+      ctx.fillText('n', 360, 380);
+      ctx.save();
+      ctx.translate(20, 200);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText('n! (log scale)', 0, 0);
+      ctx.restore();
+      
+      // Use logarithmic scale for better visualization
+      const logSequence = sequence.map(v => Math.log10(v + 1));
+      const maxLogY = Math.max(...logSequence);
+      const scaleX = 700 / Math.max(sequence.length - 1, 1);
+      const scaleY = maxLogY > 0 ? 300 / maxLogY : 1;
+      
+      // Draw line
+      ctx.strokeStyle = '#8E44AD';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - logSequence[i] * scaleY;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      
+      // Draw points with labels
+      ctx.fillStyle = '#E74C3C';
+      for (let i = 0; i < sequence.length; i++) {
+        const x = 50 + i * scaleX;
+        const y = 350 - logSequence[i] * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Label every other point
+        if (i % 2 === 0 || i === sequence.length - 1) {
+          ctx.fillStyle = '#333';
+          ctx.font = 'bold 10px Arial';
+          ctx.fillText(i + '!', x - 8, 370);
+          ctx.fillStyle = '#E74C3C';
+        }
+      }
+      
+      // Label last value
+      const lastX = 50 + (sequence.length - 1) * scaleX;
+      const lastY = 350 - logSequence[sequence.length - 1] * scaleY;
+      ctx.fillStyle = '#8E44AD';
+      ctx.font = 'bold 11px Arial';
+      ctx.fillText(n + '!=' + maxVal.toLocaleString(), lastX + 5, lastY - 5);
+      
+      setTimeout(function() {
+        canvas.style.opacity = '1';
+      }, 50);
+      
+      resetButton();
+    }, 300);
+  }, 50);
+  
+  function resetButton() {
+    button.disabled = false;
+    button.style.backgroundColor = '#8E44AD';
+    button.style.cursor = 'pointer';
+    loading.style.display = 'none';
+  }
+};
+
+// Attach event listener to button - runs immediately and on Reveal slide events
+function attachFactorialButton() {
+  const button = document.getElementById('factGenBtn');
+  const container = document.getElementById('factorialContainer');
+  
+  if (container) {
+    console.log('Factorial container found!');
+  }
+  
+  if (button && !button.hasAttribute('data-listener-attached')) {
+    button.addEventListener('click', window.generateFactorial);
+    button.setAttribute('data-listener-attached', 'true');
+    console.log('✅ Factorial button listener attached successfully');
+  }
+}
+
+// Try to attach immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachFactorialButton);
+} else {
+  attachFactorialButton();
+}
+
+// Also attach when navigating to the slide in Reveal
+if (typeof Reveal !== 'undefined') {
+  Reveal.on('slidechanged', function(event) {
+    attachFactorialButton();
+    console.log('Slide changed, reattaching factorial listener');
+  });
+  Reveal.on('ready', function() {
+    attachFactorialButton();
+    console.log('Reveal ready, attaching factorial listener');
+  });
+} else {
+  console.log('⚠️ Reveal.js not detected - running in standalone mode');
+}
+
+// Don't auto-generate - let user click the button
+console.log('🎯 Factorial visualization ready! Click the Generate button to start.');
+</script>
+```
+
+::: {style="color: #E74C3C; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+*Logarithmic scale used for visualization - factorials grow EXTREMELY fast!* 🚀
+:::
+
+---
+
+## Prime Number Sequence
+
+The building blocks of all natural numbers!
+
+::: {.callout-note}
+**What are Primes?**
+
+- Numbers greater than 1 divisible only by 1 and themselves
+- Sequence: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, ...
+- Infinite in quantity but no simple formula to generate them!
+:::
+
+---
+
+## Prime Numbers: Sieve of Eratosthenes
+
+::: {style="color: #E74C3C; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+def sieve_of_eratosthenes(n):
+    """
+    Find all prime numbers up to n using the Sieve of Eratosthenes algorithm.
+    
+    Args:
+        n: Upper limit (inclusive) to find primes
+        
+    Returns:
+        List of all prime numbers up to n
+    """
+    # Create a boolean array "is_prime[0..n]" and initialize all entries as true
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False  # 0 and 1 are not prime
+    
+    # Start with the smallest prime number, 2
+    p = 2
+    while p * p <= n:
+        # If is_prime[p] is not changed, then it's a prime
+        if is_prime[p]:
+            # Mark all multiples of p as not prime
+            for i in range(p * p, n + 1, p):
+                is_prime[i] = False
+        p += 1
+    
+    # Return list of primes
+    return [num for num, prime in enumerate(is_prime) if prime]
+
+# Testing
+primes = sieve_of_eratosthenes(100)
+print(f"Primes up to 100: {primes}")
+# Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, ...]
+```
+:::
+:::
+
+---
+
+## Prime Numbers: Interactive Visualization
+
+```{=html}
+<div id="primeContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+  <div style="margin-bottom: 15px;">
+    <label for="primeInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">Find primes up to:</label>
+    <input type="number" id="primeInput" value="100" min="10" max="500" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #27AE60; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generatePrimes();">
+    <button id="primeGenBtn" onclick="window.generatePrimes(); return false;" style="padding: 8px 20px; margin-left: 10px; background-color: #27AE60; color: white; border: none; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: 16px; font-weight: bold;">Generate</button>
+    <span id="primeLoadingIndicator" style="margin-left: 10px; color: #27AE60; font-weight: bold; display: none; font-size: 16px;">
+      <span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳ Calculating...</span>
+    </span>
+  </div>
+  
+  <div id="primeOutput" style="margin-top: 15px; font-family: monospace; min-height: 50px; background-color: white; padding: 15px; border-radius: 5px; font-size: 14px;">
+    <div style="color: #888; font-style: italic;">Click "Generate" to find prime numbers...</div>
+  </div>
+  
+  <canvas id="primeCanvas" width="800" height="400" style="margin-top: 20px; background-color: white; border: 2px solid #ccc; display: none; border-radius: 5px;"></canvas>
+</div>
+
+<script>
+window.generatePrimes = function() {
+  const input = document.getElementById('primeInput');
+  const output = document.getElementById('primeOutput');
+  const canvas = document.getElementById('primeCanvas');
+  const button = document.getElementById('primeGenBtn');
+  const loading = document.getElementById('primeLoadingIndicator');
+  
+  if (!input || !output || !canvas || !button || !loading) {
+    console.error('Prime elements not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  
+  button.disabled = true;
+  button.style.backgroundColor = '#95A5A6';
+  loading.style.display = 'inline';
+  output.innerHTML = '<div style="color: #27AE60; font-style: italic;">🔄 Processing...</div>';
+  canvas.style.display = 'none';
+  
+  setTimeout(function() {
+    let n = parseInt(input.value);
+    
+    if (n < 10 || n > 500 || isNaN(n)) {
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 10 and 500!</span>';
+      canvas.style.display = 'none';
+      resetButton();
+      return;
+    }
+    
+    // Sieve of Eratosthenes
+    let isPrime = new Array(n + 1).fill(true);
+    isPrime[0] = isPrime[1] = false;
+    
+    for (let i = 2; i * i <= n; i++) {
+      if (isPrime[i]) {
+        for (let j = i * i; j <= n; j += i) {
+          isPrime[j] = false;
+        }
+      }
+    }
+    
+    let primes = [];
+    for (let i = 2; i <= n; i++) {
+      if (isPrime[i]) {
+        primes.push(i);
+      }
+    }
+    
+    // Display prime info
+    const primeDisplay = primes.slice(0, Math.min(primes.length, 25)).join(', ');
+    const hasMore = primes.length > 25 ? '...' : '';
+    output.innerHTML = `
+      <div class="result-appear" style="color: #27AE60; font-weight: bold; margin-bottom: 10px;">✅ Prime Numbers:</div>
+      <div class="result-appear" style="animation-delay: 0.1s;"><strong>Primes found:</strong> ${primeDisplay}${hasMore}</div>
+      <div class="result-appear" style="margin-top: 5px; animation-delay: 0.2s;"><strong>Total count:</strong> <span style="color: #E74C3C; font-weight: bold;">${primes.length}</span> primes up to ${n}</div>
+      <div class="result-appear" style="animation-delay: 0.3s;"><strong>Largest prime found:</strong> <span style="color: #8E44AD; font-weight: bold;">${primes[primes.length - 1]}</span></div>
+    `;
+    
+    // Draw visualization
+    setTimeout(function() {
+      canvas.style.display = 'block';
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.5s ease-in';
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(750, 350);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(50, 350);
+      ctx.lineTo(50, 50);
+      ctx.stroke();
+      
+      // Labels
+      ctx.fillStyle = '#333';
+      ctx.font = '12px Arial';
+      ctx.fillText('Number', 360, 380);
+      ctx.save();
+      ctx.translate(20, 200);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText('Prime Index', 0, 0);
+      ctx.restore();
+      
+      // Plot primes
+      const scaleX = 700 / n;
+      const scaleY = 300 / primes.length;
+      
+      // Draw line connecting prime indices
+      ctx.strokeStyle = '#27AE60';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i < primes.length; i++) {
+        const x = 50 + primes[i] * scaleX;
+        const y = 350 - (i + 1) * scaleY;
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+      
+      // Draw points
+      ctx.fillStyle = '#E74C3C';
+      for (let i = 0; i < primes.length; i++) {
+        const x = 50 + primes[i] * scaleX;
+        const y = 350 - (i + 1) * scaleY;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Draw density bars to show prime distribution
+      const barWidth = 700 / 10;
+      const segmentSize = n / 10;
+      ctx.fillStyle = 'rgba(39, 174, 96, 0.3)';
+      
+      for (let i = 0; i < 10; i++) {
+        const start = i * segmentSize;
+        const end = (i + 1) * segmentSize;
+        const count = primes.filter(p => p >= start && p < end).length;
+        const barHeight = (count / primes.length) * 10 * 300;
+        ctx.fillRect(50 + i * barWidth, 350 - barHeight, barWidth - 2, barHeight);
+      }
+      
+      // Label
+      ctx.fillStyle = '#27AE60';
+      ctx.font = 'bold 11px Arial';
+      ctx.fillText(primes.length + ' primes found', 600, 30);
+      
+      setTimeout(function() {
+        canvas.style.opacity = '1';
+      }, 50);
+      
+      resetButton();
+    }, 300);
+  }, 50);
+  
+  function resetButton() {
+    button.disabled = false;
+    button.style.backgroundColor = '#27AE60';
+    button.style.cursor = 'pointer';
+    loading.style.display = 'none';
+  }
+};
+
+// Attach event listener to button - runs immediately and on Reveal slide events
+function attachPrimeButton() {
+  const button = document.getElementById('primeGenBtn');
+  const container = document.getElementById('primeContainer');
+  
+  if (container) {
+    console.log('Prime container found!');
+  }
+  
+  if (button && !button.hasAttribute('data-listener-attached')) {
+    button.addEventListener('click', window.generatePrimes);
+    button.setAttribute('data-listener-attached', 'true');
+    console.log('✅ Prime button listener attached successfully');
+  }
+}
+
+// Try to attach immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachPrimeButton);
+} else {
+  attachPrimeButton();
+}
+
+// Also attach when navigating to the slide in Reveal
+if (typeof Reveal !== 'undefined') {
+  Reveal.on('slidechanged', function(event) {
+    attachPrimeButton();
+    console.log('Slide changed, reattaching prime listener');
+  });
+  Reveal.on('ready', function() {
+    attachPrimeButton();
+    console.log('Reveal ready, attaching prime listener');
+  });
+} else {
+  console.log('⚠️ Reveal.js not detected - running in standalone mode');
+}
+
+// Don't auto-generate - let user click the button
+console.log('🎯 Prime visualization ready! Click the Generate button to start.');
+
+</script>
+```
+
+::: {style="color: #27AE60; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
+*Notice the distribution - primes become less frequent as numbers get larger!* 🔢
+:::
+
+---
+
+# Challenge Exercises
+
+Time to test your understanding!
+
+<center>
+![](graphics/challenge_i_540x247.png){width=100%}
+</center>
+
+::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
+*Can you solve these numerical programming challenges?* 🎯
+:::
+
+---
+
+## Challenge 1: Fibonacci Sum
+
+Write a function that calculates the sum of all Fibonacci numbers up to and including the nth Fibonacci number.
+
+::: {.example}
+```python
+# TODO: Your code here
+
+# Example:
+# fibonacci_sum(5) should return 12
+# because F(0)=0, F(1)=1, F(2)=1, F(3)=2, F(4)=3, F(5)=5
+# and 0 + 1 + 1 + 2 + 3 + 5 = 12
+```
+:::
+
+::: {.callout-tip}
+**Hint:** You can use any method to generate Fibonacci numbers, then sum them. Or think about a direct formula!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Try both iterative and mathematical approaches!*
+:::
+
+---
+
+## Challenge 2: Even Fibonacci Numbers
+
+Find the sum of all even-valued Fibonacci numbers that do not exceed a given limit.
+
+::: {.example}
+```python
+# TODO: Your code here
+
+# Example:
+# even_fibonacci_sum(100) should return 44
+# because even Fibonacci numbers ≤ 100 are: 2, 8, 34
+# and 2 + 8 + 34 = 44
+```
+:::
+
+::: {.callout-tip}
+**Hint:** Generate Fibonacci numbers one by one, check if even, and add to sum. Stop when you exceed the limit!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Pattern observation: Every third Fibonacci number is even!*
+:::
+
+---
+
+## Challenge 3: Generalized Sequence
+
+Write a function that takes two starting numbers and generates n terms of a Fibonacci-like sequence.
+
+::: {.example}
+```python
+# TODO: Your code here
+
+# Example:
+# generalized_sequence(2, 1, 10) should return Lucas numbers:
+# [2, 1, 3, 4, 7, 11, 18, 29, 47, 76]
+#
+# generalized_sequence(0, 1, 10) should return Fibonacci:
+# [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
+:::
+
+::: {.callout-tip}
+**Hint:** Your function should work for ANY two starting numbers, not just specific sequences!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*This tests your ability to generalize patterns!*
+:::
+
+---
+
+## Challenge 4: Collatz Stopping Time
+
+Find which number from 1 to n has the longest Collatz sequence (takes most steps to reach 1).
+
+::: {.example}
+```python
+# TODO: Your code here
+
+# Example:
+# longest_collatz(20) should return (18, 20)
+# meaning 18 has the longest sequence with 20 steps
+#
+# The sequence starting at 18:
+# 18 → 9 → 28 → 14 → 7 → 22 → 11 → 34 → 17 → 52 → 26 →
+# 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+```
+:::
+
+::: {.callout-tip}
+**Hint:** Test each number from 1 to n, calculate its Collatz sequence length, and track the maximum!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Some small numbers take surprisingly long journeys!*
+:::
+
+---
+
+## Challenge 5: Fibonacci Index Finder
+
+Write a function that finds the index (position) of a given number in the Fibonacci sequence. Return -1 if not found.
+
+::: {.example}
+```python
+# TODO: Your code here
+
+# Example:
+# fibonacci_index(13) should return 7
+# because F(7) = 13
+#
+# fibonacci_index(100) should return -1
+# because 100 is not a Fibonacci number
+```
+:::
+
+::: {.callout-tip}
+**Hint:** Generate Fibonacci numbers until you find the target or exceed it. You could also use Binet's formula in reverse!
+:::
+
+::: {style="color: #8E44AD; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Bonus: Can you do this without generating the entire sequence?*
+:::
+
+---
+
+# Solutions to Challenges
+
+Let's see multiple approaches to each problem!
+
+<center>
+![](graphics/tellMeMore_i.png){width=40%}
+</center>
+
+::: {style="color: #27AE60; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
+*Remember: There's often more than one way to solve a problem!* 💡
+:::
+
+---
+
+## Solution 1: Fibonacci Sum (Approach 1)
+::: {style="color: #2E86C1; font-size: 0.5em; text-align: center; margin-to p: 0.5em;"} 
+::: {.example}
+```python
+"""
+Solution 1.1: Direct approach - generate and sum.
+"""
+
+def fibonacci_sum_direct(n):
+    """
+    Calculate sum of first n+1 Fibonacci numbers.
+    Simple and straightforward approach.
+    """
+    if n < 0: return 0
+    
+    total = 0
+    a, b = 0, 1  # F(0), F(1)
+    total += a  # Add F(0)
+    
+    # Generate and add remaining Fibonacci numbers
+    for i in range(n):
+        total += b
+        a, b = b, a + b
+    return total
+
+# Testing
+print(f"Sum of F(0) to F(5): {fibonacci_sum_direct(5)}") # Output: Sum of F(0) to F(5): 12
+
+print(f"Sum of F(0) to F(10): {fibonacci_sum_direct(10)}") # Output: Sum of F(0) to F(10): 143
+```
+:::
+
+:::
+
+**Time Complexity:** O(n) - generates each number once
+
+**Space Complexity:** O(1) - only uses a few variables
+
+---
+
+## Solution 1: Fibonacci Sum (Approach 2)
+
+::: {style="color: #2E86C1; font-size: 0.5em; text-align: center; margin-to p: 0.5em;"} 
+
+::: {.example}
+```python
+"""
+Solution 1.2: Mathematical approach using formula.
+"""
+
+def fibonacci_sum_formula(n):
+    """
+    Use the formula: Sum of F(0) to F(n) = F(n+2) - 1
+    """
+    if n < 0: return 0
+    
+    # Calculate F(n+2)
+    if n + 2 <= 1: return n + 2
+    
+    a, b = 0, 1
+    for _ in range(n + 1):
+        a, b = b, a + b
+    
+    # Sum is F(n+2) - 1
+    return b - 1
+
+# Testing
+print(f"Sum of F(0) to F(5): {fibonacci_sum_formula(5)}") # Output: Sum of F(0) to F(5): 12
+
+print(f"Sum of F(0) to F(10): {fibonacci_sum_formula(10)}") # Output: Sum of F(0) to F(10): 143
+```
+:::
+:::
+
+**Time Complexity:** O(n) - still generates up to F(n+2)
+
+**Space Complexity:** O(1) - constant space
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*The mathematical insight makes the solution elegant!* ✨
+:::
+
+---
+
+## Solution 2: Even Fibonacci (Part 1)
+
+::: {.example}
+```python
+"""
+Solution 2.1: Generate and filter approach.
+"""
+
+def even_fibonacci_sum(limit):
+    """
+    Sum all even Fibonacci numbers not exceeding limit.
+    
+    Straightforward: generate, check if even, add if so.
+    """
+    total = 0
+    a, b = 0, 1
+    
+    while b <= limit:
+        if b % 2 == 0:
+            total += b
+        a, b = b, a + b
+    
+    return total
+```
+:::
+
+---
+
+## Solution 2: Even Fibonacci (Part 2)
+
+Test the function with different limits.
+
+::: {.example}
+```python
+# Testing
+print(f"Sum of even Fibonacci ≤ 100: {even_fibonacci_sum(100)}")
+# Output: Sum of even Fibonacci ≤ 100: 44
+
+print(f"Sum of even Fibonacci ≤ 1000: {even_fibonacci_sum(1000)}")
+# Output: Sum of even Fibonacci ≤ 1000: 798
+
+print(f"Sum of even Fibonacci ≤ 4000000: {even_fibonacci_sum(4000000)}")
+# Output: Sum of even Fibonacci ≤ 4000000: 4613732
+```
+:::
+
+**Time Complexity:** O(log limit) - Fibonacci grows exponentially
+
+**Space Complexity:** O(1) - constant space
+
+---
+
+## Solution 2: Even Fibonacci Numbers (Approach 2)
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+
+::: {.example}
+```python
+"""
+Solution 2.2: Optimized - every 3rd Fibonacci is even!
+"""
+
+def even_fibonacci_sum_optimized(limit):
+    """
+    Use pattern: every 3rd Fibonacci number is even.
+    Start with F(2)=2 and skip directly to next even ones.
+    """
+    total = 0
+    # Start with first two numbers where third will be even
+    a, b = 1, 2  # F(1)=1, F(2)=2
+    
+    while b <= limit:
+        total += b  # b is always even in this loop
+        # Jump to next even Fibonacci: F(n+3) = 4*F(n) + F(n-3)
+        # Or simply: generate 3 steps
+        a, b = b, a + b
+        a, b = b, a + b
+        a, b = b, a + b
+    return total
+
+# Testing
+print(f"Sum of even Fib ≤ 100: {even_fibonacci_sum_optimized(100)}") # Fib ≤ 100: 44
+
+print(f"Sum of even Fib ≤ 4000000: {even_fibonacci_sum_optimized(4000000)}") # Fib ≤ 4000000: 4613732
+```
+:::
+
+:::
+
+**Time Complexity:** O(log limit / 3) - 3x fewer iterations!
+
+**Space Complexity:** O(1) - constant space
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Recognizing patterns makes code faster!* 🚀
+:::
+
+---
+
+## Solution 3: Generalized Sequence (Part 1)
+
+::: {.example}
+```python
+"""
+Solution 3.1: Simple iterative approach.
+"""
+
+def generalized_sequence(start1, start2, n):
+    """
+    Generate n terms of a Fibonacci-like sequence.
+    
+    Args:
+        start1: First number in sequence
+        start2: Second number in sequence
+        n: Number of terms to generate
+    Returns:
+        List of n terms
+    """
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [start1]
+```
+:::
+
+---
+
+## Solution 3: Generalized Sequence (Part 2)
+
+Complete the implementation and testing.
+
+::: {.example}
+```python
+    elif n == 2:
+        return [start1, start2]
+    
+    sequence = [start1, start2]
+    
+    for _ in range(2, n):
+        next_term = sequence[-1] + sequence[-2]
+        sequence.append(next_term)
+    
+    return sequence
+
+# Test with different starting values
+print("Lucas:", generalized_sequence(2, 1, 10))
+print("Fibonacci:", generalized_sequence(0, 1, 10))
+print("Custom:", generalized_sequence(5, 5, 10))
+```
+:::
+
+---
+
+## Solution 3: Generator Approach (Part 1)
+
+::: {.example}
+```python
+"""
+Solution 3.2: Generator approach for memory efficiency.
+"""
+
+def generalized_sequence_generator(start1, start2, n):
+    """
+    Generate n terms using a generator (memory efficient).
+    Useful when you need to process terms one at a time
+    or for very long sequences.
+    """
+    if n <= 0:
+        return
+    
+    yield start1
+    if n == 1:
+        return
+```
+:::
+
+---
+
+## Solution 3: Generator Approach (Part 2)
+
+Complete the generator and testing.
+
+::: {.example}
+```python
+    yield start2
+    if n == 2:
+        return
+    
+    a, b = start1, start2
+    for _ in range(2, n):
+        a, b = b, a + b
+        yield b
+
+# Testing
+print("Lucas:", list(generalized_sequence_generator(2, 1, 10)))
+# Memory efficient for large sequences
+print("First 20 terms:", list(generalized_sequence_generator(1, 1, 20)))
+```
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Generators are perfect for large sequences or streaming data!* 🌊
+:::
+
+---
+
+## Solution 4: Collatz Stopping Time (Part 1)
+
+First, let's create a helper function to calculate sequence length.
+
+::: {.example}
+```python
+"""
+Solution 4.1: Straightforward approach - Part 1
+"""
+
+def collatz_length(n):
+    """Calculate length of Collatz sequence starting from n."""
+    length = 0
+    while n != 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3 * n + 1
+        length += 1
+    return length
+
+# Test the helper function
+print(f"Length of sequence from 6: {collatz_length(6)}")
+# Output: Length of sequence from 6: 8
+
+print(f"Length of sequence from 27: {collatz_length(27)}")
+# Output: Length of sequence from 27: 111
+```
+:::
+
+---
+
+## Solution 4: Collatz Stopping Time (Part 2)
+
+Now use the helper to find the longest sequence.
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 4.1: Straightforward approach - Part 2
+"""
+
+def longest_collatz(max_n):
+    """
+    Find number with longest Collatz sequence up to max_n.
+    Returns: tuple of (number, sequence_length)
+    """
+    max_length = 0
+    max_number = 0
+    
+    for i in range(1, max_n + 1):
+        length = collatz_length(i)
+        if length > max_length:
+            max_length = length
+            max_number = i
+    
+    return (max_number, max_length)
+
+# Testing
+result = longest_collatz(20)
+print(f"Up to 20: number {result[0]} has sequence length {result[1]}")
+# Output: Up to 20: number 18 has sequence length 20
+
+result = longest_collatz(100)
+print(f"Up to 100: number {result[0]} has sequence length {result[1]}")
+# Output: Up to 100: number 97 has sequence length 118
+```
+:::
+:::
+
+---
+
+## Solution 4: Memoization Approach (Part 1)
+
+Using memoization (or the use of pre-calculated results which may be necessary for use later) to cache results for better performance.
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 4.2: Optimized with memoization - Part 1
+"""
+
+def longest_collatz_memo(max_n):
+    """
+    Find longest Collatz sequence using memoization.
+    
+    Cache previously calculated lengths for efficiency.
+    """
+    memo = {1: 0}  # Base case: reaching 1 takes 0 more steps
+    
+    def collatz_length_memo(n):
+        """Calculate length with memoization."""
+        if n in memo:
+            return memo[n]
+        
+        if n % 2 == 0:
+            length = 1 + collatz_length_memo(n // 2)
+        else:
+            length = 1 + collatz_length_memo(3 * n + 1)
+        
+        memo[n] = length
+        return length
+```
+:::
+:::
+
+---
+
+## Solution 4: Memoization Approach (Part 2)
+
+Complete the implementation and testing
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 4.2: Optimized with memoization - Part 2
+"""
+    
+    # Continue from previous slide...
+    max_length = 0
+    max_number = 0
+    
+    for i in range(1, max_n + 1):
+        length = collatz_length_memo(i)
+        if length > max_length:
+            max_length = length
+            max_number = i
+    
+    return (max_number, max_length)
+
+# Testing
+result = longest_collatz_memo(1000)
+print(f"Up to 1000: number {result[0]} has sequence length {result[1]}")
+# Output: Up to 1000: number 871 has sequence length 178
+
+result = longest_collatz_memo(10000)
+print(f"Up to 10000: number {result[0]} has sequence length {result[1]}")
+# Much faster than the non-memoized version!
+```
+:::
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Memoization can dramatically speed up repeated calculations!* ⚡
+:::
+
+---
+
+## Solution 5: Fibonacci Index Finder (Approach 1)
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 5.1: Sequential search approach.
+"""
+
+def fibonacci_index(target):
+    """
+    Find the index of target in Fibonacci sequence.
+    Returns index if found, -1 otherwise.
+    """
+    if target < 0:
+        return -1
+    
+    if target == 0:
+        return 0
+    
+    index = 1
+    a, b = 0, 1
+    
+    while b < target:
+        a, b = b, a + b
+        index += 1
+    
+    # Check if we found it
+    if b == target:
+        return index
+    else:
+        return -1
+
+```
+:::
+:::
+## Solution 5: Fibonacci Index Finder (Approach 1 continued)
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 5.1: Sequential search approach.
+"""
+
+# Testing
+test_values = [0, 1, 2, 5, 13, 21, 100, 144, 150]
+for val in test_values:
+    idx = fibonacci_index(val)
+    if idx != -1:
+        print(f"F({idx}) = {val}")
+    else:
+        print(f"{val} is not a Fibonacci number")
+# Output shows which values are Fibonacci numbers and their indices
+```
+:::
+:::
+
+
+
+
+
+---
+
+## Solution 5: Fibonacci Index Finder (Approach 2)
+
+::: {style="color: #27AE60; font-size: 0.7em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+"""
+Solution 5.2: Using inverse Binet's formula (mathematical approach).
+"""
+
+import math
+
+def fibonacci_index_binet(target):
+    """
+    Find Fibonacci index using inverse Binet's formula.
+    Uses the golden ratio to calculate index directly.
+    """
+    if target < 0: return -1
+    
+    if target == 0: return 0
+    
+    # Golden ratio
+    phi = (1 + math.sqrt(5)) / 2
+    
+    # Inverse Binet's formula
+    # If target = F(n), then n ≈ log_phi(target * sqrt(5) + 0.5)
+    n = math.log(target * math.sqrt(5) + 0.5) / math.log(phi)
+    n = round(n)
+    
+    # Verify by calculating F(n)
+    psi = (1 - math.sqrt(5)) / 2
+    fib_n = round((phi**n - psi**n) / math.sqrt(5))
+    
+    if fib_n == target: return n
+    else: return -1
+```
+:::
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Mathematics provides elegant shortcuts!* 🎓
+:::
+
+## Solution 5: Fibonacci Index Finder (Approach 2, continued)
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+::: {.example}
+```python
+
+
+# Testing
+test_values = [0, 1, 5, 13, 21, 100, 144, 233]
+for val in test_values:
+    idx = fibonacci_index_binet(val)
+    if idx != -1:
+        print(f"F({idx}) = {val} ✓")
+    else:
+        print(f"{val} is not a Fibonacci number ✗")
+```
+:::
+:::
+
+::: {style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;"}
+*Mathematics provides elegant shortcuts!* 🎓
+:::
+
+---
+
+# Summary
+
+::: {.callout-tip}
+**What We Learned:**
+
+- **Fibonacci**: Multiple implementation strategies (recursion, iteration, memoization, formulas)
+- **Lucas Numbers**: Related to Fibonacci with different starting values
+- **Other Sequences**: Tribonacci, Padovan, Pell, Collatz, and more!
+- **Efficiency Matters**: Different approaches have different time/space complexities
+- **Pattern Recognition**: Mathematical insights can simplify problems
+:::
+
+::: {.callout-note}
+**Key Takeaways:**
+
+- Iterative approaches are usually most practical
+- Memoization combines elegance with efficiency
+- Mathematical formulas can provide O(1) solutions
+- Pattern recognition is a valuable skill
+:::
+
+---
+
+# Keep Exploring!
+
+::: {.callout-tip}
+**Next Steps:**
+
+- Implement other famous sequences (Catalan numbers, Bell numbers)
+- Explore dynamic programming techniques
+- Study the mathematics behind these sequences
+- Try optimizing for very large numbers (using big integers)
+- Investigate how these sequences appear in nature!
+:::
+
+::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
+*Mathematics and programming together create beautiful solutions!* ✨
+:::
+
+<center>
+![](graphics/challenge_i_540x247.png){width=80%}
+</center>
+
+**Happy coding!** 🐍

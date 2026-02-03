@@ -3,7 +3,8 @@ title: "CMPSC101 Spring 2026 :: DataStructures"
 author: "Oliver Bonham-Carter"
 ---
 
-👋 Welcome! 👋
+<center> 👋 **Welcome** 👋 </center>
+<center> ~~~~~~~~~~~~~~~~~~~~ </center>
 
 **Class Sessions**: MWF 9:00 AM to 9:50 AM, Alden 109  
 **Laboratory Session**: Friday, 2:30 PM to 4 PM, Alden 109  
@@ -13,15 +14,23 @@ author: "Oliver Bonham-Carter"
 **Instructor Office Hours**: Visit the below URL to find availability and schedule and appointment.
 [https://www.oliverbonhamcarter.com/contactandabout/](https://www.oliverbonhamcarter.com/contactandabout/)
 
-**Book An Appointment!**: [https://www.oliverbonhamcarter.com/contactandabout/](https://www.oliverbonhamcarter.com/contactandabout/)
+**Book An Appointment**: [https://www.oliverbonhamcarter.com/contactandabout/](https://www.oliverbonhamcarter.com/contactandabout/)
 
 *Note*: If the office hours times are not convenient, then please reach out to me and we can find an alternative time to meet.
  
 <!-- ![A vibrant digital tree with glowing branches and roots, surrounded by colorful flowers and butterflies in a nighttime setting. The tree canopy is filled with binary numbers such as 101011, 10104, 51, 10104, 101011, 12131, 0501, and 01, which are integrated into the leaves and branches. The environment features cascading streams of blue and teal data, creating a magical and energetic atmosphere that evokes curiosity and wonder.] -->
 
-## Quick Links
+## Quick Info
 
 + [Token Form for Automatic Extension](https://docs.google.com/forms/d/e/1FAIpQLSdPLsKNw7rXTECajC6TqLhdLtUppAXRdiWFVKmyYRAjtHcOgg/viewform?usp=dialog)
+
++ Technical Leaders Schedule
+
+Technical Leader | Office Hours | Location
+:--|:-----|:--------
+Logan Greer | Mon 11:00 AM - 12:00 PM | Alden 113
+Hemani Alaparthy | Tue 1:00 PM - 2:00 PM | Alden 113
+
 
 ## Course Description
 
