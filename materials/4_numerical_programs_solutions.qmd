@@ -68,7 +68,18 @@ By the end of this session, you will be able to:
 *From elegant mathematics to efficient code - let's explore the beauty of sequences!* ✨
 :::
 
+
+## Did You Say *Numerical Programs*?
+
+<center>
+![](graphics/cheesy_smile.png){width=60%}
+</center>
+
+::: {.callout-note}
+So, like, what does *numerical coding* look like with, you-know-like, Python?!
+:::
 ---
+
 
 ## Why Numerical Programs?
 
@@ -90,9 +101,19 @@ Numerical programs teach us fundamental programming concepts while solving real 
 
 ---
 
-# The Fibonacci Sequence
+# The Fibonacci Sequence in Nature
 
-## What is Fibonacci?
+<center>
+![](graphics/fib_in_nature.png){width=45%}
+</center>
+::: {.callout-important}
+Good Article on Fibonacci and Design: The nature of design: the Fibonacci sequence and the Golden Ratio by Jonathan Cleveland
+
+Link: [https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/](https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/)
+
+:::
+
+## The Fibonacci Sequence
 
 The Fibonacci sequence is a series where each number is the sum of the two preceding ones.
 

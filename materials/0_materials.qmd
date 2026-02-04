@@ -55,4 +55,9 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 02**: Mastering Python Data Structures
   - [GitHub Classroom Link](https://classroom.github.com/a/fheOnxRv)
 
+## W4. Numerical Programming
+
+- **Numerical Programs**
+  - [HTML](4_numerical_programs_solutions.html) Slides
+
 ---
