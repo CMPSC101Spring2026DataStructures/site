@@ -1012,7 +1012,7 @@
     "href": "materials/4_numerical_programs_solutions.html#prime-numbers-interactive-visualization",
     "title": "Chapter 3: Numerical Programs",
     "section": "Prime Numbers: Interactive Visualization",
-    "text": "Prime Numbers: Interactive Visualization\n\n  \n    Find primes up to:\n    \n    Generate\n    \n      ⏳ Calculating...\n    \n  \n  \n  \n    Click \"Generate\" to find prime numbers...\n  \n  \n  \n\n\n\n\nNotice the distribution by the density bars - prime numbers become less frequent as they get larger! 🔢"
+    "text": "Prime Numbers: Interactive Visualization\n\n  \n  \n    Find primes up to:\n    \n    Generate\n    \n      ⏳ Calculating...\n    \n  \n  \n  \n    Click \"Generate\" to find prime numbers...\n  \n  \n  \n\n\n\n\nNotice the distribution by the density bars - prime numbers become less frequent as they get larger! 🔢"
   },
   {
     "objectID": "materials/4_numerical_programs_solutions.html#challenge-1-fibonacci-sum",

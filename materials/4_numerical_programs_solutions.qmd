@@ -2121,7 +2121,8 @@ print(f"Primes up to 100: {primes}")
 ## Prime Numbers: Interactive Visualization
 
 ```{=html}
-<div id="primeContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 900px; position: relative; z-index: 100;">
+<div id="primeContainer" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 1000px; position: relative; z-index: 100;">
+  <!-- was max-width: 1000px -->
   <div style="margin-bottom: 15px;">
     <label for="primeInput" style="font-weight: bold; margin-right: 10px; font-size: 16px;">Find primes up to:</label>
     <input type="number" id="primeInput" value="100" min="10" max="500" style="padding: 8px; width: 120px; font-size: 16px; border: 2px solid #27AE60; border-radius: 4px;" onkeypress="if(event.key==='Enter') window.generatePrimes();">
@@ -2162,8 +2163,10 @@ window.generatePrimes = function() {
   setTimeout(function() {
     let n = parseInt(input.value);
     
-    if (n < 10 || n > 500 || isNaN(n)) {
-      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 10 and 500!</span>';
+    // if (n < 10 || n > 500 || isNaN(n)) {
+    if (n < 10 || n > 5000 || isNaN(n)) {
+      // output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 10 and 500!</span>';
+      output.innerHTML = '<span style="color: red; font-weight: bold;">❌ Please enter a number between 10 and 5000.</span>';
       canvas.style.display = 'none';
       resetButton();
       return;
