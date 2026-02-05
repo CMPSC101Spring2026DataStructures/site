@@ -104,13 +104,15 @@ Numerical programs teach us fundamental programming concepts while solving real 
 # The Fibonacci Sequence in Nature
 
 <center>
-![](graphics/fib_in_nature.png){width=45%}
+![](graphics/fib_in_nature.png){width=42%}
 </center>
 ::: {.callout-important}
-Good Article on Fibonacci and Design: The nature of design: the Fibonacci sequence and the Golden Ratio by Jonathan Cleveland
+Good Articles on Fibonacci and Sunflowers
 
-Link: [https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/](https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/)
-
+- The nature of design: the Fibonacci sequence and the Golden Ratio
+  - [https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/](https://clevelanddesign.com/insights/the-nature-of-design-the-fibonacci-sequence-and-the-golden-ratio/)
+- Fibonacci and sunflowers
+  - [https://craftofcoding.wordpress.com/2022/05/16/fibonacci-and-sunflowers/](https://craftofcoding.wordpress.com/2022/05/16/fibonacci-and-sunflowers/)
 :::
 
 ## The Fibonacci Sequence
@@ -2333,7 +2335,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 ```
 
 ::: {style="color: #27AE60; font-size: 0.5em; text-align: center; margin-top: 0.5em;"}
-*Notice the distribution - primes become less frequent as numbers get larger!* 🔢
+*Notice the distribution by the density bars - prime numbers become less frequent as they get larger!* 🔢
 :::
 
 ---
