@@ -3113,9 +3113,3 @@ for val in test_values:
 ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"}
 *Mathematics and programming together create beautiful solutions!* ✨
 :::
-
-<center>
-![](graphics/challenge_i_540x247.png){width=80%}
-</center>
-
-**Happy coding!** 🐍
