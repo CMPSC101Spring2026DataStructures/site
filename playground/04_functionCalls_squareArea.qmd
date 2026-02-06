@@ -1,5 +1,5 @@
 ---
-title: "Just For Fun 04: Area of a Square and Function Calls"
+title: "Just For Fun 03: Area of a Square and Function Calls"
 subtitle: "Exploring Python Functions and Iteration"
 date: "30 Aug 2025"
 author: "OBC"

@@ -1,5 +1,5 @@
 ---
-title: "Just For Fun 06: Lists and Dictionaries"
+title: "Just For Fun 05: Lists and Dictionaries"
 subtitle: "Organizing and Managing Data with Python Collections"
 date: "September 22, 2025"
 author: "OBC"

@@ -1,5 +1,5 @@
 ---
-title: "Just For Fun 05: Function Calls in Code"
+title: "Just For Fun 04: Function Calls in Code"
 subtitle: "Understanding Functions, Flow, and Mathematical Reasoning"
 date: "August 30, 2025"
 author: "OBC"

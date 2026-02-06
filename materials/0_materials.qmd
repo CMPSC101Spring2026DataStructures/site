@@ -57,7 +57,12 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Activity 03**: Data Cleaning and Advanced Plotting
   - [GitHub Classroom Link](https://classroom.github.com/a/Jg-nptBV)
 
-## W4. Numerical Programming
+## W4. Continuing on with Python
+
+- **Lab 03**: Completing Smaller Programs in Python
+  - [GitHub Classroom Link](https://classroom.github.com/a/XQgLsac3)
+
+## W5. Numerical Programming
 
 - **Numerical Programs**
   - [HTML](4_numerical_programs_solutions.html) Slides
