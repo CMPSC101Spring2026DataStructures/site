@@ -447,7 +447,7 @@ where $\phi = \frac{1 + \sqrt{5}}{2}$ and $\psi = \frac{1 - \sqrt{5}}{2}$
 
 ## Fibonacci: Matrix Method (Part 1)
 
-Another mathematical approach using matrix exponentiation! (Learn more at [https://ianthehenry.com/posts/fibonacci/](https://ianthehenry.com/posts/fibonacci/)
+Another mathematical approach using matrix exponentiation! (Learn more at [https://ianthehenry.com/posts/fibonacci/](https://ianthehenry.com/posts/fibonacci/))
 
 ::: {.example}
 ```python
@@ -468,7 +468,11 @@ def matrix_power(matrix, n):
         return matrix
     if n % 2 == 0:
         half = matrix_power(matrix, n // 2)
-        return multiply_matrices(half, half)
+        return multiply_matrices(half, half)    # Continued from previous slide
+    else:
+        return multiply_matrices(matrix, matrix_power(matrix, n - 1))
+
+
 ```
 :::
 
@@ -480,11 +484,6 @@ Complete the implementation with the main Fibonacci function.
 
 ::: {.example}
 ```python
-def matrix_power(matrix, n):
-    # Continued from previous slide
-    else:
-        return multiply_matrices(matrix, matrix_power(matrix, n - 1))
-
 def fibonacci_matrix(n):
     """Calculate nth Fibonacci using matrix method."""
     if n <= 0:
@@ -1389,8 +1388,8 @@ def main():
 
 # Define a section of code that runs only when the Python
 # file is executed as a standalone script (at command line)
-if __name__ == "__main__": 
-    main()
+# if __name__ == "__main__": 
+#    main()
 ```
 :::
 
@@ -1445,6 +1444,7 @@ Starting from 27:
 
 The **stopping time** is how many steps it takes to reach 1.
 
+::: {style="color: #2E86C1; font-size: 0.6em; text-align: center; margin-top: 0.5em;"}
 ::: {.example}
 ```python
 """
@@ -1463,15 +1463,6 @@ def collatz_analysis(max_start):
         if len(seq) > longest_sequence:
             longest_sequence = len(seq)
             longest_start = i
-```
-:::
-
----
-
-## Collatz: Analysis Results
-
-::: {.example}
-```python
     print(f"Longest sequence up to {max_start}:")
     print(f"Starting number: {longest_start}")
     print(f"Sequence length: {longest_sequence}")
@@ -1483,7 +1474,7 @@ def collatz_analysis(max_start):
 collatz_analysis(100)
 ```
 :::
-
+:::
 ---
 
 ## Collatz: Interesting Facts
