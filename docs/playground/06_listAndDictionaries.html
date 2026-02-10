@@ -165,7 +165,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#interactive-examples" id="toc-interactive-examples" class="nav-link" data-scroll-target="#interactive-examples">Interactive Examples</a>
   <ul class="collapse">
   <li><a href="#example-1-working-with-lists" id="toc-example-1-working-with-lists" class="nav-link" data-scroll-target="#example-1-working-with-lists">Example 1: Working with Lists</a></li>
+  <li><a href="#example-2-dictionary-basics-and-key-value-storage" id="toc-example-2-dictionary-basics-and-key-value-storage" class="nav-link" data-scroll-target="#example-2-dictionary-basics-and-key-value-storage">Example 2: Dictionary Basics and Key-Value Storage</a></li>
+  <li><a href="#example-3-student-grade-management-system" id="toc-example-3-student-grade-management-system" class="nav-link" data-scroll-target="#example-3-student-grade-management-system">Example 3: Student Grade Management System</a></li>
   </ul></li>
+  <li><a href="#challenge-yourself" id="toc-challenge-yourself" class="nav-link" data-scroll-target="#challenge-yourself">Challenge Yourself</a>
+  <ul class="collapse">
+  <li><a href="#word-frequency-counter" id="toc-word-frequency-counter" class="nav-link" data-scroll-target="#word-frequency-counter">Word Frequency Counter</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -260,7 +269,7 @@ Lesson Objectives
 <section id="interactive-examples" class="level2">
 <h2 class="anchored" data-anchor-id="interactive-examples">Interactive Examples</h2>
 <section id="example-1-working-with-lists" class="level3">
-<h3 class="anchored">Example 1: Working with Lists</h3>
+<h3 class="anchored" data-anchor-id="example-1-working-with-lists">Example 1: Working with Lists</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This example demonstrates how to create a list, add items to it, and access elements by their index position.</p>
 </div>
@@ -282,18 +291,10 @@ Lesson Objectives
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>colors.extend([<span class="st">"yellow"</span>, <span class="st">"purple"</span>])</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Updated list:"</span>, colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-1" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-1" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own..."># Create an empty list to store color names
 colors = []
 
@@ -310,11 +311,16 @@ print("Number of colors:", len(colors))  # len() returns list length
 # Add multiple items at once using extend()
 colors.extend(["yellow", "purple"])
 print("Updated list:", colors)</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="example-2-dictionary-basics-and-key-value-storage" class="level3">
-<h3 class="anchored">Example 2: Dictionary Basics and Key-Value Storage</h3>
+<h3 class="anchored" data-anchor-id="example-2-dictionary-basics-and-key-value-storage">Example 2: Dictionary Basics and Key-Value Storage</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This example demonstrates creating a dictionary, populating it with key-value pairs using a loop, and then retrieving values using their keys.</p>
 </div>
@@ -336,18 +342,10 @@ print("Updated list:", colors)</textarea>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Access the stored value using the key (i)</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>     <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\t</span><span class="ss"> num_dict: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> --&gt; </span><span class="sc">{</span>num_dict[i]<span class="sc">}</span><span class="ss">"</span>) <span class="co"># pull values by their keys</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-2" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-2" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own..."># Declare an empty dictionary to store number mappings
 num_dict = {} # define the dictionary here
 
@@ -364,11 +362,16 @@ print("\t Pulling values from the dictionary using their keys.")
 for i in range(10):  # Loop through the same range
      # Access the stored value using the key (i)
      print(f"\t num_dict: {i} --&gt; {num_dict[i]}") # pull values by their keys</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="example-3-student-grade-management-system" class="level3">
-<h3 class="anchored">Example 3: Student Grade Management System</h3>
+<h3 class="anchored" data-anchor-id="example-3-student-grade-management-system">Example 3: Student Grade Management System</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This example creates a practical grade management system using both lists and dictionaries to store student information and calculate statistics.</p>
 </div>
@@ -402,18 +405,10 @@ for i in range(10):  # Loop through the same range
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>highest_avg <span class="op">=</span> <span class="bu">max</span>(all_averages)</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Highest class average: </span><span class="sc">{</span>highest_avg<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-3" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-3" class="lesson-input" rows="18" placeholder="# Copy the code above or write your own..."># Create a dictionary where keys are student names and values are lists of grades
 students = {
     "Alice": [85, 92, 78, 95],    # Alice's test scores
@@ -442,13 +437,19 @@ for grades in students.values():  # Loop through just the grade lists
 # Find the maximum value in the list of averages
 highest_avg = max(all_averages)
 print(f"Highest class average: {highest_avg:.1f}")</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
+</section>
 <section id="challenge-yourself" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-yourself">Challenge Yourself</h2>
 <section id="word-frequency-counter" class="level3">
-<h3 class="anchored">Word Frequency Counter</h3>
+<h3 class="anchored" data-anchor-id="word-frequency-counter">Word Frequency Counter</h3>
 <p>Create a program that counts how many times each word appears in a sentence using a dictionary.</p>
 <p><strong>Challenge Code:</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with this sentence to analyze</span></span>
@@ -474,18 +475,10 @@ print(f"Highest class average: {highest_avg:.1f}")</textarea>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> word, count <span class="kw">in</span> word_count.items():</span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"'</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">': </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-4" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-4" class="lesson-input" rows="15" placeholder="# Copy the code above or write your own..."># Start with this sentence to analyze
 sentence = "the quick brown fox jumps over the lazy dog the fox is quick"
 
@@ -508,9 +501,14 @@ for word in words:
 print("Word frequencies:")
 for word, count in word_count.items():
     print(f"'{word}': {count}")</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="your-turn" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn">Your Turn!</h3>
 <div class="challenge-box">
@@ -523,6 +521,7 @@ for word, count in word_count.items():
 </ol>
 <p>Use any of the terminals above to experiment with these challenges!</p>
 </div>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -571,18 +570,8 @@ Additional Resources
 
 
 </section>
-</section></section></section></section></section></section></main></div>
 
-
-
-
-
-
-
-
-
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -982,7 +971,7 @@ Additional Resources
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 <script src="../shared/lesson-python.js"></script>
 
 

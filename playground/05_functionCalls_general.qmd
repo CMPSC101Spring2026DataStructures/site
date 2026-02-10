@@ -36,10 +36,10 @@ In this lesson, you'll explore the structure of Python code, focusing on how fun
 
 ## Key Concepts
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 1: Function Definition & Calls**
-:::
+</div>
 A function in Python is a reusable block of code that performs a specific task. Functions are defined using the `def` keyword, followed by the function name and parameters. To use a function, you "call" it by its name and provide the required arguments.
 
 **Example:**
@@ -48,12 +48,12 @@ def squareArea(s: float) -> float:
     """ determine area of square"""
     return s * s
 ```
-:::
+</div>
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 2: Flow of Execution**
-:::
+</div>
 Python executes code from top to bottom. The `main()` function is often used as a "driver" to organize the flow. When `main()` is called, it runs the code inside it, including any function calls.
 
 **Example:**
@@ -63,14 +63,14 @@ def main() -> None:
     print(f"Length {sideLength}")
     print(f" Area: {squareArea(sideLength)}")
 ```
-:::
+</div>
 
 
 ### Example 1a: Calculating the Area of a Rectangle
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** Defines a function to calculate the area of a rectangle and calls it with sample values.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -81,6 +81,7 @@ def rectangleArea(length: float, width: float) -> float:
 print(rectangleArea(6, 3))
 ```
 
+```{=html}
 <div id="lesson-terminal-1" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -99,12 +100,13 @@ print(rectangleArea(6, 3))
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 1b: Calculating the Area of a Circle
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** Defines a function to calculate the area of a circle and calls it with a sample value.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -116,6 +118,7 @@ def circleArea(radius: float) -> float:
 print(circleArea(2))
 ```
 
+```{=html}
 <div id="lesson-terminal-2" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -134,12 +137,13 @@ print(circleArea(2))
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 1c: Calculating the Volume of a Cube
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** Defines a function to calculate the volume of a cube and calls it with a sample value.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -150,6 +154,7 @@ def cubeVolume(s: float) -> float:
 print(cubeVolume(3))
 ```
 
+```{=html}
 <div id="lesson-terminal-3" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -169,6 +174,7 @@ print(cubeVolume(3))
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Challenge Questions
 
@@ -181,7 +187,7 @@ Use the interactive code fields above to modify and run your solutions. Have fun
 
 ### Your Turn!
 
-::: {.challenge-box}
+<div class="challenge-box">
 **Challenge Tasks:**
 
 1. Try using different types of inputs (integers, floats, strings, booleans, complex numbers) and observe the results.
@@ -190,7 +196,7 @@ Use the interactive code fields above to modify and run your solutions. Have fun
 4. Write your own function to calculate the area of a rectangle.
 
 Use any of the terminals above to experiment with these challenges!
-:::
+</div>
 
 ## Summary
 

@@ -163,6 +163,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
   <li><a href="#interactive-examples" id="toc-interactive-examples" class="nav-link" data-scroll-target="#interactive-examples">Interactive Examples</a></li>
+  <li><a href="#challenge-yourself" id="toc-challenge-yourself" class="nav-link" data-scroll-target="#challenge-yourself">Challenge Yourself</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -255,7 +258,7 @@ Lesson Objectives
 <section id="interactive-examples" class="level2">
 <h2 class="anchored" data-anchor-id="interactive-examples">Interactive Examples</h2>
 <section id="example-1-recursive-fibonacci" class="level3">
-<h3 class="anchored">Example 1: Recursive Fibonacci</h3>
+<h3 class="anchored" data-anchor-id="example-1-recursive-fibonacci">Example 1: Recursive Fibonacci</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This implements the mathematical definition directly using recursion. Each function call splits into two more calls, creating a tree-like computation structure. While elegant, it’s very inefficient for large numbers.</p>
 </div>
@@ -270,18 +273,10 @@ Lesson Objectives
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'F(</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>fibonacci_recursive(i)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-1" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+    <div class="python-prompt">&gt;&gt;&gt; </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-1" class="lesson-input" rows="6" placeholder="# Copy the code above or write your own...">def fibonacci_recursive(n):
     """Calculate Fibonacci number using recursion"""
     if n &lt;= 1:
@@ -291,11 +286,16 @@ Loading Python interpreter…
 # Test with small numbers (try 10, 15, 20)
 for i in range(11):
     print(f'F({i}) = {fibonacci_recursive(i)}')</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+    <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+    <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+    <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="example-2-iterative-fibonacci" class="level3">
-<h3 class="anchored">Example 2: Iterative Fibonacci</h3>
+<h3 class="anchored" data-anchor-id="example-2-iterative-fibonacci">Example 2: Iterative Fibonacci</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This approach builds up the sequence from the bottom, keeping track of only the last two numbers. It’s much more efficient than recursion, using O(n) time and O(1) space.</p>
 </div>
@@ -319,18 +319,10 @@ for i in range(11):
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>fib_sequence <span class="op">=</span> [fibonacci_iterative(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>)]</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fib_sequence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-2" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+    <div class="python-prompt">&gt;&gt;&gt; </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-2" class="lesson-input" rows="8" placeholder="# Copy the code above or write your own...">def fibonacci_iterative(n):
     """Calculate Fibonacci number using iteration"""
     if n &lt;= 1:
@@ -349,11 +341,14 @@ for i in [10, 20, 30, 40, 50]:
 print("\nFirst 20 Fibonacci numbers:")
 fib_sequence = [fibonacci_iterative(i) for i in range(20)]
 print(fib_sequence)</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button></p>
+    <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
 </div>
+</section>
 <section id="example-3-binets-formula" class="level3">
-<h3 class="anchored">Example 3: Binet’s Formula</h3>
+<h3 class="anchored" data-anchor-id="example-3-binets-formula">Example 3: Binet’s Formula</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> This uses Binet’s closed-form formula to calculate Fibonacci numbers directly using the golden ratio. It’s mathematically elegant and theoretically O(1), but limited by floating-point precision for very large numbers.</p>
 </div>
@@ -386,18 +381,10 @@ print(fib_sequence)</textarea>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    match <span class="op">=</span> <span class="st">"✓"</span> <span class="cf">if</span> binet_result <span class="op">==</span> iterative_result <span class="cf">else</span> <span class="st">"✗"</span></span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'F(</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">): Binet=</span><span class="sc">{</span>binet_result<span class="sc">}</span><span class="ss">, Iterative=</span><span class="sc">{</span>iterative_result<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>match<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-3" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+    <div class="python-prompt">&gt;&gt;&gt; </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-3" class="lesson-input" rows="10" placeholder="# Copy the code above or write your own...">import math
 
 def fibonacci_binet(n):
@@ -425,13 +412,17 @@ for i in [20, 30, 40, 50]:
     iterative_result = fibonacci_iterative(i)
     match = "✓" if binet_result == iterative_result else "✗"
     print(f'F({i}): Binet={binet_result}, Iterative={iterative_result} {match}')</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button></p>
+    <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
 </div>
+</section>
+</section>
 <section id="challenge-yourself" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-yourself">Challenge Yourself</h2>
 <section id="performance-comparison-challenge" class="level3">
-<h3 class="anchored">Performance Comparison Challenge</h3>
+<h3 class="anchored" data-anchor-id="performance-comparison-challenge">Performance Comparison Challenge</h3>
 <p>Now that you’ve seen all three methods, let’s compare their performance! Try running this timing comparison to see the dramatic differences between approaches:</p>
 <p><strong>Challenge Code:</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
@@ -464,18 +455,10 @@ for i in [20, 30, 40, 50]:
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"   - Iterative &amp; Binet's can handle n=50+ easily"</span>)</span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"   - Recursive becomes very slow after n=35"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-4" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+    <div class="python-prompt">&gt;&gt;&gt; </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-4" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own...">import time
 
 # Time comparison for different methods
@@ -506,9 +489,12 @@ print(f"Recursive: {result} (took {duration:.6f} seconds)")
 print("\n🎯 Challenge: Try changing test_n to see how each method scales!")
 print("   - Iterative &amp; Binet's can handle n=50+ easily")
 print("   - Recursive becomes very slow after n=35")</textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button></p>
+    <button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button>
 </div>
+</section>
 <section id="your-turn" class="level3">
 <h3 class="anchored" data-anchor-id="your-turn">Your Turn!</h3>
 <div class="challenge-box">
@@ -521,6 +507,7 @@ print("   - Recursive becomes very slow after n=35")</textarea>
 </ol>
 <p>Use any of the terminals above to experiment with these challenges!</p>
 </div>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -570,18 +557,8 @@ Additional Resources
 
 
 </section>
-</section></section></section></section></section></section></main></div>
 
-
-
-
-
-
-
-
-
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -981,7 +958,7 @@ Additional Resources
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 <script src="../shared/lesson-python.js"></script>
 
 

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+  <defs>
+    <style>
+      .box { fill: #ffffff; stroke: #1f77b4; stroke-width: 2; }
+      .diamond { fill: #ffffff; stroke: #1f77b4; stroke-width: 2; }
+      .text { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; fill: #1a1a1a; }
+      .small { font-size: 18px; }
+      .arrow { stroke: #1f77b4; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1f77b4" />
+    </marker>
+  </defs>
+
+  <!-- Start -->
+  <rect class="box" x="80" y="40" rx="10" ry="10" width="180" height="60" />
+  <text class="text" x="170" y="78" text-anchor="middle">Start</text>
+
+  <!-- ans = 0 -->
+  <rect class="box" x="80" y="140" rx="10" ry="10" width="180" height="60" />
+  <text class="text" x="170" y="178" text-anchor="middle">ans = 0</text>
+
+  <!-- Decision 1 -->
+  <polygon class="diamond" points="170,240 280,300 170,360 60,300" />
+  <text class="text" x="170" y="306" text-anchor="middle">ans^2 &lt; abs(x)?</text>
+
+  <!-- Increment -->
+  <rect class="box" x="360" y="270" rx="10" ry="10" width="220" height="60" />
+  <text class="text" x="470" y="308" text-anchor="middle">ans = ans + 1</text>
+
+  <!-- Decision 2 -->
+  <polygon class="diamond" points="170,420 300,490 170,560 40,490" />
+  <text class="text" x="170" y="496" text-anchor="middle">ans^2 == abs(x)?</text>
+
+  <!-- Found root -->
+  <rect class="box" x="360" y="450" rx="10" ry="10" width="220" height="60" />
+  <text class="text" x="470" y="488" text-anchor="middle">Found root</text>
+
+  <!-- Not perfect -->
+  <rect class="box" x="700" y="450" rx="10" ry="10" width="280" height="60" />
+  <text class="text" x="840" y="488" text-anchor="middle">Not a perfect square</text>
+
+  <!-- Arrows -->
+  <line class="arrow" x1="170" y1="100" x2="170" y2="140" />
+  <line class="arrow" x1="170" y1="200" x2="170" y2="240" />
+
+  <line class="arrow" x1="280" y1="300" x2="360" y2="300" />
+  <text class="text small" x="310" y="285">Yes</text>
+
+  <line class="arrow" x1="470" y1="270" x2="470" y2="220" />
+  <line class="arrow" x1="470" y1="220" x2="200" y2="220" />
+  <line class="arrow" x1="200" y1="220" x2="200" y2="248" />
+
+  <line class="arrow" x1="170" y1="360" x2="170" y2="420" />
+  <text class="text small" x="135" y="398">No</text>
+
+  <line class="arrow" x1="300" y1="490" x2="360" y2="480" />
+  <text class="text small" x="320" y="470">Yes</text>
+
+  <line class="arrow" x1="170" y1="560" x2="170" y2="610" />
+  <line class="arrow" x1="170" y1="610" x2="840" y2="610" />
+  <line class="arrow" x1="840" y1="610" x2="840" y2="510" />
+  <text class="text small" x="210" y="590">No</text>
+</svg>

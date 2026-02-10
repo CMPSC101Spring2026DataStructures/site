@@ -35,11 +35,13 @@ In this lesson, we'll learn how to print "String Cheese" using Python! This fun 
 
 ## Key Concepts
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 1: String Printing and Loops**
-:::
+</div>
 We can use Python's `print()` function combined with `for` loops to create repeated output. The `range()` function helps us control how many times something repeats.
+
+
 
 **Example:**
 ```python
@@ -47,16 +49,22 @@ We can use Python's `print()` function combined with `for` loops to create repea
 for i in range(5):
     print(f"String Cheese : {i}")
 ```
-:::
+</div>
+
+
+
+
+
 
 ## Interactive Examples
 
 ### Example 1: Basic String Cheese Loop
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This creates a simple loop that prints "String Cheese" 10 times, each with a number.
-:::
+</div>
 
+```{=html}
 <div id="lesson-terminal-1" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -72,13 +80,15 @@ for i in range(5):
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 2: String Cheese with Custom Messages
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This example shows how to create more creative String Cheese messages with different formatting.
-:::
+</div>
 
+```{=html}
 <div id="lesson-terminal-2" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -93,17 +103,19 @@ for i in range(5):
   <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
   <button onclick="loadExample(2, `for i in range(5):\n    print(f'🧀 String Cheese #{i+1} is delicious! 🧀')`)" class="example-btn">📝 Load Example</button>
 </div>
+```
 
 ## Try It Yourself
 
-::: {.try-it-box}
+<div class="try-it-box">
 **🚀 Challenge:** Create your own String Cheese variations!
 
 **Your task:** Write a loop that prints "String Cheese" with different numbers and messages.
 
 **Hint:** Try using different ranges and string formatting options.
-:::
+</div>
 
+```{=html}
 <div id="lesson-terminal-3" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Ready for your solution!</div>
@@ -117,6 +129,7 @@ for i in range(5):
   <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
   <button onclick="loadExample(3, `# Solution: Creative String Cheese\nfor i in range(1, 6):\n    cheese ='🧀' \n    print(f'String Cheese Level {i}: {cheese * i}')`)" class="example-btn">💡 Show Solution</button>
 </div>
+```
 
 ## Summary
 

@@ -39,10 +39,10 @@ Think of a list like a shopping list where the order matters, and a dictionary l
 
 ## Key Concepts
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 1: Lists - Ordered Collections**
-:::
+</div>
 Lists are ordered, mutable collections that can store multiple items. Items in a list are accessed by their position (index), starting from 0.
 
 **Example:**
@@ -52,12 +52,12 @@ fruits = ["apple", "banana", "orange"]
 # Access the first element (index 0) and print it
 print(fruits[0])  # Outputs: apple
 ```
-:::
+</div>
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 2: Dictionaries - Key-Value Pairs**
-:::
+</div>
 Dictionaries store data as key-value pairs. Instead of using numeric indices, you use meaningful keys to access values quickly.
 
 **Example:**
@@ -67,15 +67,15 @@ student = {"name": "Alice", "age": 20, "grade": "A"}
 # Access the value associated with the "name" key
 print(student["name"])  # Outputs: Alice
 ```
-:::
+</div>
 
 ## Interactive Examples
 
 ### Example 1: Working with Lists
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This example demonstrates how to create a list, add items to it, and access elements by their index position.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -97,6 +97,7 @@ colors.extend(["yellow", "purple"])
 print("Updated list:", colors)
 ```
 
+```{=html}
 <div id="lesson-terminal-1" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -125,12 +126,13 @@ print("Updated list:", colors)</textarea>
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 2: Dictionary Basics and Key-Value Storage
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This example demonstrates creating a dictionary, populating it with key-value pairs using a loop, and then retrieving values using their keys.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -152,6 +154,7 @@ for i in range(10):  # Loop through the same range
      print(f"\t num_dict: {i} --> {num_dict[i]}") # pull values by their keys
 ```
 
+```{=html}
 <div id="lesson-terminal-2" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -180,12 +183,13 @@ for i in range(10):  # Loop through the same range
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 3: Student Grade Management System
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This example creates a practical grade management system using both lists and dictionaries to store student information and calculate statistics.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -219,6 +223,7 @@ highest_avg = max(all_averages)
 print(f"Highest class average: {highest_avg:.1f}")
 ```
 
+```{=html}
 <div id="lesson-terminal-3" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -259,6 +264,7 @@ print(f"Highest class average: {highest_avg:.1f}")</textarea>
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ## Challenge Yourself
 
@@ -292,6 +298,7 @@ for word, count in word_count.items():
     print(f"'{word}': {count}")
 ```
 
+```{=html}
 <div id="lesson-terminal-4" class="lesson-terminal">
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
@@ -326,10 +333,11 @@ for word, count in word_count.items():
   <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
   <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Your Turn!
 
-::: {.challenge-box}
+<div class="challenge-box">
 **Challenge Tasks:**
 
 1. **List Manipulation:** Create a list of your favorite movies, add 2 more movies, remove one, and print the final list.
@@ -338,7 +346,7 @@ for word, count in word_count.items():
 4. **Advanced Challenge:** Modify the word frequency counter to ignore case (treat "The" and "the" as the same word).
 
 Use any of the terminals above to experiment with these challenges!
-:::
+</div>
 
 ## Summary
 

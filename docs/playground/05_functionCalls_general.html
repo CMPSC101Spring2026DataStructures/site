@@ -164,7 +164,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
   <ul class="collapse">
   <li><a href="#example-1a-calculating-the-area-of-a-rectangle" id="toc-example-1a-calculating-the-area-of-a-rectangle" class="nav-link" data-scroll-target="#example-1a-calculating-the-area-of-a-rectangle">Example 1a: Calculating the Area of a Rectangle</a></li>
+  <li><a href="#example-1b-calculating-the-area-of-a-circle" id="toc-example-1b-calculating-the-area-of-a-circle" class="nav-link" data-scroll-target="#example-1b-calculating-the-area-of-a-circle">Example 1b: Calculating the Area of a Circle</a></li>
+  <li><a href="#example-1c-calculating-the-volume-of-a-cube" id="toc-example-1c-calculating-the-volume-of-a-cube" class="nav-link" data-scroll-target="#example-1c-calculating-the-volume-of-a-cube">Example 1c: Calculating the Volume of a Cube</a></li>
+  <li><a href="#challenge-questions" id="toc-challenge-questions" class="nav-link" data-scroll-target="#challenge-questions">Challenge Questions</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
   </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +256,7 @@ Lesson Objectives
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f" Area: </span><span class="sc">{</span>squareArea(sideLength)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="example-1a-calculating-the-area-of-a-rectangle" class="level3">
-<h3 class="anchored">Example 1a: Calculating the Area of a Rectangle</h3>
+<h3 class="anchored" data-anchor-id="example-1a-calculating-the-area-of-a-rectangle">Example 1a: Calculating the Area of a Rectangle</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> Defines a function to calculate the area of a rectangle and calls it with sample values.</p>
 </div>
@@ -261,29 +267,26 @@ Lesson Objectives
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rectangleArea(<span class="dv">6</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-1" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-1" class="lesson-input" rows="5" placeholder="# Copy the code above or write your own...">def rectangleArea(length: float, width: float) -&gt; float:
     """ determine area of rectangle"""
     return length * width
 
 print(rectangleArea(6, 3))
 </textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="example-1b-calculating-the-area-of-a-circle" class="level3">
-<h3 class="anchored">Example 1b: Calculating the Area of a Circle</h3>
+<h3 class="anchored" data-anchor-id="example-1b-calculating-the-area-of-a-circle">Example 1b: Calculating the Area of a Circle</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> Defines a function to calculate the area of a circle and calls it with a sample value.</p>
 </div>
@@ -295,18 +298,10 @@ print(rectangleArea(6, 3))
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(circleArea(<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-2" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-2" class="lesson-input" rows="6" placeholder="# Copy the code above or write your own...">import math
 def circleArea(radius: float) -&gt; float:
     """ determine area of circle"""
@@ -315,10 +310,14 @@ def circleArea(radius: float) -&gt; float:
 print(circleArea(2))
 </textarea>
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="example-1c-calculating-the-volume-of-a-cube" class="level3">
-<h3 class="anchored">Example 1c: Calculating the Volume of a Cube</h3>
+<h3 class="anchored" data-anchor-id="example-1c-calculating-the-volume-of-a-cube">Example 1c: Calculating the Volume of a Cube</h3>
 <div class="code-explanation">
 <p><strong>What this code does:</strong> Defines a function to calculate the volume of a cube and calls it with a sample value.</p>
 </div>
@@ -329,27 +328,24 @@ print(circleArea(2))
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cubeVolume(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="lesson-terminal-3" class="lesson-terminal">
-<div class="python-prompt">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-</blockquote></blockquote></blockquote></div>
-<div style="color: var(--golden-yellow); font-style: italic;">
-Loading Python interpreter…
+  <div class="python-prompt">&gt;&gt;&gt; </div>
+  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
-
-
-</div>
 <textarea id="lesson-input-3" class="lesson-input" rows="5" placeholder="# Copy the code above or write your own...">def cubeVolume(s: float) -&gt; float:
     """ determine volume of cube"""
     return s ** 3
 
 print(cubeVolume(3))
 </textarea>
+
 <div class="lesson-buttons">
-<p><button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button> <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button> <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button> <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button></p>
+  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+</section>
 <section id="challenge-questions" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-questions">Challenge Questions</h3>
 <ol type="1">
@@ -372,6 +368,7 @@ print(cubeVolume(3))
 </ol>
 <p>Use any of the terminals above to experiment with these challenges!</p>
 </div>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -418,15 +415,8 @@ Additional Resources
 
 
 </section>
-</section></section></section></section></main></div>
 
-
-
-
-
-
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -826,7 +816,7 @@ Additional Resources
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 <script src="../shared/lesson-python.js"></script>
 
 

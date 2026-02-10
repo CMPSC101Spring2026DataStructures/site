@@ -18,13 +18,13 @@ format:
           <script src="../shared/lesson-python.js"></script>
 ---
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:**
 This code defines a function `squareArea(s)` that calculates the area of a square given its side length `s`. The `main()` function acts as a driver: it prints the area for a single value, then iterates over a list of test values (including integers, zero, negative numbers, and a complex number) and prints the area for each.
 **Function calls:**
 - `squareArea(s)` is called inside `main()` for each value in `testValues_list` and for the initial `sideLength`.
 - `main()` is called at the end to start the program.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -52,6 +52,7 @@ main() # call the driver function
 ```
 
 
+```{=html}
 <textarea id="lesson-input-1" class="lesson-input" rows="20" placeholder="# Copy the code above or write your own...">def squareArea(s: float ) -> float:
     """ determine area of square"""
     return s*s # area of square is s*s
@@ -87,3 +88,4 @@ main() # call the driver function
   <div class="python-prompt">>>> </div>
   <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
+```

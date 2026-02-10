@@ -1,0 +1,1019 @@
+---
+title: "Chapter 3: EXHAUSTIVE AND APPROXIMATE SOLUTIONS"
+subtitle: "Some Approximation Techniques in Python: Numerical Search Methods and Their Applications"
+author: "CS 101 - Spring 2026"
+format:
+    revealjs:
+        theme: white
+        highlight-style: github
+        code-block-background: true
+        code-block-border-left: "#31BAE9"
+        slide-number: true
+        chalkboard: true
+        scrollable: false
+        transition: none
+        css: custom_big_o.css
+        width: 1200
+        height: 800
+        margin: 0.05
+execute:
+    echo: true
+    eval: true
+jupyter: python3
+---
+
+<!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} 
+
+<!-- &nbsp; -->
+
+
+## So, What are we talking about today?
+
+::: {.callout-note}
+- To understand exhaustive enumeration and iterative numerical techniques for approximation
+- To study and understand how algorithms use approximations to find square and cube roots
+- Compare efficiency of different approximation methods, and some of their limitations
+- To explore primality testing using enumeration
+- Implement practical Python solutions (code)
+:::
+
+<center></center>
+<center></center>
+<center></center>
+<center></center>
+
+<center>
+![](graphics/tellMeMore_i.png){width=40%}
+</center>
+
+
+## Exhaustive Versus Approximation: Two Solution Types
+
+<center>
+![](graphics/exhaustive_vs_approx.png){width=90%}
+</center>
+
+## Exhaustive Method 
+
+Simple Exhaustive Square Roots
+
+```{python}
+# Exhaustive square root
+def simple_square_root(x):
+    # find a root of a perfect root
+    ans = 0
+    while ans **2 < abs(x):
+        ans += 1
+    if ans**2 != abs(x):
+        print(f"x = {x} is not perfect square root...")
+    else:
+        if x<0:
+            ans =-ans
+        print(f"Square root of {x} is {ans}.")
+```
+
+We count and then square the result to compare to the absolute value of the number to check.
+
+---
+
+Testing the Prototype
+
+::: {style="color: #2E86C1; font-size: 0.6em; text-align: center; margin-top: 0.5em;"} 
+```{python}
+simple_square_root(25) # find the square root of a square.
+```
+
+:::
+
+<!-- &nbsp; -->
+
+::: {style="color: #2E86C1; font-size: 0.6em; text-align: center; margin-top: 0.5em;"} 
+```{python}
+simple_square_root(26) # not a square ...
+```
+
+:::
+
+<center>
+![](graphics/test_it_ii.png){width=40%}
+</center>
+---
+
+## `simple_square_root(x)`
+
+*Count, square and check*
+
+<!-- &nbsp; -->
+
+::: {.callout-note}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Step-by-Step Process:**
+
+1. Start with `ans = 0`
+2. Check if `ans²` < |x|
+3. If true, increment `ans` by 1
+4. Repeat until `ans²` ≥ |x|
+5. Test if `ans²` exactly equals |x|
+
+:::
+
+::: {.column width="50%"}
+**Key Logic:**
+**Exhaustive search**: Tests every integer sequentially.
+
+If `ans²` == |x| then the root is found. Cool!
+<!--  **Perfect squares only**: Only finds exact integer roots -->
+<!--  **Handles negatives**: Uses `abs(x)` then adjusts sign -->
+
+**Binary outcome**: Either finds exact root or reports failure
+:::
+
+::::
+
+:::
+<!-- end of call out  -->
+
+
+## Flowchart: `simple_square_root(x)`
+
+<center>
+![](graphics/simple_square_root_flowchart.svg){width=100%}
+</center>
+
+---
+
+<!-- &nbsp; -->
+
+**Example:** For x = 25,
+
+tests: 0^2, 1^2, 2^2, 3^2, 4^2, 5^2 = 25 ✓
+
+Be careful!
+
+**Example:** For x = 26,
+
+tests: 0^2, 1^2, 2^2, 3^2, 4^2, 5^2, 6^2 != 26
+
+(We just passed the correct value!!)
+
+<center>
+![](graphics/stop.png){width=30%}
+</center>
+---
+
+
+<!-- ### Example: Simple Exhaustive Cube Roots -->
+
+Simple Exhaustive Cube Roots (with same method)
+
+&nbsp;
+
+```{python}
+# Exhaustive cube root
+def simple_cube_root(x):
+    # find a root of a perfect root
+    ans = 0
+    while ans **3 < abs(x):
+        ans += 1
+    if ans**3 != abs(x):
+        print(f"x = {x} is not perfect cube root...")
+    else:
+        if x<0:
+            ans =-ans
+        print(f"Cube root of {x} is {ans}.")
+```
+
+
+---
+
+Testing the Prototype
+
+```{python}
+simple_cube_root(8) # has a cube root
+```
+
+&nbsp;
+
+```{python}
+simple_cube_root(7) # does not have a cube ...
+```
+
+&nbsp;
+
+<center>
+![](graphics/testing_i.png){width=50%}
+</center>
+
+
+## `simple_cube_root(x)`
+
+*Count, cube and check*
+
+::: {.callout-note}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Step-by-Step Process:**
+
+(Same as before)
+
+1. Start with `ans = 0`
+2. Check if `ans^3` < |x|
+3. If true, increment `ans` by 1
+4. Repeat until `ans^3` ≥ |x|
+5. Test if `ans^3` exactly equals |x|
+:::
+
+::: {.column width="50%"}
+**Key Logic:**
+**Exhaustive search**: Tests every integer sequentially.
+
+If `ans^3` == |x| then the root is found. Nifty!
+<!--  **Perfect squares only**: Only finds exact integer roots -->
+<!--  **Handles negatives**: Uses `abs(x)` then adjusts sign -->
+
+**Binary outcome**: Either finds exact root or reports failure
+:::
+
+::::
+
+:::
+
+---
+
+## Flowchart: `simple_cube_root(x)`
+
+<center>
+![](graphics/cube_root_exhaustive_approximation_flowchart.png){width=100%}
+</center>
+
+## Testing the Flowcart
+
+<!-- &nbsp; -->
+
+
+<!-- :::: {.column} -->
+
+<!-- ::: {.column width="50%"} -->
+**Example:** For x = 8,
+
+tests: 0^3, 1^3, 2^3 = 8 ✓
+
+**Be careful!**
+
+For x = 9,
+tests: 0^3, 1^3, 2^3, 3^3 != 9 
+
+(We just passed the correct value!!)
+<!-- ::: -->
+
+
+<!-- ::: {.column width="50%"} -->
+<!-- ![](graphics/stop.png){width=90%} -->
+<!-- ::: -->
+
+<!-- :::: -->
+
+<center>
+![](graphics/stop.png){width=30%}
+</center>
+
+
+# How to Generalize This?
+
+Exhaustive $n^{th}$ root
+
+```{python}
+def simple_n_root(x, n):
+    # find a root of a perfect root
+    ans = 0
+    while ans**n < abs(x):
+        ans += 1
+    if ans**n != abs(x):
+        print(f"x = {x} is not perfect {n} root...")
+    else:
+        if x < 0:
+            ans = -ans
+        print(f"{n} root of {x} is {ans}.")
+```
+
+
+
+## Flowchart: `simple_n_root(x)`
+
+<center>
+![](graphics/simple_n_root_flowchart.svg){width=70%}
+</center>
+
+
+## Testing the Prototype
+
+```{python}
+simple_n_root(8,2) # find the square root
+```
+
+&nbsp;
+
+```{python}
+simple_n_root(17,2) # not a square ...
+```
+
+&nbsp;
+
+
+
+```{python}
+simple_n_root(9,3) # not a cube ...
+```
+
+&nbsp;
+
+
+<!-- <center>
+![](graphics/testing_i.png){width=50%}
+</center> -->
+
+
+---
+
+
+## Complicated Exhaustive Square Roots
+
+Add print statements to see steps.
+```{python}
+def exhaustive_sqrt(x, epsilon=0.01):
+    """
+    Find square root using exhaustive enumeration
+    """
+    step = epsilon
+    num_guesses = 0
+    ans = 0.0
+    
+    print(f"Finding square root of {x}")
+    
+    while abs(ans**2 - x) >= epsilon and ans*ans <= x:
+        ans += step
+        num_guesses += 1
+    
+    print(f"Number of guesses: {num_guesses}")
+    
+    if abs(ans**2 - x) >= epsilon:
+        print(f"Failed to find square root of {x}")
+        return None
+    else:
+        print(f"Square root of {x} is approximately {ans}")
+        return ans
+
+
+```
+
+
+## Flowchart: `exhaustive_sqrt_flowchart(x)`
+
+<center>
+![](graphics/exhaustive_sqrt_flowchart.svg){width=70%}
+</center>
+
+
+### Testing the Prototype
+
+```{python}
+exhaustive_sqrt(25) # find the square root of a square.
+```
+
+```{python}
+exhaustive_sqrt(26) # Not a square ...
+```
+
+<center>
+![](graphics/test_it_ii.png){width=35%}
+</center>
+
+---
+
+## **How This Code Works:**
+
+::: {.callout-note}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Algorithm Steps:**
+
+1. Start with `ans = 0.0`
+2. Increment by `epsilon` each iteration
+3. Check if `ans²` is close enough to `x`
+4. Stop when within tolerance or exceeded target
+
+**Key Variables:**
+
+- `step`: How much to increment each guess
+- `num_guesses`: Performance counter
+- `ans`: Current approximation
+:::
+
+::: {.column width="50%"}
+**Loop Condition Explained:**
+
+- `abs(ans**2 - x) >= epsilon`: Not accurate enough yet
+- `ans*ans <= x`: Haven't exceeded target (prevents infinite loop)
+
+**Why It Works:**
+
+- Systematically tests every possible value
+- Guaranteed to find solution if it exists
+- Simple but inefficient for large numbers
+:::
+
+::::
+
+:::
+
+<center>
+![](graphics/strategy_i.png){width=35%}
+</center>
+
+
+
+## The Fundamental Limitation of Guessing and Checking
+
+**These functions use "exhaustive enumeration" over integers:**
+
+- **Perfect squares/cubes:** Have integer roots (4, 9, 16, 25...)
+- **Non-perfect squares/cubes:** Have irrational/decimal roots
+
+**Key Insight:** The algorithm design assumes the answer is an integer!
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```python
+# This works:
+simple_square_root (25) = 5
+simple_square_root(27) = 3
+
+# (only exact integers)
+```
+:::
+
+::: {.column width="50%"}
+```python
+# This fails:
+simple_square_root(26) = 5.099... 
+simple_cube_root(26) = 2.962...
+
+# (not integers, no results found
+```
+:::
+
+::::
+
+
+<center>
+![](graphics/guess.png){width=35%}
+</center>
+
+## Exhaustive Versus Approximation: Two Solution Types
+Remember this slide? 
+
+<center>
+![](graphics/exhaustive_vs_approx.png){width=85%}
+</center>
+
+
+## Approximation
+
+What if I need an exact value for a root for a non-perfect integers?
+
+::: {.callout-important}
+
+* Say, my number is ... **35**.
+* How do I find $\sqrt{35}$?
+
+:::
+
+&nbsp;
+
+::: {.callout-note}
+
+Note:
+
+* 35 is not a square ...
+* 35 is not a cube ...
+* 35 is not an $n^{th}$ value of anything!
+:::
+
+<center>
+How to find exact values of *any* number I want?!
+</center>
+
+---
+
+
+## What We Need Instead
+
+**For approximating non-perfect roots, we need:**
+
+1. **Decimal precision** (not just integers)
+2. **Tolerance/epsilon** (how close is "close enough?")
+3. **Different search strategies:**
+   - Increment by small decimals (0.01, 0.001...)
+   <!-- - Bisection search -->
+   - Newton's method
+
+**Next:** We'll explore these *approximation* techniques!
+
+
+---
+
+## So, What is *Approximation*?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Key Concepts:**
+
+- Finding "good enough" solutions
+- Trading precision for efficiency
+- Iterative refinement
+- Stopping criteria (stop the approximation by setting precision)
+:::
+
+::: {.column width="50%"}
+**Like, Why Approximation?**
+
+- Exact solutions may not exist (not a perfect number)
+<!-- - Computational limitations -->
+- Real-world applications (like how your computer does this root-finding!)
+<!-- - Performance trade-offs -->
+:::
+
+::::
+
+
+::: {.callout-note}
+
+**Exhaustive** 
+
+* Exhaustive enumeration systematically checks all possibilities to guarantee a correct solution.
+* Best for small, finite problems,
+
+**However, Newtons Method**
+
+* Newton's method is an iterative numerical technique that rapidly approximates a solution by using tangent lines, but it is not guaranteed to find the correct answer and can fail. 
+* Suited for finding accurate numerical solutions to complex equations when exhaustive checking is impossible. 
+
+:::
+
+---
+
+
+<center>
+![](graphics/in_dog.png){width=40%}
+</center>
+
+<center>
+Issac Newton
+</center>
+---
+
+
+<center>
+![](graphics/newton.png){width=40%}
+</center>
+
+<center>
+Whoops, here's the right slide.
+
+(Issac Newton)
+</center>
+
+
+## Square Root Approximation with Newton's Method
+
+<center>
+![](graphics/newtons_method.png){width=60%}
+</center>
+---
+
+<!-- &nbsp; -->
+
+```{python}
+def newtons_sqrt(n:float, guess:float = 1.0) -> float:
+    while abs(n - guess*guess) > .0001:
+        print(f"n = {n}, guess = {guess}")
+        print(f"   abs(n - guess*guess) = {abs(n - guess*guess)}")
+        guess = guess - (guess*guess - n)/(2*guess)
+        print(f"   guess = guess - (guess*guess - n)/(2*guess) = {guess}\n")
+
+    return guess
+```
+
+ 
+<center>
+![](graphics/newtons_method.png){width=50%}
+</center>
+
+---
+
+Test using debug print statements ... 
+
+```{python}
+my_num = 25
+result = newtons_sqrt(my_num)
+print(f"Verification:\n {result}^2 = ")
+print(f"{result**2} is {result**2 == result**2}")
+
+```
+---
+
+<!-- ## **How This Code Works:** -->
+
+So, how does this thing work?
+
+* Each approximation of $x$ is from Equation: $x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})}$
+  * We approach the actual value with each iteration
+* The $\frac{f(x_{n})}{f'(x_{n})}$ term allows for us to get closer to the actual number with each approximation.
+  * $x_{0}$ to $x_{1}$ to $x_{2}$ to, ..., to $x_{n}$  
+
+---
+
+
+## Cube Roots
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"} 
+
+```{python}
+def newtons_cube_root(n:float, guess:float = 1.0) -> float:
+    while abs(n - guess*guess*guess) > .0001:
+        print(f"n = {n}, guess = {guess}")
+        print(f"   abs(n - guess^3) = {abs(n - guess*guess*guess)}")
+        guess = guess - (guess*guess*guess - n)/(3*(guess*guess))
+        print(f"   guess = guess - (guess*guess*guess - n)/(3*(guess*guess)) = {guess}\n")
+    return guess
+```
+:::
+
+<center>
+![](graphics/approx.png){width=50%}
+</center>
+
+::: {.callout-note}
+
+We are getting increasingly closer the actual value. which is determined by the tolerance level (and hence the number of iterations) as specified here by the algorithm's parameters.
+
+:::
+
+---
+
+Testing the Prototype
+
+::: {style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;"} 
+
+```{python}
+newtons_cube_root(8)
+```
+:::
+
+---
+
+Testing the Prototype
+
+::: {style="color: #2E86C1; font-size: 0.7em; text-align: center; margin-top: 0.5em;"} 
+
+```{python}
+newtons_cube_root(27)
+```
+:::
+
+
+---
+
+Testing the Prototype
+
+::: {style="color: #2E86C1; font-size: 0.7em; text-align: center; margin-top: 0.5em;"} 
+```{python}
+newtons_cube_root(31)
+```
+:::
+
+
+---
+
+## General Case Structure
+
+::: {.callout-note}
+
+**Parameters**:
+
+* *n* (int): The root to find (e.g., 2 for square root, 3 for cube root)
+* value (float): The value for which to find the *n*th root
+* guess (float): Initial guess (default: 1.0)
+    
+**Returns**:
+
+* float: The nth root of the value
+    
+:::
+
+::: {.callout-important}
+
+**Mathematical formula**:
+
+* For finding $y$ such that $y^n = value$, we use Newton's method:
+* $y_{new} = y - \frac{f(y)}{f'(y)}$
+* Where, $f(y) = y^n - value$ and $f'(y) = n * y^{n-1}$
+* So: y_new = y - (y^n - value)/(n * y^(n-1))
+
+
+:::
+
+
+## General Case
+::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} 
+
+```{python}
+def newtons_nth_root(n: int, value: float, guess: float = 1.0) -> float:
+    """
+    Find the nth root of a value using Newton's method.
+    
+    """
+    if n <= 0:
+        raise ValueError("n must be a positive integer")
+    if value < 0 and n % 2 == 0:
+        raise ValueError("Cannot find even root of negative number")
+    
+    tolerance = 0.0001
+    
+    while abs(guess**n - value) > tolerance:
+        print(f"n = {n}, value = {value}, guess = {guess}")
+        print(f"   abs(guess^n - value) = abs({guess}^{n} - {value}) = {abs(guess**n - value)}")
+        
+        # Newton's method formula: guess_new = guess - (guess^n - value)/(n * guess^(n-1))
+        guess_new = guess - (guess**n - value) / (n * guess**(n-1))
+        
+        print(f"   guess_new = guess - (guess^n - value)/(n * guess^(n-1))")
+        print(f"   guess_new = {guess} - ({guess}^{n} - {value})/({n} * {guess}^{n-1}) = {guess_new}\n")
+        
+        guess = guess_new
+    
+    return guess
+```
+:::
+---
+
+Testing the Prototype (1)
+
+```{python}
+print("Square root of 16 (n=2, value=16):")
+result = newtons_nth_root(2, 16)
+print(f"Result: {result}")
+print(f"Verification: {result}^2 = {result**2}\n")
+```
+
+---
+
+Testing the Prototype (2)
+
+```{python}
+print("Cube root of 27 (n=3, value=27):")
+result = newtons_nth_root(3, 27)
+print(f"Result: {result}")
+print(f"Verification: {result}^3 = {result**3}\n")
+```
+---
+
+Testing the Prototype (3)
+
+```{python}
+print("Fourth root of 81 (n=4, value=81):")
+result = newtons_nth_root(4, 81)
+print(f"Result: {result}")
+print(f"Verification: {result}^4 = {result**4}\n")
+```
+
+---
+
+Testing the Prototype ((4)
+
+```{python}
+print("4. Square root of 10 (n=2, value=10):")
+result = newtons_nth_root(2, 10)
+print(f"Result: {result}")
+print(f"Verification: {result}^2 = {result**2}\n")
+```
+
+
+
+---
+
+# Challenge!
+
+Can you modify the `newtons_cube_root()` algorithm to find the forth root `newtons_4_root()`
+
+&nbsp;
+
+Hint: Use the general case to create the code.
+
+<center>
+![](graphics/think.png){width=90%}
+</center>
+
+---
+
+# Challenge Set (5)
+
+Solve each challenge with a short Python function and a quick test.
+
+---
+
+## Challenge 1: Perfect-Square Tester
+
+**Task:** Write `is_perfect_square(n)` that returns `True` if `n` is a perfect square and `False` otherwise.
+
+*Constraints:* Use exhaustive enumeration (counting up).
+
+<center>
+![](graphics/perfect_square.png){width=85%}
+</center>
+
+
+---
+
+## Challenge 2: Epsilon Square Root
+
+**Task:** Write `approx_sqrt(x, epsilon=0.001)` using exhaustive enumeration with a step size of `epsilon`.
+
+Return the approximation and the number of guesses.
+
+
+
+<center>
+![](graphics/approx_i.png){width=40%}
+</center>
+
+---
+
+## Challenge 3: Count Newton Steps
+
+**Task:** Write `newtons_sqrt_steps(x, guess=1.0, tol=1e-4)` that returns
+1) the approximation and 2) how many iterations it took.
+
+
+<center>
+![](graphics/loop.png){width=50%}
+</center>
+
+---
+
+## Challenge 4: Integer Cube Root (No Decimals)
+
+**Task:** Write `int_cube_root(n)` that returns the integer cube root if it exists, otherwise returns `None`.
+
+Use exhaustive enumeration only.
+
+
+<center>
+![](graphics/loop.png){width=50%}
+</center>
+
+---
+
+## Challenge 5: Compare Methods
+
+**Task:** Write `compare_methods(x)` that prints two lines:
+
+* The values of `exhaustive approximation` (epsilon = 0.001) and the values of the `guesses` for each iteration of "simple_square_root(x)"
+* Then print the values of `guesses` for each iteration  "newtons_sqrt()"
+
+Which algorithm do you suppose is better? Why?
+
+&nbsp;
+
+<center>
+![](graphics/comparison.png){width=90%}
+</center>
+
+---
+
+# Solutions
+
+Below are sample solutions with short explanations.
+
+---
+
+## Solution 1: Perfect-Square Tester
+
+**Idea:** Count up until `k^2` is at least `n`, then compare.
+
+```{python}
+def is_perfect_square(n: int) -> bool:
+    if n < 0:
+        return False
+    k = 0
+    while k * k < n:
+        k += 1
+    return k * k == n
+
+
+print(is_perfect_square(25))
+print(is_perfect_square(26))
+```
+
+---
+
+## Solution 2: Epsilon Square Root
+
+**Idea:** Step by `epsilon` and stop when the square is close enough.
+
+```{python}
+def approx_sqrt(x: float, epsilon: float = 0.001):
+    if x < 0:
+        return None, 0
+    step = epsilon
+    ans = 0.0
+    guesses = 0
+    while abs(ans * ans - x) >= epsilon and ans * ans <= x:
+        ans += step
+        guesses += 1
+    if abs(ans * ans - x) >= epsilon:
+        return None, guesses
+    return ans, guesses
+
+
+print(approx_sqrt(25))
+print(approx_sqrt(26))
+```
+
+---
+
+## Solution 3: Count Newton Steps
+
+**Idea:** Track iterations while updating with Newton's method.
+
+```{python}
+def newtons_sqrt_steps(x: float, guess: float = 1.0, tol: float = 1e-4):
+    if x < 0:
+        return None, 0
+    steps = 0
+    while abs(x - guess * guess) > tol:
+        guess = guess - (guess * guess - x) / (2 * guess)
+        steps += 1
+    return guess, steps
+
+
+print(newtons_sqrt_steps(25))
+print(newtons_sqrt_steps(26))
+```
+
+---
+
+## Solution 4: Integer Cube Root
+
+**Idea:** Count up until `k^3` reaches or passes `|n|`, then check.
+
+```{python}
+def int_cube_root(n: int):
+    target = abs(n)
+    k = 0
+    while k ** 3 < target:
+        k += 1
+    if k ** 3 != target:
+        return None
+    return k if n >= 0 else -k
+
+
+print(int_cube_root(27))
+print(int_cube_root(28))
+print(int_cube_root(-8))
+```
+
+---
+
+## Solution 5: Compare Methods
+
+**Idea:** One way to determine "better-ness"; Try running both algorithms and report results with effort.
+
+```{python}
+def compare_methods(x: float, epsilon: float = 0.001, tol: float = 1e-4):
+    approx, guesses = approx_sqrt(x, epsilon)
+    newton, steps = newtons_sqrt_steps(x, tol=tol)
+    print(f"Exhaustive: approx={approx}, guesses={guesses}")
+    print(f"Newton:     approx={newton}, steps={steps}")
+
+
+compare_methods(26)
+```
+
+
+<!-- &nbsp; -->
+
+
+<!-- 
+Conclusions
+Exhaustive enumeration and Newton's method are fundamentally different problem-solving techniques: exhaustive enumeration systematically checks all possibilities to guarantee a correct solution, while Newton's method is an iterative numerical technique that rapidly approximates a solution by using tangent lines, but it is not guaranteed to find the correct answer and can fail. Exhaustive enumeration is best for small, finite problems, whereas Newton's method is suited for finding accurate numerical solutions to complex equations when exhaustive checking is impossible.  -->

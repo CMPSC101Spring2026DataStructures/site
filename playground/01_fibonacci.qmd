@@ -36,10 +36,10 @@ In this lesson, we'll explore three different computational approaches to genera
 
 ## Key Concepts
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 1: Mathematical Definition**
-:::
+</div>
 The Fibonacci sequence is defined as:
 - F(0) = 0
 - F(1) = 1  
@@ -54,12 +54,12 @@ This recursive definition leads naturally to our first implementation approach.
 # F(4) = F(3) + F(2) = 3 
 # F(3) = F(2) + F(1) = 2
 ```
-:::
+</div>
 
-::: {.lesson-concept}
-::: {.concept-title}
+<div class="lesson-concept">
+<div class="concept-title">
 💡 **Concept 2: Computational Complexity**
-:::
+</div>
 Different algorithms have different time complexities:
 - **Recursive**: O(2^n) - exponential, very slow for large n
 - **Iterative**: O(n) - linear, efficient for reasonable n
@@ -72,15 +72,15 @@ Different algorithms have different time complexities:
 # Iterative: ~40 operations  
 # Binet's: ~5 operations
 ```
-:::
+</div>
 
 ## Interactive Examples
 
 ### Example 1: Recursive Fibonacci
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This implements the mathematical definition directly using recursion. Each function call splits into two more calls, creating a tree-like computation structure. While elegant, it's very inefficient for large numbers.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -95,9 +95,10 @@ for i in range(11):
     print(f'F({i}) = {fibonacci_recursive(i)}')
 ```
 
+```{=html}
 <div id="lesson-terminal-1" class="lesson-terminal">
-  <div class="python-prompt">>>> </div>
-  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+    <div class="python-prompt">>>> </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
 <textarea id="lesson-input-1" class="lesson-input" rows="6" placeholder="# Copy the code above or write your own...">def fibonacci_recursive(n):
@@ -111,17 +112,18 @@ for i in range(11):
     print(f'F({i}) = {fibonacci_recursive(i)}')</textarea>
 
 <div class="lesson-buttons">
-  <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
-  <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
-  <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
-  <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
+    <button onclick="runLessonCode(1)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(1)" class="clear-btn">🗑 Clear</button>
+    <button onclick="increaseFontSize()" class="example-btn">🔍+ Larger Font</button>
+    <button onclick="decreaseFontSize()" class="example-btn">🔍- Smaller Font</button>
 </div>
+```
 
 ### Example 2: Iterative Fibonacci
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This approach builds up the sequence from the bottom, keeping track of only the last two numbers. It's much more efficient than recursion, using O(n) time and O(1) space.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -145,9 +147,10 @@ fib_sequence = [fibonacci_iterative(i) for i in range(20)]
 print(fib_sequence)
 ```
 
+```{=html}
 <div id="lesson-terminal-2" class="lesson-terminal">
-  <div class="python-prompt">>>> </div>
-  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+    <div class="python-prompt">>>> </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
 <textarea id="lesson-input-2" class="lesson-input" rows="8" placeholder="# Copy the code above or write your own...">def fibonacci_iterative(n):
@@ -170,15 +173,16 @@ fib_sequence = [fibonacci_iterative(i) for i in range(20)]
 print(fib_sequence)</textarea>
 
 <div class="lesson-buttons">
-  <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
-  <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
+    <button onclick="runLessonCode(2)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(2)" class="clear-btn">🗑 Clear</button>
 </div>
+```
 
 ### Example 3: Binet's Formula
 
-::: {.code-explanation}
+<div class="code-explanation">
 **What this code does:** This uses Binet's closed-form formula to calculate Fibonacci numbers directly using the golden ratio. It's mathematically elegant and theoretically O(1), but limited by floating-point precision for very large numbers.
-:::
+</div>
 
 **Example Code:**
 ```python
@@ -211,9 +215,10 @@ for i in [20, 30, 40, 50]:
     print(f'F({i}): Binet={binet_result}, Iterative={iterative_result} {match}')
 ```
 
+```{=html}
 <div id="lesson-terminal-3" class="lesson-terminal">
-  <div class="python-prompt">>>> </div>
-  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+    <div class="python-prompt">>>> </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
 <textarea id="lesson-input-3" class="lesson-input" rows="10" placeholder="# Copy the code above or write your own...">import math
@@ -245,9 +250,10 @@ for i in [20, 30, 40, 50]:
     print(f'F({i}): Binet={binet_result}, Iterative={iterative_result} {match}')</textarea>
 
 <div class="lesson-buttons">
-  <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
-  <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
+    <button onclick="runLessonCode(3)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(3)" class="clear-btn">🗑 Clear</button>
 </div>
+```
 
 ## Challenge Yourself
 
@@ -289,9 +295,10 @@ print("   - Iterative & Binet's can handle n=50+ easily")
 print("   - Recursive becomes very slow after n=35")
 ```
 
+```{=html}
 <div id="lesson-terminal-4" class="lesson-terminal">
-  <div class="python-prompt">>>> </div>
-  <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
+    <div class="python-prompt">>>> </div>
+    <div style="color: var(--golden-yellow); font-style: italic;">Loading Python interpreter...</div>
 </div>
 
 <textarea id="lesson-input-4" class="lesson-input" rows="12" placeholder="# Copy the code above or write your own...">import time
@@ -326,13 +333,14 @@ print("   - Iterative & Binet's can handle n=50+ easily")
 print("   - Recursive becomes very slow after n=35")</textarea>
 
 <div class="lesson-buttons">
-  <button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button>
-  <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button>
+    <button onclick="runLessonCode(4)" class="run-btn">▶ Run Code</button>
+    <button onclick="clearLessonTerminal(4)" class="clear-btn">🗑 Clear</button>
 </div>
+```
 
 ### Your Turn!
 
-::: {.challenge-box}
+<div class="challenge-box">
 **Challenge Tasks:**
 
 1. **Modify the recursive function** to use memoization (caching previous results) to make it faster
@@ -341,7 +349,7 @@ print("   - Recursive becomes very slow after n=35")</textarea>
 4. **Research question**: Why does Binet's formula eventually become inaccurate for very large numbers?
 
 Use any of the terminals above to experiment with these challenges!
-:::
+</div>
 
 ## Summary
 

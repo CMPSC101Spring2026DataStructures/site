@@ -1,0 +1,13 @@
+---
+title: "Square Area Playground"
+subtitle: "Quick practice with a simple function"
+date: "30 Aug 2025"
+author: "OBC"
+format:
+  html:
+    toc: true
+    css:
+      - ../shared/lesson-styles.css
+---
+
+This page is a lightweight sandbox for the square area demo. Use the main lesson pages for full explanations and interactive widgets.
