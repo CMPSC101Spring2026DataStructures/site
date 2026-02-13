@@ -68,7 +68,6 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](5_numerical_programs_solutions.html) Slides
 - **Exhaustive and Approximate Solutions**
   - [HTML](5_exhaustive_approximation.html) Slides
-
 - **Activity 04**: Numerical Programming and Exhaustive Search
   - [GitHub Classroom Link](https://classroom.github.com/a/PjByMoX6)
 
