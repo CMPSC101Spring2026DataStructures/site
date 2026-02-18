@@ -1,7 +1,7 @@
 ---
 title: "Chapter 3: EXHAUSTIVE AND APPROXIMATE SOLUTIONS"
 subtitle: "Some Approximation Techniques in Python: Numerical Search Methods and Their Applications"
-author: "CS 101 - Spring 2026"
+author: "Oliver Bonham-Carter"
 format:
     revealjs:
         theme: white

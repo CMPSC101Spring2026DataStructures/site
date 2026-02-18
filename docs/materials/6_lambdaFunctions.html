@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="Oliver Bonham-Carter">
+  <title>CMPSC101 Spring 2026 :: DataStructures – Functions and Lambda Functions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Functions and Lambda Functions</h1>
+  <p class="subtitle">General and Anonymous Functions in Python</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Oliver Bonham-Carter 
+</div>
+</div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} -->
+<!-- 🔢✨⚡ -->
+</section>
+<section>
+<section id="on-for-today" class="title-slide slide level1 center">
+<h1>On For Today</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Let’s build from general functions to elegant lambda syntax!</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Topics covered in today’s discussion:</strong></p>
+<ul>
+<li>🐍 <strong>What are Functions?</strong> - General functions explained</li>
+<li>🐍 <strong>Functions Without Return Values</strong> - Quick action-oriented example</li>
+<li>🐍 <strong>Functions That Return Values</strong> - Quick value-producing example</li>
+<li>🐍 <strong>What are Lambda Functions?</strong> - Anonymous functions explained</li>
+<li>🐍 <strong>Basic Lambda Syntax</strong> - The foundation you need</li>
+<li>🐍 <strong>Lambda vs Regular Functions</strong> - When to use each</li>
+<li>🐍 <strong>Lambda with Built-in Functions</strong> - <code>map()</code>, <code>filter()</code>, <code>sorted()</code></li>
+<li>🐍 <strong>Real-World Applications</strong> - Practical uses in data processing</li>
+<li>🐍 <strong>Best Practices</strong> - Writing clean, readable lambda expressions</li>
+</ul>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/tellMeMore_i.png">
+</center>
+</section>
+<section id="get-ready-for-functions-and-lambda-functions" class="slide level2">
+<h2>Get Ready for Functions and Lambda Functions!</h2>
+<!-- ::: {style="color: #2E86C1; font-size: 1.0em; text-align: center; margin-top: 1em;"}
+🐍 Ready to master Python's most concise function syntax! 🚀
+::: -->
+<center>
+<img data-src="graphics/excited.png">
+</center>
+</section></section>
+<section>
+<section id="what-are-functions-in-python" class="title-slide slide level1 center">
+<h1>What Are Functions in Python?</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>General Idea</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>function</strong> is a reusable block of code that performs a specific task.</p>
+<ul>
+<li>It helps you organize code into smaller parts.</li>
+<li>It avoids repeating the same logic over and over.</li>
+<li>You can give it inputs (parameters), and it may produce an output.</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #2E86C1;">
+<p><strong>Mental model:</strong> define once with <code>def</code>, call many times when needed.</p>
+</div>
+</section>
+<section id="quick-example-function-that-does-not-return-a-value" class="slide level2">
+<h2>Quick Example: Function That Does <strong>Not</strong> Return a Value</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Action-Oriented Function</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> print_welcome(name):</span>
+<span id="cb1-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Welcome, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>result <span class="op">=</span> print_welcome(<span class="st">"Ari"</span>)</span>
+<span id="cb1-5"><a></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What happens?</strong> * The function performs an action: it prints a message. * It does not use <code>return</code>, so Python gives back <code>None</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="quick-example-function-that-returns-a-value" class="slide level2">
+<h2>Quick Example: Function That <strong>Returns</strong> a Value</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Value-Producing Function</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> area_of_rectangle(length, width):</span>
+<span id="cb2-2"><a></a>    <span class="cf">return</span> length <span class="op">*</span> width</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>area <span class="op">=</span> area_of_rectangle(<span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb2-5"><a></a><span class="bu">print</span>(area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>What happens?</strong> * The function computes a value. * <code>return</code> sends that value back to the caller.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="what-are-lambda-functions" class="title-slide slide level1 center">
+<h1>What Are Lambda Functions?</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Lambda functions</strong> are small, anonymous functions that can have any number of arguments but can only have one expression. They’re perfect for short, simple operations!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<!-- COL 30 -->
+</div><div class="column" style="width:30%;">
+
+</div></div>
+<div style="color: #8E44AD;">
+<ul>
+<li><strong>Think of them as:</strong> Mathematical functions like <code>f(x) = x² + 1</code>.</li>
+<li>They are functions that are <strong>simple</strong>, <strong>direct</strong>, and <strong>to the point</strong>!</li>
+</ul>
+</div>
+</section>
+<section id="lambda-functions-the-concept" class="slide level2">
+<h2>Lambda Functions: The Concept</h2>
+<center>
+<img data-src="graphics/lambdaDiag.png" style="width:100.0%">
+</center>
+</section>
+<section id="specifics-of-lambda-functions" class="slide level2">
+<h2>Specifics of Lambda Functions</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Limitations</strong>:</p>
+<ul>
+<li>Lambda functions are restricted to a single expression.</li>
+<li>They cannot contain statements like assignments, if-else, or for loops within their definition.</li>
+<li>They are primarily used for simple, short operations.</li>
+<li>For more complex logic, a named function is more appropriate;
+<ul>
+<li><code>def myFunction():</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/lambdaDiag.png" style="width:70.0%">
+</center>
+</section>
+<section id="lambda-functions-the-basics" class="slide level2">
+<h2>Lambda Functions: The Basics</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Basic Syntax</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Lambda syntax: lambda arguments: expression</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="co"># Regular function</span></span>
+<span id="cb3-4"><a></a><span class="kw">def</span> square(x):</span>
+<span id="cb3-5"><a></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a><span class="co"># Lambda equivalent</span></span>
+<span id="cb3-8"><a></a>square_lambda <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">*</span> x</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a><span class="co"># Using both</span></span>
+<span id="cb3-11"><a></a><span class="bu">print</span>(square(<span class="dv">5</span>))        <span class="co"># Output: 25</span></span>
+<span id="cb3-12"><a></a><span class="bu">print</span>(square_lambda(<span class="dv">5</span>)) <span class="co"># Output: 25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div style="color: #E74C3C;">
+<p><strong>Key Point:</strong> Lambda functions are expressions, not statements - they return a value immediately!</p>
+</div>
+</section>
+<section id="lambda-functions-multiple-arguments" class="slide level2">
+<h2>Lambda Functions: Multiple Arguments</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>More Examples</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Multiple arguments</span></span>
+<span id="cb4-2"><a></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb4-3"><a></a>multiply <span class="op">=</span> <span class="kw">lambda</span> x, y, z: x <span class="op">*</span> y <span class="op">*</span> z</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a><span class="co"># With default arguments</span></span>
+<span id="cb4-6"><a></a>greet <span class="op">=</span> <span class="kw">lambda</span> name<span class="op">=</span><span class="st">"World"</span>: <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a><span class="bu">print</span>(add(<span class="dv">3</span>, <span class="dv">5</span>))           <span class="co"># Output: 8</span></span>
+<span id="cb4-9"><a></a><span class="bu">print</span>(multiply(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))   <span class="co"># Output: 24</span></span>
+<span id="cb4-10"><a></a><span class="bu">print</span>(greet())             <span class="co"># Output: Hello, World!</span></span>
+<span id="cb4-11"><a></a><span class="bu">print</span>(greet(<span class="st">"Alice"</span>))      <span class="co"># Output: Hello, Alice!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div style="color: #E74C3C;">
+<p><strong>Why this works:</strong> Lambda functions can handle multiple parameters just like regular functions!</p>
+</div>
+</section>
+<section id="quick-challenge-1-2-minutes" class="slide level2">
+<h2>🤝 Quick Challenge #1 (2 minutes)</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn: Basic Lambda Practice</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Challenge:</strong> Create lambda functions for these operations:</p>
+<ol type="1">
+<li>A lambda that calculates the area of a circle: <code>π * r²</code></li>
+<li>A lambda that converts Fahrenheit to Celsius: <code>(f - 32) * 5/9</code></li>
+<li>A lambda that finds the maximum <code>max()</code> of three numbers</li>
+<li>A lambda that finds the minimum <code>min()</code> of three numbers</li>
+</ol>
+</div>
+</div>
+</div>
+<p><strong>Starter Code:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> math</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="co"># Your lambda functions here</span></span>
+<span id="cb5-4"><a></a>circle_area <span class="op">=</span> <span class="kw">lambda</span> r: <span class="co"># Complete this</span></span>
+<span id="cb5-5"><a></a>fahrenheit_to_celsius <span class="op">=</span> <span class="kw">lambda</span> f: <span class="co"># Complete this  </span></span>
+<span id="cb5-6"><a></a>max_three <span class="op">=</span> <span class="kw">lambda</span> a, b, c: <span class="co"># Complete this</span></span>
+<span id="cb5-7"><a></a>min_three <span class="op">=</span> <span class="kw">lambda</span> a, b, c: <span class="co"># Complete this</span></span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="co"># Test your functions</span></span>
+<span id="cb5-10"><a></a><span class="bu">print</span>(circle_area(<span class="dv">5</span>))</span>
+<span id="cb5-11"><a></a><span class="bu">print</span>(fahrenheit_to_celsius(<span class="dv">68</span>))</span>
+<span id="cb5-12"><a></a><span class="bu">print</span>(max_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>))</span>
+<span id="cb5-13"><a></a><span class="bu">print</span>(min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="challenge-1-solutions" class="slide level2">
+<h2>Challenge #1 Solutions</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solutions</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> math</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="co"># Solution 1: Circle area</span></span>
+<span id="cb6-4"><a></a>circle_area <span class="op">=</span> <span class="kw">lambda</span> r: math.pi <span class="op">*</span> r <span class="op">*</span> r</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a><span class="co"># Solution 2: Fahrenheit to Celsius</span></span>
+<span id="cb6-7"><a></a>fahrenheit_to_celsius <span class="op">=</span> <span class="kw">lambda</span> f: (f <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a><span class="co"># Solution 3: Maximum of three numbers</span></span>
+<span id="cb6-10"><a></a>max_three <span class="op">=</span> <span class="kw">lambda</span> a, b, c: <span class="bu">max</span>(a, <span class="bu">max</span>(b, c))</span>
+<span id="cb6-11"><a></a><span class="co"># Alternative: max_three = lambda a, b, c: max(a, b, c)</span></span>
+<span id="cb6-12"><a></a></span>
+<span id="cb6-13"><a></a><span class="co"># Solution 4: Minimum of three numbers (in a list)</span></span>
+<span id="cb6-14"><a></a>myVals <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>]</span>
+<span id="cb6-15"><a></a>min_three <span class="op">=</span> <span class="kw">lambda</span> thisValue: <span class="bu">min</span>(thisValue)</span>
+<span id="cb6-16"><a></a><span class="bu">print</span>(myVals)</span>
+<span id="cb6-17"><a></a><span class="bu">print</span>(min_three(myVals))</span>
+<span id="cb6-18"><a></a></span>
+<span id="cb6-19"><a></a><span class="co"># Test results</span></span>
+<span id="cb6-20"><a></a><span class="bu">print</span>(<span class="ss">f"Circle area (r=5): </span><span class="sc">{</span>circle_area(<span class="dv">5</span>)<span class="sc">:.2f}</span><span class="ss">"</span>)      <span class="co"># 78.54</span></span>
+<span id="cb6-21"><a></a><span class="bu">print</span>(<span class="ss">f"68°F in Celsius: </span><span class="sc">{</span>fahrenheit_to_celsius(<span class="dv">68</span>)<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># 20.0</span></span>
+<span id="cb6-22"><a></a><span class="bu">print</span>(<span class="ss">f"Max of 10,20,15: </span><span class="sc">{</span>max_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>)<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 20</span></span>
+<span id="cb6-23"><a></a><span class="bu">print</span>(<span class="ss">f"Min of 10,20,15: </span><span class="sc">{</span>min_three(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>)<span class="sc">}</span><span class="ss">"</span>)     <span class="co"># 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ## Meet Your New Best Friends! 👋
+
+::: {.callout-tip icon="false"}
+## Essential Built-in Functions
+
+:::
+
+**🗺️ `map(function, iterable)`**  
+Applies a function to every item in a list/iterable  
+*Think:* "Transform every item"
+
+**🔍 `filter(function, iterable)`**  
+Keeps only items where function returns `True`  
+*Think:* "Keep only items that pass the test"
+
+**📊 `sorted(iterable, key=function)`**  
+Returns a new sorted list using function for comparison  
+*Think:* "Arrange items by custom criteria"
+
+**📋 `list(iterable)`**  
+Converts any iterable (map/filter results) into a list  
+*Think:* "Make it a proper list I can print/use"
+
+ -->
+</section>
+<section id="meet-some-handy-functions" class="slide level2">
+<h2>Meet Some Handy Functions! 👋</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Essential Built-in Functions</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>🗺️ <code>map(function, iterable)</code></strong><br>
+Applies a function to every item in a list/iterable<br>
+<em>Think:</em> “Transform every item”</p>
+<p><strong>🔍 <code>filter(function, iterable)</code></strong><br>
+Keeps only items where function returns <code>True</code><br>
+<em>Think:</em> “Keep only items that pass the test”</p>
+</div><div class="column" style="width:50%;">
+<p><strong>📊 <code>sorted(iterable, key=function)</code></strong><br>
+Returns a new sorted list using function for comparison<br>
+<em>Think:</em> “Arrange items by custom criteria”</p>
+<p><strong>📋 <code>list(iterable)</code></strong><br>
+Converts any iterable (map/filter results) into a list<br>
+<em>Think:</em> “Make it a proper list I can print/use”</p>
+</div></div>
+</section>
+<section id="simple-sorted-example" class="slide level2">
+<h2>Simple <code>sorted()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>sorted()</code> with a Lambda Key</strong></p>
+</div>
+<div class="callout-content">
+<p><code>sorted()</code> returns a new list in order. The <code>key</code> function tells Python what value to compare.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>students <span class="op">=</span> [(<span class="st">"Emil"</span>, <span class="dv">25</span>), (<span class="st">"Tobias"</span>, <span class="dv">22</span>), (<span class="st">"Linus"</span>, <span class="dv">28</span>)]</span>
+<span id="cb7-2"><a></a><span class="co"># Sort by age (the second element in the tuple)</span></span>
+<span id="cb7-3"><a></a>sorted_students <span class="op">=</span> <span class="bu">sorted</span>(students, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>])</span>
+<span id="cb7-4"><a></a><span class="co"># Output: [('Tobias', 22), ('Emil', 25), ('Linus', 28)]</span></span>
+<span id="cb7-5"><a></a><span class="bu">print</span>(sorted_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="a-complicated-example-of-lambda-with-sorted" class="slide level2">
+<h2>A Complicated Example of Lambda with <code>sorted()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Custom Sorting Logic</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Sort with custom criteria</span></span>
+<span id="cb8-2"><a></a>students <span class="op">=</span> [</span>
+<span id="cb8-3"><a></a>    {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"grade"</span>: <span class="dv">85</span>},</span>
+<span id="cb8-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"Bob"</span>, <span class="st">"grade"</span>: <span class="dv">92</span>},</span>
+<span id="cb8-5"><a></a>    {<span class="st">"name"</span>: <span class="st">"Charlie"</span>, <span class="st">"grade"</span>: <span class="dv">78</span>},</span>
+<span id="cb8-6"><a></a>    {<span class="st">"name"</span>: <span class="st">"Diana"</span>, <span class="st">"grade"</span>: <span class="dv">96</span>}</span>
+<span id="cb8-7"><a></a>]</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a>words <span class="op">=</span> [<span class="st">"banana"</span>, <span class="st">"pie"</span>, <span class="st">"Washington"</span>, <span class="st">"book"</span>]</span>
+<span id="cb8-10"><a></a></span>
+<span id="cb8-11"><a></a><span class="co"># Sort students by grade (descending)</span></span>
+<span id="cb8-12"><a></a>by_grade <span class="op">=</span> <span class="bu">sorted</span>(students, key<span class="op">=</span><span class="kw">lambda</span> student: student[<span class="st">"grade"</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-13"><a></a><span class="bu">print</span>(<span class="st">"Top student:"</span>, by_grade[<span class="dv">0</span>][<span class="st">"name"</span>])  <span class="co"># Diana</span></span>
+<span id="cb8-14"><a></a></span>
+<span id="cb8-15"><a></a><span class="co"># Sort words by length</span></span>
+<span id="cb8-16"><a></a>by_length <span class="op">=</span> <span class="bu">sorted</span>(words, key<span class="op">=</span><span class="kw">lambda</span> word: <span class="bu">len</span>(word))</span>
+<span id="cb8-17"><a></a><span class="bu">print</span>(<span class="ss">f"By length: </span><span class="sc">{</span>by_length<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['pie', 'book', 'banana', 'Washington']</span></span>
+<span id="cb8-18"><a></a></span>
+<span id="cb8-19"><a></a><span class="co"># Sort words by last letter</span></span>
+<span id="cb8-20"><a></a>by_last_letter <span class="op">=</span> <span class="bu">sorted</span>(words, key<span class="op">=</span><span class="kw">lambda</span> word: word[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb8-21"><a></a><span class="bu">print</span>(<span class="ss">f"By last letter: </span><span class="sc">{</span>by_last_letter<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['banana', 'pie', 'book', 'Washington']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-filter-and-list-example" class="slide level2">
+<h2>Simple <code>filter()</code> and <code>List()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>filter()</code> Keeps What Passes</strong></p>
+</div>
+<div class="callout-content">
+<p><code>filter()</code> keeps items where the lambda returns <code>True</code> and <code>list()</code> converts the filter result into a list.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb9-2"><a></a><span class="co"># Keep only even numbers</span></span>
+<span id="cb9-3"><a></a>evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>, numbers))</span>
+<span id="cb9-4"><a></a><span class="co"># Output: [2, 4, 6]</span></span>
+<span id="cb9-5"><a></a><span class="bu">print</span>(evens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="a-complicated-example-of-lambda-with-filter-and-list" class="slide level2">
+<h2>A Complicated Example of Lambda with <code>filter()</code> and <code>list()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Keep Only What You Want</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Filter elements based on condition</span></span>
+<span id="cb10-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<span id="cb10-3"><a></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>, <span class="st">"date"</span>, <span class="st">"elderberry"</span>]</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="co"># Keep only even numbers</span></span>
+<span id="cb10-6"><a></a>evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>, numbers))</span>
+<span id="cb10-7"><a></a><span class="bu">print</span>(<span class="ss">f"Evens: </span><span class="sc">{</span>evens<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 4, 6, 8, 10]</span></span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a><span class="co"># Keep only long words</span></span>
+<span id="cb10-10"><a></a>long_words <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> word: <span class="bu">len</span>(word) <span class="op">&gt;</span> <span class="dv">5</span>, words))</span>
+<span id="cb10-11"><a></a><span class="bu">print</span>(<span class="ss">f"Long words: </span><span class="sc">{</span>long_words<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['banana', 'cherry', 'elderberry']</span></span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a><span class="co"># Keep positive numbers</span></span>
+<span id="cb10-14"><a></a>mixed <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">9</span>]</span>
+<span id="cb10-15"><a></a>positives <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">0</span>, mixed))</span>
+<span id="cb10-16"><a></a><span class="bu">print</span>(<span class="ss">f"Positives: </span><span class="sc">{</span>positives<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [2, 5, 9]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-map-example" class="slide level2">
+<h2>Simple <code>map()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>map()</code> Transforms Every Item</strong></p>
+</div>
+<div class="callout-content">
+<p><code>map()</code> applies the lambda to each item and returns a new sequence.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb11-2"><a></a><span class="co"># Double each number</span></span>
+<span id="cb11-3"><a></a>doubled <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> <span class="dv">2</span>, numbers))</span>
+<span id="cb11-4"><a></a><span class="co"># Output: [2, 4, 6, 8]</span></span>
+<span id="cb11-5"><a></a><span class="bu">print</span>(<span class="ss">f"Doubled: </span><span class="sc">{</span>doubled<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="a-complicated-example-of-lambda-with-map" class="slide level2">
+<h2>A Complicated Example of Lambda with <code>map()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Transform All Elements</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Transform all elements in a list</span></span>
+<span id="cb12-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb12-3"><a></a>names <span class="op">=</span> [<span class="st">"alice"</span>, <span class="st">"bob"</span>, <span class="st">"charlie"</span>]</span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a><span class="co"># Square all numbers</span></span>
+<span id="cb12-6"><a></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
+<span id="cb12-7"><a></a><span class="bu">print</span>(<span class="ss">f"Squared: </span><span class="sc">{</span>squared<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [1, 4, 9, 16, 25]</span></span>
+<span id="cb12-8"><a></a></span>
+<span id="cb12-9"><a></a><span class="co"># Capitalize all names</span></span>
+<span id="cb12-10"><a></a>capitalized <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> name: name.title(), names))</span>
+<span id="cb12-11"><a></a><span class="bu">print</span>(<span class="ss">f"Capitalized: </span><span class="sc">{</span>capitalized<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># ['Alice', 'Bob', 'Charlie']</span></span>
+<span id="cb12-12"><a></a></span>
+<span id="cb12-13"><a></a><span class="co"># Multiple lists</span></span>
+<span id="cb12-14"><a></a>nums1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb12-15"><a></a>nums2 <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb12-16"><a></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, nums1, nums2))</span>
+<span id="cb12-17"><a></a><span class="bu">print</span>(<span class="ss">f"Sums: </span><span class="sc">{</span>sums<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [5, 7, 9]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- 
+
+## How to use Built-In Functions
+
+
+**🗺️ `map(function, iterable)`**  
+
+::: {.callout-important icon="false"}
+## Step-by-Step Example
+
+**First, let's see how `map()` works with a regular function:**
+
+```python
+# Define a function to square a number
+def square(number):
+    return number * number
+
+# Create a list of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Apply the square function to each number using map()
+squared_numbers_map_object = map(square, numbers)
+
+# Convert the map object to a list to view the results
+squared_numbers_list = list(squared_numbers_map_object)
+
+print("Original numbers:", numbers)
+print("Squared numbers:", squared_numbers_list)
+```
+
+**Now let's do the same thing with a lambda function:**
+
+```python
+# Same list of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Using lambda instead of a regular function
+squared_with_lambda = list(map(lambda x: x * x, numbers))
+
+print("Using lambda:", squared_with_lambda)
+print("Both methods give the same result!")
+```
+
+::: -->
+</section></section>
+<section>
+<section id="lambda-vs-regular-functions" class="title-slide slide level1 center">
+<h1>Lambda vs Regular Functions</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>When to Use Each</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Lambda:</strong> For simple, one-line operations that you’ll use briefly<br>
+<strong>Regular Functions:</strong> For complex logic, multiple statements, or reusable code</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="color: #8E44AD;">
+<p><strong>Rule of thumb:</strong> If you can’t explain what the function does in one sentence, use a regular function; e.g., <code>def myFunction():</code></p>
+</div>
+</div><div class="column" style="width:30%;">
+<p>⚖️🤔💡</p>
+</div></div>
+</section>
+<section id="lambda-vs-regular-comparison" class="slide level2">
+<h2>Lambda vs Regular: Comparison</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Side-by-Side Comparison</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># ✅ Good use of lambda - simple, clear</span></span>
+<span id="cb13-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb13-3"><a></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
+<span id="cb13-4"><a></a><span class="bu">print</span>(<span class="ss">f"squared is </span><span class="sc">{</span>squared<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="co"># ❌ Bad use of lambda - too complex</span></span>
+<span id="cb13-7"><a></a>complex_lambda <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb13-8"><a></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
+<span id="cb13-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"complex_lambda, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">, value=</span><span class="sc">{</span>complex_lambda(x)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a><span class="co"># ✅ Better as regular function</span></span>
+<span id="cb13-12"><a></a><span class="kw">def</span> process_number(x):</span>
+<span id="cb13-13"><a></a>    <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb13-14"><a></a>        <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb13-15"><a></a>    <span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb13-16"><a></a>        <span class="cf">return</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb13-17"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb13-18"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb13-19"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>): <span class="bu">print</span>(<span class="ss">f"processed number[</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">] -&gt; </span><span class="sc">{</span>process_number(i)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="color: #E74C3C;">
+<p><strong>Remember:</strong> Lambda functions should be simple and readable!</p>
+</div>
+</section></section>
+<section>
+<section id="lambda-with-built-in-functions" class="title-slide slide level1 center">
+<h1>Lambda with Built-in Functions</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The Power Combination</strong></p>
+</div>
+<div class="callout-content">
+<p>Lambda functions really shine when used with Python’s built-in functions like <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>!</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="color: #8E44AD;">
+<p><strong>Why this matters:</strong> These combinations let you process data efficiently with minimal code</p>
+</div>
+</div><div class="column" style="width:30%;">
+<p>🔥⚡🎯</p>
+</div></div>
+</section>
+<section id="quick-challenge-2-3-minutes" class="slide level2">
+<h2>🤝 Quick Challenge #2 (3 minutes)</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn: Lambda with Built-ins</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Challenge:</strong> Use lambda functions with <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co"># Given data</span></span>
+<span id="cb14-2"><a></a>temperatures_f <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">68</span>, <span class="dv">86</span>, <span class="dv">104</span>, <span class="dv">212</span>]  <span class="co"># Fahrenheit</span></span>
+<span id="cb14-3"><a></a>prices <span class="op">=</span> [<span class="fl">10.99</span>, <span class="fl">23.45</span>, <span class="fl">5.67</span>, <span class="fl">45.00</span>, <span class="fl">12.34</span>]</span>
+<span id="cb14-4"><a></a>products <span class="op">=</span> [</span>
+<span id="cb14-5"><a></a>    {<span class="st">"name"</span>: <span class="st">"laptop"</span>, <span class="st">"price"</span>: <span class="fl">999.99</span>, <span class="st">"rating"</span>: <span class="fl">4.5</span>},</span>
+<span id="cb14-6"><a></a>    {<span class="st">"name"</span>: <span class="st">"mouse"</span>, <span class="st">"price"</span>: <span class="fl">25.50</span>, <span class="st">"rating"</span>: <span class="fl">4.2</span>},</span>
+<span id="cb14-7"><a></a>    {<span class="st">"name"</span>: <span class="st">"keyboard"</span>, <span class="st">"price"</span>: <span class="fl">75.00</span>, <span class="st">"rating"</span>: <span class="fl">4.8</span>},</span>
+<span id="cb14-8"><a></a>    {<span class="st">"name"</span>: <span class="st">"monitor"</span>, <span class="st">"price"</span>: <span class="fl">299.99</span>, <span class="st">"rating"</span>: <span class="fl">4.3</span>}</span>
+<span id="cb14-9"><a></a>]</span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a><span class="co"># Your tasks:</span></span>
+<span id="cb14-12"><a></a><span class="co"># 1. Convert temperatures to Celsius using map()</span></span>
+<span id="cb14-13"><a></a><span class="co"># 2. Find prices under $20 using filter()</span></span>
+<span id="cb14-14"><a></a><span class="co"># 3. Sort products by rating (highest first) using sorted()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2-solutions" class="slide level2">
+<h2>Challenge #2 Solutions</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solutions</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># 1. Convert temperatures to Celsius</span></span>
+<span id="cb15-2"><a></a>celsius <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> f: (f <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">9</span>, temperatures_f))</span>
+<span id="cb15-3"><a></a><span class="bu">print</span>(<span class="ss">f"Celsius: </span><span class="sc">{</span>[<span class="bu">round</span>(temp, <span class="dv">1</span>) <span class="cf">for</span> temp <span class="kw">in</span> celsius]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-4"><a></a><span class="co"># [0.0, 20.0, 30.0, 40.0, 100.0]</span></span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="co"># 2. Find prices under $20</span></span>
+<span id="cb15-7"><a></a>cheap_prices <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> price: price <span class="op">&lt;</span> <span class="dv">20</span>, prices))</span>
+<span id="cb15-8"><a></a><span class="bu">print</span>(<span class="ss">f"Under $20: </span><span class="sc">{</span>cheap_prices<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># [10.99, 5.67, 12.34]</span></span>
+<span id="cb15-9"><a></a></span>
+<span id="cb15-10"><a></a><span class="co"># 3. Sort products by rating (highest first)</span></span>
+<span id="cb15-11"><a></a>by_rating <span class="op">=</span> <span class="bu">sorted</span>(products, key<span class="op">=</span><span class="kw">lambda</span> p: p[<span class="st">"rating"</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-12"><a></a><span class="bu">print</span>(<span class="st">"Best rated:"</span>, by_rating[<span class="dv">0</span>][<span class="st">"name"</span>])  <span class="co"># keyboard</span></span>
+<span id="cb15-13"><a></a><span class="cf">for</span> product <span class="kw">in</span> by_rating:</span>
+<span id="cb15-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>product[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>product[<span class="st">'rating'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<!-- 
+# Real-World Lambda Applications
+
+::: {.callout-note icon="false"}
+## Practical Uses
+Lambda functions are everywhere in real Python code! Let's see some practical applications you'll encounter.
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Common scenarios:** Data processing, web development, GUI programming, and scientific computing
+:::
+:::
+::: {.column width="30%"}
+🌍💼📊
+:::
+::::
+
+ -->
+<!-- ## More Helpful Functions! 🎯
+
+::: {.callout-tip icon="false"}
+## Additional Built-in Functions
+
+**➕ `sum(iterable)`**  
+Adds up all numbers in a list/iterable  
+*Think:* "Give me the total of all these numbers"
+
+**🔍 `len(iterable)`**  
+Returns the count of items in a collection  
+*Think:* "How many items are there?"
+
+**🏆 `max(iterable, key=function)`**  
+Finds the largest item (optionally using key function)  
+*Think:* "Which item is the biggest/best?"
+
+**🎲 `set(iterable)`**  
+Creates a collection with only unique items  
+*Think:* "Remove all duplicates"
+:::
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {style="color: #8E44AD;"}
+**Fun Fact:** These functions work great with the results from `map()` and `filter()`!
+:::
+:::
+::: {.column width="30%"}
+🧮🎪🌟
+:::
+::::
+ -->
+</section>
+<section id="more-helpful-functions" class="slide level2">
+<h2>More Helpful Functions! 🎯</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Additional Built-in Functions</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>➕ <code>sum(iterable)</code></strong><br>
+Adds up all numbers in a list/iterable<br>
+<em>Think:</em> “Give me the total of all these numbers”</p>
+<p><strong>🔍 <code>len(iterable)</code></strong><br>
+Returns the count of items in a collection<br>
+<em>Think:</em> “How many items are there?”</p>
+</div><div class="column" style="width:50%;">
+<p><strong>🏆 <code>max(iterable, key=function)</code></strong><br>
+Finds the largest item (optionally using key function)<br>
+<em>Think:</em> “Which item is the biggest/best?”</p>
+<p><strong>🎲 <code>set(iterable)</code></strong><br>
+Creates a collection with only unique items<br>
+<em>Think:</em> “Remove all duplicates”</p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="color: #8E44AD;">
+<p><strong>Fun Fact:</strong> These functions work great with the results from <code>map()</code> and <code>filter()</code>!</p>
+</div>
+</div><div class="column" style="width:30%;">
+<p>🧮🎪🌟</p>
+</div></div>
+</section>
+<section id="simple-sum-example" class="slide level2">
+<h2>Simple <code>sum()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>sum()</code> Adds Values Together</strong></p>
+</div>
+<div class="callout-content">
+<p><code>sum()</code> returns the total of numeric items in an iterable.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>quiz_scores <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">6</span>]</span>
+<span id="cb16-2"><a></a>total_points <span class="op">=</span> <span class="bu">sum</span>(quiz_scores)</span>
+<span id="cb16-3"><a></a><span class="bu">print</span>(total_points)  <span class="co"># 40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-len-example" class="slide level2">
+<h2>Simple <code>len()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>len()</code> Counts Items</strong></p>
+</div>
+<div class="callout-content">
+<p><code>len()</code> tells you how many items are in a list, string, or other collection.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>topics <span class="op">=</span> [<span class="st">"functions"</span>, <span class="st">"lambda"</span>, <span class="st">"map"</span>, <span class="st">"filter"</span>]</span>
+<span id="cb17-2"><a></a>topic_count <span class="op">=</span> <span class="bu">len</span>(topics)</span>
+<span id="cb17-3"><a></a><span class="bu">print</span>(topic_count)  <span class="co"># 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-max-example" class="slide level2">
+<h2>Simple <code>max()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>max()</code> Finds the Largest Item</strong></p>
+</div>
+<div class="callout-content">
+<p>With <code>key=</code>, <code>max()</code> can choose the “largest” item using custom logic.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>words <span class="op">=</span> [<span class="st">"cat"</span>, <span class="st">"giraffe"</span>, <span class="st">"dog"</span>, <span class="st">"elephant"</span>]</span>
+<span id="cb18-2"><a></a>longest_word <span class="op">=</span> <span class="bu">max</span>(words, key<span class="op">=</span><span class="kw">lambda</span> w: <span class="bu">len</span>(w))</span>
+<span id="cb18-3"><a></a><span class="bu">print</span>(longest_word)  <span class="co"># elephant</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-set-example" class="slide level2">
+<h2>Simple <code>set()</code> Example</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>set()</code> Removes Duplicates</strong></p>
+</div>
+<div class="callout-content">
+<p><code>set()</code> creates a collection of unique values.</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>colors <span class="op">=</span> [<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span>]</span>
+<span id="cb19-2"><a></a>unique_colors <span class="op">=</span> <span class="bu">set</span>(colors)</span>
+<span id="cb19-3"><a></a><span class="bu">print</span>(unique_colors)  <span class="co"># Order may vary, e.g., {'red', 'blue', 'green', 'yellow'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="color: #E74C3C;">
+<p><strong>Note:</strong> The order of items in a <code>set</code> may appear differently each time you print it.</p>
+</div>
+<!-- 
+## More Helpful Functions continued! 🎯
+
+::: {.callout-tip icon="false"}
+## Additional Built-in Functions
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+
+**➕ `sum(iterable)`**  
+Adds up all numbers in a list/iterable  
+*Think:* "Give me the total of all these numbers"
+
+**🔍 `len(iterable)`**  
+Returns the count of items in a collection  
+*Think:* "How many items are there?"
+
+:::
+
+::: {.column width="50%"}
+
+**🏆 `max(iterable, key=function)`**  
+Finds the largest item (optionally using key function)  
+*Think:* "Which item is the biggest/best?"
+
+**🎲 `set(iterable)`**  
+Creates a collection with only unique items  
+*Think:* "Remove all duplicates"
+:::
+
+::::
+ -->
+</section>
+<section id="real-world-example-1" class="slide level2">
+<h2>Real-World Example 1</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Sales Data Processing</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Sales data from a CSV or database</span></span>
+<span id="cb20-2"><a></a>sales_data <span class="op">=</span> [</span>
+<span id="cb20-3"><a></a>    {<span class="st">"product"</span>: <span class="st">"Laptop"</span>, <span class="st">"price"</span>: <span class="fl">999.99</span>, <span class="st">"quantity"</span>: <span class="dv">2</span>, <span class="st">"discount"</span>: <span class="fl">0.1</span>},</span>
+<span id="cb20-4"><a></a>    {<span class="st">"product"</span>: <span class="st">"Mouse"</span>, <span class="st">"price"</span>: <span class="fl">25.50</span>, <span class="st">"quantity"</span>: <span class="dv">5</span>, <span class="st">"discount"</span>: <span class="fl">0.0</span>},</span>
+<span id="cb20-5"><a></a>    {<span class="st">"product"</span>: <span class="st">"Keyboard"</span>, <span class="st">"price"</span>: <span class="fl">75.00</span>, <span class="st">"quantity"</span>: <span class="dv">3</span>, <span class="st">"discount"</span>: <span class="fl">0.05</span>},</span>
+<span id="cb20-6"><a></a>    {<span class="st">"product"</span>: <span class="st">"Monitor"</span>, <span class="st">"price"</span>: <span class="fl">299.99</span>, <span class="st">"quantity"</span>: <span class="dv">1</span>, <span class="st">"discount"</span>: <span class="fl">0.15</span>}</span>
+<span id="cb20-7"><a></a>]</span>
+<span id="cb20-8"><a></a></span>
+<span id="cb20-9"><a></a><span class="co"># Calculate total revenue with discounts</span></span>
+<span id="cb20-10"><a></a>total_revenue <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">map</span>(</span>
+<span id="cb20-11"><a></a>    <span class="kw">lambda</span> sale: sale[<span class="st">"price"</span>] <span class="op">*</span> sale[<span class="st">"quantity"</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sale[<span class="st">"discount"</span>]),</span>
+<span id="cb20-12"><a></a>    sales_data</span>
+<span id="cb20-13"><a></a>))</span>
+<span id="cb20-14"><a></a><span class="bu">print</span>(<span class="ss">f"Total Revenue: $</span><span class="sc">{</span>total_revenue<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb20-15"><a></a></span>
+<span id="cb20-16"><a></a><span class="co"># Find high-value sales (over $200 after discount)</span></span>
+<span id="cb20-17"><a></a>high_value <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(</span>
+<span id="cb20-18"><a></a>    <span class="kw">lambda</span> sale: sale[<span class="st">"price"</span>] <span class="op">*</span> sale[<span class="st">"quantity"</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> sale[<span class="st">"discount"</span>]) <span class="op">&gt;</span> <span class="dv">200</span>,</span>
+<span id="cb20-19"><a></a>    sales_data</span>
+<span id="cb20-20"><a></a>))</span>
+<span id="cb20-21"><a></a><span class="bu">print</span>(<span class="ss">f"High-value sales: </span><span class="sc">{</span><span class="bu">len</span>(high_value)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<div id="b7185c70" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>Total Revenue: $2396.22
+High-value sales: 3</code></pre>
+</div>
+</div>
+</section>
+<section id="real-world-example-2" class="slide level2">
+<h2>Real-World Example 2</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Web Development</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># User registration data</span></span>
+<span id="cb22-2"><a></a>users <span class="op">=</span> [</span>
+<span id="cb22-3"><a></a>    {<span class="st">"email"</span>: <span class="st">"alice@email.com"</span>, <span class="st">"age"</span>: <span class="dv">25</span>, <span class="st">"active"</span>: <span class="va">True</span>},</span>
+<span id="cb22-4"><a></a>    {<span class="st">"email"</span>: <span class="st">"bob@email.com"</span>, <span class="st">"age"</span>: <span class="dv">17</span>, <span class="st">"active"</span>: <span class="va">False</span>},</span>
+<span id="cb22-5"><a></a>    {<span class="st">"email"</span>: <span class="st">"charlie@email.com"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"active"</span>: <span class="va">True</span>},</span>
+<span id="cb22-6"><a></a>    {<span class="st">"email"</span>: <span class="st">"diana@email.com"</span>, <span class="st">"age"</span>: <span class="dv">16</span>, <span class="st">"active"</span>: <span class="va">True</span>}</span>
+<span id="cb22-7"><a></a>]</span>
+<span id="cb22-8"><a></a></span>
+<span id="cb22-9"><a></a><span class="co"># Get active adult users</span></span>
+<span id="cb22-10"><a></a>active_adults <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(</span>
+<span id="cb22-11"><a></a>    <span class="kw">lambda</span> user: user[<span class="st">"active"</span>] <span class="kw">and</span> user[<span class="st">"age"</span>] <span class="op">&gt;=</span> <span class="dv">18</span>,</span>
+<span id="cb22-12"><a></a>    users</span>
+<span id="cb22-13"><a></a>))</span>
+<span id="cb22-14"><a></a></span>
+<span id="cb22-15"><a></a><span class="co"># Extract just the email addresses</span></span>
+<span id="cb22-16"><a></a>adult_emails <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> user: user[<span class="st">"email"</span>], active_adults))</span>
+<span id="cb22-17"><a></a><span class="bu">print</span>(<span class="st">"Adult user emails:"</span>, adult_emails)</span>
+<span id="cb22-18"><a></a></span>
+<span id="cb22-19"><a></a><span class="co"># Sort users by age</span></span>
+<span id="cb22-20"><a></a>by_age <span class="op">=</span> <span class="bu">sorted</span>(users, key<span class="op">=</span><span class="kw">lambda</span> user: user[<span class="st">"age"</span>])</span>
+<span id="cb22-21"><a></a><span class="bu">print</span>(<span class="st">"Youngest user:"</span>, by_age[<span class="dv">0</span>][<span class="st">"email"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<div id="484d6aec" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>Adult user emails: ['alice@email.com', 'charlie@email.com']
+Youngest user: diana@email.com</code></pre>
+</div>
+</div>
+</section>
+<section id="real-world-example-3" class="slide level2">
+<h2>Real-World Example 3</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Analytic Computing</p>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> math</span>
+<span id="cb24-2"><a></a></span>
+<span id="cb24-3"><a></a><span class="co"># Experimental data points</span></span>
+<span id="cb24-4"><a></a>data_points <span class="op">=</span> [</span>
+<span id="cb24-5"><a></a>    {<span class="st">"x"</span>: <span class="dv">1</span>, <span class="st">"y"</span>: <span class="fl">2.1</span>, <span class="st">"error"</span>: <span class="fl">0.1</span>},</span>
+<span id="cb24-6"><a></a>    {<span class="st">"x"</span>: <span class="dv">2</span>, <span class="st">"y"</span>: <span class="fl">4.2</span>, <span class="st">"error"</span>: <span class="fl">0.2</span>},</span>
+<span id="cb24-7"><a></a>    {<span class="st">"x"</span>: <span class="dv">3</span>, <span class="st">"y"</span>: <span class="fl">5.8</span>, <span class="st">"error"</span>: <span class="fl">0.15</span>},</span>
+<span id="cb24-8"><a></a>    {<span class="st">"x"</span>: <span class="dv">4</span>, <span class="st">"y"</span>: <span class="fl">8.1</span>, <span class="st">"error"</span>: <span class="fl">0.25</span>}</span>
+<span id="cb24-9"><a></a>]</span>
+<span id="cb24-10"><a></a></span>
+<span id="cb24-11"><a></a><span class="co"># Calculate distances from origin</span></span>
+<span id="cb24-12"><a></a>distances <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(</span>
+<span id="cb24-13"><a></a>    <span class="kw">lambda</span> point: math.sqrt(point[<span class="st">"x"</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> point[<span class="st">"y"</span>]<span class="op">**</span><span class="dv">2</span>),</span>
+<span id="cb24-14"><a></a>    data_points</span>
+<span id="cb24-15"><a></a>))</span>
+<span id="cb24-16"><a></a></span>
+<span id="cb24-17"><a></a><span class="co"># Filter points with low error (high precision)</span></span>
+<span id="cb24-18"><a></a>precise_points <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(</span>
+<span id="cb24-19"><a></a>    <span class="kw">lambda</span> point: point[<span class="st">"error"</span>] <span class="op">&lt;</span> <span class="fl">0.2</span>,</span>
+<span id="cb24-20"><a></a>    data_points</span>
+<span id="cb24-21"><a></a>))</span>
+<span id="cb24-22"><a></a></span>
+<span id="cb24-23"><a></a><span class="co"># Sort by significance (y/error ratio)</span></span>
+<span id="cb24-24"><a></a>by_significance <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb24-25"><a></a>    data_points,</span>
+<span id="cb24-26"><a></a>    key<span class="op">=</span><span class="kw">lambda</span> point: point[<span class="st">"y"</span>] <span class="op">/</span> point[<span class="st">"error"</span>],</span>
+<span id="cb24-27"><a></a>    reverse<span class="op">=</span><span class="va">True</span></span>
+<span id="cb24-28"><a></a>)</span>
+<span id="cb24-29"><a></a><span class="bu">print</span>(<span class="st">"Most significant point:"</span>, by_significance[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<div id="d9dc4277" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>Most significant point: {'x': 3, 'y': 5.8, 'error': 0.15}</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="lambda-best-practices" class="title-slide slide level1 center">
+<h1>Lambda Best Practices</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Writing Clean Lambda Functions</strong></p>
+</div>
+<div class="callout-content">
+<p>Follow these guidelines to write maintainable and readable lambda expressions.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="color: #8E44AD;">
+<p><strong>Remember:</strong> Code is read more often than it’s written - prioritize clarity!</p>
+</div>
+</div><div class="column" style="width:30%;">
+<p>📝✨🎯</p>
+</div></div>
+</section>
+<section id="lambda-best-practices-dos-and-donts" class="slide level2">
+<h2>Lambda Best Practices: Do’s and Don’ts</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Guidelines</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<p><strong>✅ DO</strong>: Use lambdas for simple, single-expression operations</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># Simple, clear operations</span></span>
+<span id="cb26-2"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb26-3"><a></a>squared <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, numbers))</span>
+<span id="cb26-4"><a></a>evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>, numbers))</span>
+<span id="cb26-5"><a></a></span>
+<span id="cb26-6"><a></a><span class="co"># Short data transformations</span></span>
+<span id="cb26-7"><a></a>users <span class="op">=</span> [{<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">25</span>}]</span>
+<span id="cb26-8"><a></a>names <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> u: u[<span class="st">"name"</span>], users))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>❌ DO NOT</strong>: Make lambdas too complex or use them for multi-step logic</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># Too complex for lambda</span></span>
+<span id="cb27-2"><a></a>complex_func <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">abs</span>(x) <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"zero"</span></span>
+<span id="cb27-3"><a></a></span>
+<span id="cb27-4"><a></a><span class="co"># Multiple statements (impossible in lambda anyway)</span></span>
+<span id="cb27-5"><a></a><span class="co"># This won't work:</span></span>
+<span id="cb27-6"><a></a><span class="co"># bad_lambda = lambda x: print(x); return x**2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lambda-limitations-and-alternatives" class="slide level2">
+<h2>Lambda Limitations and Alternatives</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>When Lambda Is not Enough</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co"># ❌ Lambda cannot do multiple statements</span></span>
+<span id="cb28-2"><a></a><span class="co"># Need regular function for this:</span></span>
+<span id="cb28-3"><a></a><span class="kw">def</span> process_grade(score):</span>
+<span id="cb28-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"Processing score: </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Side effect</span></span>
+<span id="cb28-5"><a></a>    <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
+<span id="cb28-6"><a></a>        <span class="cf">return</span> <span class="st">"A"</span></span>
+<span id="cb28-7"><a></a>    <span class="cf">elif</span> score <span class="op">&gt;=</span> <span class="dv">80</span>:</span>
+<span id="cb28-8"><a></a>        <span class="cf">return</span> <span class="st">"B"</span></span>
+<span id="cb28-9"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb28-10"><a></a>        <span class="cf">return</span> <span class="st">"C"</span></span>
+<span id="cb28-11"><a></a></span>
+<span id="cb28-12"><a></a><span class="co"># ✅ Lambda for simple conditions</span></span>
+<span id="cb28-13"><a></a>grade_simple <span class="op">=</span> <span class="kw">lambda</span> score: <span class="st">"Pass"</span> <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span> <span class="cf">else</span> <span class="st">"Fail"</span></span>
+<span id="cb28-14"><a></a></span>
+<span id="cb28-15"><a></a><span class="co"># ❌ Lambda cannot include assignments</span></span>
+<span id="cb28-16"><a></a><span class="co"># Need regular function:</span></span>
+<span id="cb28-17"><a></a><span class="kw">def</span> calculate_with_logging(x):</span>
+<span id="cb28-18"><a></a>    result <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">1</span>  <span class="co"># Assignment</span></span>
+<span id="cb28-19"><a></a>    <span class="bu">print</span>(<span class="ss">f"Calculated: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-20"><a></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- 
+# Final Challenge: Lambda Mastery
+
+::: {.callout-important icon="false"}
+
+## Ultimate Lambda Challenge (10 minutes)
+
+You're analyzing student performance data. Use lambda functions to solve these tasks:
+
+```python
+students = [
+    {"name": "Alice", "grades": [85, 92, 78, 96], "major": "CS", "year": 3},
+    {"name": "Bob", "grades": [76, 84, 88, 92], "major": "Math", "year": 2},
+    {"name": "Charlie", "grades": [95, 89, 94, 97], "major": "CS", "year": 4},
+    {"name": "Diana", "grades": [82, 79, 86, 91], "major": "Physics", "year": 3},
+    {"name": "Eve", "grades": [88, 92, 85, 89], "major": "CS", "year": 1}
+]
+
+# Complete these tasks using ONLY lambda functions with map/filter/sorted:
+# 1. Add GPA (average grade) to each student record
+# 2. Find honor students (GPA >= 90)
+# 3. Get CS majors sorted by year (ascending)
+# 4. Find the top performer in each year
+# 5. Create a summary: {year: [student_names]} for CS majors only
+```
+
+:::
+
+
+
+## Final Challenge: Complete Solution
+
+::: {.callout-important icon="false"}
+## Master Solutions
+```python
+# 1. Add GPA to each student record
+students_with_gpa = list(map(
+    lambda s: {**s, "gpa": sum(s["grades"]) / len(s["grades"])},
+    students
+))
+
+# 2. Find honor students (GPA >= 90)
+honor_students = list(filter(
+    lambda s: sum(s["grades"]) / len(s["grades"]) >= 90,
+    students
+))
+print("Honor students:", [s["name"] for s in honor_students])
+
+# 3. Get CS majors sorted by year
+cs_students_by_year = sorted(
+    filter(lambda s: s["major"] == "CS", students),
+    key=lambda s: s["year"]
+)
+print("CS students by year:", [(s["name"], s["year"]) for s in cs_students_by_year])
+
+# 4. Find top performer in each year (bonus: using max with lambda)
+years = list(set(map(lambda s: s["year"], students)))
+for year in sorted(years):
+    year_students = list(filter(lambda s: s["year"] == year, students))
+    top_student = max(year_students, key=lambda s: sum(s["grades"]) / len(s["grades"]))
+    print(f"Year {year} top: {top_student['name']} (GPA: {sum(top_student['grades'])/len(top_student['grades']):.1f})")
+```
+::: -->
+</section></section>
+<section id="summary-lambda-functions-mastery" class="title-slide slide level1 center">
+<h1>Summary: Lambda Functions Mastery</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>What You’ve Learned Today</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>🎯 Core Concepts:</strong> * Lambda functions are anonymous, single-expression functions * Perfect for simple operations and data transformations * Excellent with <code>map()</code>, <code>filter()</code>, and <code>sorted()</code></p>
+<p><strong>🛠️ Practical Skills:</strong> * Data processing and filtering * Custom sorting logic * Functional programming patterns * Real-world application scenarios</p>
+<p><strong>📝 Best Practices:</strong> * Keep lambdas simple and readable * Use regular functions for complex logic * Prioritize code clarity over cleverness</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<section id="challenges" class="title-slide slide level1 center">
+<h1>Challenges</h1>
+<center>
+<img data-src="graphics/challenge_i.png">
+</center>
+</section>
+<section id="challenge-1-quick-lambda-warmup" class="slide level2">
+<h2>Challenge 1: Quick Lambda Warmup</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Write lambdas for each task.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">import</span> math</span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a><span class="co"># 1. Rectangle area</span></span>
+<span id="cb29-4"><a></a>area_rect <span class="op">=</span> <span class="kw">lambda</span> w, h: <span class="co"># finish</span></span>
+<span id="cb29-5"><a></a></span>
+<span id="cb29-6"><a></a><span class="co"># 2. Apply a 15% discount</span></span>
+<span id="cb29-7"><a></a>discount_price <span class="op">=</span> <span class="kw">lambda</span> price: <span class="co"># finish</span></span>
+<span id="cb29-8"><a></a></span>
+<span id="cb29-9"><a></a><span class="co"># 3. Create initials from first and last name</span></span>
+<span id="cb29-10"><a></a>initials <span class="op">=</span> <span class="kw">lambda</span> first, last: <span class="co"># finish</span></span>
+<span id="cb29-11"><a></a></span>
+<span id="cb29-12"><a></a><span class="bu">print</span>(area_rect(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb29-13"><a></a><span class="bu">print</span>(discount_price(<span class="dv">40</span>))</span>
+<span id="cb29-14"><a></a><span class="bu">print</span>(initials(<span class="st">"Ada"</span>, <span class="st">"Lovelace"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2-map-filter-practice" class="slide level2">
+<h2>Challenge 2: <code>map()</code> + <code>filter()</code> Practice</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Use <code>map()</code> and <code>filter()</code> to process the scores.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>scores <span class="op">=</span> [<span class="dv">62</span>, <span class="dv">71</span>, <span class="dv">88</span>, <span class="dv">95</span>, <span class="dv">54</span>, <span class="dv">77</span>, <span class="dv">83</span>]</span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a><span class="co"># 1. Curve every score by +5 (max 100)</span></span>
+<span id="cb30-4"><a></a><span class="co"># 2. Keep only passing scores (&gt;= 70)</span></span>
+<span id="cb30-5"><a></a><span class="co"># 3. Print how many passing scores remain</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-3-sorting-with-lambda" class="slide level2">
+<h2>Challenge 3: Sorting with Lambda</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Sort the city list in two different ways.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>cities <span class="op">=</span> [</span>
+<span id="cb31-2"><a></a>    (<span class="st">"Tokyo"</span>, <span class="dv">37400068</span>),</span>
+<span id="cb31-3"><a></a>    (<span class="st">"Delhi"</span>, <span class="dv">28514000</span>),</span>
+<span id="cb31-4"><a></a>    (<span class="st">"Shanghai"</span>, <span class="dv">25582000</span>),</span>
+<span id="cb31-5"><a></a>    (<span class="st">"Sao Paulo"</span>, <span class="dv">21650000</span>)</span>
+<span id="cb31-6"><a></a>]</span>
+<span id="cb31-7"><a></a></span>
+<span id="cb31-8"><a></a><span class="co"># 1. Sort by population (highest first)</span></span>
+<span id="cb31-9"><a></a><span class="co"># 2. Sort by city name length (shortest first)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-4-chaining-functions" class="slide level2">
+<h2>Challenge 4: Chaining Functions</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Use <code>filter()</code> then <code>map()</code> to clean the words list.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"kiwi"</span>, <span class="st">"orange"</span>, <span class="st">"fig"</span>, <span class="st">"grape"</span>, <span class="st">"apricot"</span>]</span>
+<span id="cb32-2"><a></a></span>
+<span id="cb32-3"><a></a><span class="co"># 1. Keep only words with length &gt;= 5</span></span>
+<span id="cb32-4"><a></a><span class="co"># 2. Convert the remaining words to uppercase</span></span>
+<span id="cb32-5"><a></a><span class="co"># 3. Sort the result by length</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-5-mini-data-task" class="slide level2">
+<h2>Challenge 5: Mini Data Task</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Process the trip data using lambdas.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>trips <span class="op">=</span> [</span>
+<span id="cb33-2"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Asha"</span>, <span class="st">"miles"</span>: <span class="dv">120</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb33-3"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Ben"</span>, <span class="st">"miles"</span>: <span class="dv">45</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb33-4"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Chen"</span>, <span class="st">"miles"</span>: <span class="dv">200</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb33-5"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Dia"</span>, <span class="st">"miles"</span>: <span class="dv">80</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>}</span>
+<span id="cb33-6"><a></a>]</span>
+<span id="cb33-7"><a></a></span>
+<span id="cb33-8"><a></a><span class="co"># 1. Compute the payout for each trip (miles * rate)</span></span>
+<span id="cb33-9"><a></a><span class="co"># 2. Keep only trips with payout &gt;= 60</span></span>
+<span id="cb33-10"><a></a><span class="co"># 3. Print the driver names for those trips</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="challenge-solutions" class="title-slide slide level1 center">
+<h1>Challenge Solutions</h1>
+
+</section>
+<section id="challenge-1-solution" class="slide level2">
+<h2>Challenge 1 Solution</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution + Why It Works</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="im">import</span> math</span>
+<span id="cb34-2"><a></a></span>
+<span id="cb34-3"><a></a>area_rect <span class="op">=</span> <span class="kw">lambda</span> w, h: w <span class="op">*</span> h</span>
+<span id="cb34-4"><a></a>discount_price <span class="op">=</span> <span class="kw">lambda</span> price: price <span class="op">*</span> <span class="fl">0.85</span></span>
+<span id="cb34-5"><a></a>initials <span class="op">=</span> <span class="kw">lambda</span> first, last: <span class="ss">f"</span><span class="sc">{</span>first[<span class="dv">0</span>]<span class="sc">}{</span>last[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb34-6"><a></a></span>
+<span id="cb34-7"><a></a><span class="bu">print</span>(area_rect(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb34-8"><a></a><span class="bu">print</span>(discount_price(<span class="dv">40</span>))</span>
+<span id="cb34-9"><a></a><span class="bu">print</span>(initials(<span class="st">"Ada"</span>, <span class="st">"Lovelace"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> Each lambda is one expression. The discount multiplies by <span class="math inline">\(1 - 0.15\)</span>, and the initials slice the first character from each name.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2-solution" class="slide level2">
+<h2>Challenge 2 Solution</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution + Why It Works</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>scores <span class="op">=</span> [<span class="dv">62</span>, <span class="dv">71</span>, <span class="dv">88</span>, <span class="dv">95</span>, <span class="dv">54</span>, <span class="dv">77</span>, <span class="dv">83</span>]</span>
+<span id="cb35-2"><a></a></span>
+<span id="cb35-3"><a></a>curved <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> s: <span class="bu">min</span>(s <span class="op">+</span> <span class="dv">5</span>, <span class="dv">100</span>), scores))</span>
+<span id="cb35-4"><a></a>passing <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> s: s <span class="op">&gt;=</span> <span class="dv">70</span>, curved))</span>
+<span id="cb35-5"><a></a></span>
+<span id="cb35-6"><a></a><span class="bu">print</span>(curved)</span>
+<span id="cb35-7"><a></a><span class="bu">print</span>(passing)</span>
+<span id="cb35-8"><a></a><span class="bu">print</span>(<span class="bu">len</span>(passing))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> <code>map()</code> adjusts every score, <code>min()</code> caps at 100, and <code>filter()</code> keeps only passing values.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-3-solution" class="slide level2">
+<h2>Challenge 3 Solution</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution + Why It Works</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>cities <span class="op">=</span> [</span>
+<span id="cb36-2"><a></a>    (<span class="st">"Tokyo"</span>, <span class="dv">37400068</span>),</span>
+<span id="cb36-3"><a></a>    (<span class="st">"Delhi"</span>, <span class="dv">28514000</span>),</span>
+<span id="cb36-4"><a></a>    (<span class="st">"Shanghai"</span>, <span class="dv">25582000</span>),</span>
+<span id="cb36-5"><a></a>    (<span class="st">"Sao Paulo"</span>, <span class="dv">21650000</span>)</span>
+<span id="cb36-6"><a></a>]</span>
+<span id="cb36-7"><a></a></span>
+<span id="cb36-8"><a></a>by_pop <span class="op">=</span> <span class="bu">sorted</span>(cities, key<span class="op">=</span><span class="kw">lambda</span> c: c[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-9"><a></a>by_name_len <span class="op">=</span> <span class="bu">sorted</span>(cities, key<span class="op">=</span><span class="kw">lambda</span> c: <span class="bu">len</span>(c[<span class="dv">0</span>]))</span>
+<span id="cb36-10"><a></a></span>
+<span id="cb36-11"><a></a><span class="bu">print</span>(by_pop)</span>
+<span id="cb36-12"><a></a><span class="bu">print</span>(by_name_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> The key function picks the sort value: population at index 1 or the length of the name at index 0.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-4-solution" class="slide level2">
+<h2>Challenge 4 Solution</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution + Why It Works</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"kiwi"</span>, <span class="st">"orange"</span>, <span class="st">"fig"</span>, <span class="st">"grape"</span>, <span class="st">"apricot"</span>]</span>
+<span id="cb37-2"><a></a></span>
+<span id="cb37-3"><a></a>long_words <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> w: <span class="bu">len</span>(w) <span class="op">&gt;=</span> <span class="dv">5</span>, words))</span>
+<span id="cb37-4"><a></a>upper_words <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> w: w.upper(), long_words))</span>
+<span id="cb37-5"><a></a>sorted_words <span class="op">=</span> <span class="bu">sorted</span>(upper_words, key<span class="op">=</span><span class="kw">lambda</span> w: <span class="bu">len</span>(w))</span>
+<span id="cb37-6"><a></a></span>
+<span id="cb37-7"><a></a><span class="bu">print</span>(sorted_words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> <code>filter()</code> trims the list, <code>map()</code> transforms each item, and <code>sorted()</code> orders by length using a lambda key.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-5-solution" class="slide level2">
+<h2>Challenge 5 Solution</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution + Why It Works</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>trips <span class="op">=</span> [</span>
+<span id="cb38-2"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Asha"</span>, <span class="st">"miles"</span>: <span class="dv">120</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb38-3"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Ben"</span>, <span class="st">"miles"</span>: <span class="dv">45</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb38-4"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Chen"</span>, <span class="st">"miles"</span>: <span class="dv">200</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>},</span>
+<span id="cb38-5"><a></a>    {<span class="st">"driver"</span>: <span class="st">"Dia"</span>, <span class="st">"miles"</span>: <span class="dv">80</span>, <span class="st">"rate"</span>: <span class="fl">0.62</span>}</span>
+<span id="cb38-6"><a></a>]</span>
+<span id="cb38-7"><a></a></span>
+<span id="cb38-8"><a></a>payouts <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> t: {<span class="op">**</span>t, <span class="st">"payout"</span>: t[<span class="st">"miles"</span>] <span class="op">*</span> t[<span class="st">"rate"</span>]}, trips))</span>
+<span id="cb38-9"><a></a>high_payouts <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> t: t[<span class="st">"payout"</span>] <span class="op">&gt;=</span> <span class="dv">60</span>, payouts))</span>
+<span id="cb38-10"><a></a>drivers <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> t: t[<span class="st">"driver"</span>], high_payouts))</span>
+<span id="cb38-11"><a></a></span>
+<span id="cb38-12"><a></a><span class="bu">print</span>(drivers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> First add a computed field, then filter by it, then map to just the names.</p>
+</div>
+</div>
+</div>
+</section></section>
+<section id="congrats" class="title-slide slide level1 center">
+<h1>Congrats!</h1>
+<center>
+<img data-src="graphics/thumbs_i.png">
+</center>
+<div style="color: #2E86C1; font-size: 1.0em; text-align: center; margin-top: 1em;">
+<p>🎉 Congratulations! You’ve mastered Python’s lambda functions! 🚀🐍✨</p>
+</div>
+<!-- 
+
+## Next Steps: Continue Your Journey
+
+::: {.callout-note icon="false"}
+## Where to Go From Here
+
+**Immediate Practice:**
+* Use lambdas in your current projects
+* Experiment with list comprehensions + lambdas
+* Try lambdas with pandas DataFrames
+
+**Advanced Topics to Explore:**
+* Decorators and higher-order functions
+* Functional programming with `functools`
+* Lambda with `reduce()` and `itertools`
+* Generator expressions
+
+**Resources:**
+* Python's `functools` module documentation
+* "Fluent Python" by Luciano Ramalho
+* Practice on coding platforms like LeetCode
+:::
+
+::: {style="color: #8E44AD; font-size: 0.9em; text-align: center; margin-top: 1em;"}
+Keep coding, keep learning! 🐍✨
+::: -->
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

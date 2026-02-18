@@ -73,4 +73,9 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 04**: Build Your Own Game of *Rock, Paper, Scissors*!
   - [GitHub Classroom Link](https://classroom.github.com/a/KqaKW0-E)
 
+## W6. Functions and Functional *things*
+
+- **Functions and Lambda Functions**
+  - [HTML](6_lambdaFunctions.html) Slides
+
 ---
