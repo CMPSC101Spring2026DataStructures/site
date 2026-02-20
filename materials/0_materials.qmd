@@ -79,5 +79,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](6_lambdaFunctions.html) Slides
 - **Activity 05**: Introduction to Software Testing with pytest
   - [GitHub Classroom Link](https://classroom.github.com/a/m0CA2kF5)
-
+- **Lab 05**: Taylor Series Programming For Approximation
+  - [GitHub Classroom Link](https://classroom.github.com/a/d8u_yHUd)
+  - 
 ---
