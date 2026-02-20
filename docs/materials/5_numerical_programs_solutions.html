@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 3: Numerical Programs</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -378,7 +378,7 @@ p: 0.5em;"} -->
 <h2>Fibonacci: The Recursive Way</h2>
 <p>The most intuitive approach - directly follows the mathematical definition!</p>
 <div class="example">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co">"""</span></span>
 <span id="cb1-2"><a></a><span class="co">Recursive Fibonacci - elegant but slow for large numbers!</span></span>
 <span id="cb1-3"><a></a><span class="co">"""</span></span>
 <span id="cb1-4"><a></a></span>
@@ -395,20 +395,20 @@ p: 0.5em;"} -->
 <span id="cb1-15"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb1-16"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb1-17"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-18"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fibonacci-recursive-implementation" class="slide level2">
 <h2>Fibonacci: Recursive Implementation</h2>
 <p>Complete the recursive approach:</p>
 <div class="example">
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>    <span class="co"># Recursive case</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>    <span class="co"># Recursive case</span></span>
 <span id="cb2-2"><a></a>    <span class="cf">return</span> fibonacci_recursive(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fibonacci_recursive(n <span class="op">-</span> <span class="dv">2</span>)</span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co"># Testing</span></span>
 <span id="cb2-5"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb2-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"F(</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>fibonacci_recursive(i)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-7"><a></a><span class="co"># Output: F(0)=0, F(1)=1, F(2)=1, F(3)=2, F(4)=3, F(5)=5...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a></a><span class="co"># Output: F(0)=0, F(1)=1, F(2)=1, F(3)=2, F(4)=3, F(5)=5...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="recursive-fibonacci-the-problem" class="slide level2">
@@ -454,7 +454,7 @@ p: 0.5em;"} -->
 <h2>Fibonacci: The Iterative Way</h2>
 <p>Much faster! Build from the bottom up instead of top down.</p>
 <div class="example">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
 <span id="cb3-2"><a></a><span class="co">Iterative Fibonacci - fast and efficient!</span></span>
 <span id="cb3-3"><a></a><span class="co">"""</span></span>
 <span id="cb3-4"><a></a></span>
@@ -470,14 +470,14 @@ p: 0.5em;"} -->
 <span id="cb3-14"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb3-15"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb3-16"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb3-17"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fibonacci-iterative-implementation" class="slide level2">
 <h2>Fibonacci: Iterative Implementation</h2>
 <p>Complete the iterative approach:</p>
 <div class="example">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>    <span class="co"># Start with first two numbers</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>    <span class="co"># Start with first two numbers</span></span>
 <span id="cb4-2"><a></a>    prev, current <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
 <span id="cb4-3"><a></a>    </span>
 <span id="cb4-4"><a></a>    <span class="co"># Build up to nth number</span></span>
@@ -488,7 +488,7 @@ p: 0.5em;"} -->
 <span id="cb4-9"><a></a></span>
 <span id="cb4-10"><a></a><span class="co"># Testing</span></span>
 <span id="cb4-11"><a></a><span class="bu">print</span>([fibonacci_iterative(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>)])</span>
-<span id="cb4-12"><a></a><span class="co"># Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-12"><a></a><span class="co"># Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="iterative-fibonacci-the-advantage" class="slide level2">
@@ -534,7 +534,7 @@ p: 0.5em;"} -->
 <h2>Fibonacci: Memoization (Part 1)</h2>
 <p>Cache previous results to avoid having to rerun the calculations!</p>
 <div class="example">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
 <span id="cb5-2"><a></a><span class="co">Memoized Fibonacci - combines elegance with efficiency!</span></span>
 <span id="cb5-3"><a></a><span class="co">"""</span></span>
 <span id="cb5-4"><a></a></span>
@@ -550,14 +550,14 @@ p: 0.5em;"} -->
 <span id="cb5-14"><a></a><span class="co">    """</span></span>
 <span id="cb5-15"><a></a>    <span class="co"># Check if already calculated</span></span>
 <span id="cb5-16"><a></a>    <span class="cf">if</span> n <span class="kw">in</span> memo:</span>
-<span id="cb5-17"><a></a>        <span class="cf">return</span> memo[n]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-17"><a></a>        <span class="cf">return</span> memo[n]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fibonacci-memoization-part-2" class="slide level2">
 <h2>Fibonacci: Memoization (Part 2)</h2>
 <p>Complete the implementation and testing.</p>
 <div class="example">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>    <span class="co"># Base cases (continued from previous slide)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>    <span class="co"># Base cases (continued from previous slide)</span></span>
 <span id="cb6-2"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb6-3"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
 <span id="cb6-4"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -569,7 +569,7 @@ p: 0.5em;"} -->
 <span id="cb6-10"><a></a></span>
 <span id="cb6-11"><a></a><span class="co"># Testing</span></span>
 <span id="cb6-12"><a></a><span class="bu">print</span>(<span class="ss">f"F(100) = </span><span class="sc">{</span>fibonacci_memo(<span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-13"><a></a><span class="co"># Output: F(100) = 354224848179261915075</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-13"><a></a><span class="co"># Output: F(100) = 354224848179261915075</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="memoization-best-of-both-worlds" class="slide level2">
@@ -618,7 +618,7 @@ p: 0.5em;"} -->
 <h2>Fibonacci: Binet’s Formula (Part 1)</h2>
 <p>A direct mathematical formula - no loops or recursion needed!</p>
 <div class="example">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co">"""</span></span>
 <span id="cb7-2"><a></a><span class="co">Binet's Formula - closed-form solution using the golden ratio!</span></span>
 <span id="cb7-3"><a></a><span class="co">"""</span></span>
 <span id="cb7-4"><a></a></span>
@@ -632,14 +632,14 @@ p: 0.5em;"} -->
 <span id="cb7-12"><a></a><span class="co">        n: Position in sequence</span></span>
 <span id="cb7-13"><a></a><span class="co">    Returns:</span></span>
 <span id="cb7-14"><a></a><span class="co">        The nth Fibonacci number (approximate for large n)</span></span>
-<span id="cb7-15"><a></a><span class="co">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-15"><a></a><span class="co">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fibonacci-binets-formula-part-2" class="slide level2">
 <h2>Fibonacci: Binet’s Formula (Part 2)</h2>
 <p>Complete the implementation:</p>
 <div class="example">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>    <span class="co"># The golden ratio</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>    <span class="co"># The golden ratio</span></span>
 <span id="cb8-2"><a></a>    phi <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> math.sqrt(<span class="dv">5</span>)) <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb8-3"><a></a>    psi <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> math.sqrt(<span class="dv">5</span>)) <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb8-4"><a></a>    </span>
@@ -650,7 +650,7 @@ p: 0.5em;"} -->
 <span id="cb8-9"><a></a></span>
 <span id="cb8-10"><a></a><span class="co"># Testing</span></span>
 <span id="cb8-11"><a></a><span class="bu">print</span>([fibonacci_binet(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>)])</span>
-<span id="cb8-12"><a></a><span class="co"># Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a></a><span class="co"># Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377...]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="binets-formula-the-golden-ratio-connection" class="slide level2">
@@ -696,7 +696,7 @@ p: 0.5em;"} -->
 <h2>Fibonacci: Matrix Method (Part 1)</h2>
 <p>Another mathematical approach using matrix exponentiation! (Learn more at <a href="https://ianthehenry.com/posts/fibonacci/">https://ianthehenry.com/posts/fibonacci/</a>)</p>
 <div class="example">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">"""</span></span>
 <span id="cb9-2"><a></a><span class="co">Matrix method - fast for very large n using exponentiation!</span></span>
 <span id="cb9-3"><a></a><span class="co">"""</span></span>
 <span id="cb9-4"><a></a></span>
@@ -716,14 +716,14 @@ p: 0.5em;"} -->
 <span id="cb9-18"><a></a>        <span class="cf">return</span> multiply_matrices(half, half)    <span class="co"># Continued from previous slide</span></span>
 <span id="cb9-19"><a></a>    <span class="cf">else</span>:</span>
 <span id="cb9-20"><a></a>        <span class="cf">return</span> multiply_matrices(matrix, matrix_power(matrix, n <span class="op">-</span> <span class="dv">1</span>))</span>
-<span id="cb9-21"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-21"><a></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fibonacci-matrix-method-part-2" class="slide level2">
 <h2>Fibonacci: Matrix Method (Part 2)</h2>
 <p>Complete the implementation with the main Fibonacci function.</p>
 <div class="example">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> fibonacci_matrix(n):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> fibonacci_matrix(n):</span>
 <span id="cb10-2"><a></a>    <span class="co">"""Calculate nth Fibonacci using matrix method."""</span></span>
 <span id="cb10-3"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb10-4"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
@@ -735,7 +735,7 @@ p: 0.5em;"} -->
 <span id="cb10-10"><a></a>    <span class="cf">return</span> result[<span class="dv">0</span>][<span class="dv">1</span>]</span>
 <span id="cb10-11"><a></a></span>
 <span id="cb10-12"><a></a><span class="bu">print</span>(<span class="ss">f"F(50) = </span><span class="sc">{</span>fibonacci_matrix(<span class="dv">50</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-13"><a></a><span class="co"># Output: F(50) = 12586269025</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-13"><a></a><span class="co"># Output: F(50) = 12586269025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="comparing-fibonacci-methods" class="slide level2">
@@ -1046,7 +1046,7 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <h2>Lucas Sequence: Implementation (Part 1)</h2>
 <p>We can use the same techniques as Fibonacci!</p>
 <div class="example">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co">"""</span></span>
 <span id="cb11-2"><a></a><span class="co">Lucas sequence using iterative approach.</span></span>
 <span id="cb11-3"><a></a><span class="co">"""</span></span>
 <span id="cb11-4"><a></a></span>
@@ -1062,14 +1062,14 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb11-14"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb11-15"><a></a>        <span class="cf">return</span> <span class="dv">2</span></span>
 <span id="cb11-16"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb11-17"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-17"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lucas-sequence-implementation-part-2" class="slide level2">
 <h2>Lucas Sequence: Implementation (Part 2)</h2>
 <p>Complete the implementation:</p>
 <div class="example">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>    <span class="co"># Start with first two Lucas numbers</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>    <span class="co"># Start with first two Lucas numbers</span></span>
 <span id="cb12-2"><a></a>    prev, current <span class="op">=</span> <span class="dv">2</span>, <span class="dv">1</span></span>
 <span id="cb12-3"><a></a>    </span>
 <span id="cb12-4"><a></a>    <span class="co"># Build up to nth number</span></span>
@@ -1081,13 +1081,13 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb12-10"><a></a><span class="co"># Generate first 15 Lucas numbers</span></span>
 <span id="cb12-11"><a></a>lucas_seq <span class="op">=</span> [lucas_iterative(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>)]</span>
 <span id="cb12-12"><a></a><span class="bu">print</span>(lucas_seq)</span>
-<span id="cb12-13"><a></a><span class="co"># Output: [2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a></a><span class="co"># Output: [2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lucas-recursive-with-memoization-part-1" class="slide level2">
 <h2>Lucas: Recursive with Memoization (Part 1)</h2>
 <div class="example">
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">"""</span></span>
 <span id="cb13-2"><a></a><span class="co">Lucas sequence using memoization for efficiency.</span></span>
 <span id="cb13-3"><a></a><span class="co">"""</span></span>
 <span id="cb13-4"><a></a></span>
@@ -1103,14 +1103,14 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb13-14"><a></a><span class="co">    """</span></span>
 <span id="cb13-15"><a></a>    <span class="co"># Check cache first</span></span>
 <span id="cb13-16"><a></a>    <span class="cf">if</span> n <span class="kw">in</span> memo:</span>
-<span id="cb13-17"><a></a>        <span class="cf">return</span> memo[n]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-17"><a></a>        <span class="cf">return</span> memo[n]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lucas-recursive-with-memoization-part-2" class="slide level2">
 <h2>Lucas: Recursive with Memoization (Part 2)</h2>
 <p>Complete the implementation:</p>
 <div class="example">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>    <span class="co"># Base cases</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>    <span class="co"># Base cases</span></span>
 <span id="cb14-2"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb14-3"><a></a>        <span class="cf">return</span> <span class="dv">2</span></span>
 <span id="cb14-4"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -1123,7 +1123,7 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb14-11"><a></a><span class="co"># Calculate some Lucas numbers</span></span>
 <span id="cb14-12"><a></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>]:</span>
 <span id="cb14-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"L(</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>lucas_memo(i)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-14"><a></a><span class="co"># Output: L(10)=123, L(20)=15127, L(30)=1860498, L(40)=228826127</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-14"><a></a><span class="co"># Output: L(10)=123, L(20)=15127, L(30)=1860498, L(40)=228826127</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="relationship-between-fibonacci-and-lucas" class="slide level2">
@@ -1143,7 +1143,7 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 </div>
 </div>
 <div class="example">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co">"""</span></span>
 <span id="cb15-2"><a></a><span class="co">Exploring Fibonacci and Lucas relationships.</span></span>
 <span id="cb15-3"><a></a><span class="co">"""</span></span>
 <span id="cb15-4"><a></a></span>
@@ -1157,16 +1157,16 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb15-12"><a></a>    <span class="bu">print</span>(<span class="ss">f"n = </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb15-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"F(</span><span class="sc">{</span>n<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">) + F(</span><span class="sc">{</span>n<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>fib_prev<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>fib_next<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>fib_prev <span class="op">+</span> fib_next<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb15-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"L(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>lucas_n<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"Match: </span><span class="sc">{</span>fib_prev <span class="op">+</span> fib_next <span class="op">==</span> lucas_n<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-15"><a></a>    <span class="bu">print</span>(<span class="ss">f"Match: </span><span class="sc">{</span>fib_prev <span class="op">+</span> fib_next <span class="op">==</span> lucas_n<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="testing-the-relationship" class="slide level2">
 <h2>Testing the Relationship</h2>
 <div class="example">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Test the relationship for multiple values</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co"># Test the relationship for multiple values</span></span>
 <span id="cb16-2"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>, <span class="dv">10</span>):</span>
 <span id="cb16-3"><a></a>    show_relationship(i)</span>
-<span id="cb16-4"><a></a><span class="co"># Shows L(n) = F(n-1) + F(n+1) is always true!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a></a><span class="co"># Shows L(n) = F(n-1) + F(n+1) is always true!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <p><em>Mathematics is full of beautiful patterns like this!</em> ✨</p>
@@ -1206,7 +1206,7 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <section id="tribonacci-implementation" class="slide level2">
 <h2>Tribonacci: Implementation</h2>
 <div class="example">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co">"""</span></span>
 <span id="cb17-2"><a></a><span class="co">Tribonacci sequence - sum of three previous numbers!</span></span>
 <span id="cb17-3"><a></a><span class="co">"""</span></span>
 <span id="cb17-4"><a></a></span>
@@ -1227,7 +1227,7 @@ console.log('🎯 Fibonacci visualization ready! Click the Generate button to st
 <span id="cb17-19"><a></a><span class="co"># Generate sequence</span></span>
 <span id="cb17-20"><a></a>trib_seq <span class="op">=</span> [tribonacci(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>)]</span>
 <span id="cb17-21"><a></a><span class="bu">print</span>(trib_seq)</span>
-<span id="cb17-22"><a></a><span class="co"># Output: [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-22"><a></a><span class="co"># Output: [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="tribonacci-interactive-visualization" class="slide level2">
@@ -1493,7 +1493,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <section id="padovan-implementation" class="slide level2">
 <h2>Padovan: Implementation</h2>
 <div class="example">
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="co">"""</span></span>
 <span id="cb18-2"><a></a><span class="co">Padovan sequence - appears in spiral triangles!</span></span>
 <span id="cb18-3"><a></a><span class="co">"""</span></span>
 <span id="cb18-4"><a></a></span>
@@ -1512,7 +1512,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <span id="cb18-17"><a></a><span class="co"># Generate sequence</span></span>
 <span id="cb18-18"><a></a>pad_seq <span class="op">=</span> [padovan(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>)]</span>
 <span id="cb18-19"><a></a><span class="bu">print</span>(pad_seq)</span>
-<span id="cb18-20"><a></a><span class="co"># Output: [1, 1, 1, 2, 2, 3, 4, 5, 7, 9, 12, 16, 21, 28, 37]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-20"><a></a><span class="co"># Output: [1, 1, 1, 2, 2, 3, 4, 5, 7, 9, 12, 16, 21, 28, 37]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="the-pell-sequence" class="slide level2">
@@ -1543,7 +1543,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <section id="pell-implementation" class="slide level2">
 <h2>Pell: Implementation</h2>
 <div class="example">
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co">"""</span></span>
 <span id="cb19-2"><a></a><span class="co">Pell sequence - doubles the previous term then adds one before!</span></span>
 <span id="cb19-3"><a></a><span class="co">"""</span></span>
 <span id="cb19-4"><a></a></span>
@@ -1564,7 +1564,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <span id="cb19-19"><a></a><span class="co"># Generate sequence</span></span>
 <span id="cb19-20"><a></a>pell_seq <span class="op">=</span> [pell(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>)]</span>
 <span id="cb19-21"><a></a><span class="bu">print</span>(pell_seq)</span>
-<span id="cb19-22"><a></a><span class="co"># Output: [0, 1, 2, 5, 12, 29, 70, 169, 408, 985, 2378, 5741]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-22"><a></a><span class="co"># Output: [0, 1, 2, 5, 12, 29, 70, 169, 408, 985, 2378, 5741]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="the-collatz-sequence-3n1-problem" class="slide level2">
@@ -1653,7 +1653,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <section id="collatz-basic-implementation" class="slide level2">
 <h2>Collatz: Basic Implementation</h2>
 <div class="example">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co">"""</span></span>
 <span id="cb20-2"><a></a><span class="co">Collatz sequence - does every number reach 1?</span></span>
 <span id="cb20-3"><a></a><span class="co">"""</span></span>
 <span id="cb20-4"><a></a></span>
@@ -1670,7 +1670,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <span id="cb20-15"><a></a></span>
 <span id="cb20-16"><a></a><span class="co"># Example: Starting from 6</span></span>
 <span id="cb20-17"><a></a><span class="bu">print</span>(collatz(<span class="dv">6</span>))</span>
-<span id="cb20-18"><a></a><span class="co"># Output: [6, 3, 10, 5, 16, 8, 4, 2, 1]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-18"><a></a><span class="co"># Output: [6, 3, 10, 5, 16, 8, 4, 2, 1]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="color: #2E86C1; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <p><em>Notice how the sequence goes up and down unpredictably!</em></p>
@@ -1680,7 +1680,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <h2>Collatz: Interactive Version</h2>
 <p>Let’s create a more user-friendly version!</p>
 <div class="example">
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co">"""</span></span>
 <span id="cb21-2"><a></a><span class="co">Interactive Collatz sequence generator.</span></span>
 <span id="cb21-3"><a></a><span class="co">"""</span></span>
 <span id="cb21-4"><a></a></span>
@@ -1699,7 +1699,7 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <span id="cb21-17"><a></a><span class="co"># Define a section of code that runs only when the Python</span></span>
 <span id="cb21-18"><a></a><span class="co"># file is executed as a standalone script (at command line)</span></span>
 <span id="cb21-19"><a></a><span class="co"># if __name__ == "__main__": </span></span>
-<span id="cb21-20"><a></a><span class="co">#    main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-20"><a></a><span class="co">#    main()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <p><em>Try different numbers and see how long it takes to reach 1!</em> 🎯</p>
@@ -1708,13 +1708,13 @@ console.log('🎯 Tribonacci visualization ready! Click the Generate button to s
 <section id="collatz-examples-and-patterns" class="slide level2">
 <h2>Collatz: Examples and Patterns</h2>
 <div class="example">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Try different starting numbers</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># Try different starting numbers</span></span>
 <span id="cb22-2"><a></a><span class="cf">for</span> start <span class="kw">in</span> [<span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">27</span>]:</span>
 <span id="cb22-3"><a></a>    seq <span class="op">=</span> collatz(start)</span>
 <span id="cb22-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"Starting from </span><span class="sc">{</span>start<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb22-5"><a></a>    <span class="bu">print</span>(<span class="ss">f"  Sequence: </span><span class="sc">{</span>seq<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb22-6"><a></a>    <span class="bu">print</span>(<span class="ss">f"  Length: </span><span class="sc">{</span><span class="bu">len</span>(seq)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb22-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"  Max value reached: </span><span class="sc">{</span><span class="bu">max</span>(seq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-7"><a></a>    <span class="bu">print</span>(<span class="ss">f"  Max value reached: </span><span class="sc">{</span><span class="bu">max</span>(seq)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <p><strong>Output:</strong></p>
@@ -1742,7 +1742,7 @@ Starting from 27:
 <p>The <strong>stopping time</strong> is how many steps it takes to reach 1.</p>
 <div style="color: #2E86C1; font-size: 0.6em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">"""</span></span>
 <span id="cb24-2"><a></a><span class="co">Find which number has the longest Collatz sequence.</span></span>
 <span id="cb24-3"><a></a><span class="co">"""</span></span>
 <span id="cb24-4"><a></a></span>
@@ -1766,7 +1766,7 @@ Starting from 27:
 <span id="cb24-22"><a></a>    seq <span class="op">=</span> collatz(longest_start)</span>
 <span id="cb24-23"><a></a>    <span class="bu">print</span>(<span class="ss">f"First 20 steps: </span><span class="sc">{</span>seq[:<span class="dv">20</span>]<span class="sc">}</span><span class="ss">..."</span>)</span>
 <span id="cb24-24"><a></a></span>
-<span id="cb24-25"><a></a>collatz_analysis(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-25"><a></a>collatz_analysis(<span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -2123,7 +2123,7 @@ console.log('🎯 Collatz visualization ready! Click the Generate button to star
 <section id="factorial-implementation" class="slide level2">
 <h2>Factorial: Implementation</h2>
 <div class="example">
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co">"""</span></span>
 <span id="cb25-2"><a></a><span class="co">Factorial - both recursive and iterative versions.</span></span>
 <span id="cb25-3"><a></a><span class="co">"""</span></span>
 <span id="cb25-4"><a></a></span>
@@ -2146,7 +2146,7 @@ console.log('🎯 Collatz visualization ready! Click the Generate button to star
 <span id="cb25-21"><a></a><span class="co"># Compare both methods</span></span>
 <span id="cb25-22"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
 <span id="cb25-23"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">! = </span><span class="sc">{</span>factorial_iterative(i)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb25-24"><a></a><span class="co"># Output: 0!=1, 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-24"><a></a><span class="co"># Output: 0!=1, 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="factorial-interactive-visualization" class="slide level2">
@@ -2380,7 +2380,7 @@ console.log('🎯 Factorial visualization ready! Click the Generate button to st
 <h2>Prime Numbers: Sieve of Eratosthenes</h2>
 <div style="color: #E74C3C; font-size: 0.5em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">def</span> sieve_of_eratosthenes(n):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">def</span> sieve_of_eratosthenes(n):</span>
 <span id="cb26-2"><a></a>    <span class="co">"""</span></span>
 <span id="cb26-3"><a></a><span class="co">    Find all prime numbers up to n using the Sieve of Eratosthenes algorithm.</span></span>
 <span id="cb26-4"><a></a><span class="co">    </span></span>
@@ -2410,7 +2410,7 @@ console.log('🎯 Factorial visualization ready! Click the Generate button to st
 <span id="cb26-28"><a></a><span class="co"># Testing</span></span>
 <span id="cb26-29"><a></a>primes <span class="op">=</span> sieve_of_eratosthenes(<span class="dv">100</span>)</span>
 <span id="cb26-30"><a></a><span class="bu">print</span>(<span class="ss">f"Primes up to 100: </span><span class="sc">{</span>primes<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb26-31"><a></a><span class="co"># Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, ...]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-31"><a></a><span class="co"># Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, ...]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -2652,12 +2652,12 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Challenge 1: Fibonacci Sum</h2>
 <p>Write a function that calculates the sum of all Fibonacci numbers up to and including the nth Fibonacci number.</p>
 <div class="example">
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
 <span id="cb27-2"><a></a></span>
 <span id="cb27-3"><a></a><span class="co"># Example:</span></span>
 <span id="cb27-4"><a></a><span class="co"># fibonacci_sum(5) should return 12</span></span>
 <span id="cb27-5"><a></a><span class="co"># because F(0)=0, F(1)=1, F(2)=1, F(3)=2, F(4)=3, F(5)=5</span></span>
-<span id="cb27-6"><a></a><span class="co"># and 0 + 1 + 1 + 2 + 3 + 5 = 12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-6"><a></a><span class="co"># and 0 + 1 + 1 + 2 + 3 + 5 = 12</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -2680,12 +2680,12 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Challenge 2: Even Fibonacci Numbers</h2>
 <p>Find the sum of all even-valued Fibonacci numbers that do not exceed a given limit.</p>
 <div class="example">
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
 <span id="cb28-2"><a></a></span>
 <span id="cb28-3"><a></a><span class="co"># Example:</span></span>
 <span id="cb28-4"><a></a><span class="co"># even_fibonacci_sum(100) should return 44</span></span>
 <span id="cb28-5"><a></a><span class="co"># because even Fibonacci numbers ≤ 100 are: 2, 8, 34</span></span>
-<span id="cb28-6"><a></a><span class="co"># and 2 + 8 + 34 = 44</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-6"><a></a><span class="co"># and 2 + 8 + 34 = 44</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -2708,14 +2708,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Challenge 3: Generalized Sequence</h2>
 <p>Write a function that takes two starting numbers and generates n terms of a Fibonacci-like sequence.</p>
 <div class="example">
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
 <span id="cb29-2"><a></a></span>
 <span id="cb29-3"><a></a><span class="co"># Example:</span></span>
 <span id="cb29-4"><a></a><span class="co"># generalized_sequence(2, 1, 10) should return Lucas numbers:</span></span>
 <span id="cb29-5"><a></a><span class="co"># [2, 1, 3, 4, 7, 11, 18, 29, 47, 76]</span></span>
 <span id="cb29-6"><a></a><span class="co">#</span></span>
 <span id="cb29-7"><a></a><span class="co"># generalized_sequence(0, 1, 10) should return Fibonacci:</span></span>
-<span id="cb29-8"><a></a><span class="co"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-8"><a></a><span class="co"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -2738,7 +2738,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Challenge 4: Collatz Stopping Time</h2>
 <p>Find which number from 1 to n has the longest Collatz sequence (takes most steps to reach 1).</p>
 <div class="example">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
 <span id="cb30-2"><a></a></span>
 <span id="cb30-3"><a></a><span class="co"># Example:</span></span>
 <span id="cb30-4"><a></a><span class="co"># longest_collatz(20) should return (18, 20)</span></span>
@@ -2746,7 +2746,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb30-6"><a></a><span class="co">#</span></span>
 <span id="cb30-7"><a></a><span class="co"># The sequence starting at 18:</span></span>
 <span id="cb30-8"><a></a><span class="co"># 18 → 9 → 28 → 14 → 7 → 22 → 11 → 34 → 17 → 52 → 26 →</span></span>
-<span id="cb30-9"><a></a><span class="co"># 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-9"><a></a><span class="co"># 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -2769,14 +2769,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Challenge 5: Fibonacci Index Finder</h2>
 <p>Write a function that finds the index (position) of a given number in the Fibonacci sequence. Return -1 if not found.</p>
 <div class="example">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span>
 <span id="cb31-2"><a></a></span>
 <span id="cb31-3"><a></a><span class="co"># Example:</span></span>
 <span id="cb31-4"><a></a><span class="co"># fibonacci_index(13) should return 7</span></span>
 <span id="cb31-5"><a></a><span class="co"># because F(7) = 13</span></span>
 <span id="cb31-6"><a></a><span class="co">#</span></span>
 <span id="cb31-7"><a></a><span class="co"># fibonacci_index(100) should return -1</span></span>
-<span id="cb31-8"><a></a><span class="co"># because 100 is not a Fibonacci number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-8"><a></a><span class="co"># because 100 is not a Fibonacci number</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -2813,7 +2813,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 1: Fibonacci Sum (Approach 1)</h2>
 <div style="color: #2E86C1; font-size: 0.5em; text-align: center; margin-to p: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co">"""</span></span>
 <span id="cb32-2"><a></a><span class="co">Solution 1.1: Direct approach - generate and sum.</span></span>
 <span id="cb32-3"><a></a><span class="co">"""</span></span>
 <span id="cb32-4"><a></a></span>
@@ -2837,7 +2837,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb32-22"><a></a><span class="co"># Testing</span></span>
 <span id="cb32-23"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(5): </span><span class="sc">{</span>fibonacci_sum_direct(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(5): 12</span></span>
 <span id="cb32-24"><a></a></span>
-<span id="cb32-25"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(10): </span><span class="sc">{</span>fibonacci_sum_direct(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(10): 143</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-25"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(10): </span><span class="sc">{</span>fibonacci_sum_direct(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(10): 143</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>Time Complexity:</strong> O(n) - generates each number once</p>
@@ -2847,7 +2847,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 1: Fibonacci Sum (Approach 2)</h2>
 <div style="color: #2E86C1; font-size: 0.5em; text-align: center; margin-to p: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co">"""</span></span>
 <span id="cb33-2"><a></a><span class="co">Solution 1.2: Mathematical approach using formula.</span></span>
 <span id="cb33-3"><a></a><span class="co">"""</span></span>
 <span id="cb33-4"><a></a></span>
@@ -2870,7 +2870,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb33-21"><a></a><span class="co"># Testing</span></span>
 <span id="cb33-22"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(5): </span><span class="sc">{</span>fibonacci_sum_formula(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(5): 12</span></span>
 <span id="cb33-23"><a></a></span>
-<span id="cb33-24"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(10): </span><span class="sc">{</span>fibonacci_sum_formula(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(10): 143</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-24"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of F(0) to F(10): </span><span class="sc">{</span>fibonacci_sum_formula(<span class="dv">10</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: Sum of F(0) to F(10): 143</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>Time Complexity:</strong> O(n) - still generates up to F(n+2)</p>
@@ -2882,7 +2882,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <section id="solution-2-even-fibonacci-part-1" class="slide level2">
 <h2>Solution 2: Even Fibonacci (Part 1)</h2>
 <div class="example">
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co">"""</span></span>
 <span id="cb34-2"><a></a><span class="co">Solution 2.1: Generate and filter approach.</span></span>
 <span id="cb34-3"><a></a><span class="co">"""</span></span>
 <span id="cb34-4"><a></a></span>
@@ -2900,14 +2900,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb34-16"><a></a>            total <span class="op">+=</span> b</span>
 <span id="cb34-17"><a></a>        a, b <span class="op">=</span> b, a <span class="op">+</span> b</span>
 <span id="cb34-18"><a></a>    </span>
-<span id="cb34-19"><a></a>    <span class="cf">return</span> total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-19"><a></a>    <span class="cf">return</span> total</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-2-even-fibonacci-part-2" class="slide level2">
 <h2>Solution 2: Even Fibonacci (Part 2)</h2>
 <p>Test the function with different limits.</p>
 <div class="example">
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># Testing</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># Testing</span></span>
 <span id="cb35-2"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of even Fibonacci ≤ 100: </span><span class="sc">{</span>even_fibonacci_sum(<span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb35-3"><a></a><span class="co"># Output: Sum of even Fibonacci ≤ 100: 44</span></span>
 <span id="cb35-4"><a></a></span>
@@ -2915,7 +2915,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb35-6"><a></a><span class="co"># Output: Sum of even Fibonacci ≤ 1000: 798</span></span>
 <span id="cb35-7"><a></a></span>
 <span id="cb35-8"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of even Fibonacci ≤ 4000000: </span><span class="sc">{</span>even_fibonacci_sum(<span class="dv">4000000</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb35-9"><a></a><span class="co"># Output: Sum of even Fibonacci ≤ 4000000: 4613732</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-9"><a></a><span class="co"># Output: Sum of even Fibonacci ≤ 4000000: 4613732</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Time Complexity:</strong> O(log limit) - Fibonacci grows exponentially</p>
 <p><strong>Space Complexity:</strong> O(1) - constant space</p>
@@ -2924,7 +2924,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 2: Even Fibonacci Numbers (Approach 2)</h2>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="co">"""</span></span>
 <span id="cb36-2"><a></a><span class="co">Solution 2.2: Optimized - every 3rd Fibonacci is even!</span></span>
 <span id="cb36-3"><a></a><span class="co">"""</span></span>
 <span id="cb36-4"><a></a></span>
@@ -2949,7 +2949,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb36-23"><a></a><span class="co"># Testing</span></span>
 <span id="cb36-24"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of even Fib ≤ 100: </span><span class="sc">{</span>even_fibonacci_sum_optimized(<span class="dv">100</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Fib ≤ 100: 44</span></span>
 <span id="cb36-25"><a></a></span>
-<span id="cb36-26"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of even Fib ≤ 4000000: </span><span class="sc">{</span>even_fibonacci_sum_optimized(<span class="dv">4000000</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Fib ≤ 4000000: 4613732</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-26"><a></a><span class="bu">print</span>(<span class="ss">f"Sum of even Fib ≤ 4000000: </span><span class="sc">{</span>even_fibonacci_sum_optimized(<span class="dv">4000000</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Fib ≤ 4000000: 4613732</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>Time Complexity:</strong> O(log limit / 3) - 3x fewer iterations!</p>
@@ -2961,7 +2961,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <section id="solution-3-generalized-sequence-part-1" class="slide level2">
 <h2>Solution 3: Generalized Sequence (Part 1)</h2>
 <div class="example">
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="co">"""</span></span>
 <span id="cb37-2"><a></a><span class="co">Solution 3.1: Simple iterative approach.</span></span>
 <span id="cb37-3"><a></a><span class="co">"""</span></span>
 <span id="cb37-4"><a></a></span>
@@ -2979,14 +2979,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb37-16"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
 <span id="cb37-17"><a></a>        <span class="cf">return</span> []</span>
 <span id="cb37-18"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb37-19"><a></a>        <span class="cf">return</span> [start1]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-19"><a></a>        <span class="cf">return</span> [start1]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-3-generalized-sequence-part-2" class="slide level2">
 <h2>Solution 3: Generalized Sequence (Part 2)</h2>
 <p>Complete the implementation and testing.</p>
 <div class="example">
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">2</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>    <span class="cf">elif</span> n <span class="op">==</span> <span class="dv">2</span>:</span>
 <span id="cb38-2"><a></a>        <span class="cf">return</span> [start1, start2]</span>
 <span id="cb38-3"><a></a>    </span>
 <span id="cb38-4"><a></a>    sequence <span class="op">=</span> [start1, start2]</span>
@@ -3000,13 +3000,13 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb38-12"><a></a><span class="co"># Test with different starting values</span></span>
 <span id="cb38-13"><a></a><span class="bu">print</span>(<span class="st">"Lucas:"</span>, generalized_sequence(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">10</span>))</span>
 <span id="cb38-14"><a></a><span class="bu">print</span>(<span class="st">"Fibonacci:"</span>, generalized_sequence(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>))</span>
-<span id="cb38-15"><a></a><span class="bu">print</span>(<span class="st">"Custom:"</span>, generalized_sequence(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-15"><a></a><span class="bu">print</span>(<span class="st">"Custom:"</span>, generalized_sequence(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-3-generator-approach-part-1" class="slide level2">
 <h2>Solution 3: Generator Approach (Part 1)</h2>
 <div class="example">
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="co">"""</span></span>
 <span id="cb39-2"><a></a><span class="co">Solution 3.2: Generator approach for memory efficiency.</span></span>
 <span id="cb39-3"><a></a><span class="co">"""</span></span>
 <span id="cb39-4"><a></a></span>
@@ -3021,14 +3021,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb39-13"><a></a>    </span>
 <span id="cb39-14"><a></a>    <span class="cf">yield</span> start1</span>
 <span id="cb39-15"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb39-16"><a></a>        <span class="cf">return</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-16"><a></a>        <span class="cf">return</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-3-generator-approach-part-2" class="slide level2">
 <h2>Solution 3: Generator Approach (Part 2)</h2>
 <p>Complete the generator and testing.</p>
 <div class="example">
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>    <span class="cf">yield</span> start2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>    <span class="cf">yield</span> start2</span>
 <span id="cb40-2"><a></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">2</span>:</span>
 <span id="cb40-3"><a></a>        <span class="cf">return</span></span>
 <span id="cb40-4"><a></a>    </span>
@@ -3040,7 +3040,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb40-10"><a></a><span class="co"># Testing</span></span>
 <span id="cb40-11"><a></a><span class="bu">print</span>(<span class="st">"Lucas:"</span>, <span class="bu">list</span>(generalized_sequence_generator(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">10</span>)))</span>
 <span id="cb40-12"><a></a><span class="co"># Memory efficient for large sequences</span></span>
-<span id="cb40-13"><a></a><span class="bu">print</span>(<span class="st">"First 20 terms:"</span>, <span class="bu">list</span>(generalized_sequence_generator(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">20</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-13"><a></a><span class="bu">print</span>(<span class="st">"First 20 terms:"</span>, <span class="bu">list</span>(generalized_sequence_generator(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">20</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <p><em>Generators are perfect for large sequences or streaming data!</em> 🌊</p>
@@ -3050,7 +3050,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 4: Collatz Stopping Time (Part 1)</h2>
 <p>First, let’s create a helper function to calculate sequence length.</p>
 <div class="example">
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="co">"""</span></span>
 <span id="cb41-2"><a></a><span class="co">Solution 4.1: Straightforward approach - Part 1</span></span>
 <span id="cb41-3"><a></a><span class="co">"""</span></span>
 <span id="cb41-4"><a></a></span>
@@ -3070,7 +3070,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb41-18"><a></a><span class="co"># Output: Length of sequence from 6: 8</span></span>
 <span id="cb41-19"><a></a></span>
 <span id="cb41-20"><a></a><span class="bu">print</span>(<span class="ss">f"Length of sequence from 27: </span><span class="sc">{</span>collatz_length(<span class="dv">27</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb41-21"><a></a><span class="co"># Output: Length of sequence from 27: 111</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-21"><a></a><span class="co"># Output: Length of sequence from 27: 111</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="solution-4-collatz-stopping-time-part-2" class="slide level2">
@@ -3078,7 +3078,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <p>Now use the helper to find the longest sequence.</p>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co">"""</span></span>
 <span id="cb42-2"><a></a><span class="co">Solution 4.1: Straightforward approach - Part 2</span></span>
 <span id="cb42-3"><a></a><span class="co">"""</span></span>
 <span id="cb42-4"><a></a></span>
@@ -3105,7 +3105,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb42-25"><a></a></span>
 <span id="cb42-26"><a></a>result <span class="op">=</span> longest_collatz(<span class="dv">100</span>)</span>
 <span id="cb42-27"><a></a><span class="bu">print</span>(<span class="ss">f"Up to 100: number </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> has sequence length </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb42-28"><a></a><span class="co"># Output: Up to 100: number 97 has sequence length 118</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-28"><a></a><span class="co"># Output: Up to 100: number 97 has sequence length 118</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -3114,7 +3114,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <p>Using memoization (or the use of pre-calculated results which may be necessary for use later) to cache results for better performance.</p>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="co">"""</span></span>
 <span id="cb43-2"><a></a><span class="co">Solution 4.2: Optimized with memoization - Part 1</span></span>
 <span id="cb43-3"><a></a><span class="co">"""</span></span>
 <span id="cb43-4"><a></a></span>
@@ -3137,7 +3137,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb43-21"><a></a>            length <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> collatz_length_memo(<span class="dv">3</span> <span class="op">*</span> n <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb43-22"><a></a>        </span>
 <span id="cb43-23"><a></a>        memo[n] <span class="op">=</span> length</span>
-<span id="cb43-24"><a></a>        <span class="cf">return</span> length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-24"><a></a>        <span class="cf">return</span> length</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -3146,7 +3146,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <p>Complete the implementation and testing</p>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co">"""</span></span>
 <span id="cb44-2"><a></a><span class="co">Solution 4.2: Optimized with memoization - Part 2</span></span>
 <span id="cb44-3"><a></a><span class="co">"""</span></span>
 <span id="cb44-4"><a></a>    </span>
@@ -3169,7 +3169,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb44-21"><a></a></span>
 <span id="cb44-22"><a></a>result <span class="op">=</span> longest_collatz_memo(<span class="dv">10000</span>)</span>
 <span id="cb44-23"><a></a><span class="bu">print</span>(<span class="ss">f"Up to 10000: number </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> has sequence length </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb44-24"><a></a><span class="co"># Much faster than the non-memoized version!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-24"><a></a><span class="co"># Much faster than the non-memoized version!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
@@ -3180,7 +3180,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 5: Fibonacci Index Finder (Approach 1)</h2>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="co">"""</span></span>
 <span id="cb45-2"><a></a><span class="co">Solution 5.1: Sequential search approach.</span></span>
 <span id="cb45-3"><a></a><span class="co">"""</span></span>
 <span id="cb45-4"><a></a></span>
@@ -3206,7 +3206,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb45-24"><a></a>    <span class="cf">if</span> b <span class="op">==</span> target:</span>
 <span id="cb45-25"><a></a>        <span class="cf">return</span> index</span>
 <span id="cb45-26"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb45-27"><a></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-27"><a></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -3214,7 +3214,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 5: Fibonacci Index Finder (Approach 1 continued)</h2>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="co">"""</span></span>
 <span id="cb46-2"><a></a><span class="co">Solution 5.1: Sequential search approach.</span></span>
 <span id="cb46-3"><a></a><span class="co">"""</span></span>
 <span id="cb46-4"><a></a></span>
@@ -3226,7 +3226,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb46-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"F(</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb46-11"><a></a>    <span class="cf">else</span>:</span>
 <span id="cb46-12"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss"> is not a Fibonacci number"</span>)</span>
-<span id="cb46-13"><a></a><span class="co"># Output shows which values are Fibonacci numbers and their indices</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-13"><a></a><span class="co"># Output shows which values are Fibonacci numbers and their indices</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -3234,7 +3234,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 5: Fibonacci Index Finder (Approach 2)</h2>
 <div style="color: #27AE60; font-size: 0.7em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="co">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="co">"""</span></span>
 <span id="cb47-2"><a></a><span class="co">Solution 5.2: Using inverse Binet's formula (mathematical approach).</span></span>
 <span id="cb47-3"><a></a><span class="co">"""</span></span>
 <span id="cb47-4"><a></a></span>
@@ -3262,7 +3262,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb47-26"><a></a>    fib_n <span class="op">=</span> <span class="bu">round</span>((phi<span class="op">**</span>n <span class="op">-</span> psi<span class="op">**</span>n) <span class="op">/</span> math.sqrt(<span class="dv">5</span>))</span>
 <span id="cb47-27"><a></a>    </span>
 <span id="cb47-28"><a></a>    <span class="cf">if</span> fib_n <span class="op">==</span> target: <span class="cf">return</span> n</span>
-<span id="cb47-29"><a></a>    <span class="cf">else</span>: <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-29"><a></a>    <span class="cf">else</span>: <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
@@ -3273,7 +3273,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <h2>Solution 5: Fibonacci Index Finder (Approach 2, continued)</h2>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a></span>
 <span id="cb48-2"><a></a></span>
 <span id="cb48-3"><a></a><span class="co"># Testing</span></span>
 <span id="cb48-4"><a></a>test_values <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">13</span>, <span class="dv">21</span>, <span class="dv">100</span>, <span class="dv">144</span>, <span class="dv">233</span>]</span>
@@ -3282,7 +3282,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
 <span id="cb48-7"><a></a>    <span class="cf">if</span> idx <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
 <span id="cb48-8"><a></a>        <span class="bu">print</span>(<span class="ss">f"F(</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">) = </span><span class="sc">{</span>val<span class="sc">}</span><span class="ss"> ✓"</span>)</span>
 <span id="cb48-9"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb48-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss"> is not a Fibonacci number ✗"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss"> is not a Fibonacci number ✗"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div style="color: #27AE60; font-size: 0.8em; text-align: center; margin-top: 0.5em;">
@@ -3557,7 +3557,7 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -3631,13 +3631,14 @@ console.log('🎯 Prime visualization ready! Click the Generate button to start.
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

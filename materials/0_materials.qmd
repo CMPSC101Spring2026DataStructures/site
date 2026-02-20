@@ -77,5 +77,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
 
 - **Functions and Lambda Functions**
   - [HTML](6_lambdaFunctions.html) Slides
+- **Activity 05**: Introduction to Software Testing with pytest
+  - [GitHub Classroom Link](https://classroom.github.com/a/m0CA2kF5)
 
 ---

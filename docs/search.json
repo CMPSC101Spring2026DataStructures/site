@@ -102,7 +102,7 @@
     "href": "playground/02_stringCheese.html",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "",
-    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nPrint strings in Python\nUse for loops with range()\nFormat strings with f-strings\nUnderstand string repetition"
+    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nPrint strings in Python\nUse for loops with range()\nFormat strings with f-strings\nUnderstand string repetition"
   },
   {
     "objectID": "playground/02_stringCheese.html#introduction",
@@ -137,21 +137,21 @@
     "href": "playground/02_stringCheese.html#summary",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nString printing with print() function\nFor loops with range() function\nF-string formatting for dynamic messages\nCreative text output and formatting"
+    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nString printing with print() function\nFor loops with range() function\nF-string formatting for dynamic messages\nCreative text output and formatting"
   },
   {
     "objectID": "playground/02_stringCheese.html#next-steps",
     "href": "playground/02_stringCheese.html#next-steps",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "Next Steps",
-    "text": "Next Steps\n\n\n\n\n\n\nComing Up Next\n\n\n\nIn the next lesson, we’ll cover: - Variables and data types - More complex string operations\n\n\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython String Formatting\nPython For Loops\nPractice Problems"
+    "text": "Next Steps\n\n\n\n\n\n\nImportantComing Up Next\n\n\n\nIn the next lesson, we’ll cover: - Variables and data types - More complex string operations\n\n\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython String Formatting\nPython For Loops\nPractice Problems"
   },
   {
     "objectID": "playground/05_functionCalls_general.html",
     "href": "playground/05_functionCalls_general.html",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "",
-    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nIdentify and describe the anatomy of a Python function\nExplain the flow of execution in a Python script\nDiscuss the mathematical reasoning behind calculating the area of a square\nExperiment with function calls and inputs interactively"
+    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nIdentify and describe the anatomy of a Python function\nExplain the flow of execution in a Python script\nDiscuss the mathematical reasoning behind calculating the area of a square\nExperiment with function calls and inputs interactively"
   },
   {
     "objectID": "playground/05_functionCalls_general.html#introduction",
@@ -172,21 +172,21 @@
     "href": "playground/05_functionCalls_general.html#summary",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored: - The structure and anatomy of Python functions - How function calls work and how data flows through a program - Mathematical reasoning for calculating area - How different input types affect function behavior"
+    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored: - The structure and anatomy of Python functions - How function calls work and how data flows through a program - Mathematical reasoning for calculating area - How different input types affect function behavior"
   },
   {
     "objectID": "playground/05_functionCalls_general.html#key-takeaways",
     "href": "playground/05_functionCalls_general.html#key-takeaways",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nFunctions are reusable blocks of code\nFlow of execution is organized using functions like main()\nMathematical formulas can be implemented directly in code\nInput types matter for function behavior\n\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython Functions Documentation\nPython Data Types\nQuarto Interactive Python"
+    "text": "Key Takeaways\n\nFunctions are reusable blocks of code\nFlow of execution is organized using functions like main()\nMathematical formulas can be implemented directly in code\nInput types matter for function behavior\n\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython Functions Documentation\nPython Data Types\nQuarto Interactive Python"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html",
     "href": "playground/06_listAndDictionaries.html",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "",
-    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nCreate and manipulate lists to store sequences of data\nCreate and work with dictionaries to store key-value pairs\nAccess, modify, and iterate through lists and dictionaries\nChoose the appropriate data structure (list vs dictionary) for different tasks"
+    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nCreate and manipulate lists to store sequences of data\nCreate and work with dictionaries to store key-value pairs\nAccess, modify, and iterate through lists and dictionaries\nChoose the appropriate data structure (list vs dictionary) for different tasks"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html#introduction",
@@ -221,14 +221,14 @@
     "href": "playground/06_listAndDictionaries.html#summary",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nLists: Ordered collections perfect for storing sequences of related items\nDictionaries: Key-value pairs ideal for quick lookups and data organization\nPractical Applications: How to use these data structures to solve real-world problems\nWhen to Use Each: Lists for ordered data, dictionaries for labeled data and fast lookups"
+    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nLists: Ordered collections perfect for storing sequences of related items\nDictionaries: Key-value pairs ideal for quick lookups and data organization\nPractical Applications: How to use these data structures to solve real-world problems\nWhen to Use Each: Lists for ordered data, dictionaries for labeled data and fast lookups"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html#key-takeaways",
     "href": "playground/06_listAndDictionaries.html#key-takeaways",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\nLists and dictionaries are fundamental building blocks in Python programming. Lists excel when you need to maintain order and access items by position, while dictionaries shine when you need to associate meaningful labels (keys) with values for quick retrieval. Both are mutable, meaning you can modify them after creation, making them powerful tools for dynamic data management. As you continue programming, you’ll find these data structures essential for organizing information efficiently.\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython Lists Documentation\nPython Dictionaries Documentation\nReal Python: Python Lists and Tuples\nReal Python: Python Dictionaries"
+    "text": "Key Takeaways\nLists and dictionaries are fundamental building blocks in Python programming. Lists excel when you need to maintain order and access items by position, while dictionaries shine when you need to associate meaningful labels (keys) with values for quick retrieval. Both are mutable, meaning you can modify them after creation, making them powerful tools for dynamic data management. As you continue programming, you’ll find these data structures essential for organizing information efficiently.\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython Lists Documentation\nPython Dictionaries Documentation\nReal Python: Python Lists and Tuples\nReal Python: Python Dictionaries"
   },
   {
     "objectID": "materials/0_materials.html",
@@ -277,7 +277,7 @@
     "href": "materials/0_materials.html#w6.-functions-and-functional-things",
     "title": "Materials",
     "section": "W6. Functions and Functional things",
-    "text": "W6. Functions and Functional things\n\nFunctions and Lambda Functions\n\nHTML Slides"
+    "text": "W6. Functions and Functional things\n\nFunctions and Lambda Functions\n\nHTML Slides\n\nActivity 05: Introduction to Software Testing with pytest\n\nGitHub Classroom Link"
   },
   {
     "objectID": "materials/4_data_structures_solutions.html#why-data-structures-matter",
@@ -1782,7 +1782,7 @@
     "href": "playground/01_fibonacci.html",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "",
-    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nUnderstand the mathematical definition of the Fibonacci sequence\nImplement recursive Fibonacci calculation\nCreate an iterative Fibonacci algorithm\nApply Binet’s formula for direct Fibonacci computation"
+    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nUnderstand the mathematical definition of the Fibonacci sequence\nImplement recursive Fibonacci calculation\nCreate an iterative Fibonacci algorithm\nApply Binet’s formula for direct Fibonacci computation"
   },
   {
     "objectID": "playground/01_fibonacci.html#introduction",
@@ -1817,14 +1817,14 @@
     "href": "playground/01_fibonacci.html#summary",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored three different approaches to computing Fibonacci numbers:\n\nRecursive Implementation: Elegant but exponentially slow (O(2^n)) - demonstrates the mathematical definition directly\nIterative Implementation: Efficient and practical (O(n) time, O(1) space) - builds solutions step-by-step\n\nBinet’s Formula: Mathematically beautiful (O(1) but limited by precision) - uses the golden ratio for direct calculation\nPerformance Analysis: Understanding how algorithm choice dramatically affects execution time"
+    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored three different approaches to computing Fibonacci numbers:\n\nRecursive Implementation: Elegant but exponentially slow (O(2^n)) - demonstrates the mathematical definition directly\nIterative Implementation: Efficient and practical (O(n) time, O(1) space) - builds solutions step-by-step\n\nBinet’s Formula: Mathematically beautiful (O(1) but limited by precision) - uses the golden ratio for direct calculation\nPerformance Analysis: Understanding how algorithm choice dramatically affects execution time"
   },
   {
     "objectID": "playground/01_fibonacci.html#key-takeaways",
     "href": "playground/01_fibonacci.html#key-takeaways",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\nEach approach teaches us different programming and mathematical concepts: - Recursion and why it can be inefficient without optimization (memoization) - Iteration and the power of building solutions incrementally - Mathematical formulas and their computational trade-offs between elegance and precision - Algorithm complexity and how it affects real-world performance\nThe Fibonacci sequence appears everywhere in nature and mathematics, making it a perfect example for understanding both algorithmic thinking and mathematical beauty in programming!\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nFibonacci Numbers in Nature\nGolden Ratio and Mathematics\nAlgorithm Complexity Guide"
+    "text": "Key Takeaways\nEach approach teaches us different programming and mathematical concepts: - Recursion and why it can be inefficient without optimization (memoization) - Iteration and the power of building solutions incrementally - Mathematical formulas and their computational trade-offs between elegance and precision - Algorithm complexity and how it affects real-world performance\nThe Fibonacci sequence appears everywhere in nature and mathematics, making it a perfect example for understanding both algorithmic thinking and mathematical beauty in programming!\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nFibonacci Numbers in Nature\nGolden Ratio and Mathematics\nAlgorithm Complexity Guide"
   },
   {
     "objectID": "playground/00_playground.html",
