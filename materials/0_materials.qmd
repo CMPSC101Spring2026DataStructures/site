@@ -81,5 +81,10 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [GitHub Classroom Link](https://classroom.github.com/a/m0CA2kF5)
 - **Lab 05**: Taylor Series Programming For Approximation
   - [GitHub Classroom Link](https://classroom.github.com/a/d8u_yHUd)
- 
+
+## W7. Function-based Programming*
+
+- **Higher-Order Functions, Decorators & Simple Classes**
+  - [HTML](7_higherOrderFunctions_decorators_classes.html) Slides
+
 ---

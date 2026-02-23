@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-59898bd1c6b9d2bb783127feaa000c76.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
+
+  <meta name="author" content="Oliver Bonham-Carter">
+  <title>CMPSC101 Spring 2026 :: DataStructures – Higher-Order Functions, Decorators &amp; Simple Classes</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Higher-Order Functions, Decorators &amp; Simple Classes</h1>
+  <p class="subtitle">Powerful Python Patterns for Cleaner Code</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Oliver Bonham-Carter 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="on-for-today" class="title-slide slide level1 center">
+<h1>On For Today</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Let’s explore three powerful Python patterns!</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Topics covered in today’s discussion:</strong></p>
+<ul>
+<li>🐍 <strong>Higher-Order Functions</strong> — Functions that take or return other functions</li>
+<li>🐍 <strong>Passing Functions as Arguments</strong> — Treating functions as first-class citizens</li>
+<li>🐍 <strong>Returning Functions from Functions</strong> — Building function factories</li>
+<li>🐍 <strong>Decorators</strong> — Wrapping functions to add behavior</li>
+<li>🐍 <strong>Decorator Syntax (<code>@</code>)</strong> — Python’s elegant shorthand</li>
+<li>🐍 <strong>Simple Classes</strong> — Bundling data and behavior together</li>
+<li>🐍 <strong>The <code>__init__</code> Method</strong> — Constructing objects</li>
+<li>🐍 <strong>Methods and Attributes</strong> — Working with class instances</li>
+<li>🐍 <strong>Challenge Problems &amp; Solutions</strong> — Practice what you’ve learned!</li>
+</ul>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/tellMeMore_i.png" style="width:40.0%">
+</center>
+</section>
+<section id="motivation-parametric-curves-higher-order-functions" class="slide level2">
+<h2>Motivation: Parametric Curves &amp; Higher-Order Functions</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The Butterfly Curve — A Parametric Function</strong> A <strong>parametric equation</strong> expresses coordinates as functions of a shared variable <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[x(t) = \sin(t)\!\left(e^{\cos t} - 2\cos(4t) - \sin^5\!\tfrac{t}{12}\right)\]</span></p>
+<p><span class="math display">\[y(t) = \cos(t)\!\left(e^{\cos t} - 2\cos(4t) - \sin^5\!\tfrac{t}{12}\right)\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>As <span class="math inline">\(t\)</span> sweeps from <span class="math inline">\(0\)</span> to <span class="math inline">\(12\pi\)</span>, the pair <span class="math inline">\((x(t),\,y(t))\)</span> traces the butterfly shape.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-python-connection" class="slide level2">
+<h2>The Python Connection</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Plotting this curve means applying the same mathematical building blocks — <span class="math inline">\(e^{\cos t}\)</span>, <span class="math inline">\(\cos(4t)\)</span>, <span class="math inline">\(\sin^5(t/12)\)</span> — inside both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. We can define each piece as a <strong>function</strong> and pass it as an argument. That is precisely what <strong>higher-order functions</strong> make possible!</p>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/Butterfly_transcendental_curve.svg" style="width:50.0%">
+</center>
+</section>
+<section id="plotting-the-butterfly-curve-in-python" class="slide level2">
+<h2>Plotting the Butterfly Curve in Python</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Higher-Order Functions Make This Clean</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="co"># Define each reusable mathematical building block as a function</span></span>
+<span id="cb1-5"><a></a><span class="kw">def</span> radial(t):</span>
+<span id="cb1-6"><a></a>    <span class="cf">return</span> np.exp(np.cos(t)) <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>np.cos(<span class="dv">4</span><span class="op">*</span>t) <span class="op">-</span> np.sin(t<span class="op">/</span><span class="dv">12</span>)<span class="op">**</span><span class="dv">5</span></span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a><span class="kw">def</span> x_coord(t, r_func):   <span class="co"># &lt;-- accepts a function as an argument!</span></span>
+<span id="cb1-9"><a></a>    <span class="cf">return</span> np.sin(t) <span class="op">*</span> r_func(t)</span>
+<span id="cb1-10"><a></a></span>
+<span id="cb1-11"><a></a><span class="kw">def</span> y_coord(t, r_func):   <span class="co"># &lt;-- accepts a function as an argument!</span></span>
+<span id="cb1-12"><a></a>    <span class="cf">return</span> np.cos(t) <span class="op">*</span> r_func(t)</span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">12</span> <span class="op">*</span> np.pi, <span class="dv">10_000</span>)</span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb1-17"><a></a>plt.plot(x_coord(t, radial), y_coord(t, radial), linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb1-18"><a></a>plt.axis(<span class="st">"equal"</span>)<span class="op">;</span> plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb1-19"><a></a>plt.title(<span class="st">"Butterfly Curve"</span>)<span class="op">;</span> plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>The higher-order connection:</strong> <code>x_coord</code> and <code>y_coord</code> each <strong>accept <code>r_func</code> as a parameter</strong> — they don’t hard-code the radial formula. Swapping in a different function instantly produces a different curve. This is a higher-order function in real scientific code.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="parametric-functions-with-python" class="slide level2">
+<h2>Parametric Functions with Python</h2>
+<center>
+<img data-src="graphics/parametric.png" style="width:45.0%">
+</center>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>We can plug in any function we like for <code>fn()</code> — the functions <code>x()</code> and <code>y()</code> still work as parameters! This is the essence of higher-order programming: variables and functions can be used as parameters.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-parametric-curve-explorer-code" class="slide level2">
+<h2>Interactive Parametric Curve Explorer Code</h2>
+<div style="font-family:system-ui,sans-serif;font-size:13px;line-height:1.4;user-select:none;">
+<div style="display:flex;gap:10px;align-items:flex-start;">
+
+<!-- ===== CONTROLS ===== -->
+<div style="width:200px;flex-shrink:0;padding:8px 10px;background:#f4f4f4;
+            border:1px solid #d0d0d0;border-radius:6px;">
+
+  <div style="margin-bottom:9px;">
+    <label style="font-weight:700;font-size:12px;display:block;margin-bottom:3px;">Curve family</label>
+    <select id="pcv-sel" onchange="pcvChangeCurve()" style="width:100%;padding:3px 5px;border-radius:4px;border:1px solid #bbb;font-size:12px;">
+      <option value="butterfly">🦋 Butterfly</option>
+      <option value="rose">🌹 Rose</option>
+      <option value="lissajous">〰 Lissajous</option>
+      <option value="spirograph">⚙ Spirograph</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom:7px;">
+    <label id="pcv-l1" style="display:block;font-size:11px;color:#444;margin-bottom:2px;"></label>
+    <div style="display:flex;align-items:center;gap:5px;">
+      <input type="range" id="pcv-s1" style="flex:1;" oninput="pcvDraw()">
+      <span id="pcv-v1" style="width:34px;text-align:right;font-size:11px;font-weight:600;"></span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:7px;">
+    <label id="pcv-l2" style="display:block;font-size:11px;color:#444;margin-bottom:2px;"></label>
+    <div style="display:flex;align-items:center;gap:5px;">
+      <input type="range" id="pcv-s2" style="flex:1;" oninput="pcvDraw()">
+      <span id="pcv-v2" style="width:34px;text-align:right;font-size:11px;font-weight:600;"></span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <label id="pcv-l3" style="display:block;font-size:11px;color:#444;margin-bottom:2px;"></label>
+    <div style="display:flex;align-items:center;gap:5px;">
+      <input type="range" id="pcv-s3" style="flex:1;" oninput="pcvDraw()">
+      <span id="pcv-v3" style="width:34px;text-align:right;font-size:11px;font-weight:600;"></span>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid #ccc;margin:6px 0 8px;">
+
+  <div style="margin-bottom:8px;">
+    <label style="display:block;font-size:11px;color:#444;margin-bottom:2px;">Anim. speed</label>
+    <input type="range" id="pcv-spd" min="2" max="80" value="25" style="width:100%;">
+  </div>
+
+  <div style="display:flex;gap:6px;">
+    <button id="pcv-anim" onclick="pcvAnimate()" style="flex:1;padding:5px 4px;background:#1a6fa8;color:#fff;border:none;
+             border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;">
+      ▶ Animate
+    </button>
+    <button onclick="pcvReset()" style="flex:1;padding:5px 4px;background:#555;color:#fff;border:none;
+             border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;">
+      ↺ Reset
+    </button>
+  </div>
+</div>
+<!-- ===== /CONTROLS ===== -->
+
+<!-- ===== CANVAS ===== -->
+<canvas id="pcv-cv" width="640" height="550" style="border:1px solid #ccc;border-radius:6px;background:#fafafa;flex-shrink:0;">
+</canvas>
+<!-- ===== /CANVAS ===== -->
+
+</div><!-- /flex -->
+
+<!-- equation strip -->
+<div id="pcv-eq" style="margin-top:7px;padding:5px 10px;background:#eef4fb;
+         border-left:3px solid #1a6fa8;border-radius:3px;
+         font-size:11.5px;color:#12345a;min-height:22px;">
+</div>
+</div><!-- /outer -->
+
+<script>
+(function () {
+  /* ================================================================
+     CURVE DEFINITIONS
+     Each entry exposes:
+       color, steps, tmax(p), params[], eq(p), px(t,p), py(t,p)
+     px/py return canvas offsets from centre (y is flipped by caller).
+     The plotting engine (pcvDraw / pcvAnimate) never needs to know
+     which curve is active — it just calls px and py.
+     This IS the higher-order pattern: functions passed as arguments.
+  ================================================================ */
+  var CURVES = {
+    butterfly: {
+      color: '#1a6fa8', steps: 8000,
+      tmax: function (p) { return 12 * Math.PI; },
+      params: [
+        { label: 'Loops  n',     min: 1,   max: 8,   step: 0.5, def: 4   },
+        { label: 'Amplitude  a', min: 0.5, max: 3,   step: 0.1, def: 2   },
+        { label: 'Scale',        min: 40,  max: 165, step: 5,   def: 100 }
+      ],
+      eq: function (p) {
+        return 'r(t) = e<sup>cos t</sup> &minus; ' + p[1].toFixed(1) +
+               '&thinsp;cos(' + p[0].toFixed(1) + 't) &minus; sin<sup>5</sup>(t/12)' +
+               ' &nbsp;|&nbsp; x = sin(t)&thinsp;r(t),&ensp;y = cos(t)&thinsp;r(t)';
+      },
+      px: function (t, p) {
+        var r = Math.exp(Math.cos(t)) - p[1] * Math.cos(p[0] * t) - Math.pow(Math.sin(t / 12), 5);
+        return Math.sin(t) * r * p[2];
+      },
+      py: function (t, p) {
+        var r = Math.exp(Math.cos(t)) - p[1] * Math.cos(p[0] * t) - Math.pow(Math.sin(t / 12), 5);
+        return Math.cos(t) * r * p[2];
+      }
+    },
+    rose: {
+      color: '#c0392b', steps: 6000,
+      tmax: function (p) { return (Math.round(p[0]) % 2 === 0 ? 4 : 2) * Math.PI * Math.round(p[2]); },
+      params: [
+        { label: 'Petals  k',  min: 1,  max: 12,  step: 1,  def: 5   },
+        { label: 'Scale',      min: 60, max: 260, step: 5,  def: 220 },
+        { label: 'Rounds',     min: 1,  max: 4,   step: 1,  def: 1   }
+      ],
+      eq: function (p) {
+        var k = Math.round(p[0]);
+        return 'x(t) = cos(' + k + 't)&thinsp;cos(t) &ensp; y(t) = cos(' + k + 't)&thinsp;sin(t)';
+      },
+      px: function (t, p) { return Math.cos(Math.round(p[0]) * t) * Math.cos(t) * p[1]; },
+      py: function (t, p) { return Math.cos(Math.round(p[0]) * t) * Math.sin(t) * p[1]; }
+    },
+    lissajous: {
+      color: '#27ae60', steps: 5000,
+      tmax: function (p) { return 2 * Math.PI; },
+      params: [
+        { label: 'X frequency  a',   min: 1, max: 9, step: 1, def: 3 },
+        { label: 'Y frequency  b',   min: 1, max: 9, step: 1, def: 2 },
+        { label: 'Phase  \u03b4 (\u00d7\u03c0/8)', min: 0, max: 8, step: 1, def: 4 }
+      ],
+      eq: function (p) {
+        var a = Math.round(p[0]), b = Math.round(p[1]), d = Math.round(p[2]);
+        return 'x = sin(' + a + 't + &delta;)&ensp;y = sin(' + b + 't)' +
+               '&ensp;&delta; = ' + (d / 8).toFixed(3) + '&pi;';
+      },
+      px: function (t, p) { return Math.sin(Math.round(p[0]) * t + Math.round(p[2]) * Math.PI / 8) * 260; },
+      py: function (t, p) { return Math.sin(Math.round(p[1]) * t) * 260; }
+    },
+    spirograph: {
+      color: '#8e44ad', steps: 8000,
+      tmax: function (p) { return 20 * Math.PI; },
+      params: [
+        { label: 'Outer  R', min: 50,  max: 220, step: 5, def: 150 },
+        { label: 'Inner  r', min: 10,  max: 120, step: 5, def: 60  },
+        { label: 'Offset  d', min: 10, max: 180, step: 5, def: 90  }
+      ],
+      eq: function (p) {
+        return 'x = (R&minus;r)cos(t) + d cos(<sup>R&minus;r</sup>/<sub>r</sub>t)' +
+               '&ensp;R=' + p[0] + ', r=' + p[1] + ', d=' + p[2];
+      },
+      px: function (t, p) { return (p[0]-p[1])*Math.cos(t) + p[2]*Math.cos((p[0]-p[1])/p[1]*t); },
+      py: function (t, p) { return (p[0]-p[1])*Math.sin(t) - p[2]*Math.sin((p[0]-p[1])/p[1]*t); }
+    }
+  };
+
+  /* ================================================================
+     UI WIRING
+  ================================================================ */
+  var cv     = document.getElementById('pcv-cv');
+  var ctx    = cv.getContext('2d');
+  var selEl  = document.getElementById('pcv-sel');
+  var animBtn= document.getElementById('pcv-anim');
+  var eqDiv  = document.getElementById('pcv-eq');
+  var animId = null;
+
+  var UI = [
+    { s: document.getElementById('pcv-s1'), l: document.getElementById('pcv-l1'), v: document.getElementById('pcv-v1') },
+    { s: document.getElementById('pcv-s2'), l: document.getElementById('pcv-l2'), v: document.getElementById('pcv-v2') },
+    { s: document.getElementById('pcv-s3'), l: document.getElementById('pcv-l3'), v: document.getElementById('pcv-v3') }
+  ];
+
+  function getCurve () { return CURVES[selEl.value]; }
+
+  function getParams () {
+    return UI.map(function (u) { return parseFloat(u.s.value); });
+  }
+
+  function fmtVal (v, step) {
+    return step < 1 ? v.toFixed(1) : Math.round(v).toString();
+  }
+
+  function loadSliders () {
+    var c = getCurve();
+    c.params.forEach(function (pd, i) {
+      UI[i].s.min   = pd.min;
+      UI[i].s.max   = pd.max;
+      UI[i].s.step  = pd.step;
+      UI[i].s.value = pd.def;
+      UI[i].l.textContent = pd.label;
+      UI[i].v.textContent = fmtVal(pd.def, pd.step);
+    });
+  }
+
+  function cancelAnim () {
+    if (animId) { cancelAnimationFrame(animId); animId = null; }
+    animBtn.textContent = '\u25b6 Animate';
+  }
+
+  /* ================================================================
+     DRAWING
+     pcvDraw  — draw the complete curve in one pass (instant feedback)
+     pcvAnimate — sweep t incrementally using precomputed point array
+  ================================================================ */
+  function drawFull (ptsOverride) {
+    var c = getCurve(), p = getParams();
+    var W = cv.width, H = cv.height, cx = W / 2, cy = H / 2;
+    var pts = ptsOverride;
+    if (!pts) {
+      var N = c.steps, TMAX = c.tmax(p);
+      pts = [];
+      for (var i = 0; i <= N; i++) {
+        var t = (i / N) * TMAX;
+        pts.push([cx + c.px(t, p), cy - c.py(t, p)]);
+      }
+    }
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = c.color;
+    ctx.lineWidth   = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (var j = 1; j < pts.length; j++) ctx.lineTo(pts[j][0], pts[j][1]);
+    ctx.stroke();
+
+    /* update slider value labels */
+    UI.forEach(function (u, i) {
+      u.v.textContent = fmtVal(parseFloat(u.s.value), parseFloat(u.s.step));
+    });
+    eqDiv.innerHTML = c.eq(p);
+  }
+
+  /* exposed globals for inline oninput / onclick handlers */
+  window.pcvDraw = function () { cancelAnim(); drawFull(); };
+
+  window.pcvChangeCurve = function () { cancelAnim(); loadSliders(); drawFull(); };
+
+  window.pcvReset = function () { cancelAnim(); loadSliders(); drawFull(); };
+
+  window.pcvAnimate = function () {
+    if (animId) { cancelAnim(); return; }
+    var c = getCurve(), p = getParams();
+    var W = cv.width, H = cv.height, cx = W / 2, cy = H / 2;
+    var N = c.steps, TMAX = c.tmax(p);
+
+    /* precompute all points once so animation is smooth */
+    var pts = [];
+    for (var i = 0; i <= N; i++) {
+      var t = (i / N) * TMAX;
+      pts.push([cx + c.px(t, p), cy - c.py(t, p)]);
+    }
+
+    var step = 0;
+    animBtn.textContent = '\u23f9 Stop';
+
+    function frame () {
+      var spd = parseInt(document.getElementById('pcv-spd').value, 10) || 25;
+      step = Math.min(step + spd, N);
+      ctx.clearRect(0, 0, W, H);
+      ctx.strokeStyle = c.color;
+      ctx.lineWidth   = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(pts[0][0], pts[0][1]);
+      for (var k = 1; k <= step; k++) ctx.lineTo(pts[k][0], pts[k][1]);
+      ctx.stroke();
+      if (step < N) { animId = requestAnimationFrame(frame); }
+      else          { animId = null; animBtn.textContent = '\u25b6 Animate'; }
+    }
+    animId = requestAnimationFrame(frame);
+  };
+
+  /* ---- boot ---- */
+  loadSliders();
+  drawFull();
+}());
+</script>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-1-higher-order-functions" class="title-slide slide level1 center">
+<h1>Part 1: Higher-Order Functions</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What Is a Higher-Order Function?</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>higher-order function</strong> is a function that does at least one of the following:</p>
+<ol type="1">
+<li><strong>Takes another function as an argument</strong>, or</li>
+<li><strong>Returns a function</strong> as its result.</li>
+</ol>
+<p>You have already seen some! <code>map()</code>, <code>filter()</code>, and <code>sorted()</code> are all higher-order functions because they accept a function as a parameter.</p>
+</div>
+</div>
+</div>
+<div style="color: #8E44AD;">
+<p><strong>Key Insight:</strong> In Python, functions are <em>first-class citizens</em> — they can be stored in variables, passed around, and returned, just like numbers or strings.</p>
+</div>
+</section>
+<section id="functions-are-just-objects" class="slide level2">
+<h2>Functions Are Just Objects</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Assigning Functions to Variables</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> shout(text):</span>
+<span id="cb2-2"><a></a>    <span class="cf">return</span> text.upper() <span class="op">+</span> <span class="st">"!"</span></span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># Assign the function to a new variable (no parentheses!)</span></span>
+<span id="cb2-5"><a></a>yell <span class="op">=</span> shout</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="bu">print</span>(shout(<span class="st">"hello"</span>))   <span class="co"># Output: HELLO!</span></span>
+<span id="cb2-8"><a></a><span class="bu">print</span>(yell(<span class="st">"hello"</span>))    <span class="co"># Output: HELLO!</span></span>
+<span id="cb2-9"><a></a><span class="bu">print</span>(<span class="bu">type</span>(yell))       <span class="co"># Output: &lt;class 'function'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>yell = shout</code> does <strong>not</strong> call the function. It copies the <em>reference</em> to the function object into <code>yell</code>. Both names point to the same function — calling either one produces the same result.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="passing-a-function-as-an-argument-simple" class="slide level2">
+<h2>Passing a Function as an Argument — Simple</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>A Function That Accepts Another Function</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">def</span> apply_twice(func, value):</span>
+<span id="cb3-2"><a></a>    <span class="cf">return</span> func(func(value))</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="kw">def</span> add_three(x):</span>
+<span id="cb3-5"><a></a>    <span class="cf">return</span> x <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>result <span class="op">=</span> apply_twice(add_three, <span class="dv">10</span>)</span>
+<span id="cb3-8"><a></a><span class="bu">print</span>(result)  <span class="co"># Output: 16</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step-by-step:</strong> <code>apply_twice(add_three, 10)</code> sets <code>func = add_three</code> and <code>value = 10</code>. Inner call: <code>func(10)</code> → <code>add_three(10)</code> → <code>13</code>. Outer call: <code>func(13)</code> → <code>add_three(13)</code> → <code>16</code>. Result <code>16</code> is returned.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="passing-a-function-as-an-argument-more-complex" class="slide level2">
+<h2>Passing a Function as an Argument — More Complex</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Applying Different Operations to a List</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">def</span> transform_list(data, operation):</span>
+<span id="cb4-2"><a></a>    result <span class="op">=</span> []</span>
+<span id="cb4-3"><a></a>    <span class="cf">for</span> item <span class="kw">in</span> data:</span>
+<span id="cb4-4"><a></a>        result.append(operation(item))</span>
+<span id="cb4-5"><a></a>    <span class="cf">return</span> result</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="kw">def</span> square(x):  <span class="cf">return</span> x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb4-8"><a></a><span class="kw">def</span> negate(x):  <span class="cf">return</span> <span class="op">-</span>x</span>
+<span id="cb4-9"><a></a></span>
+<span id="cb4-10"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb4-11"><a></a><span class="bu">print</span>(transform_list(numbers, square))  <span class="co"># [1, 4, 9, 16, 25]</span></span>
+<span id="cb4-12"><a></a><span class="bu">print</span>(transform_list(numbers, negate))  <span class="co"># [-1, -2, -3, -4, -5]</span></span>
+<span id="cb4-13"><a></a><span class="bu">print</span>(transform_list(numbers, <span class="bu">str</span>))     <span class="co"># ['1', '2', '3', '4', '5']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>transform_list</code> doesn’t care <em>which</em> function it receives — it simply calls <code>operation(item)</code> for each element. We can even pass the built-in <code>str</code>. This makes the function <strong>reusable</strong> with any transformation.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="returning-a-function-from-a-function-simple" class="slide level2">
+<h2>Returning a Function from a Function — Simple</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>A Function Factory</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> make_multiplier(factor):</span>
+<span id="cb5-2"><a></a>    <span class="kw">def</span> multiplier(x):</span>
+<span id="cb5-3"><a></a>        <span class="cf">return</span> x <span class="op">*</span> factor</span>
+<span id="cb5-4"><a></a>    <span class="cf">return</span> multiplier</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>double <span class="op">=</span> make_multiplier(<span class="dv">2</span>)</span>
+<span id="cb5-7"><a></a>triple <span class="op">=</span> make_multiplier(<span class="dv">3</span>)</span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="bu">print</span>(double(<span class="dv">5</span>))   <span class="co"># Output: 10</span></span>
+<span id="cb5-10"><a></a><span class="bu">print</span>(triple(<span class="dv">5</span>))   <span class="co"># Output: 15</span></span>
+<span id="cb5-11"><a></a><span class="bu">print</span>(double(<span class="dv">10</span>))  <span class="co"># Output: 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>make_multiplier(2)</code> builds and <em>returns</em> the inner <code>multiplier</code> function with <code>factor = 2</code> baked in. <code>double</code> is now that function. This is called a <strong>closure</strong> — the inner function remembers <code>factor</code> from its enclosing scope even after <code>make_multiplier</code> has finished.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="returning-a-function-more-complex" class="slide level2">
+<h2>Returning a Function — More Complex</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>A Greeting Factory</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> make_greeter(greeting, punctuation<span class="op">=</span><span class="st">"!"</span>):</span>
+<span id="cb6-2"><a></a>    <span class="kw">def</span> greeter(name):</span>
+<span id="cb6-3"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>greeting<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}{</span>punctuation<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-4"><a></a>    <span class="cf">return</span> greeter</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>say_hello   <span class="op">=</span> make_greeter(<span class="st">"Hello"</span>)</span>
+<span id="cb6-7"><a></a>say_goodbye <span class="op">=</span> make_greeter(<span class="st">"Goodbye"</span>, <span class="st">"..."</span>)</span>
+<span id="cb6-8"><a></a>say_hey     <span class="op">=</span> make_greeter(<span class="st">"Hey"</span>, <span class="st">"! 👋"</span>)</span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a><span class="bu">print</span>(say_hello(<span class="st">"Alice"</span>))    <span class="co"># Hello, Alice!</span></span>
+<span id="cb6-11"><a></a><span class="bu">print</span>(say_goodbye(<span class="st">"Bob"</span>))    <span class="co"># Goodbye, Bob...</span></span>
+<span id="cb6-12"><a></a><span class="bu">print</span>(say_hey(<span class="st">"Charlie"</span>))    <span class="co"># Hey, Charlie! 👋</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why this is useful:</strong> Instead of three separate greeting functions we build one <em>factory</em> that produces customized functions on demand. Each returned function carries its own <code>greeting</code> and <code>punctuation</code> values locked in via closure.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="built-in-higher-order-functions-revisited" class="slide level2">
+<h2>Built-In Higher-Order Functions Revisited</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>map()</code>, <code>filter()</code>, and <code>sorted()</code> Are Higher-Order Functions</strong></p>
+</div>
+<div class="callout-content">
+<p>They are higher-order because they <strong>accept a function as an argument</strong>. You can pass any callable — including built-in functions — directly, without parentheses.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">8</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">4</span>]</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>absolutes <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">abs</span>, numbers))</span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(absolutes)  <span class="co"># [1, 3, 5, 2, 8, 7, 4]</span></span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>positives <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="op">&gt;</span> <span class="dv">0</span>, numbers))</span>
+<span id="cb7-7"><a></a><span class="bu">print</span>(positives)  <span class="co"># [1, 5, 8, 4]</span></span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a>by_abs <span class="op">=</span> <span class="bu">sorted</span>(numbers, key<span class="op">=</span><span class="bu">abs</span>)</span>
+<span id="cb7-10"><a></a><span class="bu">print</span>(by_abs)     <span class="co"># [-2, 1, -3, 4, 5, -7, 8]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Notice:</strong> <code>abs</code> is passed directly — no parentheses, no lambda needed. Any callable works!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-2-decorators" class="title-slide slide level1 center">
+<h1>Part 2: Decorators</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What Is a Decorator?</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>decorator</strong> is a higher-order function that takes a function, adds some behavior to it, and returns a new function — all <em>without modifying</em> the original function’s code.</p>
+</div>
+</div>
+</div>
+<div style="color: #8E44AD;">
+<p><strong>Analogy:</strong> Think of a decorator like a gift wrapper 🎁. The gift (your function) stays the same; the wrapper adds something extra — logging, timing, validation — around it.</p>
+</div>
+</section>
+<section id="decorator-pattern-manual-approach" class="slide level2">
+<h2>Decorator Pattern — Manual Approach</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Before the <code>@</code> Syntax</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> my_decorator(func):</span>
+<span id="cb8-2"><a></a>    <span class="kw">def</span> wrapper():</span>
+<span id="cb8-3"><a></a>        <span class="bu">print</span>(<span class="st">"Something happens BEFORE the function."</span>)</span>
+<span id="cb8-4"><a></a>        func()</span>
+<span id="cb8-5"><a></a>        <span class="bu">print</span>(<span class="st">"Something happens AFTER the function."</span>)</span>
+<span id="cb8-6"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb8-7"><a></a></span>
+<span id="cb8-8"><a></a><span class="kw">def</span> say_hello():</span>
+<span id="cb8-9"><a></a>    <span class="bu">print</span>(<span class="st">"Hello!"</span>)</span>
+<span id="cb8-10"><a></a></span>
+<span id="cb8-11"><a></a>say_hello <span class="op">=</span> my_decorator(say_hello)  <span class="co"># manually decorate</span></span>
+<span id="cb8-12"><a></a>say_hello()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Output:</strong> <code>Something happens BEFORE the function.</code> / <code>Hello!</code> / <code>Something happens AFTER the function.</code></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>my_decorator</code> wraps <code>say_hello</code> inside <code>wrapper</code> and returns it. Re-assigning <code>say_hello = my_decorator(say_hello)</code> means every future call runs <code>wrapper()</code>, which sandwiches the original call with extra behavior.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-syntax-pythons-shorthand" class="slide level2">
+<h2>The <code>@</code> Syntax — Python’s Shorthand</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Much Cleaner!</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> my_decorator(func):</span>
+<span id="cb9-2"><a></a>    <span class="kw">def</span> wrapper():</span>
+<span id="cb9-3"><a></a>        <span class="bu">print</span>(<span class="st">"Before the function runs."</span>)</span>
+<span id="cb9-4"><a></a>        func()</span>
+<span id="cb9-5"><a></a>        <span class="bu">print</span>(<span class="st">"After the function runs."</span>)</span>
+<span id="cb9-6"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb9-7"><a></a></span>
+<span id="cb9-8"><a></a><span class="at">@my_decorator</span></span>
+<span id="cb9-9"><a></a><span class="kw">def</span> say_goodbye():</span>
+<span id="cb9-10"><a></a>    <span class="bu">print</span>(<span class="st">"Goodbye!"</span>)</span>
+<span id="cb9-11"><a></a></span>
+<span id="cb9-12"><a></a>say_goodbye()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Output:</strong> <code>Before the function runs.</code> / <code>Goodbye!</code> / <code>After the function runs.</code></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Key Point:</strong> <code>@my_decorator</code> above a function is exactly the same as writing <code>say_goodbye = my_decorator(say_goodbye)</code>. The <code>@</code> symbol is syntactic sugar — it looks cleaner and is the Pythonic way.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="decorator-with-arguments-simple" class="slide level2">
+<h2>Decorator with Arguments — Simple</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Handling Any Signature with <code>*args</code> and <code>**kwargs</code></strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> log_call(func):</span>
+<span id="cb10-2"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb10-3"><a></a>        <span class="bu">print</span>(<span class="ss">f"Calling </span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss"> with args=</span><span class="sc">{</span>args<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-4"><a></a>        result <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb10-5"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss"> returned </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-6"><a></a>        <span class="cf">return</span> result</span>
+<span id="cb10-7"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a><span class="at">@log_call</span></span>
+<span id="cb10-10"><a></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb10-11"><a></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a><span class="bu">print</span>(add(<span class="dv">3</span>, <span class="dv">5</span>))</span>
+<span id="cb10-14"><a></a><span class="co"># Calling add with args=(3, 5)</span></span>
+<span id="cb10-15"><a></a><span class="co"># add returned 8</span></span>
+<span id="cb10-16"><a></a><span class="co"># 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>*args</code> captures positional arguments as a tuple; <code>**kwargs</code> captures keyword arguments as a dictionary. The wrapper can therefore decorate <strong>any</strong> function signature. The original return value is captured and passed through unchanged.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="a-practical-decorator-timing-a-function" class="slide level2">
+<h2>A Practical Decorator — Timing a Function</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Measuring Execution Time</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> time</span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="kw">def</span> timer(func):</span>
+<span id="cb11-4"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb11-5"><a></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb11-6"><a></a>        result <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb11-7"><a></a>        elapsed <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb11-8"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss"> took </span><span class="sc">{</span>elapsed<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb11-9"><a></a>        <span class="cf">return</span> result</span>
+<span id="cb11-10"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb11-11"><a></a></span>
+<span id="cb11-12"><a></a><span class="at">@timer</span></span>
+<span id="cb11-13"><a></a><span class="kw">def</span> slow_sum(n):</span>
+<span id="cb11-14"><a></a>    total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-15"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb11-16"><a></a>        total <span class="op">+=</span> i</span>
+<span id="cb11-17"><a></a>    <span class="cf">return</span> total</span>
+<span id="cb11-18"><a></a></span>
+<span id="cb11-19"><a></a>result <span class="op">=</span> slow_sum(<span class="dv">1_000_000</span>)</span>
+<span id="cb11-20"><a></a><span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why decorators are powerful:</strong> Timing was added to <code>slow_sum</code> <strong>without changing its code</strong>. <code>@timer</code> can be placed on <em>any</em> function to profile it — reusable, composable behavior.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="stacking-decorators" class="slide level2">
+<h2>Stacking Decorators</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Multiple Decorators on One Function</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> bold(func):</span>
+<span id="cb12-2"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb12-3"><a></a>        <span class="cf">return</span> <span class="ss">f"&lt;b&gt;</span><span class="sc">{</span>func(<span class="op">*</span>args, <span class="op">**</span>kwargs)<span class="sc">}</span><span class="ss">&lt;/b&gt;"</span></span>
+<span id="cb12-4"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="kw">def</span> italic(func):</span>
+<span id="cb12-7"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb12-8"><a></a>        <span class="cf">return</span> <span class="ss">f"&lt;i&gt;</span><span class="sc">{</span>func(<span class="op">*</span>args, <span class="op">**</span>kwargs)<span class="sc">}</span><span class="ss">&lt;/i&gt;"</span></span>
+<span id="cb12-9"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="at">@bold</span></span>
+<span id="cb12-12"><a></a><span class="at">@italic</span></span>
+<span id="cb12-13"><a></a><span class="kw">def</span> say(text):</span>
+<span id="cb12-14"><a></a>    <span class="cf">return</span> text</span>
+<span id="cb12-15"><a></a></span>
+<span id="cb12-16"><a></a><span class="bu">print</span>(say(<span class="st">"Hello"</span>))  <span class="co"># &lt;b&gt;&lt;i&gt;Hello&lt;/i&gt;&lt;/b&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Execution order:</strong> Decorators apply <strong>bottom-up</strong>. <code>@italic</code> wraps <code>say</code> first, then <code>@bold</code> wraps the result. Calling <code>say("Hello")</code> is equivalent to <code>bold(italic(say))("Hello")</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-3-simple-classes" class="title-slide slide level1 center">
+<h1>Part 3: Simple Classes</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What Is a Class?</strong></p>
+</div>
+<div class="callout-content">
+<p>A <strong>class</strong> is a blueprint for creating objects. Each object (instance) bundles together:</p>
+<ul>
+<li><strong>Attributes</strong> — data (variables) that belong to the object</li>
+<li><strong>Methods</strong> — functions that belong to the object</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #8E44AD;">
+<p><strong>Analogy:</strong> A class is like a cookie cutter 🍪. The cutter (class) defines the shape; each cookie (instance) is made from it and can have its own decorations (attribute values).</p>
+</div>
+</section>
+<section id="your-first-class-simple-example" class="slide level2">
+<h2>Your First Class — Simple Example</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Defining and Using a Class</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">class</span> Dog:</span>
+<span id="cb13-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, breed):</span>
+<span id="cb13-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb13-4"><a></a>        <span class="va">self</span>.breed <span class="op">=</span> breed</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a>    <span class="kw">def</span> bark(<span class="va">self</span>):</span>
+<span id="cb13-7"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> says: Woof!"</span></span>
+<span id="cb13-8"><a></a></span>
+<span id="cb13-9"><a></a>my_dog   <span class="op">=</span> Dog(<span class="st">"Buddy"</span>, <span class="st">"Golden Retriever"</span>)</span>
+<span id="cb13-10"><a></a>your_dog <span class="op">=</span> Dog(<span class="st">"Max"</span>, <span class="st">"Poodle"</span>)</span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a><span class="bu">print</span>(my_dog.bark())    <span class="co"># Buddy says: Woof!</span></span>
+<span id="cb13-13"><a></a><span class="bu">print</span>(your_dog.name)    <span class="co"># Max</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Step-by-step:</strong> <code>class Dog:</code> defines the blueprint. <code>__init__</code> is the <strong>constructor</strong> — it runs automatically when you create a new instance. <code>self</code> refers to the specific object being created. <code>my_dog.bark()</code> passes <code>my_dog</code> as <code>self</code> automatically.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-self" class="slide level2">
+<h2>Understanding <code>self</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Each Instance Has Its Own Data</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">class</span> Counter:</span>
+<span id="cb14-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb14-3"><a></a>        <span class="va">self</span>.count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a>    <span class="kw">def</span> increment(<span class="va">self</span>):</span>
+<span id="cb14-6"><a></a>        <span class="va">self</span>.count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a>    <span class="kw">def</span> get_count(<span class="va">self</span>):</span>
+<span id="cb14-9"><a></a>        <span class="cf">return</span> <span class="va">self</span>.count</span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a>counter_a <span class="op">=</span> Counter()</span>
+<span id="cb14-12"><a></a>counter_b <span class="op">=</span> Counter()</span>
+<span id="cb14-13"><a></a></span>
+<span id="cb14-14"><a></a>counter_a.increment()</span>
+<span id="cb14-15"><a></a>counter_a.increment()</span>
+<span id="cb14-16"><a></a>counter_b.increment()</span>
+<span id="cb14-17"><a></a></span>
+<span id="cb14-18"><a></a><span class="bu">print</span>(counter_a.get_count())  <span class="co"># 2</span></span>
+<span id="cb14-19"><a></a><span class="bu">print</span>(counter_b.get_count())  <span class="co"># 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Key Point:</strong> <code>counter_a</code> and <code>counter_b</code> each have their <strong>own</strong> <code>count</code> attribute. <code>self.count</code> inside <code>counter_a.increment()</code> only changes <code>counter_a</code>’s data — <code>counter_b</code> is unaffected.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="a-more-complete-class-bankaccount" class="slide level2">
+<h2>A More Complete Class — <code>BankAccount</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Encapsulating Data and Operations</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">class</span> BankAccount:</span>
+<span id="cb15-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, owner, balance<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb15-3"><a></a>        <span class="va">self</span>.owner <span class="op">=</span> owner</span>
+<span id="cb15-4"><a></a>        <span class="va">self</span>.balance <span class="op">=</span> balance</span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a>    <span class="kw">def</span> deposit(<span class="va">self</span>, amount):</span>
+<span id="cb15-7"><a></a>        <span class="cf">if</span> amount <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb15-8"><a></a>            <span class="va">self</span>.balance <span class="op">+=</span> amount</span>
+<span id="cb15-9"><a></a>            <span class="cf">return</span> <span class="ss">f"Deposited $</span><span class="sc">{</span>amount<span class="sc">}</span><span class="ss">. Balance: $</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>balance<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb15-10"><a></a>        <span class="cf">return</span> <span class="st">"Amount must be positive."</span></span>
+<span id="cb15-11"><a></a></span>
+<span id="cb15-12"><a></a>    <span class="kw">def</span> withdraw(<span class="va">self</span>, amount):</span>
+<span id="cb15-13"><a></a>        <span class="cf">if</span> amount <span class="op">&gt;</span> <span class="va">self</span>.balance:</span>
+<span id="cb15-14"><a></a>            <span class="cf">return</span> <span class="st">"Insufficient funds!"</span></span>
+<span id="cb15-15"><a></a>        <span class="va">self</span>.balance <span class="op">-=</span> amount</span>
+<span id="cb15-16"><a></a>        <span class="cf">return</span> <span class="ss">f"Withdrew $</span><span class="sc">{</span>amount<span class="sc">}</span><span class="ss">. Balance: $</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>balance<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb15-17"><a></a></span>
+<span id="cb15-18"><a></a>account <span class="op">=</span> BankAccount(<span class="st">"Alice"</span>, <span class="dv">100</span>)</span>
+<span id="cb15-19"><a></a><span class="bu">print</span>(account.deposit(<span class="dv">50</span>))    <span class="co"># Deposited $50. Balance: $150</span></span>
+<span id="cb15-20"><a></a><span class="bu">print</span>(account.withdraw(<span class="dv">200</span>))  <span class="co"># Insufficient funds!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong> <code>BankAccount</code> keeps data (<code>owner</code>, <code>balance</code>) and operations (<code>deposit</code>, <code>withdraw</code>) together. This prevents outside code from misusing the data and makes the logic easy to maintain.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-__str__-method-making-objects-printable" class="slide level2">
+<h2>The <code>__str__</code> Method — Making Objects Printable</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Custom String Representation</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">class</span> Student:</span>
+<span id="cb16-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, grade):</span>
+<span id="cb16-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb16-4"><a></a>        <span class="va">self</span>.grade <span class="op">=</span> grade</span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb16-7"><a></a>        <span class="cf">return</span> <span class="ss">f"Student(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, grade=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>grade<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb16-8"><a></a></span>
+<span id="cb16-9"><a></a>    <span class="kw">def</span> is_passing(<span class="va">self</span>):</span>
+<span id="cb16-10"><a></a>        <span class="cf">return</span> <span class="va">self</span>.grade <span class="op">&gt;=</span> <span class="dv">60</span></span>
+<span id="cb16-11"><a></a></span>
+<span id="cb16-12"><a></a>s1 <span class="op">=</span> Student(<span class="st">"Alice"</span>, <span class="dv">92</span>)</span>
+<span id="cb16-13"><a></a>s2 <span class="op">=</span> Student(<span class="st">"Bob"</span>, <span class="dv">55</span>)</span>
+<span id="cb16-14"><a></a></span>
+<span id="cb16-15"><a></a><span class="bu">print</span>(s1)               <span class="co"># Student(Alice, grade=92)</span></span>
+<span id="cb16-16"><a></a><span class="bu">print</span>(s1.is_passing())  <span class="co"># True</span></span>
+<span id="cb16-17"><a></a><span class="bu">print</span>(s2.is_passing())  <span class="co"># False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why <code>__str__</code>?</strong> Without it <code>print(s1)</code> shows <code>&lt;__main__.Student object at 0x...&gt;</code>. Defining <code>__str__</code> tells Python how to render your object as a human-readable string whenever <code>print()</code> or <code>str()</code> is called on it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="classes-with-collections-playlist" class="slide level2">
+<h2>Classes with Collections — <code>Playlist</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Storing a List Inside an Object</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">class</span> Playlist:</span>
+<span id="cb17-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name):</span>
+<span id="cb17-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb17-4"><a></a>        <span class="va">self</span>.songs <span class="op">=</span> []</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a>    <span class="kw">def</span> add_song(<span class="va">self</span>, song):   <span class="va">self</span>.songs.append(song)</span>
+<span id="cb17-7"><a></a>    <span class="kw">def</span> total_songs(<span class="va">self</span>):      <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.songs)</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>    <span class="kw">def</span> show(<span class="va">self</span>):</span>
+<span id="cb17-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"🎵 </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-11"><a></a>        <span class="cf">for</span> i, song <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.songs, <span class="dv">1</span>):</span>
+<span id="cb17-12"><a></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>song<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-13"><a></a></span>
+<span id="cb17-14"><a></a>my_playlist <span class="op">=</span> Playlist(<span class="st">"Study Vibes"</span>)</span>
+<span id="cb17-15"><a></a>my_playlist.add_song(<span class="st">"Lo-Fi Beats"</span>)</span>
+<span id="cb17-16"><a></a>my_playlist.add_song(<span class="st">"Piano Chill"</span>)</span>
+<span id="cb17-17"><a></a>my_playlist.show()</span>
+<span id="cb17-18"><a></a><span class="bu">print</span>(<span class="ss">f"Total: </span><span class="sc">{</span>my_playlist<span class="sc">.</span>total_songs()<span class="sc">}</span><span class="ss"> songs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>self.songs = []</code> creates an independent list <strong>per instance</strong>. Each <code>Playlist</code> object manages its own song list; the methods provide a clean interface for manipulating it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="classes-higher-order-functions-together" class="slide level2">
+<h2>Classes + Higher-Order Functions Together</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><code>sorted()</code> and <code>filter()</code> Work Great with Objects</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">class</span> Product:</span>
+<span id="cb18-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, price):</span>
+<span id="cb18-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb18-4"><a></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb18-5"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb18-6"><a></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>price<span class="sc">:.2f}</span><span class="ss">"</span></span>
+<span id="cb18-7"><a></a></span>
+<span id="cb18-8"><a></a>products <span class="op">=</span> [</span>
+<span id="cb18-9"><a></a>    Product(<span class="st">"Laptop"</span>, <span class="fl">999.99</span>),</span>
+<span id="cb18-10"><a></a>    Product(<span class="st">"Mouse"</span>, <span class="fl">29.99</span>),</span>
+<span id="cb18-11"><a></a>    Product(<span class="st">"Keyboard"</span>, <span class="fl">79.99</span>),</span>
+<span id="cb18-12"><a></a>]</span>
+<span id="cb18-13"><a></a></span>
+<span id="cb18-14"><a></a>by_price   <span class="op">=</span> <span class="bu">sorted</span>(products, key<span class="op">=</span><span class="kw">lambda</span> p: p.price)</span>
+<span id="cb18-15"><a></a>affordable <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> p: p.price <span class="op">&lt;</span> <span class="dv">100</span>, products))</span>
+<span id="cb18-16"><a></a></span>
+<span id="cb18-17"><a></a><span class="cf">for</span> p <span class="kw">in</span> by_price:   <span class="bu">print</span>(p)</span>
+<span id="cb18-18"><a></a><span class="bu">print</span>(<span class="st">"---"</span>)</span>
+<span id="cb18-19"><a></a><span class="cf">for</span> p <span class="kw">in</span> affordable: <span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>The connection:</strong> Higher-order functions like <code>sorted()</code> and <code>filter()</code> accept a lambda that extracts an attribute from each object. This shows how all three topics — higher-order functions, lambdas, and classes — work together in real Python code.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="challenge-problems" class="title-slide slide level1 center">
+<h1>Challenge Problems</h1>
+<center>
+<img data-src="graphics/challenge.png" style="width:60.0%">
+</center>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🏁 Try These on Your Own!</strong></p>
+</div>
+<div class="callout-content">
+<p>Work through each challenge before looking at the solutions on the next slides.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-1-apply-a-function-repeatedly" class="slide level2">
+<h2>Challenge 1 — Apply a Function Repeatedly</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Higher-Order Function Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Write a function <code>apply_n_times(func, value, n)</code> that applies <code>func</code> to <code>value</code> exactly <code>n</code> times.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">def</span> apply_n_times(func, value, n):</span>
+<span id="cb19-2"><a></a>    <span class="co"># Your code here</span></span>
+<span id="cb19-3"><a></a>    <span class="cf">pass</span></span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a><span class="kw">def</span> double(x):</span>
+<span id="cb19-6"><a></a>    <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb19-7"><a></a></span>
+<span id="cb19-8"><a></a><span class="bu">print</span>(apply_n_times(double, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb19-9"><a></a><span class="co"># Expected: 48   (3 → 6 → 12 → 24 → 48)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2-a-decorator-that-counts-calls" class="slide level2">
+<h2>Challenge 2 — A Decorator That Counts Calls</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Decorator Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Write a decorator <code>count_calls</code> that tracks how many times the decorated function is called. Store the count as an attribute on the wrapper.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Write your count_calls decorator here</span></span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a><span class="at">@count_calls</span></span>
+<span id="cb20-4"><a></a><span class="kw">def</span> say_hi():</span>
+<span id="cb20-5"><a></a>    <span class="bu">print</span>(<span class="st">"Hi!"</span>)</span>
+<span id="cb20-6"><a></a></span>
+<span id="cb20-7"><a></a>say_hi()</span>
+<span id="cb20-8"><a></a>say_hi()</span>
+<span id="cb20-9"><a></a>say_hi()</span>
+<span id="cb20-10"><a></a><span class="bu">print</span>(<span class="ss">f"say_hi was called </span><span class="sc">{</span>say_hi<span class="sc">.</span>call_count<span class="sc">}</span><span class="ss"> times"</span>)</span>
+<span id="cb20-11"><a></a><span class="co"># Expected output:  Hi! / Hi! / Hi! / say_hi was called 3 times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-3-a-rectangle-class" class="slide level2">
+<h2>Challenge 3 — A <code>Rectangle</code> Class</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Class Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Create a <code>Rectangle</code> class with <code>width</code> and <code>height</code>, an <code>area()</code> method, a <code>perimeter()</code> method, an <code>is_square()</code> method, and a <code>__str__</code> method.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># Write your Rectangle class here</span></span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a>r1 <span class="op">=</span> Rectangle(<span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb21-4"><a></a>r2 <span class="op">=</span> Rectangle(<span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb21-5"><a></a><span class="bu">print</span>(r1)                          <span class="co"># Rectangle(5 x 3)</span></span>
+<span id="cb21-6"><a></a><span class="bu">print</span>(<span class="ss">f"Area:      </span><span class="sc">{</span>r1<span class="sc">.</span>area()<span class="sc">}</span><span class="ss">"</span>)   <span class="co"># Area:      15</span></span>
+<span id="cb21-7"><a></a><span class="bu">print</span>(<span class="ss">f"Perimeter: </span><span class="sc">{</span>r1<span class="sc">.</span>perimeter()<span class="sc">}</span><span class="ss">"</span>)  <span class="co"># Perimeter: 16</span></span>
+<span id="cb21-8"><a></a><span class="bu">print</span>(r1.is_square())              <span class="co"># False</span></span>
+<span id="cb21-9"><a></a><span class="bu">print</span>(r2.is_square())              <span class="co"># True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-4-function-composer" class="slide level2">
+<h2>Challenge 4 — Function Composer</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Higher-Order Function Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Write <code>compose(f, g)</code> that returns a new function applying <code>g</code> first, then <code>f</code>. In math: <code>compose(f, g)(x) = f(g(x))</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> compose(f, g):</span>
+<span id="cb22-2"><a></a>    <span class="cf">pass</span>   <span class="co"># Your code here</span></span>
+<span id="cb22-3"><a></a></span>
+<span id="cb22-4"><a></a><span class="kw">def</span> add_one(x): <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb22-5"><a></a><span class="kw">def</span> double(x):  <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb22-6"><a></a></span>
+<span id="cb22-7"><a></a>add_then_double <span class="op">=</span> compose(double, add_one)</span>
+<span id="cb22-8"><a></a>double_then_add <span class="op">=</span> compose(add_one, double)</span>
+<span id="cb22-9"><a></a></span>
+<span id="cb22-10"><a></a><span class="bu">print</span>(add_then_double(<span class="dv">5</span>))  <span class="co"># Expected: 12</span></span>
+<span id="cb22-11"><a></a><span class="bu">print</span>(double_then_add(<span class="dv">5</span>))  <span class="co"># Expected: 11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-5-gradebook-with-higher-order-functions" class="slide level2">
+<h2>Challenge 5 — <code>GradeBook</code> with Higher-Order Functions</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Putting It All Together!</strong></p>
+</div>
+<div class="callout-content">
+<p>Build a <code>GradeBook</code> class with: <code>add_student(name, grade)</code>, <code>get_passing(min_grade=60)</code> using <code>filter</code>, <code>get_curved_grades(curve_func)</code> using <code>map</code>, and <code>top_student()</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>gb <span class="op">=</span> GradeBook()</span>
+<span id="cb23-2"><a></a>gb.add_student(<span class="st">"Alice"</span>, <span class="dv">92</span>)</span>
+<span id="cb23-3"><a></a>gb.add_student(<span class="st">"Bob"</span>, <span class="dv">55</span>)</span>
+<span id="cb23-4"><a></a>gb.add_student(<span class="st">"Charlie"</span>, <span class="dv">78</span>)</span>
+<span id="cb23-5"><a></a>gb.add_student(<span class="st">"Diana"</span>, <span class="dv">43</span>)</span>
+<span id="cb23-6"><a></a></span>
+<span id="cb23-7"><a></a><span class="bu">print</span>(gb.get_passing())</span>
+<span id="cb23-8"><a></a><span class="co"># Expected: ['Alice', 'Charlie']</span></span>
+<span id="cb23-9"><a></a><span class="bu">print</span>(gb.get_curved_grades(<span class="kw">lambda</span> g: g <span class="op">+</span> <span class="dv">10</span>))</span>
+<span id="cb23-10"><a></a><span class="co"># Expected: {'Alice': 102, 'Bob': 65, 'Charlie': 88, 'Diana': 53}</span></span>
+<span id="cb23-11"><a></a><span class="bu">print</span>(gb.top_student())</span>
+<span id="cb23-12"><a></a><span class="co"># Expected: Alice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="challenge-solutions" class="title-slide slide level1 center">
+<h1>Challenge Solutions</h1>
+
+</section>
+<section id="solution-1-apply-a-function-repeatedly" class="slide level2">
+<h2>Solution 1 — Apply a Function Repeatedly</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="kw">def</span> apply_n_times(func, value, n):</span>
+<span id="cb24-2"><a></a>    result <span class="op">=</span> value</span>
+<span id="cb24-3"><a></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb24-4"><a></a>        result <span class="op">=</span> func(result)</span>
+<span id="cb24-5"><a></a>    <span class="cf">return</span> result</span>
+<span id="cb24-6"><a></a></span>
+<span id="cb24-7"><a></a><span class="kw">def</span> double(x):</span>
+<span id="cb24-8"><a></a>    <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb24-9"><a></a></span>
+<span id="cb24-10"><a></a><span class="bu">print</span>(apply_n_times(double, <span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># 48</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>result</code> starts at <code>3</code>. Each loop iteration applies <code>func</code>, chaining output to input: <code>3 → 6 → 12 → 24 → 48</code>. This is a <strong>higher-order function</strong> because <code>func</code> is received as a parameter.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-2-decorator-that-counts-calls" class="slide level2">
+<h2>Solution 2 — Decorator That Counts Calls</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="kw">def</span> count_calls(func):</span>
+<span id="cb25-2"><a></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb25-3"><a></a>        wrapper.call_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb25-4"><a></a>        <span class="cf">return</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb25-5"><a></a>    wrapper.call_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-6"><a></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb25-7"><a></a></span>
+<span id="cb25-8"><a></a><span class="at">@count_calls</span></span>
+<span id="cb25-9"><a></a><span class="kw">def</span> say_hi():</span>
+<span id="cb25-10"><a></a>    <span class="bu">print</span>(<span class="st">"Hi!"</span>)</span>
+<span id="cb25-11"><a></a></span>
+<span id="cb25-12"><a></a>say_hi()<span class="op">;</span> say_hi()<span class="op">;</span> say_hi()</span>
+<span id="cb25-13"><a></a><span class="bu">print</span>(<span class="ss">f"say_hi was called </span><span class="sc">{</span>say_hi<span class="sc">.</span>call_count<span class="sc">}</span><span class="ss"> times"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> Functions are objects — you can attach attributes to them. <code>wrapper.call_count = 0</code> initialises the counter on the function object itself. Each call increments it before delegating to the original <code>func</code>. After <code>@count_calls</code>, <code>say_hi</code> <em>is</em> <code>wrapper</code>, so <code>say_hi.call_count</code> gives the total.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-3-rectangle-class" class="slide level2">
+<h2>Solution 3 — <code>Rectangle</code> Class</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">class</span> Rectangle:</span>
+<span id="cb26-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, width, height):</span>
+<span id="cb26-3"><a></a>        <span class="va">self</span>.width <span class="op">=</span> width</span>
+<span id="cb26-4"><a></a>        <span class="va">self</span>.height <span class="op">=</span> height</span>
+<span id="cb26-5"><a></a></span>
+<span id="cb26-6"><a></a>    <span class="kw">def</span> area(<span class="va">self</span>):       <span class="cf">return</span> <span class="va">self</span>.width <span class="op">*</span> <span class="va">self</span>.height</span>
+<span id="cb26-7"><a></a>    <span class="kw">def</span> perimeter(<span class="va">self</span>):  <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> (<span class="va">self</span>.width <span class="op">+</span> <span class="va">self</span>.height)</span>
+<span id="cb26-8"><a></a>    <span class="kw">def</span> is_square(<span class="va">self</span>):  <span class="cf">return</span> <span class="va">self</span>.width <span class="op">==</span> <span class="va">self</span>.height</span>
+<span id="cb26-9"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):    <span class="cf">return</span> <span class="ss">f"Rectangle(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>width<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>height<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb26-10"><a></a></span>
+<span id="cb26-11"><a></a>r1 <span class="op">=</span> Rectangle(<span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb26-12"><a></a>r2 <span class="op">=</span> Rectangle(<span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb26-13"><a></a><span class="bu">print</span>(r1)               <span class="co"># Rectangle(5 x 3)</span></span>
+<span id="cb26-14"><a></a><span class="bu">print</span>(r1.area())        <span class="co"># 15</span></span>
+<span id="cb26-15"><a></a><span class="bu">print</span>(r1.is_square())   <span class="co"># False</span></span>
+<span id="cb26-16"><a></a><span class="bu">print</span>(r2.is_square())   <span class="co"># True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>__init__</code> stores dimensions as instance attributes. Each method uses <code>self</code> to access that specific instance’s data. <code>__str__</code> provides a readable string when <code>print()</code> is called on the object.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-4-function-composer" class="slide level2">
+<h2>Solution 4 — Function Composer</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="kw">def</span> compose(f, g):</span>
+<span id="cb27-2"><a></a>    <span class="kw">def</span> composed(x):</span>
+<span id="cb27-3"><a></a>        <span class="cf">return</span> f(g(x))</span>
+<span id="cb27-4"><a></a>    <span class="cf">return</span> composed</span>
+<span id="cb27-5"><a></a></span>
+<span id="cb27-6"><a></a><span class="kw">def</span> add_one(x): <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb27-7"><a></a><span class="kw">def</span> double(x):  <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb27-8"><a></a></span>
+<span id="cb27-9"><a></a>add_then_double <span class="op">=</span> compose(double, add_one)</span>
+<span id="cb27-10"><a></a>double_then_add <span class="op">=</span> compose(add_one, double)</span>
+<span id="cb27-11"><a></a></span>
+<span id="cb27-12"><a></a><span class="bu">print</span>(add_then_double(<span class="dv">5</span>))  <span class="co"># 12</span></span>
+<span id="cb27-13"><a></a><span class="bu">print</span>(double_then_add(<span class="dv">5</span>))  <span class="co"># 11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong> <code>compose(f, g)</code> returns <code>composed</code> — a closure that calls <code>g</code> first, feeds the result to <code>f</code>. <code>add_then_double(5)</code>: <code>add_one(5) = 6</code>, then <code>double(6) = 12</code>. <code>double_then_add(5)</code>: <code>double(5) = 10</code>, then <code>add_one(10) = 11</code>. <code>composed</code> is a <strong>closure</strong> — it remembers <code>f</code> and <code>g</code> from the enclosing scope.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-5-gradebook-code" class="slide level2">
+<h2>Solution 5 — <code>GradeBook</code> (Code)</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="kw">class</span> GradeBook:</span>
+<span id="cb28-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb28-3"><a></a>        <span class="va">self</span>.students <span class="op">=</span> {}</span>
+<span id="cb28-4"><a></a></span>
+<span id="cb28-5"><a></a>    <span class="kw">def</span> add_student(<span class="va">self</span>, name, grade):</span>
+<span id="cb28-6"><a></a>        <span class="va">self</span>.students[name] <span class="op">=</span> grade</span>
+<span id="cb28-7"><a></a></span>
+<span id="cb28-8"><a></a>    <span class="kw">def</span> get_passing(<span class="va">self</span>, min_grade<span class="op">=</span><span class="dv">60</span>):</span>
+<span id="cb28-9"><a></a>        passing <span class="op">=</span> <span class="bu">filter</span>(</span>
+<span id="cb28-10"><a></a>            <span class="kw">lambda</span> item: item[<span class="dv">1</span>] <span class="op">&gt;=</span> min_grade,</span>
+<span id="cb28-11"><a></a>            <span class="va">self</span>.students.items()</span>
+<span id="cb28-12"><a></a>        )</span>
+<span id="cb28-13"><a></a>        <span class="cf">return</span> [name <span class="cf">for</span> name, grade <span class="kw">in</span> passing]</span>
+<span id="cb28-14"><a></a></span>
+<span id="cb28-15"><a></a>    <span class="kw">def</span> get_curved_grades(<span class="va">self</span>, curve_func):</span>
+<span id="cb28-16"><a></a>        curved <span class="op">=</span> <span class="bu">map</span>(</span>
+<span id="cb28-17"><a></a>            <span class="kw">lambda</span> item: (item[<span class="dv">0</span>], curve_func(item[<span class="dv">1</span>])),</span>
+<span id="cb28-18"><a></a>            <span class="va">self</span>.students.items()</span>
+<span id="cb28-19"><a></a>        )</span>
+<span id="cb28-20"><a></a>        <span class="cf">return</span> <span class="bu">dict</span>(curved)</span>
+<span id="cb28-21"><a></a></span>
+<span id="cb28-22"><a></a>    <span class="kw">def</span> top_student(<span class="va">self</span>):</span>
+<span id="cb28-23"><a></a>        <span class="cf">return</span> <span class="bu">max</span>(<span class="va">self</span>.students, key<span class="op">=</span><span class="va">self</span>.students.get)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-5-gradebook-how-it-works" class="slide level2">
+<h2>Solution 5 — <code>GradeBook</code> (How It Works)</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>gb <span class="op">=</span> GradeBook()</span>
+<span id="cb29-2"><a></a>gb.add_student(<span class="st">"Alice"</span>, <span class="dv">92</span>)<span class="op">;</span> gb.add_student(<span class="st">"Bob"</span>, <span class="dv">55</span>)</span>
+<span id="cb29-3"><a></a>gb.add_student(<span class="st">"Charlie"</span>, <span class="dv">78</span>)<span class="op">;</span> gb.add_student(<span class="st">"Diana"</span>, <span class="dv">43</span>)</span>
+<span id="cb29-4"><a></a></span>
+<span id="cb29-5"><a></a><span class="bu">print</span>(gb.get_passing())                        <span class="co"># ['Alice', 'Charlie']</span></span>
+<span id="cb29-6"><a></a><span class="bu">print</span>(gb.get_curved_grades(<span class="kw">lambda</span> g: g <span class="op">+</span> <span class="dv">10</span>))  <span class="co"># {'Alice': 102, ...}</span></span>
+<span id="cb29-7"><a></a><span class="bu">print</span>(gb.top_student())                        <span class="co"># Alice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Explanation</strong></p>
+</div>
+<div class="callout-content">
+<!-- ```python
+gb = GradeBook()
+gb.add_student("Alice", 92); gb.add_student("Bob", 55)
+gb.add_student("Charlie", 78); gb.add_student("Diana", 43)
+
+print(gb.get_passing())                        # ['Alice', 'Charlie']
+print(gb.get_curved_grades(lambda g: g + 10))  # {'Alice': 102, ...}
+print(gb.top_student())                        # Alice
+``` -->
+<ul>
+<li><code>self.students</code> is a <strong>dict</strong> mapping names → grades.</li>
+<li><code>get_passing()</code> uses <code>filter()</code> on <code>self.students.items()</code> — keeps pairs whose grade ≥ <code>min_grade</code>; a list comprehension extracts just the names.</li>
+<li><code>get_curved_grades()</code> uses <code>map()</code> to apply <code>curve_func</code> to every grade, returning a new dict. Accepting <code>curve_func</code> as a parameter makes this a <strong>higher-order method</strong>.</li>
+<li><code>top_student()</code> uses <code>max()</code> with <code>key=self.students.get</code> — finds the key with the highest value.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="whats-the-big-picture" class="title-slide slide level1 center">
+<h1>What’s the Big Picture?</h1>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><strong>Higher-Order Functions</strong></p>
+<ul>
+<li>Accept or return other functions</li>
+<li>Functions are <strong>first-class citizens</strong> in Python</li>
+<li>Closures remember their enclosing scope</li>
+<li><code>map()</code>, <code>filter()</code>, <code>sorted()</code> are built-in examples</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<p><strong>Decorators</strong></p>
+<ul>
+<li>Wrap a function to add behavior</li>
+<li><code>@decorator</code> is clean syntactic sugar</li>
+<li><code>*args</code>, <code>**kwargs</code> handle any signature</li>
+<li>Decorators can be stacked (bottom-up order)</li>
+<li>Uses: logging, timing, validation</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<p><strong>Simple Classes</strong></p>
+<ul>
+<li>Blueprint for creating objects</li>
+<li><code>__init__</code> is the constructor</li>
+<li><code>self</code> refers to the current instance</li>
+<li><code>__str__</code> makes objects printable</li>
+<li>Combine with higher-order functions for powerful, expressive code</li>
+</ul>
+</div></div>
+<center>
+<img data-src="graphics/thumbs_i.png" style="width:40.0%">
+</center>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
