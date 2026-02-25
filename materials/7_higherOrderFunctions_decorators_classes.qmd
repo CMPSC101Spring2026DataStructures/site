@@ -657,6 +657,40 @@ print(add(3, 5))
 **How it works:** `*args` captures positional arguments as a tuple; `**kwargs` captures keyword arguments as a dictionary. The wrapper can therefore decorate **any** function signature. The original return value is captured and passed through unchanged.
 :::
 
+
+## Talking About Arguments (`**kwargs`)!
+
+::: {.callout-important icon="false"}
+```python
+def print_details(**details): # **details is acting like kwargs that captures all keyword arguments as a dictionary      
+    print("Type:", type(details))
+    for key, value in details.items():
+        print(f"{key}: {value}")
+
+print_details(name="Alice", age=30, city="New York") #proces a dictionary of keyword arguments
+print_details(a="Alice", b=30, c="New York") # process another dictionary
+# Output:
+# Type: <class 'dict'>
+# name: Alice
+# age: 30
+# city: New York
+```
+:::
+
+::: {.callout-note icon="false"}
+
+- Syntax: The double asterisk (**) is the key element that enables this functionality, not the specific name `kwargs` (though `kwargs` is the widely accepted convention).
+
+- Data Type: Inside the function, kwargs is a standard Python dictionary, which means you can access its elements using standard dictionary operations like kwargs['key_name'] or by iterating over its items using kwargs.items().
+
+- Flexibility: This is particularly useful when you need to write functions that can handle an unknown number of inputs or optional parameters, making your code more dynamic and reusable.
+
+- Order: When combining **kwargs with other parameters (positional, default, and *args), **kwargs must be placed last in the function's parameter
+
+:::
+
+
+
 ## A Practical Decorator — Timing a Function
 
 ::: {.callout-important icon="false"}
@@ -667,8 +701,11 @@ import time
 def timer(func):
     def wrapper(*args, **kwargs):
         start = time.time()
+        print(f"Starting time: {start}")
         result = func(*args, **kwargs)
-        elapsed = time.time() - start
+        end = time.time()
+        print(f"Ending time: {end}")
+        elapsed = end - start
         print(f"{func.__name__} took {elapsed:.4f} seconds")
         return result
     return wrapper
@@ -684,6 +721,9 @@ result = slow_sum(1_000_000)
 print(f"Result: {result}")
 ```
 
+:::
+
+::: {.callout-note icon="false"}
 **Why decorators are powerful:** Timing was added to `slow_sum` **without changing its code**. `@timer` can be placed on *any* function to profile it — reusable, composable behavior.
 :::
 
@@ -809,10 +849,13 @@ class BankAccount:
         self.balance -= amount
         return f"Withdrew ${amount}. Balance: ${self.balance}"
 
-account = BankAccount("Alice", 100)
+account = BankAccount("Alice", 100) # create a new account (an object) for Alice with $100
 print(account.deposit(50))    # Deposited $50. Balance: $150
 print(account.withdraw(200))  # Insufficient funds!
 ```
+:::
+
+::: {.callout-important icon="false"}
 
 **How it works:** `BankAccount` keeps data (`owner`, `balance`) and operations (`deposit`, `withdraw`) together. This prevents outside code from misusing the data and makes the logic easy to maintain.
 :::
@@ -901,6 +944,9 @@ print("---")
 for p in affordable: print(p)
 ```
 
+:::
+
+::: {.callout-note icon="false"}
 **The connection:** Higher-order functions like `sorted()` and `filter()` accept a lambda that extracts an attribute from each object. This shows how all three topics — higher-order functions, lambdas, and classes — work together in real Python code.
 :::
 
