@@ -86,5 +86,8 @@ Here you will find a listing of lesson materials for the course such as slides, 
 
 - **Higher-Order Functions, Decorators & Simple Classes**
   - [HTML](7_higherOrderFunctions_decorators_classes.html) Slides
+- **Activity 06**: Introduction to the Sphinx Documentation Library
+  - [GitHub Classroom Link](https://classroom.github.com/a/iKhmrd4q)
 
 ---
+
