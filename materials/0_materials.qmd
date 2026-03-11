@@ -73,7 +73,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 04**: Build Your Own Game of *Rock, Paper, Scissors*!
   - [GitHub Classroom Link](https://classroom.github.com/a/KqaKW0-E)
 
-## W6. Functions and Functional *things*
+## W6. Functions and Functional *Things*
 
 - **Functions and Lambda Functions**
   - [HTML](6_lambdaFunctions.html) Slides
@@ -82,12 +82,16 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 05**: Taylor Series Programming For Approximation
   - [GitHub Classroom Link](https://classroom.github.com/a/d8u_yHUd)
 
-## W7. Function-based Programming*
+## W7. Function-based Programming
 
 - **Higher-Order Functions, Decorators & Simple Classes**
   - [HTML](7_higherOrderFunctions_decorators_classes.html) Slides
 - **Activity 06**: Introduction to the Sphinx Documentation Library
   - [GitHub Classroom Link](https://classroom.github.com/a/iKhmrd4q)
+
+## W8. Object-Oriented Programming and Exceptions
+- **Object-Oriented Programming and Exceptions**
+  - [HTML](8_objectOrientedProgramming_exceptions.html) Slides
 
 ---
 

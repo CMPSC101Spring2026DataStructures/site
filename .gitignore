@@ -3,6 +3,14 @@
 /.quarto/
 /_site
 /code/.ipynb_checkpoints/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+*.log
+*.aux
 
 # MacOS
 .DS_Store

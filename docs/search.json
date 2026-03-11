@@ -693,459 +693,249 @@
     "text": "Solution 5: Compare Methods\nIdea: One way to determine “better-ness”; Try running both algorithms and report results with effort.\n\ndef compare_methods(x: float, epsilon: float = 0.001, tol: float = 1e-4):\n    approx, guesses = approx_sqrt(x, epsilon)\n    newton, steps = newtons_sqrt_steps(x, tol=tol)\n    print(f\"Exhaustive: approx={approx}, guesses={guesses}\")\n    print(f\"Newton:     approx={newton}, steps={steps}\")\n\n\ncompare_methods(26)\n\nExhaustive: approx=5.0990000000000375, guesses=5099\nNewton:     approx=5.099019513684701, steps=6"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#get-ready-for-functions-and-lambda-functions",
-    "href": "materials/6_lambdaFunctions.html#get-ready-for-functions-and-lambda-functions",
-    "title": "Functions and Lambda Functions",
-    "section": "Get Ready for Functions and Lambda Functions!",
-    "text": "Get Ready for Functions and Lambda Functions!"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#your-first-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#your-first-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Your First Class",
+    "text": "Your First Class\n\n\n\nClass, Constructor, Method\n\n\nclass Book:\n    def __init__(self, title, author, pages):\n        self.title = title\n        self.author = author\n        self.pages = pages\n\n    def summary(self):\n        return f\"'{self.title}' by {self.author} ({self.pages} pages)\"\n\nb1 = Book(\"Python Basics\", \"A. Rivera\", 240)\nb2 = Book(\"Data Stories\", \"L. Chen\", 180)\n\nprint(b1.summary())\nprint(b2.title)\n\n\n\n\n\n\nImportant\n\n\nHow it works: Book(...) calls __init__ automatically. Each created object stores its own title, author, and pages."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#quick-example-function-that-does-not-return-a-value",
-    "href": "materials/6_lambdaFunctions.html#quick-example-function-that-does-not-return-a-value",
-    "title": "Functions and Lambda Functions",
-    "section": "Quick Example: Function That Does Not Return a Value",
-    "text": "Quick Example: Function That Does Not Return a Value\n\n\n\nAction-Oriented Function\n\n\ndef print_welcome(name):\n    print(f\"Welcome, {name}!\")\n\nresult = print_welcome(\"Ari\")\nprint(result)\nWhat happens? * The function performs an action: it prints a message. * It does not use return, so Python gives back None."
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#instance-state-with-self",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#instance-state-with-self",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Instance State with self",
+    "text": "Instance State with self\n\n\n\nEach Object Keeps Its Own Data\n\n\nclass Counter:\n    def __init__(self):\n        self.value = 0\n\n    def increment(self):\n        self.value += 1\n\n    def reset(self):\n        self.value = 0\n\nc1 = Counter()\nc2 = Counter()\n\nc1.increment(); c1.increment()\nc2.increment()\n\nprint(c1.value)  # 2\nprint(c2.value)  # 1\nself refers to the current object, so c1 and c2 do not overwrite each other."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#quick-example-function-that-returns-a-value",
-    "href": "materials/6_lambdaFunctions.html#quick-example-function-that-returns-a-value",
-    "title": "Functions and Lambda Functions",
-    "section": "Quick Example: Function That Returns a Value",
-    "text": "Quick Example: Function That Returns a Value\n\n\n\nValue-Producing Function\n\n\ndef area_of_rectangle(length, width):\n    return length * width\n\narea = area_of_rectangle(5, 3)\nprint(area)\nWhat happens? * The function computes a value. * return sends that value back to the caller."
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#encapsulation-and-validation",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#encapsulation-and-validation",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Encapsulation and Validation",
+    "text": "Encapsulation and Validation\n\n\n\nGuarding Against Invalid Updates\n\n\nclass Temperature:\n    def __init__(self, celsius=0):\n        self.set_celsius(celsius)\n\n    def set_celsius(self, value):\n        if value &lt; -273.15:\n            raise ValueError(\"Temperature cannot be below absolute zero.\")\n        self._celsius = value\n\n    def get_celsius(self):\n        return self._celsius\n\n    def to_fahrenheit(self):\n        return (self._celsius * 9 / 5) + 32\n\nroom = Temperature(21)\nprint(room.to_fahrenheit())\n\n\n\n\n\n\nNote\n\n\nThe attribute _celsius is a convention for “internal use.” Public methods (set_celsius, get_celsius) enforce valid state."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-the-concept",
-    "href": "materials/6_lambdaFunctions.html#lambda-functions-the-concept",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda Functions: The Concept",
-    "text": "Lambda Functions: The Concept"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#str__-for-readable-objects",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#str__-for-readable-objects",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "__str__ for Readable Objects",
+    "text": "__str__ for Readable Objects\n\n\n\nCustom Print Output\n\n\nclass Student:\n    def __init__(self, name, grade):\n        self.name = name\n        self.grade = grade\n\n    def __str__(self):\n        return f\"Student(name={self.name}, grade={self.grade})\"\n\n    def is_passing(self):\n        return self.grade &gt;= 60\n\ns = Student(\"Maya\", 88)\nprint(s)\nprint(s.is_passing())"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#specifics-of-lambda-functions",
-    "href": "materials/6_lambdaFunctions.html#specifics-of-lambda-functions",
-    "title": "Functions and Lambda Functions",
-    "section": "Specifics of Lambda Functions",
-    "text": "Specifics of Lambda Functions\n\n\n\n\n\n\nImportant\n\n\nLimitations:\n\nLambda functions are restricted to a single expression.\nThey cannot contain statements like assignments, if-else, or for loops within their definition.\nThey are primarily used for simple, short operations.\nFor more complex logic, a named function is more appropriate;\n\ndef myFunction():"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#inheritance-reusing-a-base-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#inheritance-reusing-a-base-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Inheritance: Reusing a Base Class",
+    "text": "Inheritance: Reusing a Base Class\n\n\n\nA Base Class and Two Subclasses\n\n\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return \"...\"\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says woof!\"\n\nclass Cat(Animal):\n    def speak(self):\n        return f\"{self.name} says meow!\"\n\npets = [Dog(\"Buddy\"), Cat(\"Luna\")]\nfor pet in pets:\n    print(pet.speak())\n\n\n\n\n\n\nNote\n\n\nThis is polymorphism: same method call (speak) produces behavior based on object type."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-the-basics",
-    "href": "materials/6_lambdaFunctions.html#lambda-functions-the-basics",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda Functions: The Basics",
-    "text": "Lambda Functions: The Basics\n\n\n\nBasic Syntax\n\n\n# Lambda syntax: lambda arguments: expression\n\n# Regular function\ndef square(x):\n    return x * x\n\n# Lambda equivalent\nsquare_lambda = lambda x: x * x\n\n# Using both\nprint(square(5))        # Output: 25\nprint(square_lambda(5)) # Output: 25\n\n\n\n\nKey Point: Lambda functions are expressions, not statements - they return a value immediately!"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#composition-objects-inside-objects",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#composition-objects-inside-objects",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Composition: Objects Inside Objects",
+    "text": "Composition: Objects Inside Objects\n\n\n\nModeling Relationships with Contained Objects\n\n\nclass Engine:\n    def __init__(self, horsepower):\n        self.horsepower = horsepower\n\nclass Car:\n    def __init__(self, brand, horsepower):\n        self.brand = brand\n        self.engine = Engine(horsepower)\n\n    def info(self):\n        return f\"{self.brand} with {self.engine.horsepower} HP\"\n\ncar = Car(\"Toyota\", 169)\nprint(car.info())\nDesign point: Composition often models “has-a” relationships cleanly (Car has an Engine)."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-multiple-arguments",
-    "href": "materials/6_lambdaFunctions.html#lambda-functions-multiple-arguments",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda Functions: Multiple Arguments",
-    "text": "Lambda Functions: Multiple Arguments\n\n\n\nMore Examples\n\n\n# Multiple arguments\nadd = lambda x, y: x + y\nmultiply = lambda x, y, z: x * y * z\n\n# With default arguments\ngreet = lambda name=\"World\": f\"Hello, {name}!\"\n\nprint(add(3, 5))           # Output: 8\nprint(multiply(2, 3, 4))   # Output: 24\nprint(greet())             # Output: Hello, World!\nprint(greet(\"Alice\"))      # Output: Hello, Alice!\n\n\n\n\nWhy this works: Lambda functions can handle multiple parameters just like regular functions!"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-a-circle-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-a-circle-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge A — Circle Class",
+    "text": "Challenge A — Circle Class\n\n\n\nWarning\n\n\nCreate a Circle class with: - radius in __init__ - area() - circumference() - __str__\n# Write Circle here\n\nc = Circle(3)\nprint(c)\nprint(round(c.area(), 2))\nprint(round(c.circumference(), 2))"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#quick-challenge-1-2-minutes",
-    "href": "materials/6_lambdaFunctions.html#quick-challenge-1-2-minutes",
-    "title": "Functions and Lambda Functions",
-    "section": "🤝 Quick Challenge #1 (2 minutes)",
-    "text": "🤝 Quick Challenge #1 (2 minutes)\n\n\n\nYour Turn: Basic Lambda Practice\n\n\nChallenge: Create lambda functions for these operations:\n\nA lambda that calculates the area of a circle: π * r²\nA lambda that converts Fahrenheit to Celsius: (f - 32) * 5/9\nA lambda that finds the maximum max() of three numbers\nA lambda that finds the minimum min() of three numbers\n\n\n\n\nStarter Code:\nimport math\n\n# Your lambda functions here\ncircle_area = lambda r: # Complete this\nfahrenheit_to_celsius = lambda f: # Complete this  \nmax_three = lambda a, b, c: # Complete this\nmin_three = lambda a, b, c: # Complete this\n\n# Test your functions\nprint(circle_area(5))\nprint(fahrenheit_to_celsius(68))\nprint(max_three(10, 20, 15))\nprint(min_three(10, 20, 15))"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-a-circle-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-a-circle-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution A — Circle Class",
+    "text": "Solution A — Circle Class\nimport math\n\nclass Circle:\n    def __init__(self, radius):\n        if radius &lt;= 0:\n            raise ValueError(\"Radius must be positive.\")\n        self.radius = radius\n\n    def area(self):\n        return math.pi * self.radius ** 2\n\n    def circumference(self):\n        return 2 * math.pi * self.radius\n\n    def __str__(self):\n        return f\"Circle(radius={self.radius})\"\n\nc = Circle(3)\nprint(c)\nprint(round(c.area(), 2))\nprint(round(c.circumference(), 2))\n\n\n\nImportant\n\n\nMechanism: Validation in __init__ ensures every Circle instance is meaningful, and methods compute directly from object state."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-1-solutions",
-    "href": "materials/6_lambdaFunctions.html#challenge-1-solutions",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge #1 Solutions",
-    "text": "Challenge #1 Solutions\n\n\n\nSolutions\n\n\n\n\n\n\nimport math\n\n# Solution 1: Circle area\ncircle_area = lambda r: math.pi * r * r\n\n# Solution 2: Fahrenheit to Celsius\nfahrenheit_to_celsius = lambda f: (f - 32) * 5/9\n\n# Solution 3: Maximum of three numbers\nmax_three = lambda a, b, c: max(a, max(b, c))\n# Alternative: max_three = lambda a, b, c: max(a, b, c)\n\n# Solution 4: Minimum of three numbers (in a list)\nmyVals = [10, 20, 15]\nmin_three = lambda thisValue: min(thisValue)\nprint(myVals)\nprint(min_three(myVals))\n\n# Test results\nprint(f\"Circle area (r=5): {circle_area(5):.2f}\")      # 78.54\nprint(f\"68°F in Celsius: {fahrenheit_to_celsius(68)}\")  # 20.0\nprint(f\"Max of 10,20,15: {max_three(10, 20, 15)}\")     # 20\nprint(f\"Min of 10,20,15: {min_three(10, 20, 15)}\")     # 10"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-b-inheritance-practice",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-b-inheritance-practice",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge B — Inheritance Practice",
+    "text": "Challenge B — Inheritance Practice\n\n\n\nWarning\n\n\nCreate a base class Employee(name, salary) with method annual_pay(). Then create subclass Manager(name, salary, bonus) overriding annual_pay() to include bonus.\n# Write Employee and Manager here\n\ne = Employee(\"Avery\", 5000)\nm = Manager(\"Jules\", 7000, 1500)\nprint(e.annual_pay())\nprint(m.annual_pay())"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#meet-some-handy-functions",
-    "href": "materials/6_lambdaFunctions.html#meet-some-handy-functions",
-    "title": "Functions and Lambda Functions",
-    "section": "Meet Some Handy Functions! 👋",
-    "text": "Meet Some Handy Functions! 👋\n\n\n\nEssential Built-in Functions\n\n\n\n\n\n\n\n\n🗺️ map(function, iterable)\nApplies a function to every item in a list/iterable\nThink: “Transform every item”\n🔍 filter(function, iterable)\nKeeps only items where function returns True\nThink: “Keep only items that pass the test”\n\n📊 sorted(iterable, key=function)\nReturns a new sorted list using function for comparison\nThink: “Arrange items by custom criteria”\n📋 list(iterable)\nConverts any iterable (map/filter results) into a list\nThink: “Make it a proper list I can print/use”"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-b-inheritance-practice",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-b-inheritance-practice",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution B — Inheritance Practice",
+    "text": "Solution B — Inheritance Practice\nclass Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n\n    def annual_pay(self):\n        return self.salary * 12\n\nclass Manager(Employee):\n    def __init__(self, name, salary, bonus):\n        super().__init__(name, salary)\n        self.bonus = bonus\n\n    def annual_pay(self):\n        return super().annual_pay() + self.bonus\n\ne = Employee(\"Avery\", 5000)\nm = Manager(\"Jules\", 7000, 1500)\nprint(e.annual_pay())\nprint(m.annual_pay())\n\n\n\nImportant\n\n\nMechanism: Manager inherits shared behavior and state from Employee, then overrides one method to extend the pay rule."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-sorted-example",
-    "href": "materials/6_lambdaFunctions.html#simple-sorted-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple sorted() Example",
-    "text": "Simple sorted() Example\n\n\n\nsorted() with a Lambda Key\n\n\nsorted() returns a new list in order. The key function tells Python what value to compare.\n\n\n\nstudents = [(\"Emil\", 25), (\"Tobias\", 22), (\"Linus\", 28)]\n# Sort by age (the second element in the tuple)\nsorted_students = sorted(students, key=lambda x: x[1])\n# Output: [('Tobias', 22), ('Emil', 25), ('Linus', 28)]\nprint(sorted_students)"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-c-simple-inventory-object",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-c-simple-inventory-object",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge C — Simple Inventory Object",
+    "text": "Challenge C — Simple Inventory Object\n\n\n\nWarning\n\n\nBuild InventoryItem(name, quantity) with methods: - restock(amount) - sell(amount) (reject sale if not enough stock) - __str__\n# Write InventoryItem here"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-sorted",
-    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-sorted",
-    "title": "Functions and Lambda Functions",
-    "section": "A Complicated Example of Lambda with sorted()",
-    "text": "A Complicated Example of Lambda with sorted()\n\n\n\nCustom Sorting Logic\n\n\n\n\n\n\n# Sort with custom criteria\nstudents = [\n    {\"name\": \"Alice\", \"grade\": 85},\n    {\"name\": \"Bob\", \"grade\": 92},\n    {\"name\": \"Charlie\", \"grade\": 78},\n    {\"name\": \"Diana\", \"grade\": 96}\n]\n\nwords = [\"banana\", \"pie\", \"Washington\", \"book\"]\n\n# Sort students by grade (descending)\nby_grade = sorted(students, key=lambda student: student[\"grade\"], reverse=True)\nprint(\"Top student:\", by_grade[0][\"name\"])  # Diana\n\n# Sort words by length\nby_length = sorted(words, key=lambda word: len(word))\nprint(f\"By length: {by_length}\")  # ['pie', 'book', 'banana', 'Washington']\n\n# Sort words by last letter\nby_last_letter = sorted(words, key=lambda word: word[-1])\nprint(f\"By last letter: {by_last_letter}\")  # ['banana', 'pie', 'book', 'Washington']"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-c-simple-inventory-object",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-c-simple-inventory-object",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution C — Simple Inventory Object",
+    "text": "Solution C — Simple Inventory Object\nclass InventoryItem:\n    def __init__(self, name, quantity):\n        if quantity &lt; 0:\n            raise ValueError(\"Quantity cannot be negative.\")\n        self.name = name\n        self.quantity = quantity\n\n    def restock(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Restock amount must be positive.\")\n        self.quantity += amount\n\n    def sell(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Sell amount must be positive.\")\n        if amount &gt; self.quantity:\n            return \"Not enough stock.\"\n        self.quantity -= amount\n        return \"Sale completed.\"\n\n    def __str__(self):\n        return f\"InventoryItem(name={self.name}, quantity={self.quantity})\"\n\nitem = InventoryItem(\"Notebook\", 10)\nitem.restock(5)\nprint(item.sell(8))\nprint(item)\n\n\n\nImportant\n\n\nMechanism: The class centralizes inventory rules, so updates happen through methods that preserve valid stock counts."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-filter-and-list-example",
-    "href": "materials/6_lambdaFunctions.html#simple-filter-and-list-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple filter() and List() Example",
-    "text": "Simple filter() and List() Example\n\n\n\nfilter() Keeps What Passes\n\n\nfilter() keeps items where the lambda returns True and list() converts the filter result into a list.\n\n\n\nnumbers = [1, 2, 3, 4, 5, 6]\n# Keep only even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\n# Output: [2, 4, 6]\nprint(evens)"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#basic-try-except",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#basic-try-except",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Basic try / except",
+    "text": "Basic try / except\n\n\n\nCatching a Conversion Error\n\n\ndef parse_age(text):\n    try:\n        age = int(text)\n        return f\"Age accepted: {age}\"\n    except ValueError:\n        return \"Age must be a whole number.\"\n\nprint(parse_age(\"21\"))\nprint(parse_age(\"twenty\"))"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-filter-and-list",
-    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-filter-and-list",
-    "title": "Functions and Lambda Functions",
-    "section": "A Complicated Example of Lambda with filter() and list()",
-    "text": "A Complicated Example of Lambda with filter() and list()\n\n\n\nKeep Only What You Want\n\n\n\n\n\n\n# Filter elements based on condition\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nwords = [\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\"]\n\n# Keep only even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(f\"Evens: {evens}\")  # [2, 4, 6, 8, 10]\n\n# Keep only long words\nlong_words = list(filter(lambda word: len(word) &gt; 5, words))\nprint(f\"Long words: {long_words}\")  # ['banana', 'cherry', 'elderberry']\n\n# Keep positive numbers\nmixed = [-3, -1, 0, 2, 5, -7, 9]\npositives = list(filter(lambda x: x &gt; 0, mixed))\nprint(f\"Positives: {positives}\")  # [2, 5, 9]"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#multiple-except-clauses",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#multiple-except-clauses",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Multiple except Clauses",
+    "text": "Multiple except Clauses\n\n\n\nHandling Different Failures Differently\n\n\ndef divide_from_text(a_text, b_text):\n    try:\n        a = float(a_text)\n        b = float(b_text)\n        return a / b\n    except ValueError:\n        return \"Inputs must be numbers.\"\n    except ZeroDivisionError:\n        return \"Cannot divide by zero.\"\n\nprint(divide_from_text(\"10\", \"2\"))\nprint(divide_from_text(\"10\", \"0\"))\nprint(divide_from_text(\"ten\", \"2\"))"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-map-example",
-    "href": "materials/6_lambdaFunctions.html#simple-map-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple map() Example",
-    "text": "Simple map() Example\n\n\n\nmap() Transforms Every Item\n\n\nmap() applies the lambda to each item and returns a new sequence.\n\n\n\nnumbers = [1, 2, 3, 4]\n# Double each number\ndoubled = list(map(lambda x: x * 2, numbers))\n# Output: [2, 4, 6, 8]\nprint(f\"Doubled: {doubled}\")"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#opening-files-without-an-exception-handler",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#opening-files-without-an-exception-handler",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Opening files without an exception handler",
+    "text": "Opening files without an exception handler\n\n\n\nFull Exception Structure\n\n\ndef read_first_line(path):\n    file = None\n    file = open(path, \"r\")\n    print(\"File closed.\")\n    return file.readline().strip()\n\nprint(read_first_line(\"notes.txt\"))\n\nCode works wonderfully, as long as the file exists and is readable.\nRunning this code with a missing file will cause a FileNotFoundError and crash the program.⁭ ⁭\n\n\n\n\n\n\n( ꩜ ᯅ ꩜;)\n(·•᷄‎ࡇ•᷅ )\n｡°(°¯᷄◠¯᷅°)°｡"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-map",
-    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-map",
-    "title": "Functions and Lambda Functions",
-    "section": "A Complicated Example of Lambda with map()",
-    "text": "A Complicated Example of Lambda with map()\n\n\n\nTransform All Elements\n\n\n\n\n\n\n# Transform all elements in a list\nnumbers = [1, 2, 3, 4, 5]\nnames = [\"alice\", \"bob\", \"charlie\"]\n\n# Square all numbers\nsquared = list(map(lambda x: x**2, numbers))\nprint(f\"Squared: {squared}\")  # [1, 4, 9, 16, 25]\n\n# Capitalize all names\ncapitalized = list(map(lambda name: name.title(), names))\nprint(f\"Capitalized: {capitalized}\")  # ['Alice', 'Bob', 'Charlie']\n\n# Multiple lists\nnums1 = [1, 2, 3]\nnums2 = [4, 5, 6]\nsums = list(map(lambda x, y: x + y, nums1, nums2))\nprint(f\"Sums: {sums}\")  # [5, 7, 9]"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#else-and-finally",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#else-and-finally",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "else and finally",
+    "text": "else and finally\n\n\n\nFull Exception Structure\n\n\ndef read_first_line(path):\n    file = None\n    try:\n        file = open(path, \"r\")\n    except FileNotFoundError:\n        return \"File not found.\"\n    else:\n        return file.readline().strip()\n    finally:\n        if file:\n            file.close()\n            print(\"File closed.\")\n\nprint(read_first_line(\"notes.txt\"))\n\nelse runs only if no exception occurs.\nfinally runs no matter what."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-vs-regular-comparison",
-    "href": "materials/6_lambdaFunctions.html#lambda-vs-regular-comparison",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda vs Regular: Comparison",
-    "text": "Lambda vs Regular: Comparison\n\n\n\nSide-by-Side Comparison\n\n\n\n\n\n\n# ✅ Good use of lambda - simple, clear\nnumbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, numbers))\nprint(f\"squared is {squared}\")\n\n# ❌ Bad use of lambda - too complex\ncomplex_lambda = lambda x: x**2 if x &gt; 0 else -x**2 if x &lt; 0 else 0\nfor x in range(6):\n    print(f\"complex_lambda, x={x}, value={complex_lambda(x)}\")\n\n# ✅ Better as regular function\ndef process_number(x):\n    if x &gt; 0:\n        return x**2\n    elif x &lt; 0:\n        return -x**2\n    else:\n        return 0\nfor i in range(10): print(f\"processed number[{i}] -&gt; {process_number(i)}\")\n\nRemember: Lambda functions should be simple and readable!"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#raising-exceptions-yourself",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#raising-exceptions-yourself",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Raising Exceptions Yourself",
+    "text": "Raising Exceptions Yourself\n\n\n\nUse raise for Invalid States\n\n\ndef withdraw(balance, amount):\n    if amount &lt;= 0:\n        raise ValueError(\"Withdrawal amount must be positive.\")\n    if amount &gt; balance:\n        raise ValueError(\"Insufficient funds.\")\n    return balance - amount\n\nprint(withdraw(200, 50))"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#quick-challenge-2-3-minutes",
-    "href": "materials/6_lambdaFunctions.html#quick-challenge-2-3-minutes",
-    "title": "Functions and Lambda Functions",
-    "section": "🤝 Quick Challenge #2 (3 minutes)",
-    "text": "🤝 Quick Challenge #2 (3 minutes)\n\n\n\nYour Turn: Lambda with Built-ins\n\n\nChallenge: Use lambda functions with map(), filter(), and sorted():\n# Given data\ntemperatures_f = [32, 68, 86, 104, 212]  # Fahrenheit\nprices = [10.99, 23.45, 5.67, 45.00, 12.34]\nproducts = [\n    {\"name\": \"laptop\", \"price\": 999.99, \"rating\": 4.5},\n    {\"name\": \"mouse\", \"price\": 25.50, \"rating\": 4.2},\n    {\"name\": \"keyboard\", \"price\": 75.00, \"rating\": 4.8},\n    {\"name\": \"monitor\", \"price\": 299.99, \"rating\": 4.3}\n]\n\n# Your tasks:\n# 1. Convert temperatures to Celsius using map()\n# 2. Find prices under $20 using filter()\n# 3. Sort products by rating (highest first) using sorted()"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#custom-exception-classes",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#custom-exception-classes",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Custom Exception Classes",
+    "text": "Custom Exception Classes\n\n\n\nDomain-Specific Error Types\n\n\nclass InvalidGradeError(Exception):\n    pass\n\ndef set_grade(value):\n    if not (0 &lt;= value &lt;= 100):\n        raise InvalidGradeError(\"Grade must be between 0 and 100.\")\n    return value\n\ntry:\n    set_grade(140)\nexcept InvalidGradeError as e:\n    print(\"Grade update failed:\", e)"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-2-solutions",
-    "href": "materials/6_lambdaFunctions.html#challenge-2-solutions",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge #2 Solutions",
-    "text": "Challenge #2 Solutions\n\n\n\nSolutions\n\n\n# 1. Convert temperatures to Celsius\ncelsius = list(map(lambda f: (f - 32) * 5/9, temperatures_f))\nprint(f\"Celsius: {[round(temp, 1) for temp in celsius]}\")\n# [0.0, 20.0, 30.0, 40.0, 100.0]\n\n# 2. Find prices under $20\ncheap_prices = list(filter(lambda price: price &lt; 20, prices))\nprint(f\"Under $20: {cheap_prices}\")  # [10.99, 5.67, 12.34]\n\n# 3. Sort products by rating (highest first)\nby_rating = sorted(products, key=lambda p: p[\"rating\"], reverse=True)\nprint(\"Best rated:\", by_rating[0][\"name\"])  # keyboard\nfor product in by_rating:\n    print(f\"{product['name']}: {product['rating']}\")"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#exceptions-inside-classes",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#exceptions-inside-classes",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Exceptions Inside Classes",
+    "text": "Exceptions Inside Classes\n\n\n\nEnforcing Valid Object Behavior\n\n\nclass BankAccount:\n    def __init__(self, owner, balance=0):\n        if balance &lt; 0:\n            raise ValueError(\"Opening balance cannot be negative.\")\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Deposit must be positive.\")\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Withdrawal must be positive.\")\n        if amount &gt; self.balance:\n            raise ValueError(\"Insufficient funds.\")\n        self.balance -= amount\n\nacct = BankAccount(\"Alex\", 100)\nacct.deposit(25)\nprint(acct.balance)"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#more-helpful-functions",
-    "href": "materials/6_lambdaFunctions.html#more-helpful-functions",
-    "title": "Functions and Lambda Functions",
-    "section": "More Helpful Functions! 🎯",
-    "text": "More Helpful Functions! 🎯\n\n\n\nAdditional Built-in Functions\n\n\n\n\n\n\n\n\n➕ sum(iterable)\nAdds up all numbers in a list/iterable\nThink: “Give me the total of all these numbers”\n🔍 len(iterable)\nReturns the count of items in a collection\nThink: “How many items are there?”\n\n🏆 max(iterable, key=function)\nFinds the largest item (optionally using key function)\nThink: “Which item is the biggest/best?”\n🎲 set(iterable)\nCreates a collection with only unique items\nThink: “Remove all duplicates”\n\n\n\n\nFun Fact: These functions work great with the results from map() and filter()!\n\n\n🧮🎪🌟"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-d-safe-integer-input-function",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-d-safe-integer-input-function",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge D — Safe Integer Input Function",
+    "text": "Challenge D — Safe Integer Input Function\n\n\n\nWarning\n\n\nWrite safe_int(text, default):\n\nreturn int(text) when possible\nreturn default on failure\n\ndef safe_int(text, default=0):\n    # your code here\n    pass\n\n# Example usage:\nprint(safe_int(\"42\"))       # 42\nprint(safe_int(\"oops\"))     # 0\nprint(safe_int(None, -1))    # -1"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-sum-example",
-    "href": "materials/6_lambdaFunctions.html#simple-sum-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple sum() Example",
-    "text": "Simple sum() Example\n\n\n\nsum() Adds Values Together\n\n\nsum() returns the total of numeric items in an iterable.\n\n\n\nquiz_scores = [8, 9, 10, 7, 6]\ntotal_points = sum(quiz_scores)\nprint(total_points)  # 40"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-d-safe-integer-input-function",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-d-safe-integer-input-function",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution D — Safe Integer Input Function",
+    "text": "Solution D — Safe Integer Input Function\ndef safe_int(text, default=0):\n    try:\n        return int(text)\n    except (ValueError, TypeError):\n        return default\n\nprint(safe_int(\"42\"))       # 42\nprint(safe_int(\"oops\"))     # 0\nprint(safe_int(None, -1))    # -1\n\n\n\nImportant\n\n\nMechanism: The function isolates conversion risk inside try/except and guarantees a usable fallback value."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-len-example",
-    "href": "materials/6_lambdaFunctions.html#simple-len-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple len() Example",
-    "text": "Simple len() Example\n\n\n\nlen() Counts Items\n\n\nlen() tells you how many items are in a list, string, or other collection.\n\n\n\ntopics = [\"functions\", \"lambda\", \"map\", \"filter\"]\ntopic_count = len(topics)\nprint(topic_count)  # 4"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-e-custom-exception-in-a-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-e-custom-exception-in-a-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge E — Custom Exception in a Class",
+    "text": "Challenge E — Custom Exception in a Class\n\n\n\nWarning\n\n\nDefine a custom exception OutOfStockError and use it in InventoryItem.sell(amount). Raise it when amount &gt; quantity.\n\n\n\nclass OutOfStockError(Exception):\n    print(\"This is a custom exception for out-of-stock situations.\")\n    # pass\n\nclass InventoryItem:\n    def __init__(self, name, quantity):\n        self.name = name\n        self.quantity = quantity\n\n    def sell(self, amount):\n        \"\"\"\n        Function to handle selling an item.\n        Raise ValueError if amount is not positive.\n        Raise OutOfStockError if amount exceeds quantity, otherwise reduce stock.\n        \"\"\"\n        # TODO: Implement this method"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-max-example",
-    "href": "materials/6_lambdaFunctions.html#simple-max-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple max() Example",
-    "text": "Simple max() Example\n\n\n\nmax() Finds the Largest Item\n\n\nWith key=, max() can choose the “largest” item using custom logic.\n\n\n\nwords = [\"cat\", \"giraffe\", \"dog\", \"elephant\"]\nlongest_word = max(words, key=lambda w: len(w))\nprint(longest_word)  # elephant"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-e-custom-exception-in-a-class",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-e-custom-exception-in-a-class",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution E — Custom Exception in a Class",
+    "text": "Solution E — Custom Exception in a Class\nclass OutOfStockError(Exception):\n    print(\"This is a custom exception for out-of-stock situations.\")\n    # pass\n\nclass InventoryItem:\n    def __init__(self, name, quantity):\n        self.name = name\n        self.quantity = quantity\n\n    def sell(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Amount must be positive.\")\n        if amount &gt; self.quantity:\n            raise OutOfStockError(\n                f\"Requested {amount}, but only {self.quantity} available.\"\n            )\n        self.quantity -= amount\n\nitem = InventoryItem(\"Pen\", 3)\ntry:\n    item.sell(5)\nexcept OutOfStockError as e:\n    print(\"Sale failed:\", e)\n\n\n\nImportant\n\n\nMechanism: A domain-specific exception makes stock failures explicit and easier to handle than a generic error."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#simple-set-example",
-    "href": "materials/6_lambdaFunctions.html#simple-set-example",
-    "title": "Functions and Lambda Functions",
-    "section": "Simple set() Example",
-    "text": "Simple set() Example\n\n\n\nset() Removes Duplicates\n\n\nset() creates a collection of unique values.\n\n\n\ncolors = [\"red\", \"blue\", \"red\", \"green\", \"blue\", \"yellow\"]\nunique_colors = set(colors)\nprint(unique_colors)  # Order may vary, e.g., {'red', 'blue', 'green', 'yellow'}\n\nNote: The order of items in a set may appear differently each time you print it."
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#challenge-f-safe-file-counter",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#challenge-f-safe-file-counter",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Challenge F — Safe File Counter",
+    "text": "Challenge F — Safe File Counter\n\n\n\nWarning\n\n\nWrite count_lines(path) that returns number of lines. If file is missing, return 0 instead of crashing."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#real-world-example-1",
-    "href": "materials/6_lambdaFunctions.html#real-world-example-1",
-    "title": "Functions and Lambda Functions",
-    "section": "Real-World Example 1",
-    "text": "Real-World Example 1\n\n\n\n\n\n\nNote\n\n\nSales Data Processing\n\n\n\n# Sales data from a CSV or database\nsales_data = [\n    {\"product\": \"Laptop\", \"price\": 999.99, \"quantity\": 2, \"discount\": 0.1},\n    {\"product\": \"Mouse\", \"price\": 25.50, \"quantity\": 5, \"discount\": 0.0},\n    {\"product\": \"Keyboard\", \"price\": 75.00, \"quantity\": 3, \"discount\": 0.05},\n    {\"product\": \"Monitor\", \"price\": 299.99, \"quantity\": 1, \"discount\": 0.15}\n]\n\n# Calculate total revenue with discounts\ntotal_revenue = sum(map(\n    lambda sale: sale[\"price\"] * sale[\"quantity\"] * (1 - sale[\"discount\"]),\n    sales_data\n))\nprint(f\"Total Revenue: ${total_revenue:.2f}\")\n\n# Find high-value sales (over $200 after discount)\nhigh_value = list(filter(\n    lambda sale: sale[\"price\"] * sale[\"quantity\"] * (1 - sale[\"discount\"]) &gt; 200,\n    sales_data\n))\nprint(f\"High-value sales: {len(high_value)}\")\nOutput:\n\n\nTotal Revenue: $2396.22\nHigh-value sales: 3"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-f-safe-file-counter",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-f-safe-file-counter",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution F — Safe File Counter",
+    "text": "Solution F — Safe File Counter\ndef count_lines(path):\n    try:\n        with open(path, \"r\") as file:\n            return sum(1 for _ in file)\n    except FileNotFoundError:\n        return 0\n\nprint(count_lines(\"notes.txt\"))\n\n\n\nImportant\n\n\nMechanism: The context manager handles file closing automatically, and FileNotFoundError is converted into a safe default result."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#real-world-example-2",
-    "href": "materials/6_lambdaFunctions.html#real-world-example-2",
-    "title": "Functions and Lambda Functions",
-    "section": "Real-World Example 2",
-    "text": "Real-World Example 2\n\n\n\n\n\n\nNote\n\n\nWeb Development\n\n\n\n# User registration data\nusers = [\n    {\"email\": \"alice@email.com\", \"age\": 25, \"active\": True},\n    {\"email\": \"bob@email.com\", \"age\": 17, \"active\": False},\n    {\"email\": \"charlie@email.com\", \"age\": 30, \"active\": True},\n    {\"email\": \"diana@email.com\", \"age\": 16, \"active\": True}\n]\n\n# Get active adult users\nactive_adults = list(filter(\n    lambda user: user[\"active\"] and user[\"age\"] &gt;= 18,\n    users\n))\n\n# Extract just the email addresses\nadult_emails = list(map(lambda user: user[\"email\"], active_adults))\nprint(\"Adult user emails:\", adult_emails)\n\n# Sort users by age\nby_age = sorted(users, key=lambda user: user[\"age\"])\nprint(\"Youngest user:\", by_age[0][\"email\"])\nOutput:\n\n\nAdult user emails: ['alice@email.com', 'charlie@email.com']\nYoungest user: diana@email.com"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-1-rectangle-with-validation",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-1-rectangle-with-validation",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Final Challenge 1 — Rectangle with Validation",
+    "text": "Final Challenge 1 — Rectangle with Validation\n\n\n\nWarning\n\n\nCreate class Rectangle(width, height):\n\nreject non-positive dimensions using ValueError\nmethods area(), perimeter(), is_square()\nreadable __str__"
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#real-world-example-3",
-    "href": "materials/6_lambdaFunctions.html#real-world-example-3",
-    "title": "Functions and Lambda Functions",
-    "section": "Real-World Example 3",
-    "text": "Real-World Example 3\n\n\n\n\n\n\nNote\n\n\nAnalytic Computing\n\n\n\nimport math\n\n# Experimental data points\ndata_points = [\n    {\"x\": 1, \"y\": 2.1, \"error\": 0.1},\n    {\"x\": 2, \"y\": 4.2, \"error\": 0.2},\n    {\"x\": 3, \"y\": 5.8, \"error\": 0.15},\n    {\"x\": 4, \"y\": 8.1, \"error\": 0.25}\n]\n\n# Calculate distances from origin\ndistances = list(map(\n    lambda point: math.sqrt(point[\"x\"]**2 + point[\"y\"]**2),\n    data_points\n))\n\n# Filter points with low error (high precision)\nprecise_points = list(filter(\n    lambda point: point[\"error\"] &lt; 0.2,\n    data_points\n))\n\n# Sort by significance (y/error ratio)\nby_significance = sorted(\n    data_points,\n    key=lambda point: point[\"y\"] / point[\"error\"],\n    reverse=True\n)\nprint(\"Most significant point:\", by_significance[0])\nOutput:\n\n\nMost significant point: {'x': 3, 'y': 5.8, 'error': 0.15}"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-2-savingsaccount-inheritance",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-2-savingsaccount-inheritance",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Final Challenge 2 — SavingsAccount Inheritance",
+    "text": "Final Challenge 2 — SavingsAccount Inheritance\n\n\n\nWarning\n\n\nCreate Account(owner, balance) with deposit/withdraw. Create SavingsAccount(owner, balance, rate) with method apply_interest(). Use exceptions for invalid amounts."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-best-practices-dos-and-donts",
-    "href": "materials/6_lambdaFunctions.html#lambda-best-practices-dos-and-donts",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda Best Practices: Do’s and Don’ts",
-    "text": "Lambda Best Practices: Do’s and Don’ts\n\n\n\nGuidelines\n\n\n\n\n\n\n✅ DO: Use lambdas for simple, single-expression operations\n# Simple, clear operations\nnumbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, numbers))\nevens = list(filter(lambda x: x % 2 == 0, numbers))\n\n# Short data transformations\nusers = [{\"name\": \"Alice\", \"age\": 25}]\nnames = list(map(lambda u: u[\"name\"], users))\n❌ DO NOT: Make lambdas too complex or use them for multi-step logic\n# Too complex for lambda\ncomplex_func = lambda x: x**2 if x &gt; 0 else abs(x) if x &lt; 0 else \"zero\"\n\n# Multiple statements (impossible in lambda anyway)\n# This won't work:\n# bad_lambda = lambda x: print(x); return x**2"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-3-compose-exception-safety",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-3-compose-exception-safety",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Final Challenge 3 — compose + Exception Safety",
+    "text": "Final Challenge 3 — compose + Exception Safety\n\n\n\nWarning\n\n\nWrite compose(f, g) returning f(g(x)). Then write safe_compose(f, g, fallback) that catches exceptions and returns fallback."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#lambda-limitations-and-alternatives",
-    "href": "materials/6_lambdaFunctions.html#lambda-limitations-and-alternatives",
-    "title": "Functions and Lambda Functions",
-    "section": "Lambda Limitations and Alternatives",
-    "text": "Lambda Limitations and Alternatives\n\n\n\nWhen Lambda Is not Enough\n\n\n\n\n\n\n# ❌ Lambda cannot do multiple statements\n# Need regular function for this:\ndef process_grade(score):\n    print(f\"Processing score: {score}\")  # Side effect\n    if score &gt;= 90:\n        return \"A\"\n    elif score &gt;= 80:\n        return \"B\"\n    else:\n        return \"C\"\n\n# ✅ Lambda for simple conditions\ngrade_simple = lambda score: \"Pass\" if score &gt;= 60 else \"Fail\"\n\n# ❌ Lambda cannot include assignments\n# Need regular function:\ndef calculate_with_logging(x):\n    result = x**2 + 2*x + 1  # Assignment\n    print(f\"Calculated: {result}\")\n    return result"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-4-student-parser",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-4-student-parser",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Final Challenge 4 — Student Parser",
+    "text": "Final Challenge 4 — Student Parser\n\n\n\nWarning\n\n\nGiven lines like \"Alice,92\", build parse_students(lines) returning dict name→grade. Skip malformed lines and out-of-range grades using exceptions."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-1-quick-lambda-warmup",
-    "href": "materials/6_lambdaFunctions.html#challenge-1-quick-lambda-warmup",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 1: Quick Lambda Warmup",
-    "text": "Challenge 1: Quick Lambda Warmup\n\n\n\nYour Turn\n\n\nWrite lambdas for each task.\nimport math\n\n# 1. Rectangle area\narea_rect = lambda w, h: # finish\n\n# 2. Apply a 15% discount\ndiscount_price = lambda price: # finish\n\n# 3. Create initials from first and last name\ninitials = lambda first, last: # finish\n\nprint(area_rect(8, 5))\nprint(discount_price(40))\nprint(initials(\"Ada\", \"Lovelace\"))"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-5-gradebook-with-robust-rules",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#final-challenge-5-gradebook-with-robust-rules",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Final Challenge 5 — GradeBook with Robust Rules",
+    "text": "Final Challenge 5 — GradeBook with Robust Rules\n\n\n\nWarning\n\n\nCreate GradeBook with:\n\nadd_student(name, grade) (validate grade)\ncurve(curve_func) returning a new dict of curved grades\ntop_student()\npassing(min_grade=60) Raise meaningful errors where appropriate."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-2-map-filter-practice",
-    "href": "materials/6_lambdaFunctions.html#challenge-2-map-filter-practice",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 2: map() + filter() Practice",
-    "text": "Challenge 2: map() + filter() Practice\n\n\n\nYour Turn\n\n\nUse map() and filter() to process the scores.\nscores = [62, 71, 88, 95, 54, 77, 83]\n\n# 1. Curve every score by +5 (max 100)\n# 2. Keep only passing scores (&gt;= 70)\n# 3. Print how many passing scores remain"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-1-rectangle-with-validation",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-1-rectangle-with-validation",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution 1 — Rectangle with Validation",
+    "text": "Solution 1 — Rectangle with Validation\nclass Rectangle:\n    def __init__(self, width, height):\n        if width &lt;= 0 or height &lt;= 0:\n            raise ValueError(\"Width and height must be positive.\")\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\n    def perimeter(self):\n        return 2 * (self.width + self.height)\n\n    def is_square(self):\n        return self.width == self.height\n\n    def __str__(self):\n        return f\"Rectangle({self.width} x {self.height})\"\n\n\nprint(\"rect1\")\nwidth = 2\nheight = 4\nrect1 = Rectangle(width, height)\nprint(f\"  Dimensions are: {rect1}\")\nprint(f\"  My area is: {rect1.area()}\")\nprint(f\"  My perimeter is: {rect1.perimeter()}\")\nprint(f\"  This object a square:  {rect1.is_square()}\")\n\nprint(\"rect2\")\nwidth = 4\nheight = 4\nrect2 = Rectangle(width, height)\nprint(f\"  Dimensions are: {rect2}\")\nprint(f\"  My area is: {rect2.area()}\")\nprint(f\"  My perimeter is: {rect2.perimeter()}\")\nprint(f\"  This object a square:  {rect2.is_square()}\")\n\n\n\nImportant\n\n\nMechanism: Constructor validation prevents invalid objects from ever existing. Methods become simpler because state is guaranteed valid."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-3-sorting-with-lambda",
-    "href": "materials/6_lambdaFunctions.html#challenge-3-sorting-with-lambda",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 3: Sorting with Lambda",
-    "text": "Challenge 3: Sorting with Lambda\n\n\n\nYour Turn\n\n\nSort the city list in two different ways.\ncities = [\n    (\"Tokyo\", 37400068),\n    (\"Delhi\", 28514000),\n    (\"Shanghai\", 25582000),\n    (\"Sao Paulo\", 21650000)\n]\n\n# 1. Sort by population (highest first)\n# 2. Sort by city name length (shortest first)"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-2-savingsaccount-inheritance",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-2-savingsaccount-inheritance",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution 2 — SavingsAccount Inheritance",
+    "text": "Solution 2 — SavingsAccount Inheritance\nclass Account:\n    def __init__(self, owner, balance=0):\n        if balance &lt; 0:\n            raise ValueError(\"Balance cannot be negative.\")\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Deposit must be positive.\")\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount &lt;= 0:\n            raise ValueError(\"Withdrawal must be positive.\")\n        if amount &gt; self.balance:\n            raise ValueError(\"Insufficient funds.\")\n        self.balance -= amount\n\nclass SavingsAccount(Account):\n    def __init__(self, owner, balance=0, rate=0.02):\n        super().__init__(owner, balance)\n        self.rate = rate\n\n    def apply_interest(self):\n        self.balance += self.balance * self.rate\n\n\nname = \"Alice\"\ndeposit = 1000\naccount = SavingsAccount(name,deposit)\nprint(f\" Initial balance: {account.balance}\")\naccount.deposit(500)\nprint(f\" Balance After deposit: {account.balance}\")\naccount.withdraw(200)\nprint(f\" Balance After withdrawal: {account.balance}\")\naccount.apply_interest()\nprint(f\" Endling balance: {account.balance}\")\n\n\n\nImportant\n\n\nMechanism: SavingsAccount reuses base logic through inheritance and super(), then adds behavior (apply_interest) without duplicating deposit/withdraw code."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-4-chaining-functions",
-    "href": "materials/6_lambdaFunctions.html#challenge-4-chaining-functions",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 4: Chaining Functions",
-    "text": "Challenge 4: Chaining Functions\n\n\n\nYour Turn\n\n\nUse filter() then map() to clean the words list.\nwords = [\"apple\", \"kiwi\", \"orange\", \"fig\", \"grape\", \"apricot\"]\n\n# 1. Keep only words with length &gt;= 5\n# 2. Convert the remaining words to uppercase\n# 3. Sort the result by length"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-3-safe_compose",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-3-safe_compose",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution 3 — safe_compose",
+    "text": "Solution 3 — safe_compose\ndef compose(f, g):\n    def composed(x):\n        return f(g(x))\n    return composed\n\ndef safe_compose(f, g, fallback=None):\n    def composed(x):\n        try:\n            return f(g(x))\n        except Exception:\n            return fallback\n    return composed\n\n\ndef reciprocal(x):\n    return 1 / x\n\nsafe = safe_compose(lambda y: y + 10, reciprocal, fallback=\"bad input\")\nprint(safe(2))\nprint(safe(0))\n\n\n\nImportant\n\n\nMechanism: Closures capture function references (f, g) and return a callable pipeline. Wrapping in try/except creates a resilient higher-order function."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-5-mini-data-task",
-    "href": "materials/6_lambdaFunctions.html#challenge-5-mini-data-task",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 5: Mini Data Task",
-    "text": "Challenge 5: Mini Data Task\n\n\n\nYour Turn\n\n\nProcess the trip data using lambdas.\ntrips = [\n    {\"driver\": \"Asha\", \"miles\": 120, \"rate\": 0.62},\n    {\"driver\": \"Ben\", \"miles\": 45, \"rate\": 0.62},\n    {\"driver\": \"Chen\", \"miles\": 200, \"rate\": 0.62},\n    {\"driver\": \"Dia\", \"miles\": 80, \"rate\": 0.62}\n]\n\n# 1. Compute the payout for each trip (miles * rate)\n# 2. Keep only trips with payout &gt;= 60\n# 3. Print the driver names for those trips"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-4-parse_students",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-4-parse_students",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution 4 — parse_students",
+    "text": "Solution 4 — parse_students\ndef parse_students(lines):\n    students = {}\n    for line in lines:\n        try:\n            name, grade_text = line.split(\",\")\n            grade = int(grade_text)\n            if not (0 &lt;= grade &lt;= 100):\n                raise ValueError(\"grade out of range\")\n            students[name.strip()] = grade\n        except ValueError:\n            continue\n    return students\n\nlines = [\"Alice,92\", \"Bob,hello\", \"Cara,105\", \"Dylan,77\"]\nprint(parse_students(lines))  # {'Alice': 92, 'Dylan': 77}\n\n\n\nImportant\n\n\nMechanism: The parsing loop is intentionally defensive. Bad records fail locally and are skipped, while good records still accumulate."
   },
   {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-1-solution",
-    "href": "materials/6_lambdaFunctions.html#challenge-1-solution",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 1 Solution",
-    "text": "Challenge 1 Solution\n\n\n\nSolution + Why It Works\n\n\nimport math\n\narea_rect = lambda w, h: w * h\ndiscount_price = lambda price: price * 0.85\ninitials = lambda first, last: f\"{first[0]}{last[0]}\"\n\nprint(area_rect(8, 5))\nprint(discount_price(40))\nprint(initials(\"Ada\", \"Lovelace\"))\nHow it works: Each lambda is one expression. The discount multiplies by \\(1 - 0.15\\), and the initials slice the first character from each name."
-  },
-  {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-2-solution",
-    "href": "materials/6_lambdaFunctions.html#challenge-2-solution",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 2 Solution",
-    "text": "Challenge 2 Solution\n\n\n\nSolution + Why It Works\n\n\nscores = [62, 71, 88, 95, 54, 77, 83]\n\ncurved = list(map(lambda s: min(s + 5, 100), scores))\npassing = list(filter(lambda s: s &gt;= 70, curved))\n\nprint(curved)\nprint(passing)\nprint(len(passing))\nHow it works: map() adjusts every score, min() caps at 100, and filter() keeps only passing values."
-  },
-  {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-3-solution",
-    "href": "materials/6_lambdaFunctions.html#challenge-3-solution",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 3 Solution",
-    "text": "Challenge 3 Solution\n\n\n\nSolution + Why It Works\n\n\ncities = [\n    (\"Tokyo\", 37400068),\n    (\"Delhi\", 28514000),\n    (\"Shanghai\", 25582000),\n    (\"Sao Paulo\", 21650000)\n]\n\nby_pop = sorted(cities, key=lambda c: c[1], reverse=True)\nby_name_len = sorted(cities, key=lambda c: len(c[0]))\n\nprint(by_pop)\nprint(by_name_len)\nHow it works: The key function picks the sort value: population at index 1 or the length of the name at index 0."
-  },
-  {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-4-solution",
-    "href": "materials/6_lambdaFunctions.html#challenge-4-solution",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 4 Solution",
-    "text": "Challenge 4 Solution\n\n\n\nSolution + Why It Works\n\n\nwords = [\"apple\", \"kiwi\", \"orange\", \"fig\", \"grape\", \"apricot\"]\n\nlong_words = list(filter(lambda w: len(w) &gt;= 5, words))\nupper_words = list(map(lambda w: w.upper(), long_words))\nsorted_words = sorted(upper_words, key=lambda w: len(w))\n\nprint(sorted_words)\nHow it works: filter() trims the list, map() transforms each item, and sorted() orders by length using a lambda key."
-  },
-  {
-    "objectID": "materials/6_lambdaFunctions.html#challenge-5-solution",
-    "href": "materials/6_lambdaFunctions.html#challenge-5-solution",
-    "title": "Functions and Lambda Functions",
-    "section": "Challenge 5 Solution",
-    "text": "Challenge 5 Solution\n\n\n\nSolution + Why It Works\n\n\ntrips = [\n    {\"driver\": \"Asha\", \"miles\": 120, \"rate\": 0.62},\n    {\"driver\": \"Ben\", \"miles\": 45, \"rate\": 0.62},\n    {\"driver\": \"Chen\", \"miles\": 200, \"rate\": 0.62},\n    {\"driver\": \"Dia\", \"miles\": 80, \"rate\": 0.62}\n]\n\npayouts = list(map(lambda t: {**t, \"payout\": t[\"miles\"] * t[\"rate\"]}, trips))\nhigh_payouts = list(filter(lambda t: t[\"payout\"] &gt;= 60, payouts))\ndrivers = list(map(lambda t: t[\"driver\"], high_payouts))\n\nprint(drivers)\nHow it works: First add a computed field, then filter by it, then map to just the names."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
-    "href": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "What are literals, Again??",
-    "text": "What are literals, Again??\nLet’s Return to Literals (e.g., numbers, strings, booleans, etc.) and work with them in interesting ways using print().\n\n\n\n\n\n\nNote\n\n\nIn Python, print statements with an f prefix before the opening quotation mark denote f-strings, also known as formatted string literals. F-strings provide a concise and readable way to embed expressions inside string literals for formatting output."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
-    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Python Code Sample with F-strings",
-    "text": "Python Code Sample with F-strings\n\n\n\n\n\n\nNote\n\n\nCuriously, both of the below print statements print out the same results, but the code is not the same …\n\n\n\nfirstName = \"Robert\"\nlastName = \"Paulson\"\nprint(f\"His name is: {firstName} {lastName}!\") # f for auto formatting\nprint(\"His name is:\",firstName, lastName,\"!\") # original structure\n\nOutput:\nHis name is: Robert Paulson!\nHis name is: Robert Paulson ! # A space appears?!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#operators",
-    "href": "materials/3_ii_introToPython_solutions.html#operators",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Operators",
-    "text": "Operators\nOperators let you do math, compare values, and more!\n\n\n\n\n\n\nImportant\n\n\nExamples:\n\nArithmetic: +, -, *, /, ** (power)\nComparison: ==, !=, &lt;, &gt;\nAssignment: =, +=, -="
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample",
-    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Python Code Sample",
-    "text": "Python Code Sample\nx = 5\ny = 2\nsum = x + y\nproduct = x * y\nis_equal = (x == y)\nx += 1\n\n\n\n\n\n\n\n\n\nNote\n\n\nVariables and operators are the backbone of calculators, games, and simulations!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#loops",
-    "href": "materials/3_ii_introToPython_solutions.html#loops",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Loops",
-    "text": "Loops\nLoops repeat actions. Use for and while loops."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#conditionals",
-    "href": "materials/3_ii_introToPython_solutions.html#conditionals",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Conditionals",
-    "text": "Conditionals\nConditionals let your code make decisions using if, elif, and else.\n\nExamples:\nfor i in range(5):\n    print(i)\n\ncount = 0\nwhile count &lt; 3:\n    print(\"Counting:\", count)\n    count += 1 \n    # Do not forget to increment \n    # the counter, or you will create an infinite loop!\n\n    if x &gt; y:    # What changes to print statements if x &lt; y ? \n        print(\"x is greater!\")\n    elif x == y:\n        print(\"x equals y!\")\n    else:\n        print(\"x is less!\")\n\nTry out this code! Now, make a change and see what happens!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
-    "href": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Sort of Interesting Application",
-    "text": "Sort of Interesting Application\nLoops and conditionals can be used to determine positive, negative numbers, or zeros. Neat-O!\n\nExamples:\nnum = 10\nif num &gt; 0:\n    print(\"Positive number\")\nelif num == 0:\n    print(\"Zero\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
-    "href": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Nested Conditionals",
-    "text": "Nested Conditionals\nYou can nest loops, one inside the other.\n\nExamples:\nnum = 15\nif num &gt;= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#logical-operator",
-    "href": "materials/3_ii_introToPython_solutions.html#logical-operator",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Logical Operator",
-    "text": "Logical Operator\nLogical operators use True and False to determine outcomes.\n\nExamples:\na = 10\nb = 20\nif a &gt; 5 and b &gt; 15:\n    print(\"Both conditions are true\")\nif a &gt; 5 or b &lt; 15:\n    print(\"At least one condition is true\")\nif not a &lt; 5:\n    print(\"a is not less than 5\")\n\n\nOutput:\nBoth conditions are true At least one condition is true a is not less than 5"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#string-manipulation",
-    "href": "materials/3_ii_introToPython_solutions.html#string-manipulation",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "String Manipulation",
-    "text": "String Manipulation\nWe now look at how we can manipulate strings\n\nExamples:\ntext = \"Hello, World!\"\nprint(text.lower())  # hello, world!\nprint(text.upper())  # HELLO, WORLD!\nprint(text.replace(\"World\", \"Python\"))  # Hello, Python!\nprint(text.split(\", \"))  # ['Hello', 'World!']\nprint(text.strip(\"!\"))  # Hello, World"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#lists",
-    "href": "materials/3_ii_introToPython_solutions.html#lists",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Lists",
-    "text": "Lists\n\nA list is a fundamental data structure in Python used to store an ordered collection of items.\nLists maintain the order of elements, with each item accessible by its index (starting from 0).\nLists are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nLists can hold items of different data types, including other lists.\nLists are created using square brackets, with elements separated by commas."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
-    "href": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Demo of Lists",
-    "text": "Demo of Lists\n\nExamples:\nmy_list = [1, 2, 3, 4, 5] # definition\nprint(my_list[0])  # Access first element\nmy_list.append(6)  # Add an element to the end\nprint(my_list)  # [1, 2, 3, 4, 5, 6]\nmy_list.remove(3)  # Remove element with value 3\nprint(my_list)  # [1, 2, 4, 5, 6]\nprint(len(my_list))  # Length of the list\n\nOutput:\n1\n[1, 2, 3, 4, 5, 6]\n[1, 2, 4, 5, 6]\n5"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#dictionaries",
-    "href": "materials/3_ii_introToPython_solutions.html#dictionaries",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Dictionaries",
-    "text": "Dictionaries\nA dictionary is a built-in data structure in Python used to store key-value pairs.\nDictionaries are unordered collections (as of Python 3.6+, they maintain insertion order), where each value is accessed using its unique key.\nDictionaries are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nKeys in a dictionary must be unique and immutable (such as strings, numbers, or tuples), while values can be of any data type.\nDictionaries are created using curly braces {}, with key-value pairs separated by commas and a colon between each key and value."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
-    "href": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Demo of Dictionaries",
-    "text": "Demo of Dictionaries\n\nExamples:\nmy_dict = {\"name\": \"Alice\", \"age\": 25, \"is_student\": True}  # definition\nprint(my_dict[\"name\"])  # Access value by key\nmy_dict[\"age\"] = 26  # Modify value\nmy_dict[\"city\"] = \"New York\"  # Add new key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'is_student': True, 'city': 'New York'}\ndel my_dict[\"is_student\"]  # Remove a key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'city': 'New York'}\nprint(len(my_dict))  # Number of key-value pairs\n\nOutput:\nAlice\n{‘name’: ‘Alice’, ‘age’: 26, ‘is_student’: True, ‘city’: ‘New York’}\n{‘name’: ‘Alice’, ‘age’: 26, ‘city’: ‘New York’}\n3"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#coding-challenges",
-    "href": "materials/3_ii_introToPython_solutions.html#coding-challenges",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Coding Challenges",
-    "text": "Coding Challenges\n\n\n\n1. Variables and Operators\nChallenge:\nCreate two variables, a and b, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\n\nTip\n\n\nMethod Suggestions:\n\nDeclare two variables and assign integer values to them\nUse arithmetic operators: +, -, *, /\nUse print() function with labels for clarity\nConsider using f-strings for formatted output\nRemember: division / gives a float result"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 1: Variables and Operators (Part 1)",
-    "text": "Solution 1: Variables and Operators (Part 1)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Basic Print Statements\na = 10\nb = 5\nprint(\"Sum:\", a + b)\nprint(\"Difference:\", a - b)\nprint(\"Product:\", a * b)\nprint(\"Quotient:\", a / b)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\na = 10\nb = 5\nprint(f\"Sum: {a + b}\")\nprint(f\"Difference: {a - b}\")\nprint(f\"Product: {a * b}\")\nprint(f\"Quotient: {a / b}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 1: Variables and Operators (Part 2)",
-    "text": "Solution 1: Variables and Operators (Part 2)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Storing Results in Variables\na = 10\nb = 5\nsum_result = a + b\ndiff_result = a - b\nprod_result = a * b\nquot_result = a / b\nprint(f\"Sum: {sum_result}, Difference: {diff_result}, Product: {prod_result}, Quotient: {quot_result}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 2: Working with Lists (Part 1)",
-    "text": "Solution 2: Working with Lists (Part 1)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using max() Function\nnumbers = [3, 7, 2, 9, 5]\nprint(\"Largest number:\", max(numbers))\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Sorting the List\nnumbers = [3, 7, 2, 9, 5]\nnumbers.sort()\nprint(\"Largest number:\", numbers[-1])  # Last element after sorting"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 2: Working with Lists (Part 2)",
-    "text": "Solution 2: Working with Lists (Part 2)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Manual Comparison Loop\nnumbers = [3, 7, 2, 9, 5]\nlargest = numbers[0]\nfor num in numbers:\n    if num &gt; largest:\n        largest = num\nprint(\"Largest number:\", largest)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using sorted() Function\nnumbers = [3, 7, 2, 9, 5]\nlargest = sorted(numbers)[-1]\nprint(\"Largest number:\", largest)"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 3: Dictionaries (Part 1)",
-    "text": "Solution 3: Dictionaries (Part 1)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using .items() Method\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(key, \":\", value)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(f\"{key}: {value}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 3: Dictionaries (Part 2)",
-    "text": "Solution 3: Dictionaries (Part 2)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Accessing Keys Directly\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key in person.keys():\n    print(f\"{key}: {person[key]}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Individual Print Statements\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nprint(\"name:\", person[\"name\"])\nprint(\"age:\", person[\"age\"])\nprint(\"city:\", person[\"city\"])"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 4: For Loops (Part 1)",
-    "text": "Solution 4: For Loops (Part 1)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using Modulo Operator\nfor i in range(1, 11):\n    if i % 2 == 0:\n        print(i)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Range with Step\nfor i in range(2, 11, 2):  # Start at 2, step by 2\n    print(i)"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 4: For Loops (Part 2)",
-    "text": "Solution 4: For Loops (Part 2)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\n\nNote\n\n\nApproach 3: Using List Comprehension\neven_numbers = [i for i in range(1, 11) if i % 2 == 0]\nfor num in even_numbers:\n    print(num)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: One-liner with List Comprehension\nprint(*[i for i in range(1, 11) if i % 2 == 0], sep='\\n')"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 5: While Loops and Conditionals (Part 1)",
-    "text": "Solution 5: While Loops and Conditionals (Part 1)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using break Statement\nwhile True:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        break\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Condition in While Loop\nnum = 0  # Initialize with a non-negative number\nwhile num &gt;= 0:\n    num = int(input(\"Enter a number: \"))"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 5: While Loops and Conditionals (Part 2)",
-    "text": "Solution 5: While Loops and Conditionals (Part 2)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\nNote\n\n\nApproach 3: With Feedback Messages\nwhile True:\n    num = int(input(\"Enter a number (negative to quit): \"))\n    if num &lt; 0:\n        print(\"Negative number entered. Exiting...\")\n        break\n    else:\n        print(f\"You entered: {num}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using Flag Variable\ncontinue_input = True\nwhile continue_input:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        continue_input = False"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#youve-got-this",
-    "href": "materials/3_ii_introToPython_solutions.html#youve-got-this",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "You’ve Got This!!",
-    "text": "You’ve Got This!!\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou now able to use …\n\nLiterals\nPrint statements\nLoops driven by for and while\nLists and Dictionaries\nMuch more!"
+    "objectID": "materials/8_objectOrientedProgramming_exceptions.html#solution-5-robust-gradebook",
+    "href": "materials/8_objectOrientedProgramming_exceptions.html#solution-5-robust-gradebook",
+    "title": "Object-Oriented Programming & Exceptions",
+    "section": "Solution 5 — Robust GradeBook",
+    "text": "Solution 5 — Robust GradeBook\nclass GradeBook:\n    def __init__(self):\n        self._grades = {}\n\n    def add_student(self, name, grade):\n        if not name:\n            raise ValueError(\"Name cannot be empty.\")\n        if not (0 &lt;= grade &lt;= 100):\n            raise ValueError(\"Grade must be between 0 and 100.\")\n        self._grades[name] = grade\n\n    def curve(self, curve_func):\n        curved = {}\n        for name, grade in self._grades.items():\n            new_grade = curve_func(grade)\n            curved[name] = max(0, min(100, new_grade))\n        return curved\n\n    def top_student(self):\n        if not self._grades:\n            raise ValueError(\"No students in grade book.\")\n        return max(self._grades, key=self._grades.get)\n\n    def passing(self, min_grade=60):\n        return [\n            name for name, grade in self._grades.items()\n            if grade &gt;= min_grade\n        ]\n\n\ngb = GradeBook()\ngb.add_student(\"Alice\", 92)\ngb.add_student(\"Bob\", 55)\ngb.add_student(\"Charlie\", 78)\nprint(f\"Passing student(s): {gb.passing()}\")\nprint(f\"After applying curve: {gb.curve(lambda g: g + 8)}\")\nprint(f\"Top student: {gb.top_student()}\")\n\n\n\nDiscussion\n\n\n\nEncapsulation: Internal dictionary _grades stores state in one place.\nValidation: add_student enforces invariants early.\nHigher-order behavior: curve accepts any callable transformation.\nException strategy: methods raise clear errors for invalid usage (for example, top student on empty data)."
   },
   {
     "objectID": "materials/5_numerical_programs_solutions.html#what-you-will-learn-today",
@@ -1645,6 +1435,461 @@
     "text": "Solution 5: Fibonacci Index Finder (Approach 2, continued)\n\n\n\n\n# Testing\ntest_values = [0, 1, 5, 13, 21, 100, 144, 233]\nfor val in test_values:\n    idx = fibonacci_index_binet(val)\n    if idx != -1:\n        print(f\"F({idx}) = {val} ✓\")\n    else:\n        print(f\"{val} is not a Fibonacci number ✗\")\n\n\n\nMathematics provides elegant shortcuts! 🎓"
   },
   {
+    "objectID": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
+    "href": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "What are literals, Again??",
+    "text": "What are literals, Again??\nLet’s Return to Literals (e.g., numbers, strings, booleans, etc.) and work with them in interesting ways using print().\n\n\n\n\n\n\nNote\n\n\nIn Python, print statements with an f prefix before the opening quotation mark denote f-strings, also known as formatted string literals. F-strings provide a concise and readable way to embed expressions inside string literals for formatting output."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
+    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Python Code Sample with F-strings",
+    "text": "Python Code Sample with F-strings\n\n\n\n\n\n\nNote\n\n\nCuriously, both of the below print statements print out the same results, but the code is not the same …\n\n\n\nfirstName = \"Robert\"\nlastName = \"Paulson\"\nprint(f\"His name is: {firstName} {lastName}!\") # f for auto formatting\nprint(\"His name is:\",firstName, lastName,\"!\") # original structure\n\nOutput:\nHis name is: Robert Paulson!\nHis name is: Robert Paulson ! # A space appears?!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#operators",
+    "href": "materials/3_ii_introToPython_solutions.html#operators",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Operators",
+    "text": "Operators\nOperators let you do math, compare values, and more!\n\n\n\n\n\n\nImportant\n\n\nExamples:\n\nArithmetic: +, -, *, /, ** (power)\nComparison: ==, !=, &lt;, &gt;\nAssignment: =, +=, -="
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample",
+    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Python Code Sample",
+    "text": "Python Code Sample\nx = 5\ny = 2\nsum = x + y\nproduct = x * y\nis_equal = (x == y)\nx += 1\n\n\n\n\n\n\n\n\n\nNote\n\n\nVariables and operators are the backbone of calculators, games, and simulations!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#loops",
+    "href": "materials/3_ii_introToPython_solutions.html#loops",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Loops",
+    "text": "Loops\nLoops repeat actions. Use for and while loops."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#conditionals",
+    "href": "materials/3_ii_introToPython_solutions.html#conditionals",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Conditionals",
+    "text": "Conditionals\nConditionals let your code make decisions using if, elif, and else.\n\nExamples:\nfor i in range(5):\n    print(i)\n\ncount = 0\nwhile count &lt; 3:\n    print(\"Counting:\", count)\n    count += 1 \n    # Do not forget to increment \n    # the counter, or you will create an infinite loop!\n\n    if x &gt; y:    # What changes to print statements if x &lt; y ? \n        print(\"x is greater!\")\n    elif x == y:\n        print(\"x equals y!\")\n    else:\n        print(\"x is less!\")\n\nTry out this code! Now, make a change and see what happens!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
+    "href": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Sort of Interesting Application",
+    "text": "Sort of Interesting Application\nLoops and conditionals can be used to determine positive, negative numbers, or zeros. Neat-O!\n\nExamples:\nnum = 10\nif num &gt; 0:\n    print(\"Positive number\")\nelif num == 0:\n    print(\"Zero\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
+    "href": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Nested Conditionals",
+    "text": "Nested Conditionals\nYou can nest loops, one inside the other.\n\nExamples:\nnum = 15\nif num &gt;= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#logical-operator",
+    "href": "materials/3_ii_introToPython_solutions.html#logical-operator",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Logical Operator",
+    "text": "Logical Operator\nLogical operators use True and False to determine outcomes.\n\nExamples:\na = 10\nb = 20\nif a &gt; 5 and b &gt; 15:\n    print(\"Both conditions are true\")\nif a &gt; 5 or b &lt; 15:\n    print(\"At least one condition is true\")\nif not a &lt; 5:\n    print(\"a is not less than 5\")\n\n\nOutput:\nBoth conditions are true At least one condition is true a is not less than 5"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#string-manipulation",
+    "href": "materials/3_ii_introToPython_solutions.html#string-manipulation",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "String Manipulation",
+    "text": "String Manipulation\nWe now look at how we can manipulate strings\n\nExamples:\ntext = \"Hello, World!\"\nprint(text.lower())  # hello, world!\nprint(text.upper())  # HELLO, WORLD!\nprint(text.replace(\"World\", \"Python\"))  # Hello, Python!\nprint(text.split(\", \"))  # ['Hello', 'World!']\nprint(text.strip(\"!\"))  # Hello, World"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#lists",
+    "href": "materials/3_ii_introToPython_solutions.html#lists",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Lists",
+    "text": "Lists\n\nA list is a fundamental data structure in Python used to store an ordered collection of items.\nLists maintain the order of elements, with each item accessible by its index (starting from 0).\nLists are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nLists can hold items of different data types, including other lists.\nLists are created using square brackets, with elements separated by commas."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
+    "href": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Demo of Lists",
+    "text": "Demo of Lists\n\nExamples:\nmy_list = [1, 2, 3, 4, 5] # definition\nprint(my_list[0])  # Access first element\nmy_list.append(6)  # Add an element to the end\nprint(my_list)  # [1, 2, 3, 4, 5, 6]\nmy_list.remove(3)  # Remove element with value 3\nprint(my_list)  # [1, 2, 4, 5, 6]\nprint(len(my_list))  # Length of the list\n\nOutput:\n1\n[1, 2, 3, 4, 5, 6]\n[1, 2, 4, 5, 6]\n5"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#dictionaries",
+    "href": "materials/3_ii_introToPython_solutions.html#dictionaries",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Dictionaries",
+    "text": "Dictionaries\nA dictionary is a built-in data structure in Python used to store key-value pairs.\nDictionaries are unordered collections (as of Python 3.6+, they maintain insertion order), where each value is accessed using its unique key.\nDictionaries are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nKeys in a dictionary must be unique and immutable (such as strings, numbers, or tuples), while values can be of any data type.\nDictionaries are created using curly braces {}, with key-value pairs separated by commas and a colon between each key and value."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
+    "href": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Demo of Dictionaries",
+    "text": "Demo of Dictionaries\n\nExamples:\nmy_dict = {\"name\": \"Alice\", \"age\": 25, \"is_student\": True}  # definition\nprint(my_dict[\"name\"])  # Access value by key\nmy_dict[\"age\"] = 26  # Modify value\nmy_dict[\"city\"] = \"New York\"  # Add new key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'is_student': True, 'city': 'New York'}\ndel my_dict[\"is_student\"]  # Remove a key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'city': 'New York'}\nprint(len(my_dict))  # Number of key-value pairs\n\nOutput:\nAlice\n{‘name’: ‘Alice’, ‘age’: 26, ‘is_student’: True, ‘city’: ‘New York’}\n{‘name’: ‘Alice’, ‘age’: 26, ‘city’: ‘New York’}\n3"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#coding-challenges",
+    "href": "materials/3_ii_introToPython_solutions.html#coding-challenges",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Coding Challenges",
+    "text": "Coding Challenges\n\n\n\n1. Variables and Operators\nChallenge:\nCreate two variables, a and b, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\n\nTip\n\n\nMethod Suggestions:\n\nDeclare two variables and assign integer values to them\nUse arithmetic operators: +, -, *, /\nUse print() function with labels for clarity\nConsider using f-strings for formatted output\nRemember: division / gives a float result"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 1: Variables and Operators (Part 1)",
+    "text": "Solution 1: Variables and Operators (Part 1)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Basic Print Statements\na = 10\nb = 5\nprint(\"Sum:\", a + b)\nprint(\"Difference:\", a - b)\nprint(\"Product:\", a * b)\nprint(\"Quotient:\", a / b)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\na = 10\nb = 5\nprint(f\"Sum: {a + b}\")\nprint(f\"Difference: {a - b}\")\nprint(f\"Product: {a * b}\")\nprint(f\"Quotient: {a / b}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 1: Variables and Operators (Part 2)",
+    "text": "Solution 1: Variables and Operators (Part 2)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Storing Results in Variables\na = 10\nb = 5\nsum_result = a + b\ndiff_result = a - b\nprod_result = a * b\nquot_result = a / b\nprint(f\"Sum: {sum_result}, Difference: {diff_result}, Product: {prod_result}, Quotient: {quot_result}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 2: Working with Lists (Part 1)",
+    "text": "Solution 2: Working with Lists (Part 1)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using max() Function\nnumbers = [3, 7, 2, 9, 5]\nprint(\"Largest number:\", max(numbers))\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Sorting the List\nnumbers = [3, 7, 2, 9, 5]\nnumbers.sort()\nprint(\"Largest number:\", numbers[-1])  # Last element after sorting"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 2: Working with Lists (Part 2)",
+    "text": "Solution 2: Working with Lists (Part 2)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Manual Comparison Loop\nnumbers = [3, 7, 2, 9, 5]\nlargest = numbers[0]\nfor num in numbers:\n    if num &gt; largest:\n        largest = num\nprint(\"Largest number:\", largest)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using sorted() Function\nnumbers = [3, 7, 2, 9, 5]\nlargest = sorted(numbers)[-1]\nprint(\"Largest number:\", largest)"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 3: Dictionaries (Part 1)",
+    "text": "Solution 3: Dictionaries (Part 1)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using .items() Method\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(key, \":\", value)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(f\"{key}: {value}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 3: Dictionaries (Part 2)",
+    "text": "Solution 3: Dictionaries (Part 2)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Accessing Keys Directly\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key in person.keys():\n    print(f\"{key}: {person[key]}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Individual Print Statements\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nprint(\"name:\", person[\"name\"])\nprint(\"age:\", person[\"age\"])\nprint(\"city:\", person[\"city\"])"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 4: For Loops (Part 1)",
+    "text": "Solution 4: For Loops (Part 1)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using Modulo Operator\nfor i in range(1, 11):\n    if i % 2 == 0:\n        print(i)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Range with Step\nfor i in range(2, 11, 2):  # Start at 2, step by 2\n    print(i)"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 4: For Loops (Part 2)",
+    "text": "Solution 4: For Loops (Part 2)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\n\nNote\n\n\nApproach 3: Using List Comprehension\neven_numbers = [i for i in range(1, 11) if i % 2 == 0]\nfor num in even_numbers:\n    print(num)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: One-liner with List Comprehension\nprint(*[i for i in range(1, 11) if i % 2 == 0], sep='\\n')"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 5: While Loops and Conditionals (Part 1)",
+    "text": "Solution 5: While Loops and Conditionals (Part 1)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using break Statement\nwhile True:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        break\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Condition in While Loop\nnum = 0  # Initialize with a non-negative number\nwhile num &gt;= 0:\n    num = int(input(\"Enter a number: \"))"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 5: While Loops and Conditionals (Part 2)",
+    "text": "Solution 5: While Loops and Conditionals (Part 2)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\nNote\n\n\nApproach 3: With Feedback Messages\nwhile True:\n    num = int(input(\"Enter a number (negative to quit): \"))\n    if num &lt; 0:\n        print(\"Negative number entered. Exiting...\")\n        break\n    else:\n        print(f\"You entered: {num}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using Flag Variable\ncontinue_input = True\nwhile continue_input:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        continue_input = False"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#youve-got-this",
+    "href": "materials/3_ii_introToPython_solutions.html#youve-got-this",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "You’ve Got This!!",
+    "text": "You’ve Got This!!\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou now able to use …\n\nLiterals\nPrint statements\nLoops driven by for and while\nLists and Dictionaries\nMuch more!"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#get-ready-for-functions-and-lambda-functions",
+    "href": "materials/6_lambdaFunctions.html#get-ready-for-functions-and-lambda-functions",
+    "title": "Functions and Lambda Functions",
+    "section": "Get Ready for Functions and Lambda Functions!",
+    "text": "Get Ready for Functions and Lambda Functions!"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#quick-example-function-that-does-not-return-a-value",
+    "href": "materials/6_lambdaFunctions.html#quick-example-function-that-does-not-return-a-value",
+    "title": "Functions and Lambda Functions",
+    "section": "Quick Example: Function That Does Not Return a Value",
+    "text": "Quick Example: Function That Does Not Return a Value\n\n\n\nAction-Oriented Function\n\n\ndef print_welcome(name):\n    print(f\"Welcome, {name}!\")\n\nresult = print_welcome(\"Ari\")\nprint(result)\nWhat happens? * The function performs an action: it prints a message. * It does not use return, so Python gives back None."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#quick-example-function-that-returns-a-value",
+    "href": "materials/6_lambdaFunctions.html#quick-example-function-that-returns-a-value",
+    "title": "Functions and Lambda Functions",
+    "section": "Quick Example: Function That Returns a Value",
+    "text": "Quick Example: Function That Returns a Value\n\n\n\nValue-Producing Function\n\n\ndef area_of_rectangle(length, width):\n    return length * width\n\narea = area_of_rectangle(5, 3)\nprint(area)\nWhat happens? * The function computes a value. * return sends that value back to the caller."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-the-concept",
+    "href": "materials/6_lambdaFunctions.html#lambda-functions-the-concept",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda Functions: The Concept",
+    "text": "Lambda Functions: The Concept"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#specifics-of-lambda-functions",
+    "href": "materials/6_lambdaFunctions.html#specifics-of-lambda-functions",
+    "title": "Functions and Lambda Functions",
+    "section": "Specifics of Lambda Functions",
+    "text": "Specifics of Lambda Functions\n\n\n\n\n\n\nImportant\n\n\nLimitations:\n\nLambda functions are restricted to a single expression.\nThey cannot contain statements like assignments, if-else, or for loops within their definition.\nThey are primarily used for simple, short operations.\nFor more complex logic, a named function is more appropriate;\n\ndef myFunction():"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-the-basics",
+    "href": "materials/6_lambdaFunctions.html#lambda-functions-the-basics",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda Functions: The Basics",
+    "text": "Lambda Functions: The Basics\n\n\n\nBasic Syntax\n\n\n# Lambda syntax: lambda arguments: expression\n\n# Regular function\ndef square(x):\n    return x * x\n\n# Lambda equivalent\nsquare_lambda = lambda x: x * x\n\n# Using both\nprint(square(5))        # Output: 25\nprint(square_lambda(5)) # Output: 25\n\n\n\n\nKey Point: Lambda functions are expressions, not statements - they return a value immediately!"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-functions-multiple-arguments",
+    "href": "materials/6_lambdaFunctions.html#lambda-functions-multiple-arguments",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda Functions: Multiple Arguments",
+    "text": "Lambda Functions: Multiple Arguments\n\n\n\nMore Examples\n\n\n# Multiple arguments\nadd = lambda x, y: x + y\nmultiply = lambda x, y, z: x * y * z\n\n# With default arguments\ngreet = lambda name=\"World\": f\"Hello, {name}!\"\n\nprint(add(3, 5))           # Output: 8\nprint(multiply(2, 3, 4))   # Output: 24\nprint(greet())             # Output: Hello, World!\nprint(greet(\"Alice\"))      # Output: Hello, Alice!\n\n\n\n\nWhy this works: Lambda functions can handle multiple parameters just like regular functions!"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#quick-challenge-1-2-minutes",
+    "href": "materials/6_lambdaFunctions.html#quick-challenge-1-2-minutes",
+    "title": "Functions and Lambda Functions",
+    "section": "🤝 Quick Challenge #1 (2 minutes)",
+    "text": "🤝 Quick Challenge #1 (2 minutes)\n\n\n\nYour Turn: Basic Lambda Practice\n\n\nChallenge: Create lambda functions for these operations:\n\nA lambda that calculates the area of a circle: π * r²\nA lambda that converts Fahrenheit to Celsius: (f - 32) * 5/9\nA lambda that finds the maximum max() of three numbers\nA lambda that finds the minimum min() of three numbers\n\n\n\n\nStarter Code:\nimport math\n\n# Your lambda functions here\ncircle_area = lambda r: # Complete this\nfahrenheit_to_celsius = lambda f: # Complete this  \nmax_three = lambda a, b, c: # Complete this\nmin_three = lambda a, b, c: # Complete this\n\n# Test your functions\nprint(circle_area(5))\nprint(fahrenheit_to_celsius(68))\nprint(max_three(10, 20, 15))\nprint(min_three(10, 20, 15))"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-1-solutions",
+    "href": "materials/6_lambdaFunctions.html#challenge-1-solutions",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge #1 Solutions",
+    "text": "Challenge #1 Solutions\n\n\n\nSolutions\n\n\n\n\n\n\nimport math\n\n# Solution 1: Circle area\ncircle_area = lambda r: math.pi * r * r\n\n# Solution 2: Fahrenheit to Celsius\nfahrenheit_to_celsius = lambda f: (f - 32) * 5/9\n\n# Solution 3: Maximum of three numbers\nmax_three = lambda a, b, c: max(a, max(b, c))\n# Alternative: max_three = lambda a, b, c: max(a, b, c)\n\n# Solution 4: Minimum of three numbers (in a list)\nmyVals = [10, 20, 15]\nmin_three = lambda thisValue: min(thisValue)\nprint(myVals)\nprint(min_three(myVals))\n\n# Test results\nprint(f\"Circle area (r=5): {circle_area(5):.2f}\")      # 78.54\nprint(f\"68°F in Celsius: {fahrenheit_to_celsius(68)}\")  # 20.0\nprint(f\"Max of 10,20,15: {max_three(10, 20, 15)}\")     # 20\nprint(f\"Min of 10,20,15: {min_three(10, 20, 15)}\")     # 10"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#meet-some-handy-functions",
+    "href": "materials/6_lambdaFunctions.html#meet-some-handy-functions",
+    "title": "Functions and Lambda Functions",
+    "section": "Meet Some Handy Functions! 👋",
+    "text": "Meet Some Handy Functions! 👋\n\n\n\nEssential Built-in Functions\n\n\n\n\n\n\n\n\n🗺️ map(function, iterable)\nApplies a function to every item in a list/iterable\nThink: “Transform every item”\n🔍 filter(function, iterable)\nKeeps only items where function returns True\nThink: “Keep only items that pass the test”\n\n📊 sorted(iterable, key=function)\nReturns a new sorted list using function for comparison\nThink: “Arrange items by custom criteria”\n📋 list(iterable)\nConverts any iterable (map/filter results) into a list\nThink: “Make it a proper list I can print/use”"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-sorted-example",
+    "href": "materials/6_lambdaFunctions.html#simple-sorted-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple sorted() Example",
+    "text": "Simple sorted() Example\n\n\n\nsorted() with a Lambda Key\n\n\nsorted() returns a new list in order. The key function tells Python what value to compare.\n\n\n\nstudents = [(\"Emil\", 25), (\"Tobias\", 22), (\"Linus\", 28)]\n# Sort by age (the second element in the tuple)\nsorted_students = sorted(students, key=lambda x: x[1])\n# Output: [('Tobias', 22), ('Emil', 25), ('Linus', 28)]\nprint(sorted_students)"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-sorted",
+    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-sorted",
+    "title": "Functions and Lambda Functions",
+    "section": "A Complicated Example of Lambda with sorted()",
+    "text": "A Complicated Example of Lambda with sorted()\n\n\n\nCustom Sorting Logic\n\n\n\n\n\n\n# Sort with custom criteria\nstudents = [\n    {\"name\": \"Alice\", \"grade\": 85},\n    {\"name\": \"Bob\", \"grade\": 92},\n    {\"name\": \"Charlie\", \"grade\": 78},\n    {\"name\": \"Diana\", \"grade\": 96}\n]\n\nwords = [\"banana\", \"pie\", \"Washington\", \"book\"]\n\n# Sort students by grade (descending)\nby_grade = sorted(students, key=lambda student: student[\"grade\"], reverse=True)\nprint(\"Top student:\", by_grade[0][\"name\"])  # Diana\n\n# Sort words by length\nby_length = sorted(words, key=lambda word: len(word))\nprint(f\"By length: {by_length}\")  # ['pie', 'book', 'banana', 'Washington']\n\n# Sort words by last letter\nby_last_letter = sorted(words, key=lambda word: word[-1])\nprint(f\"By last letter: {by_last_letter}\")  # ['banana', 'pie', 'book', 'Washington']"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-filter-and-list-example",
+    "href": "materials/6_lambdaFunctions.html#simple-filter-and-list-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple filter() and List() Example",
+    "text": "Simple filter() and List() Example\n\n\n\nfilter() Keeps What Passes\n\n\nfilter() keeps items where the lambda returns True and list() converts the filter result into a list.\n\n\n\nnumbers = [1, 2, 3, 4, 5, 6]\n# Keep only even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\n# Output: [2, 4, 6]\nprint(evens)"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-filter-and-list",
+    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-filter-and-list",
+    "title": "Functions and Lambda Functions",
+    "section": "A Complicated Example of Lambda with filter() and list()",
+    "text": "A Complicated Example of Lambda with filter() and list()\n\n\n\nKeep Only What You Want\n\n\n\n\n\n\n# Filter elements based on condition\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nwords = [\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\"]\n\n# Keep only even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(f\"Evens: {evens}\")  # [2, 4, 6, 8, 10]\n\n# Keep only long words\nlong_words = list(filter(lambda word: len(word) &gt; 5, words))\nprint(f\"Long words: {long_words}\")  # ['banana', 'cherry', 'elderberry']\n\n# Keep positive numbers\nmixed = [-3, -1, 0, 2, 5, -7, 9]\npositives = list(filter(lambda x: x &gt; 0, mixed))\nprint(f\"Positives: {positives}\")  # [2, 5, 9]"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-map-example",
+    "href": "materials/6_lambdaFunctions.html#simple-map-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple map() Example",
+    "text": "Simple map() Example\n\n\n\nmap() Transforms Every Item\n\n\nmap() applies the lambda to each item and returns a new sequence.\n\n\n\nnumbers = [1, 2, 3, 4]\n# Double each number\ndoubled = list(map(lambda x: x * 2, numbers))\n# Output: [2, 4, 6, 8]\nprint(f\"Doubled: {doubled}\")"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-map",
+    "href": "materials/6_lambdaFunctions.html#a-complicated-example-of-lambda-with-map",
+    "title": "Functions and Lambda Functions",
+    "section": "A Complicated Example of Lambda with map()",
+    "text": "A Complicated Example of Lambda with map()\n\n\n\nTransform All Elements\n\n\n\n\n\n\n# Transform all elements in a list\nnumbers = [1, 2, 3, 4, 5]\nnames = [\"alice\", \"bob\", \"charlie\"]\n\n# Square all numbers\nsquared = list(map(lambda x: x**2, numbers))\nprint(f\"Squared: {squared}\")  # [1, 4, 9, 16, 25]\n\n# Capitalize all names\ncapitalized = list(map(lambda name: name.title(), names))\nprint(f\"Capitalized: {capitalized}\")  # ['Alice', 'Bob', 'Charlie']\n\n# Multiple lists\nnums1 = [1, 2, 3]\nnums2 = [4, 5, 6]\nsums = list(map(lambda x, y: x + y, nums1, nums2))\nprint(f\"Sums: {sums}\")  # [5, 7, 9]"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-vs-regular-comparison",
+    "href": "materials/6_lambdaFunctions.html#lambda-vs-regular-comparison",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda vs Regular: Comparison",
+    "text": "Lambda vs Regular: Comparison\n\n\n\nSide-by-Side Comparison\n\n\n\n\n\n\n# ✅ Good use of lambda - simple, clear\nnumbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, numbers))\nprint(f\"squared is {squared}\")\n\n# ❌ Bad use of lambda - too complex\ncomplex_lambda = lambda x: x**2 if x &gt; 0 else -x**2 if x &lt; 0 else 0\nfor x in range(6):\n    print(f\"complex_lambda, x={x}, value={complex_lambda(x)}\")\n\n# ✅ Better as regular function\ndef process_number(x):\n    if x &gt; 0:\n        return x**2\n    elif x &lt; 0:\n        return -x**2\n    else:\n        return 0\nfor i in range(10): print(f\"processed number[{i}] -&gt; {process_number(i)}\")\n\nRemember: Lambda functions should be simple and readable!"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#quick-challenge-2-3-minutes",
+    "href": "materials/6_lambdaFunctions.html#quick-challenge-2-3-minutes",
+    "title": "Functions and Lambda Functions",
+    "section": "🤝 Quick Challenge #2 (3 minutes)",
+    "text": "🤝 Quick Challenge #2 (3 minutes)\n\n\n\nYour Turn: Lambda with Built-ins\n\n\nChallenge: Use lambda functions with map(), filter(), and sorted():\n# Given data\ntemperatures_f = [32, 68, 86, 104, 212]  # Fahrenheit\nprices = [10.99, 23.45, 5.67, 45.00, 12.34]\nproducts = [\n    {\"name\": \"laptop\", \"price\": 999.99, \"rating\": 4.5},\n    {\"name\": \"mouse\", \"price\": 25.50, \"rating\": 4.2},\n    {\"name\": \"keyboard\", \"price\": 75.00, \"rating\": 4.8},\n    {\"name\": \"monitor\", \"price\": 299.99, \"rating\": 4.3}\n]\n\n# Your tasks:\n# 1. Convert temperatures to Celsius using map()\n# 2. Find prices under $20 using filter()\n# 3. Sort products by rating (highest first) using sorted()"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-2-solutions",
+    "href": "materials/6_lambdaFunctions.html#challenge-2-solutions",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge #2 Solutions",
+    "text": "Challenge #2 Solutions\n\n\n\nSolutions\n\n\n# 1. Convert temperatures to Celsius\ncelsius = list(map(lambda f: (f - 32) * 5/9, temperatures_f))\nprint(f\"Celsius: {[round(temp, 1) for temp in celsius]}\")\n# [0.0, 20.0, 30.0, 40.0, 100.0]\n\n# 2. Find prices under $20\ncheap_prices = list(filter(lambda price: price &lt; 20, prices))\nprint(f\"Under $20: {cheap_prices}\")  # [10.99, 5.67, 12.34]\n\n# 3. Sort products by rating (highest first)\nby_rating = sorted(products, key=lambda p: p[\"rating\"], reverse=True)\nprint(\"Best rated:\", by_rating[0][\"name\"])  # keyboard\nfor product in by_rating:\n    print(f\"{product['name']}: {product['rating']}\")"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#more-helpful-functions",
+    "href": "materials/6_lambdaFunctions.html#more-helpful-functions",
+    "title": "Functions and Lambda Functions",
+    "section": "More Helpful Functions! 🎯",
+    "text": "More Helpful Functions! 🎯\n\n\n\nAdditional Built-in Functions\n\n\n\n\n\n\n\n\n➕ sum(iterable)\nAdds up all numbers in a list/iterable\nThink: “Give me the total of all these numbers”\n🔍 len(iterable)\nReturns the count of items in a collection\nThink: “How many items are there?”\n\n🏆 max(iterable, key=function)\nFinds the largest item (optionally using key function)\nThink: “Which item is the biggest/best?”\n🎲 set(iterable)\nCreates a collection with only unique items\nThink: “Remove all duplicates”\n\n\n\n\nFun Fact: These functions work great with the results from map() and filter()!\n\n\n🧮🎪🌟"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-sum-example",
+    "href": "materials/6_lambdaFunctions.html#simple-sum-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple sum() Example",
+    "text": "Simple sum() Example\n\n\n\nsum() Adds Values Together\n\n\nsum() returns the total of numeric items in an iterable.\n\n\n\nquiz_scores = [8, 9, 10, 7, 6]\ntotal_points = sum(quiz_scores)\nprint(total_points)  # 40"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-len-example",
+    "href": "materials/6_lambdaFunctions.html#simple-len-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple len() Example",
+    "text": "Simple len() Example\n\n\n\nlen() Counts Items\n\n\nlen() tells you how many items are in a list, string, or other collection.\n\n\n\ntopics = [\"functions\", \"lambda\", \"map\", \"filter\"]\ntopic_count = len(topics)\nprint(topic_count)  # 4"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-max-example",
+    "href": "materials/6_lambdaFunctions.html#simple-max-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple max() Example",
+    "text": "Simple max() Example\n\n\n\nmax() Finds the Largest Item\n\n\nWith key=, max() can choose the “largest” item using custom logic.\n\n\n\nwords = [\"cat\", \"giraffe\", \"dog\", \"elephant\"]\nlongest_word = max(words, key=lambda w: len(w))\nprint(longest_word)  # elephant"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#simple-set-example",
+    "href": "materials/6_lambdaFunctions.html#simple-set-example",
+    "title": "Functions and Lambda Functions",
+    "section": "Simple set() Example",
+    "text": "Simple set() Example\n\n\n\nset() Removes Duplicates\n\n\nset() creates a collection of unique values.\n\n\n\ncolors = [\"red\", \"blue\", \"red\", \"green\", \"blue\", \"yellow\"]\nunique_colors = set(colors)\nprint(unique_colors)  # Order may vary, e.g., {'red', 'blue', 'green', 'yellow'}\n\nNote: The order of items in a set may appear differently each time you print it."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#real-world-example-1",
+    "href": "materials/6_lambdaFunctions.html#real-world-example-1",
+    "title": "Functions and Lambda Functions",
+    "section": "Real-World Example 1",
+    "text": "Real-World Example 1\n\n\n\n\n\n\nNote\n\n\nSales Data Processing\n\n\n\n# Sales data from a CSV or database\nsales_data = [\n    {\"product\": \"Laptop\", \"price\": 999.99, \"quantity\": 2, \"discount\": 0.1},\n    {\"product\": \"Mouse\", \"price\": 25.50, \"quantity\": 5, \"discount\": 0.0},\n    {\"product\": \"Keyboard\", \"price\": 75.00, \"quantity\": 3, \"discount\": 0.05},\n    {\"product\": \"Monitor\", \"price\": 299.99, \"quantity\": 1, \"discount\": 0.15}\n]\n\n# Calculate total revenue with discounts\ntotal_revenue = sum(map(\n    lambda sale: sale[\"price\"] * sale[\"quantity\"] * (1 - sale[\"discount\"]),\n    sales_data\n))\nprint(f\"Total Revenue: ${total_revenue:.2f}\")\n\n# Find high-value sales (over $200 after discount)\nhigh_value = list(filter(\n    lambda sale: sale[\"price\"] * sale[\"quantity\"] * (1 - sale[\"discount\"]) &gt; 200,\n    sales_data\n))\nprint(f\"High-value sales: {len(high_value)}\")\nOutput:\n\n\nTotal Revenue: $2396.22\nHigh-value sales: 3"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#real-world-example-2",
+    "href": "materials/6_lambdaFunctions.html#real-world-example-2",
+    "title": "Functions and Lambda Functions",
+    "section": "Real-World Example 2",
+    "text": "Real-World Example 2\n\n\n\n\n\n\nNote\n\n\nWeb Development\n\n\n\n# User registration data\nusers = [\n    {\"email\": \"alice@email.com\", \"age\": 25, \"active\": True},\n    {\"email\": \"bob@email.com\", \"age\": 17, \"active\": False},\n    {\"email\": \"charlie@email.com\", \"age\": 30, \"active\": True},\n    {\"email\": \"diana@email.com\", \"age\": 16, \"active\": True}\n]\n\n# Get active adult users\nactive_adults = list(filter(\n    lambda user: user[\"active\"] and user[\"age\"] &gt;= 18,\n    users\n))\n\n# Extract just the email addresses\nadult_emails = list(map(lambda user: user[\"email\"], active_adults))\nprint(\"Adult user emails:\", adult_emails)\n\n# Sort users by age\nby_age = sorted(users, key=lambda user: user[\"age\"])\nprint(\"Youngest user:\", by_age[0][\"email\"])\nOutput:\n\n\nAdult user emails: ['alice@email.com', 'charlie@email.com']\nYoungest user: diana@email.com"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#real-world-example-3",
+    "href": "materials/6_lambdaFunctions.html#real-world-example-3",
+    "title": "Functions and Lambda Functions",
+    "section": "Real-World Example 3",
+    "text": "Real-World Example 3\n\n\n\n\n\n\nNote\n\n\nAnalytic Computing\n\n\n\nimport math\n\n# Experimental data points\ndata_points = [\n    {\"x\": 1, \"y\": 2.1, \"error\": 0.1},\n    {\"x\": 2, \"y\": 4.2, \"error\": 0.2},\n    {\"x\": 3, \"y\": 5.8, \"error\": 0.15},\n    {\"x\": 4, \"y\": 8.1, \"error\": 0.25}\n]\n\n# Calculate distances from origin\ndistances = list(map(\n    lambda point: math.sqrt(point[\"x\"]**2 + point[\"y\"]**2),\n    data_points\n))\n\n# Filter points with low error (high precision)\nprecise_points = list(filter(\n    lambda point: point[\"error\"] &lt; 0.2,\n    data_points\n))\n\n# Sort by significance (y/error ratio)\nby_significance = sorted(\n    data_points,\n    key=lambda point: point[\"y\"] / point[\"error\"],\n    reverse=True\n)\nprint(\"Most significant point:\", by_significance[0])\nOutput:\n\n\nMost significant point: {'x': 3, 'y': 5.8, 'error': 0.15}"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-best-practices-dos-and-donts",
+    "href": "materials/6_lambdaFunctions.html#lambda-best-practices-dos-and-donts",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda Best Practices: Do’s and Don’ts",
+    "text": "Lambda Best Practices: Do’s and Don’ts\n\n\n\nGuidelines\n\n\n\n\n\n\n✅ DO: Use lambdas for simple, single-expression operations\n# Simple, clear operations\nnumbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, numbers))\nevens = list(filter(lambda x: x % 2 == 0, numbers))\n\n# Short data transformations\nusers = [{\"name\": \"Alice\", \"age\": 25}]\nnames = list(map(lambda u: u[\"name\"], users))\n❌ DO NOT: Make lambdas too complex or use them for multi-step logic\n# Too complex for lambda\ncomplex_func = lambda x: x**2 if x &gt; 0 else abs(x) if x &lt; 0 else \"zero\"\n\n# Multiple statements (impossible in lambda anyway)\n# This won't work:\n# bad_lambda = lambda x: print(x); return x**2"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#lambda-limitations-and-alternatives",
+    "href": "materials/6_lambdaFunctions.html#lambda-limitations-and-alternatives",
+    "title": "Functions and Lambda Functions",
+    "section": "Lambda Limitations and Alternatives",
+    "text": "Lambda Limitations and Alternatives\n\n\n\nWhen Lambda Is not Enough\n\n\n\n\n\n\n# ❌ Lambda cannot do multiple statements\n# Need regular function for this:\ndef process_grade(score):\n    print(f\"Processing score: {score}\")  # Side effect\n    if score &gt;= 90:\n        return \"A\"\n    elif score &gt;= 80:\n        return \"B\"\n    else:\n        return \"C\"\n\n# ✅ Lambda for simple conditions\ngrade_simple = lambda score: \"Pass\" if score &gt;= 60 else \"Fail\"\n\n# ❌ Lambda cannot include assignments\n# Need regular function:\ndef calculate_with_logging(x):\n    result = x**2 + 2*x + 1  # Assignment\n    print(f\"Calculated: {result}\")\n    return result"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-1-quick-lambda-warmup",
+    "href": "materials/6_lambdaFunctions.html#challenge-1-quick-lambda-warmup",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 1: Quick Lambda Warmup",
+    "text": "Challenge 1: Quick Lambda Warmup\n\n\n\nYour Turn\n\n\nWrite lambdas for each task.\nimport math\n\n# 1. Rectangle area\narea_rect = lambda w, h: # finish\n\n# 2. Apply a 15% discount\ndiscount_price = lambda price: # finish\n\n# 3. Create initials from first and last name\ninitials = lambda first, last: # finish\n\nprint(area_rect(8, 5))\nprint(discount_price(40))\nprint(initials(\"Ada\", \"Lovelace\"))"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-2-map-filter-practice",
+    "href": "materials/6_lambdaFunctions.html#challenge-2-map-filter-practice",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 2: map() + filter() Practice",
+    "text": "Challenge 2: map() + filter() Practice\n\n\n\nYour Turn\n\n\nUse map() and filter() to process the scores.\nscores = [62, 71, 88, 95, 54, 77, 83]\n\n# 1. Curve every score by +5 (max 100)\n# 2. Keep only passing scores (&gt;= 70)\n# 3. Print how many passing scores remain"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-3-sorting-with-lambda",
+    "href": "materials/6_lambdaFunctions.html#challenge-3-sorting-with-lambda",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 3: Sorting with Lambda",
+    "text": "Challenge 3: Sorting with Lambda\n\n\n\nYour Turn\n\n\nSort the city list in two different ways.\ncities = [\n    (\"Tokyo\", 37400068),\n    (\"Delhi\", 28514000),\n    (\"Shanghai\", 25582000),\n    (\"Sao Paulo\", 21650000)\n]\n\n# 1. Sort by population (highest first)\n# 2. Sort by city name length (shortest first)"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-4-chaining-functions",
+    "href": "materials/6_lambdaFunctions.html#challenge-4-chaining-functions",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 4: Chaining Functions",
+    "text": "Challenge 4: Chaining Functions\n\n\n\nYour Turn\n\n\nUse filter() then map() to clean the words list.\nwords = [\"apple\", \"kiwi\", \"orange\", \"fig\", \"grape\", \"apricot\"]\n\n# 1. Keep only words with length &gt;= 5\n# 2. Convert the remaining words to uppercase\n# 3. Sort the result by length"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-5-mini-data-task",
+    "href": "materials/6_lambdaFunctions.html#challenge-5-mini-data-task",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 5: Mini Data Task",
+    "text": "Challenge 5: Mini Data Task\n\n\n\nYour Turn\n\n\nProcess the trip data using lambdas.\ntrips = [\n    {\"driver\": \"Asha\", \"miles\": 120, \"rate\": 0.62},\n    {\"driver\": \"Ben\", \"miles\": 45, \"rate\": 0.62},\n    {\"driver\": \"Chen\", \"miles\": 200, \"rate\": 0.62},\n    {\"driver\": \"Dia\", \"miles\": 80, \"rate\": 0.62}\n]\n\n# 1. Compute the payout for each trip (miles * rate)\n# 2. Keep only trips with payout &gt;= 60\n# 3. Print the driver names for those trips"
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-1-solution",
+    "href": "materials/6_lambdaFunctions.html#challenge-1-solution",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 1 Solution",
+    "text": "Challenge 1 Solution\n\n\n\nSolution + Why It Works\n\n\nimport math\n\narea_rect = lambda w, h: w * h\ndiscount_price = lambda price: price * 0.85\ninitials = lambda first, last: f\"{first[0]}{last[0]}\"\n\nprint(area_rect(8, 5))\nprint(discount_price(40))\nprint(initials(\"Ada\", \"Lovelace\"))\nHow it works: Each lambda is one expression. The discount multiplies by \\(1 - 0.15\\), and the initials slice the first character from each name."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-2-solution",
+    "href": "materials/6_lambdaFunctions.html#challenge-2-solution",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 2 Solution",
+    "text": "Challenge 2 Solution\n\n\n\nSolution + Why It Works\n\n\nscores = [62, 71, 88, 95, 54, 77, 83]\n\ncurved = list(map(lambda s: min(s + 5, 100), scores))\npassing = list(filter(lambda s: s &gt;= 70, curved))\n\nprint(curved)\nprint(passing)\nprint(len(passing))\nHow it works: map() adjusts every score, min() caps at 100, and filter() keeps only passing values."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-3-solution",
+    "href": "materials/6_lambdaFunctions.html#challenge-3-solution",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 3 Solution",
+    "text": "Challenge 3 Solution\n\n\n\nSolution + Why It Works\n\n\ncities = [\n    (\"Tokyo\", 37400068),\n    (\"Delhi\", 28514000),\n    (\"Shanghai\", 25582000),\n    (\"Sao Paulo\", 21650000)\n]\n\nby_pop = sorted(cities, key=lambda c: c[1], reverse=True)\nby_name_len = sorted(cities, key=lambda c: len(c[0]))\n\nprint(by_pop)\nprint(by_name_len)\nHow it works: The key function picks the sort value: population at index 1 or the length of the name at index 0."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-4-solution",
+    "href": "materials/6_lambdaFunctions.html#challenge-4-solution",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 4 Solution",
+    "text": "Challenge 4 Solution\n\n\n\nSolution + Why It Works\n\n\nwords = [\"apple\", \"kiwi\", \"orange\", \"fig\", \"grape\", \"apricot\"]\n\nlong_words = list(filter(lambda w: len(w) &gt;= 5, words))\nupper_words = list(map(lambda w: w.upper(), long_words))\nsorted_words = sorted(upper_words, key=lambda w: len(w))\n\nprint(sorted_words)\nHow it works: filter() trims the list, map() transforms each item, and sorted() orders by length using a lambda key."
+  },
+  {
+    "objectID": "materials/6_lambdaFunctions.html#challenge-5-solution",
+    "href": "materials/6_lambdaFunctions.html#challenge-5-solution",
+    "title": "Functions and Lambda Functions",
+    "section": "Challenge 5 Solution",
+    "text": "Challenge 5 Solution\n\n\n\nSolution + Why It Works\n\n\ntrips = [\n    {\"driver\": \"Asha\", \"miles\": 120, \"rate\": 0.62},\n    {\"driver\": \"Ben\", \"miles\": 45, \"rate\": 0.62},\n    {\"driver\": \"Chen\", \"miles\": 200, \"rate\": 0.62},\n    {\"driver\": \"Dia\", \"miles\": 80, \"rate\": 0.62}\n]\n\npayouts = list(map(lambda t: {**t, \"payout\": t[\"miles\"] * t[\"rate\"]}, trips))\nhigh_payouts = list(filter(lambda t: t[\"payout\"] &gt;= 60, payouts))\ndrivers = list(map(lambda t: t[\"driver\"], high_payouts))\n\nprint(drivers)\nHow it works: First add a computed field, then filter by it, then map to just the names."
+  },
+  {
     "objectID": "materials/4_data_structures_solutions.html#why-data-structures-matter",
     "href": "materials/4_data_structures_solutions.html#why-data-structures-matter",
     "title": "Chapter 2: Data Structures",
@@ -1921,15 +2166,22 @@
     "objectID": "materials/0_materials.html#w6.-functions-and-functional-things",
     "href": "materials/0_materials.html#w6.-functions-and-functional-things",
     "title": "Materials",
-    "section": "W6. Functions and Functional things",
-    "text": "W6. Functions and Functional things\n\nFunctions and Lambda Functions\n\nHTML Slides\n\nActivity 05: Introduction to Software Testing with pytest\n\nGitHub Classroom Link\n\nLab 05: Taylor Series Programming For Approximation\n\nGitHub Classroom Link"
+    "section": "W6. Functions and Functional Things",
+    "text": "W6. Functions and Functional Things\n\nFunctions and Lambda Functions\n\nHTML Slides\n\nActivity 05: Introduction to Software Testing with pytest\n\nGitHub Classroom Link\n\nLab 05: Taylor Series Programming For Approximation\n\nGitHub Classroom Link"
   },
   {
     "objectID": "materials/0_materials.html#w7.-function-based-programming",
     "href": "materials/0_materials.html#w7.-function-based-programming",
     "title": "Materials",
-    "section": "W7. Function-based Programming*",
-    "text": "W7. Function-based Programming*\n\nHigher-Order Functions, Decorators & Simple Classes\n\nHTML Slides\n\nActivity 06: Introduction to the Sphinx Documentation Library\n\nGitHub Classroom Link"
+    "section": "W7. Function-based Programming",
+    "text": "W7. Function-based Programming\n\nHigher-Order Functions, Decorators & Simple Classes\n\nHTML Slides\n\nActivity 06: Introduction to the Sphinx Documentation Library\n\nGitHub Classroom Link"
+  },
+  {
+    "objectID": "materials/0_materials.html#w8.-object-oriented-programming-and-exceptions",
+    "href": "materials/0_materials.html#w8.-object-oriented-programming-and-exceptions",
+    "title": "Materials",
+    "section": "W8. Object-Oriented Programming and Exceptions",
+    "text": "W8. Object-Oriented Programming and Exceptions\n\nObject-Oriented Programming and Exceptions\n\nHTML Slides"
   },
   {
     "objectID": "materials/2_i_introToPython_solutions.html#what-are-literals",

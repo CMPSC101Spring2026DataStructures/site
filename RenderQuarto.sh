@@ -1,13 +1,16 @@
 
-ECHO Creating virtual environment: .venv/,
-python3 -m venv .venv
+echo Creating virtual environment: .venv/ using Python 3.11
+python3.11 -m venv .venv
 
-ECHO Activating .venv
+echo Activating .venv
 source .venv/bin/activate
 
-ECHO Installing necessary dependencies
-pip install quarto jupyter numpy matplotlib plotly pandas
+echo Installing necessary dependencies
+pip install pyyaml jupyter numpy matplotlib plotly pandas
 
-ECHO Rendering
+echo Setting QUARTO_PYTHON to the venv Python
+export QUARTO_PYTHON=$(which python)
+
+echo Rendering
 quarto render
 

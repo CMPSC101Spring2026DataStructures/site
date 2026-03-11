@@ -1,0 +1,989 @@
+---
+title: "Object-Oriented Programming & Exceptions"
+subtitle: "Designing Robust Python Programs"
+author: "Oliver Bonham-Carter"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+<!-- Find your available themes: ls /Applications/quarto/share/formats/revealjs/themes -->
+<!-- ::: {style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;"} -->
+
+# On For Today
+
+::: {.callout-tip icon="true"}
+## Two Essential Python Skills for Real Programs
+**Topics covered in today's discussion:**
+
+* 🧱 **Object-Oriented Programming (OOP)** — classes, objects, methods, and design
+* 🧱 **Constructors and Instance State** — using `__init__` and `self`
+* 🧱 **Encapsulation & Validation** — controlling how data is updated
+* 🧱 **Inheritance & Polymorphism** — reusing and extending behavior
+* ⚠️ **Exceptions** — handling runtime errors safely
+* ⚠️ **`try` / `except` / `else` / `finally`** — structured error handling
+* ⚠️ **Raising Custom Exceptions** — communicating meaningful failures
+* 🧠 **Challenge Problems + Solutions** — practice and mechanism-focused discussion
+:::
+
+::: {.callout-note}
+By the end, you should be able to design small object-based systems and make them resilient when things go wrong.
+:::
+
+<!-- <center></center>
+<center></center>
+<center></center>
+<center></center>
+
+<center>
+![](graphics/tellMeMore_i.png){width=30%}
+</center> -->
+
+
+---
+
+# Part 1: Object-Oriented Programming
+
+::: {.callout-note icon="false"}
+## What Is OOP?
+**Object-oriented programming** organizes code around **objects** (instances) created from **classes** (blueprints).
+
+A class groups together:
+
+1. **Attributes** (data), and
+2. **Methods** (functions that operate on that data).
+:::
+
+::: {style="color: #8E44AD;"}
+**Key idea:** OOP helps model real systems by bundling data + behavior together.
+:::
+
+## Your First Class
+
+::: {.callout-important icon="false"}
+## Class, Constructor, Method
+```python
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def summary(self):
+        return f"'{self.title}' by {self.author} ({self.pages} pages)"
+
+b1 = Book("Python Basics", "A. Rivera", 240)
+b2 = Book("Data Stories", "L. Chen", 180)
+
+print(b1.summary())
+print(b2.title)
+```
+:::
+
+::: {.callout-important icon="false"}
+**How it works:** `Book(...)` calls `__init__` automatically. Each created object stores its own `title`, `author`, and `pages`.
+:::
+
+## Instance State with `self`
+
+::: {.callout-important icon="false"}
+## Each Object Keeps Its Own Data
+```python
+class Counter:
+    def __init__(self):
+        self.value = 0
+
+    def increment(self):
+        self.value += 1
+
+    def reset(self):
+        self.value = 0
+
+c1 = Counter()
+c2 = Counter()
+
+c1.increment(); c1.increment()
+c2.increment()
+
+print(c1.value)  # 2
+print(c2.value)  # 1
+```
+
+`self` refers to the current object, so `c1` and `c2` do not overwrite each other.
+:::
+
+## Encapsulation and Validation
+
+::: {.callout-important icon="false"}
+## Guarding Against Invalid Updates
+```python
+class Temperature:
+    def __init__(self, celsius=0):
+        self.set_celsius(celsius)
+
+    def set_celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature cannot be below absolute zero.")
+        self._celsius = value
+
+    def get_celsius(self):
+        return self._celsius
+
+    def to_fahrenheit(self):
+        return (self._celsius * 9 / 5) + 32
+
+room = Temperature(21)
+print(room.to_fahrenheit())
+```
+:::
+
+::: {.callout-note icon="false"}
+The attribute `_celsius` is a convention for “internal use.” Public methods (`set_celsius`, `get_celsius`) enforce valid state.
+:::
+
+## `__str__` for Readable Objects
+
+::: {.callout-important icon="false"}
+## Custom Print Output
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def __str__(self):
+        return f"Student(name={self.name}, grade={self.grade})"
+
+    def is_passing(self):
+        return self.grade >= 60
+
+s = Student("Maya", 88)
+print(s)
+print(s.is_passing())
+```
+:::
+
+## Inheritance: Reusing a Base Class
+
+::: {.callout-important icon="false"}
+## A Base Class and Two Subclasses
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "..."
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says meow!"
+
+pets = [Dog("Buddy"), Cat("Luna")]
+for pet in pets:
+    print(pet.speak())
+```
+:::
+
+::: {.callout-note icon="false"}
+This is **polymorphism**: same method call (`speak`) produces behavior based on object type.
+:::
+
+## Composition: Objects Inside Objects
+
+::: {.callout-important icon="false"}
+## Modeling Relationships with Contained Objects
+```python
+class Engine:
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
+
+class Car:
+    def __init__(self, brand, horsepower):
+        self.brand = brand
+        self.engine = Engine(horsepower)
+
+    def info(self):
+        return f"{self.brand} with {self.engine.horsepower} HP"
+
+car = Car("Toyota", 169)
+print(car.info())
+```
+
+**Design point:** Composition often models “has-a” relationships cleanly (`Car` has an `Engine`).
+:::
+
+---
+
+# OOP Mini Challenges
+
+<center>
+![](graphics/think.png){width=80%}
+</center>
+
+## Challenge A — `Circle` Class
+
+::: {.callout-warning icon="false"}
+Create a `Circle` class with:
+- `radius` in `__init__`
+- `area()`
+- `circumference()`
+- `__str__`
+
+```python
+# Write Circle here
+
+c = Circle(3)
+print(c)
+print(round(c.area(), 2))
+print(round(c.circumference(), 2))
+```
+:::
+
+## Solution A — `Circle` Class
+
+```python
+import math
+
+class Circle:
+    def __init__(self, radius):
+        if radius <= 0:
+            raise ValueError("Radius must be positive.")
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+    def circumference(self):
+        return 2 * math.pi * self.radius
+
+    def __str__(self):
+        return f"Circle(radius={self.radius})"
+
+c = Circle(3)
+print(c)
+print(round(c.area(), 2))
+print(round(c.circumference(), 2))
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** Validation in `__init__` ensures every `Circle` instance is meaningful, and methods compute directly from object state.
+:::
+
+## Challenge B — Inheritance Practice
+
+::: {.callout-warning icon="false"}
+Create a base class `Employee(name, salary)` with method `annual_pay()`.
+Then create subclass `Manager(name, salary, bonus)` overriding `annual_pay()` to include bonus.
+
+```python
+# Write Employee and Manager here
+
+e = Employee("Avery", 5000)
+m = Manager("Jules", 7000, 1500)
+print(e.annual_pay())
+print(m.annual_pay())
+```
+:::
+
+## Solution B — Inheritance Practice
+
+```python
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def annual_pay(self):
+        return self.salary * 12
+
+class Manager(Employee):
+    def __init__(self, name, salary, bonus):
+        super().__init__(name, salary)
+        self.bonus = bonus
+
+    def annual_pay(self):
+        return super().annual_pay() + self.bonus
+
+e = Employee("Avery", 5000)
+m = Manager("Jules", 7000, 1500)
+print(e.annual_pay())
+print(m.annual_pay())
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** `Manager` inherits shared behavior and state from `Employee`, then overrides one method to extend the pay rule.
+:::
+
+## Challenge C — Simple Inventory Object
+
+::: {.callout-warning icon="false"}
+Build `InventoryItem(name, quantity)` with methods:
+- `restock(amount)`
+- `sell(amount)` (reject sale if not enough stock)
+- `__str__`
+
+```python
+# Write InventoryItem here
+```
+:::
+
+## Solution C — Simple Inventory Object
+
+```python
+class InventoryItem:
+    def __init__(self, name, quantity):
+        if quantity < 0:
+            raise ValueError("Quantity cannot be negative.")
+        self.name = name
+        self.quantity = quantity
+
+    def restock(self, amount):
+        if amount <= 0:
+            raise ValueError("Restock amount must be positive.")
+        self.quantity += amount
+
+    def sell(self, amount):
+        if amount <= 0:
+            raise ValueError("Sell amount must be positive.")
+        if amount > self.quantity:
+            return "Not enough stock."
+        self.quantity -= amount
+        return "Sale completed."
+
+    def __str__(self):
+        return f"InventoryItem(name={self.name}, quantity={self.quantity})"
+
+item = InventoryItem("Notebook", 10)
+item.restock(5)
+print(item.sell(8))
+print(item)
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** The class centralizes inventory rules, so updates happen through methods that preserve valid stock counts.
+:::
+
+---
+
+# Part 2: Exceptions
+
+::: {.callout-note icon="false"}
+## What Is an Exception?
+An **exception** is a runtime error event that interrupts normal program flow.
+
+Common examples:
+
+- `ValueError` (bad value)
+- `TypeError` (wrong type)
+- `ZeroDivisionError`
+- `FileNotFoundError`
+:::
+
+::: {style="color: #8E44AD;"}
+**Key idea:** Exceptions let you fail safely and explain what went wrong.
+:::
+
+## Basic `try` / `except`
+
+::: {.callout-important icon="false"}
+## Catching a Conversion Error
+```python
+def parse_age(text):
+    try:
+        age = int(text)
+        return f"Age accepted: {age}"
+    except ValueError:
+        return "Age must be a whole number."
+
+print(parse_age("21"))
+print(parse_age("twenty"))
+```
+:::
+
+## Multiple `except` Clauses
+
+::: {.callout-important icon="false"}
+## Handling Different Failures Differently
+```python
+def divide_from_text(a_text, b_text):
+    try:
+        a = float(a_text)
+        b = float(b_text)
+        return a / b
+    except ValueError:
+        return "Inputs must be numbers."
+    except ZeroDivisionError:
+        return "Cannot divide by zero."
+
+print(divide_from_text("10", "2"))
+print(divide_from_text("10", "0"))
+print(divide_from_text("ten", "2"))
+```
+:::
+
+
+
+
+## Opening files without an exception handler
+
+::: {.callout-important icon="false"}
+## Full Exception Structure
+```python
+def read_first_line(path):
+    file = None
+    file = open(path, "r")
+    print("File closed.")
+    return file.readline().strip()
+
+print(read_first_line("notes.txt"))
+```
+
+- Code works wonderfully, as long as the file exists and is readable.
+- Running this code with a missing file will cause a `FileNotFoundError` and crash the program.⁭ ⁭
+:::
+
+::: {style="color: #2E86C1; font-size: 12.9em; text-align: center; margin-top: 0.5em;"}
+
+::: {.call-out icon="false"}
+
+( ꩜ ᯅ ꩜;) 
+
+(·•᷄‎ࡇ•᷅ )
+
+｡°(°¯᷄◠¯᷅°)°｡
+:::
+
+:::
+
+
+## `else` and `finally`
+
+::: {.callout-important icon="false"}
+## Full Exception Structure
+```python
+def read_first_line(path):
+    file = None
+    try:
+        file = open(path, "r")
+    except FileNotFoundError:
+        return "File not found."
+    else:
+        return file.readline().strip()
+    finally:
+        if file:
+            file.close()
+            print("File closed.")
+
+print(read_first_line("notes.txt"))
+```
+
+- `else` runs only if no exception occurs.
+- `finally` runs no matter what.
+:::
+
+
+
+## Raising Exceptions Yourself
+
+::: {.callout-important icon="false"}
+## Use `raise` for Invalid States
+```python
+def withdraw(balance, amount):
+    if amount <= 0:
+        raise ValueError("Withdrawal amount must be positive.")
+    if amount > balance:
+        raise ValueError("Insufficient funds.")
+    return balance - amount
+
+print(withdraw(200, 50))
+```
+:::
+
+## Custom Exception Classes
+
+::: {.callout-important icon="false"}
+## Domain-Specific Error Types
+```python
+class InvalidGradeError(Exception):
+    pass
+
+def set_grade(value):
+    if not (0 <= value <= 100):
+        raise InvalidGradeError("Grade must be between 0 and 100.")
+    return value
+
+try:
+    set_grade(140)
+except InvalidGradeError as e:
+    print("Grade update failed:", e)
+```
+:::
+
+## Exceptions Inside Classes
+
+::: {.callout-important icon="false"}
+## Enforcing Valid Object Behavior
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        if balance < 0:
+            raise ValueError("Opening balance cannot be negative.")
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit must be positive.")
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Withdrawal must be positive.")
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+
+acct = BankAccount("Alex", 100)
+acct.deposit(25)
+print(acct.balance)
+```
+:::
+
+---
+
+# Exceptions: Mini Challenges
+
+<center>
+![](graphics/think.png){width=80%}
+</center>
+
+## Challenge D — Safe Integer Input Function
+
+::: {.callout-warning icon="false"}
+Write `safe_int(text, default)`:
+
+- return `int(text)` when possible
+- return `default` on failure
+
+```python
+def safe_int(text, default=0):
+    # your code here
+    pass
+
+# Example usage:
+print(safe_int("42"))       # 42
+print(safe_int("oops"))     # 0
+print(safe_int(None, -1))    # -1
+```
+:::
+
+## Solution D — Safe Integer Input Function
+
+```python
+def safe_int(text, default=0):
+    try:
+        return int(text)
+    except (ValueError, TypeError):
+        return default
+
+print(safe_int("42"))       # 42
+print(safe_int("oops"))     # 0
+print(safe_int(None, -1))    # -1
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** The function isolates conversion risk inside `try/except` and guarantees a usable fallback value.
+:::
+
+## Challenge E — Custom Exception in a Class
+
+::: {.callout-warning icon="false"}
+Define a custom exception `OutOfStockError` and use it in `InventoryItem.sell(amount)`.
+Raise it when `amount > quantity`.
+:::
+
+```python
+class OutOfStockError(Exception):
+    print("This is a custom exception for out-of-stock situations.")
+    # pass
+
+class InventoryItem:
+    def __init__(self, name, quantity):
+        self.name = name
+        self.quantity = quantity
+
+    def sell(self, amount):
+        """
+        Function to handle selling an item.
+        Raise ValueError if amount is not positive.
+        Raise OutOfStockError if amount exceeds quantity, otherwise reduce stock.
+        """
+        # TODO: Implement this method
+```
+
+
+
+
+
+
+
+## Solution E — Custom Exception in a Class
+
+```python
+class OutOfStockError(Exception):
+    print("This is a custom exception for out-of-stock situations.")
+    # pass
+
+class InventoryItem:
+    def __init__(self, name, quantity):
+        self.name = name
+        self.quantity = quantity
+
+    def sell(self, amount):
+        if amount <= 0:
+            raise ValueError("Amount must be positive.")
+        if amount > self.quantity:
+            raise OutOfStockError(
+                f"Requested {amount}, but only {self.quantity} available."
+            )
+        self.quantity -= amount
+
+item = InventoryItem("Pen", 3)
+try:
+    item.sell(5)
+except OutOfStockError as e:
+    print("Sale failed:", e)
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** A domain-specific exception makes stock failures explicit and easier to handle than a generic error.
+:::
+
+## Challenge F — Safe File Counter
+
+::: {.callout-warning icon="false"}
+Write `count_lines(path)` that returns number of lines.
+If file is missing, return `0` instead of crashing.
+:::
+
+## Solution F — Safe File Counter
+
+```python
+def count_lines(path):
+    try:
+        with open(path, "r") as file:
+            return sum(1 for _ in file)
+    except FileNotFoundError:
+        return 0
+
+print(count_lines("notes.txt"))
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** The context manager handles file closing automatically, and `FileNotFoundError` is converted into a safe default result.
+:::
+
+---
+
+# Five "Big" Challenges 
+
+<center>
+![](graphics/challenge.png){width=55%}
+</center>
+
+::: {.callout-note icon="false"} 
+
+(Try these first before looking at solutions!)
+:::
+
+## Final Challenge 1 — `Rectangle` with Validation
+
+::: {.callout-warning icon="false"}
+
+Create class `Rectangle(width, height)`:
+
+- reject non-positive dimensions using `ValueError`
+- methods `area()`, `perimeter()`, `is_square()`
+- readable `__str__`
+:::
+
+## Final Challenge 2 — `SavingsAccount` Inheritance
+
+::: {.callout-warning icon="false"}
+Create `Account(owner, balance)` with `deposit`/`withdraw`.
+Create `SavingsAccount(owner, balance, rate)` with method `apply_interest()`.
+Use exceptions for invalid amounts.
+:::
+
+## Final Challenge 3 — `compose` + Exception Safety
+
+::: {.callout-warning icon="false"}
+Write `compose(f, g)` returning `f(g(x))`.
+Then write `safe_compose(f, g, fallback)` that catches exceptions and returns `fallback`.
+:::
+
+## Final Challenge 4 — Student Parser
+
+::: {.callout-warning icon="false"}
+Given lines like `"Alice,92"`, build `parse_students(lines)` returning dict name→grade.
+Skip malformed lines and out-of-range grades using exceptions.
+:::
+
+## Final Challenge 5 — GradeBook with Robust Rules
+
+::: {.callout-warning icon="false"}
+
+Create `GradeBook` with:
+
+- `add_student(name, grade)` (validate grade)
+- `curve(curve_func)` returning a new dict of curved grades
+- `top_student()`
+- `passing(min_grade=60)`
+Raise meaningful errors where appropriate.
+:::
+
+---
+
+# "Big" Challenge Solutions
+
+## Solution 1 — `Rectangle` with Validation
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        if width <= 0 or height <= 0:
+            raise ValueError("Width and height must be positive.")
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+    def is_square(self):
+        return self.width == self.height
+
+    def __str__(self):
+        return f"Rectangle({self.width} x {self.height})"
+
+
+print("rect1")
+width = 2
+height = 4
+rect1 = Rectangle(width, height)
+print(f"  Dimensions are: {rect1}")
+print(f"  My area is: {rect1.area()}")
+print(f"  My perimeter is: {rect1.perimeter()}")
+print(f"  This object a square:  {rect1.is_square()}")
+
+print("rect2")
+width = 4
+height = 4
+rect2 = Rectangle(width, height)
+print(f"  Dimensions are: {rect2}")
+print(f"  My area is: {rect2.area()}")
+print(f"  My perimeter is: {rect2.perimeter()}")
+print(f"  This object a square:  {rect2.is_square()}")
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** Constructor validation prevents invalid objects from ever existing. Methods become simpler because state is guaranteed valid.
+:::
+
+## Solution 2 — `SavingsAccount` Inheritance
+
+```python
+class Account:
+    def __init__(self, owner, balance=0):
+        if balance < 0:
+            raise ValueError("Balance cannot be negative.")
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit must be positive.")
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Withdrawal must be positive.")
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+
+class SavingsAccount(Account):
+    def __init__(self, owner, balance=0, rate=0.02):
+        super().__init__(owner, balance)
+        self.rate = rate
+
+    def apply_interest(self):
+        self.balance += self.balance * self.rate
+
+
+name = "Alice"
+deposit = 1000
+account = SavingsAccount(name,deposit)
+print(f" Initial balance: {account.balance}")
+account.deposit(500)
+print(f" Balance After deposit: {account.balance}")
+account.withdraw(200)
+print(f" Balance After withdrawal: {account.balance}")
+account.apply_interest()
+print(f" Endling balance: {account.balance}")
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** `SavingsAccount` reuses base logic through inheritance and `super()`, then adds behavior (`apply_interest`) without duplicating deposit/withdraw code.
+:::
+
+## Solution 3 — `safe_compose`
+
+```python
+def compose(f, g):
+    def composed(x):
+        return f(g(x))
+    return composed
+
+def safe_compose(f, g, fallback=None):
+    def composed(x):
+        try:
+            return f(g(x))
+        except Exception:
+            return fallback
+    return composed
+
+
+def reciprocal(x):
+    return 1 / x
+
+safe = safe_compose(lambda y: y + 10, reciprocal, fallback="bad input")
+print(safe(2))
+print(safe(0))
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** Closures capture function references (`f`, `g`) and return a callable pipeline. Wrapping in `try/except` creates a resilient higher-order function.
+:::
+
+## Solution 4 — `parse_students`
+
+```python
+def parse_students(lines):
+    students = {}
+    for line in lines:
+        try:
+            name, grade_text = line.split(",")
+            grade = int(grade_text)
+            if not (0 <= grade <= 100):
+                raise ValueError("grade out of range")
+            students[name.strip()] = grade
+        except ValueError:
+            continue
+    return students
+
+lines = ["Alice,92", "Bob,hello", "Cara,105", "Dylan,77"]
+print(parse_students(lines))  # {'Alice': 92, 'Dylan': 77}
+```
+
+::: {.callout-important icon="false"}
+**Mechanism:** The parsing loop is intentionally defensive. Bad records fail locally and are skipped, while good records still accumulate.
+:::
+
+## Solution 5 — Robust `GradeBook`
+
+```python
+class GradeBook:
+    def __init__(self):
+        self._grades = {}
+
+    def add_student(self, name, grade):
+        if not name:
+            raise ValueError("Name cannot be empty.")
+        if not (0 <= grade <= 100):
+            raise ValueError("Grade must be between 0 and 100.")
+        self._grades[name] = grade
+
+    def curve(self, curve_func):
+        curved = {}
+        for name, grade in self._grades.items():
+            new_grade = curve_func(grade)
+            curved[name] = max(0, min(100, new_grade))
+        return curved
+
+    def top_student(self):
+        if not self._grades:
+            raise ValueError("No students in grade book.")
+        return max(self._grades, key=self._grades.get)
+
+    def passing(self, min_grade=60):
+        return [
+            name for name, grade in self._grades.items()
+            if grade >= min_grade
+        ]
+
+
+gb = GradeBook()
+gb.add_student("Alice", 92)
+gb.add_student("Bob", 55)
+gb.add_student("Charlie", 78)
+print(f"Passing student(s): {gb.passing()}")
+print(f"After applying curve: {gb.curve(lambda g: g + 8)}")
+print(f"Top student: {gb.top_student()}")
+```
+
+::: {.callout-note icon="false"}
+## Discussion
+- **Encapsulation:** Internal dictionary `_grades` stores state in one place.
+- **Validation:** `add_student` enforces invariants early.
+- **Higher-order behavior:** `curve` accepts any callable transformation.
+- **Exception strategy:** methods raise clear errors for invalid usage (for example, top student on empty data).
+:::
+
+---
+
+# What's the Big Picture?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+**Object-Oriented Programming**
+
+* Classes model real concepts with data + behavior
+* `__init__` constructs valid object state
+* Inheritance and composition support code reuse
+* Polymorphism enables flexible, interchangeable objects
+
+:::
+::: {.column width="50%"}
+
+**Exceptions**
+
+* Exceptions handle runtime failures cleanly
+* `try` / `except` prevent crashes in expected failure paths
+* `raise` communicates invalid operations explicitly
+* Custom exceptions make domain errors readable and maintainable
+
+:::
+::::
+
+::: {.callout-tip icon="true"}
+When combined, OOP + exceptions let you build programs that are both **organized** and **robust**.
+:::
