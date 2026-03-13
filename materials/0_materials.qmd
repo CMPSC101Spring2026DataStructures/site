@@ -94,6 +94,8 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](8_objectOrientedProgramming_exceptions.html) Slides
 - **Activity 07**: Introduction to Game Development with Pygame
   - [GitHub Classroom Link](https://classroom.github.com/a/AsoTYz15)
+- **Lab 06**: Midterm Exam Preparation
+  - [GitHub Classroom Link](https://classroom.github.com/a/8t4e0Cbv)
 
 *Note: The Midterm exam will be held during lab on 20th March 2026. More details to come!*
 ---
