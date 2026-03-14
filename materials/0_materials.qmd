@@ -12,6 +12,8 @@ title: "Materials"
 
 Here you will find a listing of lesson materials for the course such as slides, assignments, and similar.
 
+- **Project Downloads**: [Starter files, tutorials, and other downloadable project materials](1_project_files.html)
+
 <!-- ![](../graphics/levelup.png){width=10%} -->
 
 ## W1. Welcome Weeks
@@ -94,6 +96,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](8_objectOrientedProgramming_exceptions.html) Slides
 - **Activity 07**: Introduction to Game Development with Pygame
   - [GitHub Classroom Link](https://classroom.github.com/a/AsoTYz15)
+  - [Project files and tutorials](1_project_files.html#act-07)
 - **Lab 06**: Midterm Exam Preparation
   - [GitHub Classroom Link](https://classroom.github.com/a/8t4e0Cbv)
 

@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - materials/files/**
 
 website:
   title: "CMPSC101 Spring 2026 :: DataStructures"

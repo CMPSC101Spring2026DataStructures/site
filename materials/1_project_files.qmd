@@ -1,0 +1,103 @@
+---
+title: "Project Downloads"
+jupyter: python3
+---
+
+<center>
+**CS101::Spring 2026**
+</center>
+
+Use this page to download project files, starter code, and tutorial materials.
+
+The page is organized by project folder. To add a new project later, place its files in a new folder inside `materials/files/`, render the site again, and Quarto will publish both the page and the downloadable files.
+
+```{python}
+#| echo: false
+#| output: asis
+
+from collections import defaultdict
+from pathlib import Path
+import re
+from urllib.parse import quote
+
+
+def display_name(name: str) -> str:
+    cleaned_name = name.replace("_", " ").replace("-", " ")
+    cleaned_name = re.sub(r"([A-Za-z])(\d)", r"\1 \2", cleaned_name)
+    cleaned_name = re.sub(r"(\d)([A-Za-z])", r"\1 \2", cleaned_name)
+    return cleaned_name.title()
+
+
+def file_type(path: Path) -> str:
+    if path.name.startswith(".") and not path.suffix:
+        return "Config"
+    if path.suffix:
+        return path.suffix.lstrip(".").upper()
+    return "File"
+
+
+def link_target(path: Path) -> str:
+    return quote(path.as_posix(), safe="/-_.")
+
+
+candidate_roots = [Path("files"), Path("materials/files")]
+source_root = next((path for path in candidate_roots if path.exists()), None)
+output_root = Path("files")
+
+if source_root is None:
+    print("> No project files are available yet. Add folders inside `materials/files/` and render the site again.")
+else:
+    project_dirs = sorted(
+        path
+        for path in source_root.iterdir()
+        if path.is_dir() and not path.name.startswith(".")
+    )
+
+    if not project_dirs:
+        print("> No project folders are available yet. Add folders inside `materials/files/` and render the site again.")
+    else:
+        for project_dir in project_dirs:
+            project_files = sorted(
+                path
+                for path in project_dir.rglob("*")
+                if path.is_file() and path.name != ".DS_Store"
+            )
+
+            if not project_files:
+                continue
+
+            groups = defaultdict(list)
+            for file_path in project_files:
+                group_key = file_path.parent.relative_to(project_dir)
+                groups[group_key].append(file_path)
+
+            print(f"## {display_name(project_dir.name)}\n")
+            print(
+                f"This project currently has {len(project_files)} downloadable file(s) organized into {len(groups)} folder(s).\n"
+            )
+
+            for group_key in sorted(groups, key=lambda value: value.as_posix()):
+                if group_key == Path("."):
+                    print("### Project Files\n")
+                else:
+                    print(f"### {display_name(group_key.name)}\n")
+                    print(f"Folder: `{group_key.as_posix()}`\n")
+
+                print("| File | Type | Download |")
+                print("| --- | --- | --- |")
+
+                for file_path in groups[group_key]:
+                    file_relative = file_path.relative_to(source_root)
+                    download_path = output_root / file_relative
+                    print(
+                        "| "
+                        f"`{file_path.name}`"
+                        " | "
+                        f"{file_type(file_path)}"
+                        " | "
+                        f"[Download]({link_target(download_path)})"
+                        " |"
+                    )
+
+                print()
+```
