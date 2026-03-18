@@ -1673,6 +1673,13 @@
     "text": "Act 07\nThis project currently has 19 downloadable file(s) organized into 3 folder(s).\n\n1 Tutorial\nFolder: 1_tutorial\n\n\n\nFile\nType\nDownload\n\n\n\n\n.python-version\nConfig\nDownload\n\n\npyproject.toml\nTOML\nDownload\n\n\nsimple_game.py\nPY\nDownload\n\n\n\n\n\n2 Tutorial\nFolder: 2_tutorial\n\n\n\nFile\nType\nDownload\n\n\n\n\n.python-version\nConfig\nDownload\n\n\nconfig.py\nPY\nDownload\n\n\ngame.py\nPY\nDownload\n\n\nmain.py\nPY\nDownload\n\n\npyproject.toml\nTOML\nDownload\n\n\n\n\n\nSpace Invaders Pixel Matrix Edition\nFolder: space_invaders_pixel_matrix_edition\n\n\n\nFile\nType\nDownload\n\n\n\n\nREADME.md\nMD\nDownload\n\n\nconfig.py\nPY\nDownload\n\n\nenemy.py\nPY\nDownload\n\n\ngame.py\nPY\nDownload\n\n\nmain.py\nPY\nDownload\n\n\nplayer.py\nPY\nDownload\n\n\npyproject.toml\nTOML\nDownload\n\n\nscreenshot.png\nPNG\nDownload\n\n\nsprites.py\nPY\nDownload\n\n\nutils.py\nPY\nDownload\n\n\nuv.lock\nLOCK\nDownload"
   },
   {
+    "objectID": "materials/1_project_files.html#act-08",
+    "href": "materials/1_project_files.html#act-08",
+    "title": "Project Downloads",
+    "section": "Act 08",
+    "text": "Act 08\nThis project currently has 5 downloadable file(s) organized into 1 folder(s).\n\nProject Files\n\n\n\nFile\nType\nDownload\n\n\n\n\ngame_client.py\nPY\nDownload\n\n\nmessage_client_i.py\nPY\nDownload\n\n\nmessage_server_i.py\nPY\nDownload\n\n\npyproject.toml\nTOML\nDownload\n\n\nuv.lock\nLOCK\nDownload"
+  },
+  {
     "objectID": "materials/8_objectOrientedProgramming_exceptions.html#your-first-class",
     "href": "materials/8_objectOrientedProgramming_exceptions.html#your-first-class",
     "title": "Object-Oriented Programming & Exceptions",
