@@ -1,0 +1,1068 @@
+---
+title: "Socket Programming & Direct Messaging"
+subtitle: "Building Real-Time Network Applications with Python"
+author: "Oliver Bonham-Carter"
+format:
+  revealjs:
+    theme: white
+    highlight-style: github
+    code-block-background: true
+    code-block-border-left: "#31BAE9"
+    slide-number: true
+    chalkboard: true
+    scrollable: false
+    transition: none
+    css: custom_big_o.css
+    width: 1200
+    height: 800
+    margin: 0.05
+---
+
+# On For Today
+
+::: {.callout-tip icon="true"}
+## Building a Real-Time Messaging Application
+**Topics covered in today's lesson:**
+
+* 🌐 **Socket Programming** — creating network connections between programs
+* 💻 **Client-Server Architecture** — understanding how apps communicate  
+* 🧵 **Threading** — handling multiple connections simultaneously
+* 🎨 **Classes & Encapsulation** — organizing network code professionally
+* ⚠️ **Exception Handling** — managing network errors gracefully
+* 📡 **Finding Your IP Address** — discovering and sharing network addresses
+* 💬 **Real Communication** — actually sending messages between computers!
+:::
+
+::: {.callout-note}
+By the end, you'll have built a working chat application that lets you message classmates across the network!
+:::
+
+---
+
+# What We're Building Today
+
+::: {.callout-note icon="false"}
+## A Direct Messaging Application
+
+We'll create **two programs**:
+
+1. **Message Server** — accepts connections and relays messages
+2. **Message Client** — connects to server and lets users chat
+
+**Cool factor:** You'll be able to message friends across the room (or across the internet)!
+:::
+
+::: {style="color: #8E44AD;"}
+**Architecture:** Multiple clients connect to one server. Server broadcasts messages to all connected users.
+:::
+
+---
+
+# Part 1: Understanding Sockets
+
+::: {.callout-note icon="false"}
+## What Is a Socket?
+A **socket** is like a phone line between two programs:
+
+* One end **listens** for calls (the server)
+* Other ends **dial in** to connect (the clients)
+* Once connected, they can **send and receive** data
+
+Think of it as a two-way communication channel!
+:::
+
+## Python's Socket Library
+
+::: {.callout-important icon="false"}
+```python
+import socket
+
+# Create a TCP/IP socket
+my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Key parts:
+# AF_INET    — Use IPv4 addresses (like 192.168.1.100)
+# SOCK_STREAM — Use TCP protocol (reliable, ordered delivery)
+```
+:::
+
+::: {.callout-note icon="false"}
+**TCP** guarantees your messages arrive in order and intact (unlike UDP which is faster but less reliable).
+:::
+
+---
+
+# Part 2: Finding Your IP Address
+
+::: {.callout-note icon="false"}
+## Why Do We Need IP Addresses?
+To connect computers, we need to know their **network addresses** (IP addresses).
+
+Just like you need a phone number to call someone, clients need the server's IP address to connect!
+:::
+
+## Getting Your IP Address with Python
+
+::: {.callout-important icon="false"}
+```python
+import socket
+
+def get_local_ip():
+    """
+    Get the local IP address of this machine.
+    Returns a string like '192.168.1.100'
+    """
+    try:
+        # Create a temporary socket
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        
+        # Connect to an external address (doesn't actually send data)
+        # This helps us determine which network interface to use
+        s.connect(("8.8.8.8", 80))
+        
+        # Get our IP address
+        ip_address = s.getsockname()[0]
+        
+        s.close()
+        return ip_address
+    except Exception:
+        return "127.0.0.1"  # Fallback to localhost
+
+# Use it:
+my_ip = get_local_ip()
+print(f"Your IP address is: {my_ip}")
+```
+:::
+
+## Command Line IP Detection
+
+::: {.callout-important icon="false"}
+**On macOS/Linux:**
+```bash
+ifconfig | grep "inet " | grep -v 127.0.0.1
+```
+
+**On Windows:**
+```bash
+ipconfig | findstr IPv4
+```
+
+**Cross-platform Python:**
+```bash
+python -c "import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])"
+```
+:::
+
+::: {.callout-tip}
+**Pro tip:** Share your IP with friends so they can connect to your server!
+:::
+
+---
+
+# Part 3: Building the Message Server
+
+::: {.callout-note icon="false"}
+## Server Responsibilities
+Our server needs to:
+
+1. **Bind** to an IP address and port (like 5555)
+2. **Listen** for incoming client connections
+3. **Accept** new clients as they connect
+4. **Receive** messages from any client
+5. **Broadcast** those messages to all other clients
+6. **Handle** multiple clients at the same time (threading!)
+:::
+
+## Setting Up the Project
+
+::: {.callout-important icon="false"}
+```bash
+# Create project directory
+mkdir messaging_app
+cd messaging_app
+
+# Initialize with UV
+uv init --bare
+
+# Install colorama for colored terminal output
+uv add colorama
+
+# Create our server file
+touch message_server.py
+```
+:::
+
+## The Server Class Structure
+
+::: {.callout-important icon="false"}
+```python
+import socket
+import threading
+from colorama import Fore, Style, init
+from typing import List, Tuple
+
+init(autoreset=True)  # Initialize colorama
+
+class ConnectionError(Exception):
+    """Custom exception for connection problems"""
+    pass
+
+class MessageServer:
+    """A server that accepts multiple clients and broadcasts messages."""
+    
+    def __init__(self, host: str = 'localhost', port: int = 5555):
+        self.host = host
+        self.port = port
+        self.server_socket = None
+        self.clients: List[Tuple[socket.socket, str]] = []
+        self.running = False
+        self.client_lock = threading.Lock()  # Thread safety!
+```
+:::
+
+::: {.callout-note icon="false"}
+**Key design:** We use a list to track all connected clients, and a lock to make it thread-safe.
+:::
+
+## Starting the Server
+
+::: {.callout-important icon="false"}
+```python
+def start(self) -> None:
+    """Start the server and begin accepting connections."""
+    try:
+        # Create socket
+        self.server_socket = socket.socket(
+            socket.AF_INET, 
+            socket.SOCK_STREAM
+        )
+        
+        # Allow address reuse (prevents "already in use" errors)
+        self.server_socket.setsockopt(
+            socket.SOL_SOCKET, 
+            socket.SO_REUSEADDR, 
+            1
+        )
+        
+        # Bind to address and port
+        self.server_socket.bind((self.host, self.port))
+        
+        # Listen for connections (queue up to 5)
+        self.server_socket.listen(5)
+        
+        self.running = True
+        print(f"{Fore.GREEN}🚀 Server started on {self.host}:{self.port}")
+        
+        # Start accepting clients
+        self.accept_clients()
+        
+    except OSError as e:
+        raise ConnectionError(f"Failed to start server: {e}")
+```
+:::
+
+## Accepting Client Connections
+
+::: {.callout-important icon="false"}
+```python
+def accept_clients(self) -> None:
+    """Continuously accept new client connections."""
+    while self.running:
+        try:
+            # Wait for a client to connect (blocks here)
+            client_socket, client_address = self.server_socket.accept()
+            
+            # Add to our client list (thread-safe)
+            with self.client_lock:
+                self.clients.append((client_socket, str(client_address)))
+            
+            print(f"{Fore.GREEN}✅ Client connected: {client_address}")
+            
+            # Handle this client in a separate thread
+            client_thread = threading.Thread(
+                target=self.handle_client,
+                args=(client_socket, client_address),
+                daemon=True
+            )
+            client_thread.start()
+            
+        except OSError:
+            if not self.running:
+                break
+```
+:::
+
+## Handling Individual Clients
+
+::: {.callout-important icon="false"}
+```python
+def handle_client(self, client_socket: socket.socket, 
+                  client_address: Tuple) -> None:
+    """Receive messages from one client and broadcast them."""
+    try:
+        # Send welcome message
+        welcome = "Welcome to the chat server!\n"
+        client_socket.send(welcome.encode('utf-8'))
+        
+        # Keep receiving messages
+        while self.running:
+            # Receive up to 1024 bytes
+            message = client_socket.recv(1024).decode('utf-8')
+            
+            if not message:
+                break  # Client disconnected
+            
+            print(f"{Fore.MAGENTA}📨 From {client_address}: {message}")
+            
+            # Send to all other clients
+            self.broadcast(f"[{client_address}]: {message}", client_socket)
+            
+    finally:
+        self.remove_client(client_socket, client_address)
+```
+:::
+
+## Broadcasting Messages
+
+::: {.callout-important icon="false"}
+```python
+def broadcast(self, message: str, sender_socket: socket.socket) -> None:
+    """Send a message to all clients except the sender."""
+    with self.client_lock:
+        for client_socket, client_address in self.clients:
+            # Don't echo back to sender
+            if client_socket != sender_socket:
+                try:
+                    client_socket.send(message.encode('utf-8'))
+                except Exception as e:
+                    print(f"{Fore.RED}❌ Failed to send to {client_address}")
+```
+:::
+
+::: {.callout-note icon="false"}
+**Why thread safety?** Multiple client threads might try to access the `clients` list simultaneously. The lock ensures only one thread modifies it at a time.
+:::
+
+## Complete Server Main Function
+
+::: {.callout-important icon="false"}
+```python
+def main():
+    """Start the message server."""
+    # Get server IP address
+    ip = get_local_ip()
+    print(f"{Fore.CYAN}📡 Your server IP: {ip}")
+    print(f"{Fore.YELLOW}Share this with clients so they can connect!\n")
+    
+    # Let user choose to bind to all interfaces or localhost
+    choice = input("Bind to all interfaces? (y/n): ").strip().lower()
+    host = '0.0.0.0' if choice == 'y' else 'localhost'
+    
+    server = MessageServer(host=host, port=5555)
+    
+    try:
+        server.start()
+    except ConnectionError as e:
+        print(f"{Fore.RED}❌ Error: {e}")
+    except KeyboardInterrupt:
+        print(f"\n{Fore.YELLOW}⚠️ Shutting down...")
+    finally:
+        server.stop()
+
+if __name__ == "__main__":
+    main()
+```
+:::
+
+---
+
+# Part 4: Building the Message Client
+
+::: {.callout-note icon="false"}
+## Client Responsibilities
+Our client needs to:
+
+1. **Connect** to a server (using IP address and port)
+2. **Send** messages typed by the user
+3. **Receive** messages from the server (from other users)
+4. **Do both simultaneously** — threading again!
+:::
+
+## The Client Class Structure
+
+::: {.callout-important icon="false"}
+```python
+class NetworkError(Exception):
+    """Custom exception for network problems"""
+    pass
+
+class MessageClient:
+    """A client that connects to a server and enables chat."""
+    
+    def __init__(self, host: str = 'localhost', 
+                 port: int = 5555, username: str = "User"):
+        self.host = host
+        self.port = port
+        self.client_socket = None
+        self.username = username
+        self.connected = False
+```
+:::
+
+## Connecting to the Server
+
+::: {.callout-important icon="false"}
+```python
+def connect(self) -> None:
+    """Connect to the message server."""
+    try:
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        
+        # Set timeout for connection attempt
+        self.client_socket.settimeout(10)
+        
+        print(f"{Fore.CYAN}🔌 Connecting to {self.host}:{self.port}...")
+        
+        # Attempt connection
+        self.client_socket.connect((self.host, self.port))
+        
+        # Remove timeout for normal operations
+        self.client_socket.settimeout(None)
+        
+        self.connected = True
+        print(f"{Fore.GREEN}✅ Connected!")
+        
+    except socket.timeout:
+        raise NetworkError("Connection timed out. Is the server running?")
+    except ConnectionRefusedError:
+        raise NetworkError("Connection refused. Check IP and port.")
+    except Exception as e:
+        raise NetworkError(f"Failed to connect: {e}")
+```
+:::
+
+## Sending Messages (Main Thread)
+
+::: {.callout-important icon="false"}
+```python
+def send_messages(self) -> None:
+    """Read user input and send to server."""
+    while self.connected:
+        try:
+            message = input()
+            
+            if message.lower() in ['quit', 'exit']:
+                self.disconnect()
+                break
+            
+            if message.strip():
+                # Format with username
+                formatted = f"[{self.username}]: {message}"
+                self.client_socket.send(formatted.encode('utf-8'))
+                
+                # Show your own message in blue
+                print(f"{Fore.LIGHTBLUE_EX}📤 You: {message}")
+                
+        except Exception as e:
+            if self.connected:
+                print(f"{Fore.RED}❌ Error sending: {e}")
+            break
+```
+:::
+
+## Receiving Messages (Background Thread)
+
+::: {.callout-important icon="false"}
+```python
+def receive_messages(self) -> None:
+    """Receive messages from server and display them."""
+    while self.connected:
+        try:
+            message = self.client_socket.recv(1024).decode('utf-8')
+            
+            if not message:
+                print(f"{Fore.RED}❌ Server disconnected")
+                self.disconnect()
+                break
+            
+            # Display in green
+            print(f"{Fore.LIGHTGREEN_EX}📨 {message.strip()}")
+            
+        except Exception as e:
+            if self.connected:
+                print(f"{Fore.RED}❌ Error receiving: {e}")
+            break
+```
+:::
+
+## Starting the Client with User Input
+
+::: {.callout-important icon="false"}
+```python
+def main():
+    """Start the message client."""
+    print(f"{Fore.CYAN}💬 Message Client")
+    print(f"{Fore.CYAN}{'='*50}\n")
+    
+    # Get username
+    username = input(f"{Fore.YELLOW}Your username: ").strip()
+    if not username:
+        username = "Anonymous"
+    
+    # Get server IP
+    print(f"\n{Fore.CYAN}Server Connection")
+    host = input(f"{Fore.YELLOW}Server IP (or 'localhost'): ").strip()
+    if not host:
+        host = 'localhost'
+    
+    port = input(f"{Fore.YELLOW}Port [5555]: ").strip()
+    port = int(port) if port else 5555
+    
+    # Create and start client
+    client = MessageClient(host=host, port=port, username=username)
+    
+    try:
+        client.connect()
+        
+        # Start receive thread
+        receive_thread = threading.Thread(
+            target=client.receive_messages, 
+            daemon=True
+        )
+        receive_thread.start()
+        
+        # Use main thread for sending
+        client.send_messages()
+        
+    except NetworkError as e:
+        print(f"{Fore.RED}❌ {e}")
+
+if __name__ == "__main__":
+    main()
+```
+:::
+
+---
+
+# Part 5: Running Your Messaging App
+
+::: {.callout-tip icon="false"}
+## Step-by-Step Instructions
+
+**Step 1: Start the Server**
+```bash
+cd messaging_app
+uv run python message_server.py
+```
+
+The server will display its IP address. **Share this with your friends!**
+
+**Step 2: Start a Client (on same or different computer)**
+```bash
+uv run python message_client.py
+```
+
+When prompted:
+- Enter your username
+- Enter the server IP (or 'localhost' if on same machine)
+- Press Enter to use default port 5555
+
+**Step 3: Chat!**
+- Type messages and press Enter
+- See messages from other users
+- Type 'quit' to exit
+:::
+
+## Testing Locally (One Computer)
+
+::: {.callout-important icon="false"}
+**Terminal 1 — Server:**
+```bash
+uv run python message_server.py
+# Choose 'n' for localhost binding
+```
+
+**Terminal 2 — Client 1:**
+```bash
+uv run python message_client.py
+# Username: Alice
+# Server IP: localhost
+```
+
+**Terminal 3 — Client 2:**
+```bash
+uv run python message_client.py
+# Username: Bob  
+# Server IP: localhost
+```
+
+Now Alice and Bob can chat!
+:::
+
+## Testing Across the Network
+
+::: {.callout-important icon="false"}
+**On Server Computer:**
+```bash
+# Find your IP
+python -c "import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])"
+
+# Example output: 192.168.1.145
+
+# Start server
+uv run python message_server.py
+# Choose 'y' to bind to all interfaces
+```
+
+**On Client Computer:**
+```bash
+uv run python message_client.py
+# Username: Your Name
+# Server IP: 192.168.1.145  (the server's IP)
+```
+:::
+
+::: {.callout-warning}
+**Firewall note:** You may need to allow Python through your firewall for remote connections to work.
+:::
+
+---
+
+# Part 6: Understanding Threading
+
+::: {.callout-note icon="false"}
+## Why Do We Need Threads?
+
+**The problem:** Our program needs to do two things at once:
+1. **Send** messages (wait for user input)
+2. **Receive** messages (wait for server data)
+
+**Without threading:** We'd have to wait for one to finish before doing the other. You couldn't receive messages while typing!
+
+**With threading:** Both operations run concurrently in separate threads.
+:::
+
+## Python Threading Basics
+
+::: {.callout-important icon="false"}
+```python
+import threading
+
+def background_task():
+    """This runs in a separate thread."""
+    while True:
+        print("Background: still working...")
+        time.sleep(2)
+
+# Create a thread
+my_thread = threading.Thread(target=background_task, daemon=True)
+
+# Start it
+my_thread.start()
+
+# Main thread continues immediately
+print("Main: started background task")
+
+# Both run simultaneously!
+```
+:::
+
+::: {.callout-note icon="false"}
+**Daemon threads:** Automatically stop when the main program exits. Perfect for background tasks!
+:::
+
+---
+
+# Thread Safety with Locks
+
+::: {.callout-note icon="false"}
+## The Race Condition Problem
+
+When multiple threads access shared data, we can get **race conditions**:
+
+```python
+# Without lock: DANGEROUS!
+def add_client(client):
+    clients.append(client)  # Multiple threads might do this simultaneously!
+
+# With lock: SAFE!
+def add_client(client):
+    with client_lock:  # Only one thread at a time
+        clients.append(client)
+```
+:::
+
+## Using Threading Locks
+
+::: {.callout-important icon="false"}
+```python
+import threading
+
+# Create a lock
+my_lock = threading.Lock()
+
+# Shared data
+counter = 0
+
+def increment():
+    global counter
+    with my_lock:  # Acquire lock
+        current = counter
+        time.sleep(0.001)  # Simulate some work
+        counter = current + 1
+    # Lock automatically released here
+
+# Multiple threads can safely increment
+threads = [threading.Thread(target=increment) for _ in range(100)]
+for t in threads:
+    t.start()
+for t in threads:
+    t.join()
+
+print(counter)  # Will be 100 (correct!)
+```
+:::
+
+---
+
+# Part 7: Exception Handling in Network Code
+
+::: {.callout-note icon="false"}
+## Why Exceptions Matter for Network Code
+
+Network operations are **unreliable** by nature:
+- Connections can drop unexpectedly
+- Servers might not be running
+- IP addresses might be wrong
+- Timeouts can occur
+
+**Good exception handling** keeps your app from crashing!
+:::
+
+## Common Socket Exceptions
+
+::: {.callout-important icon="false"}
+```python
+try:
+    client_socket.connect((host, port))
+    
+except socket.timeout:
+    print("Connection timed out")
+    
+except ConnectionRefusedError:
+    print("Server not running or wrong port")
+    
+except socket.gaierror:
+    print("Invalid host address")
+    
+except OSError as e:
+    print(f"Network error: {e}")
+    
+except Exception as e:
+    print(f"Unexpected error: {e}")
+```
+:::
+
+## Custom Exceptions for Clarity
+
+::: {.callout-important icon="false"}
+```python
+class NetworkError(Exception):
+    """Base class for network-related errors"""
+    pass
+
+class ConnectionError(NetworkError):
+    """Raised when connection fails"""
+    pass
+
+class SendError(NetworkError):
+    """Raised when sending fails"""
+    pass
+
+# Usage:
+try:
+    if not server_running:
+        raise ConnectionError("Server is offline")
+except NetworkError as e:
+    print(f"Network problem: {e}")
+```
+:::
+
+::: {.callout-note icon="false"}
+**Benefit:** Custom exceptions make your code's intent clearer and make it easier to handle different error types.
+:::
+
+---
+
+# Part 8: Adding IP Discovery to Your Code
+
+::: {.callout-note icon="false"}
+## Making IP Discovery User-Friendly
+
+Let's add a helper function that shows the user their IP address options:
+:::
+
+## Enhanced IP Detection
+
+::: {.callout-important icon="false"}
+```python
+import socket
+
+def get_all_ips():
+    """Get all available IP addresses for this machine."""
+    ips = []
+    
+    # Get hostname
+    hostname = socket.gethostname()
+    
+    try:
+        # Get all addresses for this hostname
+        addr_info = socket.getaddrinfo(
+            hostname, None, socket.AF_INET
+        )
+        
+        for info in addr_info:
+            ip = info[4][0]
+            if ip not in ips and ip != '127.0.0.1':
+                ips.append(ip)
+    except:
+        pass
+    
+    # Always include localhost
+    ips.append('127.0.0.1')
+    
+    return ips
+
+def display_ip_options():
+    """Show user their IP address options."""
+    print(f"\n{Fore.CYAN}📡 Your IP Addresses:")
+    ips = get_all_ips()
+    
+    for i, ip in enumerate(ips, 1):
+        if ip == '127.0.0.1':
+            print(f"  {i}. {ip} (localhost - same computer only)")
+        else:
+            print(f"  {i}. {ip} (network - share this!)")
+    
+    return ips
+```
+:::
+
+## Interactive Server Startup
+
+::: {.callout-important icon="false"}
+```python
+def main():
+    """Start server with IP selection."""
+    print(f"{Fore.GREEN}🚀 Message Server Setup")
+    print(f"{'='*60}\n")
+    
+    # Show available IPs
+    ips = display_ip_options()
+    
+    # Let user choose or use default
+    choice = input(f"\n{Fore.YELLOW}Bind to which IP? [1]: ").strip()
+    
+    if choice.isdigit() and 1 <= int(choice) <= len(ips):
+        host = ips[int(choice) - 1]
+    else:
+        host = ips[0]  # Default to first IP
+    
+    # Get port
+    port_str = input(f"{Fore.YELLOW}Port [5555]: ").strip()
+    port = int(port_str) if port_str else 5555
+    
+    print(f"\n{Fore.GREEN}Starting server on {host}:{port}...")
+    
+    # Start server
+    server = MessageServer(host=host, port=port)
+    server.start()
+```
+:::
+
+---
+
+# Hands-On Challenge: Extend the Application
+
+::: {.callout-warning icon="false"}
+## Challenge A: Add Usernames to Server Display
+
+**Goal:** Make the server display usernames instead of IP addresses
+
+**Steps:**
+1. Modify client to send username as first message
+2. Server stores `(socket, username)` instead of `(socket, address)`
+3. Broadcast messages with usernames: `"[Alice]: Hello!"` instead of `"[('127.0.0.1', 54321)]: Hello!"`
+
+```python
+# Client side:
+def connect(self):
+    self.client_socket.connect((self.host, self.port))
+    # Send username first!
+    self.client_socket.send(self.username.encode('utf-8'))
+    
+# Server side:
+def handle_client(self, client_socket, client_address):
+    # Receive username first
+    username = client_socket.recv(1024).decode('utf-8')
+    # Store (socket, username) instead of (socket, address)
+    # ...
+```
+:::
+
+## Challenge B: Add Message Timestamps
+
+::: {.callout-warning icon="false"}
+**Goal:** Show when each message was sent
+
+```python
+from datetime import datetime
+
+def format_message(username, text):
+    """Format message with timestamp."""
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    return f"[{timestamp}] {username}: {text}"
+
+# Usage:
+message = format_message("Alice", "Hello everyone!")
+# Output: "[14:32:15] Alice: Hello everyone!"
+```
+:::
+
+## Challenge C: Add Private Messages
+
+::: {.callout-warning icon="false"}
+**Goal:** Allow users to send messages to specific users
+
+**Syntax:** `@username message text`
+
+```python
+def parse_message(text):
+    """Check if message is private."""
+    if text.startswith('@'):
+        parts = text.split(' ', 1)
+        if len(parts) == 2:
+            recipient = parts[0][1:]  # Remove @
+            message = parts[1]
+            return ('private', recipient, message)
+    return ('public', None, text)
+
+# Server checks recipient and sends only to that user
+```
+:::
+
+---
+
+# Common Issues and Solutions
+
+::: {.callout-tip icon="false"}
+## Troubleshooting Guide
+
+**"Address already in use"**
+- Another program is using port 5555
+- Solution: Use a different port or kill the other process
+
+**"Connection refused"**
+- Server isn't running
+- Solution: Start the server before connecting clients
+
+**"Connection timed out"**
+- Wrong IP address
+- Firewall blocking connection
+- Server and client on different networks
+
+**Messages not appearing**
+- Check both programs are connected to same server
+- Verify no firewall blocking
+
+**Can't type anything**
+- Main thread might be blocked
+- Check threading is working properly
+:::
+
+---
+
+# Key Takeaways
+
+::: {.callout-note icon="false"}
+## What You've Learned
+
+✅ **Socket Programming** — creating network connections with `socket`
+
+✅ **Client-Server Architecture** — one server, many clients
+
+✅ **Threading** — running multiple operations simultaneously
+
+✅ **Thread Safety** — using locks to protect shared data
+
+✅ **Exception Handling** — managing network errors gracefully
+
+✅ **IP Address Discovery** — finding and using network addresses
+
+✅ **Classes and Encapsulation** — organizing network code cleanly
+
+✅ **Real-World Applications** — building actual working software!
+:::
+
+---
+
+# Extensions and Next Steps
+
+::: {.callout-tip icon="false"}
+## Make It Even Better!
+
+**Easy additions:**
+- 🎨 More colors for different message types
+- 📝 Message history display  
+- 👤 User list command
+- 🔔 Notification sounds
+
+**Medium difficulty:**
+- 🔐 User authentication (passwords)
+- 💾 Save chat history to file
+- 🏠 Multiple chat rooms
+- 📎 File attachments
+
+**Advanced projects:**
+- 🔒 Encryption (HTTPS/TLS)
+- 🖥️ GUI with Tkinter or PyQt
+- 📱 Mobile app version
+- ☁️ Deploy to cloud server
+:::
+
+---
+
+# Resources and References
+
+::: {.callout-note icon="false"}
+## Keep Learning
+
+**Python Documentation:**
+- Socket: https://docs.python.org/3/library/socket.html
+- Threading: https://docs.python.org/3/library/threading.html
+
+**Tutorials:**
+- Real Python Socket Guide: https://realpython.com/python-sockets/
+- Network Programming Basics: https://pymotw.com/3/socket/
+
+**Tools:**
+- UV Package Manager: https://github.com/astral-sh/uv
+- Colorama: https://pypi.org/project/colorama/
+
+**Security:**
+- Why encryption matters: https://owasp.org/
+- Python SSL/TLS: https://docs.python.org/3/library/ssl.html
+:::
+
+---
+
+# Questions?
+
+<center>
+<p style="font-size: 3em; color: #2E86C1;">💬</p>
+<p style="font-size: 1.5em; color: #8E44AD;">Let's build awesome messaging apps!</p>
+</center>
+
+::: {.callout-tip}
+**Remember:** Start simple, test often, and have fun building real network applications!
+:::

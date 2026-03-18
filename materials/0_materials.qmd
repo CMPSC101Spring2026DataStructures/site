@@ -100,6 +100,9 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 06**: Midterm Exam Preparation
   - [GitHub Classroom Link](https://classroom.github.com/a/8t4e0Cbv)
 
+- **Activity 08**: Socket Programming with Classes and Exceptions - Chat & Game App
+  - [GitHub Classroom Link](https://classroom.github.com/a/4TPCQlJQ)
+
 *Note: The Midterm exam will be held during lab on 20th March 2026. More details to come!*
 ---
 
