@@ -1,0 +1,2672 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="Oliver Bonham-Carter">
+  <title>CMPSC101 Spring 2026 :: DataStructures – Reading &amp; Writing Files</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="custom_big_o.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Reading &amp; Writing Files</h1>
+  <p class="subtitle">Working with Structured and Unstructured Data in Python</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Oliver Bonham-Carter 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="on-for-today" class="title-slide slide level1 center">
+<h1>On For Today</h1>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Let’s explore file operations in Python!</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Topics covered in today’s discussion:</strong></p>
+<ul>
+<li>📁 <strong>Opening and Closing Files</strong> — Managing file resources properly</li>
+<li>📖 <strong>Reading Text Files</strong> — Getting data from <code>.txt</code> files</li>
+<li>✍️ <strong>Writing Text Files</strong> — Saving data to <code>.txt</code> files</li>
+<li>🔒 <strong>Context Managers</strong> — The <code>with</code> statement for safe file handling</li>
+<li>📊 <strong>CSV Files</strong> — Working with structured data</li>
+<li>🎯 <strong>Practical Projects</strong> — Joke Machine, Todo List, Grade Processor</li>
+<li>💡 <strong>Best Practices</strong> — Error handling and file management</li>
+<li>🏆 <strong>Challenge Problems &amp; Solutions</strong> — Practice what you’ve learned!</li>
+</ul>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/tellMeMore_i.png" style="width:40.0%">
+</center>
+</section>
+<section id="why-file-operations-matter" class="slide level2">
+<h2>Why File Operations Matter</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Real-World Applications</strong></p>
+<p>Every useful program needs to work with data that persists beyond a single run:</p>
+<ul>
+<li>📊 <strong>Data Analysis</strong> — Loading datasets from CSV files</li>
+<li>💾 <strong>Configuration</strong> — Saving user preferences and settings</li>
+<li>📝 <strong>Logging</strong> — Recording program activity and errors</li>
+<li>🗄️ <strong>Data Storage</strong> — Persisting information between program runs</li>
+<li>📈 <strong>Reports</strong> — Generating output files with results</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>The Big Idea:</strong> Files are the bridge between your program’s temporary memory and permanent storage. Understanding file operations is essential for building practical, useful software!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-1-file-basics" class="title-slide slide level1 center scrollable">
+<h1>Part 1: File Basics</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The Three Essential Steps</strong></p>
+</div>
+<div class="callout-content">
+<p>Working with files follows a simple pattern:</p>
+<ol type="1">
+<li><strong>Open</strong> the file (get a file handle)</li>
+<li><strong>Read or Write</strong> data (do your work)</li>
+<li><strong>Close</strong> the file (release the resource)</li>
+</ol>
+</div>
+</div>
+</div>
+<div style="color: #8E44AD;">
+<p><strong>Key Insight:</strong> Files are like books in a library 📚. You check them out (open), read or write in them, then return them (close) so others can use them. Forgetting to close a file is like keeping a library book forever!</p>
+</div>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Note: Jupyter will not allow you to write files. To test the code in this section, copy it into a local Python file using an editor and then run it on your machine.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="opening-a-file-the-basics" class="slide level2">
+<h2>Opening a File — The Basics</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The <code>open()</code> Function</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Open a file for reading</span></span>
+<span id="cb1-2"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="co"># Do something with the file...</span></span>
+<span id="cb1-5"><a></a>content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="co"># ALWAYS close the file when done!</span></span>
+<span id="cb1-8"><a></a><span class="bu">file</span>.close()</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a><span class="bu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>File Modes:</strong></p>
+<ul>
+<li><code>"r"</code> — Read mode (default). File must exist.</li>
+<li><code>"w"</code> — Write mode. Creates new file or <strong>overwrites</strong> existing file.</li>
+<li><code>"a"</code> — Append mode. Adds to the end of an existing file.</li>
+<li><code>"r+"</code> — Read and write mode.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-problem-with-manual-closing" class="slide level2">
+<h2>The Problem with Manual Closing</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What Could Go Wrong?</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>)</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="co"># If an error occurs here, the file never closes!</span></span>
+<span id="cb2-4"><a></a>result <span class="op">=</span> some_risky_operation(<span class="bu">file</span>)</span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a><span class="bu">file</span>.close()  <span class="co"># This line might never execute!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Issues with manual file closing:</strong></p>
+<ul>
+<li>If an error occurs, <code>close()</code> might not execute</li>
+<li>Easy to forget, especially in complex code</li>
+<li>Can lead to file locks and resource leaks</li>
+<li>Other programs might not be able to access the file</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #E74C3C;">
+<p><strong>Warning:</strong> Forgetting to close files can corrupt data or prevent other programs from accessing them. There’s a better way! 🔒</p>
+</div>
+</section>
+<section id="context-managers-the-better-way" class="slide level2">
+<h2>Context Managers — The Better Way</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The <code>with</code> Statement</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># This is the Pythonic way!</span></span>
+<span id="cb3-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb3-3"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb3-4"><a></a>    <span class="bu">print</span>(content)</span>
+<span id="cb3-5"><a></a><span class="co"># File automatically closes here, even if an error occurs!</span></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a><span class="co"># The file is now closed — safe and clean!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ul>
+<li>The <code>with</code> statement creates a <strong>context manager</strong></li>
+<li>The file automatically closes when the block ends</li>
+<li>Even if an error occurs, cleanup happens</li>
+<li>You never have to remember to call <code>close()</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #27AE60;">
+<p><strong>Best Practice:</strong> Always use <code>with</code> when working with files. It’s safer, cleaner, and more Pythonic! ✨</p>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-2-reading-text-files" class="title-slide slide level1 center">
+<h1>Part 2: Reading Text Files</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Different Ways to Read</strong></p>
+</div>
+<div class="callout-content">
+<p>Python gives you several methods for reading file content:</p>
+<ul>
+<li><code>read()</code> — Read the entire file as a single string</li>
+<li><code>readline()</code> — Read one line at a time</li>
+<li><code>readlines()</code> — Read all lines into a list</li>
+<li>Iterating — Loop through lines directly</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-the-entire-file-.read" class="slide level2">
+<h2>Reading the Entire File — <code>.read()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Getting All Content at Once</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"story.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb4-2"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb4-3"><a></a>    <span class="bu">print</span>(content)</span>
+<span id="cb4-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"File has </span><span class="sc">{</span><span class="bu">len</span>(content)<span class="sc">}</span><span class="ss"> characters"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>When to use <code>.read()</code>:</strong></p>
+<ul>
+<li>✅ Small files that fit comfortably in memory</li>
+<li>✅ When you need the entire content as one string</li>
+<li>❌ Large files (can consume too much memory)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Try it yourself:</strong> Create a file called <code>story.txt</code> with a short story, then read it with this method!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-line-by-line-.readline" class="slide level2">
+<h2>Reading Line by Line — <code>.readline()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Reading One Line at a Time</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb5-2"><a></a>    line1 <span class="op">=</span> <span class="bu">file</span>.readline()  <span class="co"># Read first line</span></span>
+<span id="cb5-3"><a></a>    line2 <span class="op">=</span> <span class="bu">file</span>.readline()  <span class="co"># Read second line</span></span>
+<span id="cb5-4"><a></a>    line3 <span class="op">=</span> <span class="bu">file</span>.readline()  <span class="co"># Read third line</span></span>
+<span id="cb5-5"><a></a>    </span>
+<span id="cb5-6"><a></a>    <span class="bu">print</span>(<span class="st">"Line 1:"</span>, line1.strip())</span>
+<span id="cb5-7"><a></a>    <span class="bu">print</span>(<span class="st">"Line 2:"</span>, line2.strip())</span>
+<span id="cb5-8"><a></a>    <span class="bu">print</span>(<span class="st">"Line 3:"</span>, line3.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Notice:</strong> <code>strip()</code> removes the newline character (<code>\n</code>) at the end of each line.</p>
+<p><strong>When to use <code>.readline()</code>:</strong></p>
+<ul>
+<li>Processing the file sequentially</li>
+<li>When you need precise control over reading</li>
+<li>Reading headers separately from data</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-all-lines-.readlines" class="slide level2">
+<h2>Reading All Lines — <code>.readlines()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Get a List of All Lines</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"names.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb6-2"><a></a>    lines <span class="op">=</span> <span class="bu">file</span>.readlines()</span>
+<span id="cb6-3"><a></a></span>
+<span id="cb6-4"><a></a><span class="bu">print</span>(<span class="ss">f"Total lines: </span><span class="sc">{</span><span class="bu">len</span>(lines)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb6-7"><a></a>    <span class="bu">print</span>(line.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ul>
+<li><code>readlines()</code> returns a <strong>list</strong> where each element is one line</li>
+<li>Each line includes the newline character (<code>\n</code>)</li>
+<li>Use <code>strip()</code> to remove whitespace and newlines</li>
+<li>Great when you need to process lines multiple times</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-most-pythonic-way-iteration" class="slide level2">
+<h2>The Most Pythonic Way — Iteration</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Loop Directly Through the File</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb7-2"><a></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb7-3"><a></a>        line <span class="op">=</span> line.strip()</span>
+<span id="cb7-4"><a></a>        <span class="cf">if</span> <span class="st">"ERROR"</span> <span class="kw">in</span> line:</span>
+<span id="cb7-5"><a></a>            <span class="bu">print</span>(<span class="ss">f"Found error: </span><span class="sc">{</span>line<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Why this is best:</strong></p>
+<ul>
+<li>✅ Memory efficient — reads one line at a time</li>
+<li>✅ Works with files of any size</li>
+<li>✅ Clean, readable syntax</li>
+<li>✅ The most Pythonic approach</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #27AE60;">
+<p><strong>Best Practice:</strong> When processing a file line by line, iterate directly over the file object!</p>
+</div>
+</section>
+<section id="light-challenge-1-count-words" class="slide level2">
+<h2>Light Challenge 1 — Count Words</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Quick Practice!</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a file <code>words.txt</code> with text content, write code to count how many words it contains.</p>
+<p><strong>Hint:</strong> Use <code>.split()</code> to break text into words!</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Your code here</span></span>
+<span id="cb8-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"words.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb8-3"><a></a>    <span class="co"># How would you count the words?</span></span>
+<span id="cb8-4"><a></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="light-challenge-1-solution" class="slide level2">
+<h2>Light Challenge 1 — Solution</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"words.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb9-2"><a></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb9-3"><a></a>    words <span class="op">=</span> content.split()</span>
+<span id="cb9-4"><a></a>    word_count <span class="op">=</span> <span class="bu">len</span>(words)</span>
+<span id="cb9-5"><a></a>    <span class="bu">print</span>(<span class="ss">f"Total words: </span><span class="sc">{</span>word_count<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong></p>
+<ul>
+<li><code>.read()</code> gets the entire file content as a string</li>
+<li><code>.split()</code> breaks the string into a list of words (splits on whitespace)</li>
+<li><code>len(words)</code> counts how many words are in the list</li>
+</ul>
+<p><strong>Alternative one-liner:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"words.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb10-2"><a></a>    <span class="bu">print</span>(<span class="ss">f"Total words: </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">file</span>.read().split())<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-3-writing-text-files" class="title-slide slide level1 center">
+<h1>Part 3: Writing Text Files</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Three Writing Modes</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><code>"w"</code> — <strong>Write mode</strong>: Creates new file or <strong>overwrites</strong> existing file</li>
+<li><code>"a"</code> — <strong>Append mode</strong>: Adds to the end of existing file</li>
+<li><code>"x"</code> — <strong>Exclusive creation</strong>: Fails if file already exists</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="color: #E74C3C;">
+<p><strong>Warning:</strong> Write mode (<code>"w"</code>) will <strong>delete</strong> all existing content! Use append mode (<code>"a"</code>) if you want to keep existing data.</p>
+</div>
+</section>
+<section id="writing-to-a-file-.write" class="slide level2">
+<h2>Writing to a File — <code>.write()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Creating and Writing Content</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"output.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb11-2"><a></a>    <span class="bu">file</span>.write(<span class="st">"Hello, World!</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb11-3"><a></a>    <span class="bu">file</span>.write(<span class="st">"This is line 2.</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb11-4"><a></a>    <span class="bu">file</span>.write(<span class="st">"Goodbye!</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="bu">print</span>(<span class="st">"File created successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Key points:</strong></p>
+<ul>
+<li><code>.write()</code> doesn’t add newlines automatically — you must include <code>\n</code></li>
+<li>Returns the number of characters written</li>
+<li>Each <code>.write()</code> call appends to the file</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Try it:</strong> Run this code and open <code>output.txt</code> to see the result!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-multiple-lines-.writelines" class="slide level2">
+<h2>Writing Multiple Lines — <code>.writelines()</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Writing from a List</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>lines <span class="op">=</span> [</span>
+<span id="cb12-2"><a></a>    <span class="st">"Apple</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb12-3"><a></a>    <span class="st">"Banana</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb12-4"><a></a>    <span class="st">"Cherry</span><span class="ch">\n</span><span class="st">"</span>,</span>
+<span id="cb12-5"><a></a>    <span class="st">"Date</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb12-6"><a></a>]</span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"fruits.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb12-9"><a></a>    <span class="bu">file</span>.writelines(lines)</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="bu">print</span>(<span class="st">"Fruits written to file!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ul>
+<li><code>writelines()</code> takes a <strong>list</strong> of strings</li>
+<li>Each string should include <code>\n</code> if you want line breaks</li>
+<li>More efficient than multiple <code>.write()</code> calls</li>
+<li>Great for writing formatted data</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="append-mode-adding-without-deleting" class="slide level2">
+<h2>Append Mode — Adding Without Deleting</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Preserving Existing Content</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># First, create a file</span></span>
+<span id="cb13-2"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb13-3"><a></a>    <span class="bu">file</span>.write(<span class="st">"Log started.</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a><span class="co"># Later, add more entries</span></span>
+<span id="cb13-6"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log.txt"</span>, <span class="st">"a"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb13-7"><a></a>    <span class="bu">file</span>.write(<span class="st">"User logged in.</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-8"><a></a>    <span class="bu">file</span>.write(<span class="st">"User performed action.</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb13-9"><a></a></span>
+<span id="cb13-10"><a></a><span class="co"># Read the result</span></span>
+<span id="cb13-11"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log.txt"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb13-12"><a></a>    <span class="bu">print</span>(<span class="bu">file</span>.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Log started.
+User logged in.
+User performed action.</code></pre>
+</div>
+</div>
+</div>
+<div style="color: #27AE60;">
+<p><strong>Use Case:</strong> Append mode is perfect for logging, where you want to keep all previous entries!</p>
+</div>
+</section>
+<section id="light-challenge-2-todo-list-writer" class="slide level2">
+<h2>Light Challenge 2 — Todo List Writer</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Quick Practice!</strong></p>
+</div>
+<div class="callout-content">
+<p>Create a program that takes a list of tasks and writes them to a file <code>todo.txt</code>, numbered like this:</p>
+<pre><code>1. Buy groceries
+2. Finish homework
+3. Call mom
+4. Meet old friend for coffee
+5. Go for a run
+6. Read a book
+7. Plan weekend trip
+8. Catch the game with friends</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>tasks <span class="op">=</span> [<span class="st">"Buy groceries"</span>, <span class="st">"Finish homework"</span>,</span>
+<span id="cb16-2"><a></a><span class="st">"Call mom"</span> ,<span class="st">"Meet old friend for coffee"</span>, </span>
+<span id="cb16-3"><a></a><span class="st">"Go for a run"</span>, <span class="st">"Read a book"</span>, <span class="st">"Plan weekend trip"</span>, </span>
+<span id="cb16-4"><a></a><span class="st">"Catch the game with friends"</span>]</span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="light-challenge-2-solution" class="slide level2">
+<h2>Light Challenge 2 — Solution</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>tasks <span class="op">=</span> [<span class="st">"Buy groceries"</span>, <span class="st">"Finish homework"</span>,</span>
+<span id="cb17-2"><a></a><span class="st">"Call mom"</span> ,<span class="st">"Meet old friend for coffee"</span>, </span>
+<span id="cb17-3"><a></a><span class="st">"Go for a run"</span>, <span class="st">"Read a book"</span>, <span class="st">"Plan weekend trip"</span>, </span>
+<span id="cb17-4"><a></a><span class="st">"Catch the game with friends"</span>]</span>
+<span id="cb17-5"><a></a></span>
+<span id="cb17-6"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"todo.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb17-7"><a></a>    <span class="cf">for</span> i, task <span class="kw">in</span> <span class="bu">enumerate</span>(tasks, <span class="dv">1</span>):</span>
+<span id="cb17-8"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>task<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb17-9"><a></a></span>
+<span id="cb17-10"><a></a><span class="bu">print</span>(<span class="st">"Todo list created!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong></p>
+<ul>
+<li><code>enumerate(tasks, 1)</code> iterates through the list, providing both index and item</li>
+<li>The <code>1</code> starts numbering at 1 instead of 0</li>
+<li><code>f"{i}. {task}\n"</code> formats each line with the number and task</li>
+<li>Don’t forget the <code>\n</code> to create separate lines!</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="light-challenge-2-solution-part-2" class="slide level2">
+<h2>Light Challenge 2 — Solution (Part 2)</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Alternative using list comprehension:</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>tasks <span class="op">=</span> [<span class="st">"Buy groceries"</span>, <span class="st">"Finish homework"</span>,</span>
+<span id="cb18-2"><a></a><span class="st">"Call mom"</span> ,<span class="st">"Meet old friend for coffee"</span>, </span>
+<span id="cb18-3"><a></a><span class="st">"Go for a run"</span>, <span class="st">"Read a book"</span>, <span class="st">"Plan weekend trip"</span>, </span>
+<span id="cb18-4"><a></a><span class="st">"Catch the game with friends"</span>]</span>
+<span id="cb18-5"><a></a></span>
+<span id="cb18-6"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"todo.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb18-7"><a></a>    lines <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>task<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span> <span class="cf">for</span> i, task <span class="kw">in</span> <span class="bu">enumerate</span>(tasks, <span class="dv">1</span>)]</span>
+<span id="cb18-8"><a></a>    <span class="bu">file</span>.writelines(lines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<center>
+<img data-src="graphics/listComp.png" style="width:70.0%">
+</center>
+<center>
+(Cheat sheet for list comprehensions!)
+</center>
+</div>
+</div>
+</div>
+</section>
+<section id="project-1-the-joke-machine" class="slide level2">
+<h2>Project 1 — The Joke Machine 🎭</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>A Fun Way to Learn File Operations</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Goal:</strong> Load jokes from a file, pick a random one, and display it!</p>
+<p><strong>First, create <code>jokes.txt</code>:</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a></a>Why do programmers prefer dark mode? Because light attracts bugs! 🐛</span>
+<span id="cb19-2"><a></a>Why do Java developers wear glasses? Because they don't C#! 👓</span>
+<span id="cb19-3"><a></a>How many programmers does it take to change a light bulb? None, that's a hardware problem! 💡</span>
+<span id="cb19-4"><a></a>Why did the programmer quit his job? Because he didn't get arrays! 📊</span>
+<span id="cb19-5"><a></a>What's a programmer's favorite hangout place? Foo Bar! 🍺</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/laugh.jpg" style="width:50.0%">
+</center>
+</section>
+<section id="project-1-the-joke-machine-code" class="slide level2">
+<h2>Project 1 — The Joke Machine (Code)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Implementation</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> random</span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a><span class="kw">def</span> load_jokes(filename):</span>
+<span id="cb20-4"><a></a>    <span class="co">"""Load all jokes from a file into a list."""</span></span>
+<span id="cb20-5"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb20-6"><a></a>        jokes <span class="op">=</span> [line.strip() <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span> <span class="cf">if</span> line.strip()]</span>
+<span id="cb20-7"><a></a>    <span class="cf">return</span> jokes</span>
+<span id="cb20-8"><a></a></span>
+<span id="cb20-9"><a></a><span class="kw">def</span> tell_joke(jokes):</span>
+<span id="cb20-10"><a></a>    <span class="co">"""Pick and return a random joke."""</span></span>
+<span id="cb20-11"><a></a>    <span class="cf">return</span> random.choice(jokes)</span>
+<span id="cb20-12"><a></a></span>
+<span id="cb20-13"><a></a><span class="co"># Main program</span></span>
+<span id="cb20-14"><a></a><span class="kw">def</span> main():</span>
+<span id="cb20-15"><a></a>    jokes <span class="op">=</span> load_jokes(<span class="st">"jokes.txt"</span>)</span>
+<span id="cb20-16"><a></a>    <span class="bu">print</span>(<span class="st">"🎭 JOKE MACHINE 🎭"</span>)</span>
+<span id="cb20-17"><a></a>    <span class="bu">print</span>(<span class="st">"─"</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb20-18"><a></a>    <span class="bu">print</span>(tell_joke(jokes))</span>
+<span id="cb20-19"><a></a>    <span class="bu">print</span>(<span class="st">"─"</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb20-20"><a></a></span>
+<span id="cb20-21"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb20-22"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-1-the-joke-machine-enhancement" class="slide level2">
+<h2>Project 1 — The Joke Machine (Enhancement)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interactive Version</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> random</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a><span class="kw">def</span> load_jokes(filename):</span>
+<span id="cb21-4"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb21-5"><a></a>        <span class="cf">return</span> [line.strip() <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span> <span class="cf">if</span> line.strip()]</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a><span class="kw">def</span> main():</span>
+<span id="cb21-8"><a></a>    jokes <span class="op">=</span> load_jokes(<span class="st">"jokes.txt"</span>)</span>
+<span id="cb21-9"><a></a>    <span class="bu">print</span>(<span class="st">"🎭 JOKE MACHINE 🎭"</span>)</span>
+<span id="cb21-10"><a></a>    </span>
+<span id="cb21-11"><a></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb21-12"><a></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Press Enter for a joke (or 'q' to quit):"</span>)</span>
+<span id="cb21-13"><a></a>        user_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"&gt; "</span>)</span>
+<span id="cb21-14"><a></a>        </span>
+<span id="cb21-15"><a></a>        <span class="cf">if</span> user_input.lower() <span class="op">==</span> <span class="st">'q'</span>:</span>
+<span id="cb21-16"><a></a>            <span class="bu">print</span>(<span class="st">"Thanks for laughing! 😄"</span>)</span>
+<span id="cb21-17"><a></a>            <span class="cf">break</span></span>
+<span id="cb21-18"><a></a>        </span>
+<span id="cb21-19"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>random<span class="sc">.</span>choice(jokes)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb21-20"><a></a></span>
+<span id="cb21-21"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb21-22"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="want-more-jokes" class="slide level2">
+<h2>Want <strong>More</strong> jokes??</h2>
+<div style="color: #27AE60;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<!-- ::: {style="color: #27AE60;" font-size="1.0em;"} -->
+<p>Add to <code>jokes.txt</code>! Here are some to get you started!</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a></a>What did 20 do when it was hungry? Twenty-eight.</span>
+<span id="cb22-2"><a></a>Why is grass so dangerous? Because it's full of blades!</span>
+<span id="cb22-3"><a></a>Why are mountains so funny? They’re hill areas.</span>
+<span id="cb22-4"><a></a>Why wasn’t the cactus invited to hang out with the mushrooms? He wasn’t a fungi.</span>
+<span id="cb22-5"><a></a>Why shouldn’t you fund raise for marathons? They just take the money and run.</span>
+<span id="cb22-6"><a></a>Why did the crab cross the road? It didn’t—it used the sidewalk.</span>
+<span id="cb22-7"><a></a>Why does it take pirates a long time to learn the alphabet? Because they can spend years at C!</span>
+<span id="cb22-8"><a></a>Why can't a nose be 12 inches long? Because then it would be a foot.</span>
+<span id="cb22-9"><a></a>Why can’t you put two half-dollars in your pocket? Because two halves make a hole, and your money will fall out!</span>
+<span id="cb22-10"><a></a>Why does a moon rock taste better than an Earth rock? It’s a little meteor.</span>
+<span id="cb22-11"><a></a>How much do rainbows weigh? Not much. They’re actually pretty light.</span>
+<span id="cb22-12"><a></a>What is the most popular fish in the ocean? The starfish.</span>
+<span id="cb22-13"><a></a>A slice of apple pie costs $2.50 in Jamaica, $3.75 in Bermuda, and $3 in the Bahamas. Those are the pie-rates of the Caribbean.</span>
+<span id="cb22-14"><a></a>Why did the football coach yell at the vending machine? He wanted his quarter back!</span>
+<span id="cb22-15"><a></a>I had a joke about paper today, but it was tearable.</span>
+<span id="cb22-16"><a></a>What kind of job can you get at a bicycle factory? A spokesperson</span>
+<span id="cb22-17"><a></a>What does a condiment wizard perform? Saucery</span>
+<span id="cb22-18"><a></a>What's the difference in an alligator and a crocodile? You’ll see one later and one in a while.</span>
+<span id="cb22-19"><a></a>What’s the difference between the bird flu and the swine flu? One requires tweetment and the other an oinkment.</span>
+<span id="cb22-20"><a></a>What’s the difference between ducks and dine-and-dashers? Ducks take care of their bills.</span>
+<span id="cb22-21"><a></a>What's the difference between spring rolls and summer rolls? Their seasoning.</span>
+<span id="cb22-22"><a></a>What’s the difference between Iron Man and Aluminum Man? Iron Man stops the bad guy. Aluminum Man foils their plans.</span>
+<span id="cb22-23"><a></a>What’s the difference between a poorly dressed man on a unicycle and a well-dressed man on a bicycle? Attire.</span>
+<span id="cb22-24"><a></a>What’s the difference between a $20 steak and a $55 steak? February 14th.</span>
+<span id="cb22-25"><a></a>What's the best thing about Switzerland? The flag is a big plus.</span>
+<span id="cb22-26"><a></a>I went to the aquarium this weekend, but I didn’t stay long -- There’s something fishy about that place.</span>
+<span id="cb22-27"><a></a>I found a lion in my closet the other day! When I asked what it was doing there, it said 'Narnia business.'</span>
+<span id="cb22-28"><a></a>What's a cat's favorite instrument? Purrrr-cussion.</span>
+<span id="cb22-29"><a></a>Why did the snail paint a giant S on his car? So when he drove by, people could say: 'Look at that S car go!'</span>
+<span id="cb22-30"><a></a>What do you call a happy cowboy? A jolly rancher.</span>
+<span id="cb22-31"><a></a>What subject do cats like best in school? Hiss-tory.</span>
+<span id="cb22-32"><a></a>Humpty Dumpty had a great fall. He said his summer was pretty good too.</span>
+<span id="cb22-33"><a></a>My boss told me to dress for the job I want, not for the one I have. So I went in as Batman.</span>
+<span id="cb22-34"><a></a>How do you make holy water? You boil the hell out of it.</span>
+<span id="cb22-35"><a></a>Justice is a dish best served cold. Otherwise, it's just water.</span>
+<span id="cb22-36"><a></a>Why should you never throw grandpa's false teeth at a vehicle? You might denture car.</span>
+<span id="cb22-37"><a></a>Why are Christmas trees bad at knitting? They always drop their needles.</span>
+<span id="cb22-38"><a></a>What did the lunch box say to the refrigerator? Don't hate me because I'm a little cooler.</span>
+<span id="cb22-39"><a></a>I can always tell when someone is lying. I can tell when they're standing too.</span>
+<span id="cb22-40"><a></a>Some people pick their nose, but I was born with mine.</span>
+<span id="cb22-41"><a></a>If your house is cold, just stand in the corner. It’s always 90 degrees there.</span>
+<span id="cb22-42"><a></a>Why did the scarecrow win an award? Because he was outstanding in his field!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-4-working-with-csv-files" class="title-slide slide level1 center">
+<h1>Part 4: Working with CSV Files</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What Is a CSV File?</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>CSV</strong> stands for <strong>Comma-Separated Values</strong>. It’s a simple format for structured data:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a></a>name,age,city</span>
+<span id="cb23-2"><a></a>Alice,25,New York</span>
+<span id="cb23-3"><a></a>Bob,30,Meadville</span>
+<span id="cb23-4"><a></a>Charlie,35,Chicago</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>First row usually contains <strong>headers</strong> (column names)</li>
+<li>Each subsequent row is a <strong>record</strong> (data entry)</li>
+<li>Fields are separated by commas</li>
+<li>Widely supported by Excel, Google Sheets, databases, etc.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-csv-files-the-csv-module" class="slide level2">
+<h2>Reading CSV Files — The <code>csv</code> Module</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Using Python’s Built-in CSV Module</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb24-2"><a></a></span>
+<span id="cb24-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"students.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb24-4"><a></a>    reader <span class="op">=</span> csv.reader(<span class="bu">file</span>)</span>
+<span id="cb24-5"><a></a>    </span>
+<span id="cb24-6"><a></a>    <span class="co"># Skip the header row</span></span>
+<span id="cb24-7"><a></a>    header <span class="op">=</span> <span class="bu">next</span>(reader)</span>
+<span id="cb24-8"><a></a>    <span class="bu">print</span>(<span class="st">"Headers:"</span>, header)</span>
+<span id="cb24-9"><a></a>    </span>
+<span id="cb24-10"><a></a>    <span class="co"># Process each row</span></span>
+<span id="cb24-11"><a></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb24-12"><a></a>        name, age, grade <span class="op">=</span> row</span>
+<span id="cb24-13"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old and got grade </span><span class="sc">{</span>grade<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Sample <code>students.csv</code>:</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a></a>name,age,grade</span>
+<span id="cb25-2"><a></a>Alice,20,92</span>
+<span id="cb25-3"><a></a>Bob,21,87</span>
+<span id="cb25-4"><a></a>Charlie,19,95</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="csv-with-dictionaries-dictreader" class="slide level2">
+<h2>CSV with Dictionaries — <code>DictReader</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>More Convenient Access</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb26-2"><a></a></span>
+<span id="cb26-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"students.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb26-4"><a></a>    reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb26-5"><a></a>    </span>
+<span id="cb26-6"><a></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb26-7"><a></a>        <span class="co"># Access by column name!</span></span>
+<span id="cb26-8"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> got a grade of </span><span class="sc">{</span>row[<span class="st">'grade'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Alice got a grade of 92
+Bob got a grade of 87
+Charlie got a grade of 95</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Why <code>DictReader</code> is great:</strong></p>
+<ul>
+<li>Access fields by name, not position</li>
+<li>More readable and maintainable</li>
+<li>Less error-prone when CSV structure changes</li>
+<li>No need to manually parse the header</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-csv-files-csv.writer" class="slide level2">
+<h2>Writing CSV Files — <code>csv.writer</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Creating CSV Files</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb28-2"><a></a></span>
+<span id="cb28-3"><a></a>students <span class="op">=</span> [</span>
+<span id="cb28-4"><a></a>    [<span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"grade"</span>],  <span class="co"># header</span></span>
+<span id="cb28-5"><a></a>    [<span class="st">"Alice"</span>, <span class="dv">20</span>, <span class="dv">92</span>],</span>
+<span id="cb28-6"><a></a>    [<span class="st">"Bob"</span>, <span class="dv">21</span>, <span class="dv">87</span>],</span>
+<span id="cb28-7"><a></a>    [<span class="st">"Charlie"</span>, <span class="dv">19</span>, <span class="dv">95</span>]</span>
+<span id="cb28-8"><a></a>]</span>
+<span id="cb28-9"><a></a></span>
+<span id="cb28-10"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"output.csv"</span>, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb28-11"><a></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
+<span id="cb28-12"><a></a>    writer.writerows(students)</span>
+<span id="cb28-13"><a></a></span>
+<span id="cb28-14"><a></a><span class="bu">print</span>(<span class="st">"CSV file created!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Important:</strong> Use <code>newline=""</code> when opening CSV files for writing to avoid extra blank lines on Windows!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-csv-files-dictwriter" class="slide level2">
+<h2>Writing CSV Files — <code>DictWriter</code></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Writing with Dictionaries</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a>students <span class="op">=</span> [</span>
+<span id="cb29-4"><a></a>    {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">20</span>, <span class="st">"grade"</span>: <span class="dv">92</span>},</span>
+<span id="cb29-5"><a></a>    {<span class="st">"name"</span>: <span class="st">"Bob"</span>, <span class="st">"age"</span>: <span class="dv">21</span>, <span class="st">"grade"</span>: <span class="dv">87</span>},</span>
+<span id="cb29-6"><a></a>    {<span class="st">"name"</span>: <span class="st">"Charlie"</span>, <span class="st">"age"</span>: <span class="dv">19</span>, <span class="st">"grade"</span>: <span class="dv">95</span>}</span>
+<span id="cb29-7"><a></a>]</span>
+<span id="cb29-8"><a></a></span>
+<span id="cb29-9"><a></a>my_filename <span class="op">=</span> <span class="st">"students.csv"</span> <span class="co"># name of the file to create</span></span>
+<span id="cb29-10"><a></a><span class="cf">with</span> <span class="bu">open</span>(my_filename, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb29-11"><a></a>    fieldnames <span class="op">=</span> [<span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"grade"</span>] <span class="co"># The order of columns</span></span>
+<span id="cb29-12"><a></a>    writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb29-13"><a></a>    </span>
+<span id="cb29-14"><a></a>    writer.writeheader()  <span class="co"># Write the header row</span></span>
+<span id="cb29-15"><a></a>    writer.writerows(students) <span class="co"># Write the data rows</span></span>
+<span id="cb29-16"><a></a></span>
+<span id="cb29-17"><a></a><span class="bu">print</span>(<span class="ss">f"CSV file created with DictWriter : </span><span class="sc">{</span>my_filename<span class="sc">}</span><span class="ss">!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div style="color: #27AE60;">
+<p><strong>Best Practice:</strong> Use <code>DictWriter</code> when you have data in dictionary format — it’s cleaner and more maintainable!</p>
+</div>
+</section>
+<section id="light-challenge-3-average-grade-calculator" class="slide level2">
+<h2>Light Challenge 3 — Average Grade Calculator</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Quick Practice!</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a CSV file <code>grades.csv</code> with columns <code>name</code> and <code>grade</code>, calculate the average grade.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb30-1"><a></a>name,grade</span>
+<span id="cb30-2"><a></a>Alice,92</span>
+<span id="cb30-3"><a></a>Bob,87</span>
+<span id="cb30-4"><a></a>Charlie,95</span>
+<span id="cb30-5"><a></a>Diana,88</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb31-2"><a></a></span>
+<span id="cb31-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb31-4"><a></a><span class="co"># Calculate and print the average grade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="light-challenge-3-solution-part-1" class="slide level2">
+<h2>Light Challenge 3 — Solution (Part 1)</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb32-2"><a></a></span>
+<span id="cb32-3"><a></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-4"><a></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-5"><a></a></span>
+<span id="cb32-6"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"grades.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb32-7"><a></a>    reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb32-8"><a></a>    </span>
+<span id="cb32-9"><a></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb32-10"><a></a>        total <span class="op">+=</span> <span class="bu">int</span>(row[<span class="st">"grade"</span>])</span>
+<span id="cb32-11"><a></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb32-12"><a></a></span>
+<span id="cb32-13"><a></a>average <span class="op">=</span> total <span class="op">/</span> count</span>
+<span id="cb32-14"><a></a><span class="bu">print</span>(<span class="ss">f"Average grade: </span><span class="sc">{</span>average<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Use <code>DictReader</code> to access columns by name</li>
+<li>Convert <code>row["grade"]</code> to <code>int</code> (CSV data is always strings!)</li>
+<li>Accumulate <code>total</code> and <code>count</code> as we read each row</li>
+<li>Calculate average and use <code>:.1f</code> to format to 1 decimal place</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="light-challenge-3-solution-part-2" class="slide level2">
+<h2>Light Challenge 3 — Solution (Part 2)</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>More Pythonic version:</strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb33-2"><a></a></span>
+<span id="cb33-3"><a></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"grades.csv"</span>, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb33-4"><a></a>    reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb33-5"><a></a>    grades <span class="op">=</span> [<span class="bu">int</span>(row[<span class="st">"grade"</span>]) <span class="cf">for</span> row <span class="kw">in</span> reader]</span>
+<span id="cb33-6"><a></a></span>
+<span id="cb33-7"><a></a>average <span class="op">=</span> <span class="bu">sum</span>(grades) <span class="op">/</span> <span class="bu">len</span>(grades)</span>
+<span id="cb33-8"><a></a><span class="bu">print</span>(<span class="ss">f"Average grade: </span><span class="sc">{</span>average<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<center>
+<img data-src="graphics/listComp.png" style="width:70.0%">
+</center>
+<center>
+(Cheat sheet for list comprehensions!)
+</center>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-5-practical-projects" class="title-slide slide level1 center">
+<h1>Part 5: Practical Projects</h1>
+<center>
+<img data-src="graphics/challenge.png" style="width:50.0%">
+</center>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Let’s Build Useful Programs!</strong></p>
+</div>
+<div class="callout-content">
+<p>These projects demonstrate real-world file operations with practical applications.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="project-2-todo-list-manager" class="slide level2">
+<h2>Project 2 — Todo List Manager 📝</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Persistent Task Management</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">def</span> load_todos(filename):</span>
+<span id="cb34-2"><a></a>    <span class="co">"""Load todos from file, return empty list if file doesn't exist."""</span></span>
+<span id="cb34-3"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb34-4"><a></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb34-5"><a></a>            <span class="cf">return</span> [line.strip() <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>]</span>
+<span id="cb34-6"><a></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb34-7"><a></a>        <span class="cf">return</span> []</span>
+<span id="cb34-8"><a></a></span>
+<span id="cb34-9"><a></a><span class="kw">def</span> save_todos(filename, todos):</span>
+<span id="cb34-10"><a></a>    <span class="co">"""Save all todos to file."""</span></span>
+<span id="cb34-11"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb34-12"><a></a>        <span class="cf">for</span> todo <span class="kw">in</span> todos:</span>
+<span id="cb34-13"><a></a>            <span class="bu">file</span>.write(todo <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb34-14"><a></a></span>
+<span id="cb34-15"><a></a><span class="kw">def</span> add_todo(todos, task):</span>
+<span id="cb34-16"><a></a>    <span class="co">"""Add a new task."""</span></span>
+<span id="cb34-17"><a></a>    todos.append(task)</span>
+<span id="cb34-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"✅ Added: </span><span class="sc">{</span>task<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-19"><a></a></span>
+<span id="cb34-20"><a></a><span class="kw">def</span> show_todos(todos):</span>
+<span id="cb34-21"><a></a>    <span class="co">"""Display all todos."""</span></span>
+<span id="cb34-22"><a></a>    <span class="cf">if</span> <span class="kw">not</span> todos:</span>
+<span id="cb34-23"><a></a>        <span class="bu">print</span>(<span class="st">"No tasks yet! 🎉"</span>)</span>
+<span id="cb34-24"><a></a>        <span class="cf">return</span></span>
+<span id="cb34-25"><a></a>    </span>
+<span id="cb34-26"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">📝 Your Todos:"</span>)</span>
+<span id="cb34-27"><a></a>    <span class="cf">for</span> i, todo <span class="kw">in</span> <span class="bu">enumerate</span>(todos, <span class="dv">1</span>):</span>
+<span id="cb34-28"><a></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>todo<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-2-todo-list-manager-main-program" class="slide level2">
+<h2>Project 2 — Todo List Manager (Main Program)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Full Interactive Program</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="kw">def</span> main():</span>
+<span id="cb35-2"><a></a>    filename <span class="op">=</span> <span class="st">"todos.txt"</span></span>
+<span id="cb35-3"><a></a>    todos <span class="op">=</span> load_todos(filename)</span>
+<span id="cb35-4"><a></a>    </span>
+<span id="cb35-5"><a></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb35-6"><a></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">40</span>)</span>
+<span id="cb35-7"><a></a>        <span class="bu">print</span>(<span class="st">"TODO LIST MANAGER"</span>)</span>
+<span id="cb35-8"><a></a>        <span class="bu">print</span>(<span class="st">"="</span><span class="op">*</span><span class="dv">40</span>)</span>
+<span id="cb35-9"><a></a>        <span class="bu">print</span>(<span class="st">"1. View todos"</span>)</span>
+<span id="cb35-10"><a></a>        <span class="bu">print</span>(<span class="st">"2. Add todo"</span>)</span>
+<span id="cb35-11"><a></a>        <span class="bu">print</span>(<span class="st">"3. Remove todo"</span>)</span>
+<span id="cb35-12"><a></a>        <span class="bu">print</span>(<span class="st">"4. Quit"</span>)</span>
+<span id="cb35-13"><a></a>        </span>
+<span id="cb35-14"><a></a>        choice <span class="op">=</span> <span class="bu">input</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Choice: "</span>).strip()</span>
+<span id="cb35-15"><a></a>        </span>
+<span id="cb35-16"><a></a>        <span class="cf">if</span> choice <span class="op">==</span> <span class="st">"1"</span>:</span>
+<span id="cb35-17"><a></a>            show_todos(todos)</span>
+<span id="cb35-18"><a></a>        <span class="cf">elif</span> choice <span class="op">==</span> <span class="st">"2"</span>:</span>
+<span id="cb35-19"><a></a>            task <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Enter task: "</span>)</span>
+<span id="cb35-20"><a></a>            add_todo(todos, task)</span>
+<span id="cb35-21"><a></a>            save_todos(filename, todos)</span>
+<span id="cb35-22"><a></a>        <span class="cf">elif</span> choice <span class="op">==</span> <span class="st">"3"</span>:</span>
+<span id="cb35-23"><a></a>            show_todos(todos)</span>
+<span id="cb35-24"><a></a>            <span class="cf">try</span>:</span>
+<span id="cb35-25"><a></a>                num <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Remove which number? "</span>))</span>
+<span id="cb35-26"><a></a>                removed <span class="op">=</span> todos.pop(num <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb35-27"><a></a>                <span class="bu">print</span>(<span class="ss">f"❌ Removed: </span><span class="sc">{</span>removed<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb35-28"><a></a>                save_todos(filename, todos)</span>
+<span id="cb35-29"><a></a>            <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">IndexError</span>):</span>
+<span id="cb35-30"><a></a>                <span class="bu">print</span>(<span class="st">"Invalid number!"</span>)</span>
+<span id="cb35-31"><a></a>        <span class="cf">elif</span> choice <span class="op">==</span> <span class="st">"4"</span>:</span>
+<span id="cb35-32"><a></a>            <span class="bu">print</span>(<span class="st">"Goodbye! 👋"</span>)</span>
+<span id="cb35-33"><a></a>            <span class="cf">break</span></span>
+<span id="cb35-34"><a></a></span>
+<span id="cb35-35"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb35-36"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-3-grade-processor" class="slide level2">
+<h2>Project 3 — Grade Processor 📊</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>CSV Processing with Statistics</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb36-2"><a></a></span>
+<span id="cb36-3"><a></a><span class="kw">def</span> load_grades(filename):</span>
+<span id="cb36-4"><a></a>    <span class="co">"""Load student grades from CSV."""</span></span>
+<span id="cb36-5"><a></a>    students <span class="op">=</span> []</span>
+<span id="cb36-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb36-7"><a></a>        reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb36-8"><a></a>        <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb36-9"><a></a>            students.append({</span>
+<span id="cb36-10"><a></a>                <span class="st">"name"</span>: row[<span class="st">"name"</span>],</span>
+<span id="cb36-11"><a></a>                <span class="st">"grade"</span>: <span class="bu">int</span>(row[<span class="st">"grade"</span>])</span>
+<span id="cb36-12"><a></a>            })</span>
+<span id="cb36-13"><a></a>    <span class="cf">return</span> students</span>
+<span id="cb36-14"><a></a></span>
+<span id="cb36-15"><a></a><span class="kw">def</span> calculate_statistics(students):</span>
+<span id="cb36-16"><a></a>    <span class="co">"""Calculate grade statistics."""</span></span>
+<span id="cb36-17"><a></a>    grades <span class="op">=</span> [s[<span class="st">"grade"</span>] <span class="cf">for</span> s <span class="kw">in</span> students]</span>
+<span id="cb36-18"><a></a>    <span class="cf">return</span> {</span>
+<span id="cb36-19"><a></a>        <span class="st">"average"</span>: <span class="bu">sum</span>(grades) <span class="op">/</span> <span class="bu">len</span>(grades),</span>
+<span id="cb36-20"><a></a>        <span class="st">"highest"</span>: <span class="bu">max</span>(grades),</span>
+<span id="cb36-21"><a></a>        <span class="st">"lowest"</span>: <span class="bu">min</span>(grades),</span>
+<span id="cb36-22"><a></a>        <span class="st">"passing"</span>: <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> g <span class="kw">in</span> grades <span class="cf">if</span> g <span class="op">&gt;=</span> <span class="dv">60</span>)</span>
+<span id="cb36-23"><a></a>    }</span>
+<span id="cb36-24"><a></a></span>
+<span id="cb36-25"><a></a><span class="kw">def</span> generate_report(students, stats, output_file):</span>
+<span id="cb36-26"><a></a>    <span class="co">"""Generate a formatted report."""</span></span>
+<span id="cb36-27"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb36-28"><a></a>        <span class="bu">file</span>.write(<span class="st">"GRADE REPORT</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb36-29"><a></a>        <span class="bu">file</span>.write(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb36-30"><a></a>        </span>
+<span id="cb36-31"><a></a>        <span class="bu">file</span>.write(<span class="st">"Student Grades:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb36-32"><a></a>        <span class="cf">for</span> student <span class="kw">in</span> <span class="bu">sorted</span>(students, key<span class="op">=</span><span class="kw">lambda</span> s: s[<span class="st">"grade"</span>], reverse<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb36-33"><a></a>            status <span class="op">=</span> <span class="st">"✓ PASS"</span> <span class="cf">if</span> student[<span class="st">"grade"</span>] <span class="op">&gt;=</span> <span class="dv">60</span> <span class="cf">else</span> <span class="st">"✗ FAIL"</span></span>
+<span id="cb36-34"><a></a>            <span class="bu">file</span>.write(<span class="ss">f"  </span><span class="sc">{</span>student[<span class="st">'name'</span>]<span class="sc">:20}</span><span class="ss"> </span><span class="sc">{</span>student[<span class="st">'grade'</span>]<span class="sc">:3}</span><span class="ss"> </span><span class="sc">{</span>status<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb36-35"><a></a>        </span>
+<span id="cb36-36"><a></a>        <span class="bu">file</span>.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb36-37"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Average: </span><span class="sc">{</span>stats[<span class="st">'average'</span>]<span class="sc">:.1f}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb36-38"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Highest: </span><span class="sc">{</span>stats[<span class="st">'highest'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb36-39"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Lowest: </span><span class="sc">{</span>stats[<span class="st">'lowest'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb36-40"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Passing Students: </span><span class="sc">{</span>stats[<span class="st">'passing'</span>]<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(students)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-3-grade-processor-usage" class="slide level2">
+<h2>Project 3 — Grade Processor (Usage)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Running the Grade Processor</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="kw">def</span> main():</span>
+<span id="cb37-2"><a></a>    <span class="co"># Load grades</span></span>
+<span id="cb37-3"><a></a>    students <span class="op">=</span> load_grades(<span class="st">"grades.csv"</span>)</span>
+<span id="cb37-4"><a></a>    </span>
+<span id="cb37-5"><a></a>    <span class="co"># Calculate statistics</span></span>
+<span id="cb37-6"><a></a>    stats <span class="op">=</span> calculate_statistics(students)</span>
+<span id="cb37-7"><a></a>    </span>
+<span id="cb37-8"><a></a>    <span class="co"># Generate report</span></span>
+<span id="cb37-9"><a></a>    generate_report(students, stats, <span class="st">"grade_report.txt"</span>)</span>
+<span id="cb37-10"><a></a>    </span>
+<span id="cb37-11"><a></a>    <span class="co"># Display summary</span></span>
+<span id="cb37-12"><a></a>    <span class="bu">print</span>(<span class="ss">f"Processed </span><span class="sc">{</span><span class="bu">len</span>(students)<span class="sc">}</span><span class="ss"> students"</span>)</span>
+<span id="cb37-13"><a></a>    <span class="bu">print</span>(<span class="ss">f"Average grade: </span><span class="sc">{</span>stats[<span class="st">'average'</span>]<span class="sc">:.1f}</span><span class="ss">"</span>)</span>
+<span id="cb37-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"Report saved to grade_report.txt"</span>)</span>
+<span id="cb37-15"><a></a></span>
+<span id="cb37-16"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb37-17"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Sample <code>grades.csv</code>:</strong></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb38-1"><a></a>name,grade</span>
+<span id="cb38-2"><a></a>Alice,92</span>
+<span id="cb38-3"><a></a>Bob,87</span>
+<span id="cb38-4"><a></a>Charlie,95</span>
+<span id="cb38-5"><a></a>Diana,88</span>
+<span id="cb38-6"><a></a>Eve,76</span>
+<span id="cb38-7"><a></a>Frank,54</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-4-sample-log-file-data" class="slide level2">
+<h2>Project 4 — Sample Log File Data 📄</h2>
+<!-- ::: {.callout-tip icon="false"} -->
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Copy and Paste This Into <code>server.log</code></strong></p>
+</div>
+<div class="callout-content">
+<p>To test the Log File Analyzer, create a file called <code>server.log</code> with this content:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb39-1"><a></a>2026-03-20 08:15:22 INFO Server started successfully</span>
+<span id="cb39-2"><a></a>2026-03-20 08:15:23 INFO Loading configuration from config.json</span>
+<span id="cb39-3"><a></a>2026-03-20 08:15:24 INFO Database connection established</span>
+<span id="cb39-4"><a></a>2026-03-20 08:16:01 INFO User authentication service initialized</span>
+<span id="cb39-5"><a></a>2026-03-20 08:17:45 WARNING High memory usage detected: 85%</span>
+<span id="cb39-6"><a></a>2026-03-20 08:18:12 INFO Processing user request for /api/data</span>
+<span id="cb39-7"><a></a>2026-03-20 08:18:15 ERROR Failed to connect to external API: Connection timeout</span>
+<span id="cb39-8"><a></a>2026-03-20 08:18:16 INFO Retrying connection to external API</span>
+<span id="cb39-9"><a></a>2026-03-20 08:18:20 INFO Connection successful on retry</span>
+<span id="cb39-10"><a></a>2026-03-20 08:19:33 INFO User session created for user_id: 12345</span>
+<span id="cb39-11"><a></a>2026-03-20 08:20:47 WARNING Slow query detected: 2.3 seconds</span>
+<span id="cb39-12"><a></a>2026-03-20 08:21:05 INFO Cache hit for product catalog</span>
+<span id="cb39-13"><a></a>2026-03-20 08:22:18 ERROR Database query failed: Table 'users' does not exist</span>
+<span id="cb39-14"><a></a>2026-03-20 08:22:19 ERROR Rolling back transaction</span>
+<span id="cb39-15"><a></a>2026-03-20 08:23:44 WARNING Disk space running low: 15% remaining</span>
+<span id="cb39-16"><a></a>2026-03-20 08:24:52 INFO Backup process started</span>
+<span id="cb39-17"><a></a>2026-03-20 08:25:01 INFO Processing batch job: 1000 records</span>
+<span id="cb39-18"><a></a>2026-03-20 08:26:33 ERROR Failed to send email notification: SMTP server unreachable</span>
+<span id="cb39-19"><a></a>2026-03-20 08:27:15 INFO User logged out: user_id: 12345</span>
+<span id="cb39-20"><a></a>2026-03-20 08:28:40 WARNING Rate limit exceeded for IP: 192.168.1.100</span>
+<span id="cb39-21"><a></a>2026-03-20 08:29:52 INFO Scheduled maintenance task completed</span>
+<span id="cb39-22"><a></a>2026-03-20 08:30:11 INFO Request handled successfully</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- **This sample log contains:**
+
+* 13 INFO messages
+* 4 WARNING messages  
+* 4 ERROR messages
+* 21 total lines
+
+Perfect for testing the analyzer! -->
+</div>
+</div>
+</div>
+</section>
+<section id="project-4-log-file-analyzer" class="slide level2">
+<h2>Project 4 — Log File Analyzer 🔍</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Processing Large Text Files</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="kw">def</span> analyze_log(filename):</span>
+<span id="cb40-2"><a></a>    <span class="co">"""Analyze a log file for errors and warnings."""</span></span>
+<span id="cb40-3"><a></a>    stats <span class="op">=</span> {</span>
+<span id="cb40-4"><a></a>        <span class="st">"total_lines"</span>: <span class="dv">0</span>,</span>
+<span id="cb40-5"><a></a>        <span class="st">"errors"</span>: <span class="dv">0</span>,</span>
+<span id="cb40-6"><a></a>        <span class="st">"warnings"</span>: <span class="dv">0</span>,</span>
+<span id="cb40-7"><a></a>        <span class="st">"info"</span>: <span class="dv">0</span></span>
+<span id="cb40-8"><a></a>    }</span>
+<span id="cb40-9"><a></a>    </span>
+<span id="cb40-10"><a></a>    error_messages <span class="op">=</span> []</span>
+<span id="cb40-11"><a></a>    </span>
+<span id="cb40-12"><a></a>    <span class="co"># We will read the file line by line to avoid memory issues with large logs</span></span>
+<span id="cb40-13"><a></a>    <span class="co"># This way we can process logs of any size without loading everything into memory at once</span></span>
+<span id="cb40-14"><a></a>    <span class="co"># Note: To find the errors, we will check if the line contains the word "ERROR" (case-insensitive)</span></span>
+<span id="cb40-15"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb40-16"><a></a>        <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb40-17"><a></a>            stats[<span class="st">"total_lines"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb40-18"><a></a>            line_lower <span class="op">=</span> line.lower()</span>
+<span id="cb40-19"><a></a>            </span>
+<span id="cb40-20"><a></a>            <span class="cf">if</span> <span class="st">"error"</span> <span class="kw">in</span> line_lower:</span>
+<span id="cb40-21"><a></a>                stats[<span class="st">"errors"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb40-22"><a></a>                error_messages.append(line.strip())</span>
+<span id="cb40-23"><a></a>            <span class="cf">elif</span> <span class="st">"warning"</span> <span class="kw">in</span> line_lower:</span>
+<span id="cb40-24"><a></a>                stats[<span class="st">"warnings"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb40-25"><a></a>            <span class="cf">elif</span> <span class="st">"info"</span> <span class="kw">in</span> line_lower:</span>
+<span id="cb40-26"><a></a>                stats[<span class="st">"info"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb40-27"><a></a>    </span>
+<span id="cb40-28"><a></a>    <span class="cf">return</span> stats, error_messages</span>
+<span id="cb40-29"><a></a></span>
+<span id="cb40-30"><a></a><span class="kw">def</span> save_error_report(errors, output_file):</span>
+<span id="cb40-31"><a></a>    <span class="co">"""Save error messages to a separate file."""</span></span>
+<span id="cb40-32"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb40-33"><a></a>        <span class="bu">file</span>.write(<span class="st">"ERROR REPORT</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb40-34"><a></a>        <span class="bu">file</span>.write(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb40-35"><a></a>        <span class="cf">for</span> i, error <span class="kw">in</span> <span class="bu">enumerate</span>(errors, <span class="dv">1</span>):</span>
+<span id="cb40-36"><a></a>            <span class="bu">file</span>.write(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>error<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb40-37"><a></a></span>
+<span id="cb40-38"><a></a><span class="co"># Usage</span></span>
+<span id="cb40-39"><a></a>stats, errors <span class="op">=</span> analyze_log(<span class="st">"server.log"</span>)</span>
+<span id="cb40-40"><a></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span>stats[<span class="st">'errors'</span>]<span class="sc">}</span><span class="ss"> errors, </span><span class="sc">{</span>stats[<span class="st">'warnings'</span>]<span class="sc">}</span><span class="ss"> warnings"</span>)</span>
+<span id="cb40-41"><a></a>save_error_report(errors, <span class="st">"errors_only.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="project-4-what-to-find" class="slide level2">
+<h2>Project 4 — What to find? 🔍</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>This sample log contains:</strong></p>
+<ul>
+<li>13 INFO messages</li>
+<li>4 WARNING messages<br>
+</li>
+<li>4 ERROR messages</li>
+<li>21 total lines</li>
+</ul>
+<p>Perfect for testing the analyzer!</p>
+</div>
+</div>
+</div>
+<center>
+<img data-src="graphics/bug_i.png" style="width:50.0%">
+</center>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-6-best-practices-error-handling" class="title-slide slide level1 center">
+<h1>Part 6: Best Practices &amp; Error Handling</h1>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Writing Robust File Operations</strong></p>
+</div>
+<div class="callout-content">
+<p>Good programs handle errors gracefully and don’t crash when files are missing or corrupted.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-if-a-file-exists" class="slide level2">
+<h2>Checking If a File Exists</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Using <code>os.path</code> Module</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a><span class="im">import</span> os</span>
+<span id="cb41-2"><a></a></span>
+<span id="cb41-3"><a></a>filename <span class="op">=</span> <span class="st">"data.txt"</span></span>
+<span id="cb41-4"><a></a></span>
+<span id="cb41-5"><a></a><span class="cf">if</span> os.path.exists(filename):</span>
+<span id="cb41-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb41-7"><a></a>        content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb41-8"><a></a>        <span class="bu">print</span>(content)</span>
+<span id="cb41-9"><a></a><span class="cf">else</span>:</span>
+<span id="cb41-10"><a></a>    <span class="bu">print</span>(<span class="ss">f"File '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' not found!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Modern Way: Using <code>pathlib</code></strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb42-2"><a></a></span>
+<span id="cb42-3"><a></a>filename <span class="op">=</span> Path(<span class="st">"data.txt"</span>)</span>
+<span id="cb42-4"><a></a></span>
+<span id="cb42-5"><a></a><span class="cf">if</span> filename.exists():</span>
+<span id="cb42-6"><a></a>    content <span class="op">=</span> filename.read_text()</span>
+<span id="cb42-7"><a></a>    <span class="bu">print</span>(content)</span>
+<span id="cb42-8"><a></a><span class="cf">else</span>:</span>
+<span id="cb42-9"><a></a>    <span class="bu">print</span>(<span class="ss">f"File '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' not found!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="handling-file-errors-with-try-except" class="slide level2">
+<h2>Handling File Errors with Try-Except</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Graceful Error Handling</strong></p>
+</div>
+<div class="callout-content">
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="kw">def</span> safe_read_file(filename):</span>
+<span id="cb43-2"><a></a>    <span class="co">"""Read a file with error handling."""</span></span>
+<span id="cb43-3"><a></a>    <span class="cf">try</span>:</span>
+<span id="cb43-4"><a></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb43-5"><a></a>            <span class="cf">return</span> <span class="bu">file</span>.read()</span>
+<span id="cb43-6"><a></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb43-7"><a></a>        <span class="bu">print</span>(<span class="ss">f"Error: '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' does not exist."</span>)</span>
+<span id="cb43-8"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb43-9"><a></a>    <span class="cf">except</span> <span class="pp">PermissionError</span>:</span>
+<span id="cb43-10"><a></a>        <span class="bu">print</span>(<span class="ss">f"Error: No permission to read '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb43-11"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb43-12"><a></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb43-13"><a></a>        <span class="bu">print</span>(<span class="ss">f"Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb43-14"><a></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb43-15"><a></a></span>
+<span id="cb43-16"><a></a><span class="co"># Usage</span></span>
+<span id="cb43-17"><a></a>content <span class="op">=</span> safe_read_file(<span class="st">"data.txt"</span>)</span>
+<span id="cb43-18"><a></a><span class="cf">if</span> content:</span>
+<span id="cb43-19"><a></a>    <span class="bu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div style="color: #27AE60;">
+<p><strong>Best Practice:</strong> Always anticipate and handle potential file errors in production code!</p>
+</div>
+</section>
+<section id="best-practices-summary" class="slide level2">
+<h2>Best Practices Summary</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>File Operations Checklist</strong></p>
+</div>
+<div class="callout-content">
+<p>✅ <strong>Always use <code>with</code> statements</strong> — Automatic cleanup</p>
+<p>✅ <strong>Handle exceptions</strong> — Don’t let missing files crash your program</p>
+<p>✅ <strong>Use appropriate modes</strong> — <code>"r"</code> vs <code>"w"</code> vs <code>"a"</code></p>
+<p>✅ <strong>Close files properly</strong> — Even in error cases (context managers help!)</p>
+<p>✅ <strong>Use <code>csv</code> module for CSV files</strong> — Don’t reinvent the wheel</p>
+<p>✅ <strong>Think about encoding</strong> — Use <code>encoding="utf-8"</code> for non-ASCII text</p>
+<p>✅ <strong>Validate input</strong> — Check file exists before reading</p>
+<p>✅ <strong>Use <code>pathlib</code> for modern code</strong> — More intuitive than <code>os.path</code></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="challenge-problems" class="title-slide slide level1 center">
+<h1>Challenge Problems</h1>
+<center>
+<img data-src="graphics/challenge.png" style="width:60.0%">
+</center>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🏁 Time to Practice!</strong></p>
+</div>
+<div class="callout-content">
+<p>Work through each challenge before looking at the solutions.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-1-word-frequency-counter" class="slide level2">
+<h2>Challenge 1 — Word Frequency Counter</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Text Analysis Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Write a program that reads a text file and creates a report showing how many times each word appears, sorted by frequency.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="co"># Your code here</span></span>
+<span id="cb44-2"><a></a><span class="co"># Read from 'text.txt'</span></span>
+<span id="cb44-3"><a></a><span class="co"># Count word frequency</span></span>
+<span id="cb44-4"><a></a><span class="co"># Save to 'word_frequency.txt'</span></span>
+<span id="cb44-5"><a></a></span>
+<span id="cb44-6"><a></a><span class="co"># Example output format:</span></span>
+<span id="cb44-7"><a></a><span class="co"># Word Frequency Report</span></span>
+<span id="cb44-8"><a></a><span class="co"># =====================</span></span>
+<span id="cb44-9"><a></a><span class="co"># the: 45</span></span>
+<span id="cb44-10"><a></a><span class="co"># and: 32</span></span>
+<span id="cb44-11"><a></a><span class="co"># is: 28</span></span>
+<span id="cb44-12"><a></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Hints:</strong> - Use <code>.lower()</code> to treat “The” and “the” as the same word - Remove punctuation (you can use <code>string.punctuation</code>) - Sort by frequency (highest first)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2-csv-data-filter" class="slide level2">
+<h2>Challenge 2 — CSV Data Filter</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Data Processing Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a CSV file <code>employees.csv</code>, create two new CSV files: - <code>high_salary.csv</code> — employees earning over $75,000 - <code>department_summary.csv</code> — count of employees per department</p>
+<p><strong>Sample <code>employees.csv</code>:</strong></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb45-1"><a></a>name,department,salary</span>
+<span id="cb45-2"><a></a>Alice,Engineering,85000</span>
+<span id="cb45-3"><a></a>Bob,Sales,65000</span>
+<span id="cb45-4"><a></a>Charlie,Engineering,92000</span>
+<span id="cb45-5"><a></a>Diana,HR,58000</span>
+<span id="cb45-6"><a></a>Eve,Sales,78000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb46-2"><a></a></span>
+<span id="cb46-3"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-3-log-file-merger" class="slide level2">
+<h2>Challenge 3 — Log File Merger</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Multi-File Processing Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>You have multiple log files: <code>log1.txt</code>, <code>log2.txt</code>, <code>log3.txt</code>. Merge them into a single file <code>merged_log.txt</code> with timestamps preserved and sorted chronologically.</p>
+<p>Each log line format: <code>2026-03-20 14:30:15 - Message here</code></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="co"># Your code here</span></span>
+<span id="cb47-2"><a></a><span class="co"># Read all log files</span></span>
+<span id="cb47-3"><a></a><span class="co"># Sort entries by timestamp</span></span>
+<span id="cb47-4"><a></a><span class="co"># Write to merged_log.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Extra challenge:</strong> Remove duplicate entries!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-4-contact-book-manager" class="slide level2">
+<h2>Challenge 4 — Contact Book Manager</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Full Application Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Create a contact book application that stores contacts in a CSV file with these features:</p>
+<ul>
+<li><strong>Add contact</strong> (name, phone, email)</li>
+<li><strong>Search</strong> by name</li>
+<li><strong>Display all</strong> contacts</li>
+<li><strong>Delete</strong> contact</li>
+<li><strong>Export</strong> to formatted text file</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb48-2"><a></a></span>
+<span id="cb48-3"><a></a><span class="co"># Your code here</span></span>
+<span id="cb48-4"><a></a><span class="co"># Implement ContactBook class with methods:</span></span>
+<span id="cb48-5"><a></a><span class="co"># - load_contacts(filename)</span></span>
+<span id="cb48-6"><a></a><span class="co"># - save_contacts(filename)</span></span>
+<span id="cb48-7"><a></a><span class="co"># - add_contact(name, phone, email)</span></span>
+<span id="cb48-8"><a></a><span class="co"># - search_contact(name)</span></span>
+<span id="cb48-9"><a></a><span class="co"># - delete_contact(name)</span></span>
+<span id="cb48-10"><a></a><span class="co"># - export_to_text(filename)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-5-data-cleaner-and-reporter" class="slide level2">
+<h2>Challenge 5 — Data Cleaner and Reporter</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Advanced CSV Challenge</strong></p>
+</div>
+<div class="callout-content">
+<p>Write a program that reads a CSV file with messy data, cleans it, and generates a report.</p>
+<p><strong>Given <code>sales_data.csv</code>:</strong></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb49-1"><a></a>product,quantity,price</span>
+<span id="cb49-2"><a></a>Apple,10,1.50</span>
+<span id="cb49-3"><a></a>Banana,,2.00</span>
+<span id="cb49-4"><a></a>Cherry,15,</span>
+<span id="cb49-5"><a></a>Orange,20,3.50</span>
+<span id="cb49-6"><a></a>,25,2.75</span>
+<span id="cb49-7"><a></a>Grape,30,4.00</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Your program should:</strong> 1. Remove rows with missing critical data 2. Calculate total revenue for each product 3. Save cleaned data to <code>sales_clean.csv</code> 4. Generate a report showing: - Total products - Total revenue - Best-selling product - Product sorted by revenue</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb50-2"><a></a></span>
+<span id="cb50-3"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="challenge-solutions" class="title-slide slide level1 center">
+<h1>Challenge Solutions</h1>
+
+</section>
+<section id="solution-1-word-frequency-counter" class="slide level2">
+<h2>Solution 1 — Word Frequency Counter</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a><span class="im">import</span> string</span>
+<span id="cb51-2"><a></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb51-3"><a></a></span>
+<span id="cb51-4"><a></a><span class="kw">def</span> count_word_frequency(input_file, output_file):</span>
+<span id="cb51-5"><a></a>    <span class="co"># Read and process text</span></span>
+<span id="cb51-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(input_file, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb51-7"><a></a>        text <span class="op">=</span> <span class="bu">file</span>.read().lower()</span>
+<span id="cb51-8"><a></a>    </span>
+<span id="cb51-9"><a></a>    <span class="co"># Remove punctuation</span></span>
+<span id="cb51-10"><a></a>    translator <span class="op">=</span> <span class="bu">str</span>.maketrans(<span class="st">""</span>, <span class="st">""</span>, string.punctuation)</span>
+<span id="cb51-11"><a></a>    text <span class="op">=</span> text.translate(translator)</span>
+<span id="cb51-12"><a></a>    </span>
+<span id="cb51-13"><a></a>    <span class="co"># Count words</span></span>
+<span id="cb51-14"><a></a>    words <span class="op">=</span> text.split() <span class="co"># make a list of words</span></span>
+<span id="cb51-15"><a></a>    <span class="co"># count occurrences of each word returns a dictionary-like object</span></span>
+<span id="cb51-16"><a></a>    word_counts <span class="op">=</span> Counter(words) </span>
+<span id="cb51-17"><a></a>    </span>
+<span id="cb51-18"><a></a>    <span class="co"># Write report</span></span>
+<span id="cb51-19"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb51-20"><a></a>        <span class="bu">file</span>.write(<span class="st">"Word Frequency Report</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb51-21"><a></a>        <span class="bu">file</span>.write(<span class="st">"="</span> <span class="op">*</span> <span class="dv">50</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb51-22"><a></a>        </span>
+<span id="cb51-23"><a></a>        <span class="cf">for</span> word, count <span class="kw">in</span> word_counts.most_common(): <span class="co"># use python's built-in sorting by frequency</span></span>
+<span id="cb51-24"><a></a>            <span class="bu">file</span>.write(<span class="ss">f"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb51-25"><a></a>    </span>
+<span id="cb51-26"><a></a>    <span class="bu">print</span>(<span class="ss">f"Report saved to </span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb51-27"><a></a></span>
+<span id="cb51-28"><a></a><span class="co"># Usage</span></span>
+<span id="cb51-29"><a></a>count_word_frequency(<span class="st">"text.txt"</span>, <span class="st">"word_frequency.txt"</span>)</span>
+<span id="cb51-30"><a></a><span class="co"># Next steps: Open 'word_frequency.txt' to see the results, or prepare a plot of the top 10 words using matplotlib!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-1-word-frequency-counter-explanation" class="slide level2 scrollable">
+<h2>Solution 1 — Word Frequency Counter (Explanation)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Read the file</strong> and convert to lowercase for case-insensitive counting</li>
+<li><strong>Remove punctuation</strong> using <code>str.translate()</code> — this ensures “hello,” and “hello” are counted together</li>
+<li><strong>Split into words</strong> using <code>.split()</code>, which handles multiple spaces</li>
+<li><strong>Use <code>Counter</code></strong> from <code>collections</code> — automatically counts occurrences</li>
+<li><strong>Write results</strong> sorted by frequency using <code>.most_common()</code></li>
+</ol>
+<p><strong>Key techniques:</strong> - <code>Counter</code> is perfect for counting hashable objects - <code>str.maketrans()</code> + <code>translate()</code> efficiently removes punctuation - <code>.most_common()</code> returns items sorted by count (descending)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-2-csv-data-filter" class="slide level2">
+<h2>Solution 2 — CSV Data Filter</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb52-2"><a></a></span>
+<span id="cb52-3"><a></a><span class="kw">def</span> filter_employees(input_file):</span>
+<span id="cb52-4"><a></a>    <span class="co"># Read all employees</span></span>
+<span id="cb52-5"><a></a>    employees <span class="op">=</span> []</span>
+<span id="cb52-6"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(input_file, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb52-7"><a></a>        reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb52-8"><a></a>        <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb52-9"><a></a>            row[<span class="st">"salary"</span>] <span class="op">=</span> <span class="bu">int</span>(row[<span class="st">"salary"</span>])</span>
+<span id="cb52-10"><a></a>            employees.append(row)</span>
+<span id="cb52-11"><a></a>    </span>
+<span id="cb52-12"><a></a>    <span class="co"># Filter high salary employees</span></span>
+<span id="cb52-13"><a></a>    high_salary <span class="op">=</span> [e <span class="cf">for</span> e <span class="kw">in</span> employees <span class="cf">if</span> e[<span class="st">"salary"</span>] <span class="op">&gt;</span> <span class="dv">75000</span>]</span>
+<span id="cb52-14"><a></a>    </span>
+<span id="cb52-15"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"high_salary.csv"</span>, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb52-16"><a></a>        fieldnames <span class="op">=</span> [<span class="st">"name"</span>, <span class="st">"department"</span>, <span class="st">"salary"</span>]</span>
+<span id="cb52-17"><a></a>        writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb52-18"><a></a>        writer.writeheader()</span>
+<span id="cb52-19"><a></a>        writer.writerows(high_salary)</span>
+<span id="cb52-20"><a></a>    </span>
+<span id="cb52-21"><a></a>    <span class="co"># Count by department</span></span>
+<span id="cb52-22"><a></a>    departments <span class="op">=</span> {}</span>
+<span id="cb52-23"><a></a>    <span class="cf">for</span> emp <span class="kw">in</span> employees:</span>
+<span id="cb52-24"><a></a>        dept <span class="op">=</span> emp[<span class="st">"department"</span>]</span>
+<span id="cb52-25"><a></a>        departments[dept] <span class="op">=</span> departments.get(dept, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb52-26"><a></a>    </span>
+<span id="cb52-27"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"department_summary.csv"</span>, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb52-28"><a></a>        writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
+<span id="cb52-29"><a></a>        writer.writerow([<span class="st">"department"</span>, <span class="st">"employee_count"</span>])</span>
+<span id="cb52-30"><a></a>        <span class="cf">for</span> dept, count <span class="kw">in</span> <span class="bu">sorted</span>(departments.items()):</span>
+<span id="cb52-31"><a></a>            writer.writerow([dept, count])</span>
+<span id="cb52-32"><a></a>    </span>
+<span id="cb52-33"><a></a>    <span class="bu">print</span>(<span class="ss">f"Created high_salary.csv (</span><span class="sc">{</span><span class="bu">len</span>(high_salary)<span class="sc">}</span><span class="ss"> employees)"</span>)</span>
+<span id="cb52-34"><a></a>    <span class="bu">print</span>(<span class="ss">f"Created department_summary.csv (</span><span class="sc">{</span><span class="bu">len</span>(departments)<span class="sc">}</span><span class="ss"> departments)"</span>)</span>
+<span id="cb52-35"><a></a></span>
+<span id="cb52-36"><a></a><span class="co"># Usage</span></span>
+<span id="cb52-37"><a></a>filter_employees(<span class="st">"employees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-2-csv-data-filter-explanation" class="slide level2 scrollable">
+<h2>Solution 2 — CSV Data Filter (Explanation)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Load all employees</strong> using <code>DictReader</code> for easy field access</li>
+<li><strong>Convert salary to int</strong> — CSV data is always read as strings</li>
+<li><strong>Filter using list comprehension</strong> — concise and Pythonic</li>
+<li><strong>Use <code>DictWriter</code></strong> to write filtered results with headers</li>
+<li><strong>Count departments</strong> using a dictionary — <code>.get()</code> handles missing keys</li>
+<li><strong>Write summary</strong> with regular <code>csv.writer</code> since we’re building rows manually</li>
+</ol>
+<p><strong>Key techniques:</strong> - <code>DictReader</code>/<code>DictWriter</code> make CSV operations more readable - List comprehensions for filtering are clean and efficient - <code>.get(key, default)</code> safely accesses dictionary keys</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-3-log-file-merger" class="slide level2">
+<h2>Solution 3 — Log File Merger</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a><span class="kw">def</span> merge_log_files(log_files, output_file):</span>
+<span id="cb53-2"><a></a>    <span class="co"># Read all log entries</span></span>
+<span id="cb53-3"><a></a>    all_entries <span class="op">=</span> []</span>
+<span id="cb53-4"><a></a>    </span>
+<span id="cb53-5"><a></a>    <span class="cf">for</span> log_file <span class="kw">in</span> log_files:</span>
+<span id="cb53-6"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb53-7"><a></a>            <span class="cf">with</span> <span class="bu">open</span>(log_file, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb53-8"><a></a>                <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb53-9"><a></a>                    line <span class="op">=</span> line.strip()</span>
+<span id="cb53-10"><a></a>                    <span class="cf">if</span> line:  <span class="co"># Skip empty lines</span></span>
+<span id="cb53-11"><a></a>                        all_entries.append(line)</span>
+<span id="cb53-12"><a></a>        <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb53-13"><a></a>            <span class="bu">print</span>(<span class="ss">f"Warning: </span><span class="sc">{</span>log_file<span class="sc">}</span><span class="ss"> not found, skipping..."</span>)</span>
+<span id="cb53-14"><a></a>    </span>
+<span id="cb53-15"><a></a>    <span class="co"># Sort by timestamp (first 19 characters: YYYY-MM-DD HH:MM:SS)</span></span>
+<span id="cb53-16"><a></a>    all_entries.sort(key<span class="op">=</span><span class="kw">lambda</span> entry: entry[:<span class="dv">19</span>])</span>
+<span id="cb53-17"><a></a>    </span>
+<span id="cb53-18"><a></a>    <span class="co"># Remove duplicates while preserving order</span></span>
+<span id="cb53-19"><a></a>    unique_entries <span class="op">=</span> []</span>
+<span id="cb53-20"><a></a>    seen <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb53-21"><a></a>    <span class="cf">for</span> entry <span class="kw">in</span> all_entries:</span>
+<span id="cb53-22"><a></a>        <span class="cf">if</span> entry <span class="kw">not</span> <span class="kw">in</span> seen:</span>
+<span id="cb53-23"><a></a>            unique_entries.append(entry)</span>
+<span id="cb53-24"><a></a>            seen.add(entry)</span>
+<span id="cb53-25"><a></a>    </span>
+<span id="cb53-26"><a></a>    <span class="co"># Write merged log</span></span>
+<span id="cb53-27"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb53-28"><a></a>        <span class="cf">for</span> entry <span class="kw">in</span> unique_entries:</span>
+<span id="cb53-29"><a></a>            <span class="bu">file</span>.write(entry <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb53-30"><a></a>    </span>
+<span id="cb53-31"><a></a>    <span class="bu">print</span>(<span class="ss">f"Merged </span><span class="sc">{</span><span class="bu">len</span>(log_files)<span class="sc">}</span><span class="ss"> files into </span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-32"><a></a>    <span class="bu">print</span>(<span class="ss">f"Total entries: </span><span class="sc">{</span><span class="bu">len</span>(all_entries)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-33"><a></a>    <span class="bu">print</span>(<span class="ss">f"Unique entries: </span><span class="sc">{</span><span class="bu">len</span>(unique_entries)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-34"><a></a></span>
+<span id="cb53-35"><a></a><span class="co"># Usage</span></span>
+<span id="cb53-36"><a></a>log_files <span class="op">=</span> [<span class="st">"log1.txt"</span>, <span class="st">"log2.txt"</span>, <span class="st">"log3.txt"</span>]</span>
+<span id="cb53-37"><a></a>merge_log_files(log_files, <span class="st">"merged_log.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-3-log-file-merger-explanation" class="slide level2 scrollable">
+<h2>Solution 3 — Log File Merger (Explanation)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Read all files</strong> into a single list, handling missing files gracefully</li>
+<li><strong>Sort by timestamp</strong> — Python sorts strings chronologically when formatted as <code>YYYY-MM-DD HH:MM:SS</code></li>
+<li><strong>Remove duplicates</strong> using a set to track what we’ve seen</li>
+<li><strong>Preserve order</strong> by using a list alongside the set</li>
+<li><strong>Write results</strong> to merged file</li>
+</ol>
+<p><strong>Key techniques:</strong> - Try-except prevents one missing file from breaking everything - Lambda functions for custom sorting (extract timestamp) - Set for O(1) duplicate checking - String slicing <code>[:19]</code> to extract just the timestamp portion</p>
+<p><strong>Enhancement:</strong> For huge log files, consider using a priority queue to merge without loading everything into memory!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-4-contact-book-manager-part-1" class="slide level2">
+<h2>Solution 4 — Contact Book Manager (Part 1)</h2>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb54-2"><a></a></span>
+<span id="cb54-3"><a></a><span class="kw">class</span> ContactBook:</span>
+<span id="cb54-4"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, filename<span class="op">=</span><span class="st">"contacts.csv"</span>):</span>
+<span id="cb54-5"><a></a>        <span class="va">self</span>.filename <span class="op">=</span> filename</span>
+<span id="cb54-6"><a></a>        <span class="va">self</span>.contacts <span class="op">=</span> <span class="va">self</span>.load_contacts()</span>
+<span id="cb54-7"><a></a>    </span>
+<span id="cb54-8"><a></a>    <span class="kw">def</span> load_contacts(<span class="va">self</span>):</span>
+<span id="cb54-9"><a></a>        <span class="co">"""Load contacts from CSV file."""</span></span>
+<span id="cb54-10"><a></a>        <span class="cf">try</span>:</span>
+<span id="cb54-11"><a></a>            <span class="cf">with</span> <span class="bu">open</span>(<span class="va">self</span>.filename, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb54-12"><a></a>                reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb54-13"><a></a>                <span class="cf">return</span> <span class="bu">list</span>(reader)</span>
+<span id="cb54-14"><a></a>        <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb54-15"><a></a>            <span class="cf">return</span> []</span>
+<span id="cb54-16"><a></a>    </span>
+<span id="cb54-17"><a></a>    <span class="kw">def</span> save_contacts(<span class="va">self</span>):</span>
+<span id="cb54-18"><a></a>        <span class="co">"""Save contacts to CSV file."""</span></span>
+<span id="cb54-19"><a></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="va">self</span>.filename, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb54-20"><a></a>            <span class="cf">if</span> <span class="va">self</span>.contacts:</span>
+<span id="cb54-21"><a></a>                fieldnames <span class="op">=</span> [<span class="st">"name"</span>, <span class="st">"phone"</span>, <span class="st">"email"</span>]</span>
+<span id="cb54-22"><a></a>                writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb54-23"><a></a>                writer.writeheader()</span>
+<span id="cb54-24"><a></a>                writer.writerows(<span class="va">self</span>.contacts)</span>
+<span id="cb54-25"><a></a>    </span>
+<span id="cb54-26"><a></a>    <span class="kw">def</span> add_contact(<span class="va">self</span>, name, phone, email):</span>
+<span id="cb54-27"><a></a>        <span class="co">"""Add a new contact."""</span></span>
+<span id="cb54-28"><a></a>        contact <span class="op">=</span> {<span class="st">"name"</span>: name, <span class="st">"phone"</span>: phone, <span class="st">"email"</span>: email}</span>
+<span id="cb54-29"><a></a>        <span class="va">self</span>.contacts.append(contact)</span>
+<span id="cb54-30"><a></a>        <span class="va">self</span>.save_contacts()</span>
+<span id="cb54-31"><a></a>        <span class="bu">print</span>(<span class="ss">f"✅ Added: </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-4-contact-book-manager-part-2" class="slide level2">
+<h2>Solution 4 — Contact Book Manager (Part 2)</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a>    <span class="kw">def</span> search_contact(<span class="va">self</span>, name):</span>
+<span id="cb55-2"><a></a>        <span class="co">"""Search for contacts by name."""</span></span>
+<span id="cb55-3"><a></a>        results <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> <span class="va">self</span>.contacts <span class="cf">if</span> name.lower() <span class="kw">in</span> c[<span class="st">"name"</span>].lower()]</span>
+<span id="cb55-4"><a></a>        <span class="cf">return</span> results</span>
+<span id="cb55-5"><a></a>    </span>
+<span id="cb55-6"><a></a>    <span class="kw">def</span> delete_contact(<span class="va">self</span>, name):</span>
+<span id="cb55-7"><a></a>        <span class="co">"""Delete a contact by exact name match."""</span></span>
+<span id="cb55-8"><a></a>        original_count <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.contacts)</span>
+<span id="cb55-9"><a></a>        <span class="va">self</span>.contacts <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> <span class="va">self</span>.contacts <span class="cf">if</span> c[<span class="st">"name"</span>].lower() <span class="op">!=</span> name.lower()]</span>
+<span id="cb55-10"><a></a>        </span>
+<span id="cb55-11"><a></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.contacts) <span class="op">&lt;</span> original_count:</span>
+<span id="cb55-12"><a></a>            <span class="va">self</span>.save_contacts()</span>
+<span id="cb55-13"><a></a>            <span class="bu">print</span>(<span class="ss">f"❌ Deleted: </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-14"><a></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb55-15"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb55-16"><a></a>            <span class="bu">print</span>(<span class="ss">f"Contact '</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">' not found."</span>)</span>
+<span id="cb55-17"><a></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb55-18"><a></a>    </span>
+<span id="cb55-19"><a></a>    <span class="kw">def</span> display_all(<span class="va">self</span>):</span>
+<span id="cb55-20"><a></a>        <span class="co">"""Display all contacts."""</span></span>
+<span id="cb55-21"><a></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.contacts:</span>
+<span id="cb55-22"><a></a>            <span class="bu">print</span>(<span class="st">"No contacts yet!"</span>)</span>
+<span id="cb55-23"><a></a>            <span class="cf">return</span></span>
+<span id="cb55-24"><a></a>        </span>
+<span id="cb55-25"><a></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb55-26"><a></a>        <span class="bu">print</span>(<span class="st">"CONTACT BOOK"</span>)</span>
+<span id="cb55-27"><a></a>        <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb55-28"><a></a>        <span class="cf">for</span> contact <span class="kw">in</span> <span class="bu">sorted</span>(<span class="va">self</span>.contacts, key<span class="op">=</span><span class="kw">lambda</span> c: c[<span class="st">"name"</span>]):</span>
+<span id="cb55-29"><a></a>            <span class="bu">print</span>(<span class="ss">f"Name:  </span><span class="sc">{</span>contact[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-30"><a></a>            <span class="bu">print</span>(<span class="ss">f"Phone: </span><span class="sc">{</span>contact[<span class="st">'phone'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-31"><a></a>            <span class="bu">print</span>(<span class="ss">f"Email: </span><span class="sc">{</span>contact[<span class="st">'email'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb55-32"><a></a>            <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-4-contact-book-manager-part-3" class="slide level2">
+<h2>Solution 4 — Contact Book Manager (Part 3)</h2>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>    <span class="kw">def</span> export_to_text(<span class="va">self</span>, output_file):</span>
+<span id="cb56-2"><a></a>        <span class="co">"""Export contacts to formatted text file."""</span></span>
+<span id="cb56-3"><a></a>        <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb56-4"><a></a>            <span class="bu">file</span>.write(<span class="st">"CONTACT BOOK</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb56-5"><a></a>            <span class="bu">file</span>.write(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb56-6"><a></a>            </span>
+<span id="cb56-7"><a></a>            <span class="cf">for</span> contact <span class="kw">in</span> <span class="bu">sorted</span>(<span class="va">self</span>.contacts, key<span class="op">=</span><span class="kw">lambda</span> c: c[<span class="st">"name"</span>]):</span>
+<span id="cb56-8"><a></a>                <span class="bu">file</span>.write(<span class="ss">f"Name:  </span><span class="sc">{</span>contact[<span class="st">'name'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb56-9"><a></a>                <span class="bu">file</span>.write(<span class="ss">f"Phone: </span><span class="sc">{</span>contact[<span class="st">'phone'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb56-10"><a></a>                <span class="bu">file</span>.write(<span class="ss">f"Email: </span><span class="sc">{</span>contact[<span class="st">'email'</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb56-11"><a></a>                <span class="bu">file</span>.write(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb56-12"><a></a>        </span>
+<span id="cb56-13"><a></a>        <span class="bu">print</span>(<span class="ss">f"📄 Exported to </span><span class="sc">{</span>output_file<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-14"><a></a></span>
+<span id="cb56-15"><a></a><span class="co"># Usage example</span></span>
+<span id="cb56-16"><a></a><span class="kw">def</span> main():</span>
+<span id="cb56-17"><a></a>    book <span class="op">=</span> ContactBook()</span>
+<span id="cb56-18"><a></a>    </span>
+<span id="cb56-19"><a></a>    book.add_contact(<span class="st">"Alice Smith"</span>, <span class="st">"555-1234"</span>, <span class="st">"alice@example.com"</span>)</span>
+<span id="cb56-20"><a></a>    book.add_contact(<span class="st">"Bob Johnson"</span>, <span class="st">"555-5678"</span>, <span class="st">"bob@example.com"</span>)</span>
+<span id="cb56-21"><a></a>    </span>
+<span id="cb56-22"><a></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- Search for 'alice' ---"</span>)</span>
+<span id="cb56-23"><a></a>    results <span class="op">=</span> book.search_contact(<span class="st">"alice"</span>)</span>
+<span id="cb56-24"><a></a>    <span class="cf">for</span> contact <span class="kw">in</span> results:</span>
+<span id="cb56-25"><a></a>        <span class="bu">print</span>(<span class="ss">f"Found: </span><span class="sc">{</span>contact[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>contact[<span class="st">'phone'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-26"><a></a>    </span>
+<span id="cb56-27"><a></a>    book.display_all()</span>
+<span id="cb56-28"><a></a>    book.export_to_text(<span class="st">"contacts_export.txt"</span>)</span>
+<span id="cb56-29"><a></a></span>
+<span id="cb56-30"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb56-31"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-4-contact-book-manager-explanation" class="slide level2 scrollable">
+<h2>Solution 4 — Contact Book Manager (Explanation)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Class-based design</strong> — encapsulates all contact operations</li>
+<li><strong>Automatic persistence</strong> — saves to CSV after each modification</li>
+<li><strong>Case-insensitive search</strong> — finds contacts regardless of capitalization</li>
+<li><strong>Export functionality</strong> — creates human-readable text format</li>
+</ol>
+<p><strong>Key techniques:</strong> - Store contacts as list of dictionaries (in-memory representation) - CSV for structured storage (persistent representation) - List comprehensions for filtering and deleting - The <code>sorted()</code> function with lambda for alphabetical display</p>
+<p><strong>OOP benefits:</strong> - Data and methods bundled together - Easy to extend with new features - Maintains consistent state between memory and disk</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-5-data-cleaner-and-reporter-part-1" class="slide level2">
+<h2>Solution 5 — Data Cleaner and Reporter (Part 1)</h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a></a><span class="im">import</span> csv</span>
+<span id="cb57-2"><a></a></span>
+<span id="cb57-3"><a></a><span class="kw">def</span> clean_and_report(input_file):</span>
+<span id="cb57-4"><a></a>    <span class="co"># Read and clean data</span></span>
+<span id="cb57-5"><a></a>    clean_data <span class="op">=</span> []</span>
+<span id="cb57-6"><a></a>    </span>
+<span id="cb57-7"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(input_file, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb57-8"><a></a>        reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb57-9"><a></a>        </span>
+<span id="cb57-10"><a></a>        <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb57-11"><a></a>            <span class="co"># Skip rows with missing critical data</span></span>
+<span id="cb57-12"><a></a>            <span class="cf">if</span> <span class="kw">not</span> row.get(<span class="st">"product"</span>) <span class="kw">or</span> <span class="kw">not</span> row.get(<span class="st">"quantity"</span>) <span class="kw">or</span> <span class="kw">not</span> row.get(<span class="st">"price"</span>):</span>
+<span id="cb57-13"><a></a>                <span class="cf">continue</span></span>
+<span id="cb57-14"><a></a>            </span>
+<span id="cb57-15"><a></a>            <span class="co"># Convert to proper types</span></span>
+<span id="cb57-16"><a></a>            <span class="cf">try</span>:</span>
+<span id="cb57-17"><a></a>                row[<span class="st">"quantity"</span>] <span class="op">=</span> <span class="bu">int</span>(row[<span class="st">"quantity"</span>])</span>
+<span id="cb57-18"><a></a>                row[<span class="st">"price"</span>] <span class="op">=</span> <span class="bu">float</span>(row[<span class="st">"price"</span>])</span>
+<span id="cb57-19"><a></a>                row[<span class="st">"revenue"</span>] <span class="op">=</span> row[<span class="st">"quantity"</span>] <span class="op">*</span> row[<span class="st">"price"</span>]</span>
+<span id="cb57-20"><a></a>                clean_data.append(row)</span>
+<span id="cb57-21"><a></a>            <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb57-22"><a></a>                <span class="cf">continue</span>  <span class="co"># Skip rows with invalid numbers</span></span>
+<span id="cb57-23"><a></a>    </span>
+<span id="cb57-24"><a></a>    <span class="co"># Save cleaned data</span></span>
+<span id="cb57-25"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sales_clean.csv"</span>, <span class="st">"w"</span>, newline<span class="op">=</span><span class="st">""</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb57-26"><a></a>        fieldnames <span class="op">=</span> [<span class="st">"product"</span>, <span class="st">"quantity"</span>, <span class="st">"price"</span>, <span class="st">"revenue"</span>]</span>
+<span id="cb57-27"><a></a>        writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb57-28"><a></a>        writer.writeheader()</span>
+<span id="cb57-29"><a></a>        writer.writerows(clean_data)</span>
+<span id="cb57-30"><a></a>    </span>
+<span id="cb57-31"><a></a>    <span class="cf">return</span> clean_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-5-data-cleaner-and-reporter-part-2" class="slide level2">
+<h2>Solution 5 — Data Cleaner and Reporter (Part 2)</h2>
+<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a><span class="kw">def</span> generate_report(clean_data, report_file):</span>
+<span id="cb58-2"><a></a>    <span class="cf">if</span> <span class="kw">not</span> clean_data:</span>
+<span id="cb58-3"><a></a>        <span class="bu">print</span>(<span class="st">"No valid data to report!"</span>)</span>
+<span id="cb58-4"><a></a>        <span class="cf">return</span></span>
+<span id="cb58-5"><a></a>    </span>
+<span id="cb58-6"><a></a>    <span class="co"># Calculate statistics</span></span>
+<span id="cb58-7"><a></a>    total_products <span class="op">=</span> <span class="bu">len</span>(clean_data)</span>
+<span id="cb58-8"><a></a>    total_revenue <span class="op">=</span> <span class="bu">sum</span>(row[<span class="st">"revenue"</span>] <span class="cf">for</span> row <span class="kw">in</span> clean_data)</span>
+<span id="cb58-9"><a></a>    best_seller <span class="op">=</span> <span class="bu">max</span>(clean_data, key<span class="op">=</span><span class="kw">lambda</span> row: row[<span class="st">"revenue"</span>])</span>
+<span id="cb58-10"><a></a>    </span>
+<span id="cb58-11"><a></a>    <span class="co"># Sort by revenue</span></span>
+<span id="cb58-12"><a></a>    sorted_data <span class="op">=</span> <span class="bu">sorted</span>(clean_data, key<span class="op">=</span><span class="kw">lambda</span> row: row[<span class="st">"revenue"</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb58-13"><a></a>    </span>
+<span id="cb58-14"><a></a>    <span class="co"># Write report</span></span>
+<span id="cb58-15"><a></a>    <span class="cf">with</span> <span class="bu">open</span>(report_file, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb58-16"><a></a>        <span class="bu">file</span>.write(<span class="st">"SALES REPORT</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb58-17"><a></a>        <span class="bu">file</span>.write(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb58-18"><a></a>        </span>
+<span id="cb58-19"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Total Products: </span><span class="sc">{</span>total_products<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb58-20"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Total Revenue: $</span><span class="sc">{</span>total_revenue<span class="sc">:.2f}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb58-21"><a></a>        <span class="bu">file</span>.write(<span class="ss">f"Best Seller: </span><span class="sc">{</span>best_seller[<span class="st">'product'</span>]<span class="sc">}</span><span class="ss"> ($</span><span class="sc">{</span>best_seller[<span class="st">'revenue'</span>]<span class="sc">:.2f}</span><span class="ss">)</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb58-22"><a></a>        <span class="bu">file</span>.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb58-23"><a></a>        <span class="bu">file</span>.write(<span class="st">"Products by Revenue:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb58-24"><a></a>        <span class="bu">file</span>.write(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">70</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb58-25"><a></a>        </span>
+<span id="cb58-26"><a></a>        <span class="cf">for</span> row <span class="kw">in</span> sorted_data:</span>
+<span id="cb58-27"><a></a>            <span class="bu">file</span>.write(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'product'</span>]<span class="sc">:15}</span><span class="ss"> Qty: </span><span class="sc">{</span>row[<span class="st">'quantity'</span>]<span class="sc">:3}</span><span class="ss"> "</span></span>
+<span id="cb58-28"><a></a>                      <span class="ss">f"Price: $</span><span class="sc">{</span>row[<span class="st">'price'</span>]<span class="sc">:6.2f}</span><span class="ss"> Revenue: $</span><span class="sc">{</span>row[<span class="st">'revenue'</span>]<span class="sc">:8.2f}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb58-29"><a></a>    </span>
+<span id="cb58-30"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">✅ Data cleaned and saved to sales_clean.csv"</span>)</span>
+<span id="cb58-31"><a></a>    <span class="bu">print</span>(<span class="ss">f"📊 Report saved to </span><span class="sc">{</span>report_file<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb58-32"><a></a>    <span class="bu">print</span>(<span class="ss">f"Total Revenue: $</span><span class="sc">{</span>total_revenue<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb58-33"><a></a></span>
+<span id="cb58-34"><a></a><span class="co"># Usage</span></span>
+<span id="cb58-35"><a></a>clean_data <span class="op">=</span> clean_and_report(<span class="st">"sales_data.csv"</span>)</span>
+<span id="cb58-36"><a></a>generate_report(clean_data, <span class="st">"sales_report.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-5-data-cleaner-and-reporter-explanation" class="slide level2 scrollable">
+<h2>Solution 5 — Data Cleaner and Reporter (Explanation)</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Validate each row</strong> — skip rows with missing product, quantity, or price</li>
+<li><strong>Type conversion with error handling</strong> — <code>try-except</code> catches invalid numbers</li>
+<li><strong>Calculate derived data</strong> — add revenue column (quantity × price)</li>
+<li><strong>Save cleaned data</strong> to new CSV file</li>
+<li><strong>Generate comprehensive report</strong> — statistics, rankings, formatted output</li>
+</ol>
+<p><strong>Key techniques:</strong> - <code>.get()</code> method safely checks for missing fields - Try-except for robust type conversion - Generator expressions in <code>sum()</code> for efficiency - <code>max()</code> with lambda function to find best seller - F-strings with format specifiers (<code>:6.2f</code>) for aligned output</p>
+<p><strong>Real-world value:</strong> - Handles messy, real-world data gracefully - Separates raw data from cleaned data - Provides actionable insights through reporting</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="wrapping-up" class="title-slide slide level1 center">
+<h1>Wrapping Up</h1>
+
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key Takeaways</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><strong>File Basics</strong></p>
+<ul>
+<li>Use <code>with</code> statements — always!</li>
+<li>Context managers handle cleanup automatically</li>
+<li>Choose the right mode: <code>"r"</code>, <code>"w"</code>, or <code>"a"</code></li>
+<li>Close files properly (context managers do this)</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<p><strong>Reading &amp; Writing</strong></p>
+<ul>
+<li><code>.read()</code> for entire file</li>
+<li>Iterate for line-by-line (most efficient)</li>
+<li><code>.write()</code> doesn’t add newlines — you do!</li>
+<li>Use <code>csv</code> module for structured data</li>
+<li><code>DictReader</code>/<code>DictWriter</code> are convenient</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<p><strong>Best Practices</strong></p>
+<ul>
+<li>Handle exceptions gracefully</li>
+<li>Check if files exist first</li>
+<li>Use appropriate encoding</li>
+<li>Validate input data</li>
+<li>Test with edge cases</li>
+<li>Think about memory for large files</li>
+</ul>
+</div></div>
+</section>
+<section id="resources-for-further-learning" class="slide level2">
+<h2>Resources for Further Learning</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Going Deeper</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Python Documentation</strong> — <a href="https://docs.python.org/3/tutorial/inputoutput.html">docs.python.org/3/tutorial/inputoutput.html</a></li>
+<li><strong>CSV Module</strong> — <a href="https://docs.python.org/3/library/csv.html">docs.python.org/3/library/csv.html</a></li>
+<li><strong>Pathlib</strong> — Modern path handling: <a href="https://docs.python.org/3/library/pathlib.html">docs.python.org/3/library/pathlib.html</a></li>
+<li><strong>JSON files</strong> — Another structured format worth learning!</li>
+<li><strong>Pandas</strong> — Powerful library for data analysis with CSV files</li>
+</ul>
+<p><strong>Practice Projects:</strong> - Build a password manager (encrypted file storage) - Create a budget tracker (CSV-based) - Develop a markdown note-taking app - Program a simple database (CSV tables)</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="questions" class="title-slide slide level1 center">
+<h1>Questions?</h1>
+<center>
+<img data-src="graphics/thumbs_i.png" style="width:50.0%">
+</center>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>You Now Know How To:</strong></p>
+</div>
+<div class="callout-content">
+<p>✅ Open, read, write, and close files safely ✅ Use context managers (<code>with</code> statements) ✅ Process text files line by line efficiently ✅ Work with CSV files using Python’s <code>csv</code> module ✅ Handle file errors gracefully ✅ Build practical applications with file I/O ✅ Write clean, Pythonic file-handling code</p>
+<p><strong>Keep practicing!</strong> File operations are fundamental to real-world programming. 🚀</p>
+</div>
+</div>
+</div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

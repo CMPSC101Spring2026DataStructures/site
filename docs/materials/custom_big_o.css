@@ -67,17 +67,18 @@
     font-size: 0.65em;
     margin: 0.5em 0;
     /* Enable scrolling for long code blocks */
-    max-height: 500px;
-    overflow: auto !important;
+    max-height: 450px;
+    overflow: auto;
     white-space: pre;
     word-wrap: normal;
+    position: relative;
 }
 
 /* Callout content - with proper overflow handling */
 .callout pre {
     margin: 0;
     /* Allow scrolling in callout boxes too */
-    max-height: 400px;
+    max-height: 380px;
     overflow: auto;
 }
 
@@ -197,8 +198,6 @@
     scrollbar-color: #31BAE9 #e9ecef;
 }
 
-/* Remove scrollbar pseudo-selector that causes conflicts */
-
 /* Ensure content fits better in slide space */
 .reveal .slides section {
     font-size: 0.85em;
@@ -290,12 +289,9 @@
     overflow: hidden;
 }
 
-/* CRITICAL: Code blocks inherit text wrapping, no independent scrolling */
+/* Code blocks with scrolling enabled for long content */
 .reveal pre {
-    overflow: visible !important;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    /* Ensure code content doesn't create horizontal overflow */
+    /* Removed overflow override to allow scrolling */
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -356,31 +352,17 @@ img {
     overflow: visible !important;
 }
 
-/* Prevent code from causing any overflow */
+/* Code content styling */
 .reveal pre code {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    /* Critical: No scrolling on code content itself */
-    overflow: visible !important;
     display: block;
     padding: 1em;
+    max-width: none;
 }
 
 /* Ensure callout boxes don't create conflicts */
 .callout {
     max-width: 100%;
     box-sizing: border-box;
-    overflow: visible !important;
-}
-
-/* Override any RevealJS defaults that might cause double scrollbars */
-.reveal pre, 
-.reveal pre code,
-.reveal .slides section .callout pre,
-.reveal .slides section .column pre {
-    overflow: visible !important;
-    max-height: none !important;
 }
 
 /* Big-O specific enhancements */
@@ -396,10 +378,6 @@ img {
 }
 
 /* Enhanced code blocks for algorithm examples */
-.reveal pre {
-    position: relative;
-}
-
 .reveal pre::before {
     content: "⚡";
     position: absolute;
