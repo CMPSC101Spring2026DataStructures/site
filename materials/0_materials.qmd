@@ -106,5 +106,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
 ## W9. Files, Modules, and Packages
 - **Reading & Writing Files**
   - [HTML](10_file_operations_structured_data.html) Slides
-  
+- **Activity 09**:  Building Web-Based Data Applications
+  - [GitHub Classroom Link](https://classroom.github.com/a/yeQ23kQn)
+
 ---
