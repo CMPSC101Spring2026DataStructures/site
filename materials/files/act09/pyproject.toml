@@ -1,0 +1,19 @@
+[project]
+name = "act09-mmyers05"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "altair<5",
+    "matplotlib>=3.10.8",
+    "nltk>=3.9.4",
+    "pandas>=3.0.0",
+    "plotly>=6.5.2",
+    "seaborn>=0.13.2",
+    "setuptools>=75.0.0",
+    "streamlit>=1.19.0",
+    "textblob>=0.19.0",
+    "wordcloud>=1.9.6",
+]
+
