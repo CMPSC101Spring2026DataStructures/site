@@ -111,8 +111,8 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 07**: Data Analysis and Visualization Programming 
   - [GitHub Classroom Link](https://classroom.github.com/a/kpGpHPW9)
 
-## W9. Modules and Packages, and More on Python Libraries
-- **Python Modules and Libraries**
+## W10. Modules and Packages, and More on Python Libraries
+- **Creating Your Own Python Modules**
   - [HTML](11_python_modules_and_libraries.html) Slides
 
 ---
