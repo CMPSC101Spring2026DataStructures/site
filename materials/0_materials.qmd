@@ -99,11 +99,12 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [Project files and tutorials](1_project_files.html#act-07)
 - **Lab 06**: Midterm Exam Preparation
   - [GitHub Classroom Link](https://classroom.github.com/a/8t4e0Cbv)
-
 - **Activity 08**: Socket Programming with Classes and Exceptions - Chat & Game App
   - [GitHub Classroom Link](https://classroom.github.com/a/4TPCQlJQ)
 
-## W9. Files, opening and closing files
+## W09. Spring Break 
+
+## W10. Files, opening and closing files
 - **Reading & Writing Files**
   - [HTML](10_file_operations_structured_data.html) Slides
 - **Activity 09**:  Building Web-Based Data Applications
@@ -111,8 +112,10 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Lab 07**: Data Analysis and Visualization Programming 
   - [GitHub Classroom Link](https://classroom.github.com/a/kpGpHPW9)
 
-## W10. Modules and Packages, and More on Python Libraries
+## W11. Modules and Packages, and More on Python Libraries
 - **Creating Your Own Python Modules**
   - [HTML](11_python_modules_and_libraries.html) Slides
+- **Algorithm Complexity**
+  - [HTML](11_complexity_intro_slides.html) Slides
 
 ---

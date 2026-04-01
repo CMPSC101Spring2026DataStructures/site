@@ -469,18 +469,25 @@
     "text": "W8. Object-Oriented Programming and Exceptions\n\nObject-Oriented Programming and Exceptions\n\nHTML Slides\n\nActivity 07: Introduction to Game Development with Pygame\n\nGitHub Classroom Link\nProject files and tutorials\n\nLab 06: Midterm Exam Preparation\n\nGitHub Classroom Link\n\nActivity 08: Socket Programming with Classes and Exceptions - Chat & Game App\n\nGitHub Classroom Link"
   },
   {
-    "objectID": "materials/0_materials.html#w9.-files-opening-and-closing-files",
-    "href": "materials/0_materials.html#w9.-files-opening-and-closing-files",
+    "objectID": "materials/0_materials.html#w09.-spring-break",
+    "href": "materials/0_materials.html#w09.-spring-break",
     "title": "Materials",
-    "section": "W9. Files, opening and closing files",
-    "text": "W9. Files, opening and closing files\n\nReading & Writing Files\n\nHTML Slides\n\nActivity 09: Building Web-Based Data Applications\n\nGitHub Classroom Link\n\nLab 07: Data Analysis and Visualization Programming\n\nGitHub Classroom Link"
+    "section": "W09. Spring Break",
+    "text": "W09. Spring Break"
   },
   {
-    "objectID": "materials/0_materials.html#w10.-modules-and-packages-and-more-on-python-libraries",
-    "href": "materials/0_materials.html#w10.-modules-and-packages-and-more-on-python-libraries",
+    "objectID": "materials/0_materials.html#w10.-files-opening-and-closing-files",
+    "href": "materials/0_materials.html#w10.-files-opening-and-closing-files",
     "title": "Materials",
-    "section": "W10. Modules and Packages, and More on Python Libraries",
-    "text": "W10. Modules and Packages, and More on Python Libraries\n\nCreating Your Own Python Modules\n\nHTML Slides"
+    "section": "W10. Files, opening and closing files",
+    "text": "W10. Files, opening and closing files\n\nReading & Writing Files\n\nHTML Slides\n\nActivity 09: Building Web-Based Data Applications\n\nGitHub Classroom Link\n\nLab 07: Data Analysis and Visualization Programming\n\nGitHub Classroom Link"
+  },
+  {
+    "objectID": "materials/0_materials.html#w11.-modules-and-packages-and-more-on-python-libraries",
+    "href": "materials/0_materials.html#w11.-modules-and-packages-and-more-on-python-libraries",
+    "title": "Materials",
+    "section": "W11. Modules and Packages, and More on Python Libraries",
+    "text": "W11. Modules and Packages, and More on Python Libraries\n\nCreating Your Own Python Modules\n\nHTML Slides\n\nAlgorithm Complexity\n\nHTML Slides"
   },
   {
     "objectID": "materials/11_python_modules_and_libraries.html#why-modules-matter",
@@ -1853,6 +1860,181 @@
     "title": "Chapter 2: Python Programming: Concepts II",
     "section": "You’ve Got This!!",
     "text": "You’ve Got This!!\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou now able to use …\n\nLiterals\nPrint statements\nLoops driven by for and while\nLists and Dictionaries\nMuch more!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on-for-today",
+    "href": "materials/11_complexity_intro_slides.html#on-for-today",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "On For Today 🎯",
+    "text": "On For Today 🎯\n\n\n\n\n\n\nTip\n\n\nLet’s explore Complexity Levels that describe how things scale in real life!!\nTopics covered in today’s discussion:\n\n🎪 O(1) - The Magic Trick Level\n🔍 O(log n) - The Smart Detective Level\n\n🚶 O(n) - The One-by-One Level\n🐌 O(n²) - The Handshake Problem Level\n💥 O(2ⁿ) - The Explosion Level"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
+    "href": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Complexity is All About How Things Scale 📈",
+    "text": "Complexity is All About How Things Scale 📈\n\n\n\n\n\n\nNote\n\n\nComplexity = How much more work do you need when you have more stuff to deal with?\nReal-Life Examples:\n\n🍕 Making dinner for friends: 2 friends vs 20 friends - how much more work?\n📚 Finding a book: In a small pile vs a huge library - how much longer?\n🎁 Gift wrapping: 5 gifts vs 50 gifts - how much more time?\n👋 Meeting everyone at a party: 10 people vs 100 people - how many more handshakes?"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
+    "href": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(1) - The Magic Trick Level ⚡",
+    "text": "O(1) - The Magic Trick Level ⚡\n\n\n\n\n\n\n“No Matter How Much, It Takes the Same Time!” 🎪\n\n\nO(1) means: Whether you have 1 thing or 1 million things, the task takes exactly the same amount of time!\n\n\n\n\n\n\n\n\n\nEveryday O(1) Examples:\n🔑 Using a key to open your door - Same one turn always!\n💡 Turning on a light switch - Same flip always!\n📱 Checking the time on your phone - Always instant!\n🏧 Using your debit card - Same swipe time always!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
+    "href": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(1) is Amazing ⚡",
+    "text": "Why O(1) is Amazing ⚡\n\n\n\n\n\n\nThe Holy Grail of Algorithms! 🏆\n\n\n✨ It’s like magic - the amount of work never changes\n🎯 Perfect performance - always fast, always reliable\n🚀 Every programmer dreams of O(1) solutions!\n\n\n\n\n\n\n\n\n\nReal-World O(1) Examples:\n\n🪑 Sitting down in a chair\n📱 Looking up a contact by name\n\n💳 Checking account balance\n🎵 Skipping to specific song\n📦 Grabbing the top item from a stack"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(1) Complexity Visualization 📊",
+    "text": "O(1) Complexity Visualization 📊\n\n\nShow O(1) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
+    "href": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(log n) - The Smart Detective Level 🕵️",
+    "text": "O(log n) - The Smart Detective Level 🕵️\n\n\n\n\n\n\n“Cut the Problem in Half, Over and Over!” 🔍\n\n\nO(log n) means: Each step eliminates half of what’s left to search. Super efficient even with huge amounts!\n\n\n\n\n\n\n\n\n\nEveryday O(log n) Examples:\n🎯 Guessing a number 1-1000 - Cut problem in half each time, found in ~10 questions max!\n📖 Finding word in dictionary - Open to middle, go left or right, found in seconds!\n🎪 20 Questions game - Each question eliminates half the possibilities\n🔍 Phone contact search - Type “J” → cuts to J names, type “Jo” → even fewer options\n🗂️ Looking for a file in a sorted filing cabinet - Open to middle, go left or right, found in seconds!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
+    "href": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(log n) is Amazing 🏆",
+    "text": "Why O(log n) is Amazing 🏆\n\n\n\n\n\n\nIncredible Scaling Performance! 📊\n\n\nAmazing scaling: * 1,000 items → ~10 steps * 1,000,000 items → ~20 steps\n* 1,000,000,000 items → ~30 steps\n🧠 Smart strategy beats brute force\n\n\n\n\n\n\n\n\n\nUsed everywhere:\n\n🔍 Google searches\n🗺️ GPS route finding\n📱 Phone contact search"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
+    "href": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "But What’s the Catch?",
+    "text": "But What’s the Catch?\n\n\n\n\n\n\n\n\n\nThe catch: You need things organized first! 📋\n\n\n(This might take some time, but once it’s done, searching is lightning fast!)"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(log n) Complexity Visualization 📊",
+    "text": "O(log n) Complexity Visualization 📊\n\n\nShow O(log n) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
+    "href": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n) - The One-by-One Level 🚶",
+    "text": "O(n) - The One-by-One Level 🚶\n\n\n\n\n\n\n“Check Every Single Thing, One by One” 👀\n\n\nO(n) means: Double the stuff = Double the work. Fair and predictable!\n\n\n\n\n\n\n\n\n\nEveryday O(n) Examples:\n📚 Reading every page in a book - 100 pages = 100 page flips, 200 pages = 200 page flips\n🛒 Counting items in shopping cart - Must touch each item once, 10 items = 10 counts\n🎵 Listening to playlist - 50 songs = 50× the time\n📝 Grading test stack - 30 tests = 30× the work\n\n\n\n\n\n\n\n\n\nThe good news: O(n) is often the best you can do for many tasks\n\n\n\nEasy to determine the time necessary for running n tasks. You can determine smallest run-time with accuracy!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
+    "href": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(n) is Pretty Good ✅",
+    "text": "Why O(n) is Pretty Good ✅\n\n\n\n\n\n\nPredictable and Fair! 📈\n\n\n✅ Predictable and fair - work scales linearly\n🎯 Working at scale - Doubling the input only doubles the work, not more!\n📈 Reasonable for most tasks: O(n) is often the “best possible” complexity, not just a “good” one. Even though it’s not constant time, it’s: Predictable, Scalable, and Optimal for many real-world problems\n\nFinding highest grade\nAdding up expenses\nReading all text messages\n\n\n\n\n\n\n\n\n\n\nWhen it gets slow:\n\n\nReally large amounts of data - but still very manageable for normal use! 🎯"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n) Complexity Visualization 📊",
+    "text": "O(n) Complexity Visualization 📊\n\n\nShow O(n) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
+    "href": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n²) - The Handshake Problem Level 🤝",
+    "text": "O(n²) - The Handshake Problem Level 🤝\n\n\n\n\n\n\n“Everyone Must Meet Everyone Else!” 😰\n\n\nO(n²) means: When you double the people, you get four times the work! This gets crazy fast.\n\n\n\n\n\n\n\n\n\nEveryday O(n²) Examples:\n🤝 Party introductions - 4 people = 6 handshakes, 8 people = 28 handshakes, 16 people = 120 handshakes!\n🏆 Sports tournament - Everyone plays everyone, gets expensive fast!\n👥 Group photo arrangements - Every person next to every other, gets overwhelming quickly!\n📝 Comparing all student tests - Looking for identical answers, 30 students = 435 comparisons!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
+    "href": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(n²) Gets Scary 📈",
+    "text": "Why O(n²) Gets Scary 📈\n\n\n\n\n\n\nExplosive Growth! 💥\n\n\n📈 Explosive growth:\n\n10 things → 100 operations\n100 things → 10,000 operations\n1,000 things → 1,000,000 operations!\n\n⚠️ The danger zone - where apps become unusably slow\n\n\n\n\n\n\n\n\n\n🐌 Common culprits: * Comparing every item to every other * Nested loops in programming * Poor algorithm choices\n\n\n\n\n\n\n\n\n\nWhen to worry: Anything over ~1,000 items gets really slow! 🚨"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n²) Complexity Visualization 📊",
+    "text": "O(n²) Complexity Visualization 📊\n\n\nShow O(n²) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
+    "href": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(2ⁿ) - The Explosion Level 💥",
+    "text": "O(2ⁿ) - The Explosion Level 💥\n\n\n\n\n\n\n“Every Choice Doubles Your Problems!” 🤯\n\n\nO(2ⁿ) means: Add just one more thing, and you double all the work! This explodes instantly.\n\n\n\n\n\n\n\n\n\nEveryday O(2ⁿ) Examples:\n🧬 Family tree exploration - 2 parents → 4 grandparents → 8 great-grandparents → 16 great-great-grandparents\n\n🔐 Password cracking - Each digit doubles possibilities, 10-digit PIN = 1+ billion combos!\n🎁 Gift wrapping combinations - Each gift: wrapped or not, 20 gifts = 1+ million combinations!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
+    "href": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(2ⁿ) is Terrifying 💀",
+    "text": "Why O(2ⁿ) is Terrifying 💀\n\n\n\n\n\n\nGrows Impossibly Fast! 🚨\n\n\n💀 Grows impossibly fast:\n\n10 things → 1,024 operations\n20 things → 1,048,576 operations\n\n30 things → 1,073,741,824 operations!\n\n🚫 Usually unusable for anything but tiny problems\n\n\n\n\n\n\n\n\n\n⏰ Real-world impact:\n\nWhy cryptography works (good!)\nWhy some problems are “impossible” (bad!)\n\n\n\n\n\n\n\n\n\n\nBottom line: Avoid at all costs unless you have &lt; 20 items! ⚠️"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(2ⁿ) Complexity Visualization 📊",
+    "text": "O(2ⁿ) Complexity Visualization 📊\n\n\nShow O(2ⁿ) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
+    "href": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "The Complexity Race Table 🏃‍♀️💨",
+    "text": "The Complexity Race Table 🏃‍♀️💨\n\n\n\n\n\n\nLet’s see what happens when we have 1,000 things to process.\n\n\n\n\n\n\n\n\n\n\n\n\n\nComplexity\nName\nSteps Needed\nReal-World Feeling\n\n\n\n\nO(1)\nMagic Trick\n1 step\n⚡ Instant!\n\n\nO(log n)\nSmart Detective\n~10 steps\n🏃 Super fast!\n\n\nO(n)\nOne-by-One\n1,000 steps\n🚶 Takes a moment\n\n\nO(n²)\nHandshake Problem\n1,000,000 steps\n🐌 Ugh, so slow…\n\n\nO(2ⁿ)\nExplosion\n2¹⁰⁰⁰ steps\n💀 Heat death of universe"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
+    "href": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Complexity Analysis can Blow Your Mind! 🤯",
+    "text": "Complexity Analysis can Blow Your Mind! 🤯"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
+    "href": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "📊 Complete Complexity Comparison",
+    "text": "📊 Complete Complexity Comparison\n\n\n\n\n\n\nShow All Complexities Compared 🚀"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
+    "href": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Key Observations from the Complexity Comparison! 📈",
+    "text": "Key Observations from the Complexity Comparison! 📈\n\n\n\n\n\n\n\n\n\n\n🟢 O(1) stays perfectly flat\n🔵 O(log n) grows very slowly\n\n🟠 O(n) grows steadily\n🔴 O(n²) accelerates quickly\n🟣 O(2ⁿ) explodes exponentially"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
+    "href": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Challenge: Guess the Complexity Level! 🏗",
+    "text": "Challenge: Guess the Complexity Level! 🏗\n\n\n\nTask\nComplexity\nJustification\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\n?\n?\n\n\n📚 Finding a word in a dictionary\n?\n?\n\n\n🧬 Exploring family tree generations\n?\n?\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\n?\n?\n\n\n🔍 Searching for a name in your phone contacts\n?\n?\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\n?\n?\n\n\n📖 Reading every page in a book\n?\n?\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe below tasks are all over the place! Define the tasks according to complexity: easiest (O(1)) to hardest (O(2ⁿ)). Work in groups to justify your choices! Be prepared to share with the class! 🚀"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
+    "href": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Solutions: Arrange Tasks by Complexity Level 🏗",
+    "text": "Solutions: Arrange Tasks by Complexity Level 🏗\n\n\n\n\n\n\n\n\nTask\nComplexity\nEstimated Steps Needed\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\nO(n)\nn = number of people (or portions)\n\n\n📚 Finding a word in a dictionary\nO(log n)\nn = number of words\n\n\n🧬 Exploring family tree generations\nO(2ⁿ)\nn = number of generations\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\nO(n²)\nn = number of people\n\n\n🔍 Searching for a name in your phone contacts\nO(n)\nn = number of contacts\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\nO(n!)\nn = number of gifts\n\n\n📖 Reading every page in a book\nO(n)\nn = number of pages\n\n\n\n\n\n\n\n\n\nImportant\n\n\nListed according by easiest (O(1)) to hardest (O(2ⁿ))"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
+    "href": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Justifications of Complexity Levels 🕵️‍♂️",
+    "text": "Justifications of Complexity Levels 🕵️‍♂️\n\n\n🧑‍🍳 Cooking a meal for 4 people → O(n)\nn = number of people (or portions) You typically scale ingredients and prep roughly linearly with servings.\n📚 Finding a word in a dictionary → O(log n) (if using a sorted dictionary)\nn = number of words Like binary search: you repeatedly halve the search space. If unsorted, it would degrade to O(n).\n🧬 Exploring family tree generations → O(2ⁿ) (exponential)\nn = number of generations Each generation roughly doubles (2 parents, 4 grandparents, etc.).\n🧑‍🤝‍🧑 Introducing everyone at a party → O(n²) n = number of people If everyone is introduced to everyone else, you get pairwise interactions.\n\n🔍 Searching for a name in your phone contacts → O(n) (typical case)\nn = number of contacts Linear scan if unsorted. Could be O(log n) if perfectly sorted and searched efficiently.\n🎁 Figuring out gift wrapping combinations for 10 gifts → O(n!) (factorial)\nn = number of gifts If considering all possible orderings or combinations of wrapping, this grows extremely fast.\n📖 Reading every page in a book → O(n)\nn = number of pages You process each page once."
   },
   {
     "objectID": "materials/1_project_files.html",
