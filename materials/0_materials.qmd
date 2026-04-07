@@ -120,4 +120,17 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Activity 10**:  Algorithm Performance Analysis: Doubling Experiments
   - [GitHub Classroom Link](https://classroom.github.com/a/4FxfSNEr)
 
+## W12. More on Complexity and Algorithmic Problem Solving
+- **Final Project**: Python Application Development
+  - [GitHub Classroom Link](https://classroom.github.com/a/NQebGEOv)
+- **Algorithm Complexity Demonstrations**
+  - [HTML](12_comprehensive_big_o_slides.html) Slides
+
 ---
+## Special Notes
+::: {.callout-note}
+## Please plan accordingly for the following important deadlines:
+- The final project will be due on April 30th, 2026 at 9:00am.
+- Presentations will be held on Friday, 24th April 2026 during lab.
+- These are hard deadlines and no late submissions can be accepted.
+:::

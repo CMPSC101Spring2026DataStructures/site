@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,15 +32,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,8 +79,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMPSC101 Spring 2026 :: DataStructures</span>
     </a>
@@ -135,6 +132,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#w09.-spring-break" id="toc-w09.-spring-break" class="nav-link" data-scroll-target="#w09.-spring-break">W09. Spring Break</a></li>
   <li><a href="#w10.-files-opening-and-closing-files" id="toc-w10.-files-opening-and-closing-files" class="nav-link" data-scroll-target="#w10.-files-opening-and-closing-files">W10. Files, opening and closing files</a></li>
   <li><a href="#w11.-modules-and-packages-and-more-on-python-libraries" id="toc-w11.-modules-and-packages-and-more-on-python-libraries" class="nav-link" data-scroll-target="#w11.-modules-and-packages-and-more-on-python-libraries">W11. Modules and Packages, and More on Python Libraries</a></li>
+  <li><a href="#w12.-more-on-complexity-and-algorithmic-problem-solving" id="toc-w12.-more-on-complexity-and-algorithmic-problem-solving" class="nav-link" data-scroll-target="#w12.-more-on-complexity-and-algorithmic-problem-solving">W12. More on Complexity and Algorithmic Problem Solving</a></li>
+  <li><a href="#special-notes" id="toc-special-notes" class="nav-link" data-scroll-target="#special-notes">Special Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -351,7 +350,40 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://classroom.github.com/a/4FxfSNEr">GitHub Classroom Link</a></li>
 </ul></li>
 </ul>
+</section>
+<section id="w12.-more-on-complexity-and-algorithmic-problem-solving" class="level2">
+<h2 class="anchored" data-anchor-id="w12.-more-on-complexity-and-algorithmic-problem-solving">W12. More on Complexity and Algorithmic Problem Solving</h2>
+<ul>
+<li><strong>Final Project</strong>: Python Application Development
+<ul>
+<li><a href="https://classroom.github.com/a/NQebGEOv">GitHub Classroom Link</a></li>
+</ul></li>
+<li><strong>Algorithm Complexity Demonstrations</strong>
+<ul>
+<li><a href="12_comprehensive_big_o_slides.html">HTML</a> Slides</li>
+</ul></li>
+</ul>
 <hr>
+</section>
+<section id="special-notes" class="level2">
+<h2 class="anchored" data-anchor-id="special-notes">Special Notes</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Please plan accordingly for the following important deadlines:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The final project will be due on April 30th, 2026 at 9:00am.</li>
+<li>Presentations will be held on Friday, 24th April 2026 during lab.</li>
+<li>These are hard deadlines and no late submissions can be accepted.</li>
+</ul>
+</div>
+</div>
 
 
 </section>
@@ -408,14 +440,13 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

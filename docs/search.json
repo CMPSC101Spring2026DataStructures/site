@@ -102,7 +102,7 @@
     "href": "playground/02_stringCheese.html",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "",
-    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nPrint strings in Python\nUse for loops with range()\nFormat strings with f-strings\nUnderstand string repetition"
+    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nPrint strings in Python\nUse for loops with range()\nFormat strings with f-strings\nUnderstand string repetition"
   },
   {
     "objectID": "playground/02_stringCheese.html#introduction",
@@ -137,21 +137,21 @@
     "href": "playground/02_stringCheese.html#summary",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nString printing with print() function\nFor loops with range() function\nF-string formatting for dynamic messages\nCreative text output and formatting"
+    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nString printing with print() function\nFor loops with range() function\nF-string formatting for dynamic messages\nCreative text output and formatting"
   },
   {
     "objectID": "playground/02_stringCheese.html#next-steps",
     "href": "playground/02_stringCheese.html#next-steps",
     "title": "Just For Fun 02: String Cheese Demo",
     "section": "Next Steps",
-    "text": "Next Steps\n\n\n\n\n\n\nImportantComing Up Next\n\n\n\nIn the next lesson, we’ll cover: - Variables and data types - More complex string operations\n\n\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython String Formatting\nPython For Loops\nPractice Problems"
+    "text": "Next Steps\n\n\n\n\n\n\nComing Up Next\n\n\n\nIn the next lesson, we’ll cover: - Variables and data types - More complex string operations\n\n\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython String Formatting\nPython For Loops\nPractice Problems"
   },
   {
     "objectID": "playground/05_functionCalls_general.html",
     "href": "playground/05_functionCalls_general.html",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "",
-    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nIdentify and describe the anatomy of a Python function\nExplain the flow of execution in a Python script\nDiscuss the mathematical reasoning behind calculating the area of a square\nExperiment with function calls and inputs interactively"
+    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nIdentify and describe the anatomy of a Python function\nExplain the flow of execution in a Python script\nDiscuss the mathematical reasoning behind calculating the area of a square\nExperiment with function calls and inputs interactively"
   },
   {
     "objectID": "playground/05_functionCalls_general.html#introduction",
@@ -172,21 +172,21 @@
     "href": "playground/05_functionCalls_general.html#summary",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored: - The structure and anatomy of Python functions - How function calls work and how data flows through a program - Mathematical reasoning for calculating area - How different input types affect function behavior"
+    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored: - The structure and anatomy of Python functions - How function calls work and how data flows through a program - Mathematical reasoning for calculating area - How different input types affect function behavior"
   },
   {
     "objectID": "playground/05_functionCalls_general.html#key-takeaways",
     "href": "playground/05_functionCalls_general.html#key-takeaways",
     "title": "Just For Fun 04: Function Calls in Code",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nFunctions are reusable blocks of code\nFlow of execution is organized using functions like main()\nMathematical formulas can be implemented directly in code\nInput types matter for function behavior\n\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython Functions Documentation\nPython Data Types\nQuarto Interactive Python"
+    "text": "Key Takeaways\n\nFunctions are reusable blocks of code\nFlow of execution is organized using functions like main()\nMathematical formulas can be implemented directly in code\nInput types matter for function behavior\n\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython Functions Documentation\nPython Data Types\nQuarto Interactive Python"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html",
     "href": "playground/06_listAndDictionaries.html",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "",
-    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nCreate and manipulate lists to store sequences of data\nCreate and work with dictionaries to store key-value pairs\nAccess, modify, and iterate through lists and dictionaries\nChoose the appropriate data structure (list vs dictionary) for different tasks"
+    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nCreate and manipulate lists to store sequences of data\nCreate and work with dictionaries to store key-value pairs\nAccess, modify, and iterate through lists and dictionaries\nChoose the appropriate data structure (list vs dictionary) for different tasks"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html#introduction",
@@ -221,14 +221,14 @@
     "href": "playground/06_listAndDictionaries.html#summary",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nLists: Ordered collections perfect for storing sequences of related items\nDictionaries: Key-value pairs ideal for quick lookups and data organization\nPractical Applications: How to use these data structures to solve real-world problems\nWhen to Use Each: Lists for ordered data, dictionaries for labeled data and fast lookups"
+    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored:\n\nLists: Ordered collections perfect for storing sequences of related items\nDictionaries: Key-value pairs ideal for quick lookups and data organization\nPractical Applications: How to use these data structures to solve real-world problems\nWhen to Use Each: Lists for ordered data, dictionaries for labeled data and fast lookups"
   },
   {
     "objectID": "playground/06_listAndDictionaries.html#key-takeaways",
     "href": "playground/06_listAndDictionaries.html#key-takeaways",
     "title": "Just For Fun 05: Lists and Dictionaries",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\nLists and dictionaries are fundamental building blocks in Python programming. Lists excel when you need to maintain order and access items by position, while dictionaries shine when you need to associate meaningful labels (keys) with values for quick retrieval. Both are mutable, meaning you can modify them after creation, making them powerful tools for dynamic data management. As you continue programming, you’ll find these data structures essential for organizing information efficiently.\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nPython Lists Documentation\nPython Dictionaries Documentation\nReal Python: Python Lists and Tuples\nReal Python: Python Dictionaries"
+    "text": "Key Takeaways\nLists and dictionaries are fundamental building blocks in Python programming. Lists excel when you need to maintain order and access items by position, while dictionaries shine when you need to associate meaningful labels (keys) with values for quick retrieval. Both are mutable, meaning you can modify them after creation, making them powerful tools for dynamic data management. As you continue programming, you’ll find these data structures essential for organizing information efficiently.\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nPython Lists Documentation\nPython Dictionaries Documentation\nReal Python: Python Lists and Tuples\nReal Python: Python Dictionaries"
   },
   {
     "objectID": "materials/9_socket_programming_messaging.html#pythons-socket-library",
@@ -488,6 +488,20 @@
     "title": "Materials",
     "section": "W11. Modules and Packages, and More on Python Libraries",
     "text": "W11. Modules and Packages, and More on Python Libraries\n\nCreating Your Own Python Modules\n\nHTML Slides\n\nAlgorithm Complexity\n\nHTML Slides\n\nActivity 10: Algorithm Performance Analysis: Doubling Experiments\n\nGitHub Classroom Link"
+  },
+  {
+    "objectID": "materials/0_materials.html#w12.-more-on-complexity-and-algorithmic-problem-solving",
+    "href": "materials/0_materials.html#w12.-more-on-complexity-and-algorithmic-problem-solving",
+    "title": "Materials",
+    "section": "W12. More on Complexity and Algorithmic Problem Solving",
+    "text": "W12. More on Complexity and Algorithmic Problem Solving\n\nFinal Project: Python Application Development\n\nGitHub Classroom Link\n\nAlgorithm Complexity Demonstrations\n\nHTML Slides"
+  },
+  {
+    "objectID": "materials/0_materials.html#special-notes",
+    "href": "materials/0_materials.html#special-notes",
+    "title": "Materials",
+    "section": "Special Notes",
+    "text": "Special Notes\n\n\n\n\n\n\nPlease plan accordingly for the following important deadlines:\n\n\n\n\nThe final project will be due on April 30th, 2026 at 9:00am.\nPresentations will be held on Friday, 24th April 2026 during lab.\nThese are hard deadlines and no late submissions can be accepted."
   },
   {
     "objectID": "materials/11_python_modules_and_libraries.html#why-modules-matter",
@@ -1183,6 +1197,531 @@
     "text": "Challenge 5 Solution\n\n\n\nSolution + Why It Works\n\n\ntrips = [\n    {\"driver\": \"Asha\", \"miles\": 120, \"rate\": 0.62},\n    {\"driver\": \"Ben\", \"miles\": 45, \"rate\": 0.62},\n    {\"driver\": \"Chen\", \"miles\": 200, \"rate\": 0.62},\n    {\"driver\": \"Dia\", \"miles\": 80, \"rate\": 0.62}\n]\n\npayouts = list(map(lambda t: {**t, \"payout\": t[\"miles\"] * t[\"rate\"]}, trips))\nhigh_payouts = list(filter(lambda t: t[\"payout\"] &gt;= 60, payouts))\ndrivers = list(map(lambda t: t[\"driver\"], high_payouts))\n\nprint(drivers)\nHow it works: First add a computed field, then filter by it, then map to just the names."
   },
   {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#why-algorithm-complexity-matters",
+    "href": "materials/12_comprehensive_big_o_slides.html#why-algorithm-complexity-matters",
+    "title": "Understanding Computational Complexity",
+    "section": "Why Algorithm Complexity Matters",
+    "text": "Why Algorithm Complexity Matters\n\n\n\nImportant\n\n\nReal-World Impact\nUnderstanding algorithm complexity helps you:\n\n⚡ Build Faster Software — Choose the right algorithm for the job\n💰 Save Money — Efficient code means lower server costs\n🌍 Scale Applications — Handle millions of users smoothly\n🔋 Reduce Energy Usage — Green computing through efficiency\n🎯 Make Smart Trade-offs — Balance speed, memory, and complexity\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe Big Idea: Small algorithmic choices can mean the difference between a program that runs in seconds versus one that takes years. Let’s explore how different complexity classes affect real-world performance!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-is-o1---constant-time",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-is-o1---constant-time",
+    "title": "Understanding Computational Complexity",
+    "section": "What is O(1) - Constant Time?",
+    "text": "What is O(1) - Constant Time?\n\n\n\n\n\n\nThe Superpower of Algorithms ⚡\n\n\nO(1) means the algorithm takes the same amount of time no matter how much data you give it!\nReal-World Analogy: * Like a valet parking service - you hand over your ticket and get your car back instantly * Whether there are 10 cars or 10,000 cars in the lot, it takes the same time! * The valet has a direct system to find your exact car\n\n\n\n\n\nPerformance Guarantee 📊\n\n10 items → 1 step\n100 items → 1 step\n\n1,000,000 items → 1 step\nSame speed forever!\n\n\nKey Insight 🔑\nThe algorithm has a “shortcut” that goes directly to the answer without checking other data!\nMagic Question:\n“Can I get the answer without looking at most of the data?”"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-makes-o1-so-fast",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-makes-o1-so-fast",
+    "title": "Understanding Computational Complexity",
+    "section": "What Makes O(1) So Fast?",
+    "text": "What Makes O(1) So Fast?\n\nThe Secret Ingredients 🎯\nO(1) algorithms use smart data organization and direct access patterns\n\n\n\nHash Tables (Dictionaries/Sets)\n# Python dictionary (hash table) uses a hash function\n# to map keys to memory locations for O(1) access\nstudent_grades = {\n    \"Alice\": 95,\n    \"Bob\": 87,\n    \"Charlie\": 92\n}\n\n# Hash function calculates EXACTLY where \n# \"Alice\" is stored in memory\n# No searching required - direct jump to the value!\ngrade = student_grades[\"Alice\"]  # O(1)!\nHow it works:\n\nHash function: \"Alice\" → memory location 147\nGo directly to location 147\nGet the value (95)\nDone! No searching needed!\n\n\nArray Indexing\n# Arrays store data in consecutive memory locations\n# This allows direct access via index calculation\nscores = [95, 87, 92, 78, 85]\n#         0   1   2   3   4  (indices)\n\n# Computer calculates memory address using formula:\n# Address = base_address + (index × element_size)\n# This mathematical calculation is O(1)!\nfirst_score = scores[0]    # O(1) - instant access\nthird_score = scores[2]    # O(1) - instant access\nMathematical Magic:\n\nMemory address = Base + (2 × 4 bytes)\nJump straight to the answer!\nNo need to check other elements"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#interactive-o1-dictionary-demo",
+    "href": "materials/12_comprehensive_big_o_slides.html#interactive-o1-dictionary-demo",
+    "title": "Understanding Computational Complexity",
+    "section": "Interactive O(1) Dictionary Demo",
+    "text": "Interactive O(1) Dictionary Demo\n\n\n\n\n\n\nSee O(1) in Action! 🎮\n\n\nTry looking up different students’ grades. Notice how it’s always instant!\n\n\n\n\n    Student Grade Lookup - O(1) Dictionary Access\n    \n        \n            Choose a student...\n            Alice\n            Bob\n            Charlie\n            Diana\n            Eve\n            Frank\n            Grace\n            Henry\n        \n        Look Up Grade\n        Add New Student\n        Reset\n    \n    \n        \n    \n    \n        Hash Table Size: 8 slots\n        Operations: 0\n        Result: Ready to lookup grades!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#mini-challenge-o1-operations",
+    "href": "materials/12_comprehensive_big_o_slides.html#mini-challenge-o1-operations",
+    "title": "Understanding Computational Complexity",
+    "section": "Mini Challenge: O(1) Operations",
+    "text": "Mini Challenge: O(1) Operations\n\n\n\n\n\n\nPractice O(1) Thinking! 🧑‍💻\n\n\nTry these exercises to understand constant time operations:\n\n\n\n\n\nChallenge 1: Phone Book\n# Create your own phone book using a dictionary\n# Dictionaries provide O(1) lookup time\nphone_book = {}\n\n# Add contacts - each insertion is O(1)\nphone_book[\"Mom\"] = \"555-0123\"\nphone_book[\"Pizza\"] = \"555-PIZZA\"\nphone_book[\"Friend\"] = \"555-9999\"\n\n# Look up numbers instantly - O(1) access\nprint(phone_book[\"Mom\"])\n\n# YOUR TASK: Add 5 contacts \n# and time the lookups!\nimport time  # Import time module for benchmarking\nstart = time.time()  # Record start time\n# Add your lookups here\nresult = phone_book[\"Mom\"]  # O(1) lookup\nend = time.time()  # Record end time\nprint(f\"Time: {end-start}s\")  # Display elapsed time\n\nChallenge 2: Class Enrollment\n# Check which classes a student is in using sets\n# Sets provide O(1) membership testing (\"in\" operator)\nmath_class = {\"Alice\", \"Bob\"}\nscience_class = {\"Bob\", \"Diana\"}\nhistory_class = {\"Alice\", \"Eve\"}\n\nstudent = \"Alice\"  # Student to check\nenrolled = []  # List to store enrolled classes\n\n# O(1) membership checking with sets!\n# Each \"in\" check is constant time\nif student in math_class:\n    enrolled.append(\"Math\")\nif student in science_class:\n    enrolled.append(\"Science\")  \nif student in history_class:\n    enrolled.append(\"History\")\n\nprint(f\"{student}: {enrolled}\")\n\n# YOUR TASK: Check all students\n# Notice how fast it is even with many classes!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#bonus-o1-fibonacci-with-binets-formula",
+    "href": "materials/12_comprehensive_big_o_slides.html#bonus-o1-fibonacci-with-binets-formula",
+    "title": "Understanding Computational Complexity",
+    "section": "Bonus: O(1) Fibonacci with Binet’s Formula!",
+    "text": "Bonus: O(1) Fibonacci with Binet’s Formula!\n\n\n\n\n\n\nThe Mathematical Shortcut ✨\n\n\nBelieve it or not, you can calculate any Fibonacci number in O(1) time using pure mathematics!\n\n\n\n\n\nBinet’s Formula\nInstead of recursion or iteration, use this closed-form mathematical formula:\n\\[F(n) = \\frac{\\varphi^n - \\psi^n}{\\sqrt{5}}\\]\nWhere:\n\n\\(\\varphi = \\frac{1 + \\sqrt{5}}{2} \\approx 1.618\\) (golden ratio)\n\\(\\psi = \\frac{1 - \\sqrt{5}}{2} \\approx -0.618\\)\n\nComplexity: O(1) - constant time! 🚀\n\nJust pure math calculation: No loops, No recursion\nLater, we will see that there are other ways to calculate sequences which take much more time with complexity O(2^n), so this is a huge improvement!\n\n\nPython Implementation\nimport math  # Need sqrt and pow functions\n\ndef fibonacci_binet(n):\n    \"\"\"\n    Calculate nth Fibonacci number using Binet's formula - O(1)!\n    \n    This is a closed-form mathematical solution that computes\n    the result directly without any loops or recursion.\n    Time Complexity: O(1) - constant time\n    \"\"\"\n    # Calculate the golden ratio (phi)\n    sqrt_5 = math.sqrt(5)\n    phi = (1 + sqrt_5) / 2  # ≈ 1.618 (golden ratio)\n    psi = (1 - sqrt_5) / 2  # ≈ -0.618\n    \n    # Apply Binet's formula\n    # F(n) = (φ^n - ψ^n) / √5\n    fib_n = (phi**n - psi**n) / sqrt_5\n    \n    # Round to nearest integer (handles floating-point precision)\n    return round(fib_n)\n\n# Test it out!\nprint(\"First 15 Fibonacci numbers using O(1) formula:\")\nfor i in range(15):\n    print(f\"F({i}) = {fibonacci_binet(i)}\")\n\n# Direct calculation - instant even for large n!\nprint(f\"\\nF(50) = {fibonacci_binet(50):,}\")\nprint(f\"F(100) = {fibonacci_binet(100):,}\")\n\n# Compare speeds\nimport time\nstart = time.perf_counter()\nresult = fibonacci_binet(1000)\nelapsed = time.perf_counter() - start\nprint(f\"\\nF(1000) calculated in {elapsed*1000000:.2f} microseconds!\")\nTrade-off: Works great for most values, but floating-point precision limits accuracy for very large n (typically n &gt; 70)."
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-is-olog-n---logarithmic-time",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-is-olog-n---logarithmic-time",
+    "title": "Understanding Computational Complexity",
+    "section": "What is O(log n) - Logarithmic Time?",
+    "text": "What is O(log n) - Logarithmic Time?\n\n\n\n\n\n\nThe Smart Problem Solver 🧠\n\n\nO(log n) means the algorithm halves the problem with each step!\nReal-World Analogy:\n\nLike playing “20 Questions” - each answer eliminates half\nGuessing a number from 1-1000? “Is it &gt; 500?” cuts it in half!\n32 billion items → Only 32 steps maximum!\n\n\n\n\n\n\nIncredible Scaling 📊\n\n1,000 items → ~10 steps\n1,000,000 items → ~20 steps\n\n1,000,000,000 items → ~30 steps\nMind-blowing efficiency!\n\n\nKey Insight 🔑\nAlgorithm eliminates half the possibilities each step.\nMagic Question:\n“Can I eliminate half the data without checking it?”\nIf yes → Achieve O(log n)!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#binary-search---the-classic-olog-n",
+    "href": "materials/12_comprehensive_big_o_slides.html#binary-search---the-classic-olog-n",
+    "title": "Understanding Computational Complexity",
+    "section": "Binary Search - The Classic O(log n)",
+    "text": "Binary Search - The Classic O(log n)\n\n\nHow Binary Search Works\ndef binary_search(arr, target):\n    \"\"\"Search for target in sorted array using binary search - O(log n)\"\"\"\n    left = 0  # Start of search range\n    right = len(arr) - 1  # End of search range\n    \n    # Continue searching while range is valid\n    while left &lt;= right:\n        # Find middle index (integer division)\n        mid = (left + right) // 2\n        \n        # Check if we found the target\n        if arr[mid] == target:\n            return mid  # Found! Return the index\n        # Target is in the right half\n        elif arr[mid] &lt; target:\n            left = mid + 1  # Eliminate left half\n        # Target is in the left half\n        else:\n            right = mid - 1  # Eliminate right half\n    \n    return -1  # Not found in array\n\n# Find 7 in sorted list\nnumbers = [1,3,5,7,9,11,13,15]\nposition = binary_search(numbers, 7)\nprint(f\"Found at index {position}\")\nWhy O(log n)?\nEach step cuts the search space in half!\n\nStep-by-Step Example\nSearch for 7 in [1,3,5,7,9,11,13,15]:\n\nCheck middle (index 3): 7 == 7 ✓\nFound in 1 step!\n\nSearch for 13:\n\nCheck mid (7): 13 &gt; 7, go right\nCheck mid (11): 13 &gt; 11, go right\n\nCheck mid (13): 13 == 13 ✓\nFound in 3 steps!\n\nWith 8 items, max 3 steps (log₂ 8 = 3) With 1000 items, max 10 steps!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#interactive-binary-search-demo",
+    "href": "materials/12_comprehensive_big_o_slides.html#interactive-binary-search-demo",
+    "title": "Understanding Computational Complexity",
+    "section": "Interactive Binary Search Demo",
+    "text": "Interactive Binary Search Demo\n\n\n\n\n\n\nWatch O(log n) in Action! 🎮\n\n\nSee how binary search eliminates half the data with each step!\n\n\n\n\n    Binary Search Visualizer - O(log n) Divide and Conquer\n    \n        \n            Choose number to find...\n            Search for 2\n            Search for 12\n            Search for 25\n            Search for 47\n            Search for 63\n            Search for 78\n            Search for 89\n        \n        Start Search\n        Speed: Normal\n        Reset\n    \n    \n        \n    \n    \n        Steps Taken: 0\n        Comparisons: 0\n        Remaining Items: 14\n        Status: Ready to search!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#mini-challenge-binary-search-practice",
+    "href": "materials/12_comprehensive_big_o_slides.html#mini-challenge-binary-search-practice",
+    "title": "Understanding Computational Complexity",
+    "section": "Mini Challenge: Binary Search Practice",
+    "text": "Mini Challenge: Binary Search Practice\n\n\n\n\n\n\nExperience O(log n) Power! 🧑‍💻\n\n\n\n\n\n\n\n\nChallenge 1: Search Race\n\nimport time      # Used to measure how long code takes to run\nimport random    # Used to generate random numbers and pick random targets\n\n# Create a large sorted dataset\nsize = 100000\n# Generate random numbers, then sort them (required for binary search)\ndata = sorted(random.randint(1, 1000000) for _ in range(size))\n\n# ---------------------------\n# Linear Search (O(n))\n# ---------------------------\ndef linear_search(arr, t):\n    # Go through each element one by one\n    for i, val in enumerate(arr):\n        # If we find the target, return its index\n        if val == t:\n            return i\n    # If not found, return -1\n    return -1\n\n# ---------------------------\n# Binary Search (O(log n))\n# ---------------------------\ndef binary_search(arr, t):\n    # Start with the full range of the list\n    left, right = 0, len(arr)-1\n    \n    # Keep searching while the range is valid\n    while left &lt;= right:\n        # Find the middle index\n        mid = (left + right) // 2\n        \n        # If middle element is the target, return it\n        if arr[mid] == t:\n            return mid\n        \n        # If target is larger, ignore the left half\n        elif arr[mid] &lt; t:\n            left = mid + 1\n        \n        # If target is smaller, ignore the right half\n        else:\n            right = mid - 1\n    \n    # If not found, return -1\n    return -1\n\n# ---------------------------\n# Benchmarking section\n# ---------------------------\n\n# Number of times we repeat the test (for more accurate results)\ntrials = 100\n\n# Variables to store total time for each algorithm\nlinear_total = 0\nbinary_total = 0\n\n# Run the experiment multiple times\nfor _ in range(trials):\n    \n    # Pick a random value from the list to search for\n    target = random.choice(data)\n\n    # ---- Time linear search ----\n    start = time.perf_counter()        # Start timer\n    linear_search(data, target)        # Run search\n    linear_total += time.perf_counter() - start  # Add elapsed time\n\n    # ---- Time binary search ----\n    start = time.perf_counter()        # Start timer\n    binary_search(data, target)        # Run search\n    binary_total += time.perf_counter() - start  # Add elapsed time\n\n# ---------------------------\n# Results\n# ---------------------------\n\n# Compute and print average time per search\nprint(f\"Linear avg: {linear_total/trials:.8f}s\")\nprint(f\"Binary avg: {binary_total/trials:.8f}s\")\n\n# Show how many times faster binary search is\nprint(f\"Binary is {linear_total/binary_total:.1f}x faster\")\n\nChallenge 2: Heap Priority Queue\n\nimport heapq  # Provides heap (priority queue) functions\n\n# This list will store our heap (priority queue)\n# Python uses a min-heap by default\nemergency_room = []\n\n# Add patients as (priority, name)\n# Lower number = higher priority (1 is most urgent)\npatients = [\n    (1, \"Heart Attack\"),\n    (5, \"Broken Arm\"),\n    (2, \"Severe Bleeding\"),\n    (8, \"Checkup\"),\n    (3, \"Chest Pain\"),\n]\n\n# ---------------------------\n# Adding patients to the heap\n# ---------------------------\nfor priority, condition in patients:\n    # Push each patient into the heap\n    # heapq automatically keeps the smallest priority at the front\n    heapq.heappush(emergency_room, (priority, condition))\n    \n    # Print confirmation of addition\n    print(f\"Added: {condition}\")\n\n# ---------------------------\n# Treating patients by priority\n# ---------------------------\nprint(\"\\nTreating by priority:\")\n\n# Continue until no patients remain\nwhile emergency_room:\n    # Remove and return the patient with the highest priority\n    # (i.e., the smallest number)\n    priority, condition = heapq.heappop(emergency_room)\n    \n    # Print which patient is being treated\n    print(f\"{condition} (P{priority})\")\n\n# Each push/pop operation takes O(log n) time\n# because the heap reorganizes itself after each change"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-are-heaps",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-are-heaps",
+    "title": "Understanding Computational Complexity",
+    "section": "What Are Heaps?",
+    "text": "What Are Heaps?\n\n\n## The Smart Organizer 🏥\nHeaps maintain priority order with O(log n) efficiency!\nReal-World Analogy:\n\nLike hospital triage - critical patients first\nDon’t need perfect sorting, just quick access to highest priority\nAdd/remove patients in log(n) time!\n\n\n\nWikipedia: https://en.wikipedia.org/wiki/Heap_%28data_structure%29"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#interactive-heap-operations-demo",
+    "href": "materials/12_comprehensive_big_o_slides.html#interactive-heap-operations-demo",
+    "title": "Understanding Computational Complexity",
+    "section": "Interactive Heap Operations Demo",
+    "text": "Interactive Heap Operations Demo\n\n\n\n\n\n\nWatch Heap Operations in Action! 🎮\n\n\nSee how heaps maintain order with O(log n) insertion and removal!\n\n\n\n\n    Min-Heap Visualizer - O(log n) Operations\n    \n        \n        Push (Insert)\n        Pop (Remove Min)\n        Add Random\n        Reset\n    \n    \n    \n        \n    \n    \n        Heap Size: 0 elements\n        Tree Height: 0 (log₂ of size)\n        Operations Count: 0 steps in last operation\n        Status: Ready to build a heap!\n        Array Representation: []"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#code-to-demonstrate-heaps",
+    "href": "materials/12_comprehensive_big_o_slides.html#code-to-demonstrate-heaps",
+    "title": "Understanding Computational Complexity",
+    "section": "Code to Demonstrate Heaps?",
+    "text": "Code to Demonstrate Heaps?\n\n\nHeap Property\n# Min-heap: Parent ≤ Children\n#       1\n#      / \\\n#     3   2\n#    / \\ / \\\n#   8  5 7  9\n\n# Root always has minimum value\n# Height = log₂(n)\nKey Benefits: * Fast access to min/max: O(1) * Fast insertion: O(log n) * Fast removal: O(log n)\n\nPython Heap Example\nimport heapq  # Python's built-in heap implementation\n\n# Create an empty min-heap\n# Min-heap property: parent &lt;= children\nheap = []\n\n# Add items - each push is O(log n)\n# Heap automatically reorganizes to maintain property\nheapq.heappush(heap, 5)\nheapq.heappush(heap, 2)\nheapq.heappush(heap, 8)\nheapq.heappush(heap, 1)\n\nprint(heap)  # [1, 2, 8, 5] - partially ordered\n\n# Get and remove minimum - O(log n)\n# Heap reorganizes after removal\nmin_val = heapq.heappop(heap)\nprint(min_val)  # 1 (smallest element always at top)\n\n# Heap automatically maintains order after each operation!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#when-to-use-heaps",
+    "href": "materials/12_comprehensive_big_o_slides.html#when-to-use-heaps",
+    "title": "Understanding Computational Complexity",
+    "section": "When to Use Heaps",
+    "text": "When to Use Heaps\n\n\n\nImportant\n\n\nPerfect Use Cases:\n\n🏥 Priority Queues - Process items by importance\n📊 Finding Top-K Elements - Get k largest/smallest efficiently\n🎮 Event Scheduling - Handle events in time order\n🚗 Route Planning - Dijkstra’s shortest path algorithm\n📈 Streaming Data - Maintain running median/statistics\n\nTrade-off: Not fully sorted, just maintains priority relationship"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-is-o2n---exponential-time",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-is-o2n---exponential-time",
+    "title": "Understanding Computational Complexity",
+    "section": "What is O(2^n) - Exponential Time?",
+    "text": "What is O(2^n) - Exponential Time?\n\n\n\n\n\n\nThe Recursive Explosion 💥\n\n\nO(2^n) means the algorithm’s time doubles with each additional input!\nReal-World Analogy: * Like a chain letter - each person sends to 2 more * Day 1: 1 person, Day 2: 2, Day 3: 4… * Day 30: Over 1 billion people!\n\n\n\n\n\nExplosive Growth 🚀\n\n10 items → 1,024 operations\n20 items → 1,048,576 operations\n\n30 items → 1,073,741,824 operations\nEach +1 item doubles the work!\n\n\nKey Insight 🔑\nTypically uses branching recursion - each call creates multiple recursive calls.\nDanger Signal:\n“Does my function call itself multiple times?”\nIf yes → Might be O(2^n)!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#naive-fibonacci---classic-o2n",
+    "href": "materials/12_comprehensive_big_o_slides.html#naive-fibonacci---classic-o2n",
+    "title": "Understanding Computational Complexity",
+    "section": "Naive Fibonacci - Classic O(2^n)",
+    "text": "Naive Fibonacci - Classic O(2^n)\n\n\nThe Exponential Fibonacci\ndef fibonacci(n):\n    \"\"\"Naive recursive Fibonacci - O(2^n) exponential time!\"\"\"\n    # Base case: fib(0) = 0, fib(1) = 1\n    if n &lt;= 1:\n        return n\n    \n    # TWO recursive calls - this creates exponential growth!\n    # Each call branches into two more calls\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# The explosion:\n# fib(5) calls fib(4) and fib(3)\n# fib(4) calls fib(3) and fib(2)\n# fib(3) is calculated MULTIPLE times! (wasteful redundancy)\n\nprint(fibonacci(10))  # Result: 55\n# But took ~177 function calls to compute!\n# Time complexity: O(2^n) - doubles with each n\nWhy O(2^n)? * Each call creates 2 more calls * Massive redundant computation * Binary tree of recursion\n\nThe O(n) Solution\ndef fibonacci_fast(n):\n    \"\"\"Iterative Fibonacci - O(n) linear time!\"\"\"\n    # Base case\n    if n &lt;= 1:\n        return n\n    \n    # Iterative approach: O(n)\n    # Only stores two previous values\n    prev, curr = 0, 1\n    # Build up from fib(2) to fib(n)\n    for _ in range(2, n + 1):\n        prev, curr = curr, prev + curr  # Simultaneous assignment\n    return curr\n\n# OR use memoization (caching)\nfrom functools import lru_cache\n\n@lru_cache(maxsize=None)  # Cache all results\ndef fib_memo(n):\n    \"\"\"Memoized Fibonacci - O(n) with caching\"\"\"\n    if n &lt;= 1:\n        return n\n    # Same recursive structure, but results are cached\n    return fib_memo(n-1) + fib_memo(n-2)\n\n# Now each fib(k) computed only once!\nprint(fibonacci_fast(50))  # Instant! No exponential explosion"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#interactive-fibonacci-demo",
+    "href": "materials/12_comprehensive_big_o_slides.html#interactive-fibonacci-demo",
+    "title": "Understanding Computational Complexity",
+    "section": "Interactive Fibonacci Demo",
+    "text": "Interactive Fibonacci Demo\n\n\n\n\n\n\nWatch the Exponential Explosion! 🎮\n\n\nSee how naive Fibonacci creates massive redundant calculations!\n\n\n\n\n    Naive Fibonacci - O(2^n) Recursive Explosion\n    \n        \n            Fibonacci(3)\n            Fibonacci(5)\n            Fibonacci(7)\n            Fibonacci(9)\n            Fibonacci(10) - Slow!\n        \n        Calculate Fibonacci\n        Show O(n) Solution\n        Reset\n    \n    \n        \n    \n    \n        Calculating: Ready to calculate!\n        Function Calls: 0 | Depth: 0 | Result: -\n        Status: Choose a Fibonacci number to calculate"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#mini-challenge-optimization-challenge",
+    "href": "materials/12_comprehensive_big_o_slides.html#mini-challenge-optimization-challenge",
+    "title": "Understanding Computational Complexity",
+    "section": "Mini Challenge: Optimization Challenge",
+    "text": "Mini Challenge: Optimization Challenge\n\n\n\n\n\n\nCompare O(2^n) vs O(n)! 🧑‍💻\n\n\n\n\n\n\nChallenge: Fibonacci Performance\nimport time  # For timing execution\nfrom functools import lru_cache  # For memoization decorator\n\n# Naive O(2^n) - exponential time complexity\ndef fib_slow(n):\n    \"\"\"Naive recursive Fibonacci without caching\"\"\"\n    if n &lt;= 1:\n        return n\n    # Each call creates 2 more calls - exponential growth!\n    return fib_slow(n-1) + fib_slow(n-2)\n\n# Optimized O(n) with memoization (caching)\n@lru_cache(maxsize=None)  # Decorator caches all results\ndef fib_fast(n):\n    \"\"\"Optimized Fibonacci with memoization\"\"\"\n    if n &lt;= 1:\n        return n\n    # Same structure, but cached results prevent recalculation\n    return fib_fast(n-1) + fib_fast(n-2)\n\n# Test both approaches with different input sizes\ntest_values = [10, 15, 20, 25, 30]\n\nprint(\"n\\tSlow Time\\tFast Time\\tSpeedup\")\nfor n in test_values:\n    # Time slow version (O(2^n))\n    start = time.time()\n    result_slow = fib_slow(n)\n    slow_time = time.time() - start\n    \n    # Time fast version (O(n))\n    fib_fast.cache_clear()  # Clear cache for fair comparison\n    start = time.time()\n    result_fast = fib_fast(n)\n    fast_time = time.time() - start\n    \n    # Calculate speedup factor\n    speedup = slow_time / max(fast_time, 0.000001)  # Avoid division by zero\n    print(f\"{n}\\t{slow_time:.4f}s\\t\\t{fast_time:.6f}s\\t{speedup:.0f}x\")\n    \n    # Stop if slow version takes too long\n    if slow_time &gt; 5:\n        print(\"Stopping - exponential version too slow!\")\n        break\n\n# YOUR TASK: What patterns do you notice?\n# How does the speedup change as n increases?\n# Notice: speedup grows exponentially!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#what-is-the-travelling-salesman-problem",
+    "href": "materials/12_comprehensive_big_o_slides.html#what-is-the-travelling-salesman-problem",
+    "title": "Understanding Computational Complexity",
+    "section": "What is the Travelling Salesman Problem?",
+    "text": "What is the Travelling Salesman Problem?\n\n\n\n\n\n\nThe Ultimate Route Challenge 🗺️\n\n\nThe Problem: Visit every city exactly once and return home using the shortest possible route.\nReal-World Applications:\n\n🚚 Delivery Services - UPS saves millions optimizing routes\n🏭 Circuit Board Manufacturing - Drilling holes efficiently\n🧬 DNA Sequencing - Optimal gene arrangements\n🚌 School Bus Routes - Getting kids to school faster\n\n\n\n\n\n\nWhy It Matters 🚚\n\nAmazon saves fuel and time\nManufacturing saves money\nEveryone gets faster service\nReduces carbon emissions\n\n\nThe Challenge ⚡\n\n3-4 cities: Easy\n10 cities: 3,628,800 routes!\n20 cities: More routes than atoms in universe!\nOptimal solution: O(n!) factorial time\n\nKey Question: How do we find good routes without checking every possibility?"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#tsp-complexity-the-factorial-explosion",
+    "href": "materials/12_comprehensive_big_o_slides.html#tsp-complexity-the-factorial-explosion",
+    "title": "Understanding Computational Complexity",
+    "section": "TSP Complexity: The Factorial Explosion",
+    "text": "TSP Complexity: The Factorial Explosion\n\n\n\nImportant\n\n\nFor n cities, there are (n-1)!/2 unique routes\nWhy? Fix starting city, divide by 2 (clockwise/counterclockwise are same).\n\n\n\n\n\nThe Numbers\nimport math  # For factorial calculation\n\ndef tsp_routes(n):\n    \"\"\"Calculate number of unique TSP routes for n cities\"\"\"\n    if n &lt;= 1:\n        return 0\n    # Formula: (n-1)! / 2\n    # Fix start city, divide by 2 (clockwise = counterclockwise)\n    return math.factorial(n-1) // 2\n\n# Watch the factorial explosion!\nfor n in range(3, 11):\n    routes = tsp_routes(n)\n    print(f\"{n} cities: {routes:,} routes\")\n    # Notice: each additional city multiplies routes dramatically!\nResults:\n\n3 cities → 1 route, 5 cities → 12 routes\n10 cities → 181,440 routes, 15 cities → 43,589,145,600 routes!\n\n\nTime to Check All Routes\nAssuming 1 microsecond per route:\n\n10 cities: 0.18 seconds ✓\n15 cities: 12 hours ⚠️\n20 cities: 77 years 🛑\n25 cities: 490 billion years! 💀\n\nReality: Need smart approximations, not exhaustive search!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#interactive-tsp-demo",
+    "href": "materials/12_comprehensive_big_o_slides.html#interactive-tsp-demo",
+    "title": "Understanding Computational Complexity",
+    "section": "Interactive TSP Demo",
+    "text": "Interactive TSP Demo\n\n\n\n\n\n\nPlan Your Route! 🎮\n\n\nClick on the map to add cities, then find the best route!\n\n\n\n\n    🗺️ Interactive Travelling Salesman Demo\n    \n        Add Random City\n        Find Best Route!\n        Reset\n        Load Demo Cities\n    \n    \n        \n    \n    \n        Cities: 0\n        Possible Routes: 0\n        Best Distance: -\n        Computation Time: -\n        ⚠️ Complexity: Add cities!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#mini-challenge-tsp-approximations",
+    "href": "materials/12_comprehensive_big_o_slides.html#mini-challenge-tsp-approximations",
+    "title": "Understanding Computational Complexity",
+    "section": "Mini Challenge: TSP Approximations",
+    "text": "Mini Challenge: TSP Approximations\n\n\n\n\n\n\nSmart Route Planning! 🧑‍💻\n\n\n\n\n\n\nChallenge: Nearest Neighbor Heuristic\nimport random  # For generating random city positions\nimport math    # For distance calculations\n\n# Generate random cities in a 100x100 grid\ndef generate_cities(n):\n    \"\"\"Create n cities with random (x, y) coordinates\"\"\"\n    return [(random.randint(0, 100), \n             random.randint(0, 100)) \n            for _ in range(n)]\n\n# Calculate Euclidean distance between two cities\ndef distance(city1, city2):\n    \"\"\"Calculate straight-line distance between cities\"\"\"\n    x1, y1 = city1\n    x2, y2 = city2\n    # Pythagorean theorem: sqrt((x2-x1)^2 + (y2-y1)^2)\n    return math.sqrt((x2-x1)**2 + (y2-y1)**2)\n\n# Nearest neighbor heuristic - O(n²) approximation algorithm\ndef nearest_neighbor(cities):\n    \"\"\"Greedy TSP approximation: always visit nearest unvisited city\"\"\"\n    unvisited = cities.copy()  # Copy to avoid modifying original\n    route = [unvisited.pop(0)]  # Start at first city\n    \n    # Continue until all cities visited\n    while unvisited:\n        current = route[-1]  # Current city is last in route\n        # Find nearest unvisited city using min() with key function\n        nearest = min(unvisited, \n                      key=lambda c: distance(current, c))\n        route.append(nearest)  # Add to route\n        unvisited.remove(nearest)  # Mark as visited\n    \n    # Return to start city to complete the tour\n    route.append(route[0])\n    return route\n\n# Calculate total distance of a route\ndef route_distance(route):\n    \"\"\"Sum distances between consecutive cities in route\"\"\"\n    total = 0\n    # Add distance between each pair of consecutive cities\n    for i in range(len(route) - 1):\n        total += distance(route[i], route[i+1])\n    return total\n\n# Test it!\ncities = generate_cities(10)  # Create 10 random cities\nroute = nearest_neighbor(cities)  # Find approximate route\ndist = route_distance(route)  # Calculate total distance\n\nprint(f\"Route distance: {dist:.2f}\")\nprint(\"Route:\", route)\n\n# Not optimal, but fast O(n²) and reasonably good!\n# Avoids O(n!) brute force - practical for real-world use"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#key-takeaways",
+    "href": "materials/12_comprehensive_big_o_slides.html#key-takeaways",
+    "title": "Understanding Computational Complexity",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\n\nImportant\n\n\nWhat We Learned Today:\n\n⚡ O(1) - Hash tables give instant access regardless of data size\n🔍 O(log n) - Binary search and heaps scale beautifully through divide-and-conquer\n🏥 Heaps - Maintain priority order with O(log n) operations\n💥 O(2^n) - Exponential algorithms become impossible quickly - use memoization!\n🗺️ TSP - Real-world problems often require smart approximations, not perfect solutions\n📊 Trade-offs - Choose algorithms based on data size, structure, and requirements\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nThe Big Picture: Understanding complexity helps you write efficient code that scales. Small algorithmic choices make huge differences in real-world performance!"
+  },
+  {
+    "objectID": "materials/12_comprehensive_big_o_slides.html#next-steps-practice",
+    "href": "materials/12_comprehensive_big_o_slides.html#next-steps-practice",
+    "title": "Understanding Computational Complexity",
+    "section": "Next Steps & Practice",
+    "text": "Next Steps & Practice\n\n\n\nNote\n\n\nTo Continue Learning About Complexity 🤔:\n\n📚 Study more sorting algorithms (merge sort, quick sort, heap sort)\n🔬 Analyze algorithms in your own code\n💻 Practice on coding platforms (LeetCode, HackerRank)\n🎯 Learn about dynamic programming (turns O(2^n) → O(n))\n🚀 Explore graph algorithms (Dijkstra, A*, etc.)\n\nRemember: The best algorithm depends on your specific problem, data size, and constraints. There’s no one-size-fits-all solution!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on-for-today",
+    "href": "materials/11_complexity_intro_slides.html#on-for-today",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "On For Today 🎯",
+    "text": "On For Today 🎯\n\n\n\n\n\n\nTip\n\n\nLet’s explore Complexity Levels that describe how things scale in real life!!\nTopics covered in today’s discussion:\n\n🎪 O(1) - The Magic Trick Level\n🔍 O(log n) - The Smart Detective Level\n\n🚶 O(n) - The One-by-One Level\n🐌 O(n²) - The Handshake Problem Level\n💥 O(2ⁿ) - The Explosion Level"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
+    "href": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Complexity is All About How Things Scale 📈",
+    "text": "Complexity is All About How Things Scale 📈\n\n\n\n\n\n\nNote\n\n\nComplexity = How much more work do you need when you have more stuff to deal with?\nReal-Life Examples:\n\n🍕 Making dinner for friends: 2 friends vs 20 friends - how much more work?\n📚 Finding a book: In a small pile vs a huge library - how much longer?\n🎁 Gift wrapping: 5 gifts vs 50 gifts - how much more time?\n👋 Meeting everyone at a party: 10 people vs 100 people - how many more handshakes?"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
+    "href": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(1) - The Magic Trick Level ⚡",
+    "text": "O(1) - The Magic Trick Level ⚡\n\n\n\n\n\n\n“No Matter How Much, It Takes the Same Time!” 🎪\n\n\nO(1) means: Whether you have 1 thing or 1 million things, the task takes exactly the same amount of time!\n\n\n\n\n\n\n\n\n\nEveryday O(1) Examples:\n🔑 Using a key to open your door - Same one turn always!\n💡 Turning on a light switch - Same flip always!\n📱 Checking the time on your phone - Always instant!\n🏧 Using your debit card - Same swipe time always!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
+    "href": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(1) is Amazing ⚡",
+    "text": "Why O(1) is Amazing ⚡\n\n\n\n\n\n\nThe Holy Grail of Algorithms! 🏆\n\n\n✨ It’s like magic - the amount of work never changes\n🎯 Perfect performance - always fast, always reliable\n🚀 Every programmer dreams of O(1) solutions!\n\n\n\n\n\n\n\n\n\nReal-World O(1) Examples:\n\n🪑 Sitting down in a chair\n📱 Looking up a contact by name\n\n💳 Checking account balance\n🎵 Skipping to specific song\n📦 Grabbing the top item from a stack"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(1) Complexity Visualization 📊",
+    "text": "O(1) Complexity Visualization 📊\n\n\nShow O(1) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
+    "href": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(log n) - The Smart Detective Level 🕵️",
+    "text": "O(log n) - The Smart Detective Level 🕵️\n\n\n\n\n\n\n“Cut the Problem in Half, Over and Over!” 🔍\n\n\nO(log n) means: Each step eliminates half of what’s left to search. Super efficient even with huge amounts!\n\n\n\n\n\n\n\n\n\nEveryday O(log n) Examples:\n🎯 Guessing a number 1-1000 - Cut problem in half each time, found in ~10 questions max!\n📖 Finding word in dictionary - Open to middle, go left or right, found in seconds!\n🎪 20 Questions game - Each question eliminates half the possibilities\n🔍 Phone contact search - Type “J” → cuts to J names, type “Jo” → even fewer options\n🗂️ Looking for a file in a sorted filing cabinet - Open to middle, go left or right, found in seconds!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
+    "href": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(log n) is Amazing 🏆",
+    "text": "Why O(log n) is Amazing 🏆\n\n\n\n\n\n\nIncredible Scaling Performance! 📊\n\n\nAmazing scaling: * 1,000 items → ~10 steps * 1,000,000 items → ~20 steps\n* 1,000,000,000 items → ~30 steps\n🧠 Smart strategy beats brute force\n\n\n\n\n\n\n\n\n\nUsed everywhere:\n\n🔍 Google searches\n🗺️ GPS route finding\n📱 Phone contact search"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
+    "href": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "But What’s the Catch?",
+    "text": "But What’s the Catch?\n\n\n\n\n\n\n\n\n\nThe catch: You need things organized first! 📋\n\n\n(This might take some time, but once it’s done, searching is lightning fast!)"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(log n) Complexity Visualization 📊",
+    "text": "O(log n) Complexity Visualization 📊\n\n\nShow O(log n) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
+    "href": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n) - The One-by-One Level 🚶",
+    "text": "O(n) - The One-by-One Level 🚶\n\n\n\n\n\n\n“Check Every Single Thing, One by One” 👀\n\n\nO(n) means: Double the stuff = Double the work. Fair and predictable!\n\n\n\n\n\n\n\n\n\nEveryday O(n) Examples:\n📚 Reading every page in a book - 100 pages = 100 page flips, 200 pages = 200 page flips\n🛒 Counting items in shopping cart - Must touch each item once, 10 items = 10 counts\n🎵 Listening to playlist - 50 songs = 50× the time\n📝 Grading test stack - 30 tests = 30× the work\n\n\n\n\n\n\n\n\n\nThe good news: O(n) is often the best you can do for many tasks\n\n\n\nEasy to determine the time necessary for running n tasks. You can determine smallest run-time with accuracy!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
+    "href": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(n) is Pretty Good ✅",
+    "text": "Why O(n) is Pretty Good ✅\n\n\n\n\n\n\nPredictable and Fair! 📈\n\n\n✅ Predictable and fair - work scales linearly\n🎯 Working at scale - Doubling the input only doubles the work, not more!\n📈 Reasonable for most tasks: O(n) is often the “best possible” complexity, not just a “good” one. Even though it’s not constant time, it’s: Predictable, Scalable, and Optimal for many real-world problems\n\nFinding highest grade\nAdding up expenses\nReading all text messages\n\n\n\n\n\n\n\n\n\n\nWhen it gets slow:\n\n\nReally large amounts of data - but still very manageable for normal use! 🎯"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n) Complexity Visualization 📊",
+    "text": "O(n) Complexity Visualization 📊\n\n\nShow O(n) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
+    "href": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n²) - The Handshake Problem Level 🤝",
+    "text": "O(n²) - The Handshake Problem Level 🤝\n\n\n\n\n\n\n“Everyone Must Meet Everyone Else!” 😰\n\n\nO(n²) means: When you double the people, you get four times the work! This gets crazy fast.\n\n\n\n\n\n\n\n\n\nEveryday O(n²) Examples:\n🤝 Party introductions - 4 people = 6 handshakes, 8 people = 28 handshakes, 16 people = 120 handshakes!\n🏆 Sports tournament - Everyone plays everyone, gets expensive fast!\n👥 Group photo arrangements - Every person next to every other, gets overwhelming quickly!\n📝 Comparing all student tests - Looking for identical answers, 30 students = 435 comparisons!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
+    "href": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(n²) Gets Scary 📈",
+    "text": "Why O(n²) Gets Scary 📈\n\n\n\n\n\n\nExplosive Growth! 💥\n\n\n📈 Explosive growth:\n\n10 things → 100 operations\n100 things → 10,000 operations\n1,000 things → 1,000,000 operations!\n\n⚠️ The danger zone - where apps become unusably slow\n\n\n\n\n\n\n\n\n\n🐌 Common culprits: * Comparing every item to every other * Nested loops in programming * Poor algorithm choices\n\n\n\n\n\n\n\n\n\nWhen to worry: Anything over ~1,000 items gets really slow! 🚨"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(n²) Complexity Visualization 📊",
+    "text": "O(n²) Complexity Visualization 📊\n\n\nShow O(n²) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
+    "href": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(2ⁿ) - The Explosion Level 💥",
+    "text": "O(2ⁿ) - The Explosion Level 💥\n\n\n\n\n\n\n“Every Choice Doubles Your Problems!” 🤯\n\n\nO(2ⁿ) means: Add just one more thing, and you double all the work! This explodes instantly.\n\n\n\n\n\n\n\n\n\nEveryday O(2ⁿ) Examples:\n🧬 Family tree exploration - 2 parents → 4 grandparents → 8 great-grandparents → 16 great-great-grandparents\n\n🔐 Password cracking - Each digit doubles possibilities, 10-digit PIN = 1+ billion combos!\n🎁 Gift wrapping combinations - Each gift: wrapped or not, 20 gifts = 1+ million combinations!"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
+    "href": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Why O(2ⁿ) is Terrifying 💀",
+    "text": "Why O(2ⁿ) is Terrifying 💀\n\n\n\n\n\n\nGrows Impossibly Fast! 🚨\n\n\n💀 Grows impossibly fast:\n\n10 things → 1,024 operations\n20 things → 1,048,576 operations\n\n30 things → 1,073,741,824 operations!\n\n🚫 Usually unusable for anything but tiny problems\n\n\n\n\n\n\n\n\n\n⏰ Real-world impact:\n\nWhy cryptography works (good!)\nWhy some problems are “impossible” (bad!)\n\n\n\n\n\n\n\n\n\n\nBottom line: Avoid at all costs unless you have &lt; 20 items! ⚠️"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
+    "href": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "O(2ⁿ) Complexity Visualization 📊",
+    "text": "O(2ⁿ) Complexity Visualization 📊\n\n\nShow O(2ⁿ) Growth Chart 📈"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
+    "href": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "The Complexity Race Table 🏃‍♀️💨",
+    "text": "The Complexity Race Table 🏃‍♀️💨\n\n\n\n\n\n\nLet’s see what happens when we have 1,000 things to process.\n\n\n\n\n\n\n\n\n\n\n\n\n\nComplexity\nName\nSteps Needed\nReal-World Feeling\n\n\n\n\nO(1)\nMagic Trick\n1 step\n⚡ Instant!\n\n\nO(log n)\nSmart Detective\n~10 steps\n🏃 Super fast!\n\n\nO(n)\nOne-by-One\n1,000 steps\n🚶 Takes a moment\n\n\nO(n²)\nHandshake Problem\n1,000,000 steps\n🐌 Ugh, so slow…\n\n\nO(2ⁿ)\nExplosion\n2¹⁰⁰⁰ steps\n💀 Heat death of universe"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
+    "href": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Complexity Analysis can Blow Your Mind! 🤯",
+    "text": "Complexity Analysis can Blow Your Mind! 🤯"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
+    "href": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "📊 Complete Complexity Comparison",
+    "text": "📊 Complete Complexity Comparison\n\n\n\n\n\n\nShow All Complexities Compared 🚀"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
+    "href": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Key Observations from the Complexity Comparison! 📈",
+    "text": "Key Observations from the Complexity Comparison! 📈\n\n\n\n\n\n\n\n\n\n\n🟢 O(1) stays perfectly flat\n🔵 O(log n) grows very slowly\n\n🟠 O(n) grows steadily\n🔴 O(n²) accelerates quickly\n🟣 O(2ⁿ) explodes exponentially"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
+    "href": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Challenge: Guess the Complexity Level! 🏗",
+    "text": "Challenge: Guess the Complexity Level! 🏗\n\n\n\nTask\nComplexity\nJustification\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\n?\n?\n\n\n📚 Finding a word in a dictionary\n?\n?\n\n\n🧬 Exploring family tree generations\n?\n?\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\n?\n?\n\n\n🔍 Searching for a name in your phone contacts\n?\n?\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\n?\n?\n\n\n📖 Reading every page in a book\n?\n?\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe below tasks are all over the place! Define the tasks according to complexity: easiest (O(1)) to hardest (O(2ⁿ)). Work in groups to justify your choices! Be prepared to share with the class! 🚀"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
+    "href": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Solutions: Arrange Tasks by Complexity Level 🏗",
+    "text": "Solutions: Arrange Tasks by Complexity Level 🏗\n\n\n\n\n\n\n\n\nTask\nComplexity\nEstimated Steps Needed\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\nO(n)\nn = number of people (or portions)\n\n\n📚 Finding a word in a dictionary\nO(log n)\nn = number of words\n\n\n🧬 Exploring family tree generations\nO(2ⁿ)\nn = number of generations\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\nO(n²)\nn = number of people\n\n\n🔍 Searching for a name in your phone contacts\nO(n)\nn = number of contacts\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\nO(n!)\nn = number of gifts\n\n\n📖 Reading every page in a book\nO(n)\nn = number of pages\n\n\n\n\n\n\n\n\n\nImportant\n\n\nListed according by easiest (O(1)) to hardest (O(2ⁿ))"
+  },
+  {
+    "objectID": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
+    "href": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
+    "title": "ALGORITHM COMPLEXITIES",
+    "section": "Justifications of Complexity Levels 🕵️‍♂️",
+    "text": "Justifications of Complexity Levels 🕵️‍♂️\n\n\n🧑‍🍳 Cooking a meal for 4 people → O(n)\nn = number of people (or portions) You typically scale ingredients and prep roughly linearly with servings.\n📚 Finding a word in a dictionary → O(log n) (if using a sorted dictionary)\nn = number of words Like binary search: you repeatedly halve the search space. If unsorted, it would degrade to O(n).\n🧬 Exploring family tree generations → O(2ⁿ) (exponential)\nn = number of generations Each generation roughly doubles (2 parents, 4 grandparents, etc.).\n🧑‍🤝‍🧑 Introducing everyone at a party → O(n²) n = number of people If everyone is introduced to everyone else, you get pairwise interactions.\n\n🔍 Searching for a name in your phone contacts → O(n) (typical case)\nn = number of contacts Linear scan if unsorted. Could be O(log n) if perfectly sorted and searched efficiently.\n🎁 Figuring out gift wrapping combinations for 10 gifts → O(n!) (factorial)\nn = number of gifts If considering all possible orderings or combinations of wrapping, this grows extremely fast.\n📖 Reading every page in a book → O(n)\nn = number of pages You process each page once."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
+    "href": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "What are literals, Again??",
+    "text": "What are literals, Again??\nLet’s Return to Literals (e.g., numbers, strings, booleans, etc.) and work with them in interesting ways using print().\n\n\n\n\n\n\nNote\n\n\nIn Python, print statements with an f prefix before the opening quotation mark denote f-strings, also known as formatted string literals. F-strings provide a concise and readable way to embed expressions inside string literals for formatting output."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
+    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Python Code Sample with F-strings",
+    "text": "Python Code Sample with F-strings\n\n\n\n\n\n\nNote\n\n\nCuriously, both of the below print statements print out the same results, but the code is not the same …\n\n\n\nfirstName = \"Robert\"\nlastName = \"Paulson\"\nprint(f\"His name is: {firstName} {lastName}!\") # f for auto formatting\nprint(\"His name is:\",firstName, lastName,\"!\") # original structure\n\nOutput:\nHis name is: Robert Paulson!\nHis name is: Robert Paulson ! # A space appears?!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#operators",
+    "href": "materials/3_ii_introToPython_solutions.html#operators",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Operators",
+    "text": "Operators\nOperators let you do math, compare values, and more!\n\n\n\n\n\n\nImportant\n\n\nExamples:\n\nArithmetic: +, -, *, /, ** (power)\nComparison: ==, !=, &lt;, &gt;\nAssignment: =, +=, -="
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample",
+    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Python Code Sample",
+    "text": "Python Code Sample\nx = 5\ny = 2\nsum = x + y\nproduct = x * y\nis_equal = (x == y)\nx += 1\n\n\n\n\n\n\n\n\n\nNote\n\n\nVariables and operators are the backbone of calculators, games, and simulations!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#loops",
+    "href": "materials/3_ii_introToPython_solutions.html#loops",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Loops",
+    "text": "Loops\nLoops repeat actions. Use for and while loops."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#conditionals",
+    "href": "materials/3_ii_introToPython_solutions.html#conditionals",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Conditionals",
+    "text": "Conditionals\nConditionals let your code make decisions using if, elif, and else.\n\nExamples:\nfor i in range(5):\n    print(i)\n\ncount = 0\nwhile count &lt; 3:\n    print(\"Counting:\", count)\n    count += 1 \n    # Do not forget to increment \n    # the counter, or you will create an infinite loop!\n\n    if x &gt; y:    # What changes to print statements if x &lt; y ? \n        print(\"x is greater!\")\n    elif x == y:\n        print(\"x equals y!\")\n    else:\n        print(\"x is less!\")\n\nTry out this code! Now, make a change and see what happens!"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
+    "href": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Sort of Interesting Application",
+    "text": "Sort of Interesting Application\nLoops and conditionals can be used to determine positive, negative numbers, or zeros. Neat-O!\n\nExamples:\nnum = 10\nif num &gt; 0:\n    print(\"Positive number\")\nelif num == 0:\n    print(\"Zero\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
+    "href": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Nested Conditionals",
+    "text": "Nested Conditionals\nYou can nest loops, one inside the other.\n\nExamples:\nnum = 15\nif num &gt;= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#logical-operator",
+    "href": "materials/3_ii_introToPython_solutions.html#logical-operator",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Logical Operator",
+    "text": "Logical Operator\nLogical operators use True and False to determine outcomes.\n\nExamples:\na = 10\nb = 20\nif a &gt; 5 and b &gt; 15:\n    print(\"Both conditions are true\")\nif a &gt; 5 or b &lt; 15:\n    print(\"At least one condition is true\")\nif not a &lt; 5:\n    print(\"a is not less than 5\")\n\n\nOutput:\nBoth conditions are true At least one condition is true a is not less than 5"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#string-manipulation",
+    "href": "materials/3_ii_introToPython_solutions.html#string-manipulation",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "String Manipulation",
+    "text": "String Manipulation\nWe now look at how we can manipulate strings\n\nExamples:\ntext = \"Hello, World!\"\nprint(text.lower())  # hello, world!\nprint(text.upper())  # HELLO, WORLD!\nprint(text.replace(\"World\", \"Python\"))  # Hello, Python!\nprint(text.split(\", \"))  # ['Hello', 'World!']\nprint(text.strip(\"!\"))  # Hello, World"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#lists",
+    "href": "materials/3_ii_introToPython_solutions.html#lists",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Lists",
+    "text": "Lists\n\nA list is a fundamental data structure in Python used to store an ordered collection of items.\nLists maintain the order of elements, with each item accessible by its index (starting from 0).\nLists are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nLists can hold items of different data types, including other lists.\nLists are created using square brackets, with elements separated by commas."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
+    "href": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Demo of Lists",
+    "text": "Demo of Lists\n\nExamples:\nmy_list = [1, 2, 3, 4, 5] # definition\nprint(my_list[0])  # Access first element\nmy_list.append(6)  # Add an element to the end\nprint(my_list)  # [1, 2, 3, 4, 5, 6]\nmy_list.remove(3)  # Remove element with value 3\nprint(my_list)  # [1, 2, 4, 5, 6]\nprint(len(my_list))  # Length of the list\n\nOutput:\n1\n[1, 2, 3, 4, 5, 6]\n[1, 2, 4, 5, 6]\n5"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#dictionaries",
+    "href": "materials/3_ii_introToPython_solutions.html#dictionaries",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Dictionaries",
+    "text": "Dictionaries\nA dictionary is a built-in data structure in Python used to store key-value pairs.\nDictionaries are unordered collections (as of Python 3.6+, they maintain insertion order), where each value is accessed using its unique key.\nDictionaries are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nKeys in a dictionary must be unique and immutable (such as strings, numbers, or tuples), while values can be of any data type.\nDictionaries are created using curly braces {}, with key-value pairs separated by commas and a colon between each key and value."
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
+    "href": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Demo of Dictionaries",
+    "text": "Demo of Dictionaries\n\nExamples:\nmy_dict = {\"name\": \"Alice\", \"age\": 25, \"is_student\": True}  # definition\nprint(my_dict[\"name\"])  # Access value by key\nmy_dict[\"age\"] = 26  # Modify value\nmy_dict[\"city\"] = \"New York\"  # Add new key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'is_student': True, 'city': 'New York'}\ndel my_dict[\"is_student\"]  # Remove a key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'city': 'New York'}\nprint(len(my_dict))  # Number of key-value pairs\n\nOutput:\nAlice\n{‘name’: ‘Alice’, ‘age’: 26, ‘is_student’: True, ‘city’: ‘New York’}\n{‘name’: ‘Alice’, ‘age’: 26, ‘city’: ‘New York’}\n3"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#coding-challenges",
+    "href": "materials/3_ii_introToPython_solutions.html#coding-challenges",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Coding Challenges",
+    "text": "Coding Challenges\n\n\n\n1. Variables and Operators\nChallenge:\nCreate two variables, a and b, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\n\nTip\n\n\nMethod Suggestions:\n\nDeclare two variables and assign integer values to them\nUse arithmetic operators: +, -, *, /\nUse print() function with labels for clarity\nConsider using f-strings for formatted output\nRemember: division / gives a float result"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 1: Variables and Operators (Part 1)",
+    "text": "Solution 1: Variables and Operators (Part 1)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Basic Print Statements\na = 10\nb = 5\nprint(\"Sum:\", a + b)\nprint(\"Difference:\", a - b)\nprint(\"Product:\", a * b)\nprint(\"Quotient:\", a / b)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\na = 10\nb = 5\nprint(f\"Sum: {a + b}\")\nprint(f\"Difference: {a - b}\")\nprint(f\"Product: {a * b}\")\nprint(f\"Quotient: {a / b}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 1: Variables and Operators (Part 2)",
+    "text": "Solution 1: Variables and Operators (Part 2)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Storing Results in Variables\na = 10\nb = 5\nsum_result = a + b\ndiff_result = a - b\nprod_result = a * b\nquot_result = a / b\nprint(f\"Sum: {sum_result}, Difference: {diff_result}, Product: {prod_result}, Quotient: {quot_result}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 2: Working with Lists (Part 1)",
+    "text": "Solution 2: Working with Lists (Part 1)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using max() Function\nnumbers = [3, 7, 2, 9, 5]\nprint(\"Largest number:\", max(numbers))\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Sorting the List\nnumbers = [3, 7, 2, 9, 5]\nnumbers.sort()\nprint(\"Largest number:\", numbers[-1])  # Last element after sorting"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 2: Working with Lists (Part 2)",
+    "text": "Solution 2: Working with Lists (Part 2)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Manual Comparison Loop\nnumbers = [3, 7, 2, 9, 5]\nlargest = numbers[0]\nfor num in numbers:\n    if num &gt; largest:\n        largest = num\nprint(\"Largest number:\", largest)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using sorted() Function\nnumbers = [3, 7, 2, 9, 5]\nlargest = sorted(numbers)[-1]\nprint(\"Largest number:\", largest)"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 3: Dictionaries (Part 1)",
+    "text": "Solution 3: Dictionaries (Part 1)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using .items() Method\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(key, \":\", value)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(f\"{key}: {value}\")"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 3: Dictionaries (Part 2)",
+    "text": "Solution 3: Dictionaries (Part 2)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Accessing Keys Directly\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key in person.keys():\n    print(f\"{key}: {person[key]}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Individual Print Statements\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nprint(\"name:\", person[\"name\"])\nprint(\"age:\", person[\"age\"])\nprint(\"city:\", person[\"city\"])"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 4: For Loops (Part 1)",
+    "text": "Solution 4: For Loops (Part 1)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using Modulo Operator\nfor i in range(1, 11):\n    if i % 2 == 0:\n        print(i)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Range with Step\nfor i in range(2, 11, 2):  # Start at 2, step by 2\n    print(i)"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 4: For Loops (Part 2)",
+    "text": "Solution 4: For Loops (Part 2)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\n\nNote\n\n\nApproach 3: Using List Comprehension\neven_numbers = [i for i in range(1, 11) if i % 2 == 0]\nfor num in even_numbers:\n    print(num)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: One-liner with List Comprehension\nprint(*[i for i in range(1, 11) if i % 2 == 0], sep='\\n')"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 5: While Loops and Conditionals (Part 1)",
+    "text": "Solution 5: While Loops and Conditionals (Part 1)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using break Statement\nwhile True:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        break\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Condition in While Loop\nnum = 0  # Initialize with a non-negative number\nwhile num &gt;= 0:\n    num = int(input(\"Enter a number: \"))"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
+    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "Solution 5: While Loops and Conditionals (Part 2)",
+    "text": "Solution 5: While Loops and Conditionals (Part 2)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\nNote\n\n\nApproach 3: With Feedback Messages\nwhile True:\n    num = int(input(\"Enter a number (negative to quit): \"))\n    if num &lt; 0:\n        print(\"Negative number entered. Exiting...\")\n        break\n    else:\n        print(f\"You entered: {num}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using Flag Variable\ncontinue_input = True\nwhile continue_input:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        continue_input = False"
+  },
+  {
+    "objectID": "materials/3_ii_introToPython_solutions.html#youve-got-this",
+    "href": "materials/3_ii_introToPython_solutions.html#youve-got-this",
+    "title": "Chapter 2: Python Programming: Concepts II",
+    "section": "You’ve Got This!!",
+    "text": "You’ve Got This!!\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou now able to use …\n\nLiterals\nPrint statements\nLoops driven by for and while\nLists and Dictionaries\nMuch more!"
+  },
+  {
     "objectID": "materials/5_numerical_programs_solutions.html#what-you-will-learn-today",
     "href": "materials/5_numerical_programs_solutions.html#what-you-will-learn-today",
     "title": "Chapter 3: Numerical Programs",
@@ -1678,363 +2217,6 @@
     "title": "Chapter 3: Numerical Programs",
     "section": "Solution 5: Fibonacci Index Finder (Approach 2, continued)",
     "text": "Solution 5: Fibonacci Index Finder (Approach 2, continued)\n\n\n\n\n# Testing\ntest_values = [0, 1, 5, 13, 21, 100, 144, 233]\nfor val in test_values:\n    idx = fibonacci_index_binet(val)\n    if idx != -1:\n        print(f\"F({idx}) = {val} ✓\")\n    else:\n        print(f\"{val} is not a Fibonacci number ✗\")\n\n\n\nMathematics provides elegant shortcuts! 🎓"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
-    "href": "materials/3_ii_introToPython_solutions.html#what-are-literals-again",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "What are literals, Again??",
-    "text": "What are literals, Again??\nLet’s Return to Literals (e.g., numbers, strings, booleans, etc.) and work with them in interesting ways using print().\n\n\n\n\n\n\nNote\n\n\nIn Python, print statements with an f prefix before the opening quotation mark denote f-strings, also known as formatted string literals. F-strings provide a concise and readable way to embed expressions inside string literals for formatting output."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
-    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample-with-f-strings",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Python Code Sample with F-strings",
-    "text": "Python Code Sample with F-strings\n\n\n\n\n\n\nNote\n\n\nCuriously, both of the below print statements print out the same results, but the code is not the same …\n\n\n\nfirstName = \"Robert\"\nlastName = \"Paulson\"\nprint(f\"His name is: {firstName} {lastName}!\") # f for auto formatting\nprint(\"His name is:\",firstName, lastName,\"!\") # original structure\n\nOutput:\nHis name is: Robert Paulson!\nHis name is: Robert Paulson ! # A space appears?!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#operators",
-    "href": "materials/3_ii_introToPython_solutions.html#operators",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Operators",
-    "text": "Operators\nOperators let you do math, compare values, and more!\n\n\n\n\n\n\nImportant\n\n\nExamples:\n\nArithmetic: +, -, *, /, ** (power)\nComparison: ==, !=, &lt;, &gt;\nAssignment: =, +=, -="
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#python-code-sample",
-    "href": "materials/3_ii_introToPython_solutions.html#python-code-sample",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Python Code Sample",
-    "text": "Python Code Sample\nx = 5\ny = 2\nsum = x + y\nproduct = x * y\nis_equal = (x == y)\nx += 1\n\n\n\n\n\n\n\n\n\nNote\n\n\nVariables and operators are the backbone of calculators, games, and simulations!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#loops",
-    "href": "materials/3_ii_introToPython_solutions.html#loops",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Loops",
-    "text": "Loops\nLoops repeat actions. Use for and while loops."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#conditionals",
-    "href": "materials/3_ii_introToPython_solutions.html#conditionals",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Conditionals",
-    "text": "Conditionals\nConditionals let your code make decisions using if, elif, and else.\n\nExamples:\nfor i in range(5):\n    print(i)\n\ncount = 0\nwhile count &lt; 3:\n    print(\"Counting:\", count)\n    count += 1 \n    # Do not forget to increment \n    # the counter, or you will create an infinite loop!\n\n    if x &gt; y:    # What changes to print statements if x &lt; y ? \n        print(\"x is greater!\")\n    elif x == y:\n        print(\"x equals y!\")\n    else:\n        print(\"x is less!\")\n\nTry out this code! Now, make a change and see what happens!"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
-    "href": "materials/3_ii_introToPython_solutions.html#sort-of-interesting-application",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Sort of Interesting Application",
-    "text": "Sort of Interesting Application\nLoops and conditionals can be used to determine positive, negative numbers, or zeros. Neat-O!\n\nExamples:\nnum = 10\nif num &gt; 0:\n    print(\"Positive number\")\nelif num == 0:\n    print(\"Zero\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
-    "href": "materials/3_ii_introToPython_solutions.html#nested-conditionals",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Nested Conditionals",
-    "text": "Nested Conditionals\nYou can nest loops, one inside the other.\n\nExamples:\nnum = 15\nif num &gt;= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\n\nOutput:\nPositive"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#logical-operator",
-    "href": "materials/3_ii_introToPython_solutions.html#logical-operator",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Logical Operator",
-    "text": "Logical Operator\nLogical operators use True and False to determine outcomes.\n\nExamples:\na = 10\nb = 20\nif a &gt; 5 and b &gt; 15:\n    print(\"Both conditions are true\")\nif a &gt; 5 or b &lt; 15:\n    print(\"At least one condition is true\")\nif not a &lt; 5:\n    print(\"a is not less than 5\")\n\n\nOutput:\nBoth conditions are true At least one condition is true a is not less than 5"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#string-manipulation",
-    "href": "materials/3_ii_introToPython_solutions.html#string-manipulation",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "String Manipulation",
-    "text": "String Manipulation\nWe now look at how we can manipulate strings\n\nExamples:\ntext = \"Hello, World!\"\nprint(text.lower())  # hello, world!\nprint(text.upper())  # HELLO, WORLD!\nprint(text.replace(\"World\", \"Python\"))  # Hello, Python!\nprint(text.split(\", \"))  # ['Hello', 'World!']\nprint(text.strip(\"!\"))  # Hello, World"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#lists",
-    "href": "materials/3_ii_introToPython_solutions.html#lists",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Lists",
-    "text": "Lists\n\nA list is a fundamental data structure in Python used to store an ordered collection of items.\nLists maintain the order of elements, with each item accessible by its index (starting from 0).\nLists are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nLists can hold items of different data types, including other lists.\nLists are created using square brackets, with elements separated by commas."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
-    "href": "materials/3_ii_introToPython_solutions.html#demo-of-lists",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Demo of Lists",
-    "text": "Demo of Lists\n\nExamples:\nmy_list = [1, 2, 3, 4, 5] # definition\nprint(my_list[0])  # Access first element\nmy_list.append(6)  # Add an element to the end\nprint(my_list)  # [1, 2, 3, 4, 5, 6]\nmy_list.remove(3)  # Remove element with value 3\nprint(my_list)  # [1, 2, 4, 5, 6]\nprint(len(my_list))  # Length of the list\n\nOutput:\n1\n[1, 2, 3, 4, 5, 6]\n[1, 2, 4, 5, 6]\n5"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#dictionaries",
-    "href": "materials/3_ii_introToPython_solutions.html#dictionaries",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Dictionaries",
-    "text": "Dictionaries\nA dictionary is a built-in data structure in Python used to store key-value pairs.\nDictionaries are unordered collections (as of Python 3.6+, they maintain insertion order), where each value is accessed using its unique key.\nDictionaries are mutable, so their contents can be changed after creation (items can be added, removed, or modified).\nKeys in a dictionary must be unique and immutable (such as strings, numbers, or tuples), while values can be of any data type.\nDictionaries are created using curly braces {}, with key-value pairs separated by commas and a colon between each key and value."
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
-    "href": "materials/3_ii_introToPython_solutions.html#demo-of-dictionaries",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Demo of Dictionaries",
-    "text": "Demo of Dictionaries\n\nExamples:\nmy_dict = {\"name\": \"Alice\", \"age\": 25, \"is_student\": True}  # definition\nprint(my_dict[\"name\"])  # Access value by key\nmy_dict[\"age\"] = 26  # Modify value\nmy_dict[\"city\"] = \"New York\"  # Add new key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'is_student': True, 'city': 'New York'}\ndel my_dict[\"is_student\"]  # Remove a key-value pair\nprint(my_dict)  # {'name': 'Alice', 'age': 26, 'city': 'New York'}\nprint(len(my_dict))  # Number of key-value pairs\n\nOutput:\nAlice\n{‘name’: ‘Alice’, ‘age’: 26, ‘is_student’: True, ‘city’: ‘New York’}\n{‘name’: ‘Alice’, ‘age’: 26, ‘city’: ‘New York’}\n3"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#coding-challenges",
-    "href": "materials/3_ii_introToPython_solutions.html#coding-challenges",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Coding Challenges",
-    "text": "Coding Challenges\n\n\n\n1. Variables and Operators\nChallenge:\nCreate two variables, a and b, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\n\nTip\n\n\nMethod Suggestions:\n\nDeclare two variables and assign integer values to them\nUse arithmetic operators: +, -, *, /\nUse print() function with labels for clarity\nConsider using f-strings for formatted output\nRemember: division / gives a float result"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 1: Variables and Operators (Part 1)",
-    "text": "Solution 1: Variables and Operators (Part 1)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Basic Print Statements\na = 10\nb = 5\nprint(\"Sum:\", a + b)\nprint(\"Difference:\", a - b)\nprint(\"Product:\", a * b)\nprint(\"Quotient:\", a / b)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\na = 10\nb = 5\nprint(f\"Sum: {a + b}\")\nprint(f\"Difference: {a - b}\")\nprint(f\"Product: {a * b}\")\nprint(f\"Quotient: {a / b}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-1-variables-and-operators-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 1: Variables and Operators (Part 2)",
-    "text": "Solution 1: Variables and Operators (Part 2)\nChallenge: Create two variables, assign them integer values, and print their sum, difference, product, and quotient.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Storing Results in Variables\na = 10\nb = 5\nsum_result = a + b\ndiff_result = a - b\nprod_result = a * b\nquot_result = a / b\nprint(f\"Sum: {sum_result}, Difference: {diff_result}, Product: {prod_result}, Quotient: {quot_result}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 2: Working with Lists (Part 1)",
-    "text": "Solution 2: Working with Lists (Part 1)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using max() Function\nnumbers = [3, 7, 2, 9, 5]\nprint(\"Largest number:\", max(numbers))\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Sorting the List\nnumbers = [3, 7, 2, 9, 5]\nnumbers.sort()\nprint(\"Largest number:\", numbers[-1])  # Last element after sorting"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-2-working-with-lists-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 2: Working with Lists (Part 2)",
-    "text": "Solution 2: Working with Lists (Part 2)\nChallenge: Create a list of five numbers and print the largest number.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Manual Comparison Loop\nnumbers = [3, 7, 2, 9, 5]\nlargest = numbers[0]\nfor num in numbers:\n    if num &gt; largest:\n        largest = num\nprint(\"Largest number:\", largest)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using sorted() Function\nnumbers = [3, 7, 2, 9, 5]\nlargest = sorted(numbers)[-1]\nprint(\"Largest number:\", largest)"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 3: Dictionaries (Part 1)",
-    "text": "Solution 3: Dictionaries (Part 1)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using .items() Method\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(key, \":\", value)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using F-strings\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key, value in person.items():\n    print(f\"{key}: {value}\")"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-3-dictionaries-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 3: Dictionaries (Part 2)",
-    "text": "Solution 3: Dictionaries (Part 2)\nChallenge: Create a dictionary with three key-value pairs and print each key and value.\n\n\n\n\n\n\nNote\n\n\nApproach 3: Accessing Keys Directly\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nfor key in person.keys():\n    print(f\"{key}: {person[key]}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Individual Print Statements\nperson = {\"name\": \"Alice\", \"age\": 25, \"city\": \"New York\"}\nprint(\"name:\", person[\"name\"])\nprint(\"age:\", person[\"age\"])\nprint(\"city:\", person[\"city\"])"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 4: For Loops (Part 1)",
-    "text": "Solution 4: For Loops (Part 1)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using Modulo Operator\nfor i in range(1, 11):\n    if i % 2 == 0:\n        print(i)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Range with Step\nfor i in range(2, 11, 2):  # Start at 2, step by 2\n    print(i)"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-4-for-loops-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 4: For Loops (Part 2)",
-    "text": "Solution 4: For Loops (Part 2)\nChallenge: Use a for loop to print all even numbers from 1 to 10.\n\n\n\n\n\n\n\nNote\n\n\nApproach 3: Using List Comprehension\neven_numbers = [i for i in range(1, 11) if i % 2 == 0]\nfor num in even_numbers:\n    print(num)\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: One-liner with List Comprehension\nprint(*[i for i in range(1, 11) if i % 2 == 0], sep='\\n')"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-1",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 5: While Loops and Conditionals (Part 1)",
-    "text": "Solution 5: While Loops and Conditionals (Part 1)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\n\nNote\n\n\nApproach 1: Using break Statement\nwhile True:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        break\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 2: Using Condition in While Loop\nnum = 0  # Initialize with a non-negative number\nwhile num &gt;= 0:\n    num = int(input(\"Enter a number: \"))"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
-    "href": "materials/3_ii_introToPython_solutions.html#solution-5-while-loops-and-conditionals-part-2",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "Solution 5: While Loops and Conditionals (Part 2)",
-    "text": "Solution 5: While Loops and Conditionals (Part 2)\nChallenge: Use a while loop to keep asking for input until a negative number is entered.\n\n\n\n\n\n\nNote\n\n\nApproach 3: With Feedback Messages\nwhile True:\n    num = int(input(\"Enter a number (negative to quit): \"))\n    if num &lt; 0:\n        print(\"Negative number entered. Exiting...\")\n        break\n    else:\n        print(f\"You entered: {num}\")\n\n\n\n\n\n\n\n\n\nNote\n\n\nApproach 4: Using Flag Variable\ncontinue_input = True\nwhile continue_input:\n    num = int(input(\"Enter a number: \"))\n    if num &lt; 0:\n        continue_input = False"
-  },
-  {
-    "objectID": "materials/3_ii_introToPython_solutions.html#youve-got-this",
-    "href": "materials/3_ii_introToPython_solutions.html#youve-got-this",
-    "title": "Chapter 2: Python Programming: Concepts II",
-    "section": "You’ve Got This!!",
-    "text": "You’ve Got This!!\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou now able to use …\n\nLiterals\nPrint statements\nLoops driven by for and while\nLists and Dictionaries\nMuch more!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#on-for-today",
-    "href": "materials/11_complexity_intro_slides.html#on-for-today",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "On For Today 🎯",
-    "text": "On For Today 🎯\n\n\n\n\n\n\nTip\n\n\nLet’s explore Complexity Levels that describe how things scale in real life!!\nTopics covered in today’s discussion:\n\n🎪 O(1) - The Magic Trick Level\n🔍 O(log n) - The Smart Detective Level\n\n🚶 O(n) - The One-by-One Level\n🐌 O(n²) - The Handshake Problem Level\n💥 O(2ⁿ) - The Explosion Level"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
-    "href": "materials/11_complexity_intro_slides.html#complexity-is-all-about-how-things-scale",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Complexity is All About How Things Scale 📈",
-    "text": "Complexity is All About How Things Scale 📈\n\n\n\n\n\n\nNote\n\n\nComplexity = How much more work do you need when you have more stuff to deal with?\nReal-Life Examples:\n\n🍕 Making dinner for friends: 2 friends vs 20 friends - how much more work?\n📚 Finding a book: In a small pile vs a huge library - how much longer?\n🎁 Gift wrapping: 5 gifts vs 50 gifts - how much more time?\n👋 Meeting everyone at a party: 10 people vs 100 people - how many more handshakes?"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
-    "href": "materials/11_complexity_intro_slides.html#o1---the-magic-trick-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(1) - The Magic Trick Level ⚡",
-    "text": "O(1) - The Magic Trick Level ⚡\n\n\n\n\n\n\n“No Matter How Much, It Takes the Same Time!” 🎪\n\n\nO(1) means: Whether you have 1 thing or 1 million things, the task takes exactly the same amount of time!\n\n\n\n\n\n\n\n\n\nEveryday O(1) Examples:\n🔑 Using a key to open your door - Same one turn always!\n💡 Turning on a light switch - Same flip always!\n📱 Checking the time on your phone - Always instant!\n🏧 Using your debit card - Same swipe time always!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
-    "href": "materials/11_complexity_intro_slides.html#why-o1-is-amazing",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Why O(1) is Amazing ⚡",
-    "text": "Why O(1) is Amazing ⚡\n\n\n\n\n\n\nThe Holy Grail of Algorithms! 🏆\n\n\n✨ It’s like magic - the amount of work never changes\n🎯 Perfect performance - always fast, always reliable\n🚀 Every programmer dreams of O(1) solutions!\n\n\n\n\n\n\n\n\n\nReal-World O(1) Examples:\n\n🪑 Sitting down in a chair\n📱 Looking up a contact by name\n\n💳 Checking account balance\n🎵 Skipping to specific song\n📦 Grabbing the top item from a stack"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
-    "href": "materials/11_complexity_intro_slides.html#o1-complexity-visualization",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(1) Complexity Visualization 📊",
-    "text": "O(1) Complexity Visualization 📊\n\n\nShow O(1) Growth Chart 📈"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
-    "href": "materials/11_complexity_intro_slides.html#olog-n---the-smart-detective-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(log n) - The Smart Detective Level 🕵️",
-    "text": "O(log n) - The Smart Detective Level 🕵️\n\n\n\n\n\n\n“Cut the Problem in Half, Over and Over!” 🔍\n\n\nO(log n) means: Each step eliminates half of what’s left to search. Super efficient even with huge amounts!\n\n\n\n\n\n\n\n\n\nEveryday O(log n) Examples:\n🎯 Guessing a number 1-1000 - Cut problem in half each time, found in ~10 questions max!\n📖 Finding word in dictionary - Open to middle, go left or right, found in seconds!\n🎪 20 Questions game - Each question eliminates half the possibilities\n🔍 Phone contact search - Type “J” → cuts to J names, type “Jo” → even fewer options\n🗂️ Looking for a file in a sorted filing cabinet - Open to middle, go left or right, found in seconds!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
-    "href": "materials/11_complexity_intro_slides.html#why-olog-n-is-amazing",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Why O(log n) is Amazing 🏆",
-    "text": "Why O(log n) is Amazing 🏆\n\n\n\n\n\n\nIncredible Scaling Performance! 📊\n\n\nAmazing scaling: * 1,000 items → ~10 steps * 1,000,000 items → ~20 steps\n* 1,000,000,000 items → ~30 steps\n🧠 Smart strategy beats brute force\n\n\n\n\n\n\n\n\n\nUsed everywhere:\n\n🔍 Google searches\n🗺️ GPS route finding\n📱 Phone contact search"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
-    "href": "materials/11_complexity_intro_slides.html#but-whats-the-catch",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "But What’s the Catch?",
-    "text": "But What’s the Catch?\n\n\n\n\n\n\n\n\n\nThe catch: You need things organized first! 📋\n\n\n(This might take some time, but once it’s done, searching is lightning fast!)"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
-    "href": "materials/11_complexity_intro_slides.html#olog-n-complexity-visualization",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(log n) Complexity Visualization 📊",
-    "text": "O(log n) Complexity Visualization 📊\n\n\nShow O(log n) Growth Chart 📈"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
-    "href": "materials/11_complexity_intro_slides.html#on---the-one-by-one-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(n) - The One-by-One Level 🚶",
-    "text": "O(n) - The One-by-One Level 🚶\n\n\n\n\n\n\n“Check Every Single Thing, One by One” 👀\n\n\nO(n) means: Double the stuff = Double the work. Fair and predictable!\n\n\n\n\n\n\n\n\n\nEveryday O(n) Examples:\n📚 Reading every page in a book - 100 pages = 100 page flips, 200 pages = 200 page flips\n🛒 Counting items in shopping cart - Must touch each item once, 10 items = 10 counts\n🎵 Listening to playlist - 50 songs = 50× the time\n📝 Grading test stack - 30 tests = 30× the work\n\n\n\n\n\n\n\n\n\nThe good news: O(n) is often the best you can do for many tasks\n\n\n\nEasy to determine the time necessary for running n tasks. You can determine smallest run-time with accuracy!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
-    "href": "materials/11_complexity_intro_slides.html#why-on-is-pretty-good",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Why O(n) is Pretty Good ✅",
-    "text": "Why O(n) is Pretty Good ✅\n\n\n\n\n\n\nPredictable and Fair! 📈\n\n\n✅ Predictable and fair - work scales linearly\n🎯 Working at scale - Doubling the input only doubles the work, not more!\n📈 Reasonable for most tasks: O(n) is often the “best possible” complexity, not just a “good” one. Even though it’s not constant time, it’s: Predictable, Scalable, and Optimal for many real-world problems\n\nFinding highest grade\nAdding up expenses\nReading all text messages\n\n\n\n\n\n\n\n\n\n\nWhen it gets slow:\n\n\nReally large amounts of data - but still very manageable for normal use! 🎯"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
-    "href": "materials/11_complexity_intro_slides.html#on-complexity-visualization",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(n) Complexity Visualization 📊",
-    "text": "O(n) Complexity Visualization 📊\n\n\nShow O(n) Growth Chart 📈"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
-    "href": "materials/11_complexity_intro_slides.html#on²---the-handshake-problem-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(n²) - The Handshake Problem Level 🤝",
-    "text": "O(n²) - The Handshake Problem Level 🤝\n\n\n\n\n\n\n“Everyone Must Meet Everyone Else!” 😰\n\n\nO(n²) means: When you double the people, you get four times the work! This gets crazy fast.\n\n\n\n\n\n\n\n\n\nEveryday O(n²) Examples:\n🤝 Party introductions - 4 people = 6 handshakes, 8 people = 28 handshakes, 16 people = 120 handshakes!\n🏆 Sports tournament - Everyone plays everyone, gets expensive fast!\n👥 Group photo arrangements - Every person next to every other, gets overwhelming quickly!\n📝 Comparing all student tests - Looking for identical answers, 30 students = 435 comparisons!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
-    "href": "materials/11_complexity_intro_slides.html#why-on²-gets-scary",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Why O(n²) Gets Scary 📈",
-    "text": "Why O(n²) Gets Scary 📈\n\n\n\n\n\n\nExplosive Growth! 💥\n\n\n📈 Explosive growth:\n\n10 things → 100 operations\n100 things → 10,000 operations\n1,000 things → 1,000,000 operations!\n\n⚠️ The danger zone - where apps become unusably slow\n\n\n\n\n\n\n\n\n\n🐌 Common culprits: * Comparing every item to every other * Nested loops in programming * Poor algorithm choices\n\n\n\n\n\n\n\n\n\nWhen to worry: Anything over ~1,000 items gets really slow! 🚨"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
-    "href": "materials/11_complexity_intro_slides.html#on²-complexity-visualization",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(n²) Complexity Visualization 📊",
-    "text": "O(n²) Complexity Visualization 📊\n\n\nShow O(n²) Growth Chart 📈"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
-    "href": "materials/11_complexity_intro_slides.html#o2ⁿ---the-explosion-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(2ⁿ) - The Explosion Level 💥",
-    "text": "O(2ⁿ) - The Explosion Level 💥\n\n\n\n\n\n\n“Every Choice Doubles Your Problems!” 🤯\n\n\nO(2ⁿ) means: Add just one more thing, and you double all the work! This explodes instantly.\n\n\n\n\n\n\n\n\n\nEveryday O(2ⁿ) Examples:\n🧬 Family tree exploration - 2 parents → 4 grandparents → 8 great-grandparents → 16 great-great-grandparents\n\n🔐 Password cracking - Each digit doubles possibilities, 10-digit PIN = 1+ billion combos!\n🎁 Gift wrapping combinations - Each gift: wrapped or not, 20 gifts = 1+ million combinations!"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
-    "href": "materials/11_complexity_intro_slides.html#why-o2ⁿ-is-terrifying",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Why O(2ⁿ) is Terrifying 💀",
-    "text": "Why O(2ⁿ) is Terrifying 💀\n\n\n\n\n\n\nGrows Impossibly Fast! 🚨\n\n\n💀 Grows impossibly fast:\n\n10 things → 1,024 operations\n20 things → 1,048,576 operations\n\n30 things → 1,073,741,824 operations!\n\n🚫 Usually unusable for anything but tiny problems\n\n\n\n\n\n\n\n\n\n⏰ Real-world impact:\n\nWhy cryptography works (good!)\nWhy some problems are “impossible” (bad!)\n\n\n\n\n\n\n\n\n\n\nBottom line: Avoid at all costs unless you have &lt; 20 items! ⚠️"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
-    "href": "materials/11_complexity_intro_slides.html#o2ⁿ-complexity-visualization",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "O(2ⁿ) Complexity Visualization 📊",
-    "text": "O(2ⁿ) Complexity Visualization 📊\n\n\nShow O(2ⁿ) Growth Chart 📈"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
-    "href": "materials/11_complexity_intro_slides.html#the-complexity-race-table",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "The Complexity Race Table 🏃‍♀️💨",
-    "text": "The Complexity Race Table 🏃‍♀️💨\n\n\n\n\n\n\nLet’s see what happens when we have 1,000 things to process.\n\n\n\n\n\n\n\n\n\n\n\n\n\nComplexity\nName\nSteps Needed\nReal-World Feeling\n\n\n\n\nO(1)\nMagic Trick\n1 step\n⚡ Instant!\n\n\nO(log n)\nSmart Detective\n~10 steps\n🏃 Super fast!\n\n\nO(n)\nOne-by-One\n1,000 steps\n🚶 Takes a moment\n\n\nO(n²)\nHandshake Problem\n1,000,000 steps\n🐌 Ugh, so slow…\n\n\nO(2ⁿ)\nExplosion\n2¹⁰⁰⁰ steps\n💀 Heat death of universe"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
-    "href": "materials/11_complexity_intro_slides.html#complexity-analysis-can-blow-your-mind",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Complexity Analysis can Blow Your Mind! 🤯",
-    "text": "Complexity Analysis can Blow Your Mind! 🤯"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
-    "href": "materials/11_complexity_intro_slides.html#complete-complexity-comparison",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "📊 Complete Complexity Comparison",
-    "text": "📊 Complete Complexity Comparison\n\n\n\n\n\n\nShow All Complexities Compared 🚀"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
-    "href": "materials/11_complexity_intro_slides.html#key-observations-from-the-complexity-comparison",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Key Observations from the Complexity Comparison! 📈",
-    "text": "Key Observations from the Complexity Comparison! 📈\n\n\n\n\n\n\n\n\n\n\n🟢 O(1) stays perfectly flat\n🔵 O(log n) grows very slowly\n\n🟠 O(n) grows steadily\n🔴 O(n²) accelerates quickly\n🟣 O(2ⁿ) explodes exponentially"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
-    "href": "materials/11_complexity_intro_slides.html#challenge-guess-the-complexity-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Challenge: Guess the Complexity Level! 🏗",
-    "text": "Challenge: Guess the Complexity Level! 🏗\n\n\n\nTask\nComplexity\nJustification\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\n?\n?\n\n\n📚 Finding a word in a dictionary\n?\n?\n\n\n🧬 Exploring family tree generations\n?\n?\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\n?\n?\n\n\n🔍 Searching for a name in your phone contacts\n?\n?\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\n?\n?\n\n\n📖 Reading every page in a book\n?\n?\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThe below tasks are all over the place! Define the tasks according to complexity: easiest (O(1)) to hardest (O(2ⁿ)). Work in groups to justify your choices! Be prepared to share with the class! 🚀"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
-    "href": "materials/11_complexity_intro_slides.html#solutions-arrange-tasks-by-complexity-level",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Solutions: Arrange Tasks by Complexity Level 🏗",
-    "text": "Solutions: Arrange Tasks by Complexity Level 🏗\n\n\n\n\n\n\n\n\nTask\nComplexity\nEstimated Steps Needed\n\n\n\n\n🧑‍🍳 Cooking a meal for 4 people\nO(n)\nn = number of people (or portions)\n\n\n📚 Finding a word in a dictionary\nO(log n)\nn = number of words\n\n\n🧬 Exploring family tree generations\nO(2ⁿ)\nn = number of generations\n\n\n🧑‍🤝‍🧑 Introducing everyone at a party\nO(n²)\nn = number of people\n\n\n🔍 Searching for a name in your phone contacts\nO(n)\nn = number of contacts\n\n\n🎁 Figuring out gift wrapping combinations for 10 gifts\nO(n!)\nn = number of gifts\n\n\n📖 Reading every page in a book\nO(n)\nn = number of pages\n\n\n\n\n\n\n\n\n\nImportant\n\n\nListed according by easiest (O(1)) to hardest (O(2ⁿ))"
-  },
-  {
-    "objectID": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
-    "href": "materials/11_complexity_intro_slides.html#justifications-of-complexity-levels",
-    "title": "ALGORITHM COMPLEXITIES",
-    "section": "Justifications of Complexity Levels 🕵️‍♂️",
-    "text": "Justifications of Complexity Levels 🕵️‍♂️\n\n\n🧑‍🍳 Cooking a meal for 4 people → O(n)\nn = number of people (or portions) You typically scale ingredients and prep roughly linearly with servings.\n📚 Finding a word in a dictionary → O(log n) (if using a sorted dictionary)\nn = number of words Like binary search: you repeatedly halve the search space. If unsorted, it would degrade to O(n).\n🧬 Exploring family tree generations → O(2ⁿ) (exponential)\nn = number of generations Each generation roughly doubles (2 parents, 4 grandparents, etc.).\n🧑‍🤝‍🧑 Introducing everyone at a party → O(n²) n = number of people If everyone is introduced to everyone else, you get pairwise interactions.\n\n🔍 Searching for a name in your phone contacts → O(n) (typical case)\nn = number of contacts Linear scan if unsorted. Could be O(log n) if perfectly sorted and searched efficiently.\n🎁 Figuring out gift wrapping combinations for 10 gifts → O(n!) (factorial)\nn = number of gifts If considering all possible orderings or combinations of wrapping, this grows extremely fast.\n📖 Reading every page in a book → O(n)\nn = number of pages You process each page once."
   },
   {
     "objectID": "materials/1_project_files.html",
@@ -3252,7 +3434,7 @@
     "href": "playground/01_fibonacci.html",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "",
-    "text": "NoteLesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nUnderstand the mathematical definition of the Fibonacci sequence\nImplement recursive Fibonacci calculation\nCreate an iterative Fibonacci algorithm\nApply Binet’s formula for direct Fibonacci computation"
+    "text": "Lesson Objectives\n\n\n\nBy the end of this lesson, you will be able to:\n\nUnderstand the mathematical definition of the Fibonacci sequence\nImplement recursive Fibonacci calculation\nCreate an iterative Fibonacci algorithm\nApply Binet’s formula for direct Fibonacci computation"
   },
   {
     "objectID": "playground/01_fibonacci.html#introduction",
@@ -3287,14 +3469,14 @@
     "href": "playground/01_fibonacci.html#summary",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "Summary",
-    "text": "Summary\n\n\n\n\n\n\nTipWhat You Learned\n\n\n\nIn this lesson, you explored three different approaches to computing Fibonacci numbers:\n\nRecursive Implementation: Elegant but exponentially slow (O(2^n)) - demonstrates the mathematical definition directly\nIterative Implementation: Efficient and practical (O(n) time, O(1) space) - builds solutions step-by-step\n\nBinet’s Formula: Mathematically beautiful (O(1) but limited by precision) - uses the golden ratio for direct calculation\nPerformance Analysis: Understanding how algorithm choice dramatically affects execution time"
+    "text": "Summary\n\n\n\n\n\n\nWhat You Learned\n\n\n\nIn this lesson, you explored three different approaches to computing Fibonacci numbers:\n\nRecursive Implementation: Elegant but exponentially slow (O(2^n)) - demonstrates the mathematical definition directly\nIterative Implementation: Efficient and practical (O(n) time, O(1) space) - builds solutions step-by-step\n\nBinet’s Formula: Mathematically beautiful (O(1) but limited by precision) - uses the golden ratio for direct calculation\nPerformance Analysis: Understanding how algorithm choice dramatically affects execution time"
   },
   {
     "objectID": "playground/01_fibonacci.html#key-takeaways",
     "href": "playground/01_fibonacci.html#key-takeaways",
     "title": "Just For Fun 01: Fibonacci Sequence",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\nEach approach teaches us different programming and mathematical concepts: - Recursion and why it can be inefficient without optimization (memoization) - Iteration and the power of building solutions incrementally - Mathematical formulas and their computational trade-offs between elegance and precision - Algorithm complexity and how it affects real-world performance\nThe Fibonacci sequence appears everywhere in nature and mathematics, making it a perfect example for understanding both algorithmic thinking and mathematical beauty in programming!\n\n\n\n\n\n\n\nNoteAdditional Resources\n\n\n\n\nFibonacci Numbers in Nature\nGolden Ratio and Mathematics\nAlgorithm Complexity Guide"
+    "text": "Key Takeaways\nEach approach teaches us different programming and mathematical concepts: - Recursion and why it can be inefficient without optimization (memoization) - Iteration and the power of building solutions incrementally - Mathematical formulas and their computational trade-offs between elegance and precision - Algorithm complexity and how it affects real-world performance\nThe Fibonacci sequence appears everywhere in nature and mathematics, making it a perfect example for understanding both algorithmic thinking and mathematical beauty in programming!\n\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nFibonacci Numbers in Nature\nGolden Ratio and Mathematics\nAlgorithm Complexity Guide"
   },
   {
     "objectID": "playground/00_playground.html",
