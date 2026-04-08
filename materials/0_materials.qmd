@@ -121,8 +121,11 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [GitHub Classroom Link](https://classroom.github.com/a/4FxfSNEr)
 
 ## W12. More on Complexity and Algorithmic Problem Solving
-- **Final Project**: Python Application Development
+- **Final Project-INDIVIDUAL**: Python Application Development_Individual Project
   - [GitHub Classroom Link](https://classroom.github.com/a/NQebGEOv)
+- **Final Project-GROUPS**: Python Application Development_Group Project
+  - [GitHub Classroom Link](https://classroom.github.com/a/tfN0mkSZ)
+  - Note: If you are working in groups (as pairs), please click on the URL and first add your team name. Then have your partner click and select the team name. It is very hard to undo team paring setting and so please do not join the wrong group. If you have any questions about this, please let me know!
 - **Algorithm Complexity Demonstrations**
   - [HTML](12_comprehensive_big_o_slides.html) Slides
 
