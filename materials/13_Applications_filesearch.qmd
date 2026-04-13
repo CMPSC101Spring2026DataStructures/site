@@ -1,6 +1,6 @@
 ---
 title: "Building a File Search Application"
-subtitle: "Applications: Creating a Colorized File Search Tool with Python"
+subtitle: "The Steps for Creating a Colorized File Search Tool with Python"
 author: "Oliver Bonham-Carter"
 format:
   revealjs:

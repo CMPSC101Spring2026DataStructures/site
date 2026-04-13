@@ -130,7 +130,7 @@ Here you will find a listing of lesson materials for the course such as slides, 
   - [HTML](12_comprehensive_big_o_slides.html) Slides
 
 ## W13. Applications and Development
-- **Algorithm Complexity Demonstrations**
+- **Building a File Search Application**
   - [HTML](13_Applications_filesearch.html) Slides
 
 ---
