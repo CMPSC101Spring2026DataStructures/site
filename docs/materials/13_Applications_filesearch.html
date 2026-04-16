@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Building a File Search Application</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -380,23 +380,23 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>macOS / Linux:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="co"># Using the official installer (recommended)</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="co"># Using the official installer (recommended)</span></span>
 <span id="cb1-2"><a></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a><span class="co"># Or using Homebrew (macOS only)</span></span>
 <span id="cb1-5"><a></a><span class="ex">brew</span> install uv</span>
 <span id="cb1-6"><a></a></span>
 <span id="cb1-7"><a></a><span class="co"># Or using pip</span></span>
-<span id="cb1-8"><a></a><span class="ex">pip</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a></a><span class="ex">pip</span> install uv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Windows:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a></a><span class="co"># Using PowerShell</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a></a><span class="co"># Using PowerShell</span></span>
 <span id="cb2-2"><a></a>powershell <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co"># Or using pip</span></span>
 <span id="cb2-5"><a></a>pip install uv</span>
 <span id="cb2-6"><a></a></span>
 <span id="cb2-7"><a></a><span class="co"># Or using winget</span></span>
-<span id="cb2-8"><a></a>winget install <span class="op">--</span>id<span class="op">=</span>astral-sh<span class="op">.</span><span class="fu">uv</span> <span class="op">-</span>e</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a></a>winget install <span class="op">--</span>id<span class="op">=</span>astral-sh<span class="op">.</span><span class="fu">uv</span> <span class="op">-</span>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -416,8 +416,8 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>After installation</strong>, verify the installation was successful and that the software is available in your terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">uv</span> <span class="at">--version</span> <span class="co"># Should print the installed version of UV</span></span>
-<span id="cb3-2"><a></a><span class="ex">uv</span> sync <span class="co"># This will test the project setup and create a new uv.lock file when pyproject.toml is present</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">uv</span> <span class="at">--version</span> <span class="co"># Should print the installed version of UV</span></span>
+<span id="cb3-2"><a></a><span class="ex">uv</span> sync <span class="co"># This will test the project setup and create a new uv.lock file when pyproject.toml is present</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -431,7 +431,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Commands (all operating systems):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="co"># Create and navigate to your project directory</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="co"># Create and navigate to your project directory</span></span>
 <span id="cb4-2"><a></a><span class="fu">mkdir</span> fileSearch</span>
 <span id="cb4-3"><a></a><span class="bu">cd</span> fileSearch</span>
 <span id="cb4-4"><a></a></span>
@@ -442,7 +442,7 @@ Oliver Bonham-Carter
 <span id="cb4-9"><a></a><span class="co"># - pyproject.toml (project configuration)</span></span>
 <span id="cb4-10"><a></a><span class="co"># - README.md (documentation)</span></span>
 <span id="cb4-11"><a></a><span class="co"># - .python-version (Python version pin)</span></span>
-<span id="cb4-12"><a></a><span class="co"># - main.py (example file - we'll replace this)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-12"><a></a><span class="co"># - main.py (example file - we'll replace this)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -474,7 +474,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Create the proper directory structure:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co"># Remove the example file</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co"># Remove the example file</span></span>
 <span id="cb5-2"><a></a><span class="fu">rm</span> main.py</span>
 <span id="cb5-3"><a></a></span>
 <span id="cb5-4"><a></a><span class="co"># Create source directory</span></span>
@@ -486,7 +486,7 @@ Oliver Bonham-Carter
 <span id="cb5-10"><a></a><span class="co"># │   └── main.py (we will create this file here!)</span></span>
 <span id="cb5-11"><a></a><span class="co"># ├── pyproject.toml</span></span>
 <span id="cb5-12"><a></a><span class="co"># ├── README.md</span></span>
-<span id="cb5-13"><a></a><span class="co"># └── .python-version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-13"><a></a><span class="co"># └── .python-version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -508,14 +508,14 @@ Oliver Bonham-Carter
 <div class="callout-content">
 <p>Different projects require different libraries. For this project, we’ll use <strong>Rich</strong> to provide beautiful terminal formatting and colors.</p>
 <p><strong>Install it:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># Add Rich as a dependency</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># Add Rich as a dependency</span></span>
 <span id="cb6-2"><a></a><span class="ex">uv</span> add rich</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a><span class="co"># This automatically:</span></span>
 <span id="cb6-5"><a></a><span class="co"># - Installs Rich and its dependencies</span></span>
 <span id="cb6-6"><a></a><span class="co"># - Updates pyproject.toml</span></span>
 <span id="cb6-7"><a></a><span class="co"># - Creates/updates uv.lock</span></span>
-<span id="cb6-8"><a></a><span class="co"># - Activates the virtual environment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-8"><a></a><span class="co"># - Activates the virtual environment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -529,7 +529,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Verify installation:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="ex">uv</span> pip list</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="ex">uv</span> pip list</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a><span class="co"># You should see:</span></span>
 <span id="cb7-4"><a></a><span class="co"># Package         Version</span></span>
@@ -537,7 +537,7 @@ Oliver Bonham-Carter
 <span id="cb7-6"><a></a><span class="co"># rich           13.x.x</span></span>
 <span id="cb7-7"><a></a><span class="co"># markdown-it-py  x.x.x</span></span>
 <span id="cb7-8"><a></a><span class="co"># pygments       x.x.x</span></span>
-<span id="cb7-9"><a></a><span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-9"><a></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -741,7 +741,7 @@ Oliver Bonham-Carter
 <p><strong>Copy this code into <code>src/main.py</code>:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb8-2"><a></a><span class="im">import</span> argparse</span>
 <span id="cb8-3"><a></a><span class="im">from</span> rich.console <span class="im">import</span> Console</span>
 <span id="cb8-4"><a></a><span class="im">from</span> rich.panel <span class="im">import</span> Panel</span>
@@ -750,7 +750,7 @@ Oliver Bonham-Carter
 <span id="cb8-7"><a></a><span class="im">from</span> rich.text <span class="im">import</span> Text</span>
 <span id="cb8-8"><a></a></span>
 <span id="cb8-9"><a></a><span class="co"># Create a global console object for colorized output</span></span>
-<span id="cb8-10"><a></a>console <span class="op">=</span> Console()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-10"><a></a>console <span class="op">=</span> Console()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -772,7 +772,7 @@ Oliver Bonham-Carter
 <p><strong>Add this helper function:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> is_hidden(path):</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> is_hidden(path):</span>
 <span id="cb9-2"><a></a>    <span class="co">"""Check if any part of the path is hidden (starts with .)</span></span>
 <span id="cb9-3"><a></a><span class="co">    </span></span>
 <span id="cb9-4"><a></a><span class="co">    Args:</span></span>
@@ -783,7 +783,7 @@ Oliver Bonham-Carter
 <span id="cb9-9"><a></a><span class="co">    """</span></span>
 <span id="cb9-10"><a></a>    <span class="cf">return</span> <span class="bu">any</span>(part.startswith(<span class="st">'.'</span>) <span class="kw">and</span> part <span class="kw">not</span> <span class="kw">in</span> [<span class="st">'.'</span>, <span class="st">'..'</span>] </span>
 <span id="cb9-11"><a></a>               <span class="cf">for</span> part <span class="kw">in</span> path.parts)</span>
-<span id="cb9-12"><a></a><span class="co"># End of is_hidden()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-12"><a></a><span class="co"># End of is_hidden()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -815,7 +815,7 @@ Oliver Bonham-Carter
 <p><strong>Add the first search function:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> getPath(myFileType<span class="op">=</span><span class="st">"*"</span>, full_search<span class="op">=</span><span class="va">False</span>):</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> getPath(myFileType<span class="op">=</span><span class="st">"*"</span>, full_search<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb10-2"><a></a>    <span class="co">"""Get all files in the current directory and subdirectories.</span></span>
 <span id="cb10-3"><a></a><span class="co">    </span></span>
 <span id="cb10-4"><a></a><span class="co">    Args:</span></span>
@@ -836,7 +836,7 @@ Oliver Bonham-Carter
 <span id="cb10-19"><a></a>                   <span class="cf">if</span> p.is_file() <span class="kw">and</span> <span class="kw">not</span> is_hidden(p)]</span>
 <span id="cb10-20"><a></a>    </span>
 <span id="cb10-21"><a></a>    <span class="cf">return</span> myFiles</span>
-<span id="cb10-22"><a></a><span class="co"># End of getPath()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-22"><a></a><span class="co"># End of getPath()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -857,14 +857,14 @@ Oliver Bonham-Carter
 <li>List comprehension for efficient filtering</li>
 </ul>
 <p><strong>Example Usage:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Get all non-hidden files</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># Get all non-hidden files</span></span>
 <span id="cb11-2"><a></a>files <span class="op">=</span> getPath()</span>
 <span id="cb11-3"><a></a></span>
 <span id="cb11-4"><a></a><span class="co"># Get all files including hidden ones</span></span>
 <span id="cb11-5"><a></a>all_files <span class="op">=</span> getPath(full_search<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-6"><a></a></span>
 <span id="cb11-7"><a></a><span class="co"># Get only Python files (non-hidden)</span></span>
-<span id="cb11-8"><a></a>py_files <span class="op">=</span> getPath(myFileType<span class="op">=</span><span class="st">"*.py"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-8"><a></a>py_files <span class="op">=</span> getPath(myFileType<span class="op">=</span><span class="st">"*.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -877,7 +877,7 @@ Oliver Bonham-Carter
 <p><strong>Add filename search capability:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> searchFilenames(myPath, searchTerm, full_search<span class="op">=</span><span class="va">False</span>):</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> searchFilenames(myPath, searchTerm, full_search<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb12-2"><a></a>    <span class="co">"""Search for files with searchTerm in their filename.</span></span>
 <span id="cb12-3"><a></a><span class="co">    </span></span>
 <span id="cb12-4"><a></a><span class="co">    Args:</span></span>
@@ -901,7 +901,7 @@ Oliver Bonham-Carter
 <span id="cb12-22"><a></a>                   <span class="kw">and</span> <span class="kw">not</span> is_hidden(p)]</span>
 <span id="cb12-23"><a></a>    </span>
 <span id="cb12-24"><a></a>    <span class="cf">return</span> myFiles</span>
-<span id="cb12-25"><a></a><span class="co"># End of searchFilenames()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-25"><a></a><span class="co"># End of searchFilenames()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -914,7 +914,7 @@ Oliver Bonham-Carter
 <p><strong>Add content search capability:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">def</span> searchFileContents(myPath, searchTerm, myFileType<span class="op">=</span><span class="st">"*"</span>, </span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">def</span> searchFileContents(myPath, searchTerm, myFileType<span class="op">=</span><span class="st">"*"</span>, </span>
 <span id="cb13-2"><a></a>                      full_search<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb13-3"><a></a>    <span class="co">"""Search for files containing searchTerm in their contents.</span></span>
 <span id="cb13-4"><a></a><span class="co">    </span></span>
@@ -944,7 +944,7 @@ Oliver Bonham-Carter
 <span id="cb13-28"><a></a>                console.<span class="bu">print</span>(<span class="ss">f"[yellow]Warning: Error reading file </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">[/yellow]"</span>)</span>
 <span id="cb13-29"><a></a>    </span>
 <span id="cb13-30"><a></a>    <span class="cf">return</span> myFiles</span>
-<span id="cb13-31"><a></a><span class="co"># End of searchFileContents()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-31"><a></a><span class="co"># End of searchFileContents()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -983,7 +983,7 @@ Oliver Bonham-Carter
 <p><strong>Add syntax-highlighted display:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> printFileContents(filePath):</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> printFileContents(filePath):</span>
 <span id="cb14-2"><a></a>    <span class="co">"""Display file contents with syntax highlighting.</span></span>
 <span id="cb14-3"><a></a><span class="co">    </span></span>
 <span id="cb14-4"><a></a><span class="co">    Args:</span></span>
@@ -1008,7 +1008,7 @@ Oliver Bonham-Carter
 <span id="cb14-23"><a></a>                                  border_style<span class="op">=</span><span class="st">"blue"</span>))</span>
 <span id="cb14-24"><a></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb14-25"><a></a>        console.<span class="bu">print</span>(<span class="ss">f"[red]Error reading file </span><span class="sc">{</span>filePath<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">[/red]"</span>)</span>
-<span id="cb14-26"><a></a><span class="co"># End of printFileContents()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-26"><a></a><span class="co"># End of printFileContents()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1060,7 +1060,7 @@ Oliver Bonham-Carter
 <p><strong>Set up command-line interface:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> main():</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> main():</span>
 <span id="cb15-2"><a></a>    <span class="co"># Set up command-line argument parser</span></span>
 <span id="cb15-3"><a></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
 <span id="cb15-4"><a></a>        description<span class="op">=</span><span class="st">'Search for files by filename or file contents'</span>,</span>
@@ -1083,7 +1083,7 @@ Oliver Bonham-Carter
 <span id="cb15-21"><a></a>        <span class="st">'--filecontents'</span>,</span>
 <span id="cb15-22"><a></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
 <span id="cb15-23"><a></a>        <span class="bu">help</span><span class="op">=</span><span class="st">'Search term to find in file contents'</span></span>
-<span id="cb15-24"><a></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-24"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1099,7 +1099,7 @@ Oliver Bonham-Carter
 <p><strong>Continue adding arguments:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>    parser.add_argument(</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>    parser.add_argument(</span>
 <span id="cb16-2"><a></a>        <span class="st">'--path'</span>,</span>
 <span id="cb16-3"><a></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
 <span id="cb16-4"><a></a>        default<span class="op">=</span><span class="st">'./'</span>,</span>
@@ -1119,7 +1119,7 @@ Oliver Bonham-Carter
 <span id="cb16-18"><a></a>        console.<span class="bu">print</span>(<span class="st">"[bold yellow]Search mode: FULL (including hidden files/directories)[/bold yellow]</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb16-19"><a></a>    <span class="cf">else</span>:</span>
 <span id="cb16-20"><a></a>        console.<span class="bu">print</span>(<span class="st">"[bold green]Search mode: NORMAL (excluding hidden files/directories)[/bold green]"</span>)</span>
-<span id="cb16-21"><a></a>        console.<span class="bu">print</span>(<span class="st">"[dim]Tip: Use --full-search to include hidden files and directories[/dim]</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-21"><a></a>        console.<span class="bu">print</span>(<span class="st">"[dim]Tip: Use --full-search to include hidden files and directories[/dim]</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1132,7 +1132,7 @@ Oliver Bonham-Carter
 <p><strong>Handle no arguments (list all files):</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>    <span class="co"># If no arguments provided, show all files</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>    <span class="co"># If no arguments provided, show all files</span></span>
 <span id="cb17-2"><a></a>    <span class="cf">if</span> <span class="kw">not</span> args.filename <span class="kw">and</span> <span class="kw">not</span> args.filecontents:</span>
 <span id="cb17-3"><a></a>        myFiles <span class="op">=</span> getPath(full_search<span class="op">=</span>args.full_search)</span>
 <span id="cb17-4"><a></a>        console.<span class="bu">print</span>(Panel(<span class="st">"[bold cyan]All files in the current directory and subdirectories[/bold cyan]"</span>, </span>
@@ -1152,7 +1152,7 @@ Oliver Bonham-Carter
 <span id="cb17-18"><a></a>            console.<span class="bu">print</span>(<span class="st">"[yellow]No files found.[/yellow]"</span>)</span>
 <span id="cb17-19"><a></a>        </span>
 <span id="cb17-20"><a></a>        console.<span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">[dim]Tip: Use --filename or --filecontents to search for specific files[/dim]"</span>)</span>
-<span id="cb17-21"><a></a>        console.<span class="bu">print</span>(<span class="st">"[dim]Run with --help for more information[/dim]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-21"><a></a>        console.<span class="bu">print</span>(<span class="st">"[dim]Run with --help for more information[/dim]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1165,7 +1165,7 @@ Oliver Bonham-Carter
 <p><strong>Handle filename search:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>    <span class="co"># Search by filename if provided</span></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>    <span class="co"># Search by filename if provided</span></span>
 <span id="cb18-2"><a></a>    <span class="cf">if</span> args.filename:</span>
 <span id="cb18-3"><a></a>        myFiles <span class="op">=</span> searchFilenames(args.path, args.filename, </span>
 <span id="cb18-4"><a></a>                                 full_search<span class="op">=</span>args.full_search)</span>
@@ -1183,7 +1183,7 @@ Oliver Bonham-Carter
 <span id="cb18-16"><a></a>            console.<span class="bu">print</span>(table)</span>
 <span id="cb18-17"><a></a>            console.<span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">[bold green]Total: </span><span class="sc">{</span><span class="bu">len</span>(myFiles)<span class="sc">}</span><span class="ss"> files found[/bold green]"</span>)</span>
 <span id="cb18-18"><a></a>        <span class="cf">else</span>:</span>
-<span id="cb18-19"><a></a>            console.<span class="bu">print</span>(<span class="st">"[yellow]No files found.[/yellow]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-19"><a></a>            console.<span class="bu">print</span>(<span class="st">"[yellow]No files found.[/yellow]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1196,7 +1196,7 @@ Oliver Bonham-Carter
 <p><strong>Handle content search:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>    <span class="co"># Search by file contents if provided</span></span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>    <span class="co"># Search by file contents if provided</span></span>
 <span id="cb19-2"><a></a>    <span class="cf">if</span> args.filecontents:</span>
 <span id="cb19-3"><a></a>        myFiles <span class="op">=</span> searchFileContents(args.path, args.filecontents, </span>
 <span id="cb19-4"><a></a>                                    full_search<span class="op">=</span>args.full_search)</span>
@@ -1214,7 +1214,7 @@ Oliver Bonham-Carter
 <span id="cb19-16"><a></a>    </span>
 <span id="cb19-17"><a></a>    console.<span class="bu">print</span>(<span class="st">"[bold green]✓ Done.[/bold green]"</span>)</span>
 <span id="cb19-18"><a></a></span>
-<span id="cb19-19"><a></a><span class="co"># End of main()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-19"><a></a><span class="co"># End of main()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1227,8 +1227,8 @@ Oliver Bonham-Carter
 <p><strong>Add the program entry point at the very end:</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb20-2"><a></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb20-2"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1295,13 +1295,13 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Test 1: List all files</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">python</span> src/main.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">python</span> src/main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Table showing all non-hidden files in current directory</p>
 <p><strong>Test 2: Search by filename</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Finds <code>main.py</code> and displays in table</p>
 <p><strong>Test 3: Search by content</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"import"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"import"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Finds files with “import” and shows syntax-highlighted contents</p>
 </div>
 </div>
@@ -1316,16 +1316,16 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Test 4: Full search mode</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> pyproject <span class="at">--full-search</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> pyproject <span class="at">--full-search</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Finds <code>pyproject.toml</code> (even if in hidden directory)</p>
 <p><strong>Test 5: Combined search</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> py <span class="at">--filecontents</span> <span class="st">"def"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> py <span class="at">--filecontents</span> <span class="st">"def"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Finds Python files containing function definitions</p>
 <p><strong>Test 6: Custom path</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./src <span class="at">--filename</span> py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./src <span class="at">--filename</span> py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Only searches in <code>src/</code> directory</p>
 <p><strong>Test 7: Help message</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Expected: Shows all available options</p>
 </div>
 </div>
@@ -1340,7 +1340,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Create test files to verify functionality:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a></a><span class="co"># Create a test directory</span></span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a></a><span class="co"># Create a test directory</span></span>
 <span id="cb28-2"><a></a><span class="fu">mkdir</span> test_data</span>
 <span id="cb28-3"><a></a><span class="bu">cd</span> test_data</span>
 <span id="cb28-4"><a></a></span>
@@ -1353,7 +1353,7 @@ Oliver Bonham-Carter
 <span id="cb28-11"><a></a><span class="bu">echo</span> <span class="st">"Secret file"</span> <span class="op">&gt;</span> .hidden/secret.txt</span>
 <span id="cb28-12"><a></a></span>
 <span id="cb28-13"><a></a><span class="co"># Go back to project root</span></span>
-<span id="cb28-14"><a></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-14"><a></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1369,7 +1369,7 @@ Oliver Bonham-Carter
 <p><strong>Verify your program works correctly with these test files!</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a></a><span class="co"># Should find 3 Python files</span></span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a></a><span class="co"># Should find 3 Python files</span></span>
 <span id="cb29-2"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./test_data <span class="at">--filename</span> py</span>
 <span id="cb29-3"><a></a></span>
 <span id="cb29-4"><a></a><span class="co"># Should find files with 'import'</span></span>
@@ -1379,7 +1379,7 @@ Oliver Bonham-Carter
 <span id="cb29-8"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./test_data <span class="at">--filename</span> secret</span>
 <span id="cb29-9"><a></a></span>
 <span id="cb29-10"><a></a><span class="co"># SHOULD find .hidden files (full search mode)</span></span>
-<span id="cb29-11"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./test_data <span class="at">--filename</span> secret <span class="at">--full-search</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-11"><a></a><span class="ex">python</span> src/main.py <span class="at">--path</span> ./test_data <span class="at">--filename</span> secret <span class="at">--full-search</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1393,9 +1393,9 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Install pytest:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Create <code>tests/test_main.py</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> pytest</span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="im">import</span> pytest</span>
 <span id="cb31-2"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb31-3"><a></a><span class="im">import</span> sys</span>
 <span id="cb31-4"><a></a>sys.path.insert(<span class="dv">0</span>, <span class="bu">str</span>(Path(<span class="va">__file__</span>).parent.parent <span class="op">/</span> <span class="st">"src"</span>))</span>
@@ -1408,7 +1408,7 @@ Oliver Bonham-Carter
 <span id="cb31-11"><a></a>    <span class="cf">assert</span> is_hidden(Path(<span class="st">"src/main.py"</span>)) <span class="op">==</span> <span class="va">False</span></span>
 <span id="cb31-12"><a></a>    <span class="cf">assert</span> is_hidden(Path(<span class="st">".gitignore"</span>)) <span class="op">==</span> <span class="va">True</span></span>
 <span id="cb31-13"><a></a>    <span class="cf">assert</span> is_hidden(Path(<span class="st">"README.md"</span>)) <span class="op">==</span> <span class="va">False</span></span>
-<span id="cb31-14"><a></a><span class="co"># End of test_is_hidden()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-14"><a></a><span class="co"># End of test_is_hidden()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1421,13 +1421,13 @@ Oliver Bonham-Carter
 <p><strong>Optional: Unit Tests, Continued</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="kw">def</span> test_getPath():</span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="kw">def</span> test_getPath():</span>
 <span id="cb32-2"><a></a>    <span class="co">"""Test file listing"""</span></span>
 <span id="cb32-3"><a></a>    files <span class="op">=</span> getPath(full_search<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb32-4"><a></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(files, <span class="bu">list</span>)</span>
 <span id="cb32-5"><a></a>    <span class="co"># Should not include hidden files</span></span>
 <span id="cb32-6"><a></a>    <span class="cf">assert</span> <span class="kw">not</span> <span class="bu">any</span>(is_hidden(f) <span class="cf">for</span> f <span class="kw">in</span> files)</span>
-<span id="cb32-7"><a></a><span class="co"># End of test_getPath()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-7"><a></a><span class="co"># End of test_getPath()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1440,12 +1440,12 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="kw">def</span> test_searchFilenames():</span>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="kw">def</span> test_searchFilenames():</span>
 <span id="cb33-2"><a></a>    <span class="co">"""Test filename search"""</span></span>
 <span id="cb33-3"><a></a>    <span class="co"># Search for Python files</span></span>
 <span id="cb33-4"><a></a>    py_files <span class="op">=</span> searchFilenames(<span class="st">"./src"</span>, <span class="st">"py"</span>, full_search<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb33-5"><a></a>    <span class="cf">assert</span> <span class="bu">all</span>(<span class="st">".py"</span> <span class="kw">in</span> <span class="bu">str</span>(f) <span class="kw">or</span> <span class="st">"py"</span> <span class="kw">in</span> f.name <span class="cf">for</span> f <span class="kw">in</span> py_files)</span>
-<span id="cb33-6"><a></a><span class="co"># End of test_searchFilenames()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-6"><a></a><span class="co"># End of test_searchFilenames()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1459,12 +1459,12 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Run all tests:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a></a><span class="ex">pytest</span> tests/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a></a><span class="ex">pytest</span> tests/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Run with verbose output:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a></a><span class="ex">pytest</span> <span class="at">-v</span> tests/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a></a><span class="ex">pytest</span> <span class="at">-v</span> tests/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Run with coverage report:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest-cov</span>
-<span id="cb36-2"><a></a><span class="ex">pytest</span> <span class="at">--cov</span><span class="op">=</span>src tests/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest-cov</span>
+<span id="cb36-2"><a></a><span class="ex">pytest</span> <span class="at">--cov</span><span class="op">=</span>src tests/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1530,15 +1530,15 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 </div>
 <div class="callout-content">
 <p><strong>Find all Python files with a specific import:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"from pathlib import Path"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"from pathlib import Path"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Locate all configuration files:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> config</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Search for TODO comments across your project:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"TODO"</span> <span class="at">--full-search</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"TODO"</span> <span class="at">--full-search</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Find all markdown documentation:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> .md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filename</span> .md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Audit for security issues:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"password"</span> <span class="at">--full-search</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a></a><span class="ex">python</span> src/main.py <span class="at">--filecontents</span> <span class="st">"password"</span> <span class="at">--full-search</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1664,7 +1664,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 </div>
 <div class="callout-content">
 <p><strong>Modify <code>searchFileContents()</code> to return count information:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="kw">def</span> searchFileContents(myPath, searchTerm, myFileType<span class="op">=</span><span class="st">"*"</span>, full_search<span class="op">=</span><span class="va">False</span>):</span>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a><span class="kw">def</span> searchFileContents(myPath, searchTerm, myFileType<span class="op">=</span><span class="st">"*"</span>, full_search<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb43-2"><a></a>    <span class="co">"""Search for files containing searchTerm in their contents."""</span></span>
 <span id="cb43-3"><a></a>    base_path <span class="op">=</span> Path(myPath)</span>
 <span id="cb43-4"><a></a>    </span>
@@ -1688,7 +1688,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 <span id="cb43-22"><a></a><span class="cf">if</span> myFiles:</span>
 <span id="cb43-23"><a></a>    <span class="cf">for</span> idx, (file_path, count) <span class="kw">in</span> <span class="bu">enumerate</span>(myFiles, <span class="dv">1</span>):</span>
 <span id="cb43-24"><a></a>        console.<span class="bu">print</span>(<span class="ss">f"[bold yellow]</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss"> (Found </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> times)[/bold yellow]"</span>)</span>
-<span id="cb43-25"><a></a>        printFileContents(file_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb43-25"><a></a>        printFileContents(file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1702,7 +1702,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 </div>
 <div class="callout-content">
 <p><strong>Add to argument parser:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a>parser.add_argument(</span>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a>parser.add_argument(</span>
 <span id="cb44-2"><a></a>    <span class="st">'--min-size'</span>,</span>
 <span id="cb44-3"><a></a>    <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
 <span id="cb44-4"><a></a>    <span class="bu">help</span><span class="op">=</span><span class="st">'Minimum file size (e.g., 1KB, 1MB)'</span></span>
@@ -1729,7 +1729,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 <span id="cb44-25"><a></a>    min_bytes <span class="op">=</span> parse_size(args.min_size) <span class="cf">if</span> args.min_size <span class="cf">else</span> <span class="dv">0</span></span>
 <span id="cb44-26"><a></a>    max_bytes <span class="op">=</span> parse_size(args.max_size) <span class="cf">if</span> args.max_size <span class="cf">else</span> <span class="bu">float</span>(<span class="st">'inf'</span>)</span>
 <span id="cb44-27"><a></a>    myFiles <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> myFiles </span>
-<span id="cb44-28"><a></a>               <span class="cf">if</span> min_bytes <span class="op">&lt;=</span> f.stat().st_size <span class="op">&lt;=</span> max_bytes]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb44-28"><a></a>               <span class="cf">if</span> min_bytes <span class="op">&lt;=</span> f.stat().st_size <span class="op">&lt;=</span> max_bytes]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1745,7 +1745,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb45-2"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb45-3"><a></a></span>
 <span id="cb45-4"><a></a><span class="co"># Define the file path</span></span>
@@ -1759,7 +1759,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
 <span id="cb45-12"><a></a>created_date <span class="op">=</span> datetime.fromtimestamp(stats.st_ctime)</span>
 <span id="cb45-13"><a></a></span>
 <span id="cb45-14"><a></a><span class="bu">print</span>(<span class="ss">f"Last Modified: </span><span class="sc">{</span>modified_date<span class="sc">.</span>strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb45-15"><a></a><span class="bu">print</span>(<span class="ss">f"Created: </span><span class="sc">{</span>created_date<span class="sc">.</span>strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb45-15"><a></a><span class="bu">print</span>(<span class="ss">f"Created: </span><span class="sc">{</span>created_date<span class="sc">.</span>strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1994,7 +1994,7 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2068,14 +2068,13 @@ tests/test_main.py::test_searchFilenames PASSED               [100%]
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

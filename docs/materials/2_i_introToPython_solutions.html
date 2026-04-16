@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 2: Python Programming: Concepts I</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -249,10 +249,10 @@ Oliver Bonham-Carter
 </section>
 <section id="python-code-sample" class="slide level2">
 <h2>Python Code Sample</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>age <span class="op">=</span> <span class="dv">18</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>age <span class="op">=</span> <span class="dv">18</span></span>
 <span id="cb1-2"><a></a>pi <span class="op">=</span> <span class="fl">3.14159</span></span>
 <span id="cb1-3"><a></a>greeting <span class="op">=</span> <span class="st">"Hello, world!"</span></span>
-<span id="cb1-4"><a></a>is_active <span class="op">=</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a></a>is_active <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -304,7 +304,7 @@ Oliver Bonham-Carter
 <p>Literals are fixed values written directly in your code and are used to assign values to variables or as standalone values in expressions.</p>
 <!-- ::: {.example-large} -->
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">"""</span></span>
 <span id="cb2-2"><a></a><span class="co">This example shows different types of literals.</span></span>
 <span id="cb2-3"><a></a><span class="co">"""</span></span>
 <span id="cb2-4"><a></a>integer_literal <span class="op">=</span> <span class="dv">42</span>        <span class="co"># An integer literal</span></span>
@@ -313,7 +313,7 @@ Oliver Bonham-Carter
 <span id="cb2-7"><a></a>boolean_literal <span class="op">=</span> <span class="va">True</span>      <span class="co"># A boolean literal</span></span>
 <span id="cb2-8"><a></a></span>
 <span id="cb2-9"><a></a><span class="bu">print</span>(integer_literal, float_literal, string_literal, boolean_literal)</span>
-<span id="cb2-10"><a></a><span class="co"># Output: 42 3.14 hello True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-10"><a></a><span class="co"># Output: 42 3.14 hello True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code demonstrates how to use different types of literals in Python.</p>
 </section>
@@ -323,7 +323,7 @@ Oliver Bonham-Carter
 <p>Variables store data for use in your program which can be manipulated by <em>operators</em> (e.g., addition, comparison, and assignment).</p>
 <!-- ::: {.example-large} -->
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
 <span id="cb3-2"><a></a><span class="co">This example shows how to use variables and operators.</span></span>
 <span id="cb3-3"><a></a><span class="co">"""</span></span>
 <span id="cb3-4"><a></a>x <span class="op">=</span> <span class="dv">10</span>      <span class="co"># Assign 10 to x</span></span>
@@ -333,7 +333,7 @@ Oliver Bonham-Carter
 <span id="cb3-8"><a></a>prod_xy <span class="op">=</span> x <span class="op">*</span> y        <span class="co"># Multiplication operator</span></span>
 <span id="cb3-9"><a></a>is_equal <span class="op">=</span> x <span class="op">==</span> y      <span class="co"># Comparison operator</span></span>
 <span id="cb3-10"><a></a><span class="bu">print</span>(sum_xy, diff_xy, prod_xy, is_equal)</span>
-<span id="cb3-11"><a></a><span class="co"># Output: 15 5 50 False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-11"><a></a><span class="co"># Output: 15 5 50 False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code uses variables and operators to do math and compare values.</p>
 </section>
@@ -343,7 +343,7 @@ Oliver Bonham-Carter
 <p>Loops repeat actions. Conditionals let your code make decisions.</p>
 <!-- ::: {.example-large} -->
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">"""</span></span>
 <span id="cb4-2"><a></a><span class="co">This example prints numbers and checks if they are even or odd.</span></span>
 <span id="cb4-3"><a></a><span class="co">"""</span></span>
 <span id="cb4-4"><a></a></span>
@@ -355,7 +355,7 @@ Oliver Bonham-Carter
 <span id="cb4-10"><a></a><span class="co"># Output:</span></span>
 <span id="cb4-11"><a></a><span class="co"># 1 is odd</span></span>
 <span id="cb4-12"><a></a><span class="co"># 2 is even</span></span>
-<span id="cb4-13"><a></a><span class="co"># and similar up to 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-13"><a></a><span class="co"># and similar up to 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code loops through numbers and uses a conditional to check if each is even or odd.</p>
 </section>
@@ -365,7 +365,7 @@ Oliver Bonham-Carter
 <p>Squaring means multiplying a number by itself. There are several ways to do this in Python.</p>
 <!-- ::: {.example-large} -->
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
 <span id="cb5-2"><a></a><span class="co">This example shows three ways to square a number.</span></span>
 <span id="cb5-3"><a></a><span class="co">"""</span></span>
 <span id="cb5-4"><a></a><span class="kw">def</span> square(n):</span>
@@ -377,7 +377,7 @@ Oliver Bonham-Carter
 <span id="cb5-10"><a></a>squ2 <span class="op">=</span> num <span class="op">**</span> <span class="dv">2</span>          <span class="co"># Exponentiation</span></span>
 <span id="cb5-11"><a></a></span>
 <span id="cb5-12"><a></a><span class="bu">print</span>(<span class="ss">f"squ1: </span><span class="sc">{</span>squ1<span class="sc">}</span><span class="ss">, squ2: </span><span class="sc">{</span>squ2<span class="sc">}</span><span class="ss">, square(num): </span><span class="sc">{</span>square(num)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-13"><a></a><span class="co"># Output: squ1: 49, squ2: 49, square(num): 49</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-13"><a></a><span class="co"># Output: squ1: 49, squ2: 49, square(num): 49</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code demonstrates three ways to square a number in Python.</p>
 </section>
@@ -387,7 +387,7 @@ Oliver Bonham-Carter
 <p>Strings store text. Slicing lets you extract parts of a string.</p>
 <!-- ::: {.example-large} -->
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">"""</span></span>
 <span id="cb6-2"><a></a><span class="co">This example slices a string in different ways.</span></span>
 <span id="cb6-3"><a></a><span class="co">"""</span></span>
 <span id="cb6-4"><a></a></span>
@@ -399,7 +399,7 @@ Oliver Bonham-Carter
 <span id="cb6-10"><a></a></span>
 <span id="cb6-11"><a></a><span class="bu">print</span>(first_word)    <span class="co"># Output: Python</span></span>
 <span id="cb6-12"><a></a><span class="bu">print</span>(last_word)     <span class="co"># Output: awesome!</span></span>
-<span id="cb6-13"><a></a><span class="bu">print</span>(every_other)   <span class="co"># Output: Pto saeo!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-13"><a></a><span class="bu">print</span>(every_other)   <span class="co"># Output: Pto saeo!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code shows how to slice strings to get different parts or patterns.</p>
 </section>
@@ -416,7 +416,7 @@ Oliver Bonham-Carter
 <h2>Challenge 1: Literal Mix-Up</h2>
 <p>Write code that uses at least three different types of literals (integer, float, string, boolean) and prints them in a single sentence.</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img data-src="graphics/join.png" style="width:100.0%">
@@ -426,7 +426,7 @@ Oliver Bonham-Carter
 <h2>Challenge 2: Variable Math</h2>
 <p>Create two variables, perform addition, subtraction, multiplication, and division, and print the results with clear labels.</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img data-src="graphics/with_op.png" style="width:90.0%">
@@ -436,7 +436,7 @@ Oliver Bonham-Carter
 <h2>Challenge 3: Loop &amp; Conditional Fun</h2>
 <p>Write a loop that prints numbers from 1 to 10. For each number, print whether it is a multiple of 3 or not.</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img data-src="graphics/loop.png" style="width:50.0%">
@@ -446,7 +446,7 @@ Oliver Bonham-Carter
 <h2>Challenge 4: Squaring Game using Functions</h2>
 <p>Write a function that takes a number and returns both its square and its cube. Print the results for the number 5.</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img data-src="graphics/function.png" style="width:40.0%">
@@ -461,7 +461,7 @@ Oliver Bonham-Carter
 <li>Every third character</li>
 </ul>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># </span><span class="al">TODO</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img data-src="graphics/slices.png" style="width:100.0%">
@@ -475,11 +475,11 @@ Oliver Bonham-Carter
 <section id="solution-1-literal-mix-up" class="slide level2">
 <h2>Solution 1: Literal Mix-Up</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>integer <span class="op">=</span> <span class="dv">7</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>integer <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb12-2"><a></a>float_num <span class="op">=</span> <span class="fl">2.5</span></span>
 <span id="cb12-3"><a></a>text <span class="op">=</span> <span class="st">"apples"</span></span>
 <span id="cb12-4"><a></a>is_fresh <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb12-5"><a></a><span class="bu">print</span>(<span class="ss">f"I bought </span><span class="sc">{</span>integer<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>text<span class="sc">}</span><span class="ss">, each cost </span><span class="sc">{</span>float_num<span class="sc">}</span><span class="ss"> dollars. Fresh? </span><span class="sc">{</span>is_fresh<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-5"><a></a><span class="bu">print</span>(<span class="ss">f"I bought </span><span class="sc">{</span>integer<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>text<span class="sc">}</span><span class="ss">, each cost </span><span class="sc">{</span>float_num<span class="sc">}</span><span class="ss"> dollars. Fresh? </span><span class="sc">{</span>is_fresh<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code uses integer, float, string, and boolean literals in a sentence.</p>
 <center>
@@ -489,12 +489,12 @@ Oliver Bonham-Carter
 <section id="solution-2-variable-math" class="slide level2">
 <h2>Solution 2: Variable Math</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>x <span class="op">=</span> <span class="dv">12</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>x <span class="op">=</span> <span class="dv">12</span></span>
 <span id="cb13-2"><a></a>y <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb13-3"><a></a><span class="bu">print</span>(<span class="ss">f"Addition: </span><span class="sc">{</span>x <span class="op">+</span> y<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb13-4"><a></a><span class="bu">print</span>(<span class="ss">f"Subtraction: </span><span class="sc">{</span>x <span class="op">-</span> y<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb13-5"><a></a><span class="bu">print</span>(<span class="ss">f"Multiplication: </span><span class="sc">{</span>x <span class="op">*</span> y<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-6"><a></a><span class="bu">print</span>(<span class="ss">f"Division: </span><span class="sc">{</span>x <span class="op">/</span> y<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-6"><a></a><span class="bu">print</span>(<span class="ss">f"Division: </span><span class="sc">{</span>x <span class="op">/</span> y<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code performs math operations and prints results with labels.</p>
 <center>
@@ -504,11 +504,11 @@ Oliver Bonham-Carter
 <section id="solution-3-loop-conditional-fun" class="slide level2">
 <h2>Solution 3: Loop &amp; Conditional Fun</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb14-2"><a></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb14-3"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is a multiple of 3"</span>)</span>
 <span id="cb14-4"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb14-5"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is not a multiple of 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-5"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> is not a multiple of 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code loops through numbers and checks for multiples of 3.</p>
 <center>
@@ -518,12 +518,12 @@ Oliver Bonham-Carter
 <section id="solution-4-squaring-game" class="slide level2">
 <h2>Solution 4: Squaring Game</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> square_and_cube(num):</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> square_and_cube(num):</span>
 <span id="cb15-2"><a></a>    <span class="co">"""Returns the square and cube of num."""</span></span>
 <span id="cb15-3"><a></a>    <span class="cf">return</span> num <span class="op">**</span> <span class="dv">2</span>, num <span class="op">**</span> <span class="dv">3</span></span>
 <span id="cb15-4"><a></a></span>
 <span id="cb15-5"><a></a>sq, cu <span class="op">=</span> square_and_cube(<span class="dv">5</span>)</span>
-<span id="cb15-6"><a></a><span class="bu">print</span>(<span class="ss">f"Square: </span><span class="sc">{</span>sq<span class="sc">}</span><span class="ss">, Cube: </span><span class="sc">{</span>cu<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-6"><a></a><span class="bu">print</span>(<span class="ss">f"Square: </span><span class="sc">{</span>sq<span class="sc">}</span><span class="ss">, Cube: </span><span class="sc">{</span>cu<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function returns both the square and cube of a number.</p>
 <center>
@@ -533,10 +533,10 @@ Oliver Bonham-Carter
 <section id="solution-5-string-slicing-mystery" class="slide level2">
 <h2>Solution 5: String Slicing Mystery</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>mystery <span class="op">=</span> <span class="st">"QuartoPythonRocks!"</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>mystery <span class="op">=</span> <span class="st">"QuartoPythonRocks!"</span></span>
 <span id="cb16-2"><a></a><span class="bu">print</span>(mystery[:<span class="dv">6</span>])      <span class="co"># First 6 characters</span></span>
 <span id="cb16-3"><a></a><span class="bu">print</span>(mystery[<span class="op">-</span><span class="dv">5</span>:])     <span class="co"># Last 5 characters</span></span>
-<span id="cb16-4"><a></a><span class="bu">print</span>(mystery[::<span class="dv">3</span>])     <span class="co"># Every third character</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-4"><a></a><span class="bu">print</span>(mystery[::<span class="dv">3</span>])     <span class="co"># Every third character</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code slices the string in three different ways.</p>
 <center>
@@ -736,7 +736,7 @@ Oliver Bonham-Carter
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -810,14 +810,13 @@ Oliver Bonham-Carter
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

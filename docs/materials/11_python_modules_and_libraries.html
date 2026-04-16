@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Creating Your Own Python Modules</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -305,7 +305,7 @@ Oliver Bonham-Carter
 <div class="column" style="width:50%;">
 <p><strong>Built-in Modules</strong></p>
 <p>Python comes with many ready-to-use modules:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> math</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a></a><span class="im">import</span> random</span>
 <span id="cb1-3"><a></a><span class="im">import</span> datetime</span>
 <span id="cb1-4"><a></a><span class="im">import</span> os</span>
@@ -318,7 +318,7 @@ Oliver Bonham-Carter
 <span id="cb1-11"><a></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
 <span id="cb1-12"><a></a><span class="im">from</span> textblob <span class="im">import</span> TextBlob</span>
 <span id="cb1-13"><a></a><span class="im">import</span> nltk</span>
-<span id="cb1-14"><a></a><span class="im">from</span> collections <span class="im">import</span> Counter</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-14"><a></a><span class="im">from</span> collections <span class="im">import</span> Counter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>We have already worked with some of these!</li>
 <li>Already installed with Python</li>
@@ -328,7 +328,7 @@ Oliver Bonham-Carter
 </div><div class="column" style="width:50%;">
 <p><strong>Your Own Modules</strong></p>
 <p>You can create custom modules:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># my_utilities.py</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># my_utilities.py</span></span>
 <span id="cb2-2"><a></a><span class="kw">def</span> greet(name):</span>
 <span id="cb2-3"><a></a>    <span class="cf">return</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
 <span id="cb2-4"><a></a></span>
@@ -341,7 +341,7 @@ Oliver Bonham-Carter
 <span id="cb2-11"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">int</span>(n<span class="op">**</span><span class="fl">0.5</span>) <span class="op">+</span> <span class="dv">1</span>):</span>
 <span id="cb2-12"><a></a>        <span class="cf">if</span> n <span class="op">%</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb2-13"><a></a>            <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb2-14"><a></a>    <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-14"><a></a>    <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Tailored to your needs</li>
 <li>Reusable across projects</li>
@@ -369,7 +369,7 @@ Oliver Bonham-Carter
 <section id="step-1-create-a-python-file" class="slide level2">
 <h2>Step 1: Create a Python File</h2>
 <p>Create a file named <code>mathtools.py</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
 <span id="cb3-2"><a></a><span class="co">mathtools.py - A module for useful math operations.</span></span>
 <span id="cb3-3"><a></a></span>
 <span id="cb3-4"><a></a><span class="co">This module provides functions for common mathematical calculations.</span></span>
@@ -391,7 +391,7 @@ Oliver Bonham-Carter
 <span id="cb3-20"><a></a>    <span class="co">"""Calculate the factorial of n."""</span></span>
 <span id="cb3-21"><a></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
 <span id="cb3-22"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb3-23"><a></a>    <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-23"><a></a>    <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 <div style="color: #27AE60;">
 <p><strong>Best Practice:</strong> Always include a docstring at the top of your module and for each function! 📝</p>
@@ -402,13 +402,13 @@ Oliver Bonham-Carter
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Create a Program That Imports Your Module</strong></p>
 <p>Create <code>test_mathtools.py</code> in the <strong>same directory</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> mathtools</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> mathtools</span>
 <span id="cb4-2"><a></a></span>
 <span id="cb4-3"><a></a><span class="co"># Use the functions from your module</span></span>
 <span id="cb4-4"><a></a><span class="bu">print</span>(mathtools.square(<span class="dv">5</span>))        <span class="co"># Output: 25</span></span>
 <span id="cb4-5"><a></a><span class="bu">print</span>(mathtools.cube(<span class="dv">3</span>))          <span class="co"># Output: 27</span></span>
 <span id="cb4-6"><a></a><span class="bu">print</span>(mathtools.is_even(<span class="dv">10</span>))      <span class="co"># Output: True</span></span>
-<span id="cb4-7"><a></a><span class="bu">print</span>(mathtools.factorial(<span class="dv">5</span>))     <span class="co"># Output: 120</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-7"><a></a><span class="bu">print</span>(mathtools.factorial(<span class="dv">5</span>))     <span class="co"># Output: 120</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 <div style="color: #27AE60;">
 <p><strong>How it works:</strong></p>
@@ -425,17 +425,17 @@ Oliver Bonham-Carter
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Import Variations</strong></p>
 <p><strong>1. Import the entire module:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> mathtools</span>
-<span id="cb5-2"><a></a>result <span class="op">=</span> mathtools.square(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> mathtools</span>
+<span id="cb5-2"><a></a>result <span class="op">=</span> mathtools.square(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>2. Import specific functions:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> square, cube</span>
-<span id="cb6-2"><a></a>result <span class="op">=</span> square(<span class="dv">5</span>)  <span class="co"># No prefix needed!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> square, cube</span>
+<span id="cb6-2"><a></a>result <span class="op">=</span> square(<span class="dv">5</span>)  <span class="co"># No prefix needed!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>3. Import everything (use sparingly!):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb7-2"><a></a>result <span class="op">=</span> is_even(<span class="dv">10</span>)  <span class="co"># All functions available directly</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb7-2"><a></a>result <span class="op">=</span> is_even(<span class="dv">10</span>)  <span class="co"># All functions available directly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>4. Import with an alias:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> mathtools <span class="im">as</span> mt</span>
-<span id="cb8-2"><a></a>result <span class="op">=</span> mt.square(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> mathtools <span class="im">as</span> mt</span>
+<span id="cb8-2"><a></a>result <span class="op">=</span> mt.square(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="import-best-practices" class="slide level2">
@@ -448,13 +448,13 @@ Oliver Bonham-Carter
 <div class="callout-content">
 <p><strong>✅ Good:</strong></p>
 <p>Bring in only what you need and be clear about where code comes from.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> mathtools                    <span class="co"># This is the module where functions come from</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> mathtools                    <span class="co"># This is the module where functions come from</span></span>
 <span id="cb9-2"><a></a><span class="im">from</span> mathtools <span class="im">import</span> square, cube  <span class="co"># Explicit about what functions you are using</span></span>
-<span id="cb9-3"><a></a><span class="im">import</span> mathtools <span class="im">as</span> mt              <span class="co"># Short alias (abbreviations) for long module names</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-3"><a></a><span class="im">import</span> mathtools <span class="im">as</span> mt              <span class="co"># Short alias (abbreviations) for long module names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>❌ Avoid:</strong></p>
 <p>Maybe you do not need to bring in <strong>everything</strong> from a module…</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> <span class="op">*</span>  <span class="co"># Unclear what functions are available</span></span>
-<span id="cb10-2"><a></a>                         <span class="co"># Can cause naming conflicts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> mathtools <span class="im">import</span> <span class="op">*</span>  <span class="co"># Unclear what functions are available</span></span>
+<span id="cb10-2"><a></a>                         <span class="co"># Can cause naming conflicts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -484,7 +484,7 @@ Oliver Bonham-Carter
 </section>
 <section id="anatomy-of-a-well-structured-module" class="slide level2">
 <h2>Anatomy of a Well-Structured Module</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a></span>
 <span id="cb11-2"><a></a><span class="co">"""</span></span>
 <span id="cb11-3"><a></a><span class="co">Module docstring: Brief description of what this module does.</span></span>
 <span id="cb11-4"><a></a></span>
@@ -532,7 +532,7 @@ Oliver Bonham-Carter
 <span id="cb11-46"><a></a>    function_one()</span>
 <span id="cb11-47"><a></a>    function_two()</span>
 <span id="cb11-48"><a></a>    my_instance <span class="op">=</span> MyClass(<span class="dv">42</span>)</span>
-<span id="cb11-49"><a></a>    my_instance.method_one()    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-49"><a></a>    my_instance.method_one()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 <div style="color: rgb(93, 39, 174);">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -554,7 +554,7 @@ Oliver Bonham-Carter
 <h2>The Magic <code>__name__</code> Variable (mymodule.py)</h2>
 <p><strong>Understanding</strong> <code>if __name__ == "__main__":</code></p>
 <!-- ::: {.callout-important icon="false"} -->
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># mymodule.py</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># mymodule.py</span></span>
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a><span class="kw">def</span> greet(name):</span>
 <span id="cb12-4"><a></a>    <span class="cf">return</span> <span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span>
@@ -566,7 +566,7 @@ Oliver Bonham-Carter
 <span id="cb12-10"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb12-11"><a></a>    <span class="bu">print</span>(<span class="st">"Testing the module..."</span>)</span>
 <span id="cb12-12"><a></a>    <span class="bu">print</span>(greet(<span class="st">"Alice"</span>))</span>
-<span id="cb12-13"><a></a>    <span class="bu">print</span>(farewell(<span class="st">"Bob"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-13"><a></a>    <span class="bu">print</span>(farewell(<span class="st">"Bob"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 <div style="color: #27AE60;">
 <p><strong>Best Practice:</strong> Having an <code>if __name__ == "__main__":</code> block allows a single Python file to act as a reusable library and a standalone script at the same time. The block prevents top-level code from running unintentionally, ensuring only necessary functions are run when used as an imported module. ✨</p>
@@ -639,7 +639,7 @@ Oliver Bonham-Carter
 <li>F = (C × 9/5) + 32</li>
 <li>C = (F - 32) × 5/9</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -649,7 +649,7 @@ Oliver Bonham-Carter
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Solution</strong></p>
 <p>Create a program <code>temperature.py</code> as the module.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="co">"""</span></span>
 <span id="cb14-2"><a></a><span class="co">temperature.py - Temperature conversion utilities.</span></span>
 <span id="cb14-3"><a></a></span>
 <span id="cb14-4"><a></a><span class="co">Provides functions to convert between Celsius and Fahrenheit.</span></span>
@@ -683,7 +683,7 @@ Oliver Bonham-Carter
 <span id="cb14-32"><a></a>    <span class="bu">print</span>(<span class="ss">f"0°C = </span><span class="sc">{</span>celsius_to_fahrenheit(<span class="dv">0</span>)<span class="sc">}</span><span class="ss">°F"</span>)</span>
 <span id="cb14-33"><a></a>    <span class="bu">print</span>(<span class="ss">f"32°F = </span><span class="sc">{</span>fahrenheit_to_celsius(<span class="dv">32</span>)<span class="sc">}</span><span class="ss">°C"</span>)</span>
 <span id="cb14-34"><a></a>    <span class="bu">print</span>(<span class="ss">f"100°C = </span><span class="sc">{</span>celsius_to_fahrenheit(<span class="dv">100</span>)<span class="sc">}</span><span class="ss">°F"</span>)</span>
-<span id="cb14-35"><a></a>    <span class="bu">print</span>(<span class="ss">f"212°F = </span><span class="sc">{</span>fahrenheit_to_celsius(<span class="dv">212</span>)<span class="sc">}</span><span class="ss">°C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-35"><a></a>    <span class="bu">print</span>(<span class="ss">f"212°F = </span><span class="sc">{</span>fahrenheit_to_celsius(<span class="dv">212</span>)<span class="sc">}</span><span class="ss">°C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="light-challenge-1-solution-part-2" class="slide level2">
@@ -691,7 +691,7 @@ Oliver Bonham-Carter
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Using Your Temperature Module</strong></p>
 <p>Now create a program <code>weather.py</code> to call your module.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> temperature</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> temperature</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a><span class="co"># Convert various temperatures</span></span>
 <span id="cb15-4"><a></a>temps_c <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">37</span>, <span class="dv">100</span>]</span>
@@ -706,13 +706,13 @@ Oliver Bonham-Carter
 <span id="cb15-13"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Fahrenheit to Celsius:"</span>)</span>
 <span id="cb15-14"><a></a><span class="cf">for</span> temp <span class="kw">in</span> temps_f:</span>
 <span id="cb15-15"><a></a>    c_temp <span class="op">=</span> temperature.fahrenheit_to_celsius(temp)</span>
-<span id="cb15-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>temp<span class="sc">}</span><span class="ss">°F = </span><span class="sc">{</span>c_temp<span class="sc">:.1f}</span><span class="ss">°C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>temp<span class="sc">}</span><span class="ss">°F = </span><span class="sc">{</span>c_temp<span class="sc">:.1f}</span><span class="ss">°C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="light-challenge-1-solution-part-3" class="slide level2">
 <h2>Light Challenge 1 — Solution (Part 3)</h2>
 <p><strong>Output:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a>Celsius to Fahrenheit:</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a>Celsius to Fahrenheit:</span>
 <span id="cb16-2"><a></a>0°C = 32.0°F</span>
 <span id="cb16-3"><a></a>20°C = 68.0°F</span>
 <span id="cb16-4"><a></a>37°C = 98.6°F</span>
@@ -722,7 +722,7 @@ Oliver Bonham-Carter
 <span id="cb16-8"><a></a>32°F = 0.0°C</span>
 <span id="cb16-9"><a></a>68°F = 20.0°C</span>
 <span id="cb16-10"><a></a>98.6°F = 37.0°C</span>
-<span id="cb16-11"><a></a>212°F = 100.0°C</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-11"><a></a>212°F = 100.0°C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="your-turn-your-own-module" class="slide level2">
 <h2>Your Turn – Your Own Module</h2>
@@ -748,7 +748,7 @@ Oliver Bonham-Carter
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Two functions to handle Fibonacci numbers</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Two functions to handle Fibonacci numbers</span></span>
 <span id="cb17-2"><a></a></span>
 <span id="cb17-3"><a></a><span class="kw">def</span> fib(n):</span>
 <span id="cb17-4"><a></a>    <span class="co">"""Write Fibonacci series up to n."""</span></span>
@@ -769,7 +769,7 @@ Oliver Bonham-Carter
 <span id="cb17-19"><a></a></span>
 <span id="cb17-20"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb17-21"><a></a>    <span class="co"># Test the functions</span></span>
-<span id="cb17-22"><a></a>    <span class="bu">print</span>(<span class="st">"Testing Fibonacci functions..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-22"><a></a>    <span class="bu">print</span>(<span class="st">"Testing Fibonacci functions..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ```python
     fib(100)  # Print Fibonacci numbers less than 100
     print(fib2(100))  # Get Fibonacci numbers less than 100 as a list
@@ -844,7 +844,7 @@ Oliver Bonham-Carter
 <p><strong>Example 1: Random Module</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> random</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">import</span> random</span>
 <span id="cb18-2"><a></a></span>
 <span id="cb18-3"><a></a><span class="co"># Generate random numbers</span></span>
 <span id="cb18-4"><a></a><span class="bu">print</span>(random.randint(<span class="dv">1</span>, <span class="dv">10</span>))        <span class="co"># Random integer from 1 to 10</span></span>
@@ -861,7 +861,7 @@ Oliver Bonham-Carter
 <span id="cb18-15"><a></a><span class="bu">print</span>(numbers)                      <span class="co"># List is shuffled in-place</span></span>
 <span id="cb18-16"><a></a></span>
 <span id="cb18-17"><a></a><span class="co"># Sample without replacement</span></span>
-<span id="cb18-18"><a></a><span class="bu">print</span>(random.sample(colors, <span class="dv">2</span>))     <span class="co"># Pick 2 different colors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-18"><a></a><span class="bu">print</span>(random.sample(colors, <span class="dv">2</span>))     <span class="co"># Pick 2 different colors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Use cases:</strong> - Games (dice rolls, card shuffling) - Simulations - Random sampling - Password generation</p>
 </div>
 </div>
@@ -871,7 +871,7 @@ Oliver Bonham-Carter
 <h2>Using Standard Library Modules</h2>
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Example 2: Datetime Module</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
 <span id="cb19-2"><a></a></span>
 <span id="cb19-3"><a></a><span class="co"># Current date and time</span></span>
 <span id="cb19-4"><a></a>now <span class="op">=</span> datetime.now()</span>
@@ -891,7 +891,7 @@ Oliver Bonham-Carter
 <span id="cb19-18"><a></a><span class="co"># Calculate differences</span></span>
 <span id="cb19-19"><a></a>birthday <span class="op">=</span> datetime(<span class="dv">2026</span>, <span class="dv">10</span>, <span class="dv">31</span>)</span>
 <span id="cb19-20"><a></a>days_until <span class="op">=</span> (birthday <span class="op">-</span> now).days</span>
-<span id="cb19-21"><a></a><span class="bu">print</span>(<span class="ss">f"Days until Halloween: </span><span class="sc">{</span>days_until<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-21"><a></a><span class="bu">print</span>(<span class="ss">f"Days until Halloween: </span><span class="sc">{</span>days_until<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 <div style="color: #8E44AD;">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -914,7 +914,7 @@ Oliver Bonham-Carter
 <h2>Using Standard Library Modules</h2>
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Example 3: OS Module</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> os</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="im">import</span> os</span>
 <span id="cb20-2"><a></a></span>
 <span id="cb20-3"><a></a><span class="co"># Get current working directory</span></span>
 <span id="cb20-4"><a></a><span class="bu">print</span>(<span class="ss">f"Current directory: </span><span class="sc">{</span>os<span class="sc">.</span>getcwd()<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -942,7 +942,7 @@ Oliver Bonham-Carter
 <span id="cb20-26"><a></a></span>
 <span id="cb20-27"><a></a><span class="co"># Get environment variables</span></span>
 <span id="cb20-28"><a></a>user <span class="op">=</span> os.getenv(<span class="st">"USER"</span>) <span class="kw">or</span> os.getenv(<span class="st">"USERNAME"</span>)</span>
-<span id="cb20-29"><a></a><span class="bu">print</span>(<span class="ss">f"Current user: </span><span class="sc">{</span>user<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-29"><a></a><span class="bu">print</span>(<span class="ss">f"Current user: </span><span class="sc">{</span>user<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section class="slide level2">
@@ -956,7 +956,7 @@ Oliver Bonham-Carter
 <section id="building-text-processing-tools" class="slide level2">
 <h2>Building Text Processing Tools</h2>
 <p><strong>Create <code>stringtools.py</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co">"""</span></span>
 <span id="cb21-2"><a></a><span class="co">stringtools.py - Useful string manipulation functions.</span></span>
 <span id="cb21-3"><a></a></span>
 <span id="cb21-4"><a></a><span class="co">A collection of functions for common text processing tasks.</span></span>
@@ -989,7 +989,7 @@ Oliver Bonham-Carter
 <span id="cb21-31"><a></a>        <span class="cf">else</span>:</span>
 <span id="cb21-32"><a></a>            result.append(word)</span>
 <span id="cb21-33"><a></a>    </span>
-<span id="cb21-34"><a></a>    <span class="cf">return</span> <span class="st">" "</span>.join(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-34"><a></a>    <span class="cf">return</span> <span class="st">" "</span>.join(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="project-1-string-utilities-module-part-2" class="slide level2">
@@ -1006,7 +1006,7 @@ Oliver Bonham-Carter
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> remove_duplicates(text):</span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="kw">def</span> remove_duplicates(text):</span>
 <span id="cb22-2"><a></a>    <span class="co">"""Remove duplicate words while preserving order."""</span></span>
 <span id="cb22-3"><a></a>    words <span class="op">=</span> text.split()</span>
 <span id="cb22-4"><a></a>    seen <span class="op">=</span> <span class="bu">set</span>()</span>
@@ -1043,14 +1043,14 @@ Oliver Bonham-Carter
 <span id="cb22-35"><a></a>    <span class="bu">print</span>(<span class="ss">f"Reverse: </span><span class="sc">{</span>reverse_words(<span class="st">'Hello World'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb22-36"><a></a>    <span class="bu">print</span>(<span class="ss">f"Is 'racecar' a palindrome? </span><span class="sc">{</span>is_palindrome(<span class="st">'racecar'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb22-37"><a></a>    <span class="bu">print</span>(<span class="ss">f"Title case: </span><span class="sc">{</span>title_case_smart(<span class="st">'the lord of the rings'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb22-38"><a></a>    <span class="bu">print</span>(<span class="ss">f"Acronym 'Portable Network Graphics': </span><span class="sc">{</span>acronym(<span class="st">'Portable Network Graphics'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-38"><a></a>    <span class="bu">print</span>(<span class="ss">f"Acronym 'Portable Network Graphics': </span><span class="sc">{</span>acronym(<span class="st">'Portable Network Graphics'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="project-1-using-string-utilities" class="slide level2">
 <h2>Project 1 — Using String Utilities</h2>
 <!-- ::: {.callout-important icon="false"} -->
 <p><strong>Practical Application: <code>stringtools_app.py</code></strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="im">import</span> stringtools <span class="co"># bring in your stringtools module</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="im">import</span> stringtools <span class="co"># bring in your stringtools module</span></span>
 <span id="cb23-2"><a></a></span>
 <span id="cb23-3"><a></a><span class="co"># Analyze text</span></span>
 <span id="cb23-4"><a></a>text <span class="op">=</span> <span class="st">"The quick brown fox jumps over the lazy dog"</span></span>
@@ -1078,7 +1078,7 @@ Oliver Bonham-Carter
 <span id="cb23-26"><a></a>]</span>
 <span id="cb23-27"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Acronyms:"</span>)</span>
 <span id="cb23-28"><a></a><span class="cf">for</span> phrase <span class="kw">in</span> phrases:</span>
-<span id="cb23-29"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>phrase<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>stringtools<span class="sc">.</span>acronym(phrase)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-29"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>phrase<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>stringtools<span class="sc">.</span>acronym(phrase)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- ::: -->
 </section>
 <section id="you-now-know-how-to" class="slide level2">
@@ -1307,7 +1307,7 @@ Oliver Bonham-Carter
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1381,14 +1381,13 @@ Oliver Bonham-Carter
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Socket Programming &amp; Direct Messaging</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -304,14 +304,14 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> socket</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> socket</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a><span class="co"># Create a TCP/IP socket</span></span>
 <span id="cb1-4"><a></a>my_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
 <span id="cb1-5"><a></a></span>
 <span id="cb1-6"><a></a><span class="co"># Key parts:</span></span>
 <span id="cb1-7"><a></a><span class="co"># AF_INET    — Use IPv4 addresses (like 192.168.1.100)</span></span>
-<span id="cb1-8"><a></a><span class="co"># SOCK_STREAM — Use TCP protocol (reliable, ordered delivery)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a></a><span class="co"># SOCK_STREAM — Use TCP protocol (reliable, ordered delivery)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -352,7 +352,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> socket</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> socket</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a><span class="kw">def</span> get_local_ip():</span>
 <span id="cb2-4"><a></a>    <span class="co">"""</span></span>
@@ -377,7 +377,7 @@ Oliver Bonham-Carter
 <span id="cb2-23"><a></a></span>
 <span id="cb2-24"><a></a><span class="co"># Use it:</span></span>
 <span id="cb2-25"><a></a>my_ip <span class="op">=</span> get_local_ip()</span>
-<span id="cb2-26"><a></a><span class="bu">print</span>(<span class="ss">f"Your IP address is: </span><span class="sc">{</span>my_ip<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-26"><a></a><span class="bu">print</span>(<span class="ss">f"Your IP address is: </span><span class="sc">{</span>my_ip<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -391,11 +391,11 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>On macOS/Linux:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">ifconfig</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"inet "</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> 127.0.0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">ifconfig</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"inet "</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> 127.0.0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>On Windows:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">ipconfig</span> <span class="kw">|</span> <span class="ex">findstr</span> IPv4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">ipconfig</span> <span class="kw">|</span> <span class="ex">findstr</span> IPv4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Cross-platform Python:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -446,7 +446,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># Create project directory</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># Create project directory</span></span>
 <span id="cb6-2"><a></a><span class="fu">mkdir</span> messaging_app</span>
 <span id="cb6-3"><a></a><span class="bu">cd</span> messaging_app</span>
 <span id="cb6-4"><a></a></span>
@@ -457,7 +457,7 @@ Oliver Bonham-Carter
 <span id="cb6-9"><a></a><span class="ex">uv</span> add colorama</span>
 <span id="cb6-10"><a></a></span>
 <span id="cb6-11"><a></a><span class="co"># Create our server file</span></span>
-<span id="cb6-12"><a></a><span class="fu">touch</span> message_server.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-12"><a></a><span class="fu">touch</span> message_server.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -470,7 +470,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> socket</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> socket</span>
 <span id="cb7-2"><a></a><span class="im">import</span> threading</span>
 <span id="cb7-3"><a></a><span class="im">from</span> colorama <span class="im">import</span> Fore, Style, init</span>
 <span id="cb7-4"><a></a><span class="im">from</span> typing <span class="im">import</span> List, Tuple</span>
@@ -490,7 +490,7 @@ Oliver Bonham-Carter
 <span id="cb7-18"><a></a>        <span class="va">self</span>.server_socket <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb7-19"><a></a>        <span class="va">self</span>.clients: List[Tuple[socket.socket, <span class="bu">str</span>]] <span class="op">=</span> []</span>
 <span id="cb7-20"><a></a>        <span class="va">self</span>.running <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb7-21"><a></a>        <span class="va">self</span>.client_lock <span class="op">=</span> threading.Lock()  <span class="co"># Thread safety!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-21"><a></a>        <span class="va">self</span>.client_lock <span class="op">=</span> threading.Lock()  <span class="co"># Thread safety!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -513,7 +513,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> start(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> start(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb8-2"><a></a>    <span class="co">"""Start the server and begin accepting connections."""</span></span>
 <span id="cb8-3"><a></a>    <span class="cf">try</span>:</span>
 <span id="cb8-4"><a></a>        <span class="co"># Create socket</span></span>
@@ -542,7 +542,7 @@ Oliver Bonham-Carter
 <span id="cb8-27"><a></a>        <span class="va">self</span>.accept_clients()</span>
 <span id="cb8-28"><a></a>        </span>
 <span id="cb8-29"><a></a>    <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> e:</span>
-<span id="cb8-30"><a></a>        <span class="cf">raise</span> <span class="pp">ConnectionError</span>(<span class="ss">f"Failed to start server: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-30"><a></a>        <span class="cf">raise</span> <span class="pp">ConnectionError</span>(<span class="ss">f"Failed to start server: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -555,7 +555,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> accept_clients(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> accept_clients(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb9-2"><a></a>    <span class="co">"""Continuously accept new client connections."""</span></span>
 <span id="cb9-3"><a></a>    <span class="cf">while</span> <span class="va">self</span>.running:</span>
 <span id="cb9-4"><a></a>        <span class="cf">try</span>:</span>
@@ -578,7 +578,7 @@ Oliver Bonham-Carter
 <span id="cb9-21"><a></a>            </span>
 <span id="cb9-22"><a></a>        <span class="cf">except</span> <span class="pp">OSError</span>:</span>
 <span id="cb9-23"><a></a>            <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.running:</span>
-<span id="cb9-24"><a></a>                <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-24"><a></a>                <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -591,7 +591,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> handle_client(<span class="va">self</span>, client_socket: socket.socket, </span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="kw">def</span> handle_client(<span class="va">self</span>, client_socket: socket.socket, </span>
 <span id="cb10-2"><a></a>                  client_address: Tuple) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb10-3"><a></a>    <span class="co">"""Receive messages from one client and broadcast them."""</span></span>
 <span id="cb10-4"><a></a>    <span class="cf">try</span>:</span>
@@ -613,7 +613,7 @@ Oliver Bonham-Carter
 <span id="cb10-20"><a></a>            <span class="va">self</span>.broadcast(<span class="ss">f"[</span><span class="sc">{</span>client_address<span class="sc">}</span><span class="ss">]: </span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">"</span>, client_socket)</span>
 <span id="cb10-21"><a></a>            </span>
 <span id="cb10-22"><a></a>    <span class="cf">finally</span>:</span>
-<span id="cb10-23"><a></a>        <span class="va">self</span>.remove_client(client_socket, client_address)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-23"><a></a>        <span class="va">self</span>.remove_client(client_socket, client_address)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -626,7 +626,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> broadcast(<span class="va">self</span>, message: <span class="bu">str</span>, sender_socket: socket.socket) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">def</span> broadcast(<span class="va">self</span>, message: <span class="bu">str</span>, sender_socket: socket.socket) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb11-2"><a></a>    <span class="co">"""Send a message to all clients except the sender."""</span></span>
 <span id="cb11-3"><a></a>    <span class="cf">with</span> <span class="va">self</span>.client_lock:</span>
 <span id="cb11-4"><a></a>        <span class="cf">for</span> client_socket, client_address <span class="kw">in</span> <span class="va">self</span>.clients:</span>
@@ -635,7 +635,7 @@ Oliver Bonham-Carter
 <span id="cb11-7"><a></a>                <span class="cf">try</span>:</span>
 <span id="cb11-8"><a></a>                    client_socket.send(message.encode(<span class="st">'utf-8'</span>))</span>
 <span id="cb11-9"><a></a>                <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb11-10"><a></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>RED<span class="sc">}</span><span class="ss">❌ Failed to send to </span><span class="sc">{</span>client_address<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-10"><a></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>RED<span class="sc">}</span><span class="ss">❌ Failed to send to </span><span class="sc">{</span>client_address<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -658,7 +658,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> main():</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> main():</span>
 <span id="cb12-2"><a></a>    <span class="co">"""Start the message server."""</span></span>
 <span id="cb12-3"><a></a>    <span class="co"># Get server IP address</span></span>
 <span id="cb12-4"><a></a>    ip <span class="op">=</span> get_local_ip()</span>
@@ -681,7 +681,7 @@ Oliver Bonham-Carter
 <span id="cb12-21"><a></a>        server.stop()</span>
 <span id="cb12-22"><a></a></span>
 <span id="cb12-23"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb12-24"><a></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-24"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -717,7 +717,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">class</span> NetworkError(<span class="pp">Exception</span>):</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">class</span> NetworkError(<span class="pp">Exception</span>):</span>
 <span id="cb13-2"><a></a>    <span class="co">"""Custom exception for network problems"""</span></span>
 <span id="cb13-3"><a></a>    <span class="cf">pass</span></span>
 <span id="cb13-4"><a></a></span>
@@ -730,7 +730,7 @@ Oliver Bonham-Carter
 <span id="cb13-11"><a></a>        <span class="va">self</span>.port <span class="op">=</span> port</span>
 <span id="cb13-12"><a></a>        <span class="va">self</span>.client_socket <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb13-13"><a></a>        <span class="va">self</span>.username <span class="op">=</span> username</span>
-<span id="cb13-14"><a></a>        <span class="va">self</span>.connected <span class="op">=</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-14"><a></a>        <span class="va">self</span>.connected <span class="op">=</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -743,7 +743,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> <span class="ex">connect</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> <span class="ex">connect</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb14-2"><a></a>    <span class="co">"""Connect to the message server."""</span></span>
 <span id="cb14-3"><a></a>    <span class="cf">try</span>:</span>
 <span id="cb14-4"><a></a>        <span class="va">self</span>.client_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
@@ -767,7 +767,7 @@ Oliver Bonham-Carter
 <span id="cb14-22"><a></a>    <span class="cf">except</span> <span class="pp">ConnectionRefusedError</span>:</span>
 <span id="cb14-23"><a></a>        <span class="cf">raise</span> NetworkError(<span class="st">"Connection refused. Check IP and port."</span>)</span>
 <span id="cb14-24"><a></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb14-25"><a></a>        <span class="cf">raise</span> NetworkError(<span class="ss">f"Failed to connect: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-25"><a></a>        <span class="cf">raise</span> NetworkError(<span class="ss">f"Failed to connect: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -780,7 +780,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> send_messages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">def</span> send_messages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb15-2"><a></a>    <span class="co">"""Read user input and send to server."""</span></span>
 <span id="cb15-3"><a></a>    <span class="cf">while</span> <span class="va">self</span>.connected:</span>
 <span id="cb15-4"><a></a>        <span class="cf">try</span>:</span>
@@ -801,7 +801,7 @@ Oliver Bonham-Carter
 <span id="cb15-19"><a></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb15-20"><a></a>            <span class="cf">if</span> <span class="va">self</span>.connected:</span>
 <span id="cb15-21"><a></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>RED<span class="sc">}</span><span class="ss">❌ Error sending: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-22"><a></a>            <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-22"><a></a>            <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -814,7 +814,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> receive_messages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">def</span> receive_messages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb16-2"><a></a>    <span class="co">"""Receive messages from server and display them."""</span></span>
 <span id="cb16-3"><a></a>    <span class="cf">while</span> <span class="va">self</span>.connected:</span>
 <span id="cb16-4"><a></a>        <span class="cf">try</span>:</span>
@@ -831,7 +831,7 @@ Oliver Bonham-Carter
 <span id="cb16-15"><a></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb16-16"><a></a>            <span class="cf">if</span> <span class="va">self</span>.connected:</span>
 <span id="cb16-17"><a></a>                <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>RED<span class="sc">}</span><span class="ss">❌ Error receiving: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-18"><a></a>            <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-18"><a></a>            <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -844,7 +844,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">def</span> main():</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">def</span> main():</span>
 <span id="cb17-2"><a></a>    <span class="co">"""Start the message client."""</span></span>
 <span id="cb17-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>CYAN<span class="sc">}</span><span class="ss">💬 Message Client"</span>)</span>
 <span id="cb17-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>CYAN<span class="sc">}{</span><span class="st">'='</span><span class="op">*</span><span class="dv">50</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -883,7 +883,7 @@ Oliver Bonham-Carter
 <span id="cb17-37"><a></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>RED<span class="sc">}</span><span class="ss">❌ </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-38"><a></a></span>
 <span id="cb17-39"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb17-40"><a></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-40"><a></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -901,11 +901,11 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Step 1: Start the Server</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a></a><span class="bu">cd</span> messaging_app</span>
-<span id="cb18-2"><a></a><span class="ex">uv</span> run python message_server.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a></a><span class="bu">cd</span> messaging_app</span>
+<span id="cb18-2"><a></a><span class="ex">uv</span> run python message_server.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The server will display its IP address. <strong>Share this with your friends!</strong></p>
 <p><strong>Step 2: Start a Client (on same or different computer)</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a></a><span class="ex">uv</span> run python message_client.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a></a><span class="ex">uv</span> run python message_client.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When prompted: - Enter your username - Enter the server IP (or ‘localhost’ if on same machine) - Press Enter to use default port 5555</p>
 <p><strong>Step 3: Chat!</strong> - Type messages and press Enter - See messages from other users - Type ‘quit’ to exit</p>
 </div>
@@ -921,16 +921,16 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Terminal 1 — Server:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a></a><span class="ex">uv</span> run python message_server.py</span>
-<span id="cb20-2"><a></a><span class="co"># Choose 'n' for localhost binding</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a></a><span class="ex">uv</span> run python message_server.py</span>
+<span id="cb20-2"><a></a><span class="co"># Choose 'n' for localhost binding</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Terminal 2 — Client 1:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
 <span id="cb21-2"><a></a><span class="co"># Username: Alice</span></span>
-<span id="cb21-3"><a></a><span class="co"># Server IP: localhost</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-3"><a></a><span class="co"># Server IP: localhost</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Terminal 3 — Client 2:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
 <span id="cb22-2"><a></a><span class="co"># Username: Bob  </span></span>
-<span id="cb22-3"><a></a><span class="co"># Server IP: localhost</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-3"><a></a><span class="co"># Server IP: localhost</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now Alice and Bob can chat!</p>
 </div>
 </div>
@@ -945,18 +945,18 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>On Server Computer:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="co"># Find your IP</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a></a><span class="co"># Find your IP</span></span>
 <span id="cb23-2"><a></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])"</span></span>
 <span id="cb23-3"><a></a></span>
 <span id="cb23-4"><a></a><span class="co"># Example output: 192.168.1.145</span></span>
 <span id="cb23-5"><a></a></span>
 <span id="cb23-6"><a></a><span class="co"># Start server</span></span>
 <span id="cb23-7"><a></a><span class="ex">uv</span> run python message_server.py</span>
-<span id="cb23-8"><a></a><span class="co"># Choose 'y' to bind to all interfaces</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-8"><a></a><span class="co"># Choose 'y' to bind to all interfaces</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>On Client Computer:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a></a><span class="ex">uv</span> run python message_client.py</span>
 <span id="cb24-2"><a></a><span class="co"># Username: Your Name</span></span>
-<span id="cb24-3"><a></a><span class="co"># Server IP: 192.168.1.145  (the server's IP)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-3"><a></a><span class="co"># Server IP: 192.168.1.145  (the server's IP)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1001,7 +1001,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> threading</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="im">import</span> threading</span>
 <span id="cb25-2"><a></a></span>
 <span id="cb25-3"><a></a><span class="kw">def</span> background_task():</span>
 <span id="cb25-4"><a></a>    <span class="co">"""This runs in a separate thread."""</span></span>
@@ -1018,7 +1018,7 @@ Oliver Bonham-Carter
 <span id="cb25-15"><a></a><span class="co"># Main thread continues immediately</span></span>
 <span id="cb25-16"><a></a><span class="bu">print</span>(<span class="st">"Main: started background task"</span>)</span>
 <span id="cb25-17"><a></a></span>
-<span id="cb25-18"><a></a><span class="co"># Both run simultaneously!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-18"><a></a><span class="co"># Both run simultaneously!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1046,14 +1046,14 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p>When multiple threads access shared data, we can get <strong>race conditions</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># Without lock: DANGEROUS!</span></span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># Without lock: DANGEROUS!</span></span>
 <span id="cb26-2"><a></a><span class="kw">def</span> add_client(client):</span>
 <span id="cb26-3"><a></a>    clients.append(client)  <span class="co"># Multiple threads might do this simultaneously!</span></span>
 <span id="cb26-4"><a></a></span>
 <span id="cb26-5"><a></a><span class="co"># With lock: SAFE!</span></span>
 <span id="cb26-6"><a></a><span class="kw">def</span> add_client(client):</span>
 <span id="cb26-7"><a></a>    <span class="cf">with</span> client_lock:  <span class="co"># Only one thread at a time</span></span>
-<span id="cb26-8"><a></a>        clients.append(client)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-8"><a></a>        clients.append(client)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1066,7 +1066,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="im">import</span> threading</span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="im">import</span> threading</span>
 <span id="cb27-2"><a></a></span>
 <span id="cb27-3"><a></a><span class="co"># Create a lock</span></span>
 <span id="cb27-4"><a></a>my_lock <span class="op">=</span> threading.Lock()</span>
@@ -1089,7 +1089,7 @@ Oliver Bonham-Carter
 <span id="cb27-21"><a></a><span class="cf">for</span> t <span class="kw">in</span> threads:</span>
 <span id="cb27-22"><a></a>    t.join()</span>
 <span id="cb27-23"><a></a></span>
-<span id="cb27-24"><a></a><span class="bu">print</span>(counter)  <span class="co"># Will be 100 (correct!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-24"><a></a><span class="bu">print</span>(counter)  <span class="co"># Will be 100 (correct!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1120,7 +1120,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="cf">try</span>:</span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="cf">try</span>:</span>
 <span id="cb28-2"><a></a>    client_socket.<span class="ex">connect</span>((host, port))</span>
 <span id="cb28-3"><a></a>    </span>
 <span id="cb28-4"><a></a><span class="cf">except</span> socket.timeout:</span>
@@ -1136,7 +1136,7 @@ Oliver Bonham-Carter
 <span id="cb28-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"Network error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb28-15"><a></a>    </span>
 <span id="cb28-16"><a></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb28-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-17"><a></a>    <span class="bu">print</span>(<span class="ss">f"Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1149,7 +1149,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> NetworkError(<span class="pp">Exception</span>):</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> NetworkError(<span class="pp">Exception</span>):</span>
 <span id="cb29-2"><a></a>    <span class="co">"""Base class for network-related errors"""</span></span>
 <span id="cb29-3"><a></a>    <span class="cf">pass</span></span>
 <span id="cb29-4"><a></a></span>
@@ -1166,7 +1166,7 @@ Oliver Bonham-Carter
 <span id="cb29-15"><a></a>    <span class="cf">if</span> <span class="kw">not</span> server_running:</span>
 <span id="cb29-16"><a></a>        <span class="cf">raise</span> <span class="pp">ConnectionError</span>(<span class="st">"Server is offline"</span>)</span>
 <span id="cb29-17"><a></a><span class="cf">except</span> NetworkError <span class="im">as</span> e:</span>
-<span id="cb29-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"Network problem: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-18"><a></a>    <span class="bu">print</span>(<span class="ss">f"Network problem: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1206,7 +1206,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="im">import</span> socket</span>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="im">import</span> socket</span>
 <span id="cb30-2"><a></a></span>
 <span id="cb30-3"><a></a><span class="kw">def</span> get_all_ips():</span>
 <span id="cb30-4"><a></a>    <span class="co">"""Get all available IP addresses for this machine."""</span></span>
@@ -1244,7 +1244,7 @@ Oliver Bonham-Carter
 <span id="cb30-36"><a></a>        <span class="cf">else</span>:</span>
 <span id="cb30-37"><a></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>ip<span class="sc">}</span><span class="ss"> (network - share this!)"</span>)</span>
 <span id="cb30-38"><a></a>    </span>
-<span id="cb30-39"><a></a>    <span class="cf">return</span> ips</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-39"><a></a>    <span class="cf">return</span> ips</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1257,7 +1257,7 @@ Oliver Bonham-Carter
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">def</span> main():</span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">def</span> main():</span>
 <span id="cb31-2"><a></a>    <span class="co">"""Start server with IP selection."""</span></span>
 <span id="cb31-3"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>Fore<span class="sc">.</span>GREEN<span class="sc">}</span><span class="ss">🚀 Message Server Setup"</span>)</span>
 <span id="cb31-4"><a></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -1281,7 +1281,7 @@ Oliver Bonham-Carter
 <span id="cb31-22"><a></a>    </span>
 <span id="cb31-23"><a></a>    <span class="co"># Start server</span></span>
 <span id="cb31-24"><a></a>    server <span class="op">=</span> MessageServer(host<span class="op">=</span>host, port<span class="op">=</span>port)</span>
-<span id="cb31-25"><a></a>    server.start()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-25"><a></a>    server.start()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1300,7 +1300,7 @@ Oliver Bonham-Carter
 <div class="callout-content">
 <p><strong>Goal:</strong> Make the server display usernames instead of IP addresses</p>
 <p><strong>Steps:</strong> 1. Modify client to send username as first message 2. Server stores <code>(socket, username)</code> instead of <code>(socket, address)</code> 3. Broadcast messages with usernames: <code>"[Alice]: Hello!"</code> instead of <code>"[('127.0.0.1', 54321)]: Hello!"</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># Client side:</span></span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># Client side:</span></span>
 <span id="cb32-2"><a></a><span class="kw">def</span> <span class="ex">connect</span>(<span class="va">self</span>):</span>
 <span id="cb32-3"><a></a>    <span class="va">self</span>.client_socket.<span class="ex">connect</span>((<span class="va">self</span>.host, <span class="va">self</span>.port))</span>
 <span id="cb32-4"><a></a>    <span class="co"># Send username first!</span></span>
@@ -1311,7 +1311,7 @@ Oliver Bonham-Carter
 <span id="cb32-9"><a></a>    <span class="co"># Receive username first</span></span>
 <span id="cb32-10"><a></a>    username <span class="op">=</span> client_socket.recv(<span class="dv">1024</span>).decode(<span class="st">'utf-8'</span>)</span>
 <span id="cb32-11"><a></a>    <span class="co"># Store (socket, username) instead of (socket, address)</span></span>
-<span id="cb32-12"><a></a>    <span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-12"><a></a>    <span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1325,7 +1325,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Goal:</strong> Show when each message was sent</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb33-2"><a></a></span>
 <span id="cb33-3"><a></a><span class="kw">def</span> format_message(username, text):</span>
 <span id="cb33-4"><a></a>    <span class="co">"""Format message with timestamp."""</span></span>
@@ -1334,7 +1334,7 @@ Oliver Bonham-Carter
 <span id="cb33-7"><a></a></span>
 <span id="cb33-8"><a></a><span class="co"># Usage:</span></span>
 <span id="cb33-9"><a></a>message <span class="op">=</span> format_message(<span class="st">"Alice"</span>, <span class="st">"Hello everyone!"</span>)</span>
-<span id="cb33-10"><a></a><span class="co"># Output: "[14:32:15] Alice: Hello everyone!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-10"><a></a><span class="co"># Output: "[14:32:15] Alice: Hello everyone!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1349,7 +1349,7 @@ Oliver Bonham-Carter
 <div class="callout-content">
 <p><strong>Goal:</strong> Allow users to send messages to specific users</p>
 <p><strong>Syntax:</strong> <code>@username message text</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">def</span> parse_message(text):</span>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="kw">def</span> parse_message(text):</span>
 <span id="cb34-2"><a></a>    <span class="co">"""Check if message is private."""</span></span>
 <span id="cb34-3"><a></a>    <span class="cf">if</span> text.startswith(<span class="st">'@'</span>):</span>
 <span id="cb34-4"><a></a>        parts <span class="op">=</span> text.split(<span class="st">' '</span>, <span class="dv">1</span>)</span>
@@ -1359,7 +1359,7 @@ Oliver Bonham-Carter
 <span id="cb34-8"><a></a>            <span class="cf">return</span> (<span class="st">'private'</span>, recipient, message)</span>
 <span id="cb34-9"><a></a>    <span class="cf">return</span> (<span class="st">'public'</span>, <span class="va">None</span>, text)</span>
 <span id="cb34-10"><a></a></span>
-<span id="cb34-11"><a></a><span class="co"># Server checks recipient and sends only to that user</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb34-11"><a></a><span class="co"># Server checks recipient and sends only to that user</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1669,7 +1669,7 @@ Let’s build awesome messaging apps!
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1743,14 +1743,13 @@ Let’s build awesome messaging apps!
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

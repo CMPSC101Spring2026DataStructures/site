@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Oliver Bonham-Carter">
   <title>CMPSC101 Spring 2026 :: DataStructures – Chapter 2: Data Structures</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="custom_big_o.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -294,7 +294,7 @@ Oliver Bonham-Carter
 <section id="creating-and-accessing-lists" class="slide level2">
 <h2>Creating and Accessing Lists</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co">"""</span></span>
 <span id="cb1-2"><a></a><span class="co">This example shows how to create and access lists.</span></span>
 <span id="cb1-3"><a></a><span class="co">"""</span></span>
 <span id="cb1-4"><a></a></span>
@@ -307,14 +307,14 @@ Oliver Bonham-Carter
 <span id="cb1-11"><a></a><span class="co"># Accessing elements (zero-indexed!)</span></span>
 <span id="cb1-12"><a></a><span class="bu">print</span>(fruits[<span class="dv">0</span>])      <span class="co"># Output: apple</span></span>
 <span id="cb1-13"><a></a><span class="bu">print</span>(fruits[<span class="op">-</span><span class="dv">1</span>])     <span class="co"># Output: cherry (last item)</span></span>
-<span id="cb1-14"><a></a><span class="bu">print</span>(numbers[<span class="dv">1</span>:<span class="dv">4</span>])   <span class="co"># Output: [2, 3, 4] (slicing)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-14"><a></a><span class="bu">print</span>(numbers[<span class="dv">1</span>:<span class="dv">4</span>])   <span class="co"># Output: [2, 3, 4] (slicing)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code demonstrates creating different types of lists and accessing their elements.</p>
 </section>
 <section id="modifying-lists" class="slide level2">
 <h2>Modifying Lists</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co">"""</span></span>
 <span id="cb2-2"><a></a><span class="co">This example shows how to modify lists.</span></span>
 <span id="cb2-3"><a></a><span class="co">"""</span></span>
 <span id="cb2-4"><a></a></span>
@@ -332,14 +332,14 @@ Oliver Bonham-Carter
 <span id="cb2-16"><a></a>colors[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"purple"</span></span>
 <span id="cb2-17"><a></a></span>
 <span id="cb2-18"><a></a><span class="bu">print</span>(colors)</span>
-<span id="cb2-19"><a></a><span class="co"># Output: ['purple', 'orange', 'blue']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-19"><a></a><span class="co"># Output: ['purple', 'orange', 'blue']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lists are flexible - you can add, remove, and change items easily!</p>
 </section>
 <section id="list-operations" class="slide level2">
 <h2>List Operations</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co">"""</span></span>
 <span id="cb3-2"><a></a><span class="co">This example shows common list operations.</span></span>
 <span id="cb3-3"><a></a><span class="co">"""</span></span>
 <span id="cb3-4"><a></a></span>
@@ -357,7 +357,7 @@ Oliver Bonham-Carter
 <span id="cb3-16"><a></a></span>
 <span id="cb3-17"><a></a><span class="co"># Reversing</span></span>
 <span id="cb3-18"><a></a>nums.reverse()</span>
-<span id="cb3-19"><a></a><span class="bu">print</span>(nums)               <span class="co"># Output: [9, 5, 4, 3, 2, 1, 1]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-19"><a></a><span class="bu">print</span>(nums)               <span class="co"># Output: [9, 5, 4, 3, 2, 1, 1]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These operations make lists powerful for data manipulation!</p>
 </section></section>
@@ -391,7 +391,7 @@ Oliver Bonham-Carter
 <section id="creating-and-accessing-dictionaries" class="slide level2">
 <h2>Creating and Accessing Dictionaries</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co">"""</span></span>
 <span id="cb4-2"><a></a><span class="co">This example shows how to create and access dictionaries.</span></span>
 <span id="cb4-3"><a></a><span class="co">"""</span></span>
 <span id="cb4-4"><a></a></span>
@@ -409,14 +409,14 @@ Oliver Bonham-Carter
 <span id="cb4-16"><a></a></span>
 <span id="cb4-17"><a></a><span class="co"># Getting all keys and values</span></span>
 <span id="cb4-18"><a></a><span class="bu">print</span>(student.keys())            <span class="co"># Output: dict_keys(['name', 'age', 'major'])</span></span>
-<span id="cb4-19"><a></a><span class="bu">print</span>(student.values())          <span class="co"># Output: dict_values(['Alice', 20, 'Computer Science'])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-19"><a></a><span class="bu">print</span>(student.values())          <span class="co"># Output: dict_values(['Alice', 20, 'Computer Science'])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dictionaries let you look up values quickly using keys!</p>
 </section>
 <section id="modifying-dictionaries" class="slide level2">
 <h2>Modifying Dictionaries</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co">"""</span></span>
 <span id="cb5-2"><a></a><span class="co">This example shows how to modify dictionaries.</span></span>
 <span id="cb5-3"><a></a><span class="co">"""</span></span>
 <span id="cb5-4"><a></a></span>
@@ -436,14 +436,14 @@ Oliver Bonham-Carter
 <span id="cb5-18"><a></a>    <span class="co"># Output: We have 10 apples</span></span>
 <span id="cb5-19"><a></a></span>
 <span id="cb5-20"><a></a><span class="bu">print</span>(inventory)</span>
-<span id="cb5-21"><a></a><span class="co"># Output: {'apples': 10}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-21"><a></a><span class="co"># Output: {'apples': 10}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dictionaries make it easy to manage related data!</p>
 </section>
 <section id="iterating-through-dictionaries" class="slide level2">
 <h2>Iterating Through Dictionaries</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co">"""</span></span>
 <span id="cb6-2"><a></a><span class="co">This example shows how to iterate through dictionaries.</span></span>
 <span id="cb6-3"><a></a><span class="co">"""</span></span>
 <span id="cb6-4"><a></a></span>
@@ -463,7 +463,7 @@ Oliver Bonham-Carter
 <span id="cb6-18"><a></a><span class="co"># Output:</span></span>
 <span id="cb6-19"><a></a><span class="co"># Alice scored 95</span></span>
 <span id="cb6-20"><a></a><span class="co"># Bob scored 87</span></span>
-<span id="cb6-21"><a></a><span class="co"># Charlie scored 92</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-21"><a></a><span class="co"># Charlie scored 92</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dictionaries are perfect for storing related information!</p>
 </section></section>
@@ -487,7 +487,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Syntax:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>new_list <span class="op">=</span> [expression <span class="cf">for</span> item <span class="kw">in</span> iterable <span class="cf">if</span> condition]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>new_list <span class="op">=</span> [expression <span class="cf">for</span> item <span class="kw">in</span> iterable <span class="cf">if</span> condition]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>They’re like a compact for-loop that creates a list!</p>
 </div>
 </div>
@@ -499,7 +499,7 @@ Oliver Bonham-Carter
 <section id="basic-list-comprehensions" class="slide level2">
 <h2>Basic List Comprehensions</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co">"""</span></span>
 <span id="cb8-2"><a></a><span class="co">This example shows basic list comprehensions.</span></span>
 <span id="cb8-3"><a></a><span class="co">"""</span></span>
 <span id="cb8-4"><a></a></span>
@@ -521,14 +521,14 @@ Oliver Bonham-Carter
 <span id="cb8-20"><a></a></span>
 <span id="cb8-21"><a></a>upper_words <span class="op">=</span> [word.upper() <span class="cf">for</span> word <span class="kw">in</span> [<span class="st">"hello"</span>, <span class="st">"world"</span>]]</span>
 <span id="cb8-22"><a></a><span class="bu">print</span>(upper_words)</span>
-<span id="cb8-23"><a></a><span class="co"># Output: ['HELLO', 'WORLD']</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-23"><a></a><span class="co"># Output: ['HELLO', 'WORLD']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>List comprehensions make your code cleaner and more Pythonic!</p>
 </section>
 <section id="advanced-list-comprehensions" class="slide level2">
 <h2>Advanced List Comprehensions</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co">"""</span></span>
 <span id="cb9-2"><a></a><span class="co">This example shows more complex list comprehensions.</span></span>
 <span id="cb9-3"><a></a><span class="co">"""</span></span>
 <span id="cb9-4"><a></a></span>
@@ -540,14 +540,14 @@ Oliver Bonham-Carter
 <span id="cb9-10"><a></a><span class="co"># With multiple conditions</span></span>
 <span id="cb9-11"><a></a>nums <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">if</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>]</span>
 <span id="cb9-12"><a></a><span class="bu">print</span>(nums)</span>
-<span id="cb9-13"><a></a><span class="co"># Output: [0, 6, 12, 18]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-13"><a></a><span class="co"># Output: [0, 6, 12, 18]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>List comprehensions can handle complex transformations elegantly!</p>
 </section>
 <section id="advanced-list-comprehensions-continued" class="slide level2">
 <h2>Advanced List Comprehensions (Continued)</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Using if-else in comprehension</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Using if-else in comprehension</span></span>
 <span id="cb10-2"><a></a>labels <span class="op">=</span> [<span class="st">"even"</span> <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"odd"</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
 <span id="cb10-3"><a></a><span class="bu">print</span>(labels)</span>
 <span id="cb10-4"><a></a><span class="co"># Output: ['even', 'odd', 'even', 'odd', 'even']</span></span>
@@ -556,7 +556,7 @@ Oliver Bonham-Carter
 <span id="cb10-7"><a></a>nested <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb10-8"><a></a>flat <span class="op">=</span> [item <span class="cf">for</span> sublist <span class="kw">in</span> nested <span class="cf">for</span> item <span class="kw">in</span> sublist]</span>
 <span id="cb10-9"><a></a><span class="bu">print</span>(flat)</span>
-<span id="cb10-10"><a></a><span class="co"># Output: [1, 2, 3, 4, 5, 6]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-10"><a></a><span class="co"># Output: [1, 2, 3, 4, 5, 6]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>List comprehensions also help to make code more clean.</p>
 </section></section>
@@ -580,7 +580,7 @@ Oliver Bonham-Carter
 </div>
 <div class="callout-content">
 <p><strong>Syntax:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>new_dict <span class="op">=</span> {key_expr: value_expr <span class="cf">for</span> item <span class="kw">in</span> iterable <span class="cf">if</span> condition}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>new_dict <span class="op">=</span> {key_expr: value_expr <span class="cf">for</span> item <span class="kw">in</span> iterable <span class="cf">if</span> condition}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Similar to list comprehensions, but create dictionaries!</p>
 </div>
 </div>
@@ -593,7 +593,7 @@ Oliver Bonham-Carter
 <h2>Dictionary Comprehension Examples</h2>
 <div style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co">"""</span></span>
 <span id="cb12-2"><a></a><span class="co">This example shows dictionary comprehensions.</span></span>
 <span id="cb12-3"><a></a><span class="co">"""</span></span>
 <span id="cb12-4"><a></a></span>
@@ -618,7 +618,7 @@ Oliver Bonham-Carter
 <span id="cb12-23"><a></a>prices <span class="op">=</span> {<span class="st">"apple"</span>: <span class="fl">0.5</span>, <span class="st">"banana"</span>: <span class="fl">0.3</span>, <span class="st">"orange"</span>: <span class="fl">0.7</span>}</span>
 <span id="cb12-24"><a></a>dollars <span class="op">=</span> {item: price <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> item, price <span class="kw">in</span> prices.items()}</span>
 <span id="cb12-25"><a></a><span class="bu">print</span>(dollars)</span>
-<span id="cb12-26"><a></a><span class="co"># Output: {'apple': 50.0, 'banana': 30.0, 'orange': 70.0}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-26"><a></a><span class="co"># Output: {'apple': 50.0, 'banana': 30.0, 'orange': 70.0}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Dictionary comprehensions make creating and transforming dictionaries easy!</p>
@@ -653,7 +653,7 @@ Oliver Bonham-Carter
 <section id="creating-and-using-sets" class="slide level2">
 <h2>Creating and Using Sets</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co">"""</span></span>
 <span id="cb13-2"><a></a><span class="co">This example shows how to create and use sets.</span></span>
 <span id="cb13-3"><a></a><span class="co">"""</span></span>
 <span id="cb13-4"><a></a></span>
@@ -661,14 +661,14 @@ Oliver Bonham-Carter
 <span id="cb13-6"><a></a>fruits <span class="op">=</span> {<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>}</span>
 <span id="cb13-7"><a></a>numbers <span class="op">=</span> <span class="bu">set</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>])  <span class="co"># Duplicates removed!</span></span>
 <span id="cb13-8"><a></a><span class="bu">print</span>(numbers)</span>
-<span id="cb13-9"><a></a><span class="co"># Output: {1, 2, 3, 4}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-9"><a></a><span class="co"># Output: {1, 2, 3, 4}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Sets are perfect when you need unique values!</p>
 </section>
 <section id="creating-and-using-sets-continued" class="slide level2">
 <h2>Creating and Using Sets (Continued)</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a></span>
 <span id="cb14-2"><a></a><span class="co"># Adding and removing</span></span>
 <span id="cb14-3"><a></a>fruits.add(<span class="st">"orange"</span>)</span>
 <span id="cb14-4"><a></a>fruits.remove(<span class="st">"banana"</span>)  <span class="co"># Error if not found</span></span>
@@ -681,14 +681,14 @@ Oliver Bonham-Carter
 <span id="cb14-11"><a></a><span class="bu">print</span>(<span class="st">"banana"</span> <span class="kw">in</span> fruits)      <span class="co"># Output: False</span></span>
 <span id="cb14-12"><a></a></span>
 <span id="cb14-13"><a></a><span class="co"># Length</span></span>
-<span id="cb14-14"><a></a><span class="bu">print</span>(<span class="bu">len</span>(fruits))             <span class="co"># Output: 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-14"><a></a><span class="bu">print</span>(<span class="bu">len</span>(fruits))             <span class="co"># Output: 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Sets can be configured in many ways except for their order.</p>
 </section>
 <section id="set-operations" class="slide level2">
 <h2>Set Operations</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co">"""</span></span>
 <span id="cb15-2"><a></a><span class="co">This example shows mathematical set operations.</span></span>
 <span id="cb15-3"><a></a><span class="co">"""</span></span>
 <span id="cb15-4"><a></a></span>
@@ -703,13 +703,13 @@ Oliver Bonham-Carter
 <span id="cb15-13"><a></a><span class="co"># Intersection (elements in both sets)</span></span>
 <span id="cb15-14"><a></a>intersection <span class="op">=</span> set_a <span class="op">&amp;</span> set_b</span>
 <span id="cb15-15"><a></a><span class="bu">print</span>(intersection)</span>
-<span id="cb15-16"><a></a><span class="co"># Output: {4, 5}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-16"><a></a><span class="co"># Output: {4, 5}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="set-operations-continued" class="slide level2">
 <h2>Set Operations (Continued)</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a></span>
 <span id="cb16-2"><a></a><span class="co"># Difference (elements in set_a but not in set_b)</span></span>
 <span id="cb16-3"><a></a>difference <span class="op">=</span> set_a <span class="op">-</span> set_b</span>
 <span id="cb16-4"><a></a><span class="bu">print</span>(difference)</span>
@@ -718,14 +718,14 @@ Oliver Bonham-Carter
 <span id="cb16-7"><a></a><span class="co"># Symmetric difference (elements in either set, but not both)</span></span>
 <span id="cb16-8"><a></a>sym_diff <span class="op">=</span> set_a <span class="op">^</span> set_b</span>
 <span id="cb16-9"><a></a><span class="bu">print</span>(sym_diff)</span>
-<span id="cb16-10"><a></a><span class="co"># Output: {1, 2, 3, 6, 7, 8}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-10"><a></a><span class="co"># Output: {1, 2, 3, 6, 7, 8}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Sets support powerful mathematical operations!</p>
 </section>
 <section id="set-comprehensions" class="slide level2">
 <h2>Set Comprehensions</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co">"""</span></span>
 <span id="cb17-2"><a></a><span class="co">This example shows set comprehensions.</span></span>
 <span id="cb17-3"><a></a><span class="co">"""</span></span>
 <span id="cb17-4"><a></a></span>
@@ -737,14 +737,14 @@ Oliver Bonham-Carter
 <span id="cb17-10"><a></a><span class="co"># With condition</span></span>
 <span id="cb17-11"><a></a>even_squares <span class="op">=</span> {x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>}</span>
 <span id="cb17-12"><a></a><span class="bu">print</span>(even_squares)</span>
-<span id="cb17-13"><a></a><span class="co"># Output: {0, 4, 16, 36, 64}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-13"><a></a><span class="co"># Output: {0, 4, 16, 36, 64}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Set comprehensions are great for removing duplicates!</p>
 </section>
 <section id="set-comprehensions-continued" class="slide level2">
 <h2>Set Comprehensions (Continued)</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a></span>
 <span id="cb18-2"><a></a><span class="co"># Remove duplicates from a list</span></span>
 <span id="cb18-3"><a></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"cherry"</span>, <span class="st">"banana"</span>]</span>
 <span id="cb18-4"><a></a>unique_words <span class="op">=</span> {word <span class="cf">for</span> word <span class="kw">in</span> words}</span>
@@ -755,7 +755,7 @@ Oliver Bonham-Carter
 <span id="cb18-9"><a></a>text <span class="op">=</span> <span class="st">"hello world"</span></span>
 <span id="cb18-10"><a></a>unique_chars <span class="op">=</span> {char <span class="cf">for</span> char <span class="kw">in</span> text <span class="cf">if</span> char <span class="op">!=</span> <span class="st">' '</span>}</span>
 <span id="cb18-11"><a></a><span class="bu">print</span>(unique_chars)</span>
-<span id="cb18-12"><a></a><span class="co"># Output: {'h', 'e', 'l', 'o', 'w', 'r', 'd'}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-12"><a></a><span class="co"># Output: {'h', 'e', 'l', 'o', 'w', 'r', 'd'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Set comprehensions are all about “Unique” values!</p>
 </section>
@@ -774,7 +774,7 @@ Oliver Bonham-Carter
 <h2>Challenge 1: List Manipulation</h2>
 <p>Create a list of numbers from 1 to 10. Write code that: 1. Adds the number 11 to the end 2. Removes the number 5 3. Prints the sum of all numbers 4. Prints the list in reverse order</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -797,7 +797,7 @@ Oliver Bonham-Carter
 <h2>Challenge 2: Student Dictionary</h2>
 <p>Create a dictionary with student information (name, age, grade, major). Write code that: 1. Adds a new field “gpa” with value 3.8 2. Updates the age to be 1 year older 3. Prints each key-value pair in a formatted way 4. Checks if “email” exists in the dictionary</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -821,7 +821,7 @@ Oliver Bonham-Carter
 <h2>Challenge 3: List Comprehension Magic</h2>
 <p>Using list comprehensions, create: 1. A list of numbers from 1 to 20 that are divisible by 3 2. A list of the first letters of words in: <code>["Python", "Java", "Ruby", "Go"]</code> 3. A list of tuples containing numbers 1-5 and their cubes: <code>[(1, 1), (2, 8), ...]</code></p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -844,7 +844,7 @@ Oliver Bonham-Carter
 <h2>Challenge 4: Dictionary Comprehension Power</h2>
 <p>Create a dictionary comprehension that: 1. Takes the list <code>["red", "green", "blue", "yellow"]</code> and creates a dictionary where keys are the colors and values are their lengths 2. From a dictionary of temperatures in Celsius <code>{"morning": 20, "afternoon": 25, "evening": 18}</code>, create a new dictionary with temperatures in Fahrenheit (F = C * 9/5 + 32)</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -868,7 +868,7 @@ Oliver Bonham-Carter
 <p>Given two lists of student names: - <code>class_a = ["Alice", "Bob", "Charlie", "David", "Eve"]</code> - <code>class_b = ["Charlie", "David", "Frank", "Grace"]</code></p>
 <p>Write code that uses sets to find: 1. Students in both classes (intersection) 2. Students in only class A (difference) 3. All unique students (union) 4. Students in exactly one class (symmetric difference)</p>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -901,7 +901,7 @@ Oliver Bonham-Carter
 <section id="solution-1-list-manipulation" class="slide level2">
 <h2>Solution 1: List Manipulation</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co">"""</span></span>
 <span id="cb24-2"><a></a><span class="co">Solution for list manipulation challenge.</span></span>
 <span id="cb24-3"><a></a><span class="co">"""</span></span>
 <span id="cb24-4"><a></a></span>
@@ -921,7 +921,7 @@ Oliver Bonham-Carter
 <span id="cb24-18"><a></a><span class="co"># 4. Print list in reverse</span></span>
 <span id="cb24-19"><a></a><span class="bu">print</span>(<span class="ss">f"Reversed: </span><span class="sc">{</span>numbers[::<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb24-20"><a></a><span class="co"># Or: numbers.reverse(); print(numbers)</span></span>
-<span id="cb24-21"><a></a><span class="co"># Output: Reversed: [11, 10, 9, 8, 7, 6, 4, 3, 2, 1]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-21"><a></a><span class="co"># Output: Reversed: [11, 10, 9, 8, 7, 6, 4, 3, 2, 1]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This solution shows various list operations working together!</p>
 <!-- <center>
@@ -932,7 +932,7 @@ Oliver Bonham-Carter
 <h2>Solution 2: Student Dictionary</h2>
 <div style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co">"""</span></span>
 <span id="cb25-2"><a></a><span class="co">Solution for student dictionary challenge. </span></span>
 <span id="cb25-3"><a></a><span class="co">"""</span></span>
 <span id="cb25-4"><a></a></span>
@@ -956,7 +956,7 @@ Oliver Bonham-Carter
 <span id="cb25-22"><a></a>    <span class="bu">print</span>(<span class="st">"Email found!"</span>)</span>
 <span id="cb25-23"><a></a><span class="cf">else</span>:</span>
 <span id="cb25-24"><a></a>    <span class="bu">print</span>(<span class="st">"Email not found!"</span>)</span>
-<span id="cb25-25"><a></a><span class="co"># Output: Email not found!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-25"><a></a><span class="co"># Output: Email not found!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dictionaries make it easy to manage structured data!</p>
 </div>
@@ -967,7 +967,7 @@ Oliver Bonham-Carter
 <section id="solution-3-list-comprehension-magic" class="slide level2">
 <h2>Solution 3: List Comprehension Magic</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co">"""</span></span>
 <span id="cb26-2"><a></a><span class="co">Solution for list comprehension challenge.</span></span>
 <span id="cb26-3"><a></a><span class="co">"""</span></span>
 <span id="cb26-4"><a></a></span>
@@ -985,7 +985,7 @@ Oliver Bonham-Carter
 <span id="cb26-16"><a></a><span class="co"># 3. Numbers 1-5 and their cubes</span></span>
 <span id="cb26-17"><a></a>cubes <span class="op">=</span> [(x, x <span class="op">**</span> <span class="dv">3</span>) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>)]</span>
 <span id="cb26-18"><a></a><span class="bu">print</span>(cubes)</span>
-<span id="cb26-19"><a></a><span class="co"># Output: [(1, 1), (2, 8), (3, 27), (4, 64), (5, 125)]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-19"><a></a><span class="co"># Output: [(1, 1), (2, 8), (3, 27), (4, 64), (5, 125)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>List comprehensions make code concise and readable!</p>
 <!-- 
@@ -996,7 +996,7 @@ Oliver Bonham-Carter
 <section id="solution-4-dictionary-comprehension-power" class="slide level2">
 <h2>Solution 4: Dictionary Comprehension Power</h2>
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co">"""</span></span>
 <span id="cb27-2"><a></a><span class="co">Solution for dictionary comprehension challenge.</span></span>
 <span id="cb27-3"><a></a><span class="co">"""</span></span>
 <span id="cb27-4"><a></a></span>
@@ -1010,7 +1010,7 @@ Oliver Bonham-Carter
 <span id="cb27-12"><a></a>celsius <span class="op">=</span> {<span class="st">"morning"</span>: <span class="dv">20</span>, <span class="st">"afternoon"</span>: <span class="dv">25</span>, <span class="st">"evening"</span>: <span class="dv">18</span>}</span>
 <span id="cb27-13"><a></a>fahrenheit <span class="op">=</span> {time: temp <span class="op">*</span> <span class="dv">9</span><span class="op">/</span><span class="dv">5</span> <span class="op">+</span> <span class="dv">32</span> <span class="cf">for</span> time, temp <span class="kw">in</span> celsius.items()}</span>
 <span id="cb27-14"><a></a><span class="bu">print</span>(fahrenheit)</span>
-<span id="cb27-15"><a></a><span class="co"># Output: {'morning': 68.0, 'afternoon': 77.0, 'evening': 64.4}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-15"><a></a><span class="co"># Output: {'morning': 68.0, 'afternoon': 77.0, 'evening': 64.4}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dictionary comprehensions transform data elegantly!</p>
 <!-- <center>
@@ -1021,7 +1021,7 @@ Oliver Bonham-Carter
 <h2>Solution 5: Set Operations Challenge</h2>
 <div style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co">"""</span></span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co">"""</span></span>
 <span id="cb28-2"><a></a><span class="co">Solution for set operations challenge.</span></span>
 <span id="cb28-3"><a></a><span class="co">"""</span></span>
 <span id="cb28-4"><a></a></span>
@@ -1040,7 +1040,7 @@ Oliver Bonham-Carter
 <span id="cb28-17"><a></a><span class="co"># 2. Students in only class A (difference)</span></span>
 <span id="cb28-18"><a></a>only_a <span class="op">=</span> set_a <span class="op">-</span> set_b</span>
 <span id="cb28-19"><a></a><span class="bu">print</span>(<span class="ss">f"Only in A: </span><span class="sc">{</span>only_a<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb28-20"><a></a><span class="co"># Output: Only in A: {'Alice', 'Bob', 'Eve'}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-20"><a></a><span class="co"># Output: Only in A: {'Alice', 'Bob', 'Eve'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1048,7 +1048,7 @@ Oliver Bonham-Carter
 <h2>Solution 5: Set Operations Challenge (Continued)</h2>
 <div style="color: #2E86C1; font-size: 0.9em; text-align: center; margin-top: 0.5em;">
 <div class="example">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 3. All unique students (union)</span></span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># 3. All unique students (union)</span></span>
 <span id="cb29-2"><a></a>all_students <span class="op">=</span> set_a <span class="op">|</span> set_b</span>
 <span id="cb29-3"><a></a><span class="bu">print</span>(<span class="ss">f"All students: </span><span class="sc">{</span>all_students<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb29-4"><a></a><span class="co"># Output: All students: {'Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace'}</span></span>
@@ -1056,7 +1056,7 @@ Oliver Bonham-Carter
 <span id="cb29-6"><a></a><span class="co"># 4. Students in exactly one class (symmetric difference)</span></span>
 <span id="cb29-7"><a></a>one_class_only <span class="op">=</span> set_a <span class="op">^</span> set_b</span>
 <span id="cb29-8"><a></a><span class="bu">print</span>(<span class="ss">f"Exactly one class: </span><span class="sc">{</span>one_class_only<span class="sc">}</span><span class="ss">"</span>) <span class="co">#Sets make working with collections of unique items easy!</span></span>
-<span id="cb29-9"><a></a><span class="co"># Output: Exactly one class: {'Alice', 'Bob', 'Eve', 'Frank', 'Grace'}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-9"><a></a><span class="co"># Output: Exactly one class: {'Alice', 'Bob', 'Eve', 'Frank', 'Grace'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <!-- <center>
@@ -1326,7 +1326,7 @@ Oliver Bonham-Carter
         margin: 5.0e-2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1400,14 +1400,13 @@ Oliver Bonham-Carter
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

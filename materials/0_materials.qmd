@@ -132,6 +132,8 @@ Here you will find a listing of lesson materials for the course such as slides, 
 ## W13. Applications and Development
 - **Building a File Search Application**
   - [HTML](13_Applications_filesearch.html) Slides
+- **Activity 11**: Talk It Out - Final Project *Telephone* Challenge
+  - [GitHub Classroom Link](https://classroom.github.com/a/lW-A6bgh)
 
 ---
 
