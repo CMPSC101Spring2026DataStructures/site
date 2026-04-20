@@ -135,6 +135,11 @@ Here you will find a listing of lesson materials for the course such as slides, 
 - **Activity 11**: Talk It Out - Final Project *Telephone* Challenge
   - [GitHub Classroom Link](https://classroom.github.com/a/lW-A6bgh)
 
+## W14. Application Development and Final Project Presentations
+- **Building a QR Code Generator Application**
+  - [HTML](14_applications_QRCreator.html) Slides
+- **Final Project Presentations**: Friday, 24th April 2026 during lab
+
 ---
 
 ## Special Notes

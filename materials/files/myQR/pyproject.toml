@@ -1,0 +1,25 @@
+[project]
+name = "myqr"
+version = "1.1.0"
+description = "Interactive QR code generator with Streamlit and Typer"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pillow>=11.0.0",
+    "qrcode[pil]>=8.2",
+    "rich>=15.0.0",
+    "streamlit>=1.56.0",
+    "typer>=0.24.1",
+]
+
+[project.scripts]
+myqr = "myqr.main:cli_entrypoint"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
