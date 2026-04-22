@@ -138,6 +138,9 @@ Here you will find a listing of lesson materials for the course such as slides, 
 ## W14. Application Development and Final Project Presentations
 - **Building a QR Code Generator Application**
   - [HTML](14_Applications_QRCreator.html) Slides
+- **Course Learning Objectives Survey**
+  - [Survey Link](https://forms.gle/6Cc4EsZdNaoCP9ys5)
+- **Worktime**: Working on course evaluations, final projects and preparing for final project presentations.
 - **Final Project Presentations**: Friday, 24th April 2026 during lab
 
 ---
